@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirming &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/core.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<style>
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--off-white);
+}
+.auth-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem;
+}
+.auth-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 40px rgba(13,27,62,0.10);
+  padding: 2.5rem 2.25rem;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+.auth-logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--navy);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+.auth-logo span { color: var(--gold); }
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--navy);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1.25rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.status-heading {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.status-msg {
+  color: var(--text-mid);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.auth-btn {
+  display: inline-block;
+  padding: 0.7rem 1.75rem;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.18s;
+}
+.auth-btn:hover { background: #0f2347; }
+.icon-success { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.icon-error   { font-size: 2.5rem; margin-bottom: 0.75rem; }
+</style>
+</head>
+<body class="auth-page">
+<div id="site-nav"></div>
+
+<div class="auth-wrap">
+  <div class="auth-card" id="card">
+    <a href="../index.html" class="auth-logo">Equine <span>Edu</span></a>
+
+    <!-- Loading state -->
+    <div id="state-loading">
+      <div class="spinner"></div>
+      <p class="status-heading">Confirming your account…</p>
+      <p class="status-msg">Just a moment.</p>
+    </div>
+
+    <!-- Success state (hidden until confirmed) -->
+    <div id="state-success" style="display:none;">
+      <div class="icon-success">✅</div>
+      <p class="status-heading">You're confirmed!</p>
+      <p class="status-msg">Your account is active. You're being redirected to your account.</p>
+      <a href="../account/index.html" class="auth-btn">Go to My Account</a>
+    </div>
+
+    <!-- Password reset state -->
+    <div id="state-recovery" style="display:none;">
+      <p class="status-heading">Set a new password</p>
+      <p class="status-msg">Enter your new password below.</p>
+      <div style="text-align:left;">
+        <div style="margin-bottom:1rem;">
+          <label style="display:block;font-size:.82rem;font-weight:700;letter-spacing:.04em;color:var(--navy);text-transform:uppercase;margin-bottom:.45rem;">New Password</label>
+          <input type="password" id="new-password" placeholder="••••••••" style="width:100%;padding:.7rem .9rem;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.93rem;color:var(--navy);background:var(--off-white);box-sizing:border-box;">
+        </div>
+        <div id="pw-error" style="color:#dc2626;font-size:.84rem;margin-bottom:.75rem;display:none;"></div>
+        <button onclick="submitNewPassword()" class="auth-btn" style="width:100%;">Update Password</button>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div id="state-error" style="display:none;">
+      <div class="icon-error">❌</div>
+      <p class="status-heading">Something went wrong</p>
+      <p class="status-msg" id="error-msg">This link may have expired. Please try again.</p>
+      <a href="../auth/login.html" class="auth-btn">Back to Log In</a>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="../assets/js/supabase-client.js"></script>
+<script>
+  window.LAYOUT = {
+    homeUrl:    '../index.html',
+    coursesUrl: '../courses/index.html'
+  };
+</script>
+<script src="../assets/js/layout.js"></script>
+<script>
+function show(id) {
+  ['state-loading','state-success','state-recovery','state-error'].forEach(function(s){
+    document.getElementById(s).style.display = (s === id) ? '' : 'none';
+  });
+}
+
+async function submitNewPassword() {
+  var pw  = document.getElementById('new-password').value;
+  var err = document.getElementById('pw-error');
+  if (pw.length < 8) {
+    err.textContent = 'Password must be at least 8 characters.';
+    err.style.display = 'block';
+    return;
+  }
+  err.style.display = 'none';
+  var result = await EEAuth.updatePassword(pw);
+  if (result.error) {
+    err.textContent = result.error.message || 'Update failed. Please try again.';
+    err.style.display = 'block';
+  } else {
+    window.location.replace('../account/index.html');
+  }
+}
+
+// Supabase puts the token in the URL hash (#access_token=...&type=...)
+// The SDK's detectSessionInUrl:true handles parsing it automatically.
+EEAuth.init(function (session) {
+  var params = new URLSearchParams(window.location.hash.replace('#', '?').slice(1));
+  var type   = params.get('type') || new URLSearchParams(window.location.search).get('type');
+
+  if (type === 'recovery') {
+    // Password reset flow — session is already set by SDK
+    show('state-recovery');
+    return;
+  }
+
+  if (session) {
+    // Email confirmation succeeded
+    show('state-success');
+    setTimeout(function () {
+      window.location.replace('../account/index.html');
+    }, 2000);
+    return;
+  }
+
+  // No session and not a recovery — something is off
+  show('state-error');
+});
+</script>
+</body>
+</html>

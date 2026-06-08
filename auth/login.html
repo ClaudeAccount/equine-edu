@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In &mdash; Equine Edu</title>
+<meta name="description" content="Log in to your Equine Edu account to access courses, quizzes, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/core.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<style>
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--off-white);
+}
+.auth-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem;
+}
+.auth-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 40px rgba(13,27,62,0.10);
+  padding: 2.5rem 2.25rem;
+  width: 100%;
+  max-width: 420px;
+}
+.auth-logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 0.35rem;
+  text-decoration: none;
+  display: block;
+}
+.auth-logo span { color: var(--gold); }
+.auth-heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--navy);
+  text-align: center;
+  margin: 0.75rem 0 0.35rem;
+}
+.auth-sub {
+  color: var(--text-mid);
+  font-size: 0.88rem;
+  text-align: center;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+.auth-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 1.75rem;
+}
+.field-group {
+  margin-bottom: 1.1rem;
+}
+.field-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+.field-group input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  color: var(--navy);
+  background: var(--off-white);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+.field-group input:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(13,27,62,0.09);
+  background: var(--white);
+}
+.field-group input.error {
+  border-color: #dc2626;
+}
+.forgot-link {
+  display: block;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  text-decoration: none;
+  margin-top: -0.6rem;
+  margin-bottom: 1.1rem;
+}
+.forgot-link:hover { color: var(--navy); }
+.auth-btn {
+  width: 100%;
+  padding: 0.82rem;
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.1s;
+  letter-spacing: 0.02em;
+}
+.auth-btn:hover { background: #0f2347; }
+.auth-btn:active { transform: scale(0.99); }
+.auth-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.auth-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  color: #dc2626;
+  font-size: 0.84rem;
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+.auth-error.visible { display: block; }
+.auth-switch {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+}
+.auth-switch a {
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+}
+.auth-switch a:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="auth-page">
+<div id="site-nav"></div>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <a href="../index.html" class="auth-logo">Equine <span>Edu</span></a>
+    <h1 class="auth-heading">Welcome back</h1>
+    <p class="auth-sub">Log in to continue learning.</p>
+    <hr class="auth-divider">
+
+    <div class="auth-error" id="auth-error"></div>
+
+    <form id="login-form" novalidate>
+      <div class="field-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      </div>
+      <div class="field-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+      </div>
+      <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+      <button type="submit" class="auth-btn" id="submit-btn">Log In</button>
+    </form>
+
+    <p class="auth-switch">Don't have an account? <a href="signup.html">Sign up free</a></p>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="../assets/js/supabase-client.js"></script>
+<script>
+  window.LAYOUT = {
+    homeUrl:    '../index.html',
+    coursesUrl: '../courses/index.html'
+  };
+</script>
+<script src="../assets/js/layout.js"></script>
+<script>
+(function () {
+  // If already logged in, redirect to account
+  EEAuth.init(function (session) {
+    if (session) {
+      window.location.replace('../account/index.html');
+    }
+  });
+
+  var form      = document.getElementById('login-form');
+  var submitBtn = document.getElementById('submit-btn');
+  var errorBox  = document.getElementById('auth-error');
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.classList.add('visible');
+  }
+  function clearError() {
+    errorBox.classList.remove('visible');
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    clearError();
+
+    var email    = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value;
+
+    if (!email || !password) {
+      showError('Please enter your email and password.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Logging in…';
+
+    var result = await EEAuth.signIn(email, password);
+
+    if (result.error) {
+      showError(result.error.message || 'Login failed. Please check your credentials.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Log In';
+      return;
+    }
+
+    // Redirect — go to account or the page they came from
+    var next = new URLSearchParams(window.location.search).get('next');
+    window.location.replace(next || '../account/index.html');
+  });
+})();
+</script>
+</body>
+</html>

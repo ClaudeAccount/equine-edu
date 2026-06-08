@@ -68,10 +68,16 @@
   border: 2px solid var(--border);
   cursor: grab;
   user-select: none;
+  touch-action: manipulation;
   transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
   flex-shrink: 0;
 }
 .sort-card:hover { box-shadow: 0 6px 20px rgba(13,27,62,0.14); transform: translateY(-2px); }
+.sort-card.touch-selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.24), 0 8px 24px rgba(13,27,62,0.14);
+  transform: translateY(-2px);
+}
 .sort-card.dragging {
   opacity: 0.45;
   cursor: grabbing;
@@ -128,6 +134,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  touch-action: manipulation;
 }
 .bucket.drag-over {
   border-color: var(--gold);
@@ -235,6 +242,16 @@
   margin-bottom: 1rem;
   font-style: italic;
 }
+@media (max-width: 640px) {
+  .hand-pile {
+    justify-content: center;
+    padding: 0.6rem;
+  }
+  .sort-card { width: 96px; }
+  .bucket { min-height: 112px; padding: 0.6rem; }
+  .bucket .sort-card { width: 64px; }
+  .buckets-grid { gap: 0.65rem; }
+}
 .lesson-wrap { grid-template-columns: minmax(0, 1040px); justify-content: center; }
 .lesson-left { max-width: none; }
 </style>
@@ -248,7 +265,7 @@
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Training Barn</div>
       <h1 class="lesson-hero-title">Horse Color <span>Sort</span></h1>
-      <p class="lesson-hero-desc">Drag each horse card into the correct color category. Sort all 19 horses to complete the activity.</p>
+      <p class="lesson-hero-desc">Sort a smaller batch of horse color cards each round. Play again for a new mix from the full color set.</p>
     </div>
   </div>
 </section>
@@ -260,12 +277,12 @@
 
       <div id="game-main">
         <div class="sort-intro">
-          <div class="sort-stat">Cards remaining: <strong id="remaining-count">19</strong></div>
+          <div class="sort-stat">Cards remaining: <strong id="remaining-count">10</strong></div>
           <div class="sort-stat">Correct: <strong id="correct-count">0</strong></div>
           <div class="sort-stat">Misplaced: <strong id="wrong-count">0</strong></div>
         </div>
 
-        <p class="touch-note" id="touch-note" style="display:none;">Tap a card to select it, then tap a bucket to place it.</p>
+        <p class="touch-note" id="touch-note">Drag a card into a bucket, or tap a card and then tap the bucket where it belongs.</p>
 
         <div class="hand-section">
           <div class="hand-label">Cards to Sort</div>
@@ -276,7 +293,7 @@
         <div class="buckets-grid" id="buckets-grid"></div>
 
         <div class="sort-actions">
-          <button class="btn-primary" onclick="resetGame()">Restart</button>
+          <button class="btn-primary" onclick="resetGame()">New Batch</button>
           <a href="index.html" class="btn-secondary">Back to Learning Loft</a>
         </div>
       </div>
@@ -337,8 +354,9 @@ var COLORS = [
 ];
 
 var GROUPS = ['Base Coat Colors', 'Golden & Lightened', 'Gray', 'Roan', 'Patterned'];
+var ROUND_SIZE = 10;
 
-var state = { correct: 0, wrong: 0, placed: 0, selectedCard: null, isTouch: false };
+var state = { correct: 0, wrong: 0, placed: 0, selectedCard: null, isTouch: false, roundCards: [] };
 
 function shuffle(arr) {
   var a = arr.slice();
@@ -379,10 +397,8 @@ function buildCard(color) {
 
   /* Touch / click selection */
   card.addEventListener('click', function() {
-    if (!state.isTouch) return;
-    document.querySelectorAll('.sort-card.touch-selected').forEach(function(c){ c.classList.remove('touch-selected'); });
+    document.querySelectorAll('#hand-pile .sort-card.touch-selected').forEach(function(c){ c.classList.remove('touch-selected'); });
     if (state.selectedCard === card) { state.selectedCard = null; return; }
-    card.style.outline = '3px solid var(--gold)';
     card.classList.add('touch-selected');
     state.selectedCard = card;
   });
@@ -425,11 +441,9 @@ function setupBuckets() {
 
     /* Touch tap to place */
     bucket.addEventListener('click', function() {
-      if (!state.isTouch || !state.selectedCard) return;
+      if (!state.selectedCard) return;
       var name      = state.selectedCard.dataset.name;
-      var srcGroup  = state.selectedCard.dataset.group;
-      if (srcGroup !== bucket.dataset.group || !document.getElementById('hand-pile').contains(state.selectedCard)) return;
-      state.selectedCard.style.outline = '';
+      if (!document.getElementById('hand-pile').contains(state.selectedCard)) return;
       state.selectedCard.classList.remove('touch-selected');
       placeCard(name, groupName, cardsDiv);
       state.selectedCard = null;
@@ -440,11 +454,13 @@ function setupBuckets() {
 }
 
 function placeCard(colorName, targetGroup, cardsDiv) {
-  var color = COLORS.find(function(c){ return c.name === colorName; });
+  var color = state.roundCards.find(function(c){ return c.name === colorName; }) || COLORS.find(function(c){ return c.name === colorName; });
   if (!color) return;
 
   /* Find the card in hand pile */
-  var handCard = document.querySelector('#hand-pile .sort-card[data-name="' + CSS.escape(colorName) + '"]');
+  var handCard = Array.prototype.find.call(document.querySelectorAll('#hand-pile .sort-card'), function(card) {
+    return card.dataset.name === colorName;
+  });
   if (!handCard) return;
 
   var isCorrect = color.group === targetGroup;
@@ -460,7 +476,7 @@ function placeCard(colorName, targetGroup, cardsDiv) {
     state.correct++;
     state.placed++;
     updateStats();
-    if (state.placed === COLORS.length) showCompletion();
+    if (state.placed === state.roundCards.length) showCompletion();
   } else {
     /* Shake and stay */
     handCard.classList.add('wrong-placed');
@@ -471,7 +487,7 @@ function placeCard(colorName, targetGroup, cardsDiv) {
 }
 
 function updateStats() {
-  document.getElementById('remaining-count').textContent = COLORS.length - state.placed;
+  document.getElementById('remaining-count').textContent = state.roundCards.length - state.placed;
   document.getElementById('correct-count').textContent   = state.correct;
   document.getElementById('wrong-count').textContent     = state.wrong;
 }
@@ -493,7 +509,14 @@ function showCompletion() {
 }
 
 function resetGame() {
-  state = { correct: 0, wrong: 0, placed: 0, selectedCard: null, isTouch: state.isTouch };
+  state = {
+    correct: 0,
+    wrong: 0,
+    placed: 0,
+    selectedCard: null,
+    isTouch: state.isTouch,
+    roundCards: shuffle(COLORS).slice(0, ROUND_SIZE)
+  };
   document.getElementById('completion-banner').classList.remove('visible');
   document.getElementById('game-main').style.display = '';
   updateStats();
@@ -501,7 +524,7 @@ function resetGame() {
 
   var pile = document.getElementById('hand-pile');
   pile.innerHTML = '';
-  shuffle(COLORS).forEach(function(c){ pile.appendChild(buildCard(c)); });
+  shuffle(state.roundCards).forEach(function(c){ pile.appendChild(buildCard(c)); });
 }
 
 /* Detect touch */
@@ -514,10 +537,7 @@ window.addEventListener('touchstart', function() {
 window.resetGame = resetGame;
 
 /* Boot */
-setupBuckets();
-var pile = document.getElementById('hand-pile');
-shuffle(COLORS).forEach(function(c){ pile.appendChild(buildCard(c)); });
-updateStats();
+resetGame();
 </script>
 </body>
 </html>

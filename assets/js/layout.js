@@ -49,6 +49,9 @@
       ? `<li><a href="${navCta.url}" class="nav-cta">${navCta.label}</a></li>`
       : '';
 
+    // Auth button — renders as Log In by default; updated after session check below
+    const authLink = `<li><a href="${root}auth/login.html" class="nav-auth-btn" id="nav-auth-btn">Log In</a></li>`;
+
     // Mobile drawer — always includes Home + Courses as baseline
     const drawerExtras = navExtras.map(e =>
       `<li><a href="${e.url}">${e.label}</a></li>`
@@ -58,12 +61,15 @@
       ? `<li><a href="${navCta.url}" class="nav-drawer-cta">${navCta.label}</a></li>`
       : '';
 
+    const drawerAuth = `<li><a href="${root}auth/login.html" id="nav-drawer-auth-btn">Log In</a></li>`;
+
     return `
 <nav>
   <a href="${homeUrl}" class="nav-logo">Equine <span>Edu</span></a>
   <ul class="nav-links">
     ${extraLinks}
     ${ctaLink}
+    ${authLink}
   </ul>
   <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -74,6 +80,7 @@
       <li><a href="${coursesUrl}">All Courses</a></li>
       ${drawerExtras}
       ${drawerCta}
+      ${drawerAuth}
     </ul>
   </div>
 </nav>`.trim();
@@ -190,11 +197,35 @@
     fadeItems.forEach(el => obs.observe(el));
   }
 
+  /* ---------- AUTH NAV UPDATE ---------- */
+  // After nav is injected, check session and update Log In → Account if signed in
+  function updateAuthNav() {
+    if (!window.EEAuth) return;
+    EEAuth.getSession().then(function (session) {
+      var btn   = document.getElementById('nav-auth-btn');
+      var drawer = document.getElementById('nav-drawer-auth-btn');
+      if (!session) return; // not logged in — keep "Log In"
+      var accountUrl = root + 'account/index.html';
+      if (btn) {
+        btn.textContent = 'My Account';
+        btn.href = accountUrl;
+      }
+      if (drawer) {
+        drawer.textContent = 'My Account';
+        drawer.href = accountUrl;
+      }
+    });
+  }
+
   /* ---------- INIT ---------- */
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => { inject(); setupMobileNav(); setupMotion(); setupFadeIn(); });
+    document.addEventListener('DOMContentLoaded', () => {
+      inject(); setupMobileNav(); setupMotion(); setupFadeIn();
+      updateAuthNav();
+    });
   } else {
     inject(); setupMobileNav(); setupMotion(); setupFadeIn();
+    updateAuthNav();
   }
 
 })();

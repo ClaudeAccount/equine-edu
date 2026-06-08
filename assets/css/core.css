@@ -164,6 +164,20 @@ nav {
   font-weight: 700 !important;
 }
 
+.nav-auth-btn {
+  border: 1.5px solid rgba(255,255,255,0.35) !important;
+  color: var(--white) !important;
+  padding: 7px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600 !important;
+  transition: background 0.18s, border-color 0.18s;
+}
+.nav-auth-btn:hover {
+  background: rgba(255,255,255,0.12) !important;
+  border-color: rgba(255,255,255,0.6) !important;
+  color: var(--white) !important;
+}
+
 /* ── Hamburger button ─────────────────────────────────────── */
 .nav-burger {
   display: none;
