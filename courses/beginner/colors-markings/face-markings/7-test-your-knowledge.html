@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Face Markings &mdash; Equine Edu</title>
+<meta name="description" content="Course wrap-up for the Face Markings course. Check your understanding of common facial markings, naming patterns, and horse identification.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.quiz-layout { max-width: 1400px; margin: 0 auto; padding: 2.5rem var(--page-pad) 5rem; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 5rem; align-items: start; }
+.quiz-main { min-width: 0; }
+.quiz-header { margin-bottom: 2rem; }
+.quiz-header h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--navy); margin-bottom: 0.5rem; }
+.quiz-header p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+.q-block { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11); transition: border-color 0.2s, box-shadow 0.2s; }
+.q-block.correct { border-color: #2d7a4f; background: #f0faf5; }
+.q-block.incorrect { border-color: #c0392b; background: #fdf2f2; }
+.q-number { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.q-text { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); line-height: 1.5; margin-bottom: 1rem; }
+.q-answer-row { display: grid; gap: 0.8rem; }
+.q-block.has-image .q-answer-row { grid-template-columns: minmax(0, 1fr) 220px; align-items: stretch; }
+.q-image { width: 100%; height: 100%; min-height: 212px; object-fit: cover; object-position: center; border-radius: var(--radius); display: block; background: var(--off-white); }
+.q-options { display: grid; gap: 0.5rem; }
+.q-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 0.88rem; color: var(--text-dark); transition: all 0.15s; background: var(--white); text-align: left; width: 100%; }
+.q-option:hover:not(:disabled) { border-color: var(--navy); background: var(--off-white); }
+.q-option.selected { border-color: var(--navy); background: var(--navy); color: var(--white); }
+.q-option.correct-ans { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; }
+.q-option.wrong-ans { border-color: #c0392b; background: #fdf2f2; color: #8b1a1a; }
+.q-option:disabled { cursor: default; }
+.q-feedback { margin-top: 0.85rem; font-size: 0.83rem; line-height: 1.6; padding: 0.7rem 1rem; border-radius: var(--radius); display: none; }
+.q-feedback.show { display: block; }
+.q-feedback.correct { background: #e8f7ef; color: #1a5c38; border-left: 3px solid #2d7a4f; }
+.q-feedback.incorrect { background: #fdf2f2; color: #8b1a1a; border-left: 3px solid #c0392b; }
+.quiz-score-panel { background: var(--navy); border-radius: var(--radius-lg); padding: 2rem; text-align: center; display: none; margin-top: 1.5rem; }
+.quiz-score-panel.show { display: block; }
+.score-number { font-family: var(--font-display); font-size: 3rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+.score-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+.score-message { color: rgba(255,255,255,0.82); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.5rem; }
+.btn-retake { background: var(--gold); color: var(--navy); border: none; padding: 0.7rem 1.5rem; border-radius: var(--radius); font-weight: 700; font-size: 0.88rem; cursor: pointer; }
+.quiz-submit-row { margin-top: 1.5rem; }
+.btn-submit { background: var(--navy); color: var(--white); border: none; padding: 0.85rem 2rem; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: opacity 0.15s; }
+.btn-submit:hover { opacity: 0.88; }
+@media (max-width: 1050px) { .quiz-layout { grid-template-columns: 1fr; gap: 2rem; } .lesson-right { position: static; } }
+@media (max-width: 760px) { .q-block.has-image .q-answer-row { grid-template-columns: 1fr; } .q-image { min-height: 230px; order: -1; } }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Face Markings</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    </div>
+  </div>
+</section>
+
+<div class="quiz-layout">
+  <div class="quiz-main">
+    <div class="quiz-header">
+      <h2>Face Markings Final Quiz</h2>
+      <p>This quiz covers everything from the Face Markings course - marking names, definitions, identification from photos, and combination markings. Each attempt gives you 15 questions from a larger bank.</p>
+    </div>
+
+    <form id="quiz-form">
+      <div id="quiz-questions"></div>
+      <div class="quiz-submit-row">
+        <button type="button" class="btn-submit" id="quiz-submit">Submit Quiz</button>
+      </div>
+    </form>
+
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake">Try Again</button>
+    </div>
+  </div>
+
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+(function() {
+  const QUESTION_COUNT = 15;
+  const questionBank = [
+    { type: 'mc', prompt: 'What is the defining characteristic of a blaze compared to a strip?', options: ['It runs from the forehead to the chin only', 'It is wide enough to cover the nasal bones from side to side', 'It always includes a snip on the muzzle', 'It only appears on gray or white horses'], answer: 'It is wide enough to cover the nasal bones from side to side', correct: 'Correct. A blaze spans the full width of the nasal bones. A strip is narrower and does not reach the edges.', incorrect: 'Not quite. The key difference is width: a blaze covers the nasal bones edge to edge, while a strip does not reach the sides.' },
+    { type: 'mc', prompt: 'A horse has a white patch on its forehead and a small white area on its muzzle, with no white connecting them. How is this described?', options: ['Blaze', 'Strip and blaze', 'Star and snip', 'Extended blaze'], answer: 'Star and snip', correct: 'Correct. When the two white areas are separated by dark hair, they are named individually: star and snip.', incorrect: 'Not quite. A forehead marking is a star, and a muzzle marking is a snip. If they do not connect, name both separately.' },
+    { prompt: 'Where on the face is a snip located?', options: ['Between or around the nostrils on the muzzle', 'Between the eyes on the forehead', 'On the cheek below the eye', 'Running down the center of the nose'], answer: 'Between or around the nostrils on the muzzle', correct: 'Correct. A snip is a white patch found between or around the nostrils on the lower muzzle.', incorrect: 'Not quite. A snip sits on the muzzle, usually between or around the nostrils.' },
+    { prompt: 'Why are face markings recorded on registration papers and health certificates?', options: ['They indicate breeding potential', 'They are a permanent, visible feature used to identify individual horses', 'They are required by insurance companies only', 'They show which bloodline a horse belongs to'], answer: 'They are a permanent, visible feature used to identify individual horses', correct: 'Correct. Face markings are useful because they are visible, lasting, and individual to the horse.', incorrect: 'Face markings are recorded for identification. They help people describe and confirm an individual horse.' },
+    { prompt: 'A bald face is best described as:', options: ['A horse with no markings at all', 'A wide strip running to the muzzle', 'An extremely wide blaze that covers most of the face including around the eyes', 'A star combined with a strip'], answer: 'An extremely wide white marking that covers most of the face including around the eyes', correct: 'Correct. A bald face is the most extensive facial marking and often covers the eyes and cheeks.', incorrect: 'A bald face is not the absence of markings. It is a very wide white marking covering much of the face.' },
+    { prompt: 'A narrow white line down the center of the face is usually called a:', options: ['Strip', 'Bald face', 'Snip', 'Chin spot'], answer: 'Strip', correct: 'Correct. A strip is a narrow white marking running down the face.', incorrect: 'Look for the long, narrow shape down the nose. That is a strip.' },
+    { prompt: 'A white marking between the eyes on the forehead is usually called a:', options: ['Star', 'Snip', 'Bald face', 'Apron face'], answer: 'Star', correct: 'Correct. A star is located on the forehead between the eyes.', incorrect: 'The forehead area between the eyes is where a star is found.' },
+    { prompt: 'When a star, strip, and snip are all present, what should the description include?', options: ['Only the largest marking', 'Only the marking closest to the muzzle', 'All visible parts of the marking', 'Only the color of the horse'], answer: 'All visible parts of the marking', correct: 'Correct. Naming all visible parts gives the clearest description.', incorrect: 'Use all the visible marking terms so the description is complete.' },
+    { prompt: 'Which marking is most likely to involve pink skin around the eyes and muzzle?', options: ['Bald face', 'Tiny star', 'Faint snip', 'Narrow strip'], answer: 'Bald face', correct: 'Correct. A bald face has a large amount of white and often includes pink skin around broad areas of the face.', incorrect: 'The most extensive white marking is the bald face, so it is most likely to include pink skin around the eyes and muzzle.' },
+    { type: 'tf', prompt: 'True or false: A chin spot is found on or under the chin area.', options: ['True', 'False'], answer: 'True', correct: 'Correct. A chin spot is a small white mark on or under the chin area.', incorrect: 'Not quite. A chin spot sits on or under the chin area.' },
+    { prompt: 'If white hair connects a star to a strip, how should you think about the marking?', options: ['As two different face markings that are listed as connected.', 'As a leg marking', 'As no marking', 'As a coat color'], answer: 'As two different face markings that are listed as connected.', correct: 'Correct. Both are identified separately, but described as connected.', incorrect: 'If the white connects, describe the connected parts together, but both are still listed separately. Star with a connected Strip.' },
+    { prompt: 'What makes a strip different from a blaze?', options: ['A strip is more narrow', 'A strip is always on the muzzle only', 'A strip covers both eyes', 'A strip only appears on foals'], answer: 'A strip is more narrow', correct: 'Correct. A strip is the narrower marking; a blaze is wider.', incorrect: 'The difference is width. Strip is narrow, blaze is wider.' },
+    { prompt: 'Which description best fits a star and strip?', options: ['A forehead mark connected to a narrow line down the face', 'A muzzle patch only', 'A face with no white', 'A wide marking around both eyes'], answer: 'A forehead mark connected to a narrow line down the face', correct: 'Correct. Star and strip means a forehead star with a connected narrow line.', incorrect: 'Star and strip combines a forehead marking with a narrow line down the face.' },
+    { prompt: 'Which marking is most centered on the muzzle?', options: ['Snip', 'Star', 'Strip', 'Bald face'], answer: 'Snip', correct: 'Correct. A snip is a muzzle marking near the nostrils.', incorrect: 'The muzzle marking near the nostrils is the snip.' },
+    { prompt: 'Which phrase describes an irregular marking?', options: ['A marking with uneven or unusual edges', 'A marking only found on the legs', 'A marking that disappears in winter', 'A marking caused by tack'], answer: 'A marking with uneven or unusual edges', correct: 'Correct. Irregular markings have uneven shapes or edges that do not fit a tidy pattern.', incorrect: 'Irregular refers to the shape or edges of the marking.' },
+    { prompt: 'What should you look at first when identifying a face marking?', options: ['Where the white is located and how wide it is', 'The saddle color', 'The horse height', 'The mane length'], answer: 'Where the white is located and how wide it is', correct: 'Correct. Location and width are the biggest clues for face marking identification.', incorrect: 'Start with where the white sits and how wide it is.' },
+    { type: 'tf', prompt: 'True or false: If a horse has no visible white on the face, the clearest description is no face markings.', options: ['True', 'False'], answer: 'True', correct: 'Correct. No visible white on the face means there are no face markings to name.', incorrect: 'Not quite. If there is no visible white on the face, describe the horse as having no face markings.' },
+    { type: 'mc', prompt: 'Which marking covers more area?', options: ['Bald face', 'Tiny star', 'Small snip', 'Narrow strip'], answer: 'Bald face', correct: 'Correct. A bald face covers the largest area of these choices.', incorrect: 'The bald face is the broadest and most extensive option listed.' },
+    { type: 'tf', prompt: 'True or false: A blaze usually runs down the front of the horse\'s face.', options: ['True', 'False'], answer: 'True', correct: 'Correct. A blaze runs down the front of the face.', incorrect: 'Not quite. A blaze is a face marking that runs down the front of the face.' },
+    { prompt: 'Which term describes a white patch on the forehead, not connected to another marking?', options: ['Star', 'Snip', 'Bald face', 'Sock'], answer: 'Star', correct: 'Correct. A separate white patch on the forehead is a star.', incorrect: 'A forehead patch is called a star.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/star-2.png', options: ['Strip', 'Snip', 'Blaze', 'Star'], answer: 'Star', correct: 'Correct. The white patch is on the forehead between the eyes.', incorrect: 'Look at where the white sits. A forehead patch between the eyes is a star.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/blaze-2.png', options: ['Blaze', 'Strip', 'Star and strip', 'Bald face'], answer: 'Blaze', correct: 'Correct. The white is wide enough to cover the nasal bones.', incorrect: 'Notice the width down the face. That is a blaze.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/star-strip-1.png', options: ['Blaze', 'Star and snip', 'Star and strip', 'Strip only'], answer: 'Star and strip', correct: 'Correct. The forehead marking connects to a narrow strip.', incorrect: 'Look for the forehead star connected to a narrow line.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/snip-2.png', options: ['Snip', 'Star', 'Strip', 'Bald face'], answer: 'Snip', correct: 'Correct. The white sits on the muzzle near the nostrils.', incorrect: 'A white patch on the muzzle near the nostrils is a snip.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/bald-face-1.png', options: ['Bald face', 'Strip', 'Small star', 'Snip'], answer: 'Bald face', correct: 'Correct. The white covers a large portion of the face.', incorrect: 'The wide white area covering most of the face is a bald face.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/star-snip-1.png', options: ['Star and snip', 'Blaze', 'Strip only', 'No markings'], answer: 'Star and snip', correct: 'Correct. There is a forehead star and a separate muzzle snip.', incorrect: 'Look for two separate white areas: one on the forehead and one on the muzzle.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/star-strip-snip-1.png', options: ['Star, strip, and snip', 'Bald face', 'Snip only', 'No markings'], answer: 'Star, strip, and snip', correct: 'Correct. You can identify all three parts in the same face marking.', incorrect: 'Look for the forehead star, the narrow strip, and the muzzle snip.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/no-markings.png', options: ['No face markings', 'Snip', 'Star', 'Blaze'], answer: 'No face markings', correct: 'Correct. There is no visible white marking on the face.', incorrect: 'No visible white on the face means no face markings.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/strip-2.png', options: ['Strip', 'Bald face', 'Snip', 'Star'], answer: 'Strip', correct: 'Correct. The white is a narrow line down the face.', incorrect: 'Look for the narrow white line running down the face.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'real-horses/blaze-snip.png', options: ['Blaze and snip', 'Star only', 'No markings', 'Chin spot'], answer: 'Blaze and snip', correct: 'Correct. The horse has a blaze with white continuing or appearing at the muzzle.', incorrect: 'Look for the wide face marking paired with white near the muzzle.' },
+    { prompt: 'What is the best way to describe two separate white areas on the face?', options: ['Name each visible marking', 'Call both areas a blaze', 'Ignore the smaller one', 'Use only the coat color'], answer: 'Name each visible marking', correct: 'Correct. Separate white areas should be named individually.', incorrect: 'Separate markings are named separately so the description is clear.' },
+    { prompt: 'Why can the same marking look slightly different from horse to horse?', options: ['Markings vary in shape, size, and edges', 'All markings are identical', 'The name changes every season', 'Markings only show in bright sun'], answer: 'Markings vary in shape, size, and edges', correct: 'Correct. The same marking type can vary quite a bit in shape and size.', incorrect: 'Markings are named by location and general shape, but individual horses vary.' },
+    { type: 'mc', prompt: 'Which term is not a face marking?', options: ['Sock', 'Star', 'Snip', 'Blaze'], answer: 'Sock', correct: 'Correct. A sock is a leg marking, not a face marking.', incorrect: 'Star, snip, and blaze are face markings. Sock belongs to leg markings.' },
+    { type: 'mc', prompt: 'What does combination marking mean in this course?', options: ['More than one marking term is used to describe what is seen', 'A horse has two coat colors', 'The horse has both front socks', 'The marking changes each month'], answer: 'More than one marking term is used to describe what is seen', correct: 'Correct. Combination markings use multiple terms, such as star and snip.', incorrect: 'Combination means more than one face marking term is needed.' },
+    { type: 'mc', prompt: 'Which clue helps separate a blaze from a bald face?', options: ['Whether the white expands around the eyes and cheeks', 'Whether the horse has a black mane', 'Whether the marking is on a hind leg', 'Whether the horse is tall'], answer: 'Whether the white expands around the eyes and cheeks', correct: 'Correct. A bald face is much wider and often reaches around the eyes and cheeks.', incorrect: 'Compare how far the white spreads. A bald face covers much more of the face than a blaze.' }
+  ];
+
+  const form = document.getElementById('quiz-form');
+  const quizBody = document.getElementById('quiz-questions');
+  const submit = document.getElementById('quiz-submit');
+  const scorePanel = document.getElementById('score-panel');
+  const scoreDisplay = document.getElementById('score-display');
+  const scoreMessage = document.getElementById('score-message');
+  const retake = document.getElementById('btn-retake');
+  let submitted = false;
+
+  function esc(text) {
+    return String(text || '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  }
+
+  function shuffle(items) {
+    return items.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(item => item.value);
+  }
+
+  function renderQuiz() {
+    submitted = false;
+    const activeQuestions = shuffle(questionBank).slice(0, QUESTION_COUNT).map(q => ({ ...q, options: shuffle(q.options) }));
+    quizBody.innerHTML = activeQuestions.map((q, index) => {
+      const image = q.image ? `<img src="${esc(q.image)}" alt="Horse face marking to identify" class="q-image">` : '';
+      const options = q.options.map(option => `<button type="button" class="q-option" data-val="${esc(option)}">${esc(option)}</button>`).join('');
+      return `<div class="q-block${q.image ? ' has-image' : ''}" data-correct="${esc(q.answer)}">
+        <div class="q-number">Question ${index + 1} of ${QUESTION_COUNT}</div>
+        <div class="q-text">${esc(q.prompt)}</div>
+        <div class="q-answer-row">
+          <div class="q-options">${options}</div>
+          ${image}
+        </div>
+        <div class="q-feedback correct">${esc(q.correct)}</div>
+        <div class="q-feedback incorrect">${esc(q.incorrect)}</div>
+      </div>`;
+    }).join('');
+    scorePanel.classList.remove('show');
+    submit.disabled = false;
+    bindOptions();
+  }
+
+  function bindOptions() {
+    quizBody.querySelectorAll('.q-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (submitted) return;
+        const qBlock = btn.closest('.q-block');
+        qBlock.querySelectorAll('.q-option').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+    });
+  }
+
+  submit.addEventListener('click', () => {
+    if (submitted) return;
+    submitted = true;
+    let score = 0;
+    quizBody.querySelectorAll('.q-block').forEach(qBlock => {
+      const correct = qBlock.dataset.correct;
+      const selected = qBlock.querySelector('.q-option.selected');
+      const feedbackCorrect = qBlock.querySelector('.q-feedback.correct');
+      const feedbackIncorrect = qBlock.querySelector('.q-feedback.incorrect');
+      qBlock.querySelectorAll('.q-option').forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.val === correct) btn.classList.add('correct-ans');
+      });
+      if (selected && selected.dataset.val === correct) {
+        score++;
+        selected.classList.add('correct-ans');
+        feedbackCorrect.classList.add('show');
+        qBlock.classList.add('correct');
+      } else {
+        if (selected) selected.classList.add('wrong-ans');
+        feedbackIncorrect.classList.add('show');
+        qBlock.classList.add('incorrect');
+      }
+    });
+    const pct = score / QUESTION_COUNT;
+    scoreDisplay.textContent = score + '/' + QUESTION_COUNT;
+    if (pct === 1) scoreMessage.textContent = 'Perfect score. You have a strong command of face markings. Well done.';
+    else if (pct >= 0.8) scoreMessage.textContent = 'Excellent work. You have a solid grasp of face markings with just a few areas to revisit.';
+    else if (pct >= 0.6) scoreMessage.textContent = 'Good effort. Review the questions you missed and try again to sharpen the gaps.';
+    else scoreMessage.textContent = 'Keep at it. Review the lessons and the Viewing Room, then come back and try again. The markings will stick with practice.';
+    scorePanel.classList.add('show');
+    if (pct >= 0.8) {
+      try { localStorage.setItem('equineEduProgress.faceMarkings.testYourKnowledge','true'); } catch(e) {}
+    }
+    submit.disabled = true;
+  });
+
+  retake.addEventListener('click', () => {
+    renderQuiz();
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  renderQuiz();
+})();
+</script><script>
+  window.CURRENT_MODULE = 6;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../index.html',
+    navCta:     { label: 'Back to Face Markings', url: '1-index.html' },
+    navExtras: [{ label: 'The Training Barn', url: '6-training-barn.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>
+
+

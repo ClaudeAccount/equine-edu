@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Label the Driving Bridle - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../assets/css/course.css">
+<style>
+.game-wrap{width:min(100%,1180px);margin:0 auto;padding:2rem 5%}
+.game-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden}
+.game-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid var(--border);background:var(--off-white)}
+.game-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,.65fr);gap:1rem;padding:1rem}
+.diagram{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;overflow:hidden}
+.equipment-stage{position:relative;width:min(100%,460px);margin:0 auto;background:#fff;border-radius:var(--radius);overflow:hidden}
+.equipment-stage img{width:100%;height:auto;display:block;pointer-events:none}
+.leader-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.leader-line{stroke:var(--gold);stroke-width:1.4;stroke-dasharray:5 4;opacity:.95}
+.target-dot{position:absolute;width:11px;height:11px;border-radius:999px;background:#17b9c4;border:2px solid var(--navy);box-shadow:0 2px 8px rgba(13,27,62,.24);transform:translate(-50%,-50%);z-index:3}
+.number-callout{position:absolute;display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:999px;background:var(--navy);color:var(--gold);box-shadow:0 8px 18px rgba(13,27,62,.18);font-weight:900;transform:translate(-50%,-50%);z-index:4}
+.answer-list{display:grid;gap:.75rem;align-content:start}
+.answer-row{display:grid;grid-template-columns:2rem 1fr;gap:.55rem;align-items:center}
+.answer-row strong{display:inline-flex;width:2rem;height:2rem;border-radius:999px;align-items:center;justify-content:center;background:var(--navy);color:var(--gold)}
+select{width:100%;padding:.7rem;border:1px solid var(--border);border-radius:var(--radius);font-family:var(--font-body);color:var(--navy);background:var(--white)}
+select.result-good{border-color:#246b3d;background:#f2fbf5}
+select.result-bad{border-color:#9d2f2f;background:#fff4f4}
+.btn-row{display:flex;gap:.75rem;flex-wrap:wrap}
+.score-card{display:none;text-align:center;padding:2rem}
+.score-card.show{display:block}
+@media(max-width:850px){.game-stage{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Driving Harness & Equipment</div>
+      <h1 class="lesson-hero-title">Label the Driving <span>Bridle</span></h1>
+      <p class="lesson-hero-desc">Choose the correct bridle part for each numbered callout.</p>
+    </div>
+  </div>
+</section>
+<main class="game-wrap">
+  <div class="lesson-intro-card">
+    <h2>How to Play</h2>
+    <p>Match each numbered callout to the correct driving bridle part.</p>
+  </div>
+  <div class="game-card" id="game-card">
+    <div class="game-top">
+      <strong><span id="complete-count">0</span> of <span id="total-count">0</span> labels answered</strong>
+      <div class="btn-row">
+        <button class="btn-primary" id="check-btn" type="button">Check Answers</button>
+        <button class="btn-secondary" id="clear-btn" type="button">Clear</button>
+      </div>
+    </div>
+    <div class="game-stage">
+      <div class="diagram">
+        <div class="equipment-stage" id="label-stage">
+          <img src="../images/driving-bridle-parts.png" alt="Driving bridle with numbered callouts">
+          <svg class="leader-layer" aria-hidden="true"></svg>
+        </div>
+      </div>
+      <div class="answer-list" id="answers"></div>
+    </div>
+    <div class="score-card" id="score-card">
+      <div style="font-size:2rem;">Trophy</div>
+      <h2 id="score-title">Well Played!</h2>
+      <p id="score-text"></p>
+      <div class="btn-row" style="justify-content:center;margin-top:1rem;">
+        <button class="btn-primary" id="play-again" type="button">Play Again</button>
+        <a class="btn-secondary" href="../5-training-barn.html">Back to Training Barn</a>
+      </div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script>
+const parts=[
+  {id:'crownpiece',label:'Crownpiece',anchor:{x:44.55357142857143,y:4.007147551758133},callout:{x:78.30357142857143,y:10.579608938547485}},
+  {id:'browband',label:'Browband',anchor:{x:22.41071428571429,y:17.94076569175156},callout:{x:11.517857142857142,y:11.105405849490635}},
+  {id:'throatlatch',label:'Throatlatch',anchor:{x:40.982142857142854,y:57.1126355570161},callout:{x:13.482142857142856,y:37.65814985211962}},
+  {id:'cheek-piece',label:'Cheek Piece',anchor:{x:50.26785714285714,y:54.48365100230036},callout:{x:70.98214285714286,y:48.436986526454156}},
+  {id:'noseband',label:'Noseband',anchor:{x:33.839285714285715,y:75.3840782122905},callout:{x:14.017857142857142,y:67.2342260926717}},
+  {id:'blinders',label:'Blinders / Winkers',anchor:{x:41.8,y:31.2},callout:{x:18.2,y:25.5}},
+  {id:'bit',label:'Bit',anchor:{x:37.76785714285714,y:71.44060138021689},callout:{x:69.01785714285714,y:96.8103023332238}},
+  {id:'lines',label:'Lines / Reins',anchor:{x:59.732142857142854,y:81.56219191587249},callout:{x:79.19642857142857,y:76.96146894511995}}
+];
+const labels=parts.map(part=>part.label).sort();
+const answers=document.getElementById('answers');
+const complete=document.getElementById('complete-count');
+const total=document.getElementById('total-count');
+const scoreCard=document.getElementById('score-card');
+const stage=document.getElementById('label-stage');
+const svg=stage.querySelector('.leader-layer');
+let currentRound=[];
+
+function shuffleParts(){
+  const shuffled=[...parts];
+  for(let i=shuffled.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];
+  }
+  return shuffled;
+}
+
+function drawCallouts(roundParts){
+  stage.querySelectorAll('.target-dot,.number-callout').forEach(el=>el.remove());
+  svg.innerHTML='';
+  total.textContent=parts.length;
+  roundParts.forEach((part,index)=>{
+    const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.classList.add('leader-line');
+    line.setAttribute('x1',part.anchor.x+'%');
+    line.setAttribute('y1',part.anchor.y+'%');
+    line.setAttribute('x2',part.callout.x+'%');
+    line.setAttribute('y2',part.callout.y+'%');
+    svg.appendChild(line);
+    const dot=document.createElement('span');
+    dot.className='target-dot';
+    dot.style.left=part.anchor.x+'%';
+    dot.style.top=part.anchor.y+'%';
+    stage.appendChild(dot);
+    const num=document.createElement('span');
+    num.className='number-callout';
+    num.textContent=index+1;
+    num.style.left=part.callout.x+'%';
+    num.style.top=part.callout.y+'%';
+    stage.appendChild(num);
+  });
+}
+
+function render(){
+  currentRound=shuffleParts();
+  drawCallouts(currentRound);
+  answers.innerHTML='';
+  currentRound.forEach((part,index)=>{
+    const row=document.createElement('label');
+    row.className='answer-row';
+    row.innerHTML='<strong>'+ (index+1) +'</strong><select data-index="'+index+'"><option value="">Choose a part</option>'+labels.map(label=>'<option>'+label+'</option>').join('')+'</select>';
+    answers.appendChild(row);
+  });
+  bind();
+  scoreCard.classList.remove('show');
+  complete.textContent='0';
+}
+function bind(){
+  answers.querySelectorAll('select').forEach(select=>{
+    select.addEventListener('change',()=>{
+      select.classList.remove('result-good','result-bad');
+      complete.textContent=[...answers.querySelectorAll('select')].filter(input=>input.value).length;
+    });
+  });
+}
+document.getElementById('check-btn').addEventListener('click',()=>{
+  let score=0;
+  answers.querySelectorAll('select').forEach(select=>{
+    const ok=select.value===currentRound[Number(select.dataset.index)].label;
+    select.classList.toggle('result-good',ok);
+    select.classList.toggle('result-bad',!ok);
+    if(ok) score++;
+  });
+  document.getElementById('score-title').textContent=score===parts.length?'Perfect Score!':'Well Played!';
+  document.getElementById('score-text').textContent=score+' / '+parts.length+' correct - '+(score===parts.length?'you know your driving bridle parts.':'review the highlighted answers and try again.');
+  scoreCard.classList.add('show');
+  scoreCard.scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('clear-btn').addEventListener('click',render);
+document.getElementById('play-again').addEventListener('click',render);
+render();
+</script>
+<script>
+window.LAYOUT={homeUrl:'../../../../../index.html',coursesUrl:'../../../../index.html',navCta:{label:'Back to Training Barn',url:'../5-training-barn.html'}};
+</script>
+<script src="../../../../../assets/js/layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Region Sort &mdash; Intro to Parts of the Horse &mdash; Equine Edu</title>
+<meta name="description" content="Sort horse body parts into the correct region: head, neck and shoulders, body, or legs.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../assets/css/course.css">
+<style>
+.game-header { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.4rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.game-title { font-family: var(--font-display); font-size: 1.05rem; color: var(--navy); }
+.game-counter { font-size: 0.82rem; font-weight: 700; color: var(--gold); }
+.term-queue { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; text-align: center; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.current-term { font-family: var(--font-display); font-size: 2rem; color: var(--navy); margin-bottom: 0.4rem; }
+.term-hint { font-size: 0.82rem; color: var(--text-mid); }
+.region-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
+.region-btn { padding: 1.25rem; border: 2px solid var(--border); border-radius: var(--radius-lg); background: var(--white); cursor: pointer; text-align: center; transition: border-color 0.15s, background 0.15s, transform 0.12s; font-family: var(--font-display); font-size: 1rem; color: var(--navy); }
+.region-btn:hover { border-color: var(--navy); background: var(--off-white); transform: translateY(-2px); }
+.region-btn.correct { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; }
+.region-btn.incorrect { border-color: #c0392b; background: #fdf2f2; color: #8b1a1a; }
+.region-btn:disabled { cursor: default; transform: none; }
+.feedback-row { min-height: 44px; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; font-weight: 600; color: var(--text-mid); margin-bottom: 0.5rem; text-align: center; }
+.feedback-row.correct { color: #1a5c38; }
+.feedback-row.incorrect { color: #8b1a1a; }
+.result-panel { background: var(--navy); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; display: none; }
+.result-panel.show { display: block; }
+.result-score { font-family: var(--font-display); font-size: 3rem; color: var(--gold); }
+.result-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+.result-msg { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; margin-bottom: 1.5rem; }
+.btn-restart { background: var(--gold); color: var(--navy); border: none; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 700; cursor: pointer; }
+@media (max-width: 480px) { .region-grid { grid-template-columns: 1fr; } .current-term { font-size: 1.5rem; } }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to Parts of the Horse</div>
+      <h1 class="lesson-hero-title">Region <span>Sort</span></h1>
+      <p class="lesson-hero-desc">Sort each part into the correct region of the horse.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="lesson-intro-card">
+      <h2>How to Play</h2>
+      <p>A part of the horse appears in the centre. Choose which region it belongs to — Head, Neck &amp; Shoulders, Body, or Legs. You will get instant feedback after each pick. Twenty parts total.</p>
+    </div>
+
+    <div id="game-body">
+      <div class="game-header">
+        <div class="game-title">Choose the correct region</div>
+        <div class="game-counter" id="game-counter">0 / 20</div>
+      </div>
+      <div class="term-queue">
+        <div class="current-term" id="current-term"></div>
+        <div class="term-hint" id="term-hint"></div>
+      </div>
+      <div class="region-grid" id="region-grid">
+        <button class="region-btn" data-region="Head" type="button">The Head</button>
+        <button class="region-btn" data-region="Neck &amp; Shoulders" type="button">Neck &amp; Shoulders</button>
+        <button class="region-btn" data-region="Body" type="button">The Body</button>
+        <button class="region-btn" data-region="Legs" type="button">The Legs</button>
+      </div>
+      <div class="feedback-row" id="feedback-row"></div>
+    </div>
+
+    <div class="result-panel" id="result-panel">
+      <div class="result-score" id="result-score"></div>
+      <div class="result-label">Your Score</div>
+      <div class="result-msg" id="result-msg"></div>
+      <button class="btn-restart" id="btn-restart">Play Again</button>
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+window.CURRENT_MODULE = 4;
+window.LAYOUT = {
+  homeUrl:   '../../../../../index.html',
+  coursesUrl:'../../../../index.html',
+  navCta:    { label: 'Back to Training Barn', url: '../5-training-barn.html' },
+  navExtras: [{ label: 'Test Your Knowledge', url: '../6-test-your-knowledge.html' }]
+};
+</script>
+<script src="../course-config.js"></script>
+<script src="../../../../../assets/js/layout.js"></script>
+<script src="../../../../../assets/js/course-nav.js"></script>
+
+<script>
+(function() {
+  const terms = [
+    { term: 'Poll',          region: 'Head',             hint: 'Very top of the head' },
+    { term: 'Forelock',      region: 'Head',             hint: 'Hair between the ears' },
+    { term: 'Muzzle',        region: 'Head',             hint: 'Lower face, nostrils and lips' },
+    { term: 'Nostril',       region: 'Head',             hint: 'Breathing openings on the muzzle' },
+    { term: 'Throatlatch',   region: 'Head',             hint: 'Where jaw meets neck' },
+    { term: 'Face',          region: 'Head',             hint: 'Along the nasal bone' },
+    { term: 'Ears',          region: 'Head',             hint: 'Mobile sound catchers at the top' },
+    { term: 'Withers',       region: 'Neck & Shoulders', hint: 'Height is measured here' },
+    { term: 'Mane',          region: 'Neck & Shoulders', hint: 'Long hair along the neck' },
+    { term: 'Shoulder',      region: 'Neck & Shoulders', hint: 'Upper foreleg and shoulder blade' },
+    { term: 'Chest',         region: 'Neck & Shoulders', hint: 'Front of the body between front legs' },
+    { term: 'Back',          region: 'Body',             hint: 'Saddle sits here' },
+    { term: 'Croup',         region: 'Body',             hint: 'Top of the hindquarters' },
+    { term: 'Barrel',        region: 'Body',             hint: 'Ribcage area' },
+    { term: 'Flank',         region: 'Body',             hint: 'Behind the barrel' },
+    { term: 'Dock',          region: 'Body',             hint: 'Root of the tail' },
+    { term: 'Tail',          region: 'Body',             hint: 'Long hair from the dock' },
+    { term: 'Hock',          region: 'Legs',             hint: 'Large hind leg joint (like the ankle)' },
+    { term: 'Fetlock',       region: 'Legs',             hint: 'Joint above the pastern' },
+    { term: 'Hoof',          region: 'Legs',             hint: 'Hard protective capsule of the foot' },
+    { term: 'Cannon Bone',   region: 'Legs',             hint: 'Large lower leg bone' },
+    { term: 'Pastern',       region: 'Legs',             hint: 'Between fetlock and hoof' },
+    { term: 'Knee',          region: 'Legs',             hint: 'Middle joint of the front leg' },
+    { term: 'Stifle',        region: 'Legs',             hint: 'Hind leg joint (like the knee)' },
+    { term: 'Thigh',         region: 'Legs',             hint: 'Upper muscular hind leg' },
+    { term: 'Gaskin',        region: 'Legs',             hint: 'Between stifle and hock' },
+    { term: 'Foretop',       region: 'Head',             hint: 'The forelock — hair between the ears' },
+    { term: 'Loin',          region: 'Body',             hint: 'Behind the back, in front of croup' },
+    { term: 'Thigh',         region: 'Legs',             hint: 'Upper muscular section of the hind leg' },
+    { term: 'Hindquarters',  region: 'Body',             hint: 'Large rear muscle group' }
+  ];
+
+  function shuffle(a) { return a.map(v => ({ v, s: Math.random() })).sort((a, b) => a.s - b.s).map(x => x.v); }
+
+  let deck, idx, score;
+
+  function startGame() {
+    deck = shuffle(terms).slice(0, 20);
+    idx = 0; score = 0;
+    document.getElementById('result-panel').classList.remove('show');
+    document.getElementById('game-body').style.display = '';
+    updateCounter();
+    renderTerm();
+  }
+
+  function updateCounter() {
+    document.getElementById('game-counter').textContent = score + ' / ' + idx;
+  }
+
+  function renderTerm() {
+    document.getElementById('current-term').textContent = deck[idx].term;
+    document.getElementById('term-hint').textContent = deck[idx].hint;
+    document.getElementById('feedback-row').textContent = '';
+    document.getElementById('feedback-row').className = 'feedback-row';
+    document.querySelectorAll('.region-btn').forEach(function(b) { b.disabled = false; b.className = 'region-btn'; });
+  }
+
+  document.getElementById('region-grid').addEventListener('click', function(e) {
+    const btn = e.target.closest('.region-btn');
+    if (!btn || btn.disabled) return;
+    document.querySelectorAll('.region-btn').forEach(function(b) { b.disabled = true; });
+    const chosen = btn.dataset.region;
+    const correct = deck[idx].region;
+    const isRight = chosen === correct;
+    if (isRight) { score++; btn.classList.add('correct'); document.getElementById('feedback-row').textContent = '✓ Correct!'; document.getElementById('feedback-row').className = 'feedback-row correct'; }
+    else { btn.classList.add('incorrect'); document.querySelectorAll('.region-btn').forEach(function(b){ if (b.dataset.region === correct) b.classList.add('correct'); }); document.getElementById('feedback-row').textContent = deck[idx].term + ' belongs to: ' + correct; document.getElementById('feedback-row').className = 'feedback-row incorrect'; }
+    updateCounter();
+    idx++;
+    idx < deck.length ? setTimeout(renderTerm, 1200) : setTimeout(showResult, 1400);
+  });
+
+  document.getElementById('btn-restart').addEventListener('click', startGame);
+
+  function showResult() {
+    document.getElementById('game-body').style.display = 'none';
+    document.getElementById('result-panel').classList.add('show');
+    document.getElementById('result-score').textContent = score + '/20';
+    const pct = score / 20;
+    document.getElementById('result-msg').textContent =
+      pct === 1 ? 'Perfect. You can place every part in the right region without hesitation.' :
+      pct >= 0.85 ? 'Excellent — just a few regions to review.' :
+      pct >= 0.65 ? 'Good start. Focus on the regions that tripped you up and try again.' :
+      'Review the lesson tabs and come back. With a bit more practice these regions will stick.';
+  }
+
+  startGame();
+})();
+</script>
+</body>
+</html>

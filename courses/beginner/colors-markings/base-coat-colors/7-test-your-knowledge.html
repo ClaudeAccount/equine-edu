@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Base Coat Colors &mdash; Equine Edu</title>
+<meta name="description" content="Final quiz for the Base Coat Colors course. 15 randomized questions covering pigment, chestnut, black, and bay identification.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.quiz-layout { max-width: 1400px; margin: 0 auto; padding: 2.5rem var(--page-pad) 5rem; display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 5rem; align-items: start; }
+.quiz-main { min-width: 0; }
+.quiz-header { margin-bottom: 2rem; }
+.quiz-header h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--navy); margin-bottom: 0.5rem; }
+.quiz-header p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+.q-block { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: 0 4px 18px rgba(120,90,40,0.22), 0 1px 4px rgba(13,27,62,0.11); transition: border-color 0.2s, box-shadow 0.2s; }
+.q-block.correct { border-color: #2d7a4f; background: #f0faf5; }
+.q-block.incorrect { border-color: #c0392b; background: #fdf2f2; }
+.q-number { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.q-text { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); line-height: 1.5; margin-bottom: 1rem; }
+.q-options { display: grid; gap: 0.5rem; }
+.q-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 0.88rem; color: var(--text-dark); transition: all 0.15s; background: var(--white); text-align: left; width: 100%; }
+.q-option:hover:not(:disabled) { border-color: var(--navy); background: var(--off-white); }
+.q-option.selected { border-color: var(--navy); background: var(--navy); color: var(--white); }
+.q-option.correct-ans { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; }
+.q-option.wrong-ans { border-color: #c0392b; background: #fdf2f2; color: #8b1a1a; }
+.q-option:disabled { cursor: default; }
+.q-feedback { margin-top: 0.85rem; font-size: 0.83rem; line-height: 1.6; padding: 0.7rem 1rem; border-radius: var(--radius); display: none; }
+.q-feedback.show { display: block; }
+.q-feedback.correct { background: #e8f7ef; color: #1a5c38; border-left: 3px solid #2d7a4f; }
+.q-feedback.incorrect { background: #fdf2f2; color: #8b1a1a; border-left: 3px solid #c0392b; }
+.quiz-score-panel { background: var(--navy); border-radius: var(--radius-lg); padding: 2rem; text-align: center; display: none; margin-top: 1.5rem; }
+.quiz-score-panel.show { display: block; }
+.score-number { font-family: var(--font-display); font-size: 3rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+.score-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+.score-message { color: rgba(255,255,255,0.82); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.5rem; }
+.btn-retake { background: var(--gold); color: var(--navy); border: none; padding: 0.7rem 1.5rem; border-radius: var(--radius); font-weight: 700; font-size: 0.88rem; cursor: pointer; }
+.quiz-submit-row { margin-top: 1.5rem; }
+.btn-submit { background: var(--navy); color: var(--white); border: none; padding: 0.85rem 2rem; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: opacity 0.15s; }
+.btn-submit:hover { opacity: 0.88; }
+@media (max-width: 1050px) { .quiz-layout { grid-template-columns: 1fr; gap: 2rem; } .lesson-right { position: static; } }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Base Coat Colors</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    </div>
+  </div>
+</section>
+
+<div class="quiz-layout">
+  <div class="quiz-main">
+    <div class="quiz-header">
+      <h2>Base Coat Colors Final Quiz</h2>
+      <p>This quiz covers everything from the Base Coat Colors course &mdash; pigment basics, chestnut, black, and bay identification, common variations, and mix-up scenarios. Each attempt gives you 15 questions drawn from a larger bank.</p>
+    </div>
+
+    <form id="quiz-form">
+      <div id="quiz-questions"></div>
+      <div class="quiz-submit-row">
+        <button type="button" class="btn-submit" id="quiz-submit">Submit Quiz</button>
+      </div>
+    </form>
+
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake">Try Again</button>
+    </div>
+  </div>
+
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+(function() {
+  const QUESTION_COUNT = 15;
+  const questionBank = [
+    // Pigment basics
+    { prompt: 'What is the name of the red pigment found in horses?', options: ['Eumelanin','Phaeomelanin','Melanocyte','Keratin'], answer: 'Phaeomelanin', correct: 'Correct. Phaeomelanin is the red pigment responsible for chestnut and sorrel coat colors.', incorrect: 'Not quite. The red pigment is called phaeomelanin.' },
+    { prompt: 'What is the name of the black pigment found in horses?', options: ['Phaeomelanin','Keratin','Eumelanin','Melanin'], answer: 'Eumelanin', correct: 'Correct. Eumelanin is the black pigment that creates black hair and the dark points on bay horses.', incorrect: 'Not quite. The black pigment is called eumelanin.' },
+    { prompt: 'What cells in a horse\'s skin produce pigment?', options: ['Melanocytes','Red blood cells','Keratinocytes','Follicles'], answer: 'Melanocytes', correct: 'Correct. Melanocytes are specialized cells that produce and deposit pigment into the hair.', incorrect: 'Not quite. The cells that produce pigment are called melanocytes.' },
+    { prompt: 'White markings on a horse are caused by:', options: ['A separate white pigment','The absence of pigment in that area','Extra eumelanin','Phaeomelanin mixed with eumelanin'], answer: 'The absence of pigment in that area', correct: 'Correct. White markings occur where melanocytes never deposited any pigment during development.', incorrect: 'Not quite. White markings are the absence of pigment, not a separate white pigment.' },
+    { prompt: 'How many types of pigment do horses have?', options: ['One','Two','Three','Four'], answer: 'Two', correct: 'Correct. Horses have exactly two pigments: eumelanin (black) and phaeomelanin (red).', incorrect: 'Not quite. Horses have two pigments: eumelanin (black) and phaeomelanin (red).' },
+    { prompt: 'Which pigment is responsible for red, copper, and orange tones in a horse\'s coat?', options: ['Eumelanin','Phaeomelanin','Melanocyte','Keratin'], answer: 'Phaeomelanin', correct: 'Correct. Phaeomelanin creates all the warm red, copper, and orange tones in a chestnut coat.', incorrect: 'Not quite. The warm red and orange tones come from phaeomelanin.' },
+    // Chestnut
+    { prompt: 'Which base coat color has a red body with a matching or lighter red mane and tail?', options: ['Bay','Black','Chestnut','Dark Bay'], answer: 'Chestnut', correct: 'Correct. Chestnut horses have a red body and a mane and tail in the same red family — never black.', incorrect: 'Not quite. A red body with a matching red mane and tail is chestnut.' },
+    { prompt: 'A chestnut horse can have a black mane.', options: ['True','False'], answer: 'False', correct: 'Correct. Chestnut horses never have a black mane. The mane is always in the red-brown family.', incorrect: 'Not quite. Chestnut horses never have a black mane — that would make it a bay.' },
+    { prompt: 'A very dark red-brown chestnut is called a:', options: ['Dark bay','Blood bay','Liver chestnut','Fading black'], answer: 'Liver chestnut', correct: 'Correct. Liver chestnut describes a very dark, brown-red shade of chestnut.', incorrect: 'Not quite. The darkest shade of chestnut is called liver chestnut.' },
+    { prompt: 'A chestnut with a pale cream-colored mane and tail is called a:', options: ['Flaxen chestnut','Palomino','Light bay','Sorrel'], answer: 'Flaxen chestnut', correct: 'Correct. A flaxen chestnut has a red body with a noticeably lighter, pale mane and tail.', incorrect: 'Not quite. A chestnut with a pale, lighter mane is called a flaxen chestnut.' },
+    { prompt: 'Which pigment is present in a chestnut horse?', options: ['Eumelanin only','Phaeomelanin only','Both eumelanin and phaeomelanin','Neither'], answer: 'Phaeomelanin only', correct: 'Correct. Chestnut horses produce only phaeomelanin (red pigment). No eumelanin is expressed.', incorrect: 'Not quite. Chestnut horses have only phaeomelanin — no black pigment at all.' },
+    // Black
+    { prompt: 'A true black horse has:', options: ['A black body with a brown mane','A black body, mane, and tail with no red or brown tones','A black body with a red-brown mane','A dark brown body and black mane'], answer: 'A black body, mane, and tail with no red or brown tones', correct: 'Correct. True black means the entire coat — body, mane, and tail — is black with no warm tones anywhere.', incorrect: 'Not quite. True black means the whole horse — body, mane, and tail — is uniformly black with no warm tones.' },
+    { prompt: 'A black horse\'s coat may appear brownish in summer due to sun fading.', options: ['True','False'], answer: 'True', correct: 'Correct. Fading black horses turn brownish in summer sunlight but return to true black after shedding.', incorrect: 'Not quite. Many black horses do fade to a brownish or rusty tone in summer, then return to black after shedding.' },
+    { prompt: 'Which pigment does a true black horse express?', options: ['Phaeomelanin only','Both pigments equally','Eumelanin only','Neither pigment'], answer: 'Eumelanin only', correct: 'Correct. A black horse produces only eumelanin. No phaeomelanin means no red or brown tones.', incorrect: 'Not quite. A black horse expresses only eumelanin — the black pigment.' },
+    { prompt: 'To check if a horse is truly black and not dark bay, you should look at:', options: ['The hooves','The mane and the flanks for any warm tones','The tail only','The horse\'s height'], answer: 'The mane and the flanks for any warm tones', correct: 'Correct. Dark bay horses show warm red-brown tones at the flanks and muzzle. True black shows none.', incorrect: 'Not quite. Check the flanks and muzzle for warm brown tones — those confirm dark bay rather than black.' },
+    { prompt: 'A very dark bay horse and a true black horse look identical.', options: ['True','False'], answer: 'False', correct: 'Correct. Very dark bays show subtle warm brown or red tones at the flanks, muzzle, or around the eyes. True black does not.', incorrect: 'Not quite. Dark bay has warm tones at the flanks and muzzle. True black has none anywhere.' },
+    // Bay
+    { prompt: 'What are "black points" on a bay horse?', options: ['Dark spots on the face','Black coloring on the mane, tail, lower legs, and ear tips','Black hooves only','White markings with black edges'], answer: 'Black coloring on the mane, tail, lower legs, and ear tips', correct: 'Correct. Black points are the defining feature of bay — black mane, tail, lower legs, and often black ear rims.', incorrect: 'Not quite. Black points refer to the black mane, tail, lower legs, and ear tips that define bay.' },
+    { prompt: 'A bay horse always has a black mane and tail.', options: ['True','False'], answer: 'True', correct: 'Correct. A black mane and tail are required for a horse to be considered bay.', incorrect: 'Not quite. Black mane and tail are the primary identifier of bay — always present.' },
+    { prompt: 'A bay horse has which combination of pigments?', options: ['Phaeomelanin only','Eumelanin only','Both eumelanin and phaeomelanin','Neither pigment'], answer: 'Both eumelanin and phaeomelanin', correct: 'Correct. Bay horses have red phaeomelanin on the body and black eumelanin on the mane, tail, and lower legs.', incorrect: 'Not quite. Bay horses have both pigments — red on the body, black on the points.' },
+    { prompt: 'What is the fastest single way to tell a bay from a chestnut?', options: ['Check the hooves','Look at the mane — black = bay, red/matching = chestnut','Count the white markings','Check the horse\'s age'], answer: 'Look at the mane — black = bay, red/matching = chestnut', correct: 'Correct. The mane color is the fastest single clue. A black mane means bay. A red or matching mane means chestnut.', incorrect: 'Not quite. The mane is the fastest clue: black mane = bay, red or matching mane = chestnut.' },
+    { prompt: 'A bay horse can have a mane that matches the body color.', options: ['True','False'], answer: 'False', correct: 'Correct. Bay horses always have black manes. If the mane matches the red-brown body, the horse is chestnut, not bay.', incorrect: 'Not quite. Bay horses always have a black mane. A matching mane means the horse is chestnut.' },
+    // Comparisons
+    { prompt: 'Which base coat color has ONLY red pigment and NO black points anywhere?', options: ['Bay','Black','Chestnut','Dark Bay'], answer: 'Chestnut', correct: 'Correct. Chestnut horses express only phaeomelanin — no eumelanin means no black points anywhere.', incorrect: 'Not quite. The color with red pigment only and no black points is chestnut.' },
+    { prompt: 'A horse looks almost black but has warm brown tones visible at the muzzle and flanks. What is the most likely base color?', options: ['Liver chestnut','True black','Dark bay','Sorrel'], answer: 'Dark bay', correct: 'Correct. Warm brown tones at the flanks or muzzle indicate dark bay, not true black.', incorrect: 'Not quite. Warm tones at the flanks and muzzle rule out true black — the answer is dark bay.' },
+    { prompt: 'Both bay and chestnut can have red-brown bodies.', options: ['True','False'], answer: 'True', correct: 'Correct. Both bay and chestnut can have red-brown bodies. The difference is the mane: black = bay, matching red = chestnut.', incorrect: 'Not quite. Both colors can have red-brown bodies — the mane is what separates them.' },
+    { prompt: 'A horse has a dark brown-red body and a mane that is the same dark brown-red — not black. This is most likely:', options: ['Dark bay','Black','Bay','Liver chestnut'], answer: 'Liver chestnut', correct: 'Correct. Liver chestnut has a dark body and a matching dark brown-red mane. A bay would have a black mane.', incorrect: 'Not quite. A matching dark mane rules out bay. A very dark chestnut with a matching mane is liver chestnut.' },
+    { prompt: 'The three base coat colors in horses are chestnut, bay, and:', options: ['Palomino','Gray','Black','Roan'], answer: 'Black', correct: 'Correct. The three base coat colors are chestnut, bay, and black. All other colors are modifications of these three.', incorrect: 'Not quite. The three base colors are chestnut, bay, and black.' },
+    { prompt: 'Which of these is NOT one of the three base coat colors?', options: ['Chestnut','Palomino','Bay','Black'], answer: 'Palomino', correct: 'Correct. Palomino is a dilute color — a chestnut modified by the cream gene. It is not a base coat color.', incorrect: 'Not quite. Palomino is a modified color, not a base color. The three bases are chestnut, bay, and black.' },
+    { prompt: 'Which clue best helps you separate black from very dark bay?', options: ['The horse\'s height','The color of the hooves','Warm red or brown tones at the flanks and muzzle','The length of the tail'], answer: 'Warm red or brown tones at the flanks and muzzle', correct: 'Correct. Warm tones at the flanks or muzzle mean dark bay. No warm tones anywhere means black.', incorrect: 'Not quite. Check the flanks and muzzle for warm tones. Present = dark bay. Absent = black.' },
+    { prompt: 'Why does base coat color matter for horse records?', options: ['It determines how fast a horse can run','It is used for permanent identification on papers, health records, and registrations','It shows the horse\'s bloodline only','It is required only for show horses'], answer: 'It is used for permanent identification on papers, health records, and registrations', correct: 'Correct. Coat color appears on registration papers, health certificates, and is used for identification.', incorrect: 'Not quite. Coat color is used for permanent identification across registration papers and health records.' },
+    { prompt: 'All horse coat colors trace back to chestnut, black, and bay as the three base colors.', options: ['True','False'], answer: 'True', correct: 'Correct. Every coat color in horses — from gray to roan to dun — is a modification of one of the three base coat colors.', incorrect: 'Not quite. Every horse coat color, including gray and roan, is a modification of one of the three base colors.' }
+  ];
+
+  const form       = document.getElementById('quiz-form');
+  const quizBody   = document.getElementById('quiz-questions');
+  const submit     = document.getElementById('quiz-submit');
+  const scorePanel = document.getElementById('score-panel');
+  const scoreDisplay = document.getElementById('score-display');
+  const scoreMessage = document.getElementById('score-message');
+  const retake     = document.getElementById('btn-retake');
+  let submitted    = false;
+
+  function esc(text) {
+    return String(text || '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  }
+
+  function shuffle(items) {
+    return items.map(value => ({value, sort: Math.random()})).sort((a,b) => a.sort - b.sort).map(item => item.value);
+  }
+
+  function renderQuiz() {
+    submitted = false;
+    const active = shuffle(questionBank).slice(0, QUESTION_COUNT).map(q => ({...q, options: shuffle(q.options)}));
+    quizBody.innerHTML = active.map((q, i) => {
+      const opts = q.options.map(o => `<button type="button" class="q-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');
+      return `<div class="q-block" data-correct="${esc(q.answer)}">
+        <div class="q-number">Question ${i+1} of ${QUESTION_COUNT}</div>
+        <div class="q-text">${esc(q.prompt)}</div>
+        <div class="q-options">${opts}</div>
+        <div class="q-feedback correct">${esc(q.correct)}</div>
+        <div class="q-feedback incorrect">${esc(q.incorrect)}</div>
+      </div>`;
+    }).join('');
+    scorePanel.classList.remove('show');
+    submit.disabled = false;
+    bindOptions();
+  }
+
+  function bindOptions() {
+    quizBody.querySelectorAll('.q-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (submitted) return;
+        const qBlock = btn.closest('.q-block');
+        qBlock.querySelectorAll('.q-option').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+    });
+  }
+
+  submit.addEventListener('click', () => {
+    if (submitted) return;
+    submitted = true;
+    let score = 0;
+    quizBody.querySelectorAll('.q-block').forEach(qBlock => {
+      const correct  = qBlock.dataset.correct;
+      const selected = qBlock.querySelector('.q-option.selected');
+      const fbRight  = qBlock.querySelector('.q-feedback.correct');
+      const fbWrong  = qBlock.querySelector('.q-feedback.incorrect');
+      qBlock.querySelectorAll('.q-option').forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.val === correct) btn.classList.add('correct-ans');
+      });
+      if (selected && selected.dataset.val === correct) {
+        score++;
+        selected.classList.add('correct-ans');
+        fbRight.classList.add('show');
+        qBlock.classList.add('correct');
+      } else {
+        if (selected) selected.classList.add('wrong-ans');
+        fbWrong.classList.add('show');
+        qBlock.classList.add('incorrect');
+      }
+    });
+    const pct = score / QUESTION_COUNT;
+    scoreDisplay.textContent = score + '/' + QUESTION_COUNT;
+    scoreMessage.textContent =
+      pct === 1   ? 'Perfect score. You have a strong command of base coat colors. Well done.' :
+      pct >= 0.8  ? 'Excellent work. You have a solid grasp of base coat colors with just a few areas to revisit.' :
+      pct >= 0.6  ? 'Good effort. Review the questions you missed and try again to sharpen the gaps.' :
+                    'Keep at it. Review the lessons and the Viewing Room, then come back and try again.';
+    scorePanel.classList.add('show');
+    if (pct >= 0.8) {
+      try { localStorage.setItem('equineEduProgress.baseCoatColors.testYourKnowledge','true'); } catch(e) {}
+    }
+    submit.disabled = true;
+  });
+
+  retake.addEventListener('click', () => {
+    renderQuiz();
+    form.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  renderQuiz();
+})();
+</script>
+<script>
+  window.CURRENT_MODULE = 6;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Base Coat Colors', url: '1-index.html' },
+    navExtras: [{ label: 'The Training Barn', url: '6-training-barn.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Face Marking Challenge &mdash; Face Markings &mdash; Equine Edu</title>
+<meta name="description" content="Look at the pony illustration and identify the correct face marking name &mdash; ten rounds of visual recognition practice.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../assets/css/course.css">
+<style>
+/* -- Game Shell -- */
+.game-shell {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* -- Progress Bar -- */
+.game-progress-bar-wrap {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.game-progress-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  white-space: nowrap;
+}
+.game-progress-track {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.game-progress-fill {
+  height: 100%;
+  background: var(--navy);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+.game-score-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* -- Question Area -- */
+.game-question-area {
+  padding: 1.5rem 1.4rem 1rem;
+}
+.game-prompt {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+.game-image-frame {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 1.25rem;
+  aspect-ratio: 1 / 1.1;
+  background: var(--navy);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 0.5rem;
+}
+
+/* -- Answer Grid -- */
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  padding: 0 1.4rem 1.5rem;
+}
+.answer-btn {
+  padding: 0.85rem 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.35;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+.answer-btn:hover:not(:disabled) {
+  border-color: var(--navy);
+  background: rgba(13,27,62,0.05);
+  transform: translateY(-1px);
+}
+.answer-btn:disabled { cursor: default; }
+.answer-btn.correct {
+  background: #e8f5e9;
+  border-color: #2e7d32;
+  color: #1b5e20;
+}
+.answer-btn.wrong {
+  background: #ffebee;
+  border-color: #c62828;
+  color: #b71c1c;
+}
+.answer-btn.reveal {
+  background: #e8f5e9;
+  border-color: #2e7d32;
+  color: #1b5e20;
+  animation: pulse-correct 0.4s ease;
+}
+@keyframes pulse-correct {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* -- Feedback Banner -- */
+.feedback-banner {
+  margin: 0 1.4rem 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.87rem;
+  font-weight: 600;
+  line-height: 1.5;
+  display: none;
+}
+.feedback-banner.show { display: block; }
+.feedback-banner.correct-fb { background: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
+.feedback-banner.wrong-fb   { background: #ffebee; color: #b71c1c; border: 1px solid #ef9a9a; }
+
+/* -- Next Button -- */
+.game-next-wrap {
+  padding: 0 1.4rem 1.5rem;
+  display: none;
+}
+.game-next-wrap.show { display: block; }
+.game-next-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--navy);
+  color: var(--gold);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+.game-next-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* -- Score Screen -- */
+.score-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 2rem 2rem;
+  gap: 1rem;
+}
+.score-screen.show { display: flex; }
+.score-ring {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.score-ring .score-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.score-ring .score-denom {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.5px;
+}
+.score-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--navy);
+}
+.score-msg {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+  max-width: 320px;
+}
+.score-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.score-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  text-decoration: none;
+  display: inline-block;
+}
+.score-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.score-btn.primary { background: var(--navy); color: var(--gold); border: none; }
+.score-btn.secondary { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+
+/* -- Game hidden when score shows -- */
+.game-play-area { display: block; }
+.game-play-area.hidden { display: none; }
+
+/* -- Intro Card -- */
+.game-intro-card {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.game-intro-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.game-intro-card p {
+  font-size: 0.87rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+</style>
+
+<style>
+.lesson-wrap { grid-template-columns: minmax(0, 1040px); justify-content: center; }
+.lesson-left { max-width: none; }
+</style>
+</head>
+<body class="loft-game-page">
+<div id="site-nav"></div>
+
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Face Markings</div>
+      <h1 class="lesson-hero-title">Face Marking <span>Challenge</span></h1>
+      <p class="lesson-hero-desc">Look at the illustration &mdash; then choose the correct marking name before the next one appears.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="game-intro-card">
+      <h2>How to Play</h2>
+      <p>Each round shows a pony illustration with a face marking. Select the correct name from the four options. You will get instant feedback and a final score after ten rounds.</p>
+    </div>
+
+    <div class="game-shell">
+
+      <!-- Play area -->
+      <div class="game-play-area" id="game-play">
+        <div class="game-progress-bar-wrap">
+          <span class="game-progress-label" id="progress-label">Question 1 of 10</span>
+          <div class="game-progress-track">
+            <div class="game-progress-fill" id="progress-fill" style="width: 10%"></div>
+          </div>
+          <span class="game-score-label" id="score-label">0 / 0</span>
+        </div>
+
+        <div class="game-question-area">
+          <div class="game-prompt">What marking does this horse have?</div>
+          <div class="game-image-frame">
+            <img id="game-img" src="" alt="Horse with a face marking to identify">
+          </div>
+        </div>
+
+        <div class="answer-grid" id="answer-grid">
+          <button class="answer-btn" id="btn-0"></button>
+          <button class="answer-btn" id="btn-1"></button>
+          <button class="answer-btn" id="btn-2"></button>
+          <button class="answer-btn" id="btn-3"></button>
+        </div>
+
+        <div class="feedback-banner" id="feedback-banner"></div>
+
+        <div class="game-next-wrap" id="next-wrap">
+          <button class="game-next-btn" id="next-btn"></button>
+        </div>
+      </div>
+
+      <!-- Score screen -->
+      <div class="score-screen" id="score-screen">
+        <div class="score-ring">
+          <div class="score-num" id="final-score">&mdash;</div>
+          <div class="score-denom">/ 10</div>
+        </div>
+        <div class="score-title" id="score-title">Well done!</div>
+        <p class="score-msg" id="score-msg"></p>
+        <div class="score-actions">
+          <button class="score-btn primary" onclick="initGame()">Play Again</button>
+          <a class="score-btn secondary" href="index.html">Back to Learning Loft</a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+const MARKINGS = [
+  { name: 'Star',              img: 'pony/pony-star.png',           desc: 'An isolated white patch on the forehead, between or above the eyes.' },
+  { name: 'Strip',             img: 'pony/pony-strip.png',          desc: 'A narrow white line running down the nasal bone - narrower than a blaze.' },
+  { name: 'Blaze',             img: 'pony/pony-blaze.png',          desc: 'A wide white stripe covering the full length of the face down to the muzzle.' },
+  { name: 'Snip',              img: 'pony/pony-snip.png',           desc: 'A small white patch between or around the nostrils, isolated from other markings.' },
+  { name: 'Bald Face',         img: 'pony/pony-bald-face.png',      desc: 'An extremely wide blaze covering most of the face, including the eyes and cheeks.' },
+  { name: 'Star & Snip',       img: 'pony/pony-star-snip.png',      desc: 'A star on the forehead and a separate snip on the muzzle - no white connecting them.' },
+  { name: 'Star & Strip',      img: 'pony/pony-star-strip.png',     desc: 'A forehead star connected to a narrow strip running down the face.' },
+  { name: 'Strip & Snip',      img: 'pony/pony-strip-snip.png',     desc: 'A strip down the nasal bone and a separate snip on the muzzle.' },
+  { name: 'Star, Strip & Snip',img: 'pony/pony-star-strip-snip.png',desc: 'Three parts: a star, a strip, and a separate snip - each noted individually.' },
+  { name: 'Irregular Blaze',   img: 'pony/pony-irregular-blaze.png',desc: 'A blaze that veers off-centre, has uneven edges, or is significantly wider on one side.' }
+];
+
+const ALL_NAMES = MARKINGS.map(m => m.name);
+
+let questions = [];
+let currentQ = 0;
+let score = 0;
+let answered = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildChoices(correct) {
+  const others = shuffle(ALL_NAMES.filter(n => n !== correct)).slice(0, 3);
+  return shuffle([correct, ...others]);
+}
+
+function initGame() {
+  questions = shuffle([...MARKINGS]).slice(0, 10);
+  currentQ = 0;
+  score = 0;
+  answered = false;
+  document.getElementById('score-screen').classList.remove('show');
+  document.getElementById('game-play').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  answered = false;
+  const q = questions[currentQ];
+  const choices = buildChoices(q.name);
+
+  // Progress
+  const num = currentQ + 1;
+  document.getElementById('progress-label').textContent = 'Question ' + num + ' of 10';
+  document.getElementById('progress-fill').style.width = (num * 10) + '%';
+  document.getElementById('score-label').textContent = score + ' / ' + currentQ;
+
+  // Image
+  document.getElementById('game-img').src = q.img;
+  document.getElementById('game-img').alt = 'Pony illustration - identify the marking';
+
+  // Buttons
+  for (let i = 0; i < 4; i++) {
+    const btn = document.getElementById('btn-' + i);
+    btn.textContent = choices[i];
+    btn.className = 'answer-btn';
+    btn.disabled = false;
+    btn.dataset.choice = choices[i];
+    btn.onclick = () => handleAnswer(choices[i], q.name, q.desc);
+  }
+
+  // Reset feedback
+  const fb = document.getElementById('feedback-banner');
+  fb.className = 'feedback-banner';
+  fb.textContent = '';
+  document.getElementById('next-wrap').classList.remove('show');
+}
+
+function handleAnswer(chosen, correct, desc) {
+  if (answered) return;
+  answered = true;
+
+  const isCorrect = chosen === correct;
+  if (isCorrect) score++;
+
+  // Disable all buttons
+  for (let i = 0; i < 4; i++) {
+    const btn = document.getElementById('btn-' + i);
+    btn.disabled = true;
+    if (btn.dataset.choice === correct) {
+      btn.classList.add(isCorrect ? 'correct' : 'reveal');
+    } else if (btn.dataset.choice === chosen && !isCorrect) {
+      btn.classList.add('wrong');
+    }
+  }
+
+  // Feedback
+  const fb = document.getElementById('feedback-banner');
+  fb.classList.add('show');
+  if (isCorrect) {
+    fb.classList.add('correct-fb');
+    fb.innerHTML = '<strong>Correct!</strong> ' + desc;
+  } else {
+    fb.classList.add('wrong-fb');
+    fb.innerHTML = '<strong>Not quite.</strong> That was a <strong>' + correct + '</strong>. ' + desc;
+  }
+
+  // Next / finish
+  const nextWrap = document.getElementById('next-wrap');
+  const nextBtn  = document.getElementById('next-btn');
+  nextWrap.classList.add('show');
+  const isLast = currentQ >= 9;
+  nextBtn.textContent = isLast ? 'See My Score' : 'Next Question ->';
+  nextBtn.onclick = isLast ? showScore : nextQuestion;
+}
+
+function nextQuestion() {
+  currentQ++;
+  renderQuestion();
+}
+
+function showScore() {
+  document.getElementById('game-play').classList.add('hidden');
+  const ss = document.getElementById('score-screen');
+  ss.classList.add('show');
+  document.getElementById('final-score').textContent = score;
+  document.getElementById('score-label').textContent = score + ' / 10';
+
+  let title, msg;
+  if (score === 10) {
+    title = 'Perfect Score!';
+    msg   = 'You identified every marking correctly. Your face marking knowledge is sharp - head to the Viewing Room to test the same skills on real horses.';
+  } else if (score >= 8) {
+    title = 'Excellent!';
+    msg   = 'You got ' + score + ' out of 10. Strong recognition skills. Review any misses in the Horse Face Markings lesson before your next attempt.';
+  } else if (score >= 6) {
+    title = 'Good Work';
+    msg   = 'You got ' + score + ' out of 10. A solid foundation - revisiting the combination markings section should push your score higher.';
+  } else {
+    title = 'Keep Practising';
+    msg   = 'You got ' + score + ' out of 10. Head back to the Horse Face Markings lesson to review, then come back and try again.';
+  }
+
+  document.getElementById('score-title').textContent = title;
+  document.getElementById('score-msg').textContent   = msg;
+}
+
+initGame();
+</script>
+
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl:    '../../../index.html',
+    coursesUrl: '../../index.html',
+    navCta:     { label: 'Back to Learning Loft', url: '../../index.html#lab' }
+  };
+</script>
+<script src="../../../assets/js/layout.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.faceMarkings.faceMarkingMatch','true')}catch(e){}</script>
+</body>
+</html>

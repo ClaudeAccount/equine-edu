@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patterned Coats &mdash; Common Horse Colors &mdash; Equine Edu</title>
+<meta name="description" content="Learn to identify the striking multi-color coat patterns of pinto and appaloosa horses.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+  .concept-card img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius) var(--radius) 0 0;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .tab-system { display: flex; flex-direction: column; gap: 1.5rem; }
+  .tab-bar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+    padding: 0.4rem;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .tab-btn {
+    min-height: 48px;
+    border: 2px solid transparent;
+    border-radius: calc(var(--radius) - 2px);
+    background: rgba(13,27,62,0.08);
+    color: rgba(13,27,62,0.45);
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .tab-btn.active {
+    background: var(--navy);
+    color: var(--gold);
+    border-color: var(--navy);
+    font-weight: 800;
+    box-shadow: 0 5px 18px rgba(13,27,62,0.2);
+  }
+  .tab-btn:not(.active):hover { opacity: 0.85; color: var(--navy); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: flex; flex-direction: column; gap: 1.5rem; }
+  .tab-intro {
+    padding: 1.25rem 1.5rem;
+    background: var(--off-white);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .color-compare-note {
+    background: rgba(13,27,62,0.04);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-top: 1rem;
+  }
+  .color-compare-note strong { color: var(--navy); }
+  @media (max-width: 760px) { .tab-bar { grid-template-columns: 1fr; } }
+
+/* Uniform lesson tabs */
+.tab-system { gap: 1.5rem; }
+.tab-bar {
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.4rem;
+  margin: 1.35rem 0 1.75rem;
+}
+.part-tab,
+.tab-btn,
+.saddle-view-tab {
+  min-height: 48px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--off-white);
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  padding: 0.85rem 1rem;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+.part-tab.active,
+.tab-btn.active,
+.saddle-view-tab.active,
+.tab-btn:nth-child(2).active,
+.tab-btn:nth-child(5).active {
+  background: var(--navy);
+  border-color: transparent;
+  color: var(--gold);
+  box-shadow: none;
+}
+.part-tab:not(.active):hover,
+.tab-btn:not(.active):hover,
+.saddle-view-tab:not(.active):hover {
+  background: rgba(13,27,62,0.06);
+  color: var(--navy);
+  opacity: 1;
+}
+.part-panel > .lesson-intro-card,
+.lesson-intro-card + .tab-system {
+  margin-bottom: 1.35rem;
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Common Horse Colors</div>
+      <h1 class="lesson-hero-title">Patterned <span>Coats</span></h1>
+      <p class="lesson-hero-desc">Pinto and Appaloosa are two of the most visually distinctive horse coat patterns â€” each produced by a completely different genetic mechanism, with its own unique visual characteristics.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="lesson-intro-card">
+      <h2>Multi-Color Coat Patterns</h2>
+      <p>Unlike the solid and semi-solid colors covered in earlier lessons, pinto and appaloosa patterns involve large areas of contrasting color or spotting distributed across the coat. These are patterns layered on top of a base color â€” not separate colors on their own.</p>
+      <p>Pinto refers to a pattern of large white patches over a colored coat. Appaloosa refers to a distinct family of spotting patterns associated with the Appaloosa breed and the leopard complex gene. Each pattern family has several subtypes â€” this lesson covers the most common ones a beginner will encounter.</p>
+    </div>
+
+    <div class="tab-system" id="pattern-tabs">
+      <div class="tab-bar" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-pinto" id="btn-pinto" onclick="switchTab('tab-pinto')">Pinto Patterns</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-appy" id="btn-appy" onclick="switchTab('tab-appy')">Appaloosa Patterns</button>
+      </div>
+
+      <!-- Pinto -->
+      <div class="tab-panel active" id="tab-pinto" role="tabpanel">
+        <div class="tab-intro"><p>Pinto is a coat pattern of large, irregular white patches over a base-colored coat. The two main pinto patterns are tobiano and overo â€” they look different and are produced by different genes. "Pinto" describes the pattern; the underlying body color can be any base color.</p></div>
+        <div class="visual-card">
+          <div class="concept-grid">
+            <article class="concept-card" style="text-align:center;">
+              <img src="colors/tobiano.png" alt="Tobiano pinto horse">
+              <span>Pinto Pattern</span><h3>Tobiano</h3>
+              <p>White patches cross the topline (back and hindquarters) and the legs are often white. The head is usually the base color or has normal face markings. White patches tend to have smooth, rounded edges. Tobiano is the most common pinto pattern.</p>
+            </article>
+            <article class="concept-card" style="text-align:center;">
+              <img src="colors/overo.png" alt="Overo pinto horse">
+              <span>Pinto Pattern</span><h3>Overo</h3>
+              <p>White patches spread horizontally from the belly upward and rarely cross the topline. The legs are often darker. The face frequently shows bold white markings or a bald face. White patches have irregular, jagged edges and an overall "splashy" appearance.</p>
+            </article>
+          </div>
+          <div class="color-compare-note">
+            <strong>Tobiano vs. Overo:</strong> The easiest rule: if white crosses the back (topline), it is likely tobiano. If white stays on the sides and belly without crossing the back, it is likely overo. When both patterns appear in one horse, it is called tovero.
+          </div>
+        </div>
+      </div>
+
+      <!-- Appaloosa -->
+      <div class="tab-panel" id="tab-appy" role="tabpanel">
+        <div class="tab-intro"><p>Appaloosa spotting patterns are produced by the leopard complex (LP) gene, which creates a range of distinctive spotted coats. All Appaloosa patterns are associated with several identifying characteristics: mottled (speckled) skin around the muzzle and eyes, visible white sclera (the white part of the eye), and striped hooves.</p></div>
+        <div class="visual-card">
+          <div class="concept-grid">
+            <article class="concept-card" style="text-align:center;">
+              <img src="colors/leopard-appaloosa.png" alt="Leopard Appaloosa horse">
+              <span>Appaloosa Pattern</span><h3>Leopard</h3>
+              <p>A mostly white body coat covered in dark spots of various sizes â€” similar in appearance to a leopard's coat. Spots are usually dark and rounded. The most visually striking Appaloosa pattern.</p>
+            </article>
+            <article class="concept-card" style="text-align:center;">
+              <img src="colors/blanket-appaloosa.png" alt="Blanket Appaloosa horse">
+              <span>Appaloosa Pattern</span><h3>Blanket</h3>
+              <p>A solid-colored body with a distinct white patch (blanket) over the hindquarters. The blanket may contain dark spots within it (spotted blanket) or be solid white (white blanket). The most common Appaloosa pattern.</p>
+            </article>
+          </div>
+          <div class="color-compare-note">
+            <strong>Identifying Appaloosa Characteristics:</strong> Beyond the coat pattern, look for mottled skin (irregular dark and light patches) around the muzzle, lips, and eyes; a visible white sclera around the iris; and striped hooves. These traits appear in all Appaloosa horses regardless of coat pattern.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function switchTab(id) {
+        document.querySelectorAll('.tab-btn[aria-controls]').forEach(function(b) {
+          var on = b.getAttribute('aria-controls') === id;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        document.querySelectorAll('.tab-panel').forEach(function(p) {
+          p.classList.toggle('active', p.id === id);
+        });
+      }
+    </script>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 6;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../index.html',
+    navCta:     { label: 'Back to Common Horse Colors', url: '1-index.html' },
+    navExtras: [{ label: 'The Viewing Room', url: '8-viewing-room.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.commonHorseColors.patternedCoats','true')}catch(e){}</script>
+</body></html>
+

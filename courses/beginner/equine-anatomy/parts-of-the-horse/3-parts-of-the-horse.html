@@ -1,0 +1,524 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parts of the Horse &mdash; Intro to Parts of the Horse &mdash; Equine Edu</title>
+<meta name="description" content="A visual diagram of the major parts of the horse organized into three views: front, back, and whole horse.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+/* â”€â”€ Tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.tab-system{display:flex;flex-direction:column;gap:1.5rem;}
+.tab-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.35rem;padding:.4rem;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);}
+.tab-btn{min-height:48px;border:2px solid transparent;border-radius:calc(var(--radius) - 2px);background:rgba(13,27,62,.08);color:rgba(13,27,62,.45);font-family:var(--font-body);font-size:.84rem;font-weight:700;cursor:pointer;transition:background .18s,color .18s,border-color .18s,box-shadow .18s;padding:0 .5rem;}
+.tab-btn:nth-child(2){background:rgba(201,168,76,.12);color:rgba(145,108,26,.62);}
+.tab-btn.active{background:var(--navy);color:var(--gold);border-color:var(--navy);font-weight:800;box-shadow:0 5px 18px rgba(13,27,62,.2);}
+.tab-btn:nth-child(2).active{background:var(--gold);color:var(--navy);border-color:var(--gold);box-shadow:0 5px 18px rgba(201,168,76,.28);}
+.tab-btn:not(.active):hover{opacity:.85;color:var(--navy);}
+.tab-panel{display:none;}
+.tab-panel.active{display:flex;flex-direction:column;gap:1.5rem;}
+.tab-intro{padding:1rem 1.25rem;background:var(--off-white);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;color:var(--text-mid);line-height:1.7;font-size:.9rem;}
+
+/* â”€â”€ Diagram â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.diagram-outer{display:flex;justify-content:center;padding:.5rem 0;}
+.diagram-wrap{position:relative;display:inline-block;width:100%;max-width:680px;user-select:none;}
+.diagram-wrap img{width:100%;display:block;border-radius:var(--radius);}
+.diagram-wrap svg.marker-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:2;}
+
+/* Anchor dots */
+.a-dot{position:absolute;width:10px;height:10px;background:var(--gold);border:2px solid var(--navy);border-radius:50%;transform:translate(-50%,-50%);z-index:4;box-shadow:0 1px 5px rgba(13,27,62,.35);cursor:grab;touch-action:none;}
+.a-dot:active{cursor:grabbing;}
+
+/* Label pills */
+.a-lbl{position:absolute;transform:translate(-50%,-50%);background:var(--navy);color:var(--gold);font-size:.63rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:.28rem .65rem;border-radius:999px;white-space:nowrap;z-index:5;box-shadow:0 2px 8px rgba(13,27,62,.25);cursor:grab;touch-action:none;}
+.a-lbl:active{cursor:grabbing;}
+
+/* Edit mode hint */
+.diagram-edit-hint{font-size:.76rem;color:var(--text-light);text-align:center;margin-top:.5rem;line-height:1.5;}
+.reset-btn{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;color:var(--text-mid);background:none;border:1px solid var(--border);border-radius:var(--radius);padding:.35rem .85rem;cursor:pointer;margin-top:.5rem;transition:border-color .15s,color .15s;}
+.reset-btn:hover{border-color:var(--gold);color:var(--navy);}
+.diagram-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:.6rem;}
+
+/* Part list */
+.part-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;margin-top:.5rem;}
+.part-item{background:var(--off-white);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:.75rem .9rem;}
+.part-item h3{font-family:var(--font-display);color:var(--navy);font-size:.92rem;margin-bottom:.2rem;}
+.part-item p{color:var(--text-mid);font-size:.82rem;line-height:1.5;margin:0;}
+.part-region{display:block;font-size:.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:.15rem;}
+
+@media(max-width:640px){
+  .tab-bar{grid-template-columns:1fr;}
+  .part-grid{grid-template-columns:1fr;}
+  .a-lbl{font-size:.52rem;padding:.2rem .44rem;}
+  .a-dot{width:8px;height:8px;}
+}
+
+/* Uniform lesson tabs */
+.tab-system { gap: 1.5rem; }
+.tab-bar {
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.4rem;
+  margin: 1.35rem 0 1.75rem;
+}
+.part-tab,
+.tab-btn,
+.saddle-view-tab {
+  min-height: 48px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--off-white);
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  padding: 0.85rem 1rem;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+.part-tab.active,
+.tab-btn.active,
+.saddle-view-tab.active,
+.tab-btn:nth-child(2).active,
+.tab-btn:nth-child(5).active {
+  background: var(--navy);
+  border-color: transparent;
+  color: var(--gold);
+  box-shadow: none;
+}
+.part-tab:not(.active):hover,
+.tab-btn:not(.active):hover,
+.saddle-view-tab:not(.active):hover {
+  background: rgba(13,27,62,0.06);
+  color: var(--navy);
+  opacity: 1;
+}
+.part-panel > .lesson-intro-card,
+.lesson-intro-card + .tab-system {
+  margin-bottom: 1.35rem;
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to Parts of the Horse</div>
+      <h1 class="lesson-hero-title">Parts of <span>the Horse</span></h1>
+      <p class="lesson-hero-desc">Every part of the horse has a name. Use the three views below to explore the front, back, and whole horse &mdash; then review the descriptions beneath each diagram.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="lesson-intro-card">
+      <h2>Three Views, One Horse</h2>
+      <p>The horse is broken into three views to make the parts easier to learn in smaller groups. Start with the front, move to the back, then use the whole-horse view to see everything together.</p>
+    </div>
+
+    <div class="tab-system" id="parts-tabs">
+      <div class="tab-bar" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-front" id="btn-front">Front of Horse</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-back"  id="btn-back">Back of Horse</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-whole" id="btn-whole">Whole Horse</button>
+      </div>
+
+      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TAB 1 â€” FRONT â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <div class="tab-panel active" id="tab-front" role="tabpanel">
+        <div class="tab-intro">Parts from the withers forward &mdash; the head, neck, and front end.</div>
+        <div class="visual-card" style="padding:1.25rem;">
+          <h2 style="margin-bottom:.75rem;">Front of the Horse</h2>
+          <div class="diagram-outer">
+            <div class="diagram-wrap" id="dw-front" style="max-width:420px;">
+              <img src="images/parts-front.png" alt="Front of horse â€” labeled anatomy diagram" draggable="false">
+              <svg class="marker-svg" id="svg-front" aria-hidden="true"></svg>
+            </div>
+          </div>
+          <div class="diagram-footer">
+            <p class="diagram-edit-hint">&#9998; Drag any label or dot to reposition it. Changes save automatically.</p>
+            <button class="reset-btn" onclick="resetDiagram('front')">&#8635; Reset positions</button>
+          </div>
+        </div>
+        <div class="visual-card">
+          <h2>Front of Horse &mdash; Parts</h2>
+          <div class="part-grid">
+            <div class="part-item"><span class="part-region">Top of Head</span><h3>Poll</h3><p>The very top of the head, between the ears. The highest point when the horse holds its head naturally.</p></div>
+            <div class="part-item"><span class="part-region">Upper Head</span><h3>Ears</h3><p>Two large, mobile ears that rotate independently to pick up sounds. Ear position reflects how the horse is feeling.</p></div>
+            <div class="part-item"><span class="part-region">Between Ears</span><h3>Foretop</h3><p>The tuft of mane hair that falls from the poll between the ears onto the forehead. Also called the forelock.</p></div>
+            <div class="part-item"><span class="part-region">Mid Face</span><h3>Face</h3><p>The central area of the head between the forehead and the muzzle, along the nasal bone.</p></div>
+            <div class="part-item"><span class="part-region">Lower Face</span><h3>Nostril</h3><p>The two openings on the muzzle through which the horse breathes. They flare wide during exercise or when the horse is alert.</p></div>
+            <div class="part-item"><span class="part-region">Lower Face</span><h3>Muzzle</h3><p>The soft lower part of the face including the nostrils and lips. Horses use the muzzle to explore and handle food.</p></div>
+            <div class="part-item"><span class="part-region">Head to Neck</span><h3>Throatlatch</h3><p>Where the underside of the jaw meets the top of the neck. A bridle strap of the same name passes through this area.</p></div>
+            <div class="part-item"><span class="part-region">Connects Head to Body</span><h3>Neck</h3><p>Connects the head to the shoulder and body. Its length and angle affect how the horse balances and moves under saddle.</p></div>
+            <div class="part-item"><span class="part-region">Along the Crest</span><h3>Mane</h3><p>The long hair growing from the top ridge of the neck. It typically falls to one side and acts as a natural fly deterrent.</p></div>
+            <div class="part-item"><span class="part-region">Neck Meets Back</span><h3>Withers</h3><p>The highest point of the back, between the shoulder blades. Horse height is measured here in hands.</p></div>
+            <div class="part-item"><span class="part-region">Upper Front</span><h3>Shoulder</h3><p>The large area of the upper foreleg and shoulder blade. Shoulder angle affects stride length and smoothness of movement.</p></div>
+            <div class="part-item"><span class="part-region">Front of Body</span><h3>Chest</h3><p>The muscular front of the body between the front legs.</p></div>
+            <div class="part-item"><span class="part-region">Front Leg</span><h3>Knee</h3><p>The middle joint of the front leg, equivalent to the human wrist. One of the most closely monitored joints for soundness.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TAB 2 â€” BACK â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <div class="tab-panel" id="tab-back" role="tabpanel">
+        <div class="tab-intro">Parts from the withers backward &mdash; the body, hindquarters, and legs.</div>
+        <div class="visual-card" style="padding:1.25rem;">
+          <h2 style="margin-bottom:.75rem;">Back of the Horse</h2>
+          <div class="diagram-outer">
+            <div class="diagram-wrap" id="dw-back" style="max-width:420px;">
+              <img src="images/parts-back.png" alt="Back of horse â€” labeled anatomy diagram" draggable="false">
+              <svg class="marker-svg" id="svg-back" aria-hidden="true"></svg>
+            </div>
+          </div>
+          <div class="diagram-footer">
+            <p class="diagram-edit-hint">&#9998; Drag any label or dot to reposition it. Changes save automatically.</p>
+            <button class="reset-btn" onclick="resetDiagram('back')">&#8635; Reset positions</button>
+          </div>
+        </div>
+        <div class="visual-card">
+          <h2>Back of Horse &mdash; Parts</h2>
+          <div class="part-grid">
+            <div class="part-item"><span class="part-region">Neck Meets Back</span><h3>Withers</h3><p>The highest point of the back. The front reference point for where the back begins and the standard measuring point for horse height.</p></div>
+            <div class="part-item"><span class="part-region">Top Line</span><h3>Back</h3><p>The area between the withers and the hindquarters where the saddle sits. A strong back supports the rider.</p></div>
+            <div class="part-item"><span class="part-region">Top of Hindquarters</span><h3>Croup</h3><p>The top of the hindquarters, from the highest point of the pelvis toward the tail. Croup slope varies between breeds.</p></div>
+            <div class="part-item"><span class="part-region">Base of Tail</span><h3>Dock</h3><p>The bony upper root of the tail, containing vertebrae and muscle. Tail bandaging always starts here.</p></div>
+            <div class="part-item"><span class="part-region">Rear</span><h3>Tail</h3><p>The long hair hanging from the dock. Used to swish flies and communicate mood.</p></div>
+            <div class="part-item"><span class="part-region">Ribs Area</span><h3>Barrel</h3><p>The rounded ribcage section between the forelegs and the flank. A rider's leg rests against the barrel when riding.</p></div>
+            <div class="part-item"><span class="part-region">Behind Barrel</span><h3>Flank</h3><p>The soft area behind the barrel and in front of the hindquarters. A sensitive region.</p></div>
+            <div class="part-item"><span class="part-region">Upper Hind Leg</span><h3>Thigh</h3><p>The muscular upper section of the hind leg. A well-developed thigh indicates good overall conditioning.</p></div>
+            <div class="part-item"><span class="part-region">Rear of Hindquarters</span><h3>Buttock</h3><p>The rounded, muscular area at the back of the hindquarters. The point of buttock is the most rearward bony prominence â€” easy to see when viewing a horse from the side.</p></div>
+            <div class="part-item"><span class="part-region">Hind Leg</span><h3>Hock</h3><p>The large angled joint in the middle of the hind leg, equivalent to the human ankle. Flexes with every stride.</p></div>
+            <div class="part-item"><span class="part-region">Lower Leg</span><h3>Cannon</h3><p>The large bone between the knee or hock and the fetlock. The most prominent bone of the lower leg.</p></div>
+            <div class="part-item"><span class="part-region">Lower Leg</span><h3>Fetlock</h3><p>The prominent joint between the cannon bone and the pastern, on all four legs.</p></div>
+            <div class="part-item"><span class="part-region">Lower Leg</span><h3>Pastern</h3><p>The sloping section between the fetlock and the hoof. Its angle affects how the horse absorbs concussion.</p></div>
+            <div class="part-item"><span class="part-region">Base of Leg</span><h3>Hoof</h3><p>The hard outer casing that protects the foot. Needs regular trimming and farrier care.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TAB 3 â€” WHOLE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <div class="tab-panel" id="tab-whole" role="tabpanel">
+        <div class="tab-intro">All parts together. Use this view to check how everything connects across the whole horse.</div>
+        <div class="visual-card" style="padding:1.25rem;">
+          <h2 style="margin-bottom:.75rem;">Whole Horse</h2>
+          <div class="diagram-outer">
+            <div class="diagram-wrap" id="dw-whole">
+              <img src="images/parts-whole.png" alt="Whole horse â€” labeled anatomy diagram" draggable="false">
+              <svg class="marker-svg" id="svg-whole" aria-hidden="true"></svg>
+            </div>
+          </div>
+          <div class="diagram-footer">
+            <p class="diagram-edit-hint">&#9998; Drag any label or dot to reposition it. Changes save automatically.</p>
+            <button class="reset-btn" onclick="resetDiagram('whole')">&#8635; Reset positions</button>
+          </div>
+        </div>
+        <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;">
+          <p style="font-size:.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">&#128161; Quick Tip</p>
+          <p style="color:var(--text-mid);line-height:1.7;">Try to name each labeled part before reading the pill &mdash; then check the Front and Back tabs for any you missed.</p>
+        </div>
+      </div>
+
+    </div><!-- /tab-system -->
+
+    <div id="course-notes"></div>
+    <script>
+      window.PAGE_NOTES = {
+        items: [
+          'Horse height is always measured at the withers.',
+          'The front and hind legs share several part names below the knee or hock: cannon, fetlock, pastern, and hoof.',
+          'Poll, withers, and croup are the three key topline parts from front to back.',
+          'The hock (hind) and knee (front) are the most discussed joints in soundness conversations.'
+        ],
+        highlight: 'Work from the top down and from front to back â€” poll to hoof. This is the order vets, farriers, and trainers use when examining a horse.'
+      };
+    </script>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   DIAGRAM LABEL EDITOR
+   Drag anchor dots (pinned to the horse) and label pills independently.
+   Lines update live. Positions saved to localStorage per diagram.
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+
+// Default positions: ax/ay = anchor dot %, lx/ly = label pill %
+const DEFAULTS = {
+  front: [
+    { id:"poll",        text:"Poll",        ax:30.2, ay:12.3, lx:26.8, ly:0 },
+    { id:"ears",        text:"Ears",        ax:33.7, ay:12,   lx:44,   ly:3 },
+    { id:"foretop",     text:"Foretop",     ax:28,   ay:15.3, lx:13.9, ly:9.1 },
+    { id:"face",        text:"Face",        ax:25.5, ay:22.5, lx:8.2,  ly:19.2 },
+    { id:"nostril",     text:"Nostril",     ax:20.6, ay:31.5, lx:4.4,  ly:33.7 },
+    { id:"muzzle",      text:"Muzzle",      ax:25,   ay:32,   lx:18,   ly:47 },
+    { id:"throatlatch", text:"Throatlatch", ax:43.7, ay:23.9, lx:40,   ly:39.7 },
+    { id:"neck",        text:"Neck",        ax:54.3, ay:22.9, lx:61.4, ly:6.3 },
+    { id:"mane",        text:"Mane",        ax:62.5, ay:18,   lx:78.3, ly:12.1 },
+    { id:"withers",     text:"Withers",     ax:80,   ay:30.4, lx:92.6, ly:18.1 },
+    { id:"shoulder",    text:"Shoulder",    ax:67.6, ay:44.2, lx:88.2, ly:60.9 },
+    { id:"chest",       text:"Chest",       ax:58.8, ay:52.7, lx:36.3, ly:63 },
+    { id:"knee",        text:"Knee",        ax:68.9, ay:71.5, lx:44.3, ly:81.2 }
+  ],
+  back: [
+    { id:"withers",  text:"Withers",  ax:3.7,  ay:30.2, lx:3,    ly:14.9 },
+    { id:"back",     text:"Back",     ax:19.1, ay:32.5, lx:19.6, ly:20 },
+    { id:"croup",    text:"Croup",    ax:54.2, ay:29.7, lx:53,   ly:20.5 },
+    { id:"dock",     text:"Dock",     ax:65,   ay:33,   lx:77.3, ly:25.6 },
+    { id:"tail",     text:"Tail",     ax:71.2, ay:37.8, lx:88.9, ly:33.1 },
+    { id:"barrel",   text:"Barrel",   ax:18.2, ay:45.1, lx:14.4, ly:62.3 },
+    { id:"flank",    text:"Flank",    ax:38.6, ay:43.3, lx:38.3, ly:60.5 },
+    { id:"thigh",    text:"Thigh",    ax:52.8, ay:42.3, lx:93.7, ly:50 },
+    { id:"buttock",  text:"Buttock",  ax:64.6, ay:41.7, lx:91.2, ly:42.2 },
+    { id:"hock",     text:"Hock",     ax:56.8, ay:67.6, lx:34.4, ly:70.5 },
+    { id:"cannon",   text:"Cannon",   ax:53.2, ay:78.5, lx:32.3, ly:79.9 },
+    { id:"fetlock",  text:"Fetlock",  ax:68.6, ay:83.6, lx:90.4, ly:75.4 },
+    { id:"pastern",  text:"Pastern",  ax:66.2, ay:86.5, lx:86.1, ly:88.7 },
+    { id:"hoof",     text:"Hoof",     ax:48.4, ay:89.4, lx:31.8, ly:88.3 }
+  ],
+  whole: [
+    { id:"poll",        text:"Poll",        ax:16.6, ay:13,   lx:14.3, ly:0 },
+    { id:"ears",        text:"Ears",        ax:18.5, ay:11.4, lx:24.2, ly:1.8 },
+    { id:"foretop",     text:"Foretop",     ax:15.8, ay:14.6, lx:4.3,  ly:6.3 },
+    { id:"face",        text:"Face",        ax:14.3, ay:22.9, lx:6.6,  ly:20.4 },
+    { id:"nostril",     text:"Nostril",     ax:11.6, ay:32.1, lx:0,    ly:29.5 },
+    { id:"muzzle",      text:"Muzzle",      ax:14.1, ay:31.6, lx:4.1,  ly:42.3 },
+    { id:"throatlatch", text:"Throatlatch", ax:23.8, ay:23.8, lx:19.7, ly:41.6 },
+    { id:"neck",        text:"Neck",        ax:29.5, ay:20.7, lx:33,   ly:1.4 },
+    { id:"mane",        text:"Mane",        ax:35.2, ay:17.4, lx:38,   ly:10 },
+    { id:"withers",     text:"Withers",     ax:43.3, ay:29.7, lx:46.8, ly:16 },
+    { id:"back",        text:"Back",        ax:52.9, ay:33.3, lx:56.4, ly:21.5 },
+    { id:"croup",       text:"Croup",       ax:73.8, ay:30,   lx:76.9, ly:18 },
+    { id:"dock",        text:"Dock",        ax:79.2, ay:32.8, lx:89.1, ly:23.7 },
+    { id:"tail",        text:"Tail",        ax:84.4, ay:43.1, lx:93.8, ly:36.3 },
+    { id:"shoulder",    text:"Shoulder",    ax:37,   ay:43,   lx:20.2, ly:50.9 },
+    { id:"chest",       text:"Chest",       ax:32.6, ay:51.5, lx:21,   ly:62 },
+    { id:"barrel",      text:"Barrel",      ax:51.9, ay:41.4, lx:53.8, ly:64 },
+    { id:"flank",       text:"Flank",       ax:65.8, ay:44.8, lx:64.4, ly:61.9 },
+    { id:"thigh",       text:"Thigh",       ax:71.6, ay:44.4, lx:95,   ly:58.6 },
+    { id:"buttock",     text:"Buttock",     ax:80,   ay:43.9, lx:96.9, ly:49.5 },
+    { id:"hock",        text:"Hock",        ax:79.9, ay:67.2, lx:93.4, ly:69.3 },
+    { id:"knee",        text:"Knee",        ax:38.2, ay:71.5, lx:30,   ly:71.8 },
+    { id:"cannon",      text:"Cannon",      ax:38.4, ay:78.7, lx:23.5, ly:79.7 },
+    { id:"fetlock",     text:"Fetlock",     ax:37,   ay:87.1, lx:51.9, ly:79.8 },
+    { id:"pastern",     text:"Pastern",     ax:80.9, ay:86.5, lx:94.4, ly:86.1 },
+    { id:"hoof",        text:"Hoof",        ax:69.7, ay:89.6, lx:60.9, ly:88.8 }
+  ]
+};
+
+const LS_KEY = 'equineEduDiagram.partsOfTheHorse';
+
+// Live state â€” loaded from localStorage or cloned from DEFAULTS
+let STATE = {};
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(LS_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Merge: keep defaults for any part not in saved data
+      ['front','back','whole'].forEach(function(tab) {
+        STATE[tab] = DEFAULTS[tab].map(function(def) {
+          const s = (parsed[tab] || []).find(function(p){ return p.id === def.id; });
+          return s ? Object.assign({}, def, s) : Object.assign({}, def);
+        });
+      });
+      return;
+    }
+  } catch(e) {}
+  // Fall back to deep clone of defaults
+  STATE = {
+    front: DEFAULTS.front.map(function(d){ return Object.assign({},d); }),
+    back:  DEFAULTS.back.map(function(d){ return Object.assign({},d); }),
+    whole: DEFAULTS.whole.map(function(d){ return Object.assign({},d); })
+  };
+}
+
+function saveState() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(STATE)); } catch(e) {}
+}
+
+function resetDiagram(tab) {
+  STATE[tab] = DEFAULTS[tab].map(function(d){ return Object.assign({},d); });
+  saveState();
+  renderDiagram(tab);
+}
+
+/* â”€â”€ Rendering â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+function renderDiagram(tab) {
+  const wrap = document.getElementById('dw-' + tab);
+  const svg  = document.getElementById('svg-' + tab);
+  if (!wrap || !svg) return;
+
+  // Remove old dots and labels (keep img and svg)
+  wrap.querySelectorAll('.a-dot, .a-lbl').forEach(function(el){ el.remove(); });
+
+  STATE[tab].forEach(function(part) {
+    // Anchor dot
+    const dot = document.createElement('div');
+    dot.className = 'a-dot';
+    dot.id = 'dot-' + tab + '-' + part.id;
+    dot.style.left = part.ax + '%';
+    dot.style.top  = part.ay + '%';
+    dot.title = part.text;
+    wrap.appendChild(dot);
+
+    // Label pill
+    const lbl = document.createElement('div');
+    lbl.className = 'a-lbl';
+    lbl.id = 'lbl-' + tab + '-' + part.id;
+    lbl.style.left = part.lx + '%';
+    lbl.style.top  = part.ly + '%';
+    lbl.textContent = part.text;
+    wrap.appendChild(lbl);
+
+    // Make both draggable
+    makeDraggable(dot, wrap, tab, part.id, 'anchor');
+    makeDraggable(lbl, wrap, tab, part.id, 'label');
+  });
+
+  drawLines(tab);
+}
+
+function drawLines(tab) {
+  const svg  = document.getElementById('svg-' + tab);
+  const wrap = document.getElementById('dw-' + tab);
+  if (!svg || !wrap) return;
+
+  // Clear existing lines
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+  STATE[tab].forEach(function(part) {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', part.ax + '%');
+    line.setAttribute('y1', part.ay + '%');
+    line.setAttribute('x2', part.lx + '%');
+    line.setAttribute('y2', part.ly + '%');
+    line.setAttribute('stroke', 'rgba(201,168,76,0.78)');
+    line.setAttribute('stroke-width', '1.5');
+    line.setAttribute('stroke-dasharray', '4 3');
+    svg.appendChild(line);
+  });
+}
+
+/* â”€â”€ Drag handler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+function makeDraggable(el, wrap, tab, partId, type) {
+  let active = false;
+  let startPx, startPy, startMouseX, startMouseY;
+
+  function getEl() { return document.getElementById(el.id); }
+
+  function onStart(e) {
+    active = true;
+    const pt = e.touches ? e.touches[0] : e;
+    startPx = parseFloat(getEl().style.left);
+    startPy = parseFloat(getEl().style.top);
+    startMouseX = pt.clientX;
+    startMouseY = pt.clientY;
+    getEl().style.zIndex = 20;
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function onMove(e) {
+    if (!active) return;
+    const pt = e.touches ? e.touches[0] : e;
+    const rect = wrap.getBoundingClientRect();
+    const dx = ((pt.clientX - startMouseX) / rect.width)  * 100;
+    const dy = ((pt.clientY - startMouseY) / rect.height) * 100;
+    const nx = Math.max(0, Math.min(100, startPx + dx));
+    const ny = Math.max(0, Math.min(100, startPy + dy));
+    getEl().style.left = nx + '%';
+    getEl().style.top  = ny + '%';
+
+    // Update state
+    const part = STATE[tab].find(function(p){ return p.id === partId; });
+    if (part) {
+      if (type === 'anchor') { part.ax = nx; part.ay = ny; }
+      else                   { part.lx = nx; part.ly = ny; }
+    }
+    drawLines(tab);
+    e.preventDefault();
+  }
+
+  function onEnd() {
+    if (!active) return;
+    active = false;
+    const elNow = document.getElementById(el.id);
+    if (elNow) elNow.style.zIndex = '';
+    saveState();
+  }
+
+  el.addEventListener('mousedown',  onStart, { passive: false });
+  el.addEventListener('touchstart', onStart, { passive: false });
+  document.addEventListener('mousemove',  onMove,  { passive: false });
+  document.addEventListener('touchmove',  onMove,  { passive: false });
+  document.addEventListener('mouseup',    onEnd);
+  document.addEventListener('touchend',   onEnd);
+}
+
+/* â”€â”€ Tab switching â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+(function() {
+  function switchTab(id) {
+    document.querySelectorAll('#parts-tabs .tab-btn').forEach(function(b) {
+      var on = b.getAttribute('aria-controls') === id;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('#parts-tabs .tab-panel').forEach(function(p) {
+      p.classList.toggle('active', p.id === id);
+    });
+    // Re-render diagram when tab becomes visible (needed for correct dimensions)
+    var tab = id.replace('tab-', '');
+    renderDiagram(tab);
+  }
+  document.querySelectorAll('#parts-tabs .tab-btn').forEach(function(b) {
+    b.addEventListener('click', function() { switchTab(b.getAttribute('aria-controls')); });
+  });
+})();
+
+/* â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+(function() {
+  loadState();
+  // Render the default visible tab immediately; others render on tab switch
+  renderDiagram('front');
+  // Also render back and whole so positions are initialised
+  // (they won't flash because the panels are display:none)
+  renderDiagram('back');
+  renderDiagram('whole');
+})();
+</script>
+
+<script>
+  window.CURRENT_MODULE = 2;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Course', url: '1-index.html' },
+    navExtras:  [{ label: 'The Viewing Room', url: '4-viewing-room.html' }, { label: 'The Training Barn', url: '5-training-barn.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.partsOfTheHorse.partsOfTheHorse','true')}catch(e){}</script>
+</body>
+</html>
+

@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Generator — Equine Edu Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0D1B3E; --navy-mid: #1A2F6B; --gold: #C8991A;
+  --off-white: #F8F7F4; --white: #FFFFFF; --text-mid: #5A6272;
+  --border: #E2E4EA; --radius: 10px; --sidebar-w: 300px;
+  --font: 'DM Sans', sans-serif;
+}
+body { font-family: var(--font); background: var(--off-white); color: var(--navy); min-height: 100vh; }
+
+/* ===== TOPBAR ===== */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--navy); color: var(--white);
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0 1.5rem; height: 56px; border-bottom: 2px solid var(--gold);
+}
+.topbar-title { font-size: 1rem; font-weight: 700; letter-spacing: .02em; flex: 1; }
+.topbar-title span { color: var(--gold); }
+.topbar-btn {
+  background: var(--gold); color: var(--navy); border: none; cursor: pointer;
+  font-family: var(--font); font-size: 0.78rem; font-weight: 700;
+  padding: 0.4rem 0.9rem; border-radius: 6px; transition: opacity .15s;
+}
+.topbar-btn:hover { opacity: .85; }
+.topbar-btn.secondary {
+  background: rgba(255,255,255,0.12); color: var(--white);
+}
+.topbar-btn.secondary:hover { background: rgba(255,255,255,0.2); }
+
+/* ===== LAYOUT ===== */
+.app-body { display: flex; min-height: calc(100vh - 56px); }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: var(--sidebar-w); flex-shrink: 0;
+  background: var(--white); border-right: 1px solid var(--border);
+  padding: 1.25rem; overflow-y: auto;
+  position: sticky; top: 56px; height: calc(100vh - 56px);
+}
+.sidebar h3 { font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .12em; color: var(--text-mid); margin: 1rem 0 0.5rem; }
+.sidebar h3:first-child { margin-top: 0; }
+.add-btn {
+  display: block; width: 100%; text-align: left;
+  background: var(--off-white); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.5rem 0.75rem;
+  font-family: var(--font); font-size: 0.82rem; font-weight: 600;
+  color: var(--navy); cursor: pointer; margin-bottom: 0.4rem;
+  transition: background .15s, border-color .15s;
+}
+.add-btn:hover { background: #EEF0F6; border-color: var(--navy-mid); }
+.add-btn .add-icon { color: var(--gold); font-weight: 900; margin-right: 0.4rem; font-size: 1rem; }
+
+/* ===== MAIN CANVAS ===== */
+.canvas { flex: 1; padding: 1.5rem 2rem; overflow-y: auto; }
+
+/* ===== SECTION CARD ===== */
+.section-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); margin-bottom: 1.25rem;
+  overflow: hidden;
+}
+.section-header {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 1.1rem; background: var(--navy);
+  color: var(--white); cursor: pointer; user-select: none;
+}
+.section-header .section-icon { font-size: 1rem; }
+.section-header .section-label { flex: 1; font-size: 0.9rem; font-weight: 700; letter-spacing: .01em; }
+.section-header .section-badge { font-size: 0.7rem; background: rgba(255,255,255,0.15); padding: 0.2rem 0.5rem; border-radius: 4px; }
+.section-chevron { font-size: 0.8rem; transition: transform .2s; }
+.section-card.collapsed .section-chevron { transform: rotate(-90deg); }
+.section-body { padding: 1.2rem 1.1rem; }
+.section-card.collapsed .section-body { display: none; }
+
+/* ===== FORM FIELDS ===== */
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+.field-row.full { grid-template-columns: 1fr; }
+.field-row.thirds { grid-template-columns: 1fr 1fr 1fr; }
+.field-group { display: flex; flex-direction: column; gap: 0.3rem; }
+.field-group label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--text-mid); }
+.field-group input, .field-group select, .field-group textarea {
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.48rem 0.7rem; font-family: var(--font); font-size: 0.85rem;
+  color: var(--navy); background: var(--off-white); outline: none;
+  transition: border-color .15s;
+}
+.field-group input:focus, .field-group select:focus, .field-group textarea:focus {
+  border-color: var(--navy-mid); background: var(--white);
+}
+.field-group textarea { resize: vertical; min-height: 68px; }
+.field-hint { font-size: 0.72rem; color: var(--text-mid); margin-top: 0.2rem; }
+
+/* ===== REPEATING ITEM ===== */
+.repeating-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.75rem; }
+.repeating-item {
+  border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 0.85rem;
+  background: var(--off-white); position: relative;
+}
+.repeating-item .item-header {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 0.5rem; font-size: 0.8rem; font-weight: 700; color: var(--navy);
+}
+.repeating-item .item-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--navy); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 800; flex-shrink: 0;
+}
+.remove-btn {
+  margin-left: auto; background: none; border: none; cursor: pointer;
+  color: #c0392b; font-size: 1rem; line-height: 1; padding: 0.1rem 0.3rem;
+  border-radius: 4px; transition: background .15s;
+}
+.remove-btn:hover { background: #fdecea; }
+.add-item-btn {
+  background: none; border: 1px dashed var(--border); border-radius: 8px;
+  width: 100%; padding: 0.5rem; font-family: var(--font); font-size: 0.82rem;
+  font-weight: 600; color: var(--text-mid); cursor: pointer; transition: all .15s;
+}
+.add-item-btn:hover { border-color: var(--navy-mid); color: var(--navy); background: var(--white); }
+
+/* ===== TYPE BADGE ===== */
+.type-select { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
+.type-opt {
+  padding: 0.3rem 0.7rem; border: 1px solid var(--border);
+  border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all .15s; background: var(--white);
+  user-select: none;
+}
+.type-opt.selected { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+/* ===== OUTPUT ===== */
+.output-section { margin-top: 1.5rem; }
+.output-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); margin-bottom: 0; }
+.output-tab {
+  padding: 0.55rem 1.1rem; font-family: var(--font); font-size: 0.82rem;
+  font-weight: 700; border: none; background: none; cursor: pointer;
+  color: var(--text-mid); border-bottom: 3px solid transparent;
+  margin-bottom: -2px; transition: all .15s;
+}
+.output-tab.active { color: var(--navy); border-bottom-color: var(--gold); }
+.output-pane { display: none; }
+.output-pane.active { display: block; }
+.output-box {
+  background: #0D1B3E; color: #e8ecf5; border-radius: 0 0 var(--radius) var(--radius);
+  padding: 1.2rem; font-family: 'Courier New', monospace; font-size: 0.78rem;
+  line-height: 1.7; white-space: pre-wrap; overflow-x: auto;
+  max-height: 460px; overflow-y: auto;
+}
+.output-actions { display: flex; gap: 0.5rem; padding: 0.6rem 0.75rem; background: var(--navy); border-radius: var(--radius) var(--radius) 0 0; }
+.out-btn {
+  background: rgba(255,255,255,.12); color: var(--white); border: none;
+  padding: 0.35rem 0.75rem; border-radius: 5px; font-family: var(--font);
+  font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: background .15s;
+}
+.out-btn:hover { background: rgba(255,255,255,.22); }
+.out-btn.gold { background: var(--gold); color: var(--navy); }
+.out-btn.gold:hover { opacity: .85; }
+
+/* ===== MODE PILL ===== */
+.mode-pill {
+  display: flex; align-items: center; gap: 0.35rem;
+  padding: 0.3rem 0.75rem; border-radius: 20px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; transition: all .25s;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
+}
+.mode-pill.edit-active {
+  background: var(--gold); color: var(--navy);
+  border-color: var(--gold);
+}
+.mode-pill .mode-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; flex-shrink: 0;
+}
+
+/* ===== EDIT BANNER ===== */
+.edit-banner {
+  display: none; align-items: center; gap: 0.75rem;
+  background: #1a3a1a; border-bottom: 2px solid #4caf50;
+  padding: 0.55rem 1.5rem; font-size: 0.82rem; color: #a5d6a7;
+}
+.edit-banner.show { display: flex; }
+.edit-banner strong { color: #c8e6c9; }
+.edit-banner-spacer { flex: 1; }
+.edit-banner-exit {
+  background: none; border: 1px solid #4caf50; color: #a5d6a7;
+  padding: 0.25rem 0.7rem; border-radius: 5px; font-size: 0.75rem;
+  font-weight: 700; cursor: pointer; font-family: var(--font);
+  transition: all .15s;
+}
+.edit-banner-exit:hover { background: #4caf50; color: #fff; }
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
+  background: var(--navy); color: var(--white); padding: 0.65rem 1.1rem;
+  border-radius: 8px; font-size: 0.82rem; font-weight: 600;
+  border-left: 3px solid var(--gold); opacity: 0;
+  transform: translateY(8px); transition: all .25s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ===== UTILS ===== */
+.divider { height: 1px; background: var(--border); margin: 0.9rem 0; }
+.section-note { font-size: 0.78rem; color: var(--text-mid); line-height: 1.5; margin-bottom: 0.75rem; padding: 0.5rem 0.7rem; background: #F0F2F8; border-radius: 6px; border-left: 3px solid var(--gold); }
+.baked-badge { font-size: 0.65rem; background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; border-radius: 4px; padding: 0.15rem 0.4rem; font-weight: 700; margin-left: 0.4rem; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title">Equine Edu — <span>Course Generator</span></div>
+  <div class="mode-pill" id="mode-pill"><span class="mode-dot"></span> <span id="mode-label">Create Mode</span></div>
+  <button class="topbar-btn secondary" onclick="loadSaved()">Edit JSON / Generated HTML</button>
+  <button class="topbar-btn secondary" onclick="clearAll()">✕ Clear</button>
+  <button class="topbar-btn" onclick="generateAll()">⚡ Generate Files</button>
+</div>
+
+<div class="edit-banner" id="edit-banner">
+  <span>✏️ Editing course: <strong id="edit-course-name">—</strong></span>
+  <span class="edit-banner-spacer"></span>
+  <span style="font-size:0.75rem; opacity:0.75;">All changes will regenerate consistent output. Structure is always enforced.</span>
+  <span class="edit-banner-spacer"></span>
+  <button class="edit-banner-exit" onclick="exitEditMode()">Exit Edit Mode</button>
+</div>
+
+<div class="app-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h3>Quick Jump</h3>
+    <button class="add-btn" onclick="scrollTo('s-settings')"><span class="add-icon">⚙</span> Page Settings</button>
+    <button class="add-btn" onclick="scrollTo('s-hero')"><span class="add-icon">★</span> Hero Section</button>
+    <button class="add-btn" onclick="scrollTo('s-learn')"><span class="add-icon">✓</span> What You'll Learn</button>
+    <button class="add-btn" onclick="scrollTo('s-modules')"><span class="add-icon">☰</span> Module List</button>
+    <button class="add-btn" onclick="scrollTo('s-track')"><span class="add-icon">◎</span> Track Section</button>
+    <button class="add-btn" onclick="scrollTo('s-cta')"><span class="add-icon">→</span> CTA Section</button>
+    <button class="add-btn" onclick="scrollTo('s-output')"><span class="add-icon">↓</span> Output</button>
+
+    <div class="divider"></div>
+    <h3>Module Types</h3>
+    <div style="font-size:0.78rem; color:var(--text-mid); line-height:1.7;">
+      <strong>Lesson</strong> — Core instructional content<br>
+      <strong>Quiz</strong> — Knowledge check / final assessment<br>
+      <strong>Activity</strong> — Interactive game or exercise<br>
+      <strong>Real World</strong> — Photo identification practice<br>
+      <strong>Reference</strong> — Glossary or reference sheet<br>
+      <strong>Video</strong> — Video-based lesson<br>
+      <strong>Download</strong> — Printable or PDF resource
+    </div>
+
+    <div class="divider"></div>
+    <h3>Save Your Work</h3>
+    <button class="add-btn" onclick="saveJSON()"><span class="add-icon">💾</span> Save as JSON</button>
+    <p style="font-size:0.72rem; color:var(--text-mid); margin-top:0.3rem;">Save progress to re-edit later. Use Load Saved to restore.</p>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="canvas">
+
+    <!-- PAGE SETTINGS -->
+    <div class="section-card" id="s-settings">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">⚙</span>
+        <span class="section-label">Page Settings</span>
+        <span class="section-chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="section-note">These values wire up the CSS paths, nav links, and course-config.js. Set these first.</div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Course ID <span style="color:var(--gold)">*</span></label>
+            <input type="text" id="cfg-id" placeholder="face-markings">
+            <span class="field-hint">Used in course-config.js. Lowercase, no spaces.</span>
+          </div>
+          <div class="field-group">
+            <label>Course Title <span style="color:var(--gold)">*</span></label>
+            <input type="text" id="cfg-title" placeholder="Horse Face Markings">
+          </div>
+        </div>
+        <div class="field-row full">
+          <div class="field-group">
+            <label>Course Folder Path Helper</label>
+            <input type="text" id="cfg-course-path" placeholder="courses/beginner/colors-markings/common-horse-colors">
+            <span class="field-hint">Paste the course folder path and click Fill Paths. This sets depth and All Courses URL for you.</span>
+          </div>
+        </div>
+        <button class="add-item-btn" type="button" onclick="fillPathsFromCoursePath()" style="margin-bottom:0.9rem;">Fill Paths from Course Folder</button>
+        <details style="margin-top:0.2rem;">
+          <summary style="cursor:pointer;font-size:0.78rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.08em;margin-bottom:0.75rem;">Advanced calculated paths</summary>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Depth from Root <span style="color:var(--gold)">*</span></label>
+            <select id="cfg-depth">
+              <option value="2">2 levels (courses/courseName/)</option>
+              <option value="3">3 levels (courses/cat/courseName/)</option>
+              <option value="4" selected>4 levels (courses/level/cat/courseName/)</option>
+              <option value="5">5 levels (courses/level/cat/sub/courseName/)</option>
+            </select>
+            <span class="field-hint">How many folders deep is the course index.html?</span>
+          </div>
+          <div class="field-group">
+            <label>All Courses URL</label>
+            <input type="text" id="cfg-all-courses" placeholder="../../../index.html">
+            <span class="field-hint">Path back to the courses listing page.</span>
+          </div>
+        </div>
+        </details>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Browser Tab Title</label>
+            <input type="text" id="cfg-page-title" placeholder="Horse Face Markings — Equine Edu">
+          </div>
+          <div class="field-group">
+            <label>Meta Description</label>
+            <input type="text" id="cfg-meta-desc" placeholder="Learn face markings through clear examples and interactive practice.">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Custom CSS File (optional)</label>
+            <input type="text" id="cfg-custom-css" placeholder="face-markings.css">
+            <span class="field-hint">Leave blank if no course-specific CSS needed.</span>
+          </div>
+          <div class="field-group">
+            <label>Nav CTA Label</label>
+            <input type="text" id="cfg-nav-cta-label" placeholder="All Courses">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="section-card" id="s-hero">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">★</span>
+        <span class="section-label">Hero Section</span>
+        <span class="section-chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field-group">
+            <label>Category Tag</label>
+            <input type="text" id="hero-tag" placeholder="Colors &amp; Markings">
+            <span class="field-hint">Appears above the headline. Shown in the hero tag pill.</span>
+          </div>
+          <div class="field-group">
+            <label>Headline (Course Title)</label>
+            <input type="text" id="hero-headline" placeholder="Horse Face Markings">
+          </div>
+        </div>
+        <div class="field-row full">
+          <div class="field-group">
+            <label>Hero Description</label>
+            <textarea id="hero-desc" placeholder="Horse face markings are one of the most useful ways to identify and describe individual horses. In this course, learners explore the names, locations, and visual characteristics of common face markings."></textarea>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>First Lesson URL (CTA Button)</label>
+            <input type="text" id="hero-cta-url" placeholder="Auto-filled from Module 1" readonly>
+            <span class="field-hint">Auto-filled from the first module filename when you generate.</span>
+            <button class="add-item-btn" type="button" onclick="syncFirstLessonUrl()" style="margin-top:0.45rem;">Use Module 1 Filename</button>
+          </div>
+          <div class="field-group">
+            <label>CTA Button Label</label>
+            <input type="text" id="hero-cta-label" placeholder="Start Course — It's Free">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Second CTA Button Label</label>
+            <input type="text" id="hero-secondary-label" value="See All Modules" placeholder="See All Modules">
+            <span class="field-hint">Leave blank if you do not want a second button.</span>
+          </div>
+          <div class="field-group">
+            <label>Second CTA Button URL</label>
+            <input type="text" id="hero-secondary-url" value="#curriculum" placeholder="#curriculum">
+            <span class="field-hint">Use #curriculum to jump to the module list.</span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Hero Image Path</label>
+            <input type="text" id="hero-img" placeholder="course-card.png">
+            <span class="field-hint">Optional. Used only on the course index/landing page hero.</span>
+          </div>
+          <div class="field-group">
+            <label>Hero Image Alt Text</label>
+            <input type="text" id="hero-img-alt" placeholder="Horse face markings course illustration">
+          </div>
+        </div>
+        <div class="divider"></div>
+        <p style="font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">Meta Badges <span style="font-weight:400; color:var(--text-mid);">(shown as pills under description)</span></p>
+        <div id="badge-list" class="repeating-list"></div>
+        <button class="add-item-btn" onclick="addBadge()">+ Add Meta Badge</button>
+      </div>
+    </div>
+
+    <!-- WHAT YOU'LL LEARN -->
+    <div class="section-card" id="s-learn">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">✓</span>
+        <span class="section-label">What You'll Learn Section</span>
+        <span class="section-chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="field-row thirds">
+          <div class="field-group">
+            <label>Section Label</label>
+            <input type="text" id="learn-label" placeholder="What You Will Learn" value="What You Will Learn">
+          </div>
+          <div class="field-group">
+            <label>Section Title</label>
+            <input type="text" id="learn-title" placeholder="A Visual Guide to Face Markings">
+          </div>
+          <div class="field-group">
+            <label>Subtitle</label>
+            <input type="text" id="learn-sub" placeholder="This course covers...">
+          </div>
+        </div>
+        <div class="divider"></div>
+        <p style="font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">Learning Outcomes <span style="font-weight:400; color:var(--text-mid);">(checkmark list)</span></p>
+        <div id="outcome-list" class="repeating-list"></div>
+        <button class="add-item-btn" onclick="addOutcome()">+ Add Outcome</button>
+      </div>
+    </div>
+
+    <!-- MODULE LIST -->
+    <div class="section-card" id="s-modules">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">☰</span>
+        <span class="section-label">Course Modules</span>
+        <span class="section-badge" id="module-count-badge">0 modules</span>
+        <span class="section-chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="section-note">Each module becomes one row in the curriculum list and one entry in course-config.js. Module numbers are assigned automatically in order.</div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Curriculum Section Label</label>
+            <input type="text" id="curriculum-label" value="Course Curriculum">
+          </div>
+          <div class="field-group">
+            <label>Curriculum Headline</label>
+            <input type="text" id="curriculum-title" value="A Step-by-Step Learning Experience.">
+          </div>
+        </div>
+        <div class="field-row full">
+          <div class="field-group">
+            <label>Curriculum Subtitle</label>
+            <input type="text" id="curriculum-sub" value="Progress through structured modules that introduce new concepts, reinforce key ideas, and help you build lasting understanding.">
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div id="module-list" class="repeating-list"></div>
+        <button class="add-item-btn" onclick="addModule()">+ Add Module</button>
+      </div>
+    </div>
+
+    <!-- TRACK SECTION -->
+    <div class="section-card" id="s-track">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">◎</span>
+        <span class="section-label">Track Section <span class="baked-badge">BAKED IN</span></span>
+        <span class="section-chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="section-note">This section bakes into every course page automatically. Customize the text here or leave defaults.</div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Headline</label>
+            <input type="text" id="track-headline" value="Built for Anyone Starting Their Horse Journey">
+          </div>
+          <div class="field-group">
+            <label>Subtitle</label>
+            <input type="text" id="track-sub" value="Whether you're just starting out or want to understand horses more clearly, this course meets you where you are.">
+          </div>
+        </div>
+        <div class="field-row full">
+          <div class="field-group">
+            <label>"Who This Is For" Header</label>
+            <input type="text" id="track-who-header" value="Who This Course Is For">
+          </div>
+        </div>
+        <div class="divider"></div>
+        <p style="font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">Feature Bullets (left column)</p>
+        <div id="track-feature-list" class="repeating-list"></div>
+        <button class="add-item-btn" onclick="addTrackFeature()">+ Add Feature</button>
+        <div class="divider"></div>
+        <p style="font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">"Who This Is For" Bullets (right column)</p>
+        <div id="track-who-list" class="repeating-list"></div>
+        <button class="add-item-btn" onclick="addTrackWho()">+ Add Audience Item</button>
+      </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <div class="section-card" id="s-cta">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">→</span>
+        <span class="section-label">CTA Section <span class="baked-badge">BAKED IN</span></span>
+        <span class="section-chevron">▾</span>
+      </div>
+      <div class="section-body">
+        <div class="field-row thirds">
+          <div class="field-group">
+            <label>Label</label>
+            <input type="text" id="cta-label" value="Ready to Start?">
+          </div>
+          <div class="field-group">
+            <label>Headline</label>
+            <input type="text" id="cta-headline" value="Start Building Your Equine Knowledge.">
+          </div>
+          <div class="field-group">
+            <label>Subtitle</label>
+            <input type="text" id="cta-sub" value="Explore structured lessons, practice what you've learned, and build confidence one step at a time.">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Button Label</label>
+            <input type="text" id="cta-btn-label" value="Start the Course">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTPUT -->
+    <div style="text-align:right; margin-bottom:0.5rem;">
+      <button class="topbar-btn" onclick="generateAll()" style="background:var(--gold); color:var(--navy); border:none; cursor:pointer; font-family:var(--font); font-size:0.82rem; font-weight:700; padding:0.55rem 1.2rem; border-radius:8px;">⚡ Generate Files</button>
+    </div>
+    <div class="section-card output-section" id="s-output">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">↓</span>
+        <span class="section-label">Generated Output</span>
+        <span class="section-chevron">▾</span>
+      </div>
+      <div class="section-body" style="padding:0;">
+        <div class="output-tabs" style="padding:0 1rem; background:#F8F7F4;">
+          <button class="output-tab active" onclick="switchOutput('index',this)">index.html</button>
+          <button class="output-tab" onclick="switchOutput('config',this)">course-config.js</button>
+          <button class="output-tab" onclick="switchOutput('savedata',this)">course-data.json</button>
+        </div>
+        <div id="out-index" class="output-pane active">
+          <div class="output-actions">
+            <button class="out-btn" onclick="copyOutput('index')">📋 Copy</button>
+            <button class="out-btn gold" onclick="downloadOutput('index')">⬇ Download index.html</button>
+          </div>
+          <pre class="output-box" id="box-index">Click "⚡ Generate Files" above to generate output.</pre>
+        </div>
+        <div id="out-config" class="output-pane">
+          <div class="output-actions">
+            <button class="out-btn" onclick="copyOutput('config')">📋 Copy</button>
+            <button class="out-btn gold" onclick="downloadOutput('config')">⬇ Download course-config.js</button>
+          </div>
+          <pre class="output-box" id="box-config">Click "⚡ Generate Files" above to generate output.</pre>
+        </div>
+        <div id="out-savedata" class="output-pane">
+          <div class="output-actions">
+            <button class="out-btn" onclick="copyOutput('savedata')">📋 Copy</button>
+            <button class="out-btn gold" onclick="downloadOutput('savedata')">⬇ Download course-data.json</button>
+            <span style="color:rgba(255,255,255,0.5); font-size:0.75rem; margin-left:0.5rem;">Save this file alongside your course — load it here anytime to edit.</span>
+          </div>
+          <pre class="output-box" id="box-savedata">Click "⚡ Generate Files" above to generate output.</pre>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== STATE =====
+let badges = [];
+let outcomes = [];
+let modules = [];
+let trackFeatures = [];
+let trackWho = [];
+let editMode = false;
+let editCourseId = '';
+
+const MODULE_TYPES = ['Lesson','Quiz','Activity','Real World','Reference','Video','Download'];
+
+// ===== INIT =====
+window.addEventListener('DOMContentLoaded', () => {
+  // Add defaults
+  addBadge('Interactive Practice');
+  addBadge('Real Horse Examples');
+  addBadge('Test Your Knowledge');
+  addBadge('Final Quiz');
+
+  addOutcome('Recognize common visual characteristics');
+  addOutcome('Use correct terminology with confidence');
+  addOutcome('Practice identification with examples');
+
+  addTrackFeature('No prior horse knowledge required');
+  addTrackFeature('Clear, confident language anyone can follow');
+  addTrackFeature('A clear, detailed look at each topic and how to understand it confidently.');
+
+  addTrackWho('New students and individuals learning the basics');
+  addTrackWho('Trainers building structured programs for students');
+  addTrackWho('Horse enthusiasts who want to better understand horses');
+  addTrackWho('Anyone building confidence in horse terminology');
+});
+
+// ===== SCROLL =====
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ===== TOGGLE SECTION =====
+function toggleSection(header) {
+  header.parentElement.classList.toggle('collapsed');
+}
+
+function fillPathsFromCoursePath() {
+  const rawPath = v('cfg-course-path');
+  if (!rawPath) {
+    toast('Add a course folder path first');
+    return;
+  }
+
+  let parts = rawPath
+    .replace(/\\/g, '/')
+    .replace(/^["']|["']$/g, '')
+    .split('/')
+    .map(part => part.trim().replace(/^["']|["']$/g, ''))
+    .filter(Boolean);
+
+  const coursesIndex = parts.findIndex(part => part.toLowerCase() === 'courses');
+  if (coursesIndex >= 0) parts = parts.slice(coursesIndex);
+
+  if (parts[parts.length - 1] && /\.html?$/i.test(parts[parts.length - 1])) {
+    parts.pop();
+  }
+
+  if (!parts.length || parts[0].toLowerCase() !== 'courses') {
+    toast('Path should include the courses folder');
+    return;
+  }
+
+  const depth = parts.length;
+  const allCoursesUrl = '../'.repeat(Math.max(depth - 1, 0)) + 'index.html';
+  const depthSelect = document.getElementById('cfg-depth');
+
+  if (![...depthSelect.options].some(opt => opt.value === String(depth))) {
+    const option = document.createElement('option');
+    option.value = String(depth);
+    option.textContent = `${depth} levels (${parts.join('/')}/)`;
+    depthSelect.appendChild(option);
+  }
+
+  depthSelect.value = String(depth);
+  document.getElementById('cfg-all-courses').value = allCoursesUrl;
+
+  const courseId = document.getElementById('cfg-id');
+  if (courseId && !courseId.value.trim()) {
+    courseId.value = parts[parts.length - 1] || '';
+  }
+
+  toast('Paths filled from course folder');
+}
+
+// ===== BADGES =====
+function preserveBadgeValues() {
+  badges.forEach(b => {
+    const input = document.querySelector(`[data-badge="${b.id}"]`);
+    if (input) b.value = input.value;
+  });
+}
+
+function addBadge(val = '') {
+  preserveBadgeValues();
+  const id = Date.now() + Math.random();
+  badges.push({ id, value: val });
+  renderBadges();
+}
+function removeBadge(id) {
+  preserveBadgeValues();
+  badges = badges.filter(b => b.id != id);
+  renderBadges();
+}
+function renderBadges() {
+  const list = document.getElementById('badge-list');
+  list.innerHTML = badges.map((b, i) => `
+    <div class="repeating-item">
+      <div class="item-header">
+        <span class="item-num">${i+1}</span>
+        Meta Badge
+        <button class="remove-btn" onclick="removeBadge(${b.id})" title="Remove">×</button>
+      </div>
+      <input type="text" data-badge="${b.id}" value="${htmlEscape(b.value || '')}" style="width:100%; border:1px solid var(--border); border-radius:6px; padding:0.45rem 0.65rem; font-family:var(--font); font-size:0.85rem;" placeholder="e.g. Interactive Practice">
+    </div>`).join('');
+}
+
+// ===== OUTCOMES =====
+function preserveOutcomeValues() {
+  outcomes.forEach(o => {
+    const input = document.querySelector(`[data-outcome="${o.id}"]`);
+    if (input) o.value = input.value;
+  });
+}
+
+function addOutcome(val = '') {
+  preserveOutcomeValues();
+  const id = Date.now() + Math.random();
+  outcomes.push({ id, value: val });
+  renderOutcomes();
+}
+function removeOutcome(id) {
+  preserveOutcomeValues();
+  outcomes = outcomes.filter(o => o.id != id);
+  renderOutcomes();
+}
+function renderOutcomes() {
+  const list = document.getElementById('outcome-list');
+  list.innerHTML = outcomes.map((o, i) => `
+    <div class="repeating-item">
+      <div class="item-header">
+        <span class="item-num">${i+1}</span>
+        Outcome
+        <button class="remove-btn" onclick="removeOutcome(${o.id})" title="Remove">×</button>
+      </div>
+      <input type="text" data-outcome="${o.id}" value="${htmlEscape(o.value || '')}" style="width:100%; border:1px solid var(--border); border-radius:6px; padding:0.45rem 0.65rem; font-family:var(--font); font-size:0.85rem;" placeholder="e.g. Recognize common face markings">
+    </div>`).join('');
+}
+
+// ===== MODULES =====
+function htmlEscape(value) {
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[ch]));
+}
+
+function preserveModuleValues() {
+  modules.forEach(m => {
+    const title = document.querySelector(`[data-mod-title="${m.id}"]`);
+    const file = document.querySelector(`[data-mod-file="${m.id}"]`);
+    const desc = document.querySelector(`[data-mod-desc="${m.id}"]`);
+    if (title) m.title = title.value;
+    if (file) m.file = file.value;
+    if (desc) m.desc = desc.value;
+  });
+}
+
+function addModule() {
+  preserveModuleValues();
+  const id = Date.now() + Math.random();
+  modules.push({ id, type: 'Lesson', title: '', file: '', desc: '' });
+  renderModules();
+}
+function removeModule(id) {
+  preserveModuleValues();
+  modules = modules.filter(m => m.id != id);
+  renderModules();
+}
+function setModuleType(id, type) {
+  preserveModuleValues();
+  const mod = modules.find(m => m.id == id);
+  if (mod) mod.type = type;
+  // Re-render type selectors only
+  modules.forEach((m, i) => {
+    MODULE_TYPES.forEach(t => {
+      const btn = document.querySelector(`[data-mtype="${m.id}-${t}"]`);
+      if (btn) btn.classList.toggle('selected', m.type === t);
+    });
+  });
+}
+function renderModules() {
+  const list = document.getElementById('module-list');
+  const badge = document.getElementById('module-count-badge');
+  badge.textContent = `${modules.length} module${modules.length !== 1 ? 's' : ''}`;
+  list.innerHTML = modules.map((m, i) => `
+    <div class="repeating-item">
+      <div class="item-header">
+        <span class="item-num">${i+1}</span>
+        Module ${i+1}
+        <button class="remove-btn" onclick="removeModule(${m.id})" title="Remove">×</button>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label>Module Title</label>
+          <input type="text" data-mod-title="${m.id}" value="${htmlEscape(m.title || '')}" placeholder="e.g. Parts of the Horse's Face">
+        </div>
+        <div class="field-group">
+          <label>Filename</label>
+          <input type="text" data-mod-file="${m.id}" value="${htmlEscape(m.file || '')}" placeholder="e.g. face-anatomy.html">
+        </div>
+      </div>
+      <div class="field-group" style="margin-bottom:0.6rem;">
+        <label>Description</label>
+        <input type="text" data-mod-desc="${m.id}" value="${htmlEscape(m.desc || '')}" placeholder="One sentence describing this module's focus.">
+      </div>
+      <div class="field-group">
+        <label>Module Type</label>
+        <div class="type-select">
+          ${MODULE_TYPES.map(t => `<button class="type-opt${m.type === t ? ' selected' : ''}" data-mtype="${m.id}-${t}" onclick="setModuleType(${m.id},'${t}')">${t}</button>`).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function firstModuleFile() {
+  if (!modules.length) return '';
+  const first = modules[0];
+  const fileInput = document.querySelector(`[data-mod-file="${first.id}"]`);
+  return fileInput ? fileInput.value.trim() : '';
+}
+
+function syncFirstLessonUrl() {
+  const firstFile = firstModuleFile();
+  if (firstFile) {
+    document.getElementById('hero-cta-url').value = firstFile;
+    toast('Start Course now points to Module 1');
+  } else {
+    toast('Add a filename for Module 1 first');
+  }
+}
+
+// ===== TRACK FEATURES =====
+function addTrackFeature(val = '') {
+  preserveTrackFeatureValues();
+  const id = Date.now() + Math.random();
+  trackFeatures.push({ id, value: val });
+  renderTrackFeatures();
+}
+function removeTrackFeature(id) {
+  preserveTrackFeatureValues();
+  trackFeatures = trackFeatures.filter(f => f.id != id);
+  renderTrackFeatures();
+}
+function preserveTrackFeatureValues() {
+  trackFeatures.forEach(f => {
+    const input = document.querySelector(`[data-tf="${f.id}"]`);
+    if (input) f.value = input.value;
+  });
+}
+function renderTrackFeatures() {
+  const list = document.getElementById('track-feature-list');
+  list.innerHTML = trackFeatures.map((f, i) => `
+    <div class="repeating-item">
+      <div class="item-header">
+        <span class="item-num">${i+1}</span>
+        Feature
+        <button class="remove-btn" onclick="removeTrackFeature(${f.id})">×</button>
+      </div>
+      <input type="text" data-tf="${f.id}" value="${htmlEscape(f.value || '')}" style="width:100%; border:1px solid var(--border); border-radius:6px; padding:0.45rem 0.65rem; font-family:var(--font); font-size:0.85rem;" placeholder="e.g. No prior horse knowledge required">
+    </div>`).join('');
+}
+
+function addTrackWho(val = '') {
+  preserveTrackWhoValues();
+  const id = Date.now() + Math.random();
+  trackWho.push({ id, value: val });
+  renderTrackWho();
+}
+function removeTrackWho(id) {
+  preserveTrackWhoValues();
+  trackWho = trackWho.filter(w => w.id != id);
+  renderTrackWho();
+}
+function preserveTrackWhoValues() {
+  trackWho.forEach(w => {
+    const input = document.querySelector(`[data-tw="${w.id}"]`);
+    if (input) w.value = input.value;
+  });
+}
+function renderTrackWho() {
+  const list = document.getElementById('track-who-list');
+  list.innerHTML = trackWho.map((w, i) => `
+    <div class="repeating-item">
+      <div class="item-header">
+        <span class="item-num">${i+1}</span>
+        Audience Item
+        <button class="remove-btn" onclick="removeTrackWho(${w.id})">×</button>
+      </div>
+      <input type="text" data-tw="${w.id}" value="${htmlEscape(w.value || '')}" style="width:100%; border:1px solid var(--border); border-radius:6px; padding:0.45rem 0.65rem; font-family:var(--font); font-size:0.85rem;" placeholder="e.g. New students and beginners">
+    </div>`).join('');
+}
+
+// ===== COLLECT DATA =====
+function collectData() {
+  const depth = parseInt(document.getElementById('cfg-depth').value);
+  const root = '../'.repeat(depth);
+  const coursesBack = '../'.repeat(depth - 1);
+
+  const badgeVals = badges.map(b => {
+    const el = document.querySelector(`[data-badge="${b.id}"]`);
+    return el ? el.value.trim() : '';
+  }).filter(Boolean);
+
+  const outcomeVals = outcomes.map(o => {
+    const el = document.querySelector(`[data-outcome="${o.id}"]`);
+    return el ? el.value.trim() : '';
+  }).filter(Boolean);
+
+  const moduleVals = modules.map((m, i) => ({
+    num: i + 1,
+    title: (document.querySelector(`[data-mod-title="${m.id}"]`) || {}).value || '',
+    desc:  (document.querySelector(`[data-mod-desc="${m.id}"]`)  || {}).value || '',
+    file:  (document.querySelector(`[data-mod-file="${m.id}"]`)  || {}).value || '',
+    type: m.type
+  }));
+
+  const tfVals = trackFeatures.map(f => {
+    const el = document.querySelector(`[data-tf="${f.id}"]`);
+    return el ? el.value.trim() : '';
+  }).filter(Boolean);
+
+  const twVals = trackWho.map(w => {
+    const el = document.querySelector(`[data-tw="${w.id}"]`);
+    return el ? el.value.trim() : '';
+  }).filter(Boolean);
+
+  const moduleOneFile = moduleVals[0]?.file || '';
+  if (moduleOneFile) {
+    const heroCtaInput = document.getElementById('hero-cta-url');
+    if (heroCtaInput) heroCtaInput.value = moduleOneFile;
+  }
+
+  return {
+    id:            v('cfg-id'),
+    title:         v('cfg-title'),
+    depth,
+    root,
+    coursesBack,
+    allCoursesUrl: v('cfg-all-courses') || `${coursesBack}index.html`,
+    pageTitle:     v('cfg-page-title')  || `${v('hero-headline') || v('cfg-title')} — Equine Edu`,
+    metaDesc:      v('cfg-meta-desc'),
+    customCss:     v('cfg-custom-css'),
+    navCtaLabel:   v('cfg-nav-cta-label') || 'All Courses',
+    hero: {
+      tag:       v('hero-tag'),
+      headline:  v('hero-headline')   || v('cfg-title'),
+      desc:      v('hero-desc'),
+      ctaUrl:    moduleOneFile || v('hero-cta-url'),
+      ctaLabel:  v('hero-cta-label') || "Start Course — It's Free",
+      secondaryLabel: v('hero-secondary-label'),
+      secondaryUrl:   v('hero-secondary-url') || '#curriculum',
+      img:       v('hero-img'),
+      imgAlt:    v('hero-img-alt'),
+      badges:    badgeVals
+    },
+    learn: {
+      label:    v('learn-label'),
+      title:    v('learn-title'),
+      sub:      v('learn-sub'),
+      outcomes: outcomeVals
+    },
+    modules:   moduleVals,
+    track: {
+      headline:   v('track-headline'),
+      sub:        v('track-sub'),
+      whoHeader:  v('track-who-header'),
+      features:   tfVals,
+      who:        twVals
+    },
+    cta: {
+      label:          v('cta-label'),
+      headline:       v('cta-headline'),
+      sub:            v('cta-sub'),
+      btnLabel:       v('cta-btn-label'),
+      currLabel:      v('curriculum-label'),
+      currTitle:      v('curriculum-title'),
+      currSub:        v('curriculum-sub')
+    }
+  };
+}
+function v(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+// ===== GENERATE =====
+function generateAll() {
+  const d = collectData();
+  document.getElementById('box-index').textContent  = buildIndexHTML(d);
+  document.getElementById('box-config').textContent = buildConfigJS(d);
+  try {
+    document.getElementById('box-savedata').textContent = JSON.stringify(buildSaveData(), null, 2);
+  } catch(e) {
+    document.getElementById('box-savedata').textContent = '// Error building save data: ' + e.message;
+  }
+  document.getElementById('s-output').classList.remove('collapsed');
+  document.getElementById('s-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  toast('Files generated!');
+}
+
+function generatorDataScript(data) {
+  const safeJson = JSON.stringify(data, null, 2).replace(/<\/script>/gi, '<\\/script>');
+  return `<script type="application/json" id="equine-edu-generator-data">\n${safeJson}\n<\/script>`;
+}
+
+function buildIndexHTML(d) {
+  const cssDepth = d.root;
+  const customCssLine = d.customCss
+    ? `\n<link rel="stylesheet" href="${d.customCss}">`
+    : '';
+
+  const badges = d.hero.badges.length
+    ? `\n      <div class="course-meta-row">\n        ${d.hero.badges.map(b => `<div class="meta-item">${b}</div>`).join('\n        ')}\n      </div>`
+    : '';
+
+  const secondaryHeroCta = d.hero.secondaryLabel
+    ? `\n        <a href="${d.hero.secondaryUrl || '#curriculum'}" class="btn-outline">${d.hero.secondaryLabel}</a>`
+    : '';
+
+  const heroArt = d.hero.img
+    ? `\n    <div class="course-hero-art">\n      <img src="${d.hero.img}" alt="${d.hero.imgAlt || ''}">\n    </div>`
+    : '';
+  const heroClass = d.hero.img ? 'course-hero hero-centered has-hero-art' : 'course-hero hero-centered';
+
+  const outcomes = d.learn.outcomes.map(o =>
+    `      <div class="outcome-item"><span class="outcome-check">&check;</span> ${o}</div>`
+  ).join('\n');
+
+  const trackFeatures = d.track.features.map(f =>
+    `        <li><span class="track-dot"></span>${f}</li>`
+  ).join('\n');
+
+  const trackWho = d.track.who.map(w =>
+    `          <li><span class="track-dot"></span>${w}</li>`
+  ).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${d.pageTitle}</title>
+<meta name="description" content="${d.metaDesc}">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="${cssDepth}assets/css/core.css">
+<link rel="stylesheet" href="${cssDepth}assets/css/components.css">
+<link rel="stylesheet" href="${cssDepth}assets/css/course.css">${customCssLine}
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<section class="${heroClass}">
+  <div class="course-hero-inner">
+    <div class="course-hero-text">
+      <div class="course-tag"><span>${d.hero.tag}</span></div>
+      <h1>${d.hero.headline}</h1>
+      <p class="course-hero-desc">${d.hero.desc}</p>${badges}
+      <div class="hero-actions">
+        <a href="${d.hero.ctaUrl}" class="btn-primary">${d.hero.ctaLabel}</a>
+        ${secondaryHeroCta}
+      </div>
+    </div>
+  </div>${heroArt}
+</section>
+
+<section class="learn-section">
+  <div class="learn-inner">
+    <div>
+      <p class="section-label">${d.learn.label}</p>
+      <h2 class="section-title">${d.learn.title}</h2>
+      <p class="section-sub">${d.learn.sub}</p>
+    </div>
+    <div class="outcomes-grid">
+${outcomes}
+    </div>
+  </div>
+</section>
+
+<section class="curriculum-section" id="curriculum">
+  <div class="curriculum-inner">
+    <p class="section-label">${d.cta.currLabel}</p>
+    <h2 class="section-title">${d.cta.currTitle}</h2>
+    <p class="section-sub">${d.cta.currSub}</p>
+    <div class="module-list" id="course-module-list"></div>
+  </div>
+</section>
+
+<section class="track-section">
+  <div class="track-inner">
+    <div class="fade-in">
+      <h2 class="section-title" style="color:var(--white);">${d.track.headline}</h2>
+      <p class="section-sub">${d.track.sub}</p>
+      <ul class="track-features">
+${trackFeatures}
+      </ul>
+    </div>
+
+    <div class="track-visual fade-in">
+      <h4>${d.track.whoHeader}</h4>
+      <ul class="alignment-list">
+${trackWho}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner fade-in">
+    <p class="section-label" style="text-align:center; display:block;">${d.cta.label}</p>
+    <h2 class="section-title">${d.cta.headline}</h2>
+    <p class="section-sub">${d.cta.sub}</p>
+    <a href="${d.hero.ctaUrl}" class="btn-primary">${d.cta.btnLabel}</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+  window.LAYOUT = {
+    homeUrl: '${d.root}index.html',
+    coursesUrl: '${d.allCoursesUrl}',
+    navCta: { label: '${d.navCtaLabel}', url: '${d.allCoursesUrl}' }
+  };
+<\/script>
+<script src="course-config.js"><\/script>
+<script>
+  (function () {
+    const list = document.getElementById('course-module-list');
+    if (!list || !window.COURSE_CONFIG) return;
+    list.innerHTML = window.COURSE_CONFIG.modules.map(m => \`
+      <a href="\${m.file}" class="module-item fade-in">
+        <div class="module-num">\${m.num}</div>
+        <div class="module-info">
+          <div class="module-title">\${m.title}</div>
+          <div class="module-desc">\${m.desc}</div>
+        </div>
+        <div class="module-duration">\${m.type}</div>
+        <div class="module-arrow">&rarr;</div>
+      </a>\`).join('');
+  })();
+<\/script>
+<script src="${d.root}assets/js/layout.js"><\/script>
+${generatorDataScript(buildSaveData())}
+</body>
+</html>`;
+}
+
+function buildConfigJS(d) {
+  const allCoursesDepth = d.allCoursesUrl || `${'../'.repeat(d.depth - 1)}index.html`;
+  const homeUrl = `${'../'.repeat(d.depth)}index.html`;
+
+  const moduleEntries = d.modules.map((m, i) => {
+    const title = m.title.replace(/'/g, "\\'");
+    const desc  = m.desc.replace(/'/g, "\\'");
+    return `    {
+      num:   ${m.num},
+      title: '${title}',
+      type:  '${m.type}',
+      file:  '${m.file}',
+      desc:  '${desc}'
+    }`;
+  }).join(',\n');
+
+  return `/* =============================================================================
+   Equine Edu — ${d.title} — Course Config
+   Single source of truth for this course's module list.
+   Loaded by every lesson page in this folder.
+   To add or reorder a module, edit this file only.
+   ============================================================================= */
+
+window.COURSE_CONFIG = {
+  id:            '${d.id}',
+  title:         '${d.title.replace(/'/g, "\\'")}',
+  indexUrl:      'index.html',
+  allCoursesUrl: '${allCoursesDepth}',
+  homeUrl:       '${homeUrl}',
+
+  modules: [
+${moduleEntries}
+  ]
+};`;
+}
+
+// ===== OUTPUT TABS =====
+function switchOutput(tab, btn) {
+  document.querySelectorAll('.output-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.output-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(`out-${tab}`).classList.add('active');
+  btn.classList.add('active');
+}
+
+function copyOutput(tab) {
+  const box = document.getElementById(`box-${tab}`);
+  navigator.clipboard.writeText(box.textContent).then(() => toast('Copied to clipboard!'));
+}
+
+function downloadOutput(tab) {
+  const box = document.getElementById(`box-${tab}`);
+  const content = box.textContent;
+  if (!content || content.startsWith('Click')) { toast('Generate files first!'); return; }
+  const courseId = v('cfg-id') || 'course';
+  const fileMap = {
+    index:    { name: 'index.html',             mime: 'text/html' },
+    config:   { name: 'course-config.js',       mime: 'text/javascript' },
+    savedata: { name: `${courseId}-data.json`,  mime: 'application/json' }
+  };
+  const { name, mime } = fileMap[tab] || { name: tab, mime: 'text/plain' };
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type: mime }));
+  a.download = name;
+  a.click();
+  toast(`Downloaded ${name}`);
+}
+
+// ===== SAVE / LOAD =====
+
+// Shared helper — builds the full save data object from current form state
+function buildSaveData() {
+  return {
+    settings: {
+      id: v('cfg-id'), title: v('cfg-title'), depth: v('cfg-depth'),
+      coursePath: v('cfg-course-path'),
+      allCoursesUrl: v('cfg-all-courses'), pageTitle: v('cfg-page-title'),
+      metaDesc: v('cfg-meta-desc'), customCss: v('cfg-custom-css'),
+      navCtaLabel: v('cfg-nav-cta-label')
+    },
+    hero: {
+      tag: v('hero-tag'), headline: v('hero-headline'), desc: v('hero-desc'),
+      ctaUrl: v('hero-cta-url'), ctaLabel: v('hero-cta-label'),
+      secondaryLabel: v('hero-secondary-label'), secondaryUrl: v('hero-secondary-url'),
+      img: v('hero-img'), imgAlt: v('hero-img-alt'),
+      badges: badges.map(b => { const el = document.querySelector(`[data-badge="${b.id}"]`); return el ? el.value : ''; })
+    },
+    learn: {
+      label: v('learn-label'), title: v('learn-title'), sub: v('learn-sub'),
+      outcomes: outcomes.map(o => { const el = document.querySelector(`[data-outcome="${o.id}"]`); return el ? el.value : ''; })
+    },
+    modules: modules.map(m => ({
+      title: (document.querySelector(`[data-mod-title="${m.id}"]`) || {}).value || '',
+      desc:  (document.querySelector(`[data-mod-desc="${m.id}"]`)  || {}).value || '',
+      file:  (document.querySelector(`[data-mod-file="${m.id}"]`)  || {}).value || '',
+      type: m.type
+    })),
+    track: {
+      headline: v('track-headline'), sub: v('track-sub'), whoHeader: v('track-who-header'),
+      features: trackFeatures.map(f => { const el = document.querySelector(`[data-tf="${f.id}"]`); return el ? el.value : ''; }),
+      who: trackWho.map(w => { const el = document.querySelector(`[data-tw="${w.id}"]`); return el ? el.value : ''; })
+    },
+    cta: {
+      label: v('cta-label'), headline: v('cta-headline'), sub: v('cta-sub'),
+      btnLabel: v('cta-btn-label'), currLabel: v('curriculum-label'),
+      currTitle: v('curriculum-title'), currSub: v('curriculum-sub')
+    }
+  };
+}
+
+function saveJSON() {
+  const data = buildSaveData();
+  const courseId = data.settings.id || 'course';
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+  a.download = `${courseId}-data.json`;
+  a.click();
+  toast('JSON saved!');
+}
+
+function loadSaved() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = '.json,.html,.htm';
+  input.onchange = e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = evt => {
+      try {
+        const data = parseLoadedGeneratorData(evt.target.result, file.name);
+        applyLoaded(data);
+        // Enter edit mode
+        editMode = true;
+        editCourseId = data.settings?.id || data.settings?.title || file.name.replace('-data.json','').replace('-generator-save.json','');
+        document.getElementById('edit-course-name').textContent = data.settings?.title || editCourseId;
+        document.getElementById('edit-banner').classList.add('show');
+        document.getElementById('mode-pill').classList.add('edit-active');
+        document.getElementById('mode-label').textContent = 'Edit Mode';
+        toast('Course loaded for editing!');
+      } catch (err) { toast(err.message || 'Error: invalid generator file.'); }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+function parseLoadedGeneratorData(text, fileName = '') {
+  const trimmed = String(text || '').trim();
+  if (!trimmed) throw new Error('Error: empty file.');
+  if (trimmed[0] === '{') return JSON.parse(trimmed);
+
+  const doc = new DOMParser().parseFromString(trimmed, 'text/html');
+  const embedded = doc.getElementById('equine-edu-generator-data');
+  if (embedded && embedded.textContent.trim()) {
+    return JSON.parse(embedded.textContent);
+  }
+
+  return importCourseHTMLFallback(doc, fileName);
+}
+
+function cleanText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function importCourseHTMLFallback(doc, fileName = '') {
+  const titleText = cleanText(doc.querySelector('.course-hero h1, h1')?.textContent);
+  if (!titleText) {
+    throw new Error(`I could not read this as a course landing page${fileName ? ': ' + fileName : ''}.`);
+  }
+
+  const moduleLinks = [...doc.querySelectorAll('.module-list a, .module-item')].map((link, i) => ({
+    title: cleanText(link.querySelector('.module-title')?.textContent || link.textContent),
+    desc: cleanText(link.querySelector('.module-desc')?.textContent),
+    file: link.getAttribute('href') || '',
+    type: cleanText(link.querySelector('.module-duration, .module-type')?.textContent) || 'Lesson'
+  })).filter(m => m.title);
+
+  return {
+    settings: {
+      id: fileName ? fileName.replace(/\.html?$/i, '').replace(/-?index$/i, '') : '',
+      title: titleText,
+      depth: '4',
+      allCoursesUrl: doc.querySelector('script')?.textContent.match(/coursesUrl:\s*['"]([^'"]+)['"]/)?.[1] || '../../../index.html',
+      pageTitle: cleanText(doc.querySelector('title')?.textContent),
+      metaDesc: doc.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+      navCtaLabel: 'All Courses'
+    },
+    hero: {
+      tag: cleanText(doc.querySelector('.course-tag')?.textContent),
+      headline: titleText,
+      desc: cleanText(doc.querySelector('.course-hero-desc, .course-hero p')?.textContent),
+      ctaUrl: doc.querySelector('.hero-actions a, .course-hero .btn-primary')?.getAttribute('href') || '',
+      ctaLabel: cleanText(doc.querySelector('.hero-actions a, .course-hero .btn-primary')?.textContent),
+      secondaryLabel: cleanText(doc.querySelector('.hero-actions .btn-outline')?.textContent),
+      secondaryUrl: doc.querySelector('.hero-actions .btn-outline')?.getAttribute('href') || '#curriculum',
+      img: doc.querySelector('.course-hero-art img')?.getAttribute('src') || '',
+      imgAlt: doc.querySelector('.course-hero-art img')?.getAttribute('alt') || '',
+      badges: [...doc.querySelectorAll('.course-meta-row .meta-item')].map(el => cleanText(el.textContent)).filter(Boolean)
+    },
+    learn: {
+      label: cleanText(doc.querySelector('.learn-section .section-label')?.textContent),
+      title: cleanText(doc.querySelector('.learn-section .section-title')?.textContent),
+      sub: cleanText(doc.querySelector('.learn-section .section-sub')?.textContent),
+      outcomes: [...doc.querySelectorAll('.learn-section .outcome-item')].map(el => cleanText(el.textContent.replace('✓', ''))).filter(Boolean)
+    },
+    modules: moduleLinks,
+    track: {
+      headline: cleanText(doc.querySelector('.track-section .section-title')?.textContent),
+      sub: cleanText(doc.querySelector('.track-section .section-sub')?.textContent),
+      whoHeader: cleanText(doc.querySelector('.track-visual h4, .track-section h4')?.textContent),
+      features: [...doc.querySelectorAll('.track-features li')].map(el => cleanText(el.textContent)).filter(Boolean),
+      who: [...doc.querySelectorAll('.alignment-list li')].map(el => cleanText(el.textContent)).filter(Boolean)
+    },
+    cta: {
+      label: cleanText(doc.querySelector('.cta-section .section-label')?.textContent),
+      headline: cleanText(doc.querySelector('.cta-section .section-title')?.textContent),
+      sub: cleanText(doc.querySelector('.cta-section .section-sub')?.textContent),
+      btnLabel: cleanText(doc.querySelector('.cta-section .btn-primary')?.textContent),
+      currLabel: cleanText(doc.querySelector('.curriculum-section .section-label')?.textContent),
+      currTitle: cleanText(doc.querySelector('.curriculum-section .section-title')?.textContent),
+      currSub: cleanText(doc.querySelector('.curriculum-section .section-sub')?.textContent)
+    }
+  };
+}
+
+function exitEditMode() {
+  editMode = false;
+  editCourseId = '';
+  document.getElementById('edit-banner').classList.remove('show');
+  document.getElementById('mode-pill').classList.remove('edit-active');
+  document.getElementById('mode-label').textContent = 'Create Mode';
+  toast('Returned to Create Mode');
+}
+
+function applyLoaded(data) {
+  // Settings
+  if (data.settings) {
+    setv('cfg-id', data.settings.id);
+    setv('cfg-title', data.settings.title);
+    setv('cfg-depth', data.settings.depth);
+    setv('cfg-course-path', data.settings.coursePath);
+    setv('cfg-all-courses', data.settings.allCoursesUrl);
+    setv('cfg-page-title', data.settings.pageTitle);
+    setv('cfg-meta-desc', data.settings.metaDesc);
+    setv('cfg-custom-css', data.settings.customCss);
+    setv('cfg-nav-cta-label', data.settings.navCtaLabel);
+  }
+  if (data.hero) {
+    setv('hero-tag', data.hero.tag); setv('hero-headline', data.hero.headline);
+    setv('hero-desc', data.hero.desc); setv('hero-cta-url', data.hero.ctaUrl);
+    setv('hero-cta-label', data.hero.ctaLabel);
+    setv('hero-secondary-label', data.hero.secondaryLabel);
+    setv('hero-secondary-url', data.hero.secondaryUrl);
+    setv('hero-img', data.hero.img);
+    setv('hero-img-alt', data.hero.imgAlt);
+    badges = []; renderBadges();
+    (data.hero.badges || []).forEach(b => addBadge(b));
+  }
+  if (data.learn) {
+    setv('learn-label', data.learn.label); setv('learn-title', data.learn.title);
+    setv('learn-sub', data.learn.sub);
+    outcomes = []; renderOutcomes();
+    (data.learn.outcomes || []).forEach(o => addOutcome(o));
+  }
+  if (data.modules) {
+    modules = data.modules.map(m => ({
+      id: Date.now() + Math.random(),
+      type: m.type || 'Lesson',
+      title: m.title || '',
+      desc: m.desc || '',
+      file: m.file || ''
+    }));
+    renderModules();
+  }
+  if (data.track) {
+    setv('track-headline', data.track.headline); setv('track-sub', data.track.sub);
+    setv('track-who-header', data.track.whoHeader);
+    trackFeatures = []; renderTrackFeatures();
+    (data.track.features || []).forEach(f => addTrackFeature(f));
+    trackWho = []; renderTrackWho();
+    (data.track.who || []).forEach(w => addTrackWho(w));
+  }
+  if (data.cta) {
+    setv('cta-label', data.cta.label); setv('cta-headline', data.cta.headline);
+    setv('cta-sub', data.cta.sub); setv('cta-btn-label', data.cta.btnLabel);
+    setv('curriculum-label', data.cta.currLabel); setv('curriculum-title', data.cta.currTitle);
+    setv('curriculum-sub', data.cta.currSub);
+  }
+}
+
+function setv(id, val) { const el = document.getElementById(id); if (el && val !== undefined) el.value = val; }
+function setEl(sel, val) { const el = document.querySelector(sel); if (el && val !== undefined) el.value = val; }
+
+function clearAll() {
+  if (!confirm('Clear all fields and start fresh?')) return;
+  badges = []; outcomes = []; modules = []; trackFeatures = []; trackWho = [];
+  renderBadges(); renderOutcomes(); renderModules(); renderTrackFeatures(); renderTrackWho();
+  document.querySelectorAll('input, textarea').forEach(el => { el.value = ''; });
+  setv('hero-secondary-label', 'See All Modules');
+  setv('hero-secondary-url', '#curriculum');
+  const placeholder = 'Click "⚡ Generate Files" above to generate output.';
+  document.getElementById('box-index').textContent    = placeholder;
+  document.getElementById('box-config').textContent   = placeholder;
+  document.getElementById('box-savedata').textContent = placeholder;
+  // Exit edit mode
+  editMode = false;
+  editCourseId = '';
+  document.getElementById('edit-banner').classList.remove('show');
+  document.getElementById('mode-pill').classList.remove('edit-active');
+  document.getElementById('mode-label').textContent = 'Create Mode';
+  toast('Cleared!');
+}
+
+// ===== TOAST =====
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+</script>
+</body>
+</html>

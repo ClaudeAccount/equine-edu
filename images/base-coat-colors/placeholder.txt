@@ -1,0 +1,14 @@
+Upload three horse comparison photos to this folder:
+
+  chestnut-compare.jpg   — A chestnut horse (full body or side profile, good lighting)
+  black-compare.jpg      — A black horse (same crop/angle as chestnut if possible)
+  bay-compare.jpg        — A bay horse (same crop/angle)
+
+Tips for best slider results:
+- Same image dimensions for all three (e.g. 1200×800)
+- Side profile or 3/4 view works best
+- Good lighting so coat color reads clearly
+- Similar background across all three if possible
+
+Once uploaded, the slider placeholders on comparing-base-colors.html
+will automatically swap in the real photos — no code changes needed.

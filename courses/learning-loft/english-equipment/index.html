@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Activities &mdash; English Equipment &mdash; Equine Edu</title>
+<meta name="description" content="Practice labeling the parts of an English saddle and English bridle.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../assets/css/course.css">
+<style>
+.lesson-wrap { grid-template-columns:minmax(0,1040px); justify-content:center; }
+.lesson-left { max-width:none; }
+.activity-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.5rem; }
+.activity-card { display:flex; flex-direction:column; background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; text-decoration:none; transition:box-shadow var(--motion-quick) var(--ease), transform var(--motion-quick) var(--ease); }
+.activity-card:hover { box-shadow:0 10px 32px rgba(13,27,62,0.12); transform:translateY(-3px); }
+.activity-card-image { position:relative; width:100%; aspect-ratio:4 / 3; overflow:hidden; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:var(--off-white); }
+.activity-card-image img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; padding:0.75rem; }
+.activity-card-tag { position:absolute; bottom:0.75rem; left:0.75rem; background:rgba(13,27,62,0.72); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); border:1px solid rgba(201,168,76,0.35); border-radius:999px; padding:0.25rem 0.7rem; font-size:0.65rem; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); }
+.activity-card-body { padding:0.9rem 1rem 0.75rem; flex:1; display:flex; flex-direction:column; }
+.activity-card-name { font-family:var(--font-display); font-size:0.95rem; color:var(--navy); line-height:1.3; }
+.activity-card-body p { display:none; }
+.activity-card-footer { padding:0.7rem 1rem; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.activity-card-footer span { font-size:0.78rem; font-weight:700; color:var(--gold); letter-spacing:0.04em; }
+.activity-card-footer svg { color:var(--gold); }
+.learning-loft-return { display:flex; justify-content:center; margin-top:2rem; }
+.learning-loft-return a { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:0.75rem 1.4rem; border-radius:var(--radius-md); background:var(--gold); color:var(--navy); font-weight:800; text-decoration:none; box-shadow:0 10px 26px rgba(13,27,62,0.14); transition:transform var(--motion-quick) var(--ease), box-shadow var(--motion-quick) var(--ease); }
+.learning-loft-return a:hover { transform:translateY(-2px); box-shadow:0 14px 32px rgba(13,27,62,0.18); }
+.barn-intro { background:var(--off-white); border:1px solid var(--border); border-left:4px solid var(--navy); border-radius:0 var(--radius-lg) var(--radius-lg) 0; padding:1.4rem 1.5rem; margin-bottom:2rem; }
+.barn-intro h2 { font-family:var(--font-display); font-size:1.2rem; color:var(--navy); margin-bottom:0.5rem; }
+.barn-intro p { color:var(--text-mid); font-size:0.9rem; line-height:1.7; margin:0; }
+@media (max-width:760px){ .activity-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">English Equipment</div>
+      <h1 class="lesson-hero-title">Interactive <span>Activities</span></h1>
+      <p class="lesson-hero-desc">Practice labeling the parts of an English saddle and English bridle.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="barn-intro">
+      <h2>Choose Your Activity</h2>
+      <p>Each activity uses its own Learning Loft copy of the equipment image and callout coordinates, so this practice area can stay separate from the course Training Barn.</p>
+    </div>
+
+    <div class="visual-card">
+      <h2>Pick an Activity</h2>
+      <p class="visual-instructions">Both activities shuffle the numbers each round so you practice the equipment parts instead of memorizing the order.</p>
+
+      <div class="activity-grid">
+        <a href="label-english-saddle.html" class="activity-card">
+          <div class="activity-card-image">
+            <img src="images/english-saddle-parts.png" alt="">
+            <div class="activity-card-tag">Labeling</div>
+          </div>
+          <div class="activity-card-body">
+            <div class="activity-card-name">Label the English Saddle</div>
+            <p>Match saddle part names to the correct locations.</p>
+          </div>
+          <div class="activity-card-footer">
+            <span>Play Now</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </a>
+
+        <a href="label-english-bridle.html" class="activity-card">
+          <div class="activity-card-image">
+            <img src="images/english-bridle-parts.png" alt="">
+            <div class="activity-card-tag">Labeling</div>
+          </div>
+          <div class="activity-card-body">
+            <div class="activity-card-name">Label the English Bridle</div>
+            <p>Match bridle part names to the correct locations.</p>
+          </div>
+          <div class="activity-card-footer">
+            <span>Play Now</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </a>
+      </div>
+
+      <div class="learning-loft-return">
+        <a href="../../index.html#lab">Back to Learning Loft</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.LAYOUT = {
+    homeUrl: '../../../index.html',
+    coursesUrl: '../../index.html',
+    navCta: { label: 'Back to Learning Loft', url: '../../index.html#lab' }
+  };
+</script>
+<script src="../../../assets/js/layout.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equine Edu - Quiz Builder</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --navy: #0D1B3E;
+    --gold: #D4AF37;
+    --paper: #F5EFE2;
+    --white: #fff;
+    --ink: #07183b;
+    --muted: #667190;
+    --border: #ddd6c8;
+    --radius: 8px;
+  }
+  body {
+    margin: 0;
+    font-family: "DM Sans", "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    min-height: 58px;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--navy);
+    color: var(--white);
+    border-bottom: 3px solid var(--gold);
+  }
+  .topbar h1 {
+    flex: 1;
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+  }
+  .topbar span { color: var(--gold); }
+  button, input, textarea, select { font: inherit; }
+  button {
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 800;
+  }
+  .btn {
+    padding: 0.62rem 0.95rem;
+    background: var(--navy);
+    color: var(--white);
+  }
+  .btn.gold {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .btn.light {
+    background: rgba(255,255,255,0.14);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .btn.ghost {
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--border);
+  }
+  .app {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    min-height: calc(100vh - 58px);
+  }
+  .side {
+    position: sticky;
+    top: 58px;
+    height: calc(100vh - 58px);
+    overflow: auto;
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    padding: 1.2rem;
+  }
+  .side h2,
+  .panel h2,
+  .panel h3 {
+    margin: 0 0 0.8rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .side p {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+  .side .btn { width: 100%; margin: 0 0 0.55rem; text-align: left; }
+  .main {
+    padding: 1.6rem;
+    max-width: 1200px;
+    width: 100%;
+  }
+  .panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 36px rgba(13,27,62,0.08);
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem; }
+  .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  input, textarea, select {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.58rem 0.72rem;
+    color: var(--ink);
+    background: #fbfaf7;
+  }
+  textarea { min-height: 76px; resize: vertical; line-height: 1.5; }
+  .hint {
+    margin: 0.3rem 0 0;
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+  .question {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fbfaf7;
+    margin-bottom: 0.85rem;
+    overflow: hidden;
+  }
+  .question-head {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--navy);
+    color: var(--white);
+    padding: 0.72rem 0.9rem;
+  }
+  .question-head strong { flex: 1; }
+  .question-head button {
+    padding: 0.35rem 0.55rem;
+    background: rgba(255,255,255,0.13);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+  .question-body { padding: 0.95rem; }
+  .field { margin-bottom: 0.85rem; }
+  .output-tabs {
+    display: flex;
+    gap: 0.45rem;
+    margin-bottom: 0.75rem;
+  }
+  .output-tabs button {
+    padding: 0.45rem 0.85rem;
+    background: #f2eee6;
+    color: var(--ink);
+  }
+  .output-tabs button.active {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  pre {
+    max-height: 460px;
+    overflow: auto;
+    margin: 0;
+    padding: 1rem;
+    border-radius: var(--radius);
+    background: #07122f;
+    color: #f4efe4;
+    white-space: pre-wrap;
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+  .toast {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    background: var(--navy);
+    color: var(--white);
+    border-left: 4px solid var(--gold);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    transform: translateY(120%);
+    opacity: 0;
+    transition: 0.22s ease;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .side { position: static; height: auto; }
+    .grid, .grid.three { grid-template-columns: 1fr; }
+    .topbar { flex-wrap: wrap; padding: 0.8rem 1rem; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <h1>Equine Edu <span>Quiz Builder</span></h1>
+  <button class="btn light" onclick="document.getElementById('load-json').click()">Load JSON / HTML</button>
+  <button class="btn light" onclick="downloadJSON()">Save JSON</button>
+  <button class="btn gold" onclick="generate()">Generate Quiz</button>
+  <input type="file" id="load-json" accept="application/json,.json,.html,.htm" hidden onchange="loadJSON(event)">
+</header>
+
+<div class="app">
+  <aside class="side">
+    <h2>Builder Set</h2>
+    <p>This is the third builder: full quiz pages with a question bank, randomized draw count, feedback, scoring, and optional side images.</p>
+    <button class="btn" onclick="location.href='course-generator.html'">Course Landing Builder</button>
+    <button class="btn" onclick="location.href='lesson-builder.html'">Lesson Page Builder</button>
+    <button class="btn gold" onclick="location.href='quiz-builder.html'">Quiz Builder</button>
+    <h2 style="margin-top:1.4rem;">Question Types</h2>
+    <p>Use multiple choice, true/false, and photo identification questions. Any question can use the side-image layout.</p>
+  </aside>
+
+  <main class="main">
+    <section class="panel">
+      <h2>Quiz Settings</h2>
+      <div class="grid">
+        <div class="field">
+          <label>Browser Title</label>
+          <input id="page-title" value="Final Quiz - Equine Edu">
+        </div>
+        <div class="field">
+          <label>Output Filename</label>
+          <input id="filename" value="final-quiz.html">
+        </div>
+      </div>
+      <div class="grid">
+        <div class="field">
+          <label>Quiz Tag</label>
+          <input id="quiz-tag" value="Final Quiz">
+        </div>
+        <div class="field">
+          <label>Quiz Heading</label>
+          <input id="quiz-title" value="Course Knowledge Check">
+        </div>
+      </div>
+      <div class="field">
+        <label>Quiz Description</label>
+        <textarea id="quiz-desc">Answer each question, check your feedback, and try again as needed.</textarea>
+      </div>
+      <div class="grid three">
+        <div class="field">
+          <label>Current Module Number</label>
+          <input id="module-num" type="number" value="5">
+        </div>
+        <div class="field">
+          <label>Draw Count</label>
+          <input id="draw-count" type="number" value="15">
+          <p class="hint">Example: draw 15 questions from a 35-question bank.</p>
+        </div>
+        <div class="field">
+          <label>Relative Asset Depth</label>
+          <input id="asset-depth" value="../../../../">
+        </div>
+      </div>
+      <div class="grid">
+        <div class="field">
+          <label>Course Config Path</label>
+          <input id="config-path" value="course-config.js">
+        </div>
+        <div class="field">
+          <label>Progress Key</label>
+          <input id="progress-key" value="">
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Question Bank</h2>
+      <div id="questions"></div>
+      <button class="btn gold" onclick="addQuestion()">Add Question</button>
+    </section>
+
+    <section class="panel" id="output-panel" hidden>
+      <h2>Generated Output</h2>
+      <div class="output-tabs">
+        <button class="active" onclick="showOutput('html', this)">HTML</button>
+        <button onclick="showOutput('json', this)">JSON</button>
+      </div>
+      <pre id="output"></pre>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.8rem;">
+        <button class="btn gold" onclick="downloadHTML()">Download HTML</button>
+        <button class="btn ghost" onclick="downloadJSON()">Download JSON</button>
+        <button class="btn ghost" onclick="copyOutput()">Copy Current Output</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let questions = [
+  {
+    type: 'mc',
+    prompt: 'What color is this horse?',
+    options: ['Bay', 'Gray', 'Palomino', 'Black'],
+    answer: 'Bay',
+    explanation: 'Bay horses have a brown body with black points on the mane, tail, legs, and ear edges.',
+    image: '',
+    layout: 'text'
+  }
+];
+let generatedHTML = '';
+let generatedJSON = '';
+let currentOutput = 'html';
+
+const $ = id => document.getElementById(id);
+const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]));
+
+function field(id) {
+  return $(id).value.trim();
+}
+
+function toast(message) {
+  const box = $('toast');
+  box.textContent = message;
+  box.classList.add('show');
+  setTimeout(() => box.classList.remove('show'), 1800);
+}
+
+function renderQuestions() {
+  const wrap = $('questions');
+  wrap.innerHTML = questions.map((q, index) => `
+    <article class="question">
+      <div class="question-head">
+        <strong>Question ${index + 1}</strong>
+        <button onclick="moveQuestion(${index}, -1)" ${index === 0 ? 'disabled' : ''}>Up</button>
+        <button onclick="moveQuestion(${index}, 1)" ${index === questions.length - 1 ? 'disabled' : ''}>Down</button>
+        <button onclick="removeQuestion(${index})">Remove</button>
+      </div>
+      <div class="question-body">
+        <div class="grid">
+          <div class="field">
+            <label>Question Type</label>
+            <select onchange="updateQuestion(${index}, 'type', this.value)">
+              ${['mc','tf','photo'].map(type => `<option value="${type}" ${q.type === type ? 'selected' : ''}>${labelType(type)}</option>`).join('')}
+            </select>
+          </div>
+          <div class="field">
+            <label>Question Layout</label>
+            <select onchange="updateQuestion(${index}, 'layout', this.value)">
+              <option value="text" ${q.layout !== 'image-side' ? 'selected' : ''}>Text / answers only</option>
+              <option value="image-side" ${q.layout === 'image-side' ? 'selected' : ''}>Answers with side image</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Question Text</label>
+          <input value="${esc(q.prompt)}" oninput="updateQuestion(${index}, 'prompt', this.value)">
+        </div>
+        <div class="field">
+          <label>Options</label>
+          <input value="${esc((q.options || []).join(', '))}" oninput="updateQuestionOptions(${index}, this.value)">
+          <p class="hint">For true/false this can stay blank; generated quiz uses True and False automatically.</p>
+        </div>
+        <div class="grid">
+          <div class="field">
+            <label>Correct Answer</label>
+            <input value="${esc(q.answer)}" oninput="updateQuestion(${index}, 'answer', this.value)">
+          </div>
+          <div class="field">
+            <label>Optional Side Image</label>
+            <input value="${esc(q.image || '')}" oninput="updateQuestion(${index}, 'image', this.value)" placeholder="images/question-horse.png">
+          </div>
+        </div>
+        <div class="field">
+          <label>Feedback Explanation</label>
+          <textarea oninput="updateQuestion(${index}, 'explanation', this.value)">${esc(q.explanation || '')}</textarea>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function labelType(type) {
+  return { mc: 'Multiple Choice', tf: 'True / False', photo: 'Photo Identification' }[type] || type;
+}
+
+function updateQuestion(index, key, value) {
+  questions[index][key] = value;
+}
+
+function updateQuestionOptions(index, value) {
+  questions[index].options = value.split(',').map(item => item.trim()).filter(Boolean);
+}
+
+function addQuestion() {
+  questions.push({ type: 'mc', prompt: '', options: ['', '', '', ''], answer: '', explanation: '', image: '', layout: 'text' });
+  renderQuestions();
+}
+
+function removeQuestion(index) {
+  questions.splice(index, 1);
+  if (!questions.length) addQuestion();
+  renderQuestions();
+}
+
+function moveQuestion(index, dir) {
+  const next = index + dir;
+  if (next < 0 || next >= questions.length) return;
+  [questions[index], questions[next]] = [questions[next], questions[index]];
+  renderQuestions();
+}
+
+function collectData() {
+  return {
+    kind: 'equine-edu-quiz',
+    settings: {
+      pageTitle: field('page-title'),
+      filename: field('filename') || 'final-quiz.html',
+      tag: field('quiz-tag'),
+      title: field('quiz-title'),
+      description: field('quiz-desc'),
+      module: Number(field('module-num') || 5),
+      drawCount: Number(field('draw-count') || questions.length),
+      depth: field('asset-depth') || '../../../../',
+      configPath: field('config-path') || 'course-config.js',
+      progressKey: field('progress-key')
+    },
+    questions: questions.map(q => ({
+      type: ['mc','tf','photo'].includes(q.type) ? q.type : 'mc',
+      prompt: q.prompt || '',
+      options: q.type === 'tf' ? ['True', 'False'] : (q.options || []).filter(Boolean),
+      answer: q.answer || '',
+      explanation: q.explanation || '',
+      image: q.image || '',
+      layout: q.layout || 'text'
+    }))
+  };
+}
+
+function generate() {
+  const data = collectData();
+  generatedJSON = JSON.stringify(data, null, 2);
+  generatedHTML = buildQuizHTML(data);
+  $('output-panel').hidden = false;
+  showOutput('html');
+  toast('Quiz generated');
+}
+
+function buildQuizHTML(data) {
+  const s = data.settings;
+  const bank = JSON.stringify(data.questions).replace(/<\/script>/gi, '<\\/script>');
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(s.pageTitle)}</title>
+<link rel="stylesheet" href="${esc(s.depth)}assets/css/core.css">
+<link rel="stylesheet" href="${esc(s.depth)}assets/css/components.css">
+<link rel="stylesheet" href="${esc(s.depth)}assets/css/course.css">
+<style>
+  .quiz-shell { display: grid; gap: 1.1rem; }
+  .quiz-progress-line { color: var(--text-mid); font-size: 0.92rem; }
+  .question-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; box-shadow: var(--shadow-soft); }
+  .question-text { font-weight: 800; color: var(--navy); margin-bottom: 1rem; line-height: 1.45; }
+  .quiz-question-layout { display: grid; gap: 1rem; align-items: stretch; }
+  .question-card.has-side-image .quiz-question-layout { grid-template-columns: minmax(0, 1fr) 220px; }
+  .answer-options { display: grid; gap: 0.65rem; }
+  .answer-option { display: flex; align-items: center; gap: 0.65rem; min-height: 52px; padding: 0.75rem 0.9rem; background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; }
+  .answer-option:hover { border-color: var(--gold); }
+  .answer-option input { width: auto; }
+  .quiz-side-image-wrap { min-height: 212px; height: 100%; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--off-white); }
+  .quiz-side-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .feedback { display: none; margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: var(--radius); line-height: 1.55; }
+  .feedback.correct { display: block; background: rgba(46, 125, 50, 0.1); border: 1px solid rgba(46, 125, 50, 0.22); color: #1f5b35; }
+  .feedback.wrong { display: block; background: rgba(192, 57, 43, 0.08); border: 1px solid rgba(192, 57, 43, 0.2); color: #8e2b21; }
+  .quiz-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .quiz-result { display: none; background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 1.2rem; border-bottom: 3px solid var(--gold); }
+  .quiz-result.show { display: block; }
+  @media (max-width: 720px) {
+    .question-card.has-side-image .quiz-question-layout { grid-template-columns: 1fr; }
+    .quiz-side-image-wrap { min-height: 220px; }
+  }
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero quiz-hero hero-centered">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-copy">
+      <div class="lesson-module-tag">${esc(s.tag)}</div>
+      <h1 class="lesson-hero-title">${esc(s.title)}</h1>
+      <p class="lesson-hero-desc">${esc(s.description)}</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="visual-card quiz-shell">
+      <h2>${esc(s.title)}</h2>
+      <p class="quiz-progress-line" id="quiz-progress-line"></p>
+      <div id="quiz-body"></div>
+      <div class="quiz-actions">
+        <button class="btn-primary" id="submit-quiz">Submit Quiz</button>
+        <button class="btn-secondary" id="retry-quiz">Try Again</button>
+      </div>
+      <div class="quiz-result" id="quiz-result"></div>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="${esc(s.configPath)}"><\/script>
+<script>
+  window.CURRENT_MODULE = ${Number(s.module || 5)};
+  window.PAGE_NOTES = {
+    bullets: ['Answer every question before submitting.', 'Use the feedback to review what you missed.', 'You can retry the quiz as many times as you need.'],
+    highlight: 'The goal is confident recognition, not memorizing a perfect score on the first try.'
+  };
+<\/script>
+<script src="${esc(s.depth)}assets/js/layout.js"><\/script>
+<script src="${esc(s.depth)}assets/js/course-nav.js"><\/script>
+<script>
+  const QUESTION_BANK = ${bank};
+  const DRAW_COUNT = ${Number(s.drawCount || data.questions.length)};
+  let activeQuestions = [];
+
+  function shuffle(items) {
+    return items.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(item => item.value);
+  }
+
+  function startQuiz() {
+    activeQuestions = shuffle(QUESTION_BANK).slice(0, Math.min(DRAW_COUNT, QUESTION_BANK.length));
+    document.getElementById('quiz-progress-line').textContent = activeQuestions.length + ' questions drawn from a bank of ' + QUESTION_BANK.length + '.';
+    document.getElementById('quiz-result').classList.remove('show');
+    document.getElementById('quiz-result').textContent = '';
+    document.getElementById('quiz-body').innerHTML = activeQuestions.map(renderQuestion).join('');
+  }
+
+  function renderQuestion(question, index) {
+    const options = question.type === 'tf' ? ['True', 'False'] : (question.options || []);
+    const image = question.image && question.layout === 'image-side'
+      ? '<div class="quiz-side-image-wrap"><img src="' + question.image + '" alt=""></div>'
+      : '';
+    return '<article class="question-card ' + (image ? 'has-side-image' : '') + '">' +
+      '<div class="question-text">' + (index + 1) + '. ' + question.prompt + '</div>' +
+      '<div class="quiz-question-layout">' +
+        '<div><div class="answer-options">' +
+          options.map(option => '<label class="answer-option"><input type="radio" name="q' + index + '" value="' + option + '"><span>' + option + '</span></label>').join('') +
+        '</div><div class="feedback" id="feedback-' + index + '"></div></div>' +
+        image +
+      '</div>' +
+    '</article>';
+  }
+
+  function submitQuiz() {
+    let score = 0;
+    activeQuestions.forEach((question, index) => {
+      const selected = document.querySelector('input[name="q' + index + '"]:checked');
+      const isCorrect = selected && selected.value === question.answer;
+      if (isCorrect) score += 1;
+      const feedback = document.getElementById('feedback-' + index);
+      feedback.className = 'feedback ' + (isCorrect ? 'correct' : 'wrong');
+      feedback.textContent = (isCorrect ? 'Correct. ' : 'Not quite. ') + (question.explanation || '');
+      document.querySelectorAll('input[name="q' + index + '"]').forEach(input => input.disabled = true);
+    });
+    const result = document.getElementById('quiz-result');
+    result.classList.add('show');
+    result.textContent = 'Score: ' + score + ' out of ' + activeQuestions.length;
+    try {
+      const key = '${esc(s.progressKey)}';
+      if (key && score === activeQuestions.length) localStorage.setItem(key, 'complete');
+    } catch (error) {}
+  }
+
+  document.getElementById('submit-quiz').addEventListener('click', submitQuiz);
+  document.getElementById('retry-quiz').addEventListener('click', startQuiz);
+  startQuiz();
+<\/script>
+${generatorDataScript(data)}
+</body>
+</html>`;
+}
+
+function generatorDataScript(data) {
+  const safeJson = JSON.stringify(data, null, 2).replace(/<\/script>/gi, '<\\/script>');
+  return `<script type="application/json" id="equine-edu-generator-data">\n${safeJson}\n<\/script>`;
+}
+
+function showOutput(kind, button) {
+  currentOutput = kind;
+  document.querySelectorAll('.output-tabs button').forEach(btn => btn.classList.remove('active'));
+  if (button) button.classList.add('active');
+  else document.querySelector('.output-tabs button').classList.add('active');
+  $('output').textContent = kind === 'json' ? generatedJSON : generatedHTML;
+}
+
+function copyOutput() {
+  const text = currentOutput === 'json' ? generatedJSON : generatedHTML;
+  navigator.clipboard.writeText(text).then(() => toast('Copied'));
+}
+
+function downloadHTML() {
+  if (!generatedHTML) generate();
+  download(generatedHTML, field('filename') || 'final-quiz.html', 'text/html');
+}
+
+function downloadJSON() {
+  generatedJSON = JSON.stringify(collectData(), null, 2);
+  download(generatedJSON, (field('filename') || 'final-quiz.html').replace(/\.html?$/i, '') + '.json', 'application/json');
+}
+
+function download(content, filename, type) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type }));
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast('Downloaded ' + filename);
+}
+
+function loadJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = parseLoadedGeneratorData(reader.result, file.name);
+      applyData(data);
+      toast('Loaded for editing');
+    } catch (error) {
+      toast(error.message || 'Could not load file');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function parseLoadedGeneratorData(text, fileName = '') {
+  const trimmed = String(text || '').trim();
+  if (!trimmed) throw new Error('Empty file');
+  if (trimmed[0] === '{') return JSON.parse(trimmed);
+
+  const doc = new DOMParser().parseFromString(trimmed, 'text/html');
+  const embedded = doc.getElementById('equine-edu-generator-data');
+  if (embedded && embedded.textContent.trim()) {
+    return JSON.parse(embedded.textContent);
+  }
+
+  return importQuizHTMLFallback(doc, fileName);
+}
+
+function cleanText(value) {
+  return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function extractArrayLiteral(scriptText, names) {
+  for (const name of names) {
+    const start = scriptText.indexOf(name);
+    if (start === -1) continue;
+    const eq = scriptText.indexOf('=', start);
+    const bracket = scriptText.indexOf('[', eq);
+    if (eq === -1 || bracket === -1) continue;
+    let depth = 0;
+    let inString = '';
+    let escape = false;
+    for (let i = bracket; i < scriptText.length; i++) {
+      const ch = scriptText[i];
+      if (escape) { escape = false; continue; }
+      if (ch === '\\') { escape = true; continue; }
+      if (inString) {
+        if (ch === inString) inString = '';
+        continue;
+      }
+      if (ch === '"' || ch === "'" || ch === '`') { inString = ch; continue; }
+      if (ch === '[') depth++;
+      if (ch === ']') {
+        depth--;
+        if (depth === 0) return scriptText.slice(bracket, i + 1);
+      }
+    }
+  }
+  return '';
+}
+
+function importQuizHTMLFallback(doc, fileName = '') {
+  const scriptText = [...doc.querySelectorAll('script')].map(s => s.textContent).join('\n');
+  const bankLiteral = extractArrayLiteral(scriptText, ['questionBank', 'QUESTION_BANK']);
+  if (!bankLiteral) {
+    throw new Error(`I could not find a quiz question bank in this HTML${fileName ? ': ' + fileName : ''}.`);
+  }
+
+  let bank;
+  try {
+    bank = Function(`"use strict"; return (${bankLiteral});`)();
+  } catch (error) {
+    throw new Error('I found the quiz bank, but could not read it safely.');
+  }
+
+  const moduleMatch = scriptText.match(/CURRENT_MODULE\s*=\s*(\d+)/);
+  const drawMatch = scriptText.match(/QUESTION_COUNT\s*=\s*(\d+)|DRAW_COUNT\s*=\s*(\d+)/);
+
+  return {
+    settings: {
+      pageTitle: cleanText(doc.querySelector('title')?.textContent),
+      filename: fileName || 'final-quiz.html',
+      tag: cleanText(doc.querySelector('.lesson-module-tag')?.textContent),
+      title: cleanText(doc.querySelector('.lesson-hero-title, .quiz-header h2, h1')?.textContent),
+      description: cleanText(doc.querySelector('.lesson-hero-desc, .quiz-header p')?.textContent),
+      module: moduleMatch ? Number(moduleMatch[1]) : 5,
+      drawCount: drawMatch ? Number(drawMatch[1] || drawMatch[2]) : Math.min(15, bank.length),
+      depth: '../../../../',
+      configPath: 'course-config.js',
+      progressKey: ''
+    },
+    questions: bank.map(q => ({
+      type: ['mc','tf','photo'].includes(q.type) ? q.type : (q.image ? 'photo' : 'mc'),
+      prompt: q.prompt || q.question || '',
+      options: q.options || (q.type === 'tf' ? ['True', 'False'] : []),
+      answer: q.answer || '',
+      explanation: q.explanation || q.correct || '',
+      image: q.image || '',
+      layout: q.image ? 'image-side' : (q.layout || 'text')
+    }))
+  };
+}
+
+function applyData(data) {
+  const s = data.settings || {};
+  $('page-title').value = s.pageTitle || '';
+  $('filename').value = s.filename || 'final-quiz.html';
+  $('quiz-tag').value = s.tag || '';
+  $('quiz-title').value = s.title || '';
+  $('quiz-desc').value = s.description || '';
+  $('module-num').value = s.module || 5;
+  $('draw-count').value = s.drawCount || 15;
+  $('asset-depth').value = s.depth || '../../../../';
+  $('config-path').value = s.configPath || 'course-config.js';
+  $('progress-key').value = s.progressKey || '';
+  questions = data.questions && data.questions.length ? data.questions : questions;
+  renderQuestions();
+}
+
+renderQuestions();
+</script>
+</body>
+</html>

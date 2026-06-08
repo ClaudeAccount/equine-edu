@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Viewing Room &mdash; Base Coat Colors &mdash; Equine Edu</title>
+<meta name="description" content="Practice identifying chestnut, black, and bay using real horse photo flip cards. Study each photo, name the base color, then flip to check.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+  .real-horse-flip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .real-horse-flip-grid .flip-card { min-height: 300px; }
+  .real-horse-flip-grid .flip-front { padding: 0; overflow: hidden; border-radius: var(--radius); }
+  .real-horse-flip-grid .flip-back { padding: 1.1rem; text-align: center; }
+  .real-horse-flip-grid .flip-back .term-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .real-horse-photo {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius);
+    background: var(--off-white);
+    display: block;
+  }
+  .real-horse-flip-grid .flip-back .term-def {
+    color: var(--text-mid);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    text-align: left;
+  }
+  .color-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 2rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.55rem;
+  }
+  .badge-chestnut { background: rgba(180,70,30,0.1);  color: #8c3318; border: 1px solid rgba(180,70,30,0.3); }
+  .badge-black    { background: rgba(13,27,62,0.08);  color: var(--navy); border: 1px solid rgba(13,27,62,0.2); }
+  .badge-bay      { background: rgba(201,168,76,0.12); color: #7a5f1a; border: 1px solid rgba(201,168,76,0.35); }
+  .gallery-instructions {
+    color: var(--text-mid);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 760px) {
+    .real-horse-flip-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-viewing-room" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Base Coat Colors</div>
+      <h1 class="lesson-hero-title">The Viewing <span>Room</span></h1>
+      <p class="lesson-hero-desc">You have learned the colors. Now practice with real horses. Study each photo, name the base coat color, then flip the card to check your answer and review the key clues.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="lesson-intro-card">
+      <h2>Practice Identifying Base Colors and Variations</h2>
+      <p>Look at each horse's body color, mane and tail color, and whether there are black points on the lower legs. Use those three clues to name the color before flipping.</p>
+      <p class="gallery-instructions">Click any card to flip it and reveal the color name and identification notes.</p>
+    </div>
+
+    <div class="visual-card">
+      <h2>Identify Each Horse</h2>
+      <div class="real-horse-flip-grid">
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/black.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-black">Black</div>
+              <div class="term-name">Black</div>
+              <div class="term-def">Fully black body, mane, and tail with no warm tones anywhere. Eumelanin only — no red pigment expressed. On a true black, even the flanks and muzzle remain black.</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/sun-bleached-black.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-black">Black</div>
+              <div class="term-name">Sun-Bleached Black</div>
+              <div class="term-def">Genetically black, but sun exposure has faded the coat to brown or rust tones. Check under the mane or in a protected area — those sections will still show true black. The base color has not changed.</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/blood-bay.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-bay">Bay</div>
+              <div class="term-name">Blood Bay</div>
+              <div class="term-def">A vivid, deeply saturated red body — the richest shade of bay. Black mane, black tail, and black lower legs are all present. The intensity of the red is what earns the name blood bay.</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/black-bay.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-bay">Bay</div>
+              <div class="term-name">Black Bay</div>
+              <div class="term-def">A very dark brown body that can appear nearly black at first glance. Look for subtle warm tones at the flanks, muzzle, or around the eyes — they confirm bay, not black. Black mane, tail, and points are still present.</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/medium-bay.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-bay">Bay</div>
+              <div class="term-name">Medium Bay</div>
+              <div class="term-def">A clear red-brown body with black mane, black tail, and black lower legs. This is the classic bay most people picture. Both pigments are easy to see — red body, black points.</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/chestnut-2.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-chestnut">Chestnut</div>
+              <div class="term-name">Chestnut</div>
+              <div class="term-def">Red or copper body with a mane and tail that match or are similar in shade. No black points anywhere on the legs or mane. Only phaeomelanin is expressed — no eumelanin present.</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/flaxen-chestnut.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-chestnut">Chestnut</div>
+              <div class="term-name">Flaxen Chestnut</div>
+              <div class="term-def">Red or copper body with a noticeably pale cream or blonde mane and tail. The contrast between the red body and light mane is the hallmark of a flaxen chestnut. No black anywhere — still chestnut.</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/liver-chestnut.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-chestnut">Chestnut</div>
+              <div class="term-name">Liver Chestnut</div>
+              <div class="term-def">Very dark red-brown body — the darkest shade of chestnut. Can look nearly black at a distance. The clue: the mane and tail are the same dark brown-red as the body, never black. No black points anywhere.</div>
+            </div>
+          </div>
+        </button>
+
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <img src="images/real-horses/sorrel.png" alt="A horse — what base coat color is this?" class="real-horse-photo">
+            </div>
+            <div class="flip-back">
+              <div class="color-badge badge-chestnut">Chestnut</div>
+              <div class="term-name">Sorrel</div>
+              <div class="term-def">A lighter, golden-orange shade of chestnut. Bright and warm-toned body with a mane and tail that match or are similar in shade. No black points — the same base color as chestnut, at the lighter and more orange end of the range.</div>
+            </div>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+    <div id="course-notes"></div>
+<script>
+  window.PAGE_NOTES = {
+    items: [
+      'Look at the mane first: black mane = bay, matching red or light mane = chestnut.',
+      'Check the lower legs for black points — present on bay, absent on chestnut and black.',
+      'Liver chestnut and black bay are the most common mix-ups. The mane always reveals the answer.',
+      'Sun-bleached black looks brown on top — check under the mane for the true color.',
+      'Sorrel, flaxen, and liver are all chestnut. The base color does not change — only the shade.'
+    ],
+    highlight: 'Real horses vary widely in shade. Focus on mane color, leg color, and presence or absence of black points — those three clues identify the base color every time.'
+  };
+</script>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 4;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Base Coat Colors', url: '1-index.html' },
+    navExtras:  [{ label: 'The Training Barn', url: '6-training-barn.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.baseCoatColors.viewingRoom','true')}catch(e){}</script>
+</body>
+</html>

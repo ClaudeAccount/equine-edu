@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Show Your Knowledge - Western Tack &amp; Equipment - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css"><link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.quiz-layout { max-width: 1400px; margin: 0 auto; padding: 2.5rem var(--page-pad) 5rem; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 5rem; align-items: start; }
+.quiz-main { min-width: 0; }
+.quiz-header { margin-bottom: 2rem; }
+.quiz-header h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--navy); margin-bottom: 0.5rem; }
+.quiz-header p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+.q-block { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: 0 4px 18px rgba(120,90,40,0.22), 0 1px 4px rgba(13,27,62,0.11); transition: border-color 0.2s, box-shadow 0.2s; }
+.q-number { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.q-text { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); line-height: 1.5; margin-bottom: 1rem; }
+.q-options { display: grid; gap: 0.5rem; }
+.q-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 0.88rem; color: var(--text-dark); transition: all 0.15s; background: var(--white); text-align: left; width: 100%; font-weight: 600; }
+.q-option:hover:not(:disabled) { border-color: var(--navy); background: var(--off-white); }
+.q-option.selected { border-color: var(--navy); background: var(--navy); color: var(--white); box-shadow: none; }
+.q-option.correct-ans { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; }
+.q-option.wrong-ans { border-color: #c0392b; background: #fdf2f2; color: #8b1a1a; }
+.q-option:disabled { cursor: default; }
+.q-feedback { margin-top: 0.85rem; font-size: 0.83rem; line-height: 1.6; padding: 0.7rem 1rem; border-radius: var(--radius); display: none; }
+.q-feedback.show { display: block; }
+.q-feedback.correct { background: #e8f7ef; color: #1a5c38; border-left: 3px solid #2d7a4f; }
+.q-feedback.incorrect { background: #fdf2f2; color: #8b1a1a; border-left: 3px solid #c0392b; }
+.quiz-score-panel { background: var(--navy); border-radius: var(--radius-lg); padding: 2rem; text-align: center; display: none; margin-top: 1.5rem; }
+.quiz-score-panel.show { display: block; }
+.score-number { font-family: var(--font-display); font-size: 3rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+.score-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+.score-message { color: rgba(255,255,255,0.82); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.5rem; }
+.btn-retake { background: var(--gold); color: var(--navy); border: none; padding: 0.7rem 1.5rem; border-radius: var(--radius); font-weight: 700; font-size: 0.88rem; cursor: pointer; }
+.quiz-submit-row { margin-top: 1.5rem; }
+.btn-submit { background: var(--navy); color: var(--white); border: none; padding: 0.85rem 2rem; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: opacity 0.15s; }
+.btn-submit:hover { opacity: 0.88; }
+@media (max-width: 1050px) { .quiz-layout { grid-template-columns: 1fr; gap: 2rem; } .lesson-right { position: static; } }
+</style>
+</head>
+<body><div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top"><div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text"><div class="lesson-module-tag">Western Tack & Equipment</div><h1 class="lesson-hero-title">Show Your <span>Knowledge</span></h1></div></div></section>
+<div class="quiz-layout"><div class="quiz-main"><div class="quiz-header"><h2>Western Equipment Quiz</h2><p>This quiz covers western tack and equipment, including saddle parts, bridle parts, western riding purpose, and safe equipment use. Each attempt draws 15 questions from a larger bank, so every attempt is a little different.</p></div><form id="quiz-form"><div id="quiz-questions"></div><div class="quiz-submit-row"><button class="btn-submit" id="quiz-submit" type="button">Submit Quiz</button></div></form><div class="quiz-score-panel" id="score-panel"><div class="score-number" id="score-display">0 / 15</div><div class="score-label">Your Score</div><div class="score-message" id="score-message"></div><button class="btn-retake" id="btn-retake" type="button">Try Again</button></div></div><aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside></div>
+<div id="site-footer"></div>
+<script>
+const QUESTION_COUNT=15;
+const questionBank=[
+{prompt:'What is tack?',options:['Equipment used for riding, handling, or working with a horse','A horse coat color','A type of feed','A stable cleaning tool only'],answer:'Equipment used for riding, handling, or working with a horse',correct:'Correct. Tack includes equipment such as saddles, bridles, reins, and cinches.',incorrect:'Tack is the equipment used with horses for riding, handling, or work.'},
+{prompt:'Which part is a defining feature of many western saddles?',options:['Horn','Noseband only','Browband','Curb chain'],answer:'Horn',correct:'Correct. The horn is one of the most recognizable western saddle features.',incorrect:'The horn is the upright part at the front of many western saddles.'},
+{prompt:'Where does the rider sit on a western saddle?',options:['Seat','Cinch','Fender','Bit'],answer:'Seat',correct:'Correct. The rider sits in the seat.',incorrect:'The seat is the part designed for the rider.'},
+{prompt:'What is the cantle?',options:['The raised back of the saddle','The strap under the horse belly','The rider foot support','The mouthpiece of the bridle'],answer:'The raised back of the saddle',correct:'Correct. The cantle forms the back of the saddle seat.',incorrect:'The cantle is the raised back of the saddle.'},
+{prompt:'What does the cinch help do?',options:['Hold the saddle in place','Steer the horse by itself','Decorate the browband','Replace the reins'],answer:'Hold the saddle in place',correct:'Correct. The cinch passes under the belly and helps secure the saddle.',incorrect:'The cinch helps hold the saddle in place.'},
+{prompt:'Which part supports the rider foot?',options:['Stirrup','Horn','Skirt','Throatlatch'],answer:'Stirrup',correct:'Correct. The stirrup supports the rider foot.',incorrect:'The stirrup is where the rider places the foot.'},
+{prompt:'What is the fender on a western saddle?',options:['The wide leather piece that hangs below the saddle','The top strap over the horse poll','The mouthpiece of the bridle','The raised back of the seat'],answer:'The wide leather piece that hangs below the saddle',correct:'Correct. The fender hangs below the saddle and connects with the stirrup area.',incorrect:'The fender is the wide leather piece below the saddle.'},
+{prompt:'What is the skirt of a western saddle?',options:['The leather area under the seat and rigging','The metal mouthpiece','The forehead strap','The reins'],answer:'The leather area under the seat and rigging',correct:'Correct. The skirt helps spread contact over the saddle pad area.',incorrect:'The skirt is the leather area below the saddle body.'},
+{prompt:'What is a western bridle often called?',options:['Headstall','Fender','Cantle','Saddle pad'],answer:'Headstall',correct:'Correct. Western bridles are often referred to as headstalls.',incorrect:'A western bridle is often called a headstall.'},
+{prompt:'Which bridle part passes over the horse poll?',options:['Crownpiece','Bit','Reins','Stirrup'],answer:'Crownpiece',correct:'Correct. The crownpiece goes over the poll.',incorrect:'The crownpiece is the top strap over the poll.'},
+{prompt:'What does a browband do?',options:['Crosses the forehead on browband-style bridles','Holds the rider foot','Secures the saddle under the belly','Forms the back of the saddle'],answer:'Crosses the forehead on browband-style bridles',correct:'Correct. A browband crosses the forehead.',incorrect:'A browband is the forehead strap on browband-style bridles.'},
+{prompt:'What is the function of cheekpieces?',options:['Help hold the bit or attachment at the correct height','Support the rider seat','Tighten the cinch','Protect the saddle skirt'],answer:'Help hold the bit or attachment at the correct height',correct:'Correct. Cheekpieces help position the bit or bitless attachment.',incorrect:'Cheekpieces are side straps that help position the bit or attachment.'},
+{prompt:'What does the throatlatch help prevent?',options:['The bridle slipping off','The saddle pad sliding backward','The stirrup leather twisting','The horn moving'],answer:'The bridle slipping off',correct:'Correct. The throatlatch helps keep the bridle in place.',incorrect:'The throatlatch helps prevent the bridle from slipping off.'},
+{prompt:'What do reins connect to?',options:['The bit or bitless attachment','Only the saddle horn','The cantle','The saddle skirt'],answer:'The bit or bitless attachment',correct:'Correct. Reins connect to the bit or bitless attachment.',incorrect:'Reins connect to the bit or bitless attachment and are held by the rider.'},
+{prompt:'Why is knowing equipment parts useful?',options:['It supports clear instruction, safer tack checks, and better communication','It replaces lessons with a trainer','It means tack always fits','It changes the horse color'],answer:'It supports clear instruction, safer tack checks, and better communication',correct:'Correct. Equipment vocabulary helps with instruction, safety checks, and care.',incorrect:'Knowing part names improves communication and tack checks.'},
+{prompt:'Which item is part of a western bridle?',options:['Bit','Fender','Cantle','Skirt'],answer:'Bit',correct:'Correct. The bit may be part of a western bridle setup.',incorrect:'The bit belongs with bridle equipment, though some setups are bitless.'},
+{prompt:'Which item is part of a western saddle?',options:['Pommel / Swell','Browband','Crownpiece','Cheekpiece'],answer:'Pommel / Swell',correct:'Correct. The pommel or swell is at the front of the saddle.',incorrect:'Pommel or swell is a western saddle part.'},
+{prompt:'What kind of saddle is often built for comfort over longer rides?',options:['Trail saddle','Driving harness','Halter','Browband headstall'],answer:'Trail saddle',correct:'Correct. Trail saddles are often designed with comfort and practicality in mind.',incorrect:'Trail saddles are commonly used for longer recreational rides.'},
+{prompt:'Which saddle type is often sturdy and associated with ranch or roping work?',options:['Roping saddle','Browband saddle','Bit saddle','Throatlatch saddle'],answer:'Roping saddle',correct:'Correct. Roping saddles are generally sturdy and built for that work.',incorrect:'Roping saddles are associated with ranch and roping use.'},
+{prompt:'Which bridle style may use an ear loop instead of a full browband?',options:['One-ear headstall','Trail saddle','Cinch strap','Fender'],answer:'One-ear headstall',correct:'Correct. A one-ear headstall uses an ear loop.',incorrect:'A one-ear headstall uses an ear loop rather than a full browband.'},
+{prompt:'Why should riders check the cinch before mounting?',options:['A loose or incorrect cinch can affect saddle security','It changes the bridle size','It sharpens the bit','It replaces reins'],answer:'A loose or incorrect cinch can affect saddle security',correct:'Correct. The cinch is part of saddle security.',incorrect:'The cinch is important because it helps secure the saddle.'},
+{prompt:'Which part should not be used as a mounting handle?',options:['Horn','Seat','Stirrup','Reins'],answer:'Horn',correct:'Correct. The horn is not meant to be used as a mounting handle.',incorrect:'Do not use the horn as a mounting handle.'}
+];
+const quizBody=document.getElementById('quiz-questions'),submit=document.getElementById('quiz-submit'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message');
+let submitted=false;
+function esc(t){return String(t).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(o=>o.v);}
+function renderQuiz(){submitted=false;const qs=shuffle(questionBank).slice(0,QUESTION_COUNT).map(q=>({...q,options:shuffle(q.options)}));quizBody.innerHTML=qs.map((q,i)=>`<div class="q-block" data-correct="${esc(q.answer)}"><div class="q-number">Question ${i+1} of ${QUESTION_COUNT}</div><div class="q-text">${esc(q.prompt)}</div><div class="q-options">${q.options.map(o=>`<button class="q-option" type="button" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div><div class="q-feedback correct">${esc(q.correct)}</div><div class="q-feedback incorrect">${esc(q.incorrect)}</div></div>`).join('');scorePanel.classList.remove('show');submit.disabled=false;quizBody.querySelectorAll('.q-option').forEach(btn=>btn.onclick=()=>{if(submitted)return;const block=btn.closest('.q-block');block.querySelectorAll('.q-option').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');});}
+submit.onclick=()=>{if(submitted)return;submitted=true;let score=0;quizBody.querySelectorAll('.q-block').forEach(block=>{const correct=block.dataset.correct,selected=block.querySelector('.q-option.selected');block.querySelectorAll('.q-option').forEach(btn=>{btn.disabled=true;if(btn.dataset.val===correct)btn.classList.add('correct-ans');});if(selected&&selected.dataset.val===correct){score++;selected.classList.add('correct-ans');block.querySelector('.q-feedback.correct').classList.add('show');}else{if(selected)selected.classList.add('wrong-ans');block.querySelector('.q-feedback.incorrect').classList.add('show');}});scoreDisplay.textContent=`${score} / ${QUESTION_COUNT}`;scoreMessage.textContent=score===QUESTION_COUNT?'Perfect score. You know your western equipment parts.':score>=12?'Strong work. Review the missed items and try again when ready.':'Keep practicing the saddle and bridle labels, then try again.';scorePanel.classList.add('show');scorePanel.scrollIntoView({behavior:'smooth'});try{localStorage.setItem('equineEduProgress.westernEquipment.showYourKnowledge','true')}catch(e){}};
+document.getElementById('btn-retake').onclick=renderQuiz;renderQuiz();
+</script>
+<script>window.CURRENT_MODULE=5;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Western Tack',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};</script>
+<script src="course-config.js"></script><script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+</body></html>
+

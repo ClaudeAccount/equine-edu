@@ -1,0 +1,992 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saddle &amp; Bridle Parts - English Tack &amp; Equipment - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.tab-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.tab-bar.image-tabs {
+  margin: 1rem 0 1.5rem;
+}
+.part-tab {
+  border: 0;
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: var(--off-white);
+  font-weight: 800;
+  color: var(--text-mid);
+  cursor: pointer;
+}
+.part-tab.active {
+  background: var(--navy);
+  color: var(--gold);
+}
+.part-panel { display: none; }
+.part-panel.active { display: block; }
+.saddle-view-tabs {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+}
+.saddle-view-tab {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 0.72rem 0.95rem;
+  text-transform: uppercase;
+}
+.saddle-view-tab.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--gold);
+}
+.saddle-view-panel { display: block; margin-top: 1.35rem; }
+.saddle-view-panel:first-of-type { margin-top: 0; }
+.saddle-reference-panel { display: grid; margin-top: 1rem; }
+.builder-note {
+  background: rgba(201,168,76,0.09);
+  border: 1px solid rgba(201,168,76,0.32);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.is-baked .builder-note,
+.is-baked .builder-toolbar,
+.is-baked .position-output {
+  display: none;
+}
+.builder-note p {
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+.builder-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.builder-toolbar button {
+  border: 0;
+  border-radius: var(--radius);
+  padding: 0.7rem 1rem;
+  font-family: var(--font-body);
+  font-weight: 800;
+  cursor: pointer;
+}
+.copy-btn { background: var(--navy); color: var(--gold); }
+.reset-btn { background: var(--off-white); color: var(--navy); border: 1px solid var(--border) !important; }
+.builder-status {
+  color: var(--text-mid);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.equipment-builder {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.25rem;
+  overflow: visible;
+  user-select: none;
+}
+.equipment-stage {
+  position: relative;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: visible;
+}
+#saddle-stage,
+#saddle-under-flap-stage {
+  padding: 1.25rem;
+}
+#saddle-underside-stage {
+  width: min(100%, 940px);
+  padding: 1rem;
+}
+#bridle-stage {
+  width: min(100%, 460px);
+}
+.equipment-stage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+.leader-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.leader-line {
+  stroke: var(--gold);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+  opacity: 0.95;
+}
+.anchor-dot {
+  position: absolute;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #17b9c4;
+  border: 2px solid var(--navy);
+  box-shadow: 0 2px 8px rgba(13,27,62,0.24);
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  z-index: 4;
+}
+.is-baked .anchor-dot {
+  pointer-events: none;
+}
+.part-callout {
+  position: absolute;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  cursor: grab;
+  white-space: nowrap;
+}
+.is-baked .part-callout {
+  cursor: default;
+  pointer-events: none;
+}
+.part-callout span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: var(--gold);
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(13,27,62,0.18);
+  padding: 0.45rem 0.85rem;
+  font-size: clamp(0.58rem, 1vw, 0.72rem);
+  font-weight: 900;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+.part-callout:focus {
+  outline: none;
+}
+.part-callout:focus span {
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.32), 0 8px 18px rgba(13,27,62,0.18);
+}
+.anchor-dot:focus {
+  outline: 2px solid rgba(201,168,76,0.65);
+  outline-offset: 3px;
+}
+.part-callout.dragging,
+.anchor-dot.dragging {
+  cursor: grabbing;
+  z-index: 8;
+}
+.position-output {
+  width: 100%;
+  min-height: 160px;
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-family: Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--navy);
+  background: var(--off-white);
+  display: none;
+}
+.position-output.show { display: block; }
+.parts-reference {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-mid);
+}
+.parts-reference div {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.7rem;
+}
+.parts-reference h4 {
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-size: 0.95rem;
+  margin: 0 0 0.25rem;
+}
+.parts-reference p {
+  color: var(--text-mid);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin: 0;
+}
+.tree-guide {
+  display: grid;
+  gap: 1rem;
+}
+.tree-summary {
+  background: rgba(201,168,76,0.09);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+.tree-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.tree-image-card {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+.tree-image-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  display: block;
+}
+.tree-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.tree-card {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.tree-card h3 {
+  font-family: var(--font-display);
+  color: var(--navy);
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+.tree-card p {
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+@media (max-width: 760px) {
+  .tab-bar { grid-template-columns: 1fr; }
+  .parts-reference { grid-template-columns: 1fr; }
+  .tree-image-grid { grid-template-columns: 1fr; }
+  .tree-image-card img { height: 220px; }
+  .tree-grid { grid-template-columns: 1fr; }
+  .part-callout span { font-size: 0.55rem; padding: 0.35rem 0.6rem; }
+}
+
+/* Uniform lesson tabs */
+.tab-system { gap: 1.5rem; }
+.tab-bar {
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.4rem;
+  margin: 1.35rem 0 1.75rem;
+}
+.part-tab,
+.tab-btn,
+.saddle-view-tab {
+  min-height: 48px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--off-white);
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  padding: 0.85rem 1rem;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+.part-tab.active,
+.tab-btn.active,
+.saddle-view-tab.active,
+.tab-btn:nth-child(2).active,
+.tab-btn:nth-child(5).active {
+  background: var(--navy);
+  border-color: transparent;
+  color: var(--gold);
+  box-shadow: none;
+}
+.part-tab:not(.active):hover,
+.tab-btn:not(.active):hover,
+.saddle-view-tab:not(.active):hover {
+  background: rgba(13,27,62,0.06);
+  color: var(--navy);
+  opacity: 1;
+}
+.part-panel > .lesson-intro-card,
+.lesson-intro-card + .tab-system {
+  margin-bottom: 1.35rem;
+}
+.saddle-subview-card { margin: 0 0 1rem; }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">English Tack & Equipment</div>
+      <h1 class="lesson-hero-title">Saddle &amp; Bridle <span>Parts</span></h1>
+      <p class="lesson-hero-desc">Use the tabs to study the major parts of an English saddle and English bridle.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+<section class="part-panel active" id="panel-saddle">
+      <div class="lesson-intro-card">
+        <h2>Parts of the English Saddle</h2>
+        <p>An English saddle is built to support rider balance, distribute weight, and suit disciplines such as hunter, jumper, dressage, eventing, saddle seat, and everyday schooling.</p>
+      </div>
+      <div class="tab-bar image-tabs" role="tablist" aria-label="English equipment parts">
+        <button class="part-tab active" data-panel="saddle" type="button">English Saddle</button>
+        <button class="part-tab" data-panel="bridle" type="button">English Bridle</button>
+        <button class="part-tab" data-panel="tree" type="button">Saddle Trees</button>
+      </div>
+<div class="builder-note">
+        <p>Drag a navy label to move the label. Drag the small blue dot to move the point it labels. When the placement is ready, use Copy Positions and send me the JSON so I can bake the labels into the course.</p>
+      </div>
+      <div class="builder-toolbar">
+        <button class="copy-btn" type="button" data-copy="saddle">Copy Side View Positions</button>
+        <button class="copy-btn" type="button" data-copy="saddleUnderFlap">Copy Under Flap Positions</button>
+        <button class="copy-btn" type="button" data-copy="saddleUnderside">Copy Underside Positions</button>
+        <button class="reset-btn" type="button" data-reset="saddle">Reset Side View</button>
+        <button class="reset-btn" type="button" data-reset="saddleUnderFlap">Reset Under Flap</button>
+        <button class="reset-btn" type="button" data-reset="saddleUnderside">Reset Underside</button>
+        <span class="builder-status" id="saddle-status">Builder ready.</span>
+        <span class="builder-status" id="saddleUnderFlap-status">Under flap builder ready.</span>
+        <span class="builder-status" id="saddleUnderside-status">Underside builder ready.</span>
+      </div>
+      <div class="saddle-view-panel active" id="saddle-view-saddle">
+        <div class="equipment-builder">
+          <div class="equipment-stage" id="saddle-stage" data-builder="saddle">
+            <img src="images/english-saddle-parts.png" alt="English saddle side view parts reference">
+            <svg class="leader-layer" aria-hidden="true"></svg>
+          </div>
+        </div>
+      </div>
+      <div class="saddle-view-panel" id="saddle-view-saddleUnderFlap">
+        <div class="lesson-intro-card saddle-subview-card"><h2>Under the Flap</h2><p>Lift the saddle flap to see the knee block, billets, thigh block, buckle guard, and related flap structure.</p></div>
+        <div class="equipment-builder">
+          <div class="equipment-stage" id="saddle-under-flap-stage" data-builder="saddleUnderFlap">
+            <img src="images/english-saddle-under-flap.png" alt="English saddle under flap view parts reference">
+            <svg class="leader-layer" aria-hidden="true"></svg>
+          </div>
+        </div>
+      </div>
+      <div class="saddle-view-panel" id="saddle-view-saddleUnderside">
+        <div class="lesson-intro-card saddle-subview-card"><h2>Underside of the Saddle</h2><p>View the underside to study the panels, gullet channel, girth, and lower saddle structure.</p></div>
+        <div class="equipment-builder">
+          <div class="equipment-stage" id="saddle-underside-stage" data-builder="saddleUnderside">
+            <img src="images/english-saddle-underside.png" alt="English saddle underside parts reference">
+            <svg class="leader-layer" aria-hidden="true"></svg>
+          </div>
+        </div>
+      </div>
+<textarea class="position-output" id="saddle-output" readonly></textarea>
+      <textarea class="position-output" id="saddleUnderFlap-output" readonly></textarea>
+      <textarea class="position-output" id="saddleUnderside-output" readonly></textarea>
+      <div class="parts-reference saddle-reference-panel active" data-saddle-reference="saddle" id="saddle-reference"></div>
+      <div class="parts-reference saddle-reference-panel" data-saddle-reference="saddleUnderFlap" id="saddleUnderFlap-reference"></div>
+      <div class="parts-reference saddle-reference-panel" data-saddle-reference="saddleUnderside" id="saddleUnderside-reference"></div>
+    </section>
+
+    <section class="part-panel" id="panel-bridle">
+      <div class="lesson-intro-card">
+        <h2>Parts of the English Bridle</h2>
+        <p>An English bridle holds the bit or bitless attachment in position and connects the rider's reins to the horse through familiar parts such as the crownpiece, browband, cheekpieces, cavesson, and reins.</p>
+      </div>
+      <div class="tab-bar image-tabs" role="tablist" aria-label="English equipment parts">
+        <button class="part-tab" data-panel="saddle" type="button">English Saddle</button>
+        <button class="part-tab active" data-panel="bridle" type="button">English Bridle</button>
+        <button class="part-tab" data-panel="tree" type="button">Saddle Trees</button>
+      </div>
+
+      <div class="builder-note">
+        <p>Drag a navy label to move the label. Drag the small blue dot to move the point it labels. When the placement is ready, use Copy Positions and send me the JSON so I can bake the labels into the course.</p>
+      </div>
+      <div class="builder-toolbar">
+        <button class="copy-btn" type="button" data-copy="bridle">Copy Bridle Positions</button>
+        <button class="reset-btn" type="button" data-reset="bridle">Reset Bridle Positions</button>
+        <span class="builder-status" id="bridle-status">Builder ready.</span>
+      </div>
+      <div class="equipment-builder">
+        <div class="equipment-stage" id="bridle-stage" data-builder="bridle">
+          <img src="images/english-bridle-parts.png" alt="English bridle parts reference">
+          <svg class="leader-layer" aria-hidden="true"></svg>
+        </div>
+      </div>
+<textarea class="position-output" id="bridle-output" readonly></textarea>
+      <div class="parts-reference" id="bridle-reference"></div>
+    </section>
+
+    <section class="part-panel" id="panel-tree">
+      <div class="lesson-intro-card">
+        <h2>Saddle Trees</h2>
+        <p>The saddle tree is the inner frame that gives an English saddle its shape. It is the structure the rest of the saddle is built around, including the pommel, cantle, seat, panels, flaps, and leather covering.</p>
+      </div>
+      <div class="tab-bar image-tabs" role="tablist" aria-label="English equipment parts">
+        <button class="part-tab" data-panel="saddle" type="button">English Saddle</button>
+        <button class="part-tab" data-panel="bridle" type="button">English Bridle</button>
+        <button class="part-tab active" data-panel="tree" type="button">Saddle Trees</button>
+      </div>
+
+      <div class="tree-guide">
+        <div class="tree-image-grid" aria-label="English saddle tree example">
+          <figure class="tree-image-card">
+            <img src="images/english-saddle-tree.png?v=20260607-tree" alt="English saddle tree structure">
+          </figure>
+        </div>
+        <div class="tree-summary">
+          A good tree helps the saddle sit securely and spread the rider's weight over a broader area of the horse's back. Because the tree is the hidden foundation, tree fit matters even when the outside leather looks correct.
+        </div>
+        <div class="tree-grid">
+          <article class="tree-card">
+            <h3>What the Tree Does</h3>
+            <p>The tree forms the main shape of the saddle. The bars of the tree run along either side of the horse's spine so the saddle can carry weight without placing direct pressure on the spine or withers.</p>
+          </article>
+          <article class="tree-card">
+            <h3>Why Fit Matters</h3>
+            <p>The width and angle of the tree need to match the horse's back. If the tree is too narrow, too wide, too long, or uneven, the saddle may pinch, bridge, rub, or create sore spots.</p>
+          </article>
+          <article class="tree-card">
+            <h3>Built Around the Tree</h3>
+            <p>Leather, the seat, panels, flaps, billet area, pommel, and cantle are shaped around the tree. That is why the tree is often described as the foundation of the English saddle.</p>
+          </article>
+          <article class="tree-card">
+            <h3>Fit Check</h3>
+            <p>A well-fitting saddle should sit level, stay centered, allow wither clearance, and make even contact through the bars. Soreness, dry pressure spots, rubbing, or uneven contact are signs the saddle fit should be checked.</p>
+          </article>
+        </div>
+      </div>
+</section>
+  </main>
+
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+const LABEL_BUILDER_EDIT_MODE = false;
+const BAKED_LABEL_POSITIONS = {
+  saddle: {
+  "pommel.anchor": { "x": 34.01315789473684, "y": 14.814116379310343 },
+  "pommel.label": { "x": 22.565789473684212, "y": 2.400323275862069 },
+  "twist.anchor": { "x": 47.03947368421053, "y": 17.745150862068964 },
+  "twist.label": { "x": 44.276315789473685, "y": 4.814116379310345 },
+  "seat.anchor": { "x": 59.539473684210535, "y": 21.53825431034483 },
+  "seat.label": { "x": 58, "y": 9 },
+  "cantle.anchor": { "x": 77.69736842105263, "y": 7.917564655172414 },
+  "cantle.label": { "x": 87.30263157894737, "y": 6.365840517241379 },
+  "panel.anchor": { "x": 78.75, "y": 29.296875 },
+  "panel.label": { "x": 87.96052631578948, "y": 36.538254310344826 },
+  "stirrup-keeper.anchor": { "x": 57.69736842105263, "y": 56.71066810344828 },
+  "stirrup-keeper.label": { "x": 82.96052631578948, "y": 62.055495689655174 },
+  "saddle-flap.anchor": { "x": 59.671052631578945, "y": 77.05549568965517 },
+  "saddle-flap.label": { "x": 81.9078947368421, "y": 81.53825431034483 },
+  "stirrup-iron.anchor": { "x": 50.19736842105264, "y": 76.36584051724138 },
+  "stirrup-iron.label": { "x": 64.67105263157895, "y": 95.67618534482759 },
+  "stirrup-leather.anchor": { "x": 46.9078947368421, "y": 50.84859913793104 },
+  "stirrup-leather.label": { "x": 12.828947368421053, "y": 82.22790948275862 },
+  "knee-roll.anchor": { "x": 32.43421052631579, "y": 56.021012931034484 },
+  "knee-roll.label": { "x": 14.802631578947366, "y": 51.193426724137936 },
+  "skirt.anchor": { "x": 45.5921052631579, "y": 31.02101293103448 },
+  "skirt.label": { "x": 73.48684210526316, "y": 49.124461206896555 },
+  "d-ring.anchor": { "x": 27.434210526315788, "y": 29.12446120689655 },
+  "d-ring.label": { "x": 12.302631578947368, "y": 24.641702586206897 }
+},
+saddleUnderFlap: {
+  "knee-block.anchor": { "x": 21.11842105263158, "y": 46.88577586206897 },
+  "knee-block.label": { "x": 9.144736842105264, "y": 39.47198275862069 },
+  "billets.anchor": { "x": 41.9078947368421, "y": 55.85129310344827 },
+  "billets.label": { "x": 12.302631578947368, "y": 87.05818965517241 },
+  "thigh-block.anchor": { "x": 55.06578947368421, "y": 77.57543103448276 },
+  "thigh-block.label": { "x": 74.53947368421052, "y": 87.92025862068965 },
+  "buckle-guard.anchor": { "x": 38.881578947368425, "y": 66.71336206896552 },
+  "buckle-guard.label": { "x": 73.75, "y": 59.81681034482759 }
+},
+  saddleUnderside: {
+  "left-panel.anchor": { "x": 42.63115738886664, "y": 29.65566847649543 },
+  "left-panel.label": { "x": 20.07609130957149, "y": 11.390319736414682 },
+  "right-panel.anchor": { "x": 56.72807368842611, "y": 30.398162327718225 },
+  "right-panel.label": { "x": 77.87344813776532, "y": 9.05146410506288 },
+  "gullet-channel.anchor": { "x": 50, "y": 35 },
+  "gullet-channel.label": { "x": 50, "y": 12 },
+  "saddle-flap.anchor": { "x": 15.206247496996394, "y": 58.01893359320618 },
+  "saddle-flap.label": { "x": 11.361633960752904, "y": 71.38382291521648 },
+  "billet-straps.anchor": { "x": 86, "y": 46 },
+  "billet-straps.label": { "x": 84.66559871846215, "y": 70.64132906399368 },
+  "girth.anchor": { "x": 50, "y": 82 },
+  "girth.label": { "x": 50.06407689227073, "y": 93.65863845190032 },
+  "girth-buckles.anchor": { "x": 93, "y": 82 },
+  "girth-buckles.label": { "x": 86.45975170204245, "y": 92.76764583043297 },
+  "sweat-flap.anchor": { "x": 27.25270324389267, "y": 36.67223537055084 },
+  "sweat-flap.label": { "x": 39.68362034441329, "y": 72.46043899948954 }
+},
+bridle: {
+    "headpiece-crownpiece.anchor": { "x": 44.55357142857143, "y": 4.007147551758133 },
+    "headpiece-crownpiece.label": { "x": 78.30357142857143, "y": 10.579608938547485 },
+    "browband.anchor": { "x": 32.71739130434783, "y": 25.0679347826087 },
+    "browband.label": { "x": 11.517857142857142, "y": 11.105405849490635 },
+    "throatlatch.anchor": { "x": 40.982142857142854, "y": 57.1126355570161 },
+    "throatlatch.label": { "x": 13.482142857142856, "y": 37.65814985211962 },
+    "cheek-piece.anchor": { "x": 49.673913043478265, "y": 61.58967391304348 },
+    "cheek-piece.label": { "x": 70.98214285714286, "y": 48.436986526454156 },
+    "curb-strap.anchor": { "x": 31.84782608695652, "y": 78.40126811594203 },
+    "curb-strap.label": { "x": 14.017857142857142, "y": 67.2342260926717 },
+    "bit.anchor": { "x": 41.84782608695652, "y": 92.89402173913044 },
+    "bit.label": { "x": 23.804347826086957, "y": 91.4447463768116 },
+    "reins.anchor": { "x": 57.065217391304344, "y": 94.05344202898551 },
+    "reins.label": { "x": 72.71739130434783, "y": 79.27083333333333 }
+  }};
+
+const builderData = {
+  saddle: [
+  ['pommel', 'Pommel'], ['twist', 'Twist'], ['seat', 'Seat'], ['cantle', 'Cantle'],
+  ['panel', 'Panel'], ['stirrup-keeper', 'Stirrup Keeper'], ['saddle-flap', 'Saddle Flap'],
+  ['stirrup-iron', 'Stirrup Iron'], ['stirrup-leather', 'Stirrup Leather'], ['knee-roll', 'Knee Roll'],
+  ['skirt', 'Skirt'], ['d-ring', 'D Ring']
+],
+saddleUnderFlap: [
+  ['knee-block', 'Knee Block'], ['billets', 'Billets'],
+  ['thigh-block', 'Thigh Block'], ['buckle-guard', 'Buckle Guard']
+],
+saddleUnderside: [
+  ['left-panel', 'Left Panel'], ['right-panel', 'Right Panel'], ['gullet-channel', 'Gullet Channel'],
+  ['saddle-flap', 'Saddle Flap'], ['sweat-flap', 'Sweat Flap'], ['billet-straps', 'Billet Straps'], ['girth', 'Girth'],
+  ['girth-buckles', 'Girth Buckles']
+],
+bridle: [
+    ['headpiece-crownpiece', 'Crownpiece'], ['browband', 'Browband'],
+    ['throatlatch', 'Throatlatch'], ['cheek-piece', 'Cheek Piece'],
+    ['curb-strap', 'Cavesson'], ['bit', 'Bit'], ['reins', 'Reins']
+  ]
+};
+
+const defaultPositions = {
+  saddle: {},
+  saddleUnderFlap: {},
+  saddleUnderside: {},
+  bridle: {}
+};
+const builderVersion = {
+  saddle: 'english-saddle-labels-v2',
+  saddleUnderFlap: 'english-saddle-under-flap-labels-v2',
+  saddleUnderside: 'english-saddle-underside-labels-v1',
+  bridle: 'english-bridle-labels-v1'
+};
+
+const partDescriptions = {
+  saddle: {
+  pommel: 'The raised front of the saddle that helps define the front of the seat and the saddle shape.',
+  twist: 'The narrow part of the seat between the rider upper thighs. Its shape affects how the saddle feels to sit in.',
+  seat: 'The part of the saddle where the rider sits.',
+  cantle: 'The raised back of the saddle seat.',
+  panel: 'The padded underside section that helps distribute pressure along the horse back.',
+  'stirrup-keeper': 'A small keeper that holds the loose end of the stirrup leather tidy.',
+  'saddle-flap': 'The large leather flap under the rider leg.',
+  'stirrup-iron': 'The metal foot support where the rider places the foot.',
+  'stirrup-leather': 'The adjustable strap that hangs from the stirrup bar and holds the stirrup iron.',
+  'knee-roll': 'Padding at the front of the flap that can help support the rider knee position.',
+  skirt: 'The small leather piece near the seat that covers the stirrup bar area.',
+  'd-ring': 'A metal ring on the saddle used as an attachment point for accessories.'
+},
+saddleUnderFlap: {
+  'knee-block': 'A shaped block near the front of the flap that helps support the rider knee and leg position.',
+  billets: 'The leather straps that hang under the flap and buckle to the girth to secure the saddle.',
+  'thigh-block': 'A supportive block positioned lower or farther back on the flap to help steady the rider thigh.',
+  'buckle-guard': 'A leather guard that sits behind the girth buckles to reduce bulk and protect the saddle flap area.'
+},
+saddleUnderside: {
+    'left-panel': 'One of the padded underside panels that rests on the saddle pad and helps distribute pressure.',
+    'right-panel': 'One of the padded underside panels that rests on the saddle pad and helps distribute pressure.',
+    'gullet-channel': 'The open channel between the panels that provides space over the horse spine.',
+    'saddle-flap': 'The leather flap visible from below at the side of the saddle.',
+    'sweat-flap': 'The inner flap beneath the saddle flap that lies against the horse or saddle pad and helps protect the billets and rider leg area.',
+    'billet-straps': 'The straps used to attach the girth to the saddle.',
+    girth: 'The strap that passes under the horse belly and fastens to the billets.',
+    'girth-buckles': 'The buckles used to tighten and fasten the girth.'
+  },
+  bridle: {
+    'headpiece-crownpiece': 'The top strap of the bridle that goes over the horse poll. It helps hold the rest of the bridle in place.',
+    browband: 'The strap that crosses the horse forehead on a browband-style bridle. It helps keep the headpiece from sliding too far back.',
+    throatlatch: 'The strap that fastens under the throat area. It helps prevent the bridle from slipping off over the horse ears.',
+    'cheek-piece': 'The side strap that runs down the horse face and attaches near the bit. It helps hold the bit or attachment at the correct height.',
+    'curb-strap': 'The strap that circles the nose on many English bridles. It can help stabilize the bridle and should be adjusted with care.',
+    bit: 'The mouthpiece or attachment point connected to the reins. Some English setups use a bit, while others may be bitless.',
+    reins: 'The straps held by the rider. Reins connect to the bit or bitless attachment and are one part of rider communication.'
+  }
+};
+
+function makeDefaults() {
+  defaultPositions.saddle = {
+  pommel: { label: { x: 16, y: 12 }, anchor: { x: 32, y: 21 } },
+  twist: { label: { x: 43, y: 8 }, anchor: { x: 45, y: 26 } },
+  seat: { label: { x: 58, y: 9 }, anchor: { x: 56, y: 27 } },
+  cantle: { label: { x: 77, y: 12 }, anchor: { x: 69, y: 20 } },
+  panel: { label: { x: 78, y: 45 }, anchor: { x: 72, y: 44 } },
+  'stirrup-keeper': { label: { x: 16, y: 35 }, anchor: { x: 27, y: 34 } },
+  'saddle-flap': { label: { x: 16, y: 52 }, anchor: { x: 41, y: 72 } },
+  'stirrup-iron': { label: { x: 54, y: 94 }, anchor: { x: 35, y: 87 } },
+  'stirrup-leather': { label: { x: 20, y: 91 }, anchor: { x: 40, y: 80 } },
+  'knee-roll': { label: { x: 17, y: 82 }, anchor: { x: 43, y: 73 } },
+  skirt: { label: { x: 86, y: 32 }, anchor: { x: 45, y: 36 } },
+  'd-ring': { label: { x: 83, y: 67 }, anchor: { x: 62, y: 47 } }
+};
+  defaultPositions.saddleUnderFlap = {
+  'knee-block': { label: { x: 16, y: 18 }, anchor: { x: 28, y: 25 } },
+  billets: { label: { x: 18, y: 58 }, anchor: { x: 44, y: 56 } },
+  'thigh-block': { label: { x: 74, y: 30 }, anchor: { x: 58, y: 43 } },
+  'buckle-guard': { label: { x: 74, y: 72 }, anchor: { x: 53, y: 67 } }
+};
+defaultPositions.saddleUnderside = {
+    'left-panel': { label: { x: 16, y: 17 }, anchor: { x: 33, y: 31 } },
+    'right-panel': { label: { x: 84, y: 17 }, anchor: { x: 67, y: 31 } },
+    'gullet-channel': { label: { x: 50, y: 12 }, anchor: { x: 50, y: 35 } },
+    'saddle-flap': { label: { x: 16, y: 48 }, anchor: { x: 21, y: 39 } },
+    'sweat-flap': { label: { x: 22, y: 82 }, anchor: { x: 27, y: 58 } },
+    'billet-straps': { label: { x: 84, y: 48 }, anchor: { x: 86, y: 46 } },
+    girth: { label: { x: 50, y: 86 }, anchor: { x: 50, y: 82 } },
+    'girth-buckles': { label: { x: 82, y: 91 }, anchor: { x: 93, y: 82 } }
+  };
+  defaultPositions.bridle = {
+    'headpiece-crownpiece': { label: { x: 72, y: 14 }, anchor: { x: 50, y: 19 } },
+    browband: { label: { x: 76, y: 27 }, anchor: { x: 55, y: 35 } },
+    throatlatch: { label: { x: 76, y: 39 }, anchor: { x: 51, y: 49 } },
+    'cheek-piece': { label: { x: 78, y: 51 }, anchor: { x: 57, y: 50 } },
+    'curb-strap': { label: { x: 76, y: 66 }, anchor: { x: 58, y: 66 } },
+    bit: { label: { x: 72, y: 76 }, anchor: { x: 56, y: 71 } },
+    reins: { label: { x: 24, y: 42 }, anchor: { x: 39, y: 45 } }
+  };
+}
+makeDefaults();
+
+function storageKey(type) {
+  return 'equineEdu.englishEquipment.labelBuilder.' + type + '.' + builderVersion[type];
+}
+
+function loadPositions(type) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey(type)) || 'null');
+    if (LABEL_BUILDER_EDIT_MODE && saved) return saved;
+  } catch (error) {}
+  if (BAKED_LABEL_POSITIONS[type]) {
+    return unpackBakedPositions(BAKED_LABEL_POSITIONS[type]);
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey(type)) || 'null');
+    return saved || JSON.parse(JSON.stringify(defaultPositions[type]));
+  } catch (error) {
+    return JSON.parse(JSON.stringify(defaultPositions[type]));
+  }
+}
+
+function unpackBakedPositions(payload) {
+  const unpacked = {};
+  Object.entries(payload || {}).forEach(([key, value]) => {
+    const match = key.match(/^(.+)\.(anchor|label)$/);
+    if (!match) return;
+    const id = match[1];
+    const part = match[2];
+    if (!unpacked[id]) unpacked[id] = {};
+    unpacked[id][part] = value;
+  });
+  return unpacked;
+}
+
+const positions = {
+  saddle: loadPositions('saddle'),
+  saddleUnderFlap: loadPositions('saddleUnderFlap'),
+  saddleUnderside: loadPositions('saddleUnderside'),
+  bridle: loadPositions('bridle')
+};
+
+function savePositions(type) {
+  localStorage.setItem(storageKey(type), JSON.stringify(positions[type]));
+}
+
+function pointFromEvent(event, stage) {
+  const rect = stage.getBoundingClientRect();
+  return {
+    x: Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100)),
+    y: Math.max(0, Math.min(100, ((event.clientY - rect.top) / rect.height) * 100))
+  };
+}
+
+function stageIdFor(type) {
+  if (type === 'saddleUnderFlap') return 'saddle-under-flap-stage';
+  if (type === 'saddleUnderside') return 'saddle-underside-stage';
+  return type + '-stage';
+}
+
+function renderBuilder(type) {
+  const stage = document.getElementById(stageIdFor(type));
+  const svg = stage.querySelector('.leader-layer');
+  stage.querySelectorAll('.part-callout, .anchor-dot').forEach(el => el.remove());
+  svg.innerHTML = '';
+
+  builderData[type].forEach(([id, label], index) => {
+    if (!positions[type][id]) positions[type][id] = JSON.parse(JSON.stringify(defaultPositions[type][id]));
+    const pos = positions[type][id];
+
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.classList.add('leader-line');
+    line.dataset.for = id;
+    svg.appendChild(line);
+
+    const anchor = document.createElement('button');
+    anchor.type = 'button';
+    anchor.className = 'anchor-dot';
+    anchor.dataset.type = type;
+    anchor.dataset.id = id;
+    anchor.dataset.part = 'anchor';
+    anchor.setAttribute('aria-label', label + ' anchor');
+    stage.appendChild(anchor);
+
+    const callout = document.createElement('button');
+    callout.type = 'button';
+    callout.className = 'part-callout';
+    callout.dataset.type = type;
+    callout.dataset.id = id;
+    callout.dataset.part = 'label';
+    callout.innerHTML = '<span>' + label + '</span>';
+    stage.appendChild(callout);
+  });
+  updateBuilder(type);
+}
+
+function updateBuilder(type) {
+  const stage = document.getElementById(stageIdFor(type));
+  const svg = stage.querySelector('.leader-layer');
+  Object.entries(positions[type]).forEach(([id, pos]) => {
+    const anchor = stage.querySelector('.anchor-dot[data-id="' + id + '"]');
+    const callout = stage.querySelector('.part-callout[data-id="' + id + '"]');
+    const line = svg.querySelector('.leader-line[data-for="' + id + '"]');
+    if (!anchor || !callout || !line) return;
+    anchor.style.left = pos.anchor.x + '%';
+    anchor.style.top = pos.anchor.y + '%';
+    callout.style.left = pos.label.x + '%';
+    callout.style.top = pos.label.y + '%';
+    line.setAttribute('x1', pos.anchor.x + '%');
+    line.setAttribute('y1', pos.anchor.y + '%');
+    line.setAttribute('x2', pos.label.x + '%');
+    line.setAttribute('y2', pos.label.y + '%');
+  });
+}
+
+let activeDrag = null;
+document.addEventListener('pointerdown', event => {
+  if (!LABEL_BUILDER_EDIT_MODE) return;
+  const target = event.target.closest('.part-callout, .anchor-dot');
+  if (!target) return;
+  activeDrag = {
+    type: target.dataset.type,
+    id: target.dataset.id,
+    part: target.dataset.part,
+    el: target
+  };
+  target.classList.add('dragging');
+  target.setPointerCapture(event.pointerId);
+});
+document.addEventListener('pointermove', event => {
+  if (!LABEL_BUILDER_EDIT_MODE) return;
+  if (!activeDrag) return;
+  const stage = document.getElementById(stageIdFor(activeDrag.type));
+  const point = pointFromEvent(event, stage);
+  positions[activeDrag.type][activeDrag.id][activeDrag.part] = point;
+  updateBuilder(activeDrag.type);
+  savePositions(activeDrag.type);
+});
+document.addEventListener('pointerup', () => {
+  if (!activeDrag) return;
+  activeDrag.el.classList.remove('dragging');
+  activeDrag = null;
+});
+
+function renderReference(type) {
+  const ref = document.getElementById(type + '-reference');
+  ref.innerHTML = builderData[type].map(([id, label], index) => {
+    const description = partDescriptions[type] && partDescriptions[type][id];
+    if (!description) return '<div><h4>' + label + '</h4></div>';
+    return '<div><h4>' + label + '</h4><p>' + description + '</p></div>';
+  }).join('');
+}
+
+function exportPositions(type) {
+  const output = document.getElementById(type + '-output');
+  const status = document.getElementById(type + '-status');
+  const payload = {};
+  Object.entries(positions[type]).forEach(([id, value]) => {
+    payload[id + '.anchor'] = value.anchor;
+    payload[id + '.label'] = value.label;
+  });
+  output.value = JSON.stringify(payload, null, 2);
+  output.classList.add('show');
+  output.select();
+  navigator.clipboard.writeText(output.value).then(() => {
+    status.textContent = 'Positions copied to clipboard.';
+  }).catch(() => {
+    status.textContent = 'Positions shown below. Copy them from the box.';
+  });
+}
+
+document.querySelectorAll('[data-copy]').forEach(button => {
+  button.addEventListener('click', () => exportPositions(button.dataset.copy));
+});
+document.querySelectorAll('[data-reset]').forEach(button => {
+  button.addEventListener('click', () => {
+    const type = button.dataset.reset;
+    positions[type] = JSON.parse(JSON.stringify(defaultPositions[type]));
+    savePositions(type);
+    renderBuilder(type);
+    document.getElementById(type + '-status').textContent = 'Positions reset.';
+  });
+});
+
+if (!LABEL_BUILDER_EDIT_MODE) {
+  document.body.classList.add('is-baked');
+}
+
+function activateSaddleView(type) {
+  document.querySelectorAll('.saddle-view-tab').forEach(button => {
+    button.classList.toggle('active', button.dataset.saddleView === type);
+  });
+  document.querySelectorAll('.saddle-view-panel').forEach(panel => {
+    panel.classList.toggle('active', panel.id === 'saddle-view-' + type);
+  });
+  document.querySelectorAll('.saddle-reference-panel').forEach(panel => {
+    panel.classList.toggle('active', panel.dataset.saddleReference === type);
+  });
+  requestAnimationFrame(() => updateBuilder(type));
+}
+
+document.querySelectorAll('.saddle-view-tab').forEach(button => {
+  button.addEventListener('click', () => activateSaddleView(button.dataset.saddleView));
+});
+
+function activatePanel(panelName, shouldScroll = false) {
+  document.querySelectorAll('.part-tab').forEach(button => {
+    button.classList.toggle('active', button.dataset.panel === panelName);
+  });
+  document.querySelectorAll('.part-panel').forEach(panel => {
+    panel.classList.toggle('active', panel.id === 'panel-' + panelName);
+  });
+  if (panelName === 'saddle') {
+    const activeSaddleView = document.querySelector('.saddle-view-tab.active');
+    requestAnimationFrame(() => { updateBuilder('saddle'); updateBuilder('saddleUnderFlap'); updateBuilder('saddleUnderside'); });
+  }
+  if (panelName === 'bridle') {
+    requestAnimationFrame(() => updateBuilder('bridle'));
+  }
+  if (shouldScroll) {
+    document.querySelector('.part-panel.active .tab-bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+document.querySelectorAll('.part-tab').forEach(btn => {
+  btn.addEventListener('click', () => activatePanel(btn.dataset.panel, btn.closest('.image-tabs')));
+});
+
+['saddle', 'saddleUnderFlap', 'saddleUnderside', 'bridle'].forEach(type => {
+  renderBuilder(type);
+  renderReference(type);
+});
+
+window.addEventListener('resize', () => {
+  updateBuilder('saddle');
+  updateBuilder('saddleUnderFlap');
+  updateBuilder('saddleUnderside');
+  updateBuilder('bridle');
+});
+
+window.CURRENT_MODULE = 2;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'Back to English Tack', url: '1-index.html' },
+  navExtras: [{ label: 'The Viewing Room', url: '4-viewing-room.html' }]
+};
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.englishEquipment.saddleBridleParts','true')}catch(e){}</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

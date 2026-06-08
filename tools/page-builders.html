@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equine Edu - Page Builders</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --navy: #0D1B3E;
+    --gold: #D4AF37;
+    --paper: #F5EFE2;
+    --white: #fff;
+    --ink: #07183b;
+    --muted: #667190;
+    --border: #ddd6c8;
+    --radius: 8px;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    border-bottom: 3px solid var(--gold);
+  }
+  .hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 3.4rem;
+  }
+  .eyebrow {
+    color: var(--gold);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin: 0.8rem 0 0.8rem;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+  .hero p {
+    max-width: 760px;
+    margin: 0;
+    color: #dce4f7;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .builder-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .builder-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: 0 12px 36px rgba(13,27,62,0.08);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .builder-card span {
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .builder-card h2 {
+    margin: 0.65rem 0 0.6rem;
+    font-size: 1.45rem;
+    line-height: 1.15;
+  }
+  .builder-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .builder-card ul {
+    margin: 1rem 0 1.2rem;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .builder-card li {
+    border-top: 1px solid var(--border);
+    padding: 0.45rem 0;
+  }
+  .cta {
+    margin-top: auto;
+    display: inline-flex;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 800;
+  }
+  @media (max-width: 900px) {
+    .builder-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Equine Edu Tools</div>
+    <h1>Page Builders</h1>
+  <p>Use the structured builders for new pages, or open the text editor when you simply need to change wording on an existing HTML page without hunting through code.</p>
+  </div>
+</section>
+
+<main>
+  <div class="builder-grid">
+    <a class="builder-card" href="course-generator.html">
+      <span>Builder 1</span>
+      <h2>Course Landing Builder</h2>
+      <p>Creates the course overview page and matching course-config.js file.</p>
+      <ul>
+        <li>Hero and course summary</li>
+        <li>What you will learn section</li>
+        <li>Module list and navigation config</li>
+      </ul>
+      <div class="cta">Open Builder</div>
+    </a>
+
+    <a class="builder-card" href="lesson-builder.html">
+      <span>Builder 2</span>
+      <h2>Lesson Page Builder</h2>
+      <p>Builds reusable lesson pages with cards, tabs, notes, images, and inline practice.</p>
+      <ul>
+        <li>Drag-and-reorder content blocks</li>
+        <li>Tabs, cards, galleries, and large images</li>
+        <li>Inline quizzes with optional side images</li>
+      </ul>
+      <div class="cta">Open Builder</div>
+    </a>
+
+    <a class="builder-card" href="quiz-builder.html">
+      <span>Builder 3</span>
+      <h2>Quiz Builder</h2>
+      <p>Creates full quiz pages with randomized question draws and feedback.</p>
+      <ul>
+        <li>Large question bank support</li>
+        <li>Multiple question types</li>
+        <li>Answer area plus tall side image layout</li>
+      </ul>
+      <div class="cta">Open Builder</div>
+    </a>
+
+    <a class="builder-card" href="text-editor.html">
+      <span>Quick Edit</span>
+      <h2>Page Text Editor</h2>
+      <p>Edit wording on existing HTML pages without touching the code.</p>
+      <ul>
+        <li>Upload any course HTML page</li>
+        <li>Edit headings, paragraphs, buttons, labels, and quiz text</li>
+        <li>Download the same page with text changes applied</li>
+      </ul>
+      <div class="cta">Open Editor</div>
+    </a>
+
+    <a class="builder-card" href="copy-review-pack.html">
+      <span>Copy Review</span>
+      <h2>Copy Change Pack</h2>
+      <p>Pull wording from one page or a whole course folder, write requested edits, and download one pack for Codex to apply all at once.</p>
+      <ul>
+        <li>Review lots of wording without code hunting</li>
+        <li>Exports JSON and Markdown notes</li>
+        <li>Works with generated or hand-edited pages</li>
+      </ul>
+      <div class="cta">Open Tool</div>
+    </a>
+  </div>
+</main>
+</body>
+</html>

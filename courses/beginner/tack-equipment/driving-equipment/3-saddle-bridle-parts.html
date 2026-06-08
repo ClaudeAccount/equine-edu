@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harness &amp; Bridle Parts - Driving Harness &amp; Equipment - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.tab-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:.4rem;margin-bottom:1.5rem}
+.part-tab{border:0;border-radius:var(--radius);padding:1rem;background:var(--off-white);font-weight:800;color:var(--text-mid);cursor:pointer}
+.part-tab.active{background:var(--navy);color:var(--gold)}
+.part-panel{display:none}.part-panel.active{display:block}
+.equipment-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:1.25rem;margin-bottom:1rem}
+.equipment-image{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin:1rem auto;max-width:760px}
+.equipment-image img{width:100%;height:360px;object-fit:contain;display:block}
+.parts-reference{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:1rem}
+.part-def{background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem}
+.part-def h3{font-family:var(--font-display);color:var(--navy);font-size:1rem;margin:0 0 .35rem}
+.part-def p{color:var(--text-mid);font-size:.86rem;line-height:1.55;margin:0}
+.note-box{background:rgba(201,168,76,.09);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.25rem;color:var(--text-mid);line-height:1.65;margin-top:1rem}
+@media(max-width:760px){.tab-bar,.parts-reference{grid-template-columns:1fr}.equipment-image img{height:260px}}
+
+/* Uniform lesson tabs */
+.tab-system { gap: 1.5rem; }
+.tab-bar {
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.4rem;
+  margin: 1.35rem 0 1.75rem;
+}
+.part-tab,
+.tab-btn,
+.saddle-view-tab {
+  min-height: 48px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--off-white);
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  padding: 0.85rem 1rem;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+.part-tab.active,
+.tab-btn.active,
+.saddle-view-tab.active,
+.tab-btn:nth-child(2).active,
+.tab-btn:nth-child(5).active {
+  background: var(--navy);
+  border-color: transparent;
+  color: var(--gold);
+  box-shadow: none;
+}
+.part-tab:not(.active):hover,
+.tab-btn:not(.active):hover,
+.saddle-view-tab:not(.active):hover {
+  background: rgba(13,27,62,0.06);
+  color: var(--navy);
+  opacity: 1;
+}
+.part-panel > .lesson-intro-card,
+.lesson-intro-card + .tab-system {
+  margin-bottom: 1.35rem;
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Driving Harness & Equipment</div>
+    <h1 class="lesson-hero-title">Harness &amp; Bridle <span>Parts</span></h1>
+    <p class="lesson-hero-desc">Use the tabs to study the main parts of a driving harness, driving bridle, and vehicle connection system.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap"><main class="lesson-left">
+<section class="part-panel active" id="panel-harness">
+    <div class="lesson-intro-card">
+      <h2>Parts of the Driving Harness</h2>
+      <p>A driving harness connects the horse to the vehicle and helps manage pulling, holding back, steering, and balance. Exact harness styles vary, but the same core jobs show up again and again.</p>
+    </div>
+      <div class="tab-bar image-tabs" role="tablist" aria-label="Driving equipment parts">
+        <button class="part-tab active" data-panel="harness" type="button">Driving Harness</button>
+        <button class="part-tab" data-panel="bridle" type="button">Driving Bridle</button>
+        <button class="part-tab" data-panel="connections" type="button">Vehicle Connections</button>
+      </div>
+
+    <div class="equipment-card">
+      <div class="equipment-image"><img src="images/driving-harness-parts.png" alt="Driving harness parts reference"></div>
+      <div class="parts-reference">
+        <article class="part-def"><h3>Breastcollar</h3><p>The padded strap across the chest that the horse pushes into to pull many light vehicles.</p></article>
+        <article class="part-def"><h3>Collar</h3><p>A shaped padded collar used in some harnesses to spread pulling pressure around the shoulders.</p></article>
+        <article class="part-def"><h3>Traces</h3><p>The long straps or lines that connect the pulling part of the harness to the vehicle.</p></article>
+        <article class="part-def"><h3>Saddle / Pad</h3><p>The padded top piece that sits on the horse back and supports parts such as the terrets and shaft loops.</p></article>
+        <article class="part-def"><h3>Girth / Bellyband</h3><p>The strap under the belly that helps keep the harness saddle steady.</p></article>
+        <article class="part-def"><h3>Breeching</h3><p>The strap around the hindquarters that helps the horse slow or hold back the vehicle.</p></article>
+        <article class="part-def"><h3>Crupper</h3><p>The loop under the tail that helps keep the harness saddle from sliding forward.</p></article>
+        <article class="part-def"><h3>Terrets</h3><p>Rings on the harness saddle that guide the reins or lines back toward the driver.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="part-panel" id="panel-bridle">
+    <div class="lesson-intro-card">
+      <h2>Parts of the Driving Bridle</h2>
+      <p>A driving bridle helps guide the horse from behind. Many driving bridles include blinders so the horse can focus forward and avoid seeing too much movement behind or beside them.</p>
+    </div>
+      <div class="tab-bar image-tabs" role="tablist" aria-label="Driving equipment parts">
+        <button class="part-tab" data-panel="harness" type="button">Driving Harness</button>
+        <button class="part-tab active" data-panel="bridle" type="button">Driving Bridle</button>
+        <button class="part-tab" data-panel="connections" type="button">Vehicle Connections</button>
+      </div>
+
+    <div class="equipment-card">
+      <div class="equipment-image"><img src="images/driving-bridle-parts.png" alt="Driving bridle parts reference"></div>
+      <div class="parts-reference">
+        <article class="part-def"><h3>Crownpiece</h3><p>The top strap that goes over the poll and supports the rest of the bridle.</p></article>
+        <article class="part-def"><h3>Browband</h3><p>The strap across the forehead that helps keep the crownpiece positioned.</p></article>
+        <article class="part-def"><h3>Throatlatch</h3><p>The strap under the throat area that helps prevent the bridle from slipping off.</p></article>
+        <article class="part-def"><h3>Cheekpieces</h3><p>The side straps that help hold the bit at the correct height.</p></article>
+        <article class="part-def"><h3>Noseband</h3><p>The strap around the nose that can help stabilize the bridle.</p></article>
+        <article class="part-def"><h3>Blinders / Winkers</h3><p>Side pieces that limit rear and side vision so the horse can stay focused forward.</p></article>
+        <article class="part-def"><h3>Bit</h3><p>The mouthpiece or attachment that connects to the reins or lines.</p></article>
+        <article class="part-def"><h3>Lines / Reins</h3><p>The long reins held by the driver to communicate from behind the horse.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="part-panel" id="panel-connections">
+    <div class="lesson-intro-card">
+      <h2>Vehicle Connections</h2>
+      <p>Driving equipment works as a system. The harness, bridle, vehicle, and driver all need to be connected correctly before the horse moves off.</p>
+    </div>
+      <div class="tab-bar image-tabs" role="tablist" aria-label="Driving equipment parts">
+        <button class="part-tab" data-panel="harness" type="button">Driving Harness</button>
+        <button class="part-tab" data-panel="bridle" type="button">Driving Bridle</button>
+        <button class="part-tab active" data-panel="connections" type="button">Vehicle Connections</button>
+      </div>
+
+    <div class="equipment-card">
+      <div class="parts-reference">
+        <article class="part-def"><h3>Shafts</h3><p>The long vehicle arms that run along either side of a single horse and help guide the vehicle.</p></article>
+        <article class="part-def"><h3>Singletree / Whiffletree</h3><p>A swinging bar that helps even out pull from the traces as the horse moves.</p></article>
+        <article class="part-def"><h3>Holdback Straps</h3><p>Straps that connect breeching to the shafts so the horse can help slow the vehicle.</p></article>
+        <article class="part-def"><h3>Shaft Loops / Tugs</h3><p>Loops that help support or position the shafts on the harness.</p></article>
+        <article class="part-def"><h3>Neck Strap</h3><p>A strap that can help support the breastcollar or keep front harness pieces positioned.</p></article>
+        <article class="part-def"><h3>Safety Check</h3><p>Before driving, check that leather, buckles, stitching, vehicle pins, reins, and attachments are secure and correctly adjusted.</p></article>
+      </div>
+      <div class="note-box">Driving equipment can vary by vehicle, discipline, and harness style. The goal is to understand each part by its job: pulling, holding back, guiding, supporting, or stabilizing.</div>
+    </div>
+  </section>
+</main><aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside></div>
+<div id="site-footer"></div>
+<script>
+document.querySelectorAll('.part-tab').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const panel=button.dataset.panel;
+    document.querySelectorAll('.part-tab').forEach(tab=>tab.classList.toggle('active',tab.dataset.panel===panel));
+    document.querySelectorAll('.part-panel').forEach(section=>section.classList.toggle('active',section.id==='panel-'+panel));
+    document.querySelector('.part-panel.active .tab-bar').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+window.CURRENT_MODULE=2;
+window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Driving Equipment',url:'1-index.html'},navExtras:[{label:'The Viewing Room',url:'4-viewing-room.html'}]};
+</script>
+<script src="course-config.js"></script><script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.drivingEquipment.harnessBridleParts','true')}catch(e){}</script>
+</body></html>
+

@@ -1,0 +1,342 @@
+/* =============================================================================
+   Equine Edu — course.css
+   Page layout containers for course and lesson pages, plus responsive overrides.
+   Loaded after core.css and components.css.
+   ----------------------------------------------------------------------------
+   New course/lesson page archetypes should reuse the wrappers defined here.
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   1. Course landing page wrapper
+   ----------------------------------------------------------------------------- */
+.course-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem var(--page-pad) 5rem;
+}
+
+.course-section {
+  margin-bottom: 2.75rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   2. Lesson page two-column wrapper (main + sidebar)
+   ----------------------------------------------------------------------------- */
+.lesson-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem var(--page-pad) 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 5rem;
+  align-items: start;
+}
+
+.lesson-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.loft-game-page .lesson-wrap {
+  width: min(100%, 1500px);
+  max-width: none;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  justify-content: stretch;
+}
+
+.loft-game-page .lesson-left {
+  width: 100%;
+  max-width: none;
+}
+
+.lesson-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: calc(var(--nav-height) + 20px);
+  min-width: 0;
+}
+
+
+/* -----------------------------------------------------------------------------
+   2b. Sidebar prev / next nav
+   ----------------------------------------------------------------------------- */
+.sidebar-module-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sidebar-nav-btn {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  line-height: 1.4;
+  transition: opacity var(--motion-quick) var(--ease);
+  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
+}
+.sidebar-nav-btn:hover { opacity: 0.88; }
+.sidebar-nav-btn.next {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--gold);
+  text-align: right;
+}
+.sidebar-module-nav-return {
+  gap: 0;
+}
+.sidebar-nav-btn-return,
+.sidebar-nav-btn-return.next {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+  text-align: left;
+}
+
+/* -----------------------------------------------------------------------------
+   3. Prev / next lesson navigation
+   ----------------------------------------------------------------------------- */
+.lesson-nav {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+
+/* -----------------------------------------------------------------------------
+   4. Quiz page wrapper (single column)
+   ----------------------------------------------------------------------------- */
+.quiz-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2.5rem var(--page-pad) 5rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   5. Track / curriculum block (used on course landing pages)
+   ----------------------------------------------------------------------------- */
+.track-section {
+  background: var(--navy);
+  padding: 72px var(--page-pad);
+}
+
+.track-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.track-section .section-title {
+  color: var(--white);
+}
+
+.track-section .section-sub {
+  color: var(--gold);
+}
+
+.track-section .section-desc {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.track-list {
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+.track-list li {
+  display: flex;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.track-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-top: 0.55rem;
+  flex-shrink: 0;
+}
+
+.track-card {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(201, 168, 76, 0.24);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+}
+
+.track-card h3 {
+  font-family: var(--font-display);
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   6. Closing CTA section
+   ----------------------------------------------------------------------------- */
+.cta-section {
+  padding: 72px var(--page-pad);
+  background: var(--white);
+  text-align: center;
+  border-top: 3px solid var(--gold);
+}
+
+.cta-inner {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.cta-inner .section-title {
+  margin-bottom: 1rem;
+}
+
+.cta-inner .section-desc,
+.cta-inner .section-sub {
+  margin: 0 auto 1.6rem;
+  text-align: center;
+}
+
+
+/* -----------------------------------------------------------------------------
+   7. Responsive breakpoints
+   Larger tablets / small laptops: collapse 2-col layouts.
+   Phones: collapse multi-col grids and stack the lesson nav.
+   ----------------------------------------------------------------------------- */
+@media (max-width: 1050px) {
+  .course-hero-inner,
+  .lesson-hero-inner,
+  .lesson-wrap,
+  .diagram-shell,
+  .track-inner {
+    grid-template-columns: 1fr;
+  }
+  .lesson-right {
+    position: static;
+  }
+  .hero-visual {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 760px) {
+  .module-grid,
+  .outcomes-grid,
+  .term-grid,
+  .concept-grid,
+  .key-term-grid,
+  .term-chip-grid,
+  .match-grid,
+  .game-board,
+  .flip-grid,
+  .lab-grid {
+    grid-template-columns: 1fr;
+  }
+  .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .course-module {
+    grid-template-columns: 36px 1fr 20px;
+  }
+  .module-type {
+    display: none;
+  }
+  .lesson-nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .lesson-nav a,
+  .nav-btn,
+  .btn {
+    width: 100%;
+  }
+  .diagram-stage {
+    min-height: 310px;
+  }
+  .reveal-panel {
+    min-height: auto;
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   8. Landing-page sections (used on course-landing index.html pages)
+   ----------------------------------------------------------------------------- */
+
+/* "What you'll learn" outcomes block — 2-col on desktop */
+.learn-section {
+  padding: 80px var(--page-pad);
+  background: var(--off-white);
+}
+
+.learn-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Curriculum block — narrow centered column listing modules */
+.curriculum-section {
+  padding: 80px var(--page-pad);
+  background: var(--white);
+}
+
+.curriculum-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.curriculum-inner .section-title,
+.curriculum-inner .section-label,
+.curriculum-inner .section-sub {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* -----------------------------------------------------------------------------
+   9. Landing-page responsive overrides
+   ----------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .learn-inner,
+  .track-inner,
+  .course-hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .outcomes-grid {
+    grid-template-columns: 1fr;
+  }
+  .enroll-card {
+    display: none;
+  }
+}

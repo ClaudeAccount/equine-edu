@@ -1,0 +1,393 @@
+/* =============================================================================
+   Equine Edu — core.css
+   Design tokens, base reset, typography, site chrome, motion utilities.
+   Loaded on EVERY page. Keep this file lean.
+   ----------------------------------------------------------------------------
+   To change brand colors, fonts, or motion behavior platform-wide,
+   edit the CSS custom properties in :root below.
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   1. Reset
+   ----------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* -----------------------------------------------------------------------------
+   2. Design tokens
+   Single source of truth for color, typography, spacing, motion.
+   ----------------------------------------------------------------------------- */
+:root {
+  /* Brand colors */
+  --navy:        #0D1B3E;
+  --navy-mid:    #1A2F6B;
+  --navy-light:  #2B4494;
+  --gold:        #C9A84C;
+  --gold-bright: #E8C56A;
+  --gold-pale:   #F5E9C8;
+  --white:       #FFFFFF;
+  --off-white:   #F9F6EF;
+  --page-bg:     #F1E7D0;
+
+  /* Text colors */
+  --text-dark:   #0D1B3E;
+  --text-mid:    #3D4F7C;
+  --text-light:  #7A8BAD;
+
+  /* Borders / surfaces */
+  --border:      rgba(13, 27, 62, 0.08);
+  --border-mid:  rgba(13, 27, 62, 0.16);
+
+  /* Feedback (quiz/lesson) */
+  --success:     #256F2A;
+  --success-bg:  rgba(80, 180, 80, 0.12);
+  --success-bd:  rgba(80, 180, 80, 0.25);
+  --error:       #9D2626;
+  --error-bg:    rgba(220, 60, 60, 0.10);
+  --error-bd:    rgba(220, 60, 60, 0.20);
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+
+  /* Motion */
+  --ease:        cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-quick: 160ms;
+  --motion-soft:  420ms;
+
+  /* Layout */
+  --nav-height:  68px;
+  --page-pad:    5%;
+  --radius-sm:   4px;
+  --radius:      6px;
+  --radius-lg:   8px;
+}
+
+
+/* -----------------------------------------------------------------------------
+   3. Base typography
+   ----------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--page-bg);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* -----------------------------------------------------------------------------
+   4. Accessibility — focus styles
+   ----------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+
+/* -----------------------------------------------------------------------------
+   5. Top navigation
+   ----------------------------------------------------------------------------- */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--page-pad);
+  height: var(--nav-height);
+  border-bottom: 2px solid var(--gold);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+.nav-logo span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--motion-quick) var(--ease);
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700 !important;
+}
+
+/* ── Hamburger button ─────────────────────────────────────── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.nav-burger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.22s var(--ease), opacity 0.22s var(--ease);
+}
+nav.open .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+nav.open .nav-burger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+nav.open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile drawer ────────────────────────────────────────── */
+.nav-drawer {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0; right: 0;
+  background: var(--navy);
+  border-bottom: 2px solid var(--gold);
+  z-index: 99;
+  padding: 0.5rem var(--page-pad) 1.5rem;
+}
+@keyframes drawerIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+nav.open .nav-drawer {
+  animation: drawerIn 0.2s ease forwards;
+}
+.nav-drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.nav-drawer-links li {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-drawer-links li:last-child { border-bottom: none; }
+.nav-drawer-links a {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.9rem 0;
+  transition: color 0.15s;
+}
+.nav-drawer-links a:hover { color: var(--gold); }
+.nav-drawer-cta {
+  display: block !important;
+  margin-top: 0.75rem;
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+  text-align: center;
+  padding: 12px 24px !important;
+  border-radius: var(--radius-sm);
+  font-weight: 700 !important;
+  border-bottom: none !important;
+}
+
+
+/* -----------------------------------------------------------------------------
+   6. Breadcrumb
+   ----------------------------------------------------------------------------- */
+.breadcrumb {
+  margin-top: var(--nav-height);
+  background: var(--navy-mid);
+  padding: 12px var(--page-pad);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.breadcrumb a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color var(--motion-quick) var(--ease);
+}
+
+.breadcrumb a:hover {
+  color: var(--gold);
+}
+
+.breadcrumb span {
+  color: var(--gold);
+  margin: 0 4px;
+}
+
+.breadcrumb-current {
+  color: var(--white);
+}
+
+
+/* -----------------------------------------------------------------------------
+   7. Footer
+   ----------------------------------------------------------------------------- */
+footer {
+  background: var(--navy);
+  border-top: 2px solid var(--gold);
+  padding: 2rem var(--page-pad);
+  margin-top: 2rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--white);
+}
+
+.footer-logo span {
+  color: var(--gold);
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color var(--motion-quick) var(--ease);
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+
+/* -----------------------------------------------------------------------------
+   8. Motion utilities
+   .motion-reveal: fade-and-rise on scroll (toggled by site.js)
+   ----------------------------------------------------------------------------- */
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--motion-soft) var(--ease),
+    transform var(--motion-soft) var(--ease);
+  transition-delay: var(--motion-delay, 0ms);
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------------------------------------------
+   9. Reduced motion preference
+   ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .motion-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   10. Responsive — site chrome
+   Component/layout breakpoints live in their own partials.
+   ----------------------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-burger {
+    display: flex;
+  }
+  nav.open .nav-drawer {
+    display: block;
+  }
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

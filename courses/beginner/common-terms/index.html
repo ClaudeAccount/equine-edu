@@ -1,0 +1,2017 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Horse Terms Reference Guide &mdash; Equine Edu</title>
+<meta name="description" content="A growing quick-reference guide for common horse terminology, grouped by horse basics, anatomy, gaits, tack, barn care, instruction, and safety.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../assets/css/course.css">
+<style>
+  :root {
+    --terms-cream: var(--page-bg);
+    --terms-cream-soft: var(--off-white);
+    --terms-parchment: var(--gold-pale);
+    --terms-tan: rgba(201, 168, 76, 0.34);
+    --terms-tan-mid: var(--gold);
+    --terms-shadow: 0 8px 24px rgba(13, 27, 62, 0.08);
+  }
+
+  .reference-hero {
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    padding: calc(var(--nav-height) + 44px) var(--page-pad) 58px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .reference-hero::before {
+    content: "";
+    position: absolute;
+    inset: auto -90px -180px auto;
+    width: 420px;
+    height: 420px;
+    border: 58px solid rgba(201, 168, 76, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .reference-hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+    gap: 56px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reference-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.15rem, 4vw, 3.35rem);
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 1rem;
+  }
+
+  .reference-hero h1 span {
+    color: var(--gold);
+  }
+
+  .reference-hero-desc {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 690px;
+    margin-bottom: 1.6rem;
+  }
+
+  .journal-preview {
+    width: min(100%, 380px);
+    justify-self: center;
+    position: relative;
+    padding: 26px 30px 22px 48px;
+    min-height: 300px;
+    background: #161411;
+    border: 1px solid rgba(201, 168, 76, 0.55);
+    border-radius: 8px;
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34), 0 8px 0 rgba(245, 233, 200, 0.9);
+    transform: rotate(-2deg);
+  }
+
+  .journal-preview::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 24px;
+    bottom: 24px;
+    width: 12px;
+    background:
+      radial-gradient(circle at center, var(--gold) 0 3px, transparent 3.5px) 0 0 / 12px 24px;
+    filter: drop-shadow(0 0 4px rgba(232, 197, 106, 0.35));
+  }
+
+  .journal-preview::after {
+    content: "";
+    position: absolute;
+    right: -18px;
+    top: 44px;
+    width: 22px;
+    height: 196px;
+    border-radius: 0 6px 6px 0;
+    background:
+      linear-gradient(var(--gold), var(--gold)) 0 0 / 100% 25% no-repeat,
+      linear-gradient(#3fcf68, #3fcf68) 0 33% / 100% 25% no-repeat,
+      linear-gradient(#f4f0e4, #f4f0e4) 0 66% / 100% 25% no-repeat,
+      linear-gradient(#d57a32, #d57a32) 0 100% / 100% 25% no-repeat;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  .journal-label {
+    color: var(--gold-bright);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: 0;
+    margin-bottom: 0.4rem;
+  }
+
+  .journal-sub {
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+
+  .journal-lines {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .journal-line {
+    height: 1px;
+    background: rgba(245, 233, 200, 0.28);
+  }
+
+  .reference-wrap {
+    max-width: none;
+    margin: 0 auto;
+    padding: 2.5rem var(--page-pad) 5rem;
+  }
+
+  .reference-tools {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .reference-search {
+    width: 100%;
+    min-height: 46px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-mid);
+    padding: 0 1rem;
+    font: inherit;
+    color: var(--navy);
+    background: var(--white);
+    box-shadow: 0 4px 18px rgba(120, 90, 40, 0.16);
+  }
+
+  .reference-count {
+    color: var(--text-mid);
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+
+  .journal-shell {
+    display: flex;
+    flex-direction: column;
+    background: var(--navy);
+    border: 1px solid rgba(201, 168, 76, 0.5);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 52px rgba(120, 90, 40, 0.28), 0 3px 10px rgba(13, 27, 62, 0.12);
+    overflow: visible;
+    position: relative;
+  }
+
+  .journal-shell.cover-closed .journal-tabs {
+    display: none;
+  }
+
+  .journal-shell.cover-closed .journal-pages {
+    background: transparent;
+    padding: 3rem 1rem;
+    min-height: 650px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .journal-shell.cover-closed .journal-pages::before {
+    display: none;
+  }
+
+  .journal-tabs {
+    position: relative;
+    inset: auto;
+    z-index: 1;
+    border-bottom: 2px solid var(--gold);
+    padding: 0.4rem 1rem 0;
+    display: flex;
+    justify-content: stretch;
+    gap: 0;
+    align-items: flex-end;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .journal-tab {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 120px;
+    min-height: 34px;
+    border: 1px solid rgba(201, 168, 76, 0.38);
+    border-bottom: 0;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 0.42rem 1.45rem 0.5rem;
+    margin-right: 0;
+    background: var(--white);
+    color: var(--navy);
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 800;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.1);
+    transition: background var(--motion-quick) var(--ease), color var(--motion-quick) var(--ease), transform var(--motion-quick) var(--ease), box-shadow var(--motion-quick) var(--ease);
+  }
+
+  .journal-tab:last-child {
+    margin-right: 0;
+  }
+
+  .journal-tab:nth-child(even) {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .journal-tab:hover {
+    background: var(--gold-bright);
+    color: var(--navy);
+    transform: translateY(-2px);
+  }
+
+  .journal-tab.active {
+    background: #CFE6F7;
+    color: var(--navy);
+    border-color: #9EC6E8;
+    font-weight: 800;
+    box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    transform: translateY(-3px);
+  }
+
+  .journal-tab:nth-child(odd).active {
+    background: #CFE6F7;
+  }
+
+  .journal-pages {
+    position: relative;
+    background: linear-gradient(90deg, var(--navy) 0 49.7%, var(--gold) 49.7% 50.3%, var(--navy) 50.3% 100%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: 2.25rem 2.65rem;
+    min-height: 640px;
+    overflow: hidden;
+    perspective: 1800px;
+  }
+
+  .journal-pages::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 1.4rem;
+    bottom: 1.4rem;
+    width: 34px;
+    transform: translateX(-50%);
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at center, #1b2738 0 5px, #e8e0ce 5.5px 9px, transparent 9.5px) 50% 7px / 34px 30px repeat-y;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.18));
+    z-index: 4;
+  }
+
+  .reference-panel {
+    display: none;
+  }
+
+  .reference-panel.active {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+    min-height: 590px;
+    animation: pageFlipIn 360ms var(--ease);
+    transform-origin: center center;
+  }
+
+  .reference-panel.cover-panel.active {
+    display: block;
+    width: min(100%, 390px);
+    min-height: auto;
+  }
+
+  .journal-cover-page {
+    position: relative;
+    min-height: 500px;
+    width: min(100%, 360px);
+    border-radius: 8px;
+    background:
+      radial-gradient(circle at 72% 18%, rgba(255,255,255,0.1), transparent 22%),
+      linear-gradient(135deg, rgba(255,255,255,0.08), transparent 34%),
+      var(--navy);
+    border: 1px solid rgba(201, 168, 76, 0.55);
+    box-shadow: inset 0 0 0 2px rgba(201, 168, 76, 0.16), 0 24px 48px rgba(0, 0, 0, 0.28);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 2rem;
+    transform: rotate(-2deg);
+  }
+
+  .journal-cover-page::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 20px;
+    bottom: 20px;
+    width: 18px;
+    border: 0;
+    border-radius: 0;
+    background:
+      radial-gradient(circle at center, #111827 0 5px, #d8d0c4 5.5px 8px, transparent 8.5px) 50% 4px / 18px 26px repeat-y;
+    filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.28));
+    pointer-events: none;
+  }
+
+  .journal-cover-page::after {
+    content: "";
+    position: absolute;
+    inset: 22px;
+    border: 1px solid rgba(201, 168, 76, 0.36);
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  .journal-cover-label {
+    color: var(--gold);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    margin-bottom: 1rem;
+  }
+
+  .journal-cover-page h2 {
+    font-family: var(--font-display);
+    color: var(--white);
+    font-size: clamp(1.95rem, 5vw, 3.2rem);
+    line-height: 1.05;
+    max-width: 680px;
+    margin-bottom: 1rem;
+  }
+
+  .journal-cover-page h2 span {
+    color: var(--gold);
+  }
+
+  .journal-cover-page p {
+    max-width: 540px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
+    margin-bottom: 1.6rem;
+  }
+
+  .reference-panel.is-flipping {
+    animation: pageFlipOut 180ms var(--ease);
+  }
+
+  @keyframes pageFlipIn {
+    from {
+      opacity: 0;
+      transform: rotateY(-8deg) translateX(10px);
+    }
+    to {
+      opacity: 1;
+      transform: rotateY(0) translateX(0);
+    }
+  }
+
+  @keyframes pageFlipOut {
+    from {
+      opacity: 1;
+      transform: rotateY(0);
+    }
+    to {
+      opacity: 0.5;
+      transform: rotateY(8deg);
+    }
+  }
+
+  .journal-page {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+    background: #fffaf5;
+    border: 1px solid rgba(13, 27, 62, 0.08);
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.78), 0 12px 28px rgba(92, 55, 74, 0.18);
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .journal-page-left {
+    padding-right: 2rem;
+  }
+
+  .journal-page-right {
+    padding-left: 2rem;
+  }
+
+  .panel-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(201, 168, 76, 0.32);
+  }
+
+  .panel-heading h2 {
+    font-family: var(--font-display);
+    color: var(--navy);
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .panel-heading p {
+    max-width: 560px;
+    color: var(--text-mid);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-top: 0.45rem;
+  }
+
+  .tab-marker {
+    display: none;
+  }
+
+  .page-art {
+    min-height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 0 1.25rem;
+  }
+
+  .page-art img {
+    max-width: min(100%, 300px);
+    max-height: 245px;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 24px rgba(13, 27, 62, 0.18));
+  }
+
+  .page-summary {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(201, 168, 76, 0.28);
+    border-radius: var(--radius);
+    padding: 1rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+    font-size: 0.92rem;
+  }
+
+  .page-summary strong {
+    display: block;
+    color: var(--navy);
+    margin-bottom: 0.35rem;
+  }
+
+  .page-cue {
+    margin-top: auto;
+    padding-top: 1rem;
+    color: var(--text-light);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .term-reference-grid {
+    display: block;
+    border-top: 1px solid rgba(13, 27, 62, 0.16);
+  }
+
+  .reference-term {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(13, 27, 62, 0.16);
+    border-radius: 0;
+    padding: 0.35rem 0 0.2rem;
+    box-shadow: none;
+    min-height: 32px;
+    color: var(--text-mid);
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .reference-term.is-hidden {
+    display: none;
+  }
+
+  .reference-term h3 {
+    display: inline;
+    font-family: var(--font-body);
+    color: var(--navy);
+    font-size: 0.94rem;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  .reference-term h3::after {
+    content: ": ";
+    color: var(--gold);
+  }
+
+  .reference-term p {
+    display: inline;
+    color: var(--text-mid);
+    line-height: inherit;
+    font-size: inherit;
+  }
+
+  .reference-note {
+    margin-top: 1rem;
+    border-left: 3px solid var(--gold);
+    background: rgba(201, 168, 76, 0.13);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.9rem 1rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-size: 0.9rem;
+  }
+
+  .growth-section {
+    background: var(--navy);
+    color: var(--white);
+    padding: 64px var(--page-pad);
+  }
+
+  .growth-inner {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .growth-inner .section-title {
+    color: var(--white);
+  }
+
+  .growth-inner .section-sub {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .growth-card {
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(201, 168, 76, 0.28);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem;
+  }
+
+  .growth-card h3 {
+    font-family: var(--font-display);
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .growth-list {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .growth-list li {
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.55;
+    font-size: 0.9rem;
+  }
+
+  .no-results {
+    display: none;
+    background: var(--white);
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    border-radius: var(--radius);
+    padding: 1rem;
+    color: var(--text-mid);
+  }
+
+  .no-results.visible {
+    display: block;
+  }
+
+  .journal-controls {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 8;
+  }
+
+  .page-status {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .book-arrow {
+    position: absolute;
+    top: 53%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 76px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(201, 168, 76, 0.42);
+    background: rgba(13, 27, 62, 0.88);
+    color: var(--gold);
+    font: inherit;
+    font-size: 1.65rem;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    transition: background var(--motion-quick) var(--ease), transform var(--motion-quick) var(--ease), opacity var(--motion-quick) var(--ease);
+  }
+
+  .book-arrow:hover {
+    background: var(--navy-mid);
+    transform: translateY(-50%) scale(1.04);
+  }
+
+  .book-arrow.previous {
+    left: 0.85rem;
+  }
+
+  .book-arrow.next {
+    right: 0.85rem;
+  }
+
+  .book-arrow:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  @media (max-width: 980px) {
+    .reference-hero-inner,
+    .growth-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .journal-preview {
+      display: none;
+    }
+
+    .journal-tabs {
+      padding: 0 0.75rem;
+    }
+
+    .journal-tab {
+      flex: 0 0 136px;
+    }
+
+    .journal-pages {
+      background: var(--navy);
+      padding: 1.25rem;
+    }
+
+    .journal-pages::before {
+      display: none;
+    }
+
+    .reference-panel.active {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .journal-page-left,
+    .journal-page-right {
+      padding: 1.2rem;
+    }
+  }
+
+  /* ── Vital Signs Chart ──────────────────────────────────────────────────── */
+  .vitals-chart {
+    border-top: 1px solid rgba(13,27,62,0.14);
+    font-size: 0.78rem;
+  }
+  .vitals-row-header,
+  .vitals-row {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr 1fr;
+    gap: 0.2rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(13,27,62,0.1);
+    align-items: center;
+  }
+  .vitals-row-header {
+    border-bottom: 2px solid rgba(13,27,62,0.18);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.1rem;
+  }
+  .vh-cell {
+    font-size: 0.69rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    padding: 0.22rem 0.2rem;
+    border-radius: 4px;
+  }
+  .vh-cell:first-child { text-align: left; color: var(--navy); }
+  .vh-normal    { background: rgba(22,163,74,0.12);  color: #15803d; }
+  .vh-monitor   { background: rgba(234,179,8,0.14);  color: #a16207; }
+  .vh-emergency { background: rgba(220,38,38,0.1);   color: #b91c1c; }
+
+  .vr-name {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.3;
+    padding-right: 0.25rem;
+  }
+  .vr-cell {
+    font-size: 0.71rem;
+    line-height: 1.35;
+    text-align: center;
+    padding: 0.28rem 0.18rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .vr-normal    { background: rgba(22,163,74,0.08);  color: #166534; }
+  .vr-monitor   { background: rgba(234,179,8,0.1);   color: #854d0e; }
+  .vr-emergency { background: rgba(220,38,38,0.07);  color: #991b1b; }
+
+  .vitals-source-note {
+    margin-top: 0.75rem;
+    font-size: 0.72rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .vital-how-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid rgba(13,27,62,0.14);
+  }
+  .vital-how-item {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(13,27,62,0.1);
+    font-size: 0.84rem;
+    line-height: 1.55;
+    color: var(--text-mid);
+  }
+  .vital-how-item strong {
+    color: var(--navy);
+    font-size: 0.82rem;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+  .vitals-emergency-callout {
+    margin-top: 1rem;
+    background: rgba(220,38,38,0.07);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-left: 3px solid #dc2626;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.8rem 0.95rem;
+    font-size: 0.82rem;
+    color: #991b1b;
+    line-height: 1.6;
+  }
+  .vitals-emergency-callout strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 800;
+  }
+
+  /* Reference guide layout, aligned with the Common Horse Breeds guide. */
+  .breadcrumb {
+    display: none;
+  }
+
+  .reference-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 62%, var(--navy) 100%);
+    padding: calc(var(--nav-height) + 52px) var(--page-pad) 58px;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .reference-hero::before {
+    inset: 0;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  }
+
+  .reference-hero-inner {
+    max-width: 900px;
+    grid-template-columns: 1fr;
+    gap: 0;
+    justify-items: center;
+  }
+
+  .reference-hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.55rem);
+    margin-bottom: 1rem;
+  }
+
+  .reference-hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 650px;
+  }
+
+  .course-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(201, 168, 76, 0.12);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+  }
+
+  .course-meta-row,
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .journal-preview {
+    display: none;
+  }
+
+  .reference-wrap {
+    max-width: 1280px;
+    padding: 40px 5% 60px;
+    background: var(--terms-cream);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--terms-tan);
+  }
+
+  .section-desc {
+    max-width: 470px;
+  }
+
+  .reference-tools {
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 10;
+    grid-template-columns: minmax(220px, 380px) auto;
+    justify-content: center;
+    background: var(--terms-cream-soft);
+    border: 1px solid var(--terms-tan);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    box-shadow: var(--terms-shadow);
+  }
+
+  .reference-search {
+    min-height: 42px;
+    border-radius: 8px;
+    box-shadow: none;
+    border-color: var(--terms-tan-mid);
+    background: var(--white);
+  }
+
+  .journal-shell,
+  .journal-shell.cover-closed {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .journal-shell.cover-closed .journal-tabs {
+    display: flex;
+  }
+
+  .journal-tabs {
+    position: sticky;
+    top: calc(var(--nav-height) + 72px);
+    z-index: 9;
+    justify-content: center;
+    gap: 0;
+    align-items: stretch;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    border: 0;
+    border: 1px solid var(--terms-tan);
+    border-bottom: 2px solid var(--terms-tan-mid);
+    background: var(--terms-cream-soft);
+    box-shadow: var(--terms-shadow);
+  }
+
+  .journal-tab,
+  .journal-tab:nth-child(even) {
+    flex: 0 0 auto;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 1rem 1.15rem 0.95rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-mid);
+    box-shadow: none;
+    font-size: 0.74rem;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    transition: color var(--motion-quick) var(--ease);
+  }
+
+  .journal-tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 3px;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity var(--motion-quick) var(--ease);
+  }
+
+  .journal-tab:hover,
+  .journal-tab.active,
+  .journal-tab:nth-child(odd).active {
+    background: transparent;
+    border-color: transparent;
+    color: var(--navy);
+    box-shadow: none;
+    transform: none;
+  }
+
+  .journal-tab.active::after {
+    opacity: 1;
+  }
+
+  .journal-pages,
+  .journal-shell.cover-closed .journal-pages {
+    display: block;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    perspective: none;
+  }
+
+  .journal-pages::before {
+    display: none;
+  }
+
+  .reference-panel.active,
+  .reference-panel.cover-panel.active {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+    gap: 22px;
+    min-height: 0;
+    width: 100%;
+    animation: none;
+  }
+
+  .reference-panel.cover-panel {
+    display: none;
+  }
+
+  .journal-page {
+    background: var(--terms-cream-soft);
+    border: 1.5px solid var(--terms-tan);
+    border-radius: 14px;
+    box-shadow: var(--terms-shadow);
+    padding: 1.35rem;
+  }
+
+  .journal-page-left,
+  .journal-page-right {
+    padding: 1.35rem;
+  }
+
+  .panel-heading {
+    border-bottom-color: var(--terms-tan-mid);
+  }
+
+  .term-reference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 0.85rem;
+    border-top: 0;
+  }
+
+  .reference-term {
+    display: block;
+    min-height: 0;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--terms-tan);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+
+  .reference-term:hover {
+    border-color: var(--gold);
+    box-shadow: 0 6px 18px rgba(86, 65, 32, 0.12);
+  }
+
+  .page-summary {
+    background: var(--terms-parchment);
+    border-color: var(--terms-tan-mid);
+  }
+
+  .reference-term h3 {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.35rem;
+  }
+
+  .reference-term h3::after {
+    content: "";
+  }
+
+  .reference-term p {
+    display: block;
+    font-size: 0.86rem;
+  }
+
+  .page-art {
+    min-height: 240px;
+    margin: 0.25rem 0 1rem;
+  }
+
+  .page-art img {
+    max-width: min(100%, 340px);
+    max-height: 270px;
+  }
+
+  .journal-controls {
+    display: none;
+  }
+
+  .growth-section {
+    background: var(--navy);
+  }
+
+  @media (max-width: 680px) {
+    .section-header {
+      display: block;
+    }
+
+    .reference-tools,
+    .panel-heading {
+      grid-template-columns: 1fr;
+    }
+
+    .reference-tools {
+      display: grid;
+      position: static;
+    }
+
+    .panel-heading {
+      display: grid;
+    }
+
+    .journal-tabs {
+      position: static;
+      justify-content: flex-start;
+    }
+
+    .journal-pages {
+      padding: 0;
+      min-height: auto;
+    }
+
+    .reference-panel.active,
+    .reference-panel.cover-panel.active {
+      display: block;
+      min-height: auto;
+    }
+
+    .journal-page,
+    .journal-page.mobile-page-active {
+      display: flex;
+      min-height: 0;
+      animation: pageFlipIn 300ms var(--ease);
+    }
+
+    .journal-page + .journal-page {
+      margin-top: 1rem;
+    }
+
+    .term-reference-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .journal-controls {
+      display: none;
+    }
+
+    .page-status,
+    .book-arrow {
+      position: static;
+      transform: none;
+    }
+
+    .book-arrow {
+      width: 52px;
+      height: 44px;
+    }
+
+    .book-arrow:hover {
+      transform: none;
+    }
+  }
+
+  /* Course CSS alignment: keep this page on the shared Equine Edu base. */
+  .reference-hero {
+    background: #071229;
+    border-bottom: 3px solid var(--gold);
+    min-height: 360px;
+    display: grid;
+    place-items: center;
+    padding: 24px var(--page-pad) 40px;
+  }
+
+  .reference-hero::before {
+    content: "";
+    position: absolute;
+    right: -8%;
+    top: -35%;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    border: 60px solid rgba(201,168,76,0.06);
+    background: none;
+  }
+
+  .reference-hero-inner {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 920px);
+    justify-content: center;
+    text-align: center;
+    gap: 0;
+  }
+
+  .reference-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.15rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .reference-hero-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 680px;
+    margin: 0 auto 2rem;
+  }
+
+  .course-tag {
+    border-radius: 2px;
+  }
+
+  .reference-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem var(--page-pad) 5rem;
+    background: transparent;
+  }
+
+  .section-header {
+    display: block;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-desc {
+    max-width: 760px;
+    margin-top: 0.6rem;
+  }
+
+  .reference-tools {
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    justify-content: stretch;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 18px rgba(120, 90, 40, 0.12), 0 1px 4px rgba(13, 27, 62, 0.08);
+  }
+
+  .reference-search {
+    width: 100%;
+    border: 1.5px solid var(--border-mid);
+    background: var(--white);
+  }
+
+  .journal-tabs {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .journal-tab,
+  .journal-tab:nth-child(even) {
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 2px;
+    background: rgba(255,255,255,0.45);
+    color: var(--navy);
+    padding: 0.6rem 0.85rem;
+    font-size: 0.74rem;
+    box-shadow: none;
+  }
+
+  .journal-tab::after {
+    display: none;
+  }
+
+  .journal-tab:hover,
+  .journal-tab.active,
+  .journal-tab:nth-child(odd).active {
+    background: var(--gold-pale);
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  .reference-panel.active,
+  .reference-panel.cover-panel.active {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    gap: 1.5rem;
+  }
+
+  .journal-page {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 18px rgba(120, 90, 40, 0.12), 0 1px 4px rgba(13, 27, 62, 0.08);
+    padding: 1.35rem;
+  }
+
+  .panel-heading {
+    border-bottom: 2px solid rgba(201,168,76,0.28);
+  }
+
+  .reference-term {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+  }
+
+  .page-summary {
+    background: var(--gold-pale);
+    border-color: rgba(201,168,76,0.36);
+  }
+
+  .growth-section {
+    background: var(--navy);
+  }
+
+  @media (max-width: 760px) {
+    .reference-tools {
+      grid-template-columns: 1fr;
+    }
+
+    .reference-panel.active,
+    .reference-panel.cover-panel.active {
+      display: block;
+    }
+
+    .journal-page + .journal-page {
+      margin-top: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<div class="breadcrumb">
+  <a href="../../../index.html">Home</a>
+  <span>&rsaquo;</span>
+  <a href="../../index.html">All Courses</a>
+  <span>&rsaquo;</span>
+  <span class="breadcrumb-current">Common Horse Terms Reference Guide</span>
+</div>
+
+<section class="reference-hero">
+  <div class="reference-hero-inner">
+    <div>
+      <div class="course-tag">Horse Terminology</div>
+      <h1>Common Horse Terms <span>Reference Guide</span></h1>
+      <p class="reference-hero-desc">A quick, organized place to look up horse words as you learn. Use the topic filters, search for a term, and come back whenever a new barn word shows up.</p>
+      <div class="course-meta-row">
+        <div class="meta-item">Reference Tabs</div>
+        <div class="meta-item">Searchable Terms</div>
+        <div class="meta-item">Built to Grow</div>
+        <div class="meta-item">Quick Guide</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#reference-guide" class="btn-primary">Open the Guide</a>
+        <a href="../../index.html#lab" class="btn-outline">Back to Library</a>
+      </div>
+    </div>
+
+    <div class="journal-preview" aria-hidden="true">
+      <div class="journal-label">NOTES</div>
+      <div class="journal-sub">Horse terms, barn words, care notes, tack names, and safety reminders.</div>
+      <div class="journal-lines">
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+        <div class="journal-line"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="reference-wrap" id="reference-guide">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Reference Library</p>
+      <h2 class="section-title">Look Up Terms By Topic</h2>
+    </div>
+    <p class="section-desc">Use the topic row like a field-guide filter. The guide is designed for quick checking, not testing.</p>
+  </div>
+
+  <div class="reference-tools">
+    <input class="reference-search" id="termSearch" type="search" placeholder="Search a term, like mare, withers, canter, halter..." aria-label="Search common horse terms">
+    <div class="reference-count" id="termCount">Showing all terms</div>
+  </div>
+
+  <section class="journal-shell" aria-label="Common horse terms reference guide">
+    <div class="journal-tabs" role="tablist" aria-label="Reference categories">
+      <button class="journal-tab active" type="button" role="tab" aria-selected="true" data-tab="guide">Using This Guide</button>
+      <button class="journal-tab" type="button" role="tab" aria-selected="false" data-tab="basics">Basics</button>
+      <button class="journal-tab" type="button" role="tab" aria-selected="false" data-tab="anatomy">Anatomy</button>
+      <button class="journal-tab" type="button" role="tab" aria-selected="false" data-tab="movement">Movement</button>
+      <button class="journal-tab" type="button" role="tab" aria-selected="false" data-tab="tack">Tack</button>
+      <button class="journal-tab" type="button" role="tab" aria-selected="false" data-tab="care">Care & Barn</button>
+      <button class="journal-tab" type="button" role="tab" aria-selected="false" data-tab="instruction">Instruction</button>
+      <button class="journal-tab" type="button" role="tab" aria-selected="false" data-tab="safety">Safety</button>
+      <button class="journal-tab" type="button" role="tab" aria-selected="false" data-tab="vitals">Vital Signs</button>
+    </div>
+
+    <div class="journal-pages">
+      <div class="no-results" id="noResults">No matching terms in this tab. Try another word or open a different tab.</div>
+
+      <article class="reference-panel cover-panel" data-panel="cover">
+        <div class="journal-cover-page">
+          <div class="journal-cover-label">Equine Edu Reference Guide</div>
+          <h2>Equine Edu's <span>Equine Field Guide</span></h2>
+          <p>Common horse terms, barn words, tack notes, care vocabulary, and safety reminders in one growing guide.</p>
+          <button class="btn-primary" type="button" id="openGuide">Start Here</button>
+        </div>
+      </article>
+
+      <article class="reference-panel active" data-panel="guide">
+        <div class="journal-page journal-page-left">
+          <div class="panel-heading">
+            <div>
+              <h2>What This Field Guide Is</h2>
+              <p>A living quick-reference notebook for everyday horse words.</p>
+            </div>
+          </div>
+          <div class="term-reference-grid">
+            <div class="reference-term"><h3>Quick lookup</h3><p>Use it when you hear a term and want the plain meaning fast.</p></div>
+            <div class="reference-term"><h3>Beginner friendly</h3><p>Definitions stay short, clear, and useful for new learners.</p></div>
+            <div class="reference-term"><h3>Grouped by topic</h3><p>Terms are organized by where you may hear them: barn, lesson, tack room, care routine, or safety conversation.</p></div>
+            <div class="reference-term"><h3>Built to grow</h3><p>New pages and tabs can be added as the Equine Edu library expands.</p></div>
+          </div>
+          <div class="reference-note">This is not a test or course path. It is a reference you can return to whenever you need a horse word explained.</div>
+        </div>
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>How To Use It</h2>
+              <p>Choose a topic, jump with the tabs, or search for a term.</p>
+            </div>
+          </div>
+          <div class="page-art">
+            <img src="../../../images/course-headers/pages/common-terms/terms-index.png" alt="Common horse terms reference guide illustration">
+          </div>
+          <div class="page-summary"><strong>Useful for:</strong>lesson prep, barn conversations, quick study, family learning, club activities, and checking vocabulary while exploring other Equine Edu topics.</div>
+          <div class="page-cue">Flip forward to begin the terms.</div>
+        </div>
+      </article>
+
+      <article class="reference-panel" data-panel="basics">
+        <div class="journal-page journal-page-left">
+        <div class="panel-heading">
+          <div>
+            <h2>Horse Basics & Identification</h2>
+            <p>Words used to describe what a horse is, how old it is, and basic identifying traits.</p>
+          </div>
+          <span class="tab-marker">Tab 01</span>
+        </div>
+        <div class="term-reference-grid">
+          <div class="reference-term"><h3>Horse</h3><p>An equine usually measured over 14.2 hands high at maturity.</p></div>
+          <div class="reference-term"><h3>Pony</h3><p>An equine usually 14.2 hands high or under at maturity, though breed type also matters.</p></div>
+          <div class="reference-term"><h3>Foal</h3><p>A young horse under one year old.</p></div>
+          <div class="reference-term"><h3>Yearling</h3><p>A young horse between one and two years old.</p></div>
+          <div class="reference-term"><h3>Mare</h3><p>An adult female horse.</p></div>
+          <div class="reference-term"><h3>Gelding</h3><p>A castrated male horse.</p></div>
+          <div class="reference-term"><h3>Stallion</h3><p>An adult male horse that has not been castrated.</p></div>
+          <div class="reference-term"><h3>Breed</h3><p>A group of horses with shared ancestry, traits, and registry standards.</p></div>
+          <div class="reference-term"><h3>Color</h3><p>The horse's coat color, such as bay, black, chestnut, gray, or palomino.</p></div>
+          <div class="reference-term"><h3>Marking</h3><p>A visible white pattern or identifying area on the face, legs, or body.</p></div>
+        </div>
+        <div class="reference-note">Reference habit: describe a horse from general to specific - type, age or sex term, color, then markings.</div>
+        </div>
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>Basics at a Glance</h2>
+              <p>A quick place to check the first words learners hear when identifying horses.</p>
+            </div>
+            <span class="tab-marker">Page 02</span>
+          </div>
+          <div class="page-art">
+            <img src="../../../images/course-headers/pages/common-terms/terms-identification.png" alt="Horse identification terms illustration">
+          </div>
+          <div class="page-summary"><strong>Use this page when:</strong>You need age, sex, color, marking, or basic identity words without opening a full lesson.</div>
+          <div class="page-cue">Flip forward for anatomy vocabulary.</div>
+        </div>
+      </article>
+
+      <article class="reference-panel" data-panel="anatomy">
+        <div class="journal-page journal-page-left">
+        <div class="panel-heading">
+          <div>
+            <h2>Anatomy Vocabulary</h2>
+            <p>Common outside body-part words used in lessons, grooming, horse descriptions, and tack fitting.</p>
+          </div>
+          <span class="tab-marker">Tab 02</span>
+        </div>
+        <div class="term-reference-grid">
+          <div class="reference-term"><h3>Poll</h3><p>The top area of the head between or just behind the ears.</p></div>
+          <div class="reference-term"><h3>Muzzle</h3><p>The lower part of the face around the mouth and nostrils.</p></div>
+          <div class="reference-term"><h3>Withers</h3><p>The high area where the neck and back meet above the shoulders.</p></div>
+          <div class="reference-term"><h3>Barrel</h3><p>The large ribcage area of the body.</p></div>
+          <div class="reference-term"><h3>Croup</h3><p>The top of the hindquarters behind the back.</p></div>
+          <div class="reference-term"><h3>Fetlock</h3><p>The joint above the pastern and hoof.</p></div>
+          <div class="reference-term"><h3>Pastern</h3><p>The area between the fetlock and hoof.</p></div>
+          <div class="reference-term"><h3>Hoof</h3><p>The hard foot of the horse.</p></div>
+        </div>
+        <div class="reference-note">Anatomy words help people explain where something is happening on the horse.</div>
+        </div>
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>Body-Part Notes</h2>
+              <p>These words help locate what someone is seeing, grooming, fitting, or discussing.</p>
+            </div>
+            <span class="tab-marker">Page 04</span>
+          </div>
+          <div class="page-art">
+            <img src="../../../images/course-headers/pages/common-terms/terms-anatomy.png" alt="Horse anatomy vocabulary illustration">
+          </div>
+          <div class="page-summary"><strong>Reference habit:</strong>Start with the large area of the horse, then narrow down to the specific part.</div>
+          <div class="page-cue">Flip forward for movement and gaits.</div>
+        </div>
+      </article>
+
+      <article class="reference-panel" data-panel="movement">
+        <div class="journal-page journal-page-left">
+        <div class="panel-heading">
+          <div>
+            <h2>Movement & Gaits</h2>
+            <p>Words for how a horse moves, including basic rhythm and speed terms.</p>
+          </div>
+          <span class="tab-marker">Tab 03</span>
+        </div>
+        <div class="term-reference-grid">
+          <div class="reference-term"><h3>Gait</h3><p>A pattern of movement or footfalls, such as walk, trot, canter, or gallop.</p></div>
+          <div class="reference-term"><h3>Walk</h3><p>A slow four-beat gait.</p></div>
+          <div class="reference-term"><h3>Trot</h3><p>A two-beat gait faster than the walk.</p></div>
+          <div class="reference-term"><h3>Canter</h3><p>A three-beat gait faster than the trot.</p></div>
+          <div class="reference-term"><h3>Gallop</h3><p>The fastest natural gait.</p></div>
+          <div class="reference-term"><h3>Rhythm</h3><p>The pattern or timing of footfalls in a gait.</p></div>
+          <div class="reference-term"><h3>Stride</h3><p>One complete movement cycle of the horse's legs.</p></div>
+          <div class="reference-term"><h3>Gaited Horse</h3><p>A horse that may perform additional smooth intermediate gaits.</p></div>
+        </div>
+        </div>
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>Movement Notes</h2>
+              <p>Gait terms describe rhythm, speed, and the way a horse travels.</p>
+            </div>
+            <span class="tab-marker">Page 06</span>
+          </div>
+          <div class="page-art">
+            <img src="../../../images/course-headers/pages/common-terms/terms-gaits.png" alt="Horse movement and gaits illustration">
+          </div>
+          <div class="page-summary"><strong>Quick order:</strong>Walk is slowest, then trot, then canter, then gallop. Rhythm is just as important as speed.</div>
+          <div class="page-cue">Flip forward for tack and equipment.</div>
+        </div>
+      </article>
+
+      <article class="reference-panel" data-panel="tack">
+        <div class="journal-page journal-page-left">
+        <div class="panel-heading">
+          <div>
+            <h2>Tack & Equipment</h2>
+            <p>Common equipment words beginners hear around handling, grooming, and riding.</p>
+          </div>
+          <span class="tab-marker">Tab 04</span>
+        </div>
+        <div class="term-reference-grid">
+          <div class="reference-term"><h3>Tack</h3><p>Equipment used for riding, driving, or handling horses.</p></div>
+          <div class="reference-term"><h3>Saddle</h3><p>Equipment placed on the horse's back for riding.</p></div>
+          <div class="reference-term"><h3>Bridle</h3><p>Headgear used when riding or driving a horse.</p></div>
+          <div class="reference-term"><h3>Reins</h3><p>Straps held by a rider or handler to help communicate.</p></div>
+          <div class="reference-term"><h3>Bit</h3><p>A piece of tack that sits in the horse's mouth and connects to the bridle and reins.</p></div>
+          <div class="reference-term"><h3>Halter</h3><p>Headgear used for leading and tying under supervision.</p></div>
+          <div class="reference-term"><h3>Lead Rope</h3><p>A rope attached to a halter for leading or handling.</p></div>
+          <div class="reference-term"><h3>Hoof Pick</h3><p>A tool used to clean the bottom of the hoof.</p></div>
+        </div>
+        <div class="reference-note">This guide names equipment and basic purpose only. Fit and safe use should be taught by qualified people in person.</div>
+        </div>
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>Equipment Notes</h2>
+              <p>Tack names are easier to remember when each item has a clear job.</p>
+            </div>
+            <span class="tab-marker">Page 08</span>
+          </div>
+          <div class="page-art">
+            <img src="../../../images/course-headers/pages/common-terms/terms-tack.png" alt="Horse tack and equipment illustration">
+          </div>
+          <div class="page-summary"><strong>Simple split:</strong>Some equipment is for handling, some is for grooming, and some is for riding or driving.</div>
+          <div class="page-cue">Flip forward for care and barn terms.</div>
+        </div>
+      </article>
+
+      <article class="reference-panel" data-panel="care">
+        <div class="journal-page journal-page-left">
+        <div class="panel-heading">
+          <div>
+            <h2>Care & Barn Terms</h2>
+            <p>Vocabulary for daily horse spaces, routines, feed words, and general barn conversations.</p>
+          </div>
+          <span class="tab-marker">Tab 05</span>
+        </div>
+        <div class="term-reference-grid">
+          <div class="reference-term"><h3>Stall</h3><p>An indoor space where a horse may be kept.</p></div>
+          <div class="reference-term"><h3>Paddock</h3><p>A fenced outdoor area for a horse.</p></div>
+          <div class="reference-term"><h3>Pasture</h3><p>A grass area where horses may graze.</p></div>
+          <div class="reference-term"><h3>Forage</h3><p>Plant-based feed such as hay or pasture grass.</p></div>
+          <div class="reference-term"><h3>Turnout</h3><p>Time a horse spends outside a stall.</p></div>
+          <div class="reference-term"><h3>Grooming</h3><p>Cleaning and checking the horse's coat, mane, tail, hooves, and body.</p></div>
+          <div class="reference-term"><h3>Bedding</h3><p>Material placed in a stall, such as shavings or straw.</p></div>
+          <div class="reference-term"><h3>Muck</h3><p>To clean manure and wet bedding from a stall or area.</p></div>
+        </div>
+        </div>
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>Barn Notes</h2>
+              <p>These words show up in daily routines, chores, feeding conversations, and turnout plans.</p>
+            </div>
+            <span class="tab-marker">Page 10</span>
+          </div>
+          <div class="page-art">
+            <img src="../../../images/course-headers/pages/common-terms/terms-care.png" alt="Horse care and barn terms illustration">
+          </div>
+          <div class="page-summary"><strong>Care reminder:</strong>This is vocabulary support. Feeding and care choices should come from responsible adults and professionals.</div>
+          <div class="page-cue">Flip forward for riding and instruction terms.</div>
+        </div>
+      </article>
+
+      <article class="reference-panel" data-panel="instruction">
+        <div class="journal-page journal-page-left">
+        <div class="panel-heading">
+          <div>
+            <h2>Riding & Instruction Terms</h2>
+            <p>Common words students may hear in lessons or educational discussions about riding.</p>
+          </div>
+          <span class="tab-marker">Tab 06</span>
+        </div>
+        <div class="term-reference-grid">
+          <div class="reference-term"><h3>Aids</h3><p>Signals used to communicate with a horse.</p></div>
+          <div class="reference-term"><h3>Cue</h3><p>A signal that asks the horse to do something.</p></div>
+          <div class="reference-term"><h3>Discipline</h3><p>A riding style or activity, such as English, Western, dressage, or jumping.</p></div>
+          <div class="reference-term"><h3>Mount</h3><p>To get on a horse.</p></div>
+          <div class="reference-term"><h3>Dismount</h3><p>To get off a horse.</p></div>
+          <div class="reference-term"><h3>Inside</h3><p>The side toward the center of the arena or circle.</p></div>
+          <div class="reference-term"><h3>Outside</h3><p>The side away from the center of the arena or circle.</p></div>
+          <div class="reference-term"><h3>Transition</h3><p>A change from one gait, speed, or movement to another.</p></div>
+        </div>
+        <div class="reference-note">This is vocabulary support, not riding instruction. Safe riding skills should be taught in person by a qualified instructor.</div>
+        </div>
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>Things to Remember</h2>
+              <p>Instruction words help learners understand directions without turning this guide into a riding manual.</p>
+            </div>
+            <span class="tab-marker">Page 12</span>
+          </div>
+          <div class="page-art">
+            <img src="../../../images/course-headers/pages/common-terms/terms-instruction.png" alt="Riding and instruction terms illustration">
+          </div>
+          <div class="page-summary"><strong>Important distinction:</strong>Knowing a word is different from practicing a skill. Skills belong with a qualified instructor.</div>
+          <div class="page-cue">Flip forward for health and safety terms.</div>
+        </div>
+      </article>
+
+      <article class="reference-panel" data-panel="safety">
+        <div class="journal-page journal-page-left">
+        <div class="panel-heading">
+          <div>
+            <h2>Health & Safety Terms</h2>
+            <p>Beginner-safe words for wellness observations, safe handling, and asking for help.</p>
+          </div>
+          <span class="tab-marker">Tab 07</span>
+        </div>
+        <div class="term-reference-grid">
+          <div class="reference-term"><h3>Lameness</h3><p>Uneven movement or signs of pain when a horse moves.</p></div>
+          <div class="reference-term"><h3>Body Condition</h3><p>A way of describing whether a horse appears too thin, too heavy, or in a healthy range.</p></div>
+          <div class="reference-term"><h3>Vital Signs</h3><p>Basic health measurements such as temperature, pulse, and respiration.</p></div>
+          <div class="reference-term"><h3>Colic</h3><p>A broad term for abdominal pain in horses. It can be serious and needs adult or veterinary attention.</p></div>
+          <div class="reference-term"><h3>First Aid</h3><p>Immediate basic care given before professional help when needed.</p></div>
+          <div class="reference-term"><h3>Handler</h3><p>The person leading, holding, or working with a horse from the ground.</p></div>
+          <div class="reference-term"><h3>Approach</h3><p>How a person moves toward a horse. Calm, visible, and respectful movement matters.</p></div>
+          <div class="reference-term"><h3>Personal Space</h3><p>The safe area people maintain around themselves and the horse.</p></div>
+        </div>
+        <div class="reference-note">Health and safety terms are for recognition and communication. Concerns should be brought to a responsible adult, barn manager, trainer, or veterinarian.</div>
+        </div>
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>Safety Notes</h2>
+              <p>These words help learners describe concerns clearly and know when to ask for help.</p>
+            </div>
+            <span class="tab-marker">Page 14</span>
+          </div>
+          <div class="page-art">
+            <img src="../../../images/course-headers/pages/common-terms/terms-safety.png" alt="Horse health and safety terms illustration">
+          </div>
+          <div class="page-summary"><strong>Best habit:</strong>When something seems painful, unsafe, or unusual, pause and get a knowledgeable adult or professional involved.</div>
+          <div class="page-cue">Flip forward for vital signs.</div>
+        </div>
+      </article>
+
+      <article class="reference-panel" data-panel="vitals">
+        <div class="journal-page journal-page-left">
+          <div class="panel-heading">
+            <div>
+              <h2>Vital Signs Chart</h2>
+              <p>Normal ranges, what to watch, and when to call a vet — based on AAEP guidelines and the Merck Veterinary Manual.</p>
+            </div>
+            <span class="tab-marker">Tab 08</span>
+          </div>
+
+          <div class="vitals-chart">
+            <div class="vitals-row-header">
+              <div class="vh-cell">Vital Sign</div>
+              <div class="vh-cell vh-normal">Normal</div>
+              <div class="vh-cell vh-monitor">Monitor</div>
+              <div class="vh-cell vh-emergency">Emergency</div>
+            </div>
+
+            <div class="vitals-row">
+              <div class="vr-name">Heart Rate</div>
+              <div class="vr-cell vr-normal">28–44 bpm</div>
+              <div class="vr-cell vr-monitor">45–60 bpm</div>
+              <div class="vr-cell vr-emergency">&gt;60 or &lt;28 bpm</div>
+            </div>
+
+            <div class="vitals-row">
+              <div class="vr-name">Respiration</div>
+              <div class="vr-cell vr-normal">8–16 breaths/min</div>
+              <div class="vr-cell vr-monitor">17–24 breaths/min</div>
+              <div class="vr-cell vr-emergency">&gt;25 breaths/min or labored</div>
+            </div>
+
+            <div class="vitals-row">
+              <div class="vr-name">Temperature</div>
+              <div class="vr-cell vr-normal">99.5–101.5&deg;F</div>
+              <div class="vr-cell vr-monitor">101.6–103&deg;F</div>
+              <div class="vr-cell vr-emergency">&gt;103&deg;F or &lt;99&deg;F</div>
+            </div>
+
+            <div class="vitals-row">
+              <div class="vr-name">Gum Color</div>
+              <div class="vr-cell vr-normal">Pale pink, moist</div>
+              <div class="vr-cell vr-monitor">Bright red or tacky</div>
+              <div class="vr-cell vr-emergency">White, blue, or yellow</div>
+            </div>
+
+            <div class="vitals-row">
+              <div class="vr-name">Cap. Refill</div>
+              <div class="vr-cell vr-normal">1–2 seconds</div>
+              <div class="vr-cell vr-monitor">2–3 seconds</div>
+              <div class="vr-cell vr-emergency">&gt;3 seconds</div>
+            </div>
+
+            <div class="vitals-row">
+              <div class="vr-name">Gut Sounds</div>
+              <div class="vr-cell vr-normal">Active both sides</div>
+              <div class="vr-cell vr-monitor">Reduced one side</div>
+              <div class="vr-cell vr-emergency">Absent both sides</div>
+            </div>
+
+            <div class="vitals-row">
+              <div class="vr-name">Skin Tent</div>
+              <div class="vr-cell vr-normal">Snaps back instantly</div>
+              <div class="vr-cell vr-monitor">Returns in 1–2 sec</div>
+              <div class="vr-cell vr-emergency">3+ seconds to return</div>
+            </div>
+          </div>
+
+          <p class="vitals-source-note">Sources: AAEP Horse Owner's Veterinary Handbook; Merck Veterinary Manual, Equine Section.</p>
+        </div>
+
+        <div class="journal-page journal-page-right">
+          <div class="panel-heading">
+            <div>
+              <h2>How to Take Vitals</h2>
+              <p>Quick reference for checking each measurement at the barn.</p>
+            </div>
+            <span class="tab-marker">Page 16</span>
+          </div>
+
+          <div class="vital-how-list">
+            <div class="vital-how-item">
+              <strong>Heart Rate</strong>
+              Press two fingers under the jaw on the facial artery, or use a stethoscope just behind the left elbow. Count beats for 15 seconds and multiply by 4.
+            </div>
+            <div class="vital-how-item">
+              <strong>Respiration</strong>
+              Watch the flank or nostrils rise and fall. Count one inhale + one exhale as one breath. Count for 15 seconds and multiply by 4.
+            </div>
+            <div class="vital-how-item">
+              <strong>Temperature</strong>
+              Use a rectal thermometer with lubricant. Stand to the side, insert gently, hold for the full reading time. Digital thermometers are fastest.
+            </div>
+            <div class="vital-how-item">
+              <strong>Gum Color &amp; Cap. Refill</strong>
+              Lift the upper lip. Gums should be slippery and pale pink. Press a finger firmly on the gum, release, and count seconds until color returns.
+            </div>
+            <div class="vital-how-item">
+              <strong>Gut Sounds</strong>
+              Press an ear or stethoscope flat against the lower flank on each side. You should hear gurgles and rumbles. Check both sides and note any difference.
+            </div>
+            <div class="vital-how-item">
+              <strong>Skin Tent Test</strong>
+              Pinch a fold of skin on the neck or shoulder and release. Skin that snaps back instantly = good hydration. Slow return suggests dehydration.
+            </div>
+          </div>
+
+          <div class="vitals-emergency-callout">
+            <strong>When to call your vet immediately:</strong>
+            Any vital in the Emergency column, signs of colic (pawing, looking at flank, refusing to eat, rolling), abnormal gum color, or any reading that concerns you. When in doubt, call — vets expect and welcome early calls.
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="journal-controls" aria-label="Reference page controls">
+      <button class="book-arrow previous" type="button" id="prevPage" aria-label="Flip back">&lsaquo;</button>
+      <div class="page-status" id="pageStatus">Spread 1 of 7</div>
+      <button class="book-arrow next" type="button" id="nextPage" aria-label="Flip forward">&rsaquo;</button>
+    </div>
+  </section>
+</main>
+
+<section class="growth-section">
+  <div class="growth-inner">
+    <div class="fade-in">
+      <p class="section-label">Living Guide</p>
+      <h2 class="section-title">Built To Grow Over Time</h2>
+      <p class="section-sub">This reference can expand as the platform grows. New terms can be added to existing tabs, or new tabs can be introduced for shows, disciplines, records, grooming, nutrition, and more.</p>
+    </div>
+    <div class="growth-card fade-in">
+      <h3>Reference Guide Direction</h3>
+      <ul class="growth-list">
+        <li>No testing or matching activity required.</li>
+        <li>Short definitions come first, deeper pages can come later.</li>
+        <li>Search and tabs make it useful as a quick lookup tool.</li>
+        <li>The reference-card layout keeps it warm, organized, and expandable.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+  window.LAYOUT = {
+    homeUrl: '../../../index.html',
+    coursesUrl: '../../index.html',
+    navCta: { label: 'All Courses', url: '../../index.html' }
+  };
+</script>
+<script>
+  (function () {
+    const tabs = Array.from(document.querySelectorAll('.journal-tab'));
+    const panels = Array.from(document.querySelectorAll('.reference-panel'));
+    const search = document.getElementById('termSearch');
+    const count = document.getElementById('termCount');
+    const noResults = document.getElementById('noResults');
+    const shell = document.querySelector('.journal-shell');
+    const prevPage = document.getElementById('prevPage');
+    const nextPage = document.getElementById('nextPage');
+    const pageStatus = document.getElementById('pageStatus');
+    const openGuide = document.getElementById('openGuide');
+    const mobileQuery = window.matchMedia('(max-width: 680px)');
+    let currentIndex = Math.max(0, panels.findIndex(panel => panel.classList.contains('active')));
+    let currentSide = 0;
+
+    function activePanel() {
+      return panels.find(panel => panel.classList.contains('active'));
+    }
+
+    function isMobilePageMode() {
+      return mobileQuery.matches;
+    }
+
+    function updateMobilePages() {
+      panels.forEach((panel, panelIndex) => {
+        const pages = Array.from(panel.querySelectorAll('.journal-page'));
+        pages.forEach((page, pageIndex) => {
+          page.classList.toggle(
+            'mobile-page-active',
+            !isMobilePageMode() || (panelIndex === currentIndex && pageIndex === currentSide)
+          );
+        });
+      });
+    }
+
+    function updateControls() {
+      const isCover = currentIndex === 0;
+      if (shell) shell.classList.toggle('cover-closed', isCover);
+      if (isMobilePageMode()) {
+        const totalPages = Math.max(0, panels.length - 1) * 2;
+        const pageNumber = isCover ? 0 : (currentIndex - 1) * 2 + currentSide + 1;
+        if (pageStatus) pageStatus.textContent = isCover ? 'Front Cover' : 'Page ' + pageNumber + ' of ' + totalPages;
+        if (prevPage) prevPage.disabled = isCover;
+        if (nextPage) nextPage.disabled = !isCover && pageNumber === totalPages;
+      } else {
+        if (pageStatus) pageStatus.textContent = isCover ? 'Front Cover' : 'Spread ' + currentIndex + ' of ' + (panels.length - 1);
+        if (prevPage) prevPage.disabled = currentIndex === 0;
+        if (nextPage) nextPage.disabled = currentIndex === panels.length - 1;
+      }
+      updateMobilePages();
+    }
+
+    function setPanel(name, shouldAnimate, side) {
+      const nextIndex = panels.findIndex(panel => panel.dataset.panel === name);
+      if (nextIndex < 0) return;
+      const currentPanel = activePanel();
+      currentIndex = nextIndex;
+      currentSide = side || 0;
+
+      if (shouldAnimate && currentPanel) {
+        currentPanel.classList.add('is-flipping');
+        window.setTimeout(() => currentPanel.classList.remove('is-flipping'), 180);
+      }
+
+      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.tab === name));
+      tabs.forEach(tab => tab.setAttribute('aria-selected', tab.dataset.tab === name ? 'true' : 'false'));
+      panels.forEach(panel => panel.classList.toggle('active', panel.dataset.panel === name));
+      updateControls();
+      filterTerms();
+    }
+
+    function filterTerms() {
+      const panel = activePanel();
+      if (!panel) return;
+      const query = (search.value || '').trim().toLowerCase();
+      const terms = Array.from(panel.querySelectorAll('.reference-term'));
+      let visible = 0;
+
+      if (!terms.length) {
+        noResults.classList.remove('visible');
+        count.textContent = 'Open the guide to begin';
+        return;
+      }
+
+      terms.forEach(term => {
+        const text = term.textContent.toLowerCase();
+        const match = !query || text.includes(query);
+        term.classList.toggle('is-hidden', !match);
+        if (match) visible += 1;
+      });
+
+      noResults.classList.toggle('visible', visible === 0);
+      count.textContent = query
+        ? visible + ' matching ' + (visible === 1 ? 'term' : 'terms')
+        : 'Showing ' + visible + ' terms in this tab';
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => setPanel(tab.dataset.tab, true));
+    });
+
+    if (search) {
+      search.addEventListener('input', filterTerms);
+    }
+
+    if (prevPage) {
+      prevPage.addEventListener('click', () => {
+        if (isMobilePageMode()) {
+          if (currentIndex === 0) {
+            return;
+          } else if (currentSide === 1) {
+            currentSide = 0;
+            updateControls();
+          } else if (currentIndex > 0) {
+            const prevPanel = panels[currentIndex - 1];
+            setPanel(prevPanel.dataset.panel, true, prevPanel.dataset.panel === 'cover' ? 0 : 1);
+          }
+        } else if (currentIndex > 0) {
+          setPanel(panels[currentIndex - 1].dataset.panel, true);
+        }
+      });
+    }
+
+    if (nextPage) {
+      nextPage.addEventListener('click', () => {
+        if (isMobilePageMode()) {
+          if (currentIndex === 0 && currentIndex < panels.length - 1) {
+            setPanel(panels[currentIndex + 1].dataset.panel, true, 0);
+          } else if (currentSide === 0) {
+            currentSide = 1;
+            updateControls();
+          } else if (currentIndex < panels.length - 1) {
+            setPanel(panels[currentIndex + 1].dataset.panel, true, 0);
+          }
+        } else if (currentIndex < panels.length - 1) {
+          setPanel(panels[currentIndex + 1].dataset.panel, true);
+        }
+      });
+    }
+
+    if (openGuide) {
+      openGuide.addEventListener('click', () => setPanel('guide', true));
+    }
+
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener('change', updateControls);
+    } else if (mobileQuery.addListener) {
+      mobileQuery.addListener(updateControls);
+    }
+
+    updateControls();
+    filterTerms();
+  })();
+</script>
+<script src="../../../assets/js/layout.js"></script>
+</body>
+</html>

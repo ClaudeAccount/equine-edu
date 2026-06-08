@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equine Edu - Copy Review Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D1B3E;--navy-mid:#1A2F6B;--gold:#C9A84C;--page:#E8E0CE;--paper:#fff;--off:#F9F6EF;--text:#0D1B3E;--muted:#64739B;--border:rgba(13,27,62,.12);--shadow:0 10px 28px rgba(13,27,62,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--page);color:var(--text);line-height:1.5}
+button,input,textarea,select{font:inherit}
+.topbar{position:sticky;top:0;z-index:10;min-height:64px;background:var(--navy);border-bottom:3px solid var(--gold);display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 5%}
+.brand{font-family:'Playfair Display',Georgia,serif;color:#fff;font-weight:900;font-size:1.25rem}.brand span{color:var(--gold)}
+.top-actions{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:flex-end}
+.btn{border:0;border-radius:6px;padding:.7rem 1rem;font-weight:800;cursor:pointer;min-height:42px}.btn.gold{background:var(--gold);color:var(--navy)}.btn.white{background:#fff;color:var(--navy)}.btn.navy{background:var(--navy-mid);color:#fff;border:1px solid rgba(255,255,255,.18)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.wrap{max-width:1280px;margin:0 auto;padding:2rem 5% 5rem}
+.hero,.panel{background:var(--paper);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);padding:1.5rem;margin-bottom:1.25rem}
+.eyebrow{color:var(--gold);font-size:.72rem;font-weight:900;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:.55rem}
+h1,h2{font-family:'Playfair Display',Georgia,serif;color:var(--navy);line-height:1.15}h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:.75rem}.hero p,.panel-head p{color:var(--muted)}
+.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--border);padding-bottom:.85rem;margin-bottom:1rem}.panel-head p{font-size:.88rem;margin-top:.25rem}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:1rem}.stat{background:var(--off);border:1px solid var(--border);border-radius:6px;padding:.8rem}.stat strong{display:block;font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:var(--navy)}.stat span{color:var(--muted);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.toolbar{display:grid;grid-template-columns:minmax(0,1fr) 180px 180px;gap:.75rem;margin-bottom:1rem}.toolbar input,.toolbar select{width:100%;min-height:42px;border:1px solid var(--border);border-radius:6px;padding:.65rem .75rem;color:var(--navy);background:#fff}
+.file-group{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:1rem}.file-title{background:var(--navy);color:#fff;padding:.85rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.file-title strong{font-size:.9rem}.file-title span{color:rgba(255,255,255,.68);font-size:.78rem}
+.copy-item{padding:1rem;border-top:1px solid var(--border);background:#fff}.copy-item.changed{background:linear-gradient(90deg,rgba(201,168,76,.08),#fff 18%)}
+.item-meta{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.65rem}.tag{display:inline-flex;align-items:center;min-height:22px;padding:.15rem .5rem;border-radius:999px;background:rgba(201,168,76,.14);color:#8B6D20;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:1px}.where{color:var(--muted);font-size:.78rem}
+.text-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}label{display:block;color:var(--navy);font-size:.72rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:.35rem}
+textarea{width:100%;min-height:88px;border:1px solid var(--border);border-radius:6px;padding:.7rem;resize:vertical;color:var(--navy);background:#fff}textarea.current{background:var(--off);color:#33456F}.notes-row{display:grid;grid-template-columns:1fr 160px;gap:.85rem;margin-top:.7rem;align-items:end}.small-note{min-height:42px}
+.dropzone{margin-top:1rem;border:2px dashed rgba(13,27,62,.22);border-radius:8px;background:var(--off);padding:1rem;text-align:center;color:var(--muted);font-size:.9rem}.dropzone strong{color:var(--navy)}.dropzone.dragging{border-color:var(--gold);background:rgba(201,168,76,.14)}
+.empty{text-align:center;padding:2rem;color:var(--muted)}.toast{position:fixed;right:1rem;bottom:1rem;background:var(--navy);color:#fff;border:1px solid rgba(201,168,76,.35);border-radius:8px;padding:.8rem 1rem;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);pointer-events:none;transition:.18s ease}.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.toolbar,.text-grid,.notes-row,.stats{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.top-actions{justify-content:flex-start}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Equine Edu <span>Copy Review Pack</span></div>
+  <div class="top-actions">
+    <button class="btn white" onclick="openFiles()">Open Files</button>
+    <button class="btn white" onclick="openFolder()">Open Folder</button>
+    <button class="btn navy" onclick="copyMarkdown()" id="copy-btn" disabled>Copy Notes</button>
+    <button class="btn gold" onclick="downloadPack()" id="download-btn" disabled>Download Change Pack</button>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Copy Workflow</div>
+    <h1>Collect Wording Changes Without Digging Through Code</h1>
+    <p>Load one HTML page or a whole course folder. This tool pulls out visible copy, lets you type replacement wording or notes, then downloads a single change pack you can send to Codex for one-pass updates.</p>
+  </section>
+  <section class="panel">
+    <div class="panel-head">
+      <div><h2>Load Course Copy</h2><p>Use <strong>Open Folder</strong> for a course folder, or <strong>Open Files</strong> for specific pages. You can also drag HTML files or a folder into the box below.</p></div>
+      <div><input id="file-input" type="file" accept=".html,.htm,.js" multiple hidden onchange="handleFiles(this.files)"><input id="folder-input" type="file" webkitdirectory multiple hidden onchange="handleFiles(this.files)"><button class="btn navy" onclick="clearAll()">Clear</button></div>
+    </div>
+    <div class="dropzone" id="dropzone" ondragover="handleDrag(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+      <strong>Drag a course folder or selected HTML files here</strong><br>
+      If the folder button does not work in your browser, dragging the folder usually does.
+    </div>
+    <div class="stats">
+      <div class="stat"><strong id="file-count">0</strong><span>Files</span></div>
+      <div class="stat"><strong id="copy-count">0</strong><span>Copy Items</span></div>
+      <div class="stat"><strong id="change-count">0</strong><span>Changes Written</span></div>
+      <div class="stat"><strong id="visible-count">0</strong><span>Showing</span></div>
+    </div>
+  </section>
+  <section class="panel" id="review-panel" hidden>
+    <div class="panel-head"><div><h2>Review Copy</h2><p>Type only where you want something changed. Leave blank if the current wording should stay as-is.</p></div></div>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search current wording, file name, or notes..." oninput="render()">
+      <select id="type-filter" onchange="render()"><option value="all">All copy types</option><option value="heading">Headings</option><option value="paragraph">Paragraphs</option><option value="button">Buttons / links</option><option value="list">List items</option><option value="quiz">Quiz text</option><option value="meta">Meta / alt text</option></select>
+      <select id="change-filter" onchange="render()"><option value="all">All items</option><option value="changed">Changed only</option><option value="unchanged">Unchanged only</option></select>
+    </div>
+    <div id="copy-list"></div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+let filesData=[];let copyItems=[];const SKIP_TAGS=new Set(['SCRIPT','STYLE','NOSCRIPT','SVG','PATH','META','LINK']);const TYPE_MAP={H1:'heading',H2:'heading',H3:'heading',H4:'heading',H5:'heading',H6:'heading',P:'paragraph',A:'button',BUTTON:'button',LI:'list',TITLE:'meta'};
+function openFiles(){const input=document.getElementById('file-input');input.value='';input.click()}async function openFolder(){if(window.showDirectoryPicker){try{const dir=await window.showDirectoryPicker();const records=[];await collectDirectoryHandle(dir,dir.name,records);await handleRecords(records);return}catch(err){if(err&&err.name==='AbortError')return;toast('Folder picker failed. Try dragging the folder into the box.')}}const input=document.getElementById('folder-input');input.value='';input.click()}function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}function cleanText(value){return String(value||'').replace(/\s+/g,' ').trim()}function shouldKeep(text){if(!text||text.length<2)return false;if(/^[\W_]+$/.test(text))return false;if(/^\d+$/.test(text))return false;return true}
+async function handleFiles(fileList){const records=[...fileList].map(file=>({file,path:file.webkitRelativePath||file.name}));await handleRecords(records)}
+async function handleRecords(records){const usable=records.filter(r=>/\.(html?|js)$/i.test(r.file.name));if(!usable.length){toast('No HTML or JS files found. Try selecting the actual course folder that contains the pages.');return}const loaded=[];for(const rec of usable){const text=await rec.file.text();loaded.push({name:rec.file.name,path:rec.path,text,kind:/\.js$/i.test(rec.file.name)?'js':'html'})}filesData=loaded;copyItems=[];loaded.forEach(file=>copyItems.push(...(file.kind==='js'?extractJS(file):extractHTML(file))));document.getElementById('review-panel').hidden=false;document.getElementById('download-btn').disabled=false;document.getElementById('copy-btn').disabled=false;render();toast(`Loaded ${loaded.length} file${loaded.length===1?'':'s'}.`)}
+async function collectDirectoryHandle(dir,prefix,records){for await(const [name,handle] of dir.entries()){const path=`${prefix}/${name}`;if(handle.kind==='file'){records.push({file:await handle.getFile(),path})}else if(handle.kind==='directory'){await collectDirectoryHandle(handle,path,records)}}}
+function handleDrag(event){event.preventDefault();document.getElementById('dropzone').classList.add('dragging')}function handleDragLeave(event){event.preventDefault();document.getElementById('dropzone').classList.remove('dragging')}async function handleDrop(event){event.preventDefault();document.getElementById('dropzone').classList.remove('dragging');const records=[];const items=[...event.dataTransfer.items];if(items.length&&items[0].webkitGetAsEntry){for(const item of items){const entry=item.webkitGetAsEntry();if(entry)await collectEntry(entry,entry.name,records)}}else{[...event.dataTransfer.files].forEach(file=>records.push({file,path:file.name}))}await handleRecords(records)}
+function readEntryFile(entry){return new Promise((resolve,reject)=>entry.file(resolve,reject))}
+function readDirectoryEntries(reader){return new Promise((resolve,reject)=>reader.readEntries(resolve,reject))}
+async function collectEntry(entry,path,records){if(entry.isFile){records.push({file:await readEntryFile(entry),path});return}if(entry.isDirectory){const reader=entry.createReader();let batch=[];do{batch=await readDirectoryEntries(reader);for(const child of batch){await collectEntry(child,`${path}/${child.name}`,records)}}while(batch.length)}}
+function extractHTML(file){const doc=new DOMParser().parseFromString(file.text,'text/html');const items=[];const used=new Set();const title=cleanText(doc.querySelector('title')?.textContent);if(shouldKeep(title))items.push(makeItem(file,'meta','title','Document title',title));const metaDesc=cleanText(doc.querySelector('meta[name="description"]')?.getAttribute('content'));if(shouldKeep(metaDesc))items.push(makeItem(file,'meta','meta[name="description"]','Meta description',metaDesc));doc.querySelectorAll('img[alt]').forEach((img,index)=>{const alt=cleanText(img.getAttribute('alt'));if(shouldKeep(alt))items.push(makeItem(file,'meta',`img[alt] ${index+1}`,describeElement(img),alt))});doc.body?.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,a,button,span,figcaption,label').forEach((el,index)=>{if(SKIP_TAGS.has(el.tagName))return;if(el.closest('script, style, svg, nav, .nav-drawer, #site-nav, #site-footer'))return;if([...el.children].some(child=>cleanText(child.textContent)===cleanText(el.textContent)))return;const text=cleanText(el.textContent);if(!shouldKeep(text))return;const key=`${file.path}|${el.tagName}|${index}|${text}`;if(used.has(key))return;used.add(key);items.push(makeItem(file,TYPE_MAP[el.tagName]||'paragraph',cssPath(el),describeElement(el),text))});const scriptText=[...doc.querySelectorAll('script')].map(s=>s.textContent).join('\n');items.push(...extractQuizStrings(file,scriptText));return items}
+function extractJS(file){return extractQuizStrings(file,file.text)}
+function extractQuizStrings(file,text){const items=[];const regex=/(prompt|answer|correct|incorrect|title|description|label)\s*:\s*(['"])((?:\\.|(?!\2)[\s\S])*?)\2/g;let match;while((match=regex.exec(text))){const field=match[1];const value=cleanText(unescapeJS(match[3]));if(shouldKeep(value))items.push(makeItem(file,'quiz',field,`Quiz ${field}`,value))}return items}
+function unescapeJS(value){return String(value).replace(/\\'/g,"'").replace(/\\"/g,'"').replace(/\\n/g,' ').replace(/\\r/g,' ').replace(/\\t/g,' ')}
+function makeItem(file,type,selector,label,current){return{id:`${file.path}::${Math.random().toString(36).slice(2,10)}`,file:file.path,fileName:file.name,type,selector,label,current,replacement:'',note:''}}
+function describeElement(el){const tag=el.tagName?el.tagName.toLowerCase():'item';const cls=el.className&&typeof el.className==='string'?'.'+el.className.trim().split(/\s+/).slice(0,2).join('.'):'';return`${tag}${cls}`}
+function cssPath(el){if(!el||!el.tagName)return'';const parts=[];let node=el;while(node&&node.nodeType===1&&node.tagName!=='BODY'){let part=node.tagName.toLowerCase();if(node.id){part+=`#${node.id}`;parts.unshift(part);break}const cls=node.className&&typeof node.className==='string'?node.className.trim().split(/\s+/)[0]:'';if(cls)part+=`.${cls}`;parts.unshift(part);node=node.parentElement}return parts.slice(-4).join(' > ')}
+function render(){syncFromDOM();const query=cleanText(document.getElementById('search')?.value).toLowerCase();const typeFilter=document.getElementById('type-filter')?.value||'all';const changeFilter=document.getElementById('change-filter')?.value||'all';const grouped=new Map();let visible=0;copyItems.forEach(item=>{const changed=!!cleanText(item.replacement)||!!cleanText(item.note);const hay=`${item.file} ${item.type} ${item.label} ${item.current} ${item.replacement} ${item.note}`.toLowerCase();const ok=(typeFilter==='all'||item.type===typeFilter)&&(changeFilter==='all'||(changeFilter==='changed'?changed:!changed))&&(!query||hay.includes(query));if(ok){visible++;if(!grouped.has(item.file))grouped.set(item.file,[]);grouped.get(item.file).push(item)}});const list=document.getElementById('copy-list');if(!copyItems.length)list.innerHTML='<div class="empty">Load files to begin.</div>';else if(!visible)list.innerHTML='<div class="empty">No copy items match the current filters.</div>';else list.innerHTML=[...grouped.entries()].map(([file,items])=>renderFileGroup(file,items)).join('');updateStats(visible)}
+function renderFileGroup(file,items){return`<section class="file-group"><div class="file-title"><strong>${esc(file)}</strong><span>${items.length} item${items.length===1?'':'s'}</span></div>${items.map(renderItem).join('')}</section>`}
+function renderItem(item){const changed=!!cleanText(item.replacement)||!!cleanText(item.note);return`<article class="copy-item${changed?' changed':''}" data-id="${esc(item.id)}"><div class="item-meta"><div><span class="tag">${esc(item.type)}</span> <span class="where">${esc(item.label)} · ${esc(item.selector)}</span></div></div><div class="text-grid"><div><label>Current Copy</label><textarea class="current" readonly>${esc(item.current)}</textarea></div><div><label>Requested Replacement</label><textarea data-field="replacement" oninput="handleEdit(this)" placeholder="Type the wording you want instead...">${esc(item.replacement)}</textarea></div></div><div class="notes-row"><div><label>Notes for Codex</label><textarea class="small-note" data-field="note" oninput="handleEdit(this)" placeholder="Optional: explain tone, placement, or what feels wrong.">${esc(item.note)}</textarea></div><button class="btn navy" onclick="copyOne('${escAttr(item.id)}')">Copy Item</button></div></article>`}
+function handleEdit(el){const article=el.closest('.copy-item');const item=copyItems.find(x=>x.id===article.dataset.id);if(!item)return;item[el.dataset.field]=el.value;article.classList.toggle('changed',!!cleanText(item.replacement)||!!cleanText(item.note));updateStats(document.querySelectorAll('.copy-item').length);saveDraft()}
+function syncFromDOM(){document.querySelectorAll('.copy-item').forEach(article=>{const item=copyItems.find(x=>x.id===article.dataset.id);if(!item)return;article.querySelectorAll('[data-field]').forEach(field=>{item[field.dataset.field]=field.value})})}
+function updateStats(visible){const changed=copyItems.filter(item=>cleanText(item.replacement)||cleanText(item.note)).length;document.getElementById('file-count').textContent=filesData.length;document.getElementById('copy-count').textContent=copyItems.length;document.getElementById('change-count').textContent=changed;document.getElementById('visible-count').textContent=visible||0}
+function buildPack(){syncFromDOM();const changes=copyItems.filter(item=>cleanText(item.replacement)||cleanText(item.note)).map(({id,file,type,selector,label,current,replacement,note})=>({id,file,type,selector,label,current,replacement:cleanText(replacement),note:cleanText(note)}));return{tool:'Equine Edu Copy Review Pack',version:1,createdAt:new Date().toISOString(),instructions:'Apply the requested replacement wording and notes to the listed files. Match by file plus current copy/context.',sourceFiles:filesData.map(file=>({path:file.path,name:file.name,kind:file.kind})),changes}}
+function buildMarkdown(){const pack=buildPack();if(!pack.changes.length)return'No requested changes yet.';return`# Equine Edu Copy Change Pack\n\nCreated: ${pack.createdAt}\n\n${pack.changes.map((item,i)=>`## ${i+1}. ${item.file}\n\nType: ${item.type}\nContext: ${item.label} / ${item.selector}\n\nCurrent:\n> ${item.current}\n\nRequested:\n${item.replacement||'(no direct replacement provided)'}\n\nNotes:\n${item.note||'(none)'}\n`).join('\n')}`}
+function downloadPack(){const pack=buildPack();if(!pack.changes.length){toast('Add at least one replacement or note first.');return}download(JSON.stringify(pack,null,2),'equine-copy-change-pack.json','application/json');setTimeout(()=>download(buildMarkdown(),'equine-copy-change-notes.md','text/markdown'),250);toast('Change pack downloaded.')}
+function copyMarkdown(){const markdown=buildMarkdown();navigator.clipboard.writeText(markdown).then(()=>toast('Notes copied.')).catch(()=>{download(markdown,'equine-copy-change-notes.md','text/markdown');toast('Clipboard blocked, downloaded notes instead.')})}
+function copyOne(id){syncFromDOM();const item=copyItems.find(x=>x.id===id);if(!item)return;const text=`File: ${item.file}\nType: ${item.type}\nContext: ${item.label} / ${item.selector}\n\nCurrent:\n${item.current}\n\nRequested:\n${item.replacement||'(none)'}\n\nNotes:\n${item.note||'(none)'}`;navigator.clipboard.writeText(text).then(()=>toast('Item copied.'))}
+function download(content,filename,type){const blob=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function clearAll(){filesData=[];copyItems=[];localStorage.removeItem('equineEdu.copyReviewDraft');document.getElementById('review-panel').hidden=true;document.getElementById('copy-list').innerHTML='';document.getElementById('download-btn').disabled=true;document.getElementById('copy-btn').disabled=true;updateStats(0)}
+function saveDraft(){try{localStorage.setItem('equineEdu.copyReviewDraft',JSON.stringify({filesData,copyItems}))}catch(err){}}
+function loadDraft(){try{const raw=localStorage.getItem('equineEdu.copyReviewDraft');if(!raw)return;const draft=JSON.parse(raw);if(!Array.isArray(draft.copyItems)||!draft.copyItems.length)return;filesData=draft.filesData||[];copyItems=draft.copyItems||[];document.getElementById('review-panel').hidden=false;document.getElementById('download-btn').disabled=false;document.getElementById('copy-btn').disabled=false;render()}catch(err){}}
+function esc(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}function escAttr(value){return esc(value).replace(/`/g,'&#96;')}
+loadDraft();
+</script>
+</body>
+</html>

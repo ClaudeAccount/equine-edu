@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marking Memory Game &mdash; Face Markings &mdash; Equine Edu</title>
+<meta name="description" content="Flip pairs of cards and match each pony illustration to its marking name &mdash; a concentration-style memory game.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../assets/css/course.css">
+<style>
+/* -- Intro Card -- */
+.game-intro-card {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.game-intro-card h2 { font-family: var(--font-display); font-size: 1.1rem; color: var(--navy); margin-bottom: 0.4rem; }
+.game-intro-card p  { font-size: 0.87rem; color: var(--text-mid); line-height: 1.65; margin: 0; }
+
+/* -- Game Shell -- */
+.game-shell {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* -- Stats Bar -- */
+.memory-stats-bar {
+  background: var(--navy);
+  padding: 0.85rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.stat-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+.stat-chip .stat-val {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-chip .stat-lbl {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* -- Card Grid -- */
+.memory-grid-wrap {
+  padding: 1.25rem 1rem;
+}
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+/* -- Memory Card -- */
+.mem-card {
+  perspective: 800px;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+}
+.mem-card-inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius);
+}
+.mem-card.flipped .mem-card-inner,
+.mem-card.matched .mem-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Back face (face down &mdash; shows pattern) */
+.mem-card-back,
+.mem-card-front {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+.mem-card-back {
+  background: var(--navy);
+  border: 2px solid rgba(201,168,76,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mem-card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Front face (face up &mdash; shows content) */
+.mem-card-front {
+  transform: rotateY(180deg);
+  background: var(--off-white);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+}
+
+/* Matched state */
+.mem-card.matched .mem-card-front {
+  border-color: rgba(46, 125, 50, 0.7);
+  background: #f1f8e9;
+}
+
+/* Image card front */
+.mem-card-front.img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Name card front */
+.mem-card-front.name-card {
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--white);
+  text-align: center;
+  padding: 0.55rem;
+}
+.name-card-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.92rem, 1.6vw, 1.2rem);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.15;
+}
+.mem-card.matched .mem-card-front.name-card {
+  background: #f1f8e9;
+}
+
+/* Wrong flash */
+.mem-card.wrong-flash .mem-card-front {
+  border-color: rgba(198, 40, 40, 0.6);
+  background: #fff5f5;
+  animation: wrong-flash 0.35s ease;
+}
+@keyframes wrong-flash {
+  0%,100% { transform: rotateY(180deg); }
+  25%     { transform: rotateY(180deg) scale(0.97); }
+  50%     { transform: rotateY(180deg) scale(1.02); }
+}
+
+/* Match pulse */
+@keyframes match-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(46,125,50,0.4); }
+  70%  { box-shadow: 0 0 0 8px rgba(46,125,50,0); }
+  100% { box-shadow: 0 0 0 0 rgba(46,125,50,0); }
+}
+.mem-card.matched .mem-card-inner {
+  animation: match-pulse 0.5s ease forwards;
+}
+
+/* -- Win Screen -- */
+.win-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 2rem 2rem;
+  gap: 1rem;
+}
+.win-screen.show { display: flex; }
+.win-trophy {
+  font-size: 3rem;
+  line-height: 1;
+}
+.win-title { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); }
+.win-stats {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.5rem;
+}
+.win-stat { text-align: center; }
+.win-stat .win-val { font-family: var(--font-display); font-size: 1.6rem; color: var(--navy); line-height: 1; }
+.win-stat .win-lbl { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-light); }
+.win-msg  { font-size: 0.9rem; color: var(--text-mid); line-height: 1.65; max-width: 320px; }
+.score-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+.score-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.88rem; font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  text-decoration: none; display: inline-block;
+}
+.score-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.score-btn.primary   { background: var(--navy); color: var(--gold); border: none; }
+.score-btn.secondary { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+
+.game-play-area.hidden { display: none; }
+
+/* Responsive: narrower grid on small screens */
+@media (max-width: 480px) {
+  .memory-grid { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+  .name-card-label { font-size: 0.78rem; }
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Face Markings</div>
+      <h1 class="lesson-hero-title">Marking <span>Memory Game</span></h1>
+      <p class="lesson-hero-desc">Flip pairs of cards to match each pony illustration to its marking name. Find all six pairs to finish.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="game-intro-card">
+      <h2>How to Play</h2>
+      <p>The grid has 12 face-down cards &mdash; six pony illustrations and their six matching name cards. Flip two at a time. If they match, they stay revealed. If not, they flip back. Complete all six pairs with the fewest moves.</p>
+    </div>
+
+    <div class="game-shell">
+
+      <div class="game-play-area" id="game-play">
+        <div class="memory-stats-bar">
+          <div class="stat-chip">
+            <div class="stat-val" id="stat-pairs">0 / 6</div>
+            <div class="stat-lbl">Pairs Found</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-chip">
+            <div class="stat-val" id="stat-moves">0</div>
+            <div class="stat-lbl">Moves</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-chip">
+            <div class="stat-val" id="stat-time">0:00</div>
+            <div class="stat-lbl">Time</div>
+          </div>
+        </div>
+
+        <div class="memory-grid-wrap">
+          <div class="memory-grid" id="memory-grid"></div>
+        </div>
+      </div>
+
+      <!-- Win screen -->
+      <div class="win-screen" id="win-screen">
+        <div class="win-trophy">&#127942;</div>
+        <div class="win-title" id="win-title">All pairs matched!</div>
+        <div class="win-stats">
+          <div class="win-stat">
+            <div class="win-val" id="win-moves">&mdash;</div>
+            <div class="win-lbl">Moves</div>
+          </div>
+          <div class="win-stat">
+            <div class="win-val" id="win-time">&mdash;</div>
+            <div class="win-lbl">Time</div>
+          </div>
+        </div>
+        <p class="win-msg" id="win-msg"></p>
+        <div class="score-actions">
+          <button class="score-btn primary" onclick="initGame()">Play Again</button>
+          <a class="score-btn secondary" href="../6-training-barn.html">Back to Training Barn</a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+const PAIRS = [
+  { id: 'star',             name: 'Star',                 img: '../markings/star-1.png' },
+  { id: 'strip',            name: 'Strip',                img: '../markings/strip-1.png' },
+  { id: 'blaze',            name: 'Blaze',                img: '../markings/blaze-1.png' },
+  { id: 'snip',             name: 'Snip',                 img: '../markings/snip-1.png' },
+  { id: 'bald-face',        name: 'Bald Face',            img: '../markings/bald-face-1.png' },
+  { id: 'star-snip',        name: 'Star & Snip',          img: '../markings/star-snip-1.png' },
+  { id: 'star-strip',       name: 'Star & Strip',         img: '../markings/star-strip-1.png' },
+  { id: 'star-strip-snip',  name: 'Star, Strip & Snip',   img: '../markings/star-strip-snip-1.png' }
+];
+
+let flipped   = [];
+let matched   = 0;
+let moves     = 0;
+let locked    = false;
+let timerInt  = null;
+let elapsed   = 0;
+let started   = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function fmtTime(s) {
+  return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+}
+
+function initGame() {
+  // Reset state
+  clearInterval(timerInt);
+  flipped = []; matched = 0; moves = 0; elapsed = 0; locked = false; started = false;
+
+  // Hide win screen
+  document.getElementById('win-screen').classList.remove('show');
+  document.getElementById('game-play').classList.remove('hidden');
+
+  // Reset stats
+  document.getElementById('stat-pairs').textContent = '0 / 6';
+  document.getElementById('stat-moves').textContent = '0';
+  document.getElementById('stat-time').textContent  = '0:00';
+
+  // Pick 6 random pairs each game, then build 12-card deck
+  const activePairs = shuffle([...PAIRS]).slice(0, 6);
+  const imgCards  = activePairs.map(p => ({ pairId: p.id, type: 'img',  img: p.img,  name: p.name }));
+  const nameCards = activePairs.map(p => ({ pairId: p.id, type: 'name', img: p.img,  name: p.name }));
+  const deck = shuffle([...imgCards, ...nameCards]);
+
+  // Render grid
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML = '';
+  deck.forEach(function(card, idx) {
+    var el = document.createElement('div');
+    el.className = 'mem-card';
+    el.dataset.pairId = card.pairId;
+    el.dataset.type   = card.type;
+    el.dataset.idx    = idx;
+
+    var inner = document.createElement('div');
+    inner.className = 'mem-card-inner';
+
+    // Back (face-down side)
+    var back = document.createElement('div');
+    back.className = 'mem-card-back';
+    var backImg = document.createElement('img');
+    backImg.src = '../markings/back-of-cards.png';
+    backImg.alt = 'Card back';
+    back.appendChild(backImg);
+
+    // Front (face-up side)
+    var front = document.createElement('div');
+    if (card.type === 'img') {
+      front.className = 'mem-card-front img-card';
+      var img = document.createElement('img');
+      img.src = card.img;
+      img.alt = card.name;
+      front.appendChild(img);
+    } else {
+      front.className = 'mem-card-front name-card';
+      var lbl = document.createElement('div');
+      lbl.className = 'name-card-label';
+      lbl.textContent = card.name;
+      front.appendChild(lbl);
+    }
+
+    inner.appendChild(back);
+    inner.appendChild(front);
+    el.appendChild(inner);
+    el.addEventListener('click', function() { handleCardClick(el); });
+    grid.appendChild(el);
+  });
+}
+
+function handleCardClick(el) {
+  if (locked) return;
+  if (el.classList.contains('flipped')) return;
+  if (el.classList.contains('matched')) return;
+
+  // Start timer on first card
+  if (!started) {
+    started = true;
+    timerInt = setInterval(function() {
+      elapsed++;
+      document.getElementById('stat-time').textContent = fmtTime(elapsed);
+    }, 1000);
+  }
+
+  el.classList.add('flipped');
+  flipped.push(el);
+
+  if (flipped.length === 2) {
+    moves++;
+    document.getElementById('stat-moves').textContent = moves;
+    locked = true;
+    checkMatch();
+  }
+}
+
+function checkMatch() {
+  var a = flipped[0];
+  var b = flipped[1];
+  var isMatch = a.dataset.pairId === b.dataset.pairId && a.dataset.type !== b.dataset.type;
+
+  if (isMatch) {
+    matched++;
+    document.getElementById('stat-pairs').textContent = matched + ' / 6';
+    setTimeout(function() {
+      a.classList.add('matched');
+      b.classList.add('matched');
+      a.classList.remove('flipped');
+      b.classList.remove('flipped');
+      flipped = [];
+      locked  = false;
+      if (matched === 6) {
+        setTimeout(showWin, 400);
+      }
+    }, 400);
+  } else {
+    // Wrong: flash then flip back
+    a.classList.add('wrong-flash');
+    b.classList.add('wrong-flash');
+    setTimeout(function() {
+      a.classList.remove('flipped', 'wrong-flash');
+      b.classList.remove('flipped', 'wrong-flash');
+      flipped = [];
+      locked  = false;
+    }, 900);
+  }
+}
+
+function showWin() {
+  clearInterval(timerInt);
+  document.getElementById('game-play').classList.add('hidden');
+  var ws = document.getElementById('win-screen');
+  ws.classList.add('show');
+  document.getElementById('win-moves').textContent = moves;
+  document.getElementById('win-time').textContent  = fmtTime(elapsed);
+
+  var title, msg;
+  if (moves <= 8) {
+    title = 'Incredible Memory!';
+    msg   = moves + ' moves to find all six pairs - that is exceptional. You clearly know these markings well.';
+  } else if (moves <= 11) {
+    title = 'Well Played!';
+    msg   = moves + ' moves to find all six pairs. Sharp focus and strong recognition.';
+  } else if (moves <= 16) {
+    title = 'Well Done!';
+    msg   = 'All six pairs found in ' + moves + ' moves. Play again to improve your score.';
+  } else {
+    title = 'All Pairs Found!';
+    msg   = 'You did it in ' + moves + ' moves. Practise a few more rounds to build faster recognition.';
+  }
+
+  document.getElementById('win-title').textContent = title;
+  document.getElementById('win-msg').textContent   = msg;
+}
+
+initGame();
+</script>
+
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../index.html',
+    navCta:     { label: 'Back to Training Barn', url: '../6-training-barn.html' }
+  };
+</script>
+<script src="../course-config.js"></script>
+<script>
+  // Game pages live in face-marking-games/ -- prefix all config URLs by one level
+  document.addEventListener('DOMContentLoaded', function() {});
+  (function() {
+    var cfg = window.COURSE_CONFIG;
+    if (!cfg) return;
+    cfg.indexUrl      = '../' + cfg.indexUrl;
+    cfg.allCoursesUrl = '../' + cfg.allCoursesUrl;
+    cfg.modules.forEach(function(m) { m.file = '../' + m.file; });
+  })();
+</script>
+<script src="../../../../../assets/js/layout.js"></script>
+<script src="../../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.faceMarkings.memoryGame','true')}catch(e){}</script>
+</body>
+</html>

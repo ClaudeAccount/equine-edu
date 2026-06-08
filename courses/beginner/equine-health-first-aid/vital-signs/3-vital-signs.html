@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equine Vital Signs &mdash; Vital Signs &mdash; Equine Edu</title>
+<meta name="description" content="Learn the six equine vital signs â€” temperature, heart rate, respiratory rate, gut sounds, skin tenting, and gum color â€” with normal ranges and how-to guidance.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+  .tab-system {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .tab-bar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    padding: 0.4rem;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .tab-btn {
+    min-height: 48px;
+    border: 2px solid transparent;
+    border-radius: calc(var(--radius) - 2px);
+    background: rgba(13,27,62,0.08);
+    color: rgba(13,27,62,0.45);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    padding: 0.5rem 0.4rem;
+    line-height: 1.3;
+  }
+
+  .tab-btn:nth-child(2), .tab-btn:nth-child(5) {
+    background: rgba(201,168,76,0.12);
+    color: rgba(145,108,26,0.62);
+  }
+
+  .tab-btn.active {
+    background: var(--navy);
+    color: var(--gold);
+    border-color: var(--navy);
+    font-weight: 800;
+    opacity: 1;
+    box-shadow: 0 5px 18px rgba(13,27,62,0.2);
+  }
+
+  .tab-bar--jump .tab-btn.active {
+    font-weight: 900;
+  }
+
+  .tab-btn:nth-child(2).active, .tab-btn:nth-child(5).active {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+    box-shadow: 0 5px 18px rgba(201,168,76,0.28);
+  }
+
+  .tab-btn:not(.active):hover {
+    opacity: 0.85;
+    color: var(--navy);
+  }
+
+  .tab-panel {
+    display: none;
+  }
+
+  .tab-panel.active {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .tab-intro {
+    padding: 1.25rem 1.5rem;
+    background: var(--off-white);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  .vital-range-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+  .vital-range-icon { font-size: 0.6rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; padding: 4px 8px; flex-shrink: 0; }
+  .vital-range-label { font-size: 0.65rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.2rem; }
+  .vital-range-value { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); line-height: 1.2; }
+
+  .how-to-steps { display: grid; gap: 0.65rem; margin-top: 0.5rem; }
+  .how-to-step { display: flex; gap: 0.85rem; align-items: flex-start; }
+  .step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: var(--gold); font-size: 0.75rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
+  .step-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.65; }
+
+  .abnormal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.5rem; }
+  .abnormal-card { padding: 0.85rem 1rem; border-radius: var(--radius); font-size: 0.84rem; line-height: 1.6; }
+  .abnormal-card.high { background: #fdf2f2; border-left: 3px solid #c0392b; color: #7a2020; }
+  .abnormal-card.low  { background: #f0f4ff; border-left: 3px solid #3a5bd9; color: #1a2d7a; }
+  .abnormal-card strong { display: block; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.3rem; }
+
+  .gum-color-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-top: 0.5rem; }
+  .gum-swatch { border-radius: var(--radius); padding: 0.85rem 0.75rem; font-size: 0.82rem; line-height: 1.5; }
+  .gum-swatch strong { display: block; font-weight: 800; margin-bottom: 0.2rem; font-size: 0.8rem; }
+  .gum-swatch.normal { background: #fff0f5; border: 1px solid #f8bbd0; color: #6d2040; }
+  .gum-swatch.concern { background: #fff8e6; border: 1px solid #ffe082; color: #6d4c00; }
+  .gum-swatch.urgent { background: #fdf2f2; border: 1px solid #ef9a9a; color: #7a1f1f; }
+
+  @media (max-width: 760px) {
+    .tab-bar { grid-template-columns: 1fr 1fr; }
+    .abnormal-grid { grid-template-columns: 1fr; }
+    .gum-color-row { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .tab-bar { grid-template-columns: 1fr; }
+    .gum-color-row { grid-template-columns: 1fr; }
+  }
+
+/* Uniform lesson tabs */
+.tab-system { gap: 1.5rem; }
+.tab-bar {
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.4rem;
+  margin: 1.35rem 0 1.75rem;
+}
+.part-tab,
+.tab-btn,
+.saddle-view-tab {
+  min-height: 48px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--off-white);
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  padding: 0.85rem 1rem;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+.part-tab.active,
+.tab-btn.active,
+.saddle-view-tab.active,
+.tab-btn:nth-child(2).active,
+.tab-btn:nth-child(5).active {
+  background: var(--navy);
+  border-color: transparent;
+  color: var(--gold);
+  box-shadow: none;
+}
+.part-tab:not(.active):hover,
+.tab-btn:not(.active):hover,
+.saddle-view-tab:not(.active):hover {
+  background: rgba(13,27,62,0.06);
+  color: var(--navy);
+  opacity: 1;
+}
+.part-panel > .lesson-intro-card,
+.lesson-intro-card + .tab-system {
+  margin-bottom: 1.35rem;
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Equine Vital Signs</div>
+      <h1 class="lesson-hero-title">Equine <span>Vital Signs</span></h1>
+      <p class="lesson-hero-desc">Each vital sign tells you something specific about how a horse's body is working. Use the tabs below to explore each one â€” what it measures, how to check it, and what normal looks like.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="lesson-intro-card">
+      <h2>Six Signs, Six Stories</h2>
+      <p>No single vital sign gives you the full picture on its own. Temperature tells you about infection or heat stress; heart rate reflects stress, pain, or cardiovascular status; gut sounds point to digestive activity. Together, these six measurements give a well-rounded snapshot of how a horse is doing. Use the tabs below to study each one.</p>
+    </div>
+
+    <div class="tab-system" id="vitals-tabs">
+      <div class="tab-bar" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-temp"   id="btn-temp">Temperature</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-hr"     id="btn-hr">Heart Rate &amp; Pulse</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-resp"   id="btn-resp">Respiratory Rate</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-gut"    id="btn-gut">Gut Sounds</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-skin"   id="btn-skin">Skin Tenting</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-gums"   id="btn-gums">Gum Color &amp; Moisture</button>
+      </div>
+
+      <!-- TEMPERATURE -->
+      <div class="tab-panel active" id="tab-temp" role="tabpanel">
+        <div class="tab-intro"><p>Temperature is one of the most informative vital signs. A reading that is too high usually signals infection, heat stress, or inflammation. A reading that falls below the normal range is less common but equally important to catch.</p></div>
+        <div class="visual-card">
+          <div class="vital-range-banner">
+            <div class="vital-range-icon">TEMP</div>
+            <div>
+              <div class="vital-range-label">Normal Range â€” Adult Horse at Rest</div>
+              <div class="vital-range-value">99.5â€“101.5Â°F &nbsp;/&nbsp; 37.5â€“38.6Â°C</div>
+            </div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">How to Check Temperature</h3>
+          <div class="how-to-steps">
+            <div class="how-to-step"><div class="step-num">1</div><div class="step-text">Use a digital rectal thermometer. Lubricate the tip with petroleum jelly or a water-based lubricant before inserting.</div></div>
+            <div class="how-to-step"><div class="step-num">2</div><div class="step-text">Stand to the side of the horse's hindquarters â€” never directly behind. Gently lift the tail and insert the thermometer into the rectum at a slight angle.</div></div>
+            <div class="how-to-step"><div class="step-num">3</div><div class="step-text">Hold the thermometer steady and wait for the beep. Most digital thermometers read within 30â€“60 seconds.</div></div>
+            <div class="how-to-step"><div class="step-num">4</div><div class="step-text">Remove, read, and clean the thermometer. Always wait at least 30 minutes after exercise before taking a resting temperature.</div></div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">What Abnormal Readings Mean</h3>
+          <div class="abnormal-grid">
+            <div class="abnormal-card high"><strong>â†‘ Above 101.5Â°F</strong>A temperature above 102Â°F is generally considered a fever. Possible causes include infection, illness, or heat stress. Contact your veterinarian.</div>
+            <div class="abnormal-card low"><strong>â†“ Below 99Â°F</strong>A subnormal temperature can indicate shock, hypothermia, or serious systemic illness. This warrants immediate veterinary attention.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEART RATE -->
+      <div class="tab-panel" id="tab-hr" role="tabpanel">
+        <div class="tab-intro"><p>Heart rate reflects how hard the cardiovascular system is working. A resting heart rate that is elevated â€” especially when combined with other symptoms â€” is one of the most important indicators of pain, stress, or illness in a horse.</p></div>
+        <div class="visual-card">
+          <div class="vital-range-banner">
+            <div class="vital-range-icon">HR</div>
+            <div>
+              <div class="vital-range-label">Normal Range â€” Adult Horse at Rest</div>
+              <div class="vital-range-value">28â€“44 beats per minute</div>
+            </div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">How to Check Heart Rate &amp; Pulse</h3>
+          <div class="how-to-steps">
+            <div class="how-to-step"><div class="step-num">1</div><div class="step-text"><strong>With a stethoscope:</strong> Place the chest piece just behind the horse's left elbow on the chest wall. Listen for the heartbeat. Each "lub-dub" counts as one beat.</div></div>
+            <div class="how-to-step"><div class="step-num">2</div><div class="step-text"><strong>By pulse:</strong> Find the facial artery by running your fingers along the inside of the lower jaw until you feel a firm, cord-like structure. Press gently to feel the pulse.</div></div>
+            <div class="how-to-step"><div class="step-num">3</div><div class="step-text">Count the beats for 15 seconds, then multiply by four to get beats per minute. Or count for 30 seconds and multiply by two.</div></div>
+            <div class="how-to-step"><div class="step-num">4</div><div class="step-text">Always take the measurement while the horse is calm and has been resting for several minutes. Fear, excitement, and recent exercise all raise heart rate temporarily.</div></div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">What Abnormal Readings Mean</h3>
+          <div class="abnormal-grid">
+            <div class="abnormal-card high"><strong>â†‘ Above 44 bpm at rest</strong>An elevated resting heart rate often indicates pain, fever, stress, dehydration, or serious illness. A rate consistently above 60 bpm at rest warrants prompt veterinary attention.</div>
+            <div class="abnormal-card low"><strong>â†“ Below 28 bpm at rest</strong>A very low resting heart rate (bradycardia) is uncommon in healthy horses and can indicate a cardiac irregularity. Consult your veterinarian if consistently low.</div>
+          </div>
+          <div style="margin-top:1rem;padding:0.9rem 1.1rem;background:rgba(201,168,76,0.07);border-radius:var(--radius);border:1px solid rgba(201,168,76,0.2);">
+            <p style="font-size:0.83rem;color:var(--text-mid);line-height:1.65;margin:0;"><strong style="color:var(--navy);">Foals and young horses:</strong> Foals have much higher heart rates than adults â€” up to 80â€“120 bpm at birth, gradually slowing over the first months of life. Always compare readings against age-appropriate ranges.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESPIRATORY RATE -->
+      <div class="tab-panel" id="tab-resp" role="tabpanel">
+        <div class="tab-intro"><p>Respiratory rate tells you how often a horse is breathing. At rest, a healthy horse breathes slowly and easily. Rapid, labored, or noisy breathing is a clear signal that something needs attention.</p></div>
+        <div class="visual-card">
+          <div class="vital-range-banner">
+            <div class="vital-range-icon">RESP</div>
+            <div>
+              <div class="vital-range-label">Normal Range â€” Adult Horse at Rest</div>
+              <div class="vital-range-value">8â€“16 breaths per minute</div>
+            </div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">How to Check Respiratory Rate</h3>
+          <div class="how-to-steps">
+            <div class="how-to-step"><div class="step-num">1</div><div class="step-text">Stand back and observe the horse from the side. Watch the flank (the area between the last rib and hindquarters) for movement.</div></div>
+            <div class="how-to-step"><div class="step-num">2</div><div class="step-text">Each rise and fall of the flank counts as one complete breath. Count the number of breaths over 30 seconds and multiply by two to get breaths per minute.</div></div>
+            <div class="how-to-step"><div class="step-num">3</div><div class="step-text">In cold weather, you can watch for puffs of air from the nostrils instead. Alternatively, hold your hand near the nostril to feel air movement.</div></div>
+            <div class="how-to-step"><div class="step-num">4</div><div class="step-text">Take the measurement when the horse is calm and standing still. Sniffing, whinnying, or moving will affect the count.</div></div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">What Abnormal Readings Mean</h3>
+          <div class="abnormal-grid">
+            <div class="abnormal-card high"><strong>â†‘ Above 16 breaths/min at rest</strong>Elevated respiratory rate can signal respiratory infection, pain, fever, anxiety, or heat stress. Labored, noisy, or flared-nostril breathing requires veterinary evaluation.</div>
+            <div class="abnormal-card low"><strong>â†“ Below 8 breaths/min at rest</strong>A very slow respiratory rate at rest is uncommon. It can occur with certain sedatives or serious neurological conditions and should be reported to a vet.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GUT SOUNDS -->
+      <div class="tab-panel" id="tab-gut" role="tabpanel">
+        <div class="tab-intro"><p>A horse's digestive tract is almost always making noise â€” gurgling, bubbling, or rumbling sounds that confirm the gut is moving food through normally. Silence is one of the earliest and most important warning signs of colic.</p></div>
+        <div class="visual-card">
+          <div class="vital-range-banner">
+            <div class="vital-range-icon">GUT</div>
+            <div>
+              <div class="vital-range-label">Normal Finding</div>
+              <div class="vital-range-value">Sounds present in all four quadrants</div>
+            </div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">How to Check Gut Sounds</h3>
+          <div class="how-to-steps">
+            <div class="how-to-step"><div class="step-num">1</div><div class="step-text">You will need a stethoscope. Press the chest piece flat against the horse's abdomen â€” not the earpieces in your ears yet. Place them in gently before pressing the stethoscope to the horse.</div></div>
+            <div class="how-to-step"><div class="step-num">2</div><div class="step-text">Check four quadrants: upper left flank, lower left flank, upper right flank, lower right flank. This ensures you check both sides of the gut above and below.</div></div>
+            <div class="how-to-step"><div class="step-num">3</div><div class="step-text">Listen at each quadrant for at least 60 seconds before deciding sounds are absent. Some sounds are intermittent and you may need to wait a moment.</div></div>
+            <div class="how-to-step"><div class="step-num">4</div><div class="step-text">Normal sounds are described as gurgling, bubbling, or rumbling â€” similar to stomach sounds in people. Note whether sounds are present, faint, hyperactive, or absent in each quadrant.</div></div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">What Abnormal Findings Mean</h3>
+          <div class="abnormal-grid">
+            <div class="abnormal-card high"><strong>Absent or very quiet sounds</strong>Silence in one or more quadrants is a significant concern. It may indicate reduced gut motility, impaction, or the early stages of colic. Contact your veterinarian.</div>
+            <div class="abnormal-card low"><strong>Excessively loud or rushing sounds</strong>Very loud, rapid gut sounds can indicate hypermotility â€” the gut moving faster than normal. This may accompany diarrhea, spasmodic colic, or early fermentation disturbances.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKIN TENTING -->
+      <div class="tab-panel" id="tab-skin" role="tabpanel">
+        <div class="tab-intro"><p>The skin tenting test is a simple, equipment-free way to get a quick read on a horse's hydration status. It takes only seconds but can tell you a lot â€” especially alongside other vital signs.</p></div>
+        <div class="visual-card">
+          <div class="vital-range-banner">
+            <div class="vital-range-icon">SKIN</div>
+            <div>
+              <div class="vital-range-label">Normal Result</div>
+              <div class="vital-range-value">Skin returns flat within 1â€“2 seconds</div>
+            </div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">How to Perform the Skin Tenting Test</h3>
+          <div class="how-to-steps">
+            <div class="how-to-step"><div class="step-num">1</div><div class="step-text">Find the skin on the side of the neck or the point of the shoulder â€” areas where the skin is loose enough to pinch easily.</div></div>
+            <div class="how-to-step"><div class="step-num">2</div><div class="step-text">Pinch a fold of skin firmly between your thumb and forefinger. Hold it for one to two seconds, then release cleanly.</div></div>
+            <div class="how-to-step"><div class="step-num">3</div><div class="step-text">Watch how quickly the skin returns to its flat, normal position. Start counting as soon as you release.</div></div>
+            <div class="how-to-step"><div class="step-num">4</div><div class="step-text">In a well-hydrated horse, the skin snaps back almost immediately â€” within one to two seconds. A tent that lingers longer than that suggests dehydration.</div></div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">Interpreting the Results</h3>
+          <div class="abnormal-grid">
+            <div class="abnormal-card high"><strong>2â€“4 seconds: Mild dehydration</strong>The skin is noticeably slower to return. The horse may need water and electrolytes. Monitor closely and consult your vet if other signs are present.</div>
+            <div class="abnormal-card low"><strong>4+ seconds: Moderate to severe dehydration</strong>A prolonged tent is a serious finding. At this level, veterinary care is needed. Do not rely on water alone to resolve significant dehydration.</div>
+          </div>
+          <div style="margin-top:1rem;padding:0.9rem 1.1rem;background:rgba(201,168,76,0.07);border-radius:var(--radius);border:1px solid rgba(201,168,76,0.2);">
+            <p style="font-size:0.83rem;color:var(--text-mid);line-height:1.65;margin:0;"><strong style="color:var(--navy);">Keep in mind:</strong> Older horses and horses with naturally loose skin may show a slightly slower return even when well-hydrated. Always use the skin tenting test as one piece of the picture, not on its own.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GUM COLOR & MOISTURE -->
+      <div class="tab-panel" id="tab-gums" role="tabpanel">
+        <div class="tab-intro"><p>The gums â€” also called mucous membranes â€” are one of the quickest windows into a horse's circulatory and hydration status. Color and moisture together tell you a great deal, and the capillary refill time (CRT) test adds another layer of information.</p></div>
+        <div class="visual-card">
+          <div class="vital-range-banner">
+            <div class="vital-range-icon">GUMS</div>
+            <div>
+              <div class="vital-range-label">Normal Finding</div>
+              <div class="vital-range-value">Pink, moist &amp; slippery â€” CRT under 2 seconds</div>
+            </div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">How to Check Gum Color &amp; Moisture</h3>
+          <div class="how-to-steps">
+            <div class="how-to-step"><div class="step-num">1</div><div class="step-text">Gently lift the horse's upper lip to expose the gums above the front teeth. Note the color â€” it should be a salmon pink, similar in shade to bubble gum.</div></div>
+            <div class="how-to-step"><div class="step-num">2</div><div class="step-text">Run a finger along the gum surface. It should feel slick and moist. Tacky or dry gums suggest dehydration.</div></div>
+            <div class="how-to-step"><div class="step-num">3</div><div class="step-text"><strong>Capillary Refill Time (CRT):</strong> Press your thumb firmly against the upper gum for about two seconds, then release. The area you pressed will briefly turn white.</div></div>
+            <div class="how-to-step"><div class="step-num">4</div><div class="step-text">Count the seconds until the pink color fully returns to that spot. A healthy horse refills in one to two seconds.</div></div>
+          </div>
+          <h3 style="margin-top:1.25rem;font-family:var(--font-display);font-size:1rem;color:var(--navy);">Gum Color Guide</h3>
+          <div class="gum-color-row">
+            <div class="gum-swatch normal"><strong>Pink â€” Normal</strong>Healthy circulation and hydration. The baseline you are aiming for.</div>
+            <div class="gum-swatch concern"><strong>Pale / White</strong>May indicate anemia, shock, or internal blood loss. Requires prompt veterinary attention.</div>
+            <div class="gum-swatch concern"><strong>Tacky or Dry</strong>A sign of dehydration. Check skin tenting and heart rate alongside this finding.</div>
+            <div class="gum-swatch urgent"><strong>Bright Red or Brick Red</strong>Can signal toxemia, systemic infection, or severe illness. Urgent veterinary care needed.</div>
+            <div class="gum-swatch urgent"><strong>Blue or Purple</strong>Indicates severe oxygen deprivation or circulatory failure. A true emergency â€” contact a vet immediately.</div>
+            <div class="gum-swatch concern"><strong>Yellow (Jaundiced)</strong>May point to liver disease or certain types of anemia. Not an emergency on its own, but warrants veterinary evaluation.</div>
+          </div>
+          <div style="margin-top:1rem;padding:0.9rem 1.1rem;background:rgba(201,168,76,0.07);border-radius:var(--radius);border:1px solid rgba(201,168,76,0.2);">
+            <p style="font-size:0.83rem;color:var(--text-mid);line-height:1.65;margin:0;"><strong style="color:var(--navy);">CRT over 2 seconds</strong> is considered prolonged and is a significant finding even if other signs seem normal. Report it to your veterinarian along with other vitals.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      function switchTab(id) {
+        document.querySelectorAll('.tab-btn[aria-controls]').forEach(function(b) {
+          var on = b.getAttribute('aria-controls') === id;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        document.querySelectorAll('.tab-panel').forEach(function(p) {
+          p.classList.toggle('active', p.id === id);
+        });
+        document.querySelectorAll('.tab-bar--jump .tab-btn[data-jump-target]').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.jumpTarget === id);
+        });
+      }
+
+      function jumpToTab(id) {
+        switchTab(id);
+        var target = document.getElementById('vitals-tabs');
+        if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      }
+
+      document.querySelectorAll('.tab-btn[aria-controls]').forEach(function(b) {
+        b.addEventListener('click', function() { switchTab(b.getAttribute('aria-controls')); });
+      });
+    </script>
+
+    <div class="tab-bar tab-bar--jump" role="tablist" aria-label="Jump back to vital sign section" style="margin-bottom:1.5rem;">
+      <button class="tab-btn active" data-jump-target="tab-temp" onclick="jumpToTab('tab-temp')">Temperature</button>
+      <button class="tab-btn" data-jump-target="tab-hr" onclick="jumpToTab('tab-hr')">Heart Rate</button>
+      <button class="tab-btn" data-jump-target="tab-resp" onclick="jumpToTab('tab-resp')">Respiratory Rate</button>
+      <button class="tab-btn" data-jump-target="tab-gut" onclick="jumpToTab('tab-gut')">Gut Sounds</button>
+      <button class="tab-btn" data-jump-target="tab-skin" onclick="jumpToTab('tab-skin')">Skin Tenting</button>
+      <button class="tab-btn" data-jump-target="tab-gums" onclick="jumpToTab('tab-gums')">Gum Color</button>
+    </div>
+
+    <div id="course-notes"></div>
+    <script>
+      window.PAGE_NOTES = {
+        items: [
+          'Normal temperature: 99.5â€“101.5Â°F. Heart rate: 28â€“44 bpm. Respiratory rate: 8â€“16 breaths/min.',
+          'Gut sounds should be present in all four quadrants. Silence is always a reason to call your vet.',
+          'Healthy gums are pink, moist, and slippery â€” capillary refill returns within 2 seconds.',
+          'Skin tenting should resolve within 1â€“2 seconds in a well-hydrated horse.'
+        ],
+        highlight: 'Learn your horse\'s normal values when they are healthy. Knowing their baseline makes it far easier to recognize when something has changed.'
+      };
+    </script>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 2;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../index.html',
+    navCta:     { label: 'Back to Vital Signs', url: '1-index.html' },
+    navExtras: [{ label: 'The Viewing Room', url: '4-viewing-room.html' }, { label: 'The Training Barn', url: '5-training-barn.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.vitalSigns.vitalSigns','true')}catch(e){}</script>
+</body>
+</html>
+

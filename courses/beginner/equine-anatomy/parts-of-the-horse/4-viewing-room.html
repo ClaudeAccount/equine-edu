@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Viewing Room &mdash; Intro to Parts of the Horse &mdash; Equine Edu</title>
+<meta name="description" content="Test your recognition of horse body parts using flip cards. Study each term, then reveal the location and description on the back.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+  .anatomy-flip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .anatomy-flip-card {
+    min-height: 160px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    perspective: 800px;
+    position: relative;
+  }
+  .anatomy-flip-inner {
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.45s ease;
+  }
+  .anatomy-flip-card.flipped .anatomy-flip-inner { transform: rotateY(180deg); }
+  .anatomy-flip-front, .anatomy-flip-back {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .anatomy-flip-front {
+    background: var(--navy);
+  }
+  .anatomy-flip-back {
+    background: var(--white);
+    border: 1px solid var(--border);
+    transform: rotateY(180deg);
+    align-items: flex-start;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .card-region {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .card-term {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--white);
+    line-height: 1.25;
+  }
+  .card-tap-hint {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.6rem;
+  }
+  .back-region {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+  .back-term {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  .back-desc {
+    font-size: 0.8rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .section-label-row {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 1.5rem 0 0.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    margin-bottom: 0.25rem;
+  }
+  @media (max-width: 760px) { .anatomy-flip-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .anatomy-flip-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-viewing-room" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to Parts of the Horse</div>
+      <h1 class="lesson-hero-title">The Viewing <span>Room</span></h1>
+      <p class="lesson-hero-desc">Test your recall. Read the term on the front, think about where it is located on the horse, then flip the card to check the answer.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="lesson-intro-card">
+      <h2>Flip Each Card to Check Your Answer</h2>
+      <p>Each card shows a part of the horse on the front. Try to recall where it is located and what it does before flipping. The back gives you the location and a brief description.</p>
+      <p style="font-size:0.9rem;color:var(--text-mid);font-weight:700;margin-top:0.5rem;">Click or tap any card to flip it.</p>
+    </div>
+
+    <div class="visual-card">
+      <p class="section-label-row">The Head</p>
+      <div class="anatomy-flip-grid">
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Head</div><div class="card-term">Poll</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Top of Head</div><div class="back-term">Poll</div><div class="back-desc">The very top of the head, between the ears. The poll is sensitive and is the highest point of the horse when the head is carried naturally.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Head</div><div class="card-term">Forelock</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Between Ears</div><div class="back-term">Forelock</div><div class="back-desc">The tuft of mane hair that falls forward between the ears onto the forehead. It is the forward extension of the mane.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Head</div><div class="card-term">Forehead</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Upper Face</div><div class="back-term">Forehead</div><div class="back-desc">The broad, flat area between the eyes and below the forelock. Star face markings are found in this region.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Head</div><div class="card-term">Nasal Bone</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Mid Face</div><div class="back-term">Nasal Bone / Face</div><div class="back-desc">The bony ridge running down the center of the face from the forehead to the muzzle. Strip and blaze markings follow this region.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Head</div><div class="card-term">Muzzle</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Lower Face</div><div class="back-term">Muzzle</div><div class="back-desc">The soft, rounded lower portion of the face, including the nostrils and lips. Horses use the muzzle to explore and handle food.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Head</div><div class="card-term">Throatlatch</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Head to Neck</div><div class="back-term">Throatlatch</div><div class="back-desc">The area where the underside of the jaw meets the top of the neck. Also the name of the bridle strap that passes through this region.</div></div>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <p class="section-label-row">Neck &amp; Shoulders</p>
+      <div class="anatomy-flip-grid">
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Neck</div><div class="card-term">Crest</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Top of Neck</div><div class="back-term">Crest</div><div class="back-desc">The upper ridge of the neck from the poll to the withers. The mane grows from the crest.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Neck</div><div class="card-term">Withers</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Neck Meets Back</div><div class="back-term">Withers</div><div class="back-desc">The highest point of the back between the shoulder blades. Horse height is measured at the withers in hands. Saddle fit is evaluated in relation to the withers.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Shoulder</div><div class="card-term">Point of Shoulder</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Front of Chest</div><div class="back-term">Point of Shoulder</div><div class="back-desc">The bony protrusion at the front of the shoulder where the humerus meets the scapula. A key reference point for measurement and equipment fit.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Neck</div><div class="card-term">Mane</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Along the Crest</div><div class="back-term">Mane</div><div class="back-desc">The long hair growing from the crest of the neck. Used for grip, shows, and fly deterrence. Typically falls to the right side.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Chest</div><div class="card-term">Breast</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Front of Body</div><div class="back-term">Chest &amp; Breast</div><div class="back-desc">The muscular front of the body between the front legs. A breast collar rests here. Chest width is considered in evaluating overall conformation.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Neck</div><div class="card-term">Shoulder</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Upper Front</div><div class="back-term">Shoulder</div><div class="back-desc">The large area of the upper foreleg and underlying scapula. Shoulder angle affects stride length and the smoothness of movement under saddle.</div></div>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <p class="section-label-row">The Body</p>
+      <div class="anatomy-flip-grid">
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Body</div><div class="card-term">Back</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Top Line, Behind Withers</div><div class="back-term">Back</div><div class="back-desc">The top line between the withers and loin. The saddle sits on the back. A strong back supports the rider and is a key indicator of fitness.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Body</div><div class="card-term">Loin</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Behind Back</div><div class="back-term">Loin</div><div class="back-desc">The short, muscular region between the back and the croup. Loin strength is important for collected work and engaging the hindquarters.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Body</div><div class="card-term">Croup</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Top of Hindquarters</div><div class="back-term">Croup</div><div class="back-desc">The top of the hindquarters from the highest point of the pelvis to the tail. Croup slope varies between breeds and affects stride reach.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Body</div><div class="card-term">Barrel</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Ribs Area</div><div class="back-term">Barrel</div><div class="back-desc">The rounded ribcage section between the forelegs and flank. A deep barrel indicates good lung and heart capacity. A rider's leg rests against the barrel.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Body</div><div class="card-term">Flank</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Behind Barrel</div><div class="back-term">Flank</div><div class="back-desc">The soft area behind the barrel and in front of the hindquarters. It is sensitive, and horses kicking at the flank may be experiencing abdominal discomfort.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Body</div><div class="card-term">Dock</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Base of Tail</div><div class="back-term">Dock</div><div class="back-desc">The uppermost bony root of the tail, containing vertebrae and muscle. Tail bandaging starts at the dock. Handle gently — the dock is sensitive.</div></div>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <p class="section-label-row">The Legs</p>
+      <div class="anatomy-flip-grid">
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Front Leg</div><div class="card-term">Elbow</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Upper Front Leg</div><div class="back-term">Elbow</div><div class="back-desc">The joint at the top of the front leg, just below and behind the chest. Equivalent to the human elbow. A good range of elbow movement contributes to an open stride.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Front Leg</div><div class="card-term">Forearm</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Below Elbow</div><div class="back-term">Forearm</div><div class="back-desc">The muscular section between the elbow and knee. A long, well-muscled forearm is associated with a longer, more efficient stride.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Front Leg</div><div class="card-term">Knee</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Front Leg, Middle Joint</div><div class="back-term">Knee (Carpus)</div><div class="back-desc">Despite the shared name, the horse's knee is equivalent to the human wrist. It is a group of small bones called the carpus and is closely monitored for swelling or chips.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Leg</div><div class="card-term">Cannon Bone</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Below Knee / Hock</div><div class="back-term">Cannon Bone</div><div class="back-desc">The large bone running between the knee or hock and the fetlock. The most prominent bone of the lower leg. Splint bones run along either side.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Leg</div><div class="card-term">Fetlock</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Above Pastern</div><div class="back-term">Fetlock</div><div class="back-desc">The prominent joint between the cannon bone and the pastern. It absorbs significant force during movement. Swelling here is closely monitored as a sign of strain.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Leg</div><div class="card-term">Pastern</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Below Fetlock</div><div class="back-term">Pastern</div><div class="back-desc">The sloping section between the fetlock and the coronet. Pastern angle affects how the horse absorbs concussion from the ground.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Leg</div><div class="card-term">Coronet</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Top of Hoof</div><div class="back-term">Coronary Band</div><div class="back-desc">The band of tissue around the top of the hoof that produces the hoof wall. Hoof grows downward from here at roughly one centimeter per month.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Leg</div><div class="card-term">Hoof</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Base of Leg</div><div class="back-term">Hoof</div><div class="back-desc">The hard keratinous capsule protecting the bones and soft tissue of the foot. Requires regular trimming and farrier care every six to eight weeks.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Hind Leg</div><div class="card-term">Hock</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Hind Leg, Mid Joint</div><div class="back-term">Hock</div><div class="back-desc">The large angled joint in the middle of the hind leg, equivalent to the human ankle. One of the most important joints in the horse and a common site for conditions such as bone spavin.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Hind Leg</div><div class="card-term">Stifle</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Upper Hind Leg</div><div class="back-term">Stifle</div><div class="back-desc">The large joint on the front of the hind leg, equivalent to the human knee. Contains a patella (kneecap) and is prone to certain locking conditions.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Hind Leg</div><div class="card-term">Gaskin</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Between Stifle &amp; Hock</div><div class="back-term">Gaskin</div><div class="back-desc">The muscular region between the stifle and the hock, equivalent to the human calf. A well-developed gaskin indicates good hind-end strength.</div></div>
+          </div>
+        </button>
+
+        <button class="anatomy-flip-card" type="button" onclick="this.classList.toggle('flipped')">
+          <div class="anatomy-flip-inner">
+            <div class="anatomy-flip-front"><div class="card-region">Front Leg</div><div class="card-term">Chestnut</div><div class="card-tap-hint">Tap to flip</div></div>
+            <div class="anatomy-flip-back"><div class="back-region">Inside of Leg</div><div class="back-term">Chestnut</div><div class="back-desc">A small, callous-like growth on the inside of the front leg above the knee. Every horse has them, and they are unique to each individual horse.</div></div>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 3;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Course', url: '1-index.html' },
+    navExtras:  [{ label: 'The Training Barn', url: '5-training-barn.html' }]
+  };
+  window.PAGE_NOTES = {
+    items: [
+      'Work from the top down — poll to hoof — to stay organized.',
+      'The withers is the measuring point for horse height.',
+      'Front and hind legs share several parts below the knee or hock.',
+      'The hock (hind) and knee (front) are two of the most commonly discussed joints in soundness evaluations.'
+    ],
+    highlight: 'Flip every card. The ones that take you a moment to recall are the ones to revisit in the lesson before moving to the quiz.'
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.partsOfTheHorse.viewingRoom','true')}catch(e){}</script>
+</body>
+</html>

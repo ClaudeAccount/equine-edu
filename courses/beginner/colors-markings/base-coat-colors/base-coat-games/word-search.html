@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Search &mdash; Base Coat Colors &mdash; Equine Edu</title>
+<meta name="description" content="Find base coat color vocabulary hidden in the grid. A word search covering chestnut, black, bay, pigment terms, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../assets/css/course.css">
+<style>
+.ws-layout {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .ws-layout { grid-template-columns: 1fr; }
+  .ws-word-panel { order: -1; }
+}
+
+/* ── Grid ── */
+.ws-grid-wrap {
+  min-width: 0;
+}
+.ws-grid {
+  display: grid;
+  width: 100%;
+  gap: 2px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.ws-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: clamp(0.55rem, 1.5vw, 0.8rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-dark);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+.ws-cell.selecting {
+  background: rgba(201,168,76,0.25);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+.ws-cell.found {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--gold);
+}
+.ws-cell.found-alt {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+/* ── Word list ── */
+.ws-word-panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem;
+}
+.ws-word-panel h3 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin-bottom: 0.85rem;
+}
+.ws-word-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.ws-word-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.ws-word-item.found {
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+.ws-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: transparent;
+  background: transparent;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.ws-word-item.found .ws-check {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--gold);
+}
+
+/* ── Progress bar ── */
+.ws-progress-wrap {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+.ws-progress-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.4rem;
+}
+.ws-progress-track {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+.ws-progress-fill {
+  height: 100%;
+  background: var(--navy);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+/* ── Complete banner ── */
+.ws-complete {
+  display: none;
+  background: rgba(13,27,62,0.04);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.ws-complete p {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--navy);
+  margin: 0;
+}
+.ws-complete span {
+  color: var(--gold);
+}
+
+/* ── Reset button ── */
+.ws-reset {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.55rem;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.ws-reset:hover {
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+@media (max-width: 480px) {
+  .ws-cell { font-size: 0.55rem; }
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Training Barn</div>
+      <h1 class="lesson-hero-title">Base Coat Colors <span>Word Search</span></h1>
+      <p class="lesson-hero-desc">Find all the base coat color vocabulary hidden in the grid. Words run across, down, and diagonally.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="visual-card">
+      <h2>Find the Hidden Words</h2>
+      <p style="color:var(--text-mid);font-size:0.88rem;margin-bottom:1.25rem;">Click and drag across letters to select a word. Words can go in any direction.</p>
+
+      <div class="ws-layout">
+        <div class="ws-grid-wrap">
+          <div class="ws-grid" id="ws-grid"></div>
+        </div>
+        <div class="ws-word-panel">
+          <h3>Words to Find</h3>
+          <ul class="ws-word-list" id="ws-word-list"></ul>
+          <div class="ws-progress-wrap">
+            <div class="ws-progress-label" id="ws-progress-label">0 of 12 found</div>
+            <div class="ws-progress-track"><div class="ws-progress-fill" id="ws-progress-fill"></div></div>
+          </div>
+          <div class="ws-complete" id="ws-complete">
+            <p>All words found! <span>&#10003;</span></p>
+          </div>
+          <button class="ws-reset" onclick="initGame()">New Puzzle</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../../../index.html',
+    navCta:     { label: 'Back to Training Barn', url: '../6-training-barn.html' }
+  };
+</script>
+<script src="../course-config.js"></script>
+<script>
+  (function(){
+    if (!window.COURSE_CONFIG) return;
+    window.COURSE_CONFIG.indexUrl      = '../' + window.COURSE_CONFIG.indexUrl;
+    window.COURSE_CONFIG.allCoursesUrl = '../' + window.COURSE_CONFIG.allCoursesUrl;
+    window.COURSE_CONFIG.modules.forEach(function(m){ m.file = '../' + m.file; });
+  })();
+</script>
+<script src="../../../../../assets/js/layout.js"></script>
+<script src="../../../../../assets/js/course-nav.js"></script>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   WORD SEARCH ENGINE
+   ══════════════════════════════════════════════════════════════ */
+
+var WORDS = [
+  'CHESTNUT', 'BLACK', 'BAY', 'SORREL', 'LIVER',
+  'FLAXEN', 'PIGMENT', 'MELANIN', 'POINTS',
+  'MANE', 'COAT', 'EUMELANIN'
+];
+
+var SIZE = 15;
+var DIRECTIONS = [
+  [0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]
+];
+var FILL_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+var grid = [];
+var placements = []; // { word, cells:[[r,c],...] }
+var foundWords = [];
+var foundColors = ['found','found-alt']; // alternate for visual variety
+
+/* ── Generate grid ── */
+function generateGrid() {
+  grid = [];
+  placements = [];
+  for (var r = 0; r < SIZE; r++) {
+    grid.push(new Array(SIZE).fill(''));
+  }
+
+  var shuffled = WORDS.slice().sort(function(){ return Math.random()-0.5; });
+
+  shuffled.forEach(function(word) {
+    var placed = false;
+    for (var attempt = 0; attempt < 200 && !placed; attempt++) {
+      var dir = DIRECTIONS[Math.floor(Math.random() * DIRECTIONS.length)];
+      var dr = dir[0], dc = dir[1];
+      var r = Math.floor(Math.random() * SIZE);
+      var c = Math.floor(Math.random() * SIZE);
+      var endR = r + dr * (word.length - 1);
+      var endC = c + dc * (word.length - 1);
+      if (endR < 0 || endR >= SIZE || endC < 0 || endC >= SIZE) continue;
+      var ok = true;
+      for (var i = 0; i < word.length; i++) {
+        var cr = r + dr * i, cc = c + dc * i;
+        if (grid[cr][cc] !== '' && grid[cr][cc] !== word[i]) { ok = false; break; }
+      }
+      if (ok) {
+        var cells = [];
+        for (var i = 0; i < word.length; i++) {
+          var cr = r + dr * i, cc = c + dc * i;
+          grid[cr][cc] = word[i];
+          cells.push([cr, cc]);
+        }
+        placements.push({ word: word, cells: cells });
+        placed = true;
+      }
+    }
+  });
+
+  /* Fill blanks */
+  for (var r = 0; r < SIZE; r++) {
+    for (var c = 0; c < SIZE; c++) {
+      if (grid[r][c] === '') {
+        grid[r][c] = FILL_LETTERS[Math.floor(Math.random() * FILL_LETTERS.length)];
+      }
+    }
+  }
+}
+
+/* ── Render grid DOM ── */
+function renderGrid() {
+  var container = document.getElementById('ws-grid');
+  container.innerHTML = '';
+  container.style.gridTemplateColumns = 'repeat(' + SIZE + ', 1fr)';
+  for (var r = 0; r < SIZE; r++) {
+    for (var c = 0; c < SIZE; c++) {
+      var cell = document.createElement('div');
+      cell.className = 'ws-cell';
+      cell.textContent = grid[r][c];
+      cell.dataset.r = r;
+      cell.dataset.c = c;
+      container.appendChild(cell);
+    }
+  }
+}
+
+/* ── Render word list ── */
+function renderWordList() {
+  var list = document.getElementById('ws-word-list');
+  list.innerHTML = '';
+  WORDS.forEach(function(word) {
+    var li = document.createElement('li');
+    li.className = 'ws-word-item';
+    li.id = 'wsw-' + word;
+    li.innerHTML = '<div class="ws-check">&#10003;</div>' + word;
+    list.appendChild(li);
+  });
+}
+
+/* ── Update progress ── */
+function updateProgress() {
+  var n = foundWords.length;
+  var total = WORDS.length;
+  document.getElementById('ws-progress-label').textContent = n + ' of ' + total + ' found';
+  document.getElementById('ws-progress-fill').style.width = Math.round((n / total) * 100) + '%';
+  if (n === total) {
+    document.getElementById('ws-complete').style.display = 'block';
+  }
+}
+
+/* ── Selection state ── */
+var isDragging = false;
+var dragStart = null;
+var selectingCells = [];
+
+function getCell(r, c) {
+  return document.querySelector('.ws-cell[data-r="' + r + '"][data-c="' + c + '"]');
+}
+
+function getCellsInLine(r1, c1, r2, c2) {
+  var dr = r2 - r1, dc = c2 - c1;
+  var len = Math.max(Math.abs(dr), Math.abs(dc));
+  if (len === 0) return [[r1, c1]];
+  var sr = dr / len, sc = dc / len;
+  /* Must be cardinal or diagonal */
+  if (!Number.isInteger(sr) || !Number.isInteger(sc)) return [[r1, c1]];
+  /* Must be pure horizontal, vertical, or 45° diagonal */
+  if (!(dr === 0 || dc === 0 || Math.abs(dr) === Math.abs(dc))) return [[r1, c1]];
+  var cells = [];
+  for (var i = 0; i <= len; i++) {
+    cells.push([r1 + sr * i, c1 + sc * i]);
+  }
+  return cells;
+}
+
+function clearSelecting() {
+  selectingCells.forEach(function(rc) {
+    var el = getCell(rc[0], rc[1]);
+    if (el && !el.classList.contains('found') && !el.classList.contains('found-alt')) {
+      el.classList.remove('selecting');
+    }
+  });
+  selectingCells = [];
+}
+
+function applySelecting(cells) {
+  clearSelecting();
+  selectingCells = cells;
+  cells.forEach(function(rc) {
+    var el = getCell(rc[0], rc[1]);
+    if (el && !el.classList.contains('found') && !el.classList.contains('found-alt')) {
+      el.classList.add('selecting');
+    }
+  });
+}
+
+function checkSelection(cells) {
+  var word = cells.map(function(rc){ return grid[rc[0]][rc[1]]; }).join('');
+  var wordRev = word.split('').reverse().join('');
+  var matchWord = null;
+
+  placements.forEach(function(p) {
+    if (foundWords.indexOf(p.word) > -1) return;
+    if (p.word === word || p.word === wordRev) {
+      matchWord = p.word;
+    }
+  });
+
+  if (matchWord) {
+    foundWords.push(matchWord);
+    var colorClass = foundColors[foundWords.length % 2];
+    cells.forEach(function(rc) {
+      var el = getCell(rc[0], rc[1]);
+      if (el) {
+        el.classList.remove('selecting');
+        el.classList.add(colorClass);
+      }
+    });
+    var li = document.getElementById('wsw-' + matchWord);
+    if (li) li.classList.add('found');
+    updateProgress();
+  }
+  clearSelecting();
+}
+
+/* ── Mouse events ── */
+function cellFromEvent(e) {
+  var el = e.target;
+  if (!el || !el.classList.contains('ws-cell')) {
+    el = document.elementFromPoint(e.clientX, e.clientY);
+  }
+  if (!el || !el.classList.contains('ws-cell')) return null;
+  return { r: parseInt(el.dataset.r), c: parseInt(el.dataset.c) };
+}
+
+function cellFromTouch(e) {
+  var touch = e.touches[0];
+  var el = document.elementFromPoint(touch.clientX, touch.clientY);
+  if (!el || !el.classList.contains('ws-cell')) return null;
+  return { r: parseInt(el.dataset.r), c: parseInt(el.dataset.c) };
+}
+
+function onStart(r, c) {
+  isDragging = true;
+  dragStart = { r: r, c: c };
+  applySelecting([[r, c]]);
+}
+
+function onMove(r, c) {
+  if (!isDragging || !dragStart) return;
+  var cells = getCellsInLine(dragStart.r, dragStart.c, r, c);
+  applySelecting(cells);
+}
+
+function onEnd() {
+  if (!isDragging) return;
+  isDragging = false;
+  if (selectingCells.length > 1) {
+    checkSelection(selectingCells.slice());
+  } else {
+    clearSelecting();
+  }
+  dragStart = null;
+}
+
+var wsGrid = document.getElementById('ws-grid');
+
+wsGrid.addEventListener('mousedown', function(e) {
+  var cell = cellFromEvent(e);
+  if (cell) { onStart(cell.r, cell.c); e.preventDefault(); }
+});
+window.addEventListener('mousemove', function(e) {
+  if (!isDragging) return;
+  var cell = cellFromEvent(e);
+  if (cell) onMove(cell.r, cell.c);
+});
+window.addEventListener('mouseup', function() { onEnd(); });
+
+wsGrid.addEventListener('touchstart', function(e) {
+  var cell = cellFromTouch(e);
+  if (cell) { onStart(cell.r, cell.c); e.preventDefault(); }
+}, { passive: false });
+window.addEventListener('touchmove', function(e) {
+  if (!isDragging) return;
+  var cell = cellFromTouch(e);
+  if (cell) onMove(cell.r, cell.c);
+}, { passive: true });
+window.addEventListener('touchend', function() { onEnd(); });
+
+/* ── Init ── */
+function initGame() {
+  foundWords = [];
+  generateGrid();
+  renderGrid();
+  renderWordList();
+  document.getElementById('ws-complete').style.display = 'none';
+  updateProgress();
+}
+
+initGame();
+</script>
+</body>
+</html>

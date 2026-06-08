@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Downloads &amp; Resources &mdash; Intro to Parts of the Horse &mdash; Equine Edu</title>
+<meta name="description" content="Download free parts of the horse reference sheets and labeling worksheets in PDF and PNG formats.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../assets/css/course.css">
+<style>
+/* ── Layout override: centered, no sidebar ── */
+.lesson-wrap { grid-template-columns: minmax(0, 1040px); justify-content: center; }
+.lesson-left  { max-width: none; }
+
+/* ── Intro block ── */
+.barn-intro {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--navy);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.barn-intro h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.barn-intro p {
+  color: var(--text-mid);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Download cards grid ── */
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.download-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--motion-quick) var(--ease), transform var(--motion-quick) var(--ease);
+}
+.download-card:hover {
+  box-shadow: 0 10px 32px rgba(13,27,62,0.12);
+  transform: translateY(-3px);
+}
+.download-card-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+}
+.download-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.download-card-badge {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  background: rgba(13,27,62,0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.download-card-body {
+  padding: 1.1rem 1.25rem 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.download-card-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.download-card-body p {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+.download-card-footer {
+  padding: 0.9rem 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 0.6rem;
+}
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-md);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: background var(--motion-quick) var(--ease), transform var(--motion-quick) var(--ease);
+  cursor: pointer;
+  border: none;
+}
+.btn-download.pdf { background: var(--navy); color: var(--gold); }
+.btn-download.pdf:hover { background: #0a1a3a; transform: translateY(-1px); }
+.btn-download.img { background: var(--off-white); color: var(--navy); border: 1px solid var(--border); }
+.btn-download.img:hover { background: #e8e4dd; transform: translateY(-1px); }
+.btn-download svg { flex-shrink: 0; }
+
+/* ── Return link ── */
+.page-return {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.page-return a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-md);
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 10px 26px rgba(13,27,62,0.14);
+  transition: transform var(--motion-quick) var(--ease), box-shadow var(--motion-quick) var(--ease);
+}
+.page-return a:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(13,27,62,0.18); }
+
+@media (max-width: 760px) { .download-grid { grid-template-columns: 1fr; } }
+@media (min-width: 560px) and (max-width: 760px) { .download-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to Parts of the Horse</div>
+      <h1 class="lesson-hero-title">Downloads &amp; <span>Resources</span></h1>
+      <p class="lesson-hero-desc">Free printable reference sheets and labeling worksheets &mdash; all in PDF and PNG format.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="barn-intro">
+      <h2>About These Resources</h2>
+      <p>Each download is designed to reinforce what you studied in the Parts of the Horse lessons. Use the reference sheet to review the terms, the labeling worksheet to test yourself, and the numbering worksheet to practice placing each part in the right location. All files are free to download and print.</p>
+    </div>
+
+    <div class="visual-card">
+      <h2>Available Downloads</h2>
+      <p class="visual-instructions">Click PDF to save a print-ready file or PNG to download a high-resolution image.</p>
+
+      <div class="download-grid">
+
+        <!-- Parts of the Horse Reference -->
+        <div class="download-card">
+          <div class="download-card-preview">
+            <img src="parts-horse-reference.png" alt="Parts of the Horse Reference Sheet preview">
+            <div class="download-card-badge">Reference</div>
+          </div>
+          <div class="download-card-body">
+            <div class="download-card-name">Parts of the Horse Reference Sheet</div>
+            <p>A fully labeled horse diagram covering all major parts from poll to hoof. Keep it nearby while you study or review.</p>
+          </div>
+          <div class="download-card-footer">
+            <a href="parts-horse-reference.pdf" download class="btn-download pdf">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              PDF
+            </a>
+            <a href="parts-horse-reference.png" download class="btn-download img">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              PNG
+            </a>
+          </div>
+        </div>
+
+        <!-- Label the Parts of the Horse -->
+        <div class="download-card">
+          <div class="download-card-preview">
+            <img src="label-parts-of-horse.png" alt="Label the Parts of the Horse worksheet preview">
+            <div class="download-card-badge">Worksheet</div>
+          </div>
+          <div class="download-card-body">
+            <div class="download-card-name">Label the Parts of the Horse</div>
+            <p>A fill-in-the-blank worksheet with an unlabeled horse diagram. Write the correct part name for each leader line.</p>
+          </div>
+          <div class="download-card-footer">
+            <a href="label-parts-of-horse.pdf" download class="btn-download pdf">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              PDF
+            </a>
+            <a href="label-parts-of-horse.png" download class="btn-download img">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              PNG
+            </a>
+          </div>
+        </div>
+
+        <!-- Number the Parts of the Horse -->
+        <div class="download-card">
+          <div class="download-card-preview">
+            <img src="number-parts-horse.png" alt="Number the Parts of the Horse worksheet preview">
+            <div class="download-card-badge">Worksheet</div>
+          </div>
+          <div class="download-card-body">
+            <div class="download-card-name">Number the Parts of the Horse</div>
+            <p>A numbered horse diagram with a matching word bank. Draw a line from each number to the correct part name to test your knowledge.</p>
+          </div>
+          <div class="download-card-footer">
+            <a href="number-parts-horse.pdf" download class="btn-download pdf">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              PDF
+            </a>
+            <a href="number-parts-horse.png" download class="btn-download img">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              PNG
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="page-return">
+        <a href="../../index.html#lounge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to Lesson Board
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../../index.html',
+  };
+</script>
+<script src="../../../assets/js/layout.js"></script>
+</body>
+</html>
