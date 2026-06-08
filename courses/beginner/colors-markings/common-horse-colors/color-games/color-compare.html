@@ -66,10 +66,12 @@
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
+  min-height: 230px;
   overflow: hidden;
   cursor: ew-resize;
   user-select: none;
   -webkit-user-select: none;
+  touch-action: none;
   background: var(--off-white);
 }
 
@@ -94,6 +96,7 @@
   overflow: hidden;
   width: 100%;
   clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
+  -webkit-clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
 }
 .slider-img-left {
   position: absolute;
@@ -223,6 +226,40 @@
   margin-bottom: 1.5rem;
   font-style: italic;
 }
+
+@media (max-width: 580px) {
+  .lesson-wrap { padding-top: 1.5rem; }
+  .visual-card { padding: 1rem; }
+  .compare-intro {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .drag-hint {
+    margin-bottom: 1rem;
+  }
+  .slider-viewport {
+    aspect-ratio: 3 / 4;
+    min-height: 320px;
+  }
+  .slider-img-right,
+  .slider-img-left {
+    padding: 0.35rem;
+    object-position: center center;
+  }
+  .slider-label {
+    bottom: 0.45rem;
+    max-width: calc(50% - 1.2rem);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+    letter-spacing: 0.8px;
+  }
+  .slider-label-left { left: 0.45rem; }
+  .slider-label-right { right: 0.45rem; }
+  .compare-card-footer {
+    padding: 0.8rem;
+  }
+}
 </style>
 </head>
 <body>
@@ -233,7 +270,7 @@
   <div class="lesson-hero-inner hero-centered">
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Training Barn</div>
-      <h1 class="lesson-hero-title">Color Comparison <span>Sliders</span></h1>
+      <h1 class="lesson-hero-title">Color <span>Comparisons</span></h1>
       <p class="lesson-hero-desc">Drag the divider left and right to compare easily confused coat colors side by side.</p>
     </div>
   </div>
@@ -501,7 +538,10 @@ function buildSlider(pair) {
     var rect  = vp.getBoundingClientRect();
     var raw   = (x - rect.left) / rect.width;
     pct = Math.max(0.04, Math.min(0.96, raw)) * 100;
+    var clipValue = 'inset(0 ' + (100 - pct) + '% 0 0)';
     leftWrap.style.setProperty('--split', pct + '%');
+    leftWrap.style.clipPath = clipValue;
+    leftWrap.style.webkitClipPath = clipValue;
     handle.style.left        = pct + '%';
     handleIcon.style.left    = pct + '%';
   }
@@ -509,6 +549,8 @@ function buildSlider(pair) {
   /* Init */
   function init() {
     leftWrap.style.setProperty('--split', '50%');
+    leftWrap.style.clipPath = 'inset(0 50% 0 0)';
+    leftWrap.style.webkitClipPath = 'inset(0 50% 0 0)';
     handle.style.left     = '50%';
     handleIcon.style.left = '50%';
   }

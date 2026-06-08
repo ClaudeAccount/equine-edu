@@ -12,7 +12,7 @@
 <style>
 /* -- Tabs ------------------------------------------------------------------- */
 .tab-system{display:flex;flex-direction:column;gap:1.5rem;}
-.tab-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.35rem;padding:.4rem;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);}
+.tab-bar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.35rem;padding:.4rem;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);}
 .tab-btn{min-height:48px;border:2px solid transparent;border-radius:calc(var(--radius) - 2px);background:rgba(13,27,62,.08);color:rgba(13,27,62,.45);font-family:var(--font-body);font-size:.84rem;font-weight:700;cursor:pointer;transition:background .18s,color .18s,border-color .18s,box-shadow .18s;padding:0 .5rem;}
 .tab-btn:nth-child(2){background:rgba(201,168,76,.12);color:rgba(145,108,26,.62);}
 .tab-btn.active{background:var(--navy);color:var(--gold);border-color:var(--navy);font-weight:800;box-shadow:0 5px 18px rgba(13,27,62,.2);}
@@ -29,18 +29,10 @@
 .diagram-wrap svg.marker-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:2;}
 
 /* Anchor dots */
-.a-dot{position:absolute;width:10px;height:10px;background:var(--gold);border:2px solid var(--navy);border-radius:50%;transform:translate(-50%,-50%);z-index:4;box-shadow:0 1px 5px rgba(13,27,62,.35);cursor:grab;touch-action:none;}
-.a-dot:active{cursor:grabbing;}
+.a-dot{position:absolute;width:10px;height:10px;background:var(--gold);border:2px solid var(--navy);border-radius:50%;transform:translate(-50%,-50%);z-index:4;box-shadow:0 1px 5px rgba(13,27,62,.35);pointer-events:none;}
 
 /* Label pills */
-.a-lbl{position:absolute;transform:translate(-50%,-50%);background:var(--navy);color:var(--gold);font-size:.63rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:.28rem .65rem;border-radius:999px;white-space:nowrap;z-index:5;box-shadow:0 2px 8px rgba(13,27,62,.25);cursor:grab;touch-action:none;}
-.a-lbl:active{cursor:grabbing;}
-
-/* Edit mode hint */
-.diagram-edit-hint{font-size:.76rem;color:var(--text-light);text-align:center;margin-top:.5rem;line-height:1.5;}
-.reset-btn{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;color:var(--text-mid);background:none;border:1px solid var(--border);border-radius:var(--radius);padding:.35rem .85rem;cursor:pointer;margin-top:.5rem;transition:border-color .15s,color .15s;}
-.reset-btn:hover{border-color:var(--gold);color:var(--navy);}
-.diagram-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:.6rem;}
+.a-lbl{position:absolute;transform:translate(-50%,-50%);background:var(--navy);color:var(--gold);font-size:.63rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:.28rem .65rem;border-radius:999px;white-space:nowrap;z-index:5;box-shadow:0 2px 8px rgba(13,27,62,.25);pointer-events:none;}
 
 /* Part list */
 .part-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;margin-top:.5rem;}
@@ -114,7 +106,7 @@
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Intro to Equine Anatomy</div>
       <h1 class="lesson-hero-title">Parts of <span>the Horse</span></h1>
-      <p class="lesson-hero-desc">Every part of the horse has a name. Use the three views below to explore the front, back, and whole horse &mdash; then review the descriptions beneath each diagram.</p>
+      <p class="lesson-hero-desc">Every part of the horse has a name. Use the two views below to explore the front and back of the horse &mdash; then head to the Viewing Room to see everything together.</p>
     </div>
   </div>
 </section>
@@ -131,7 +123,6 @@
       <div class="tab-bar" role="tablist">
         <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-front" id="btn-front">Front of Horse</button>
         <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-back"  id="btn-back">Back of Horse</button>
-        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-whole" id="btn-whole">Whole Horse</button>
       </div>
 
       <!-- ======================= TAB 1 - FRONT ======================= -->
@@ -144,10 +135,6 @@
               <img src="images/parts-front.png" alt="Front of horse - labeled anatomy diagram" draggable="false">
               <svg class="marker-svg" id="svg-front" aria-hidden="true"></svg>
             </div>
-          </div>
-          <div class="diagram-footer">
-            <p class="diagram-edit-hint">&#9998; Drag any label or dot to reposition it. Changes save automatically.</p>
-            <button class="reset-btn" onclick="resetDiagram('front')">&#8635; Reset positions</button>
           </div>
         </div>
         <div class="visual-card">
@@ -181,10 +168,6 @@
               <svg class="marker-svg" id="svg-back" aria-hidden="true"></svg>
             </div>
           </div>
-          <div class="diagram-footer">
-            <p class="diagram-edit-hint">&#9998; Drag any label or dot to reposition it. Changes save automatically.</p>
-            <button class="reset-btn" onclick="resetDiagram('back')">&#8635; Reset positions</button>
-          </div>
         </div>
         <div class="visual-card">
           <h2>Back of Horse &mdash; Parts</h2>
@@ -204,28 +187,6 @@
             <div class="part-item"><span class="part-region">Lower Leg</span><h3>Pastern</h3><p>The sloping section between the fetlock and the hoof. Its angle affects how the horse absorbs concussion.</p></div>
             <div class="part-item"><span class="part-region">Base of Leg</span><h3>Hoof</h3><p>The hard outer casing that protects the foot. Needs regular trimming and farrier care.</p></div>
           </div>
-        </div>
-      </div>
-
-      <!-- ======================= TAB 3 - WHOLE ======================= -->
-      <div class="tab-panel" id="tab-whole" role="tabpanel">
-        <div class="tab-intro">All parts together. Use this view to check how everything connects across the whole horse.</div>
-        <div class="visual-card" style="padding:1.25rem;">
-          <h2 style="margin-bottom:.75rem;">Whole Horse</h2>
-          <div class="diagram-outer">
-            <div class="diagram-wrap" id="dw-whole">
-              <img src="images/parts-whole.png" alt="Whole horse - labeled anatomy diagram" draggable="false">
-              <svg class="marker-svg" id="svg-whole" aria-hidden="true"></svg>
-            </div>
-          </div>
-          <div class="diagram-footer">
-            <p class="diagram-edit-hint">&#9998; Drag any label or dot to reposition it. Changes save automatically.</p>
-            <button class="reset-btn" onclick="resetDiagram('whole')">&#8635; Reset positions</button>
-          </div>
-        </div>
-        <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;">
-          <p style="font-size:.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">&#128161; Quick Tip</p>
-          <p style="color:var(--text-mid);line-height:1.7;">Try to name each labeled part before reading the pill &mdash; then check the Front and Back tabs for any you missed.</p>
         </div>
       </div>
 
@@ -255,12 +216,10 @@
 
 <script>
 /* ===========================================================================
-   DIAGRAM LABEL EDITOR
-   Drag anchor dots (pinned to the horse) and label pills independently.
-   Lines update live. Positions saved to localStorage per diagram.
+   DIAGRAM RENDERER — static labeled diagrams, no drag
+   ax/ay = anchor dot %, lx/ly = label pill %
 =========================================================================== */
 
-// Default positions: ax/ay = anchor dot %, lx/ly = label pill %
 const DEFAULTS = {
   front: [
     { id:"poll",        text:"Poll",        ax:30.2, ay:12.3, lx:26.8, ly:0 },
@@ -293,120 +252,29 @@ const DEFAULTS = {
     { id:"pastern",  text:"Pastern",  ax:66.2, ay:86.5, lx:86.1, ly:88.7 },
     { id:"hoof",     text:"Hoof",     ax:48.4, ay:89.4, lx:31.8, ly:88.3 }
   ],
-  whole: [
-    { id:"poll",        text:"Poll",        ax:16.6, ay:13,   lx:14.3, ly:0 },
-    { id:"ears",        text:"Ears",        ax:18.5, ay:11.4, lx:24.2, ly:1.8 },
-    { id:"foretop",     text:"Foretop",     ax:15.8, ay:14.6, lx:4.3,  ly:6.3 },
-    { id:"face",        text:"Face",        ax:14.3, ay:22.9, lx:6.6,  ly:20.4 },
-    { id:"nostril",     text:"Nostril",     ax:11.6, ay:32.1, lx:0,    ly:29.5 },
-    { id:"muzzle",      text:"Muzzle",      ax:14.1, ay:31.6, lx:4.1,  ly:42.3 },
-    { id:"throatlatch", text:"Throatlatch", ax:23.8, ay:23.8, lx:19.7, ly:41.6 },
-    { id:"neck",        text:"Neck",        ax:29.5, ay:20.7, lx:33,   ly:1.4 },
-    { id:"mane",        text:"Mane",        ax:35.2, ay:17.4, lx:38,   ly:10 },
-    { id:"withers",     text:"Withers",     ax:43.3, ay:29.7, lx:46.8, ly:16 },
-    { id:"back",        text:"Back",        ax:52.9, ay:33.3, lx:56.4, ly:21.5 },
-    { id:"croup",       text:"Croup",       ax:73.8, ay:30,   lx:76.9, ly:18 },
-    { id:"dock",        text:"Dock",        ax:79.2, ay:32.8, lx:89.1, ly:23.7 },
-    { id:"tail",        text:"Tail",        ax:84.4, ay:43.1, lx:93.8, ly:36.3 },
-    { id:"shoulder",    text:"Shoulder",    ax:37,   ay:43,   lx:20.2, ly:50.9 },
-    { id:"chest",       text:"Chest",       ax:32.6, ay:51.5, lx:21,   ly:62 },
-    { id:"barrel",      text:"Barrel",      ax:51.9, ay:41.4, lx:53.8, ly:64 },
-    { id:"flank",       text:"Flank",       ax:65.8, ay:44.8, lx:64.4, ly:61.9 },
-    { id:"thigh",       text:"Thigh",       ax:71.6, ay:44.4, lx:95,   ly:58.6 },
-    { id:"buttock",     text:"Buttock",     ax:80,   ay:43.9, lx:96.9, ly:49.5 },
-    { id:"hock",        text:"Hock",        ax:79.9, ay:67.2, lx:93.4, ly:69.3 },
-    { id:"knee",        text:"Knee",        ax:38.2, ay:71.5, lx:30,   ly:71.8 },
-    { id:"cannon",      text:"Cannon",      ax:38.4, ay:78.7, lx:23.5, ly:79.7 },
-    { id:"fetlock",     text:"Fetlock",     ax:37,   ay:87.1, lx:51.9, ly:79.8 },
-    { id:"pastern",     text:"Pastern",     ax:80.9, ay:86.5, lx:94.4, ly:86.1 },
-    { id:"hoof",        text:"Hoof",        ax:69.7, ay:89.6, lx:60.9, ly:88.8 }
-  ]
 };
-
-const LS_KEY = 'equineEduDiagram.partsOfTheHorse';
-
-// Live state - loaded from localStorage or cloned from DEFAULTS
-let STATE = {};
-
-function loadState() {
-  try {
-    const saved = localStorage.getItem(LS_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Merge: keep defaults for any part not in saved data
-      ['front','back','whole'].forEach(function(tab) {
-        STATE[tab] = DEFAULTS[tab].map(function(def) {
-          const s = (parsed[tab] || []).find(function(p){ return p.id === def.id; });
-          return s ? Object.assign({}, def, s) : Object.assign({}, def);
-        });
-      });
-      return;
-    }
-  } catch(e) {}
-  // Fall back to deep clone of defaults
-  STATE = {
-    front: DEFAULTS.front.map(function(d){ return Object.assign({},d); }),
-    back:  DEFAULTS.back.map(function(d){ return Object.assign({},d); }),
-    whole: DEFAULTS.whole.map(function(d){ return Object.assign({},d); })
-  };
-}
-
-function saveState() {
-  try { localStorage.setItem(LS_KEY, JSON.stringify(STATE)); } catch(e) {}
-}
-
-function resetDiagram(tab) {
-  STATE[tab] = DEFAULTS[tab].map(function(d){ return Object.assign({},d); });
-  saveState();
-  renderDiagram(tab);
-}
 
 /* -- Rendering -------------------------------------------------------------- */
 function renderDiagram(tab) {
-  const wrap = document.getElementById('dw-' + tab);
-  const svg  = document.getElementById('svg-' + tab);
+  var wrap = document.getElementById('dw-' + tab);
+  var svg  = document.getElementById('svg-' + tab);
   if (!wrap || !svg) return;
-
-  // Remove old dots and labels (keep img and svg)
   wrap.querySelectorAll('.a-dot, .a-lbl').forEach(function(el){ el.remove(); });
-
-  STATE[tab].forEach(function(part) {
-    // Anchor dot
-    const dot = document.createElement('div');
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  DEFAULTS[tab].forEach(function(part) {
+    var dot = document.createElement('div');
     dot.className = 'a-dot';
-    dot.id = 'dot-' + tab + '-' + part.id;
     dot.style.left = part.ax + '%';
     dot.style.top  = part.ay + '%';
     dot.title = part.text;
     wrap.appendChild(dot);
-
-    // Label pill
-    const lbl = document.createElement('div');
+    var lbl = document.createElement('div');
     lbl.className = 'a-lbl';
-    lbl.id = 'lbl-' + tab + '-' + part.id;
     lbl.style.left = part.lx + '%';
     lbl.style.top  = part.ly + '%';
     lbl.textContent = part.text;
     wrap.appendChild(lbl);
-
-    // Make both draggable
-    makeDraggable(dot, wrap, tab, part.id, 'anchor');
-    makeDraggable(lbl, wrap, tab, part.id, 'label');
-  });
-
-  drawLines(tab);
-}
-
-function drawLines(tab) {
-  const svg  = document.getElementById('svg-' + tab);
-  const wrap = document.getElementById('dw-' + tab);
-  if (!svg || !wrap) return;
-
-  // Clear existing lines
-  while (svg.firstChild) svg.removeChild(svg.firstChild);
-
-  STATE[tab].forEach(function(part) {
-    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     line.setAttribute('x1', part.ax + '%');
     line.setAttribute('y1', part.ay + '%');
     line.setAttribute('x2', part.lx + '%');
@@ -416,62 +284,6 @@ function drawLines(tab) {
     line.setAttribute('stroke-dasharray', '4 3');
     svg.appendChild(line);
   });
-}
-
-/* -- Drag handler ----------------------------------------------------------- */
-function makeDraggable(el, wrap, tab, partId, type) {
-  let active = false;
-  let startPx, startPy, startMouseX, startMouseY;
-
-  function getEl() { return document.getElementById(el.id); }
-
-  function onStart(e) {
-    active = true;
-    const pt = e.touches ? e.touches[0] : e;
-    startPx = parseFloat(getEl().style.left);
-    startPy = parseFloat(getEl().style.top);
-    startMouseX = pt.clientX;
-    startMouseY = pt.clientY;
-    getEl().style.zIndex = 20;
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  function onMove(e) {
-    if (!active) return;
-    const pt = e.touches ? e.touches[0] : e;
-    const rect = wrap.getBoundingClientRect();
-    const dx = ((pt.clientX - startMouseX) / rect.width)  * 100;
-    const dy = ((pt.clientY - startMouseY) / rect.height) * 100;
-    const nx = Math.max(0, Math.min(100, startPx + dx));
-    const ny = Math.max(0, Math.min(100, startPy + dy));
-    getEl().style.left = nx + '%';
-    getEl().style.top  = ny + '%';
-
-    // Update state
-    const part = STATE[tab].find(function(p){ return p.id === partId; });
-    if (part) {
-      if (type === 'anchor') { part.ax = nx; part.ay = ny; }
-      else                   { part.lx = nx; part.ly = ny; }
-    }
-    drawLines(tab);
-    e.preventDefault();
-  }
-
-  function onEnd() {
-    if (!active) return;
-    active = false;
-    const elNow = document.getElementById(el.id);
-    if (elNow) elNow.style.zIndex = '';
-    saveState();
-  }
-
-  el.addEventListener('mousedown',  onStart, { passive: false });
-  el.addEventListener('touchstart', onStart, { passive: false });
-  document.addEventListener('mousemove',  onMove,  { passive: false });
-  document.addEventListener('touchmove',  onMove,  { passive: false });
-  document.addEventListener('mouseup',    onEnd);
-  document.addEventListener('touchend',   onEnd);
 }
 
 /* -- Tab switching ---------------------------------------------------------- */
@@ -485,9 +297,7 @@ function makeDraggable(el, wrap, tab, partId, type) {
     document.querySelectorAll('#parts-tabs .tab-panel').forEach(function(p) {
       p.classList.toggle('active', p.id === id);
     });
-    // Re-render diagram when tab becomes visible (needed for correct dimensions)
-    var tab = id.replace('tab-', '');
-    renderDiagram(tab);
+    renderDiagram(id.replace('tab-', ''));
   }
   document.querySelectorAll('#parts-tabs .tab-btn').forEach(function(b) {
     b.addEventListener('click', function() { switchTab(b.getAttribute('aria-controls')); });
@@ -495,15 +305,8 @@ function makeDraggable(el, wrap, tab, partId, type) {
 })();
 
 /* -- Init ------------------------------------------------------------------- */
-(function() {
-  loadState();
-  // Render the default visible tab immediately; others render on tab switch
-  renderDiagram('front');
-  // Also render back and whole so positions are initialised
-  // (they won't flash because the panels are display:none)
-  renderDiagram('back');
-  renderDiagram('whole');
-})();
+renderDiagram('front');
+renderDiagram('back');
 </script>
 
 <script>
@@ -512,7 +315,8 @@ function makeDraggable(el, wrap, tab, partId, type) {
     homeUrl:    '../../../../index.html',
     coursesUrl: '../../../index.html',
     navCta:     { label: 'Back to Course', url: '1-index.html' },
-    navExtras:  [{ label: 'The Viewing Room', url: '4-viewing-room.html' }, { label: 'The Training Barn', url: '5-training-barn.html' }]
+    navExtras:  [{ label: 'The Viewing Room', url: '4-viewing-room.html' }, { label: 'The Training Barn', url: '5-training-barn.html' }],
+    nextUrl: '4-viewing-room.html'
   };
 </script>
 <script src="course-config.js"></script>

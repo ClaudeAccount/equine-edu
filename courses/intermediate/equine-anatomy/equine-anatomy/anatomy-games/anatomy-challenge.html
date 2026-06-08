@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomy Challenge &mdash; External Equine Anatomy &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../assets/css/course.css">
+<style>
+.game-wrap { max-width: 560px; margin: 0 auto; }
+.progress-bar-outer { height: 6px; background: var(--border); border-radius: 3px; margin-bottom: 1.5rem; }
+.progress-bar-inner { height: 100%; background: var(--gold); border-radius: 3px; transition: width 0.3s; }
+.question-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1rem; }
+.question-num { font-size: 0.68rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+.question-text { font-family: var(--font-display); font-size: 1.4rem; color: var(--navy); margin-bottom: 1.25rem; line-height: 1.3; }
+.options-grid { display: grid; gap: 0.5rem; }
+.opt-btn { text-align: left; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius); background: var(--white); color: var(--text-dark); font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.15s; line-height: 1.4; }
+.opt-btn:hover:not(:disabled) { border-color: var(--navy); background: var(--off-white); }
+.opt-btn.correct  { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; }
+.opt-btn.wrong    { border-color: #c0392b; background: #fdf2f2; color: #8b1a1a; }
+.opt-btn.reveal   { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; }
+.feedback { margin-top: 0.75rem; font-size: 0.84rem; line-height: 1.6; padding: 0.65rem 0.9rem; border-radius: var(--radius); display: none; }
+.feedback.show { display: block; }
+.feedback.correct { background: #e8f7ef; color: #1a5c38; border-left: 3px solid #2d7a4f; }
+.feedback.wrong   { background: #fdf2f2; color: #8b1a1a; border-left: 3px solid #c0392b; }
+.next-btn { margin-top: 1rem; background: var(--navy); color: var(--gold); border: none; padding: 0.7rem 1.5rem; border-radius: var(--radius); font-weight: 700; font-size: 0.88rem; cursor: pointer; display: none; }
+.next-btn.show { display: inline-block; }
+.score-card { background: var(--navy); color: var(--white); border-radius: var(--radius-lg); padding: 2rem; text-align: center; display: none; }
+.score-card.show { display: block; }
+.score-big { font-family: var(--font-display); font-size: 3rem; color: var(--gold); line-height: 1; margin: 0.5rem 0; }
+.score-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.score-msg { font-size: 0.95rem; color: rgba(255,255,255,0.8); margin: 1rem 0 1.5rem; line-height: 1.6; }
+.restart-btn { background: var(--gold); color: var(--navy); border: none; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 800; font-size: 0.88rem; cursor: pointer; }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">External Equine Anatomy</div>
+      <h1 class="lesson-hero-title">Anatomy <span>Challenge</span></h1>
+      <p class="lesson-hero-desc">A term appears &mdash; choose the correct description from four options. Ten rounds, instant feedback.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="game-wrap">
+      <div class="progress-bar-outer"><div class="progress-bar-inner" id="progress-bar" style="width:0%"></div></div>
+
+      <div id="question-area">
+        <div class="question-card">
+          <div class="question-num" id="q-num">Question 1 of 10</div>
+          <div class="question-text" id="q-text"></div>
+          <div class="options-grid" id="q-options"></div>
+          <div class="feedback" id="q-feedback"></div>
+          <button class="next-btn" id="next-btn">Next &rarr;</button>
+        </div>
+      </div>
+
+      <div class="score-card" id="score-card">
+        <div class="score-label">Final Score</div>
+        <div class="score-big" id="score-big"></div>
+        <div class="score-msg" id="score-msg"></div>
+        <button class="restart-btn" onclick="startGame()">Play Again</button>
+      </div>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+const QUESTIONS = [
+  { term:"Poll", correct:"The highest point of the skull, located between the ears", distractors:["The bony ridge running along the cheek","The groove on the underside of the lower jaw","The area where the neck meets the back"] },
+  { term:"Withers", correct:"The highest point of the back, where horse height is measured", distractors:["The top of the hindquarters","The junction of the head and neck","The ridge along the top of the neck"] },
+  { term:"Crest", correct:"The topline ridge of the neck from poll to withers", distractors:["The highest point of the back","The bony top of the hindquarters","The ridge along the cheek"] },
+  { term:"Croup", correct:"The top of the hindquarters, from the highest point of the pelvis to the tail", distractors:["The area behind the last rib","The bony prominence on the side of the pelvis","The soft area between the barrel and hind leg"] },
+  { term:"Dock", correct:"The bony, muscular upper portion of the tail", distractors:["The base of the mane","The area between the ears","The root of the forelock"] },
+  { term:"Barrel", correct:"The rounded rib cage section between the forelegs and the flank", distractors:["The belly from girth to hind legs","The area behind the last rib","The muscular upper hind leg"] },
+  { term:"Flank", correct:"The soft area just behind the last rib and in front of the hind leg", distractors:["The underside of the belly","The rib cage area","The area below the dock"] },
+  { term:"Fetlock", correct:"The prominent joint between the cannon bone and the pastern", distractors:["The joint in the middle of the front leg","The bony joint of the hind leg","The joint between the pastern and hoof"] },
+  { term:"Coronet Band", correct:"The band of tissue at the top of the hoof where the hoof wall grows from", distractors:["The soft tissue at the heel","The V-shaped structure on the sole","The white line between wall and sole"] },
+  { term:"Hock", correct:"The large angled joint of the hind leg, equivalent to the human ankle", distractors:["The large joint at the top of the hind leg","The joint between cannon and pastern on the hind leg","The lower hind leg joint above the hoof"] },
+  { term:"Point of Shoulder", correct:"The forward bony prominence at the top of the front leg where the shoulder joint is", distractors:["The highest point of the shoulder blade","The bony point at the back of the upper foreleg","The bony point on the side of the pelvis"] },
+  { term:"Stifle", correct:"The large joint at the top of the hind leg, equivalent to the human knee", distractors:["The hock of the hind leg","The joint between gaskin and lower hind leg","The hind fetlock joint"] },
+  { term:"Jugular Groove", correct:"The channel along the lower side of the neck where the jugular vein lies", distractors:["The groove on the underside of the jaw","The groove between the shoulder and neck","The groove between the pectoral muscles"] },
+  { term:"Pastern", correct:"The sloping section between the fetlock and the hoof", distractors:["The joint in the middle of the front leg","The section between knee and fetlock","The soft tissue at the top of the hoof"] },
+  { term:"Foretop", correct:"The mane hair that falls forward between the ears onto the forehead", distractors:["The hair at the base of the tail","The tuft of hair at the poll","The ridge along the top of the neck"] },
+  { term:"Throatlatch", correct:"The area where the underside of the jaw meets the top of the neck", distractors:["The bony top of the skull","The groove along the side of the neck","The area where the crest meets the withers"] },
+  { term:"Jaw",  correct:"The lower bony structure of the head that frames the cheek and chin", distractors:["The area between the poll and the eye","The bony structure above the nostril","The groove on the side of the neck"] },
+  { term:"Cannon Bone", correct:"The large bone of the lower leg between the knee (or hock) and the fetlock", distractors:["The bone between the fetlock and the hoof","The upper leg bone above the knee","The bones of the hoof wall"] },
+  { term:"Point of Hip", correct:"The bony prominence on the side of the pelvis", distractors:["The rearmost bony point of the pelvis","The rounded top of the hindquarters","The area between the loin and croup"] },
+  { term:"Ergot", correct:"A small vestigial horn growth at the back of the fetlock", distractors:["A vestigial horn growth above the knee","A vestigial toe on the outside of the hoof","A small growth at the top of the hoof"] },
+  { term:"Gaskin", correct:"The muscular region between the stifle and the hock", distractors:["The muscular upper hind leg above the stifle","The lower hind leg below the hock","The area between the hock and fetlock"] },
+  { term:"Chestnut", correct:"An oval horn-like vestigial growth on the inside of each leg", distractors:["A small growth at the back of the fetlock","A bony prominence at the elbow","The ergot on the back of the pastern"] },
+  { term:"Muzzle", correct:"The soft lower portion of the face including the lips, nostrils, and chin", distractors:["The upper face between the eyes","The bony jaw structure","The area between the nostrils and the poll"] },
+  { term:"Forearm", correct:"The region of the front leg between the elbow and the knee", distractors:["The upper front leg above the elbow","The lower front leg below the knee","The leg section below the fetlock"] },
+  { term:"Loin", correct:"The area of the topline between the last rib and the croup", distractors:["The area between withers and croup","The back behind the saddle area","The area between the barrel and the flank"] }
+];
+
+let order = [], idx = 0, score = 0, answered = false;
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function startGame() {
+  order = shuffle([...Array(QUESTIONS.length).keys()]).slice(0, 10);
+  idx = 0; score = 0;
+  document.getElementById('score-card').classList.remove('show');
+  document.getElementById('question-area').style.display = '';
+  showQuestion();
+}
+
+function showQuestion() {
+  answered = false;
+  const q = QUESTIONS[order[idx]];
+  document.getElementById('q-num').textContent = 'Question ' + (idx + 1) + ' of 10';
+  document.getElementById('q-text').textContent = q.term;
+  document.getElementById('progress-bar').style.width = (idx / 10 * 100) + '%';
+
+  const opts = shuffle([q.correct, ...q.distractors]);
+  const grid = document.getElementById('q-options');
+  grid.innerHTML = '';
+  opts.forEach(function(opt) {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.textContent = opt;
+    btn.addEventListener('click', function() { handleAnswer(opt, q.correct, btn); });
+    grid.appendChild(btn);
+  });
+
+  const fb = document.getElementById('q-feedback');
+  fb.className = 'feedback';
+  fb.textContent = '';
+  document.getElementById('next-btn').classList.remove('show');
+}
+
+function handleAnswer(chosen, correct, btn) {
+  if (answered) return;
+  answered = true;
+
+  document.querySelectorAll('.opt-btn').forEach(function(b) { b.disabled = true; });
+
+  const fb = document.getElementById('q-feedback');
+  if (chosen === correct) {
+    score++;
+    btn.classList.add('correct');
+    fb.className = 'feedback correct show';
+    fb.textContent = '✓ Correct!';
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'feedback wrong show';
+    fb.textContent = '✗ Not quite. The correct answer: ' + correct;
+    // Reveal correct
+    document.querySelectorAll('.opt-btn').forEach(function(b) {
+      if (b.textContent === correct) b.classList.add('reveal');
+    });
+  }
+
+  document.getElementById('next-btn').classList.add('show');
+}
+
+document.getElementById('next-btn').addEventListener('click', function() {
+  idx++;
+  if (idx < 10) {
+    showQuestion();
+  } else {
+    document.getElementById('progress-bar').style.width = '100%';
+    document.getElementById('question-area').style.display = 'none';
+    const sc = document.getElementById('score-card');
+    sc.classList.add('show');
+    document.getElementById('score-big').textContent = score + '/10';
+    const msgs = ['Keep reviewing the lesson — you have got this.', 'Good effort — a second run will help it stick.', 'Solid work! Review any terms you missed.', 'Great job! Most of the vocabulary is sticking well.', 'Excellent! You know this course thoroughly.'];
+    document.getElementById('score-msg').textContent = msgs[Math.min(Math.floor(score / 2), 4)];
+  }
+});
+
+startGame();
+</script>
+
+<script>
+  window.CURRENT_MODULE = 4;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../../../index.html',
+    navCta:     { label: 'Back to Training Barn', url: '../5-training-barn.html' }
+  };
+</script>
+<script src="../course-config.js"></script>
+<script src="../../../../../assets/js/layout.js"></script>
+<script src="../../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

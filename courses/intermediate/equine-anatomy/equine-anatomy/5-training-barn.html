@@ -4,59 +4,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Training Barn &mdash; External Equine Anatomy &mdash; Equine Edu</title>
-<meta name="description" content="Two interactive activities for External Equine Anatomy. Match each external structure to its region, then test your knowledge of what each visible and palpable part tells you.">
+<meta name="description" content="Practice external equine anatomy with three interactive activities: a term challenge, a region sort, and a matching game.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
 <style>
-/* Match Game */
-.match-game { margin-top: 0.5rem; }
-.match-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-.match-col-label { font-size: 0.65rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
-.match-item { padding: 0.55rem 0.85rem; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 0.84rem; font-weight: 600; cursor: pointer; transition: all 0.15s; background: var(--white); color: var(--text-dark); user-select: none; margin-bottom: 0.4rem; }
-.match-item:hover:not(.used):not(.matched) { border-color: var(--navy); background: var(--off-white); }
-.match-item.selected { border-color: var(--gold); background: rgba(201,168,76,0.12); color: var(--navy); }
-.match-item.matched { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; cursor: default; }
-.match-item.wrong { border-color: #c0392b; background: #fdf2f2; animation: shake 0.35s; }
-.match-score { font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-top: 0.75rem; }
-.match-result { display: none; background: var(--navy); color: var(--gold); text-align: center; padding: 1rem; border-radius: var(--radius); font-family: var(--font-display); font-size: 1.1rem; margin-top: 0.75rem; }
-.match-result.show { display: block; }
-.match-reset { margin-top: 0.5rem; font-size: 0.78rem; font-weight: 700; color: var(--text-mid); background: none; border: 1px solid var(--border); border-radius: var(--radius); padding: 0.35rem 0.85rem; cursor: pointer; transition: border-color 0.15s; }
-.match-reset:hover { border-color: var(--gold); }
-
-/* Function Quiz */
-.fn-quiz { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 1rem; }
-.fn-q { background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; }
-.fn-q-text { font-size: 0.88rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.65rem; line-height: 1.5; }
-.fn-options { display: grid; gap: 0.4rem; }
-.fn-opt { padding: 0.5rem 0.75rem; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 0.82rem; cursor: pointer; text-align: left; background: var(--white); color: var(--text-dark); transition: all 0.15s; }
-.fn-opt:hover:not(:disabled) { border-color: var(--navy); background: var(--off-white); }
-.fn-opt.correct { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; }
-.fn-opt.wrong { border-color: #c0392b; background: #fdf2f2; color: #8b1a1a; }
-.fn-feedback { font-size: 0.78rem; margin-top: 0.5rem; padding: 0.5rem 0.75rem; border-radius: var(--radius); display: none; line-height: 1.5; }
-.fn-feedback.show { display: block; }
-.fn-feedback.correct { background: #e8f7ef; color: #1a5c38; border-left: 3px solid #2d7a4f; }
-.fn-feedback.wrong { background: #fdf2f2; color: #8b1a1a; border-left: 3px solid #c0392b; }
-.fn-submit-row { margin-top: 0.5rem; }
-.fn-submit { background: var(--navy); color: var(--gold); border: none; padding: 0.65rem 1.25rem; border-radius: var(--radius); font-weight: 700; font-size: 0.84rem; cursor: pointer; }
-.fn-score { display: none; background: var(--navy); color: var(--gold); text-align: center; padding: 1rem; border-radius: var(--radius); font-family: var(--font-display); font-size: 1.1rem; margin-top: 0.75rem; }
-.fn-score.show { display: block; }
-
-@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
-@media (max-width: 600px) { .match-cols { grid-template-columns: 1fr; } }
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.activity-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.activity-card:hover {
+  box-shadow: 0 10px 32px rgba(13,27,62,0.12);
+  transform: translateY(-3px);
+}
+.activity-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-thumb {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.activity-card-tag {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  background: rgba(13,27,62,0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.activity-card-body {
+  padding: 0.9rem 1rem 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.activity-card-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.activity-card-body p { display: none; }
+.activity-card-footer {
+  padding: 0.7rem 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.activity-card-footer span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+.activity-card-footer svg { color: var(--gold); }
+.barn-intro {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--navy);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.barn-intro h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.barn-intro p {
+  color: var(--text-mid);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+.thumb-bg-label { background: linear-gradient(135deg, #0a1f3a 0%, #1a3055 100%); }
+@media (max-width: 640px) {
+  .activity-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
-<section class="lesson-hero hero-centered hero-bg" id="top">
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
   <div class="lesson-hero-inner hero-centered">
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">External Equine Anatomy</div>
       <h1 class="lesson-hero-title">The Training <span>Barn</span></h1>
-      <p class="lesson-hero-desc">Strengthen your external anatomy knowledge with two activities. Match each structure to its region, then test your understanding of what each part tells you.</p>
+      <p class="lesson-hero-desc">Choose an activity and put your anatomy vocabulary to work.</p>
     </div>
   </div>
 </section>
@@ -64,60 +133,78 @@
 <div class="lesson-wrap">
   <main class="lesson-left">
 
-    <div class="lesson-intro-card">
-      <h2>Two Activities to Build Your Skills</h2>
-      <p>Use these activities to move from recognizing terms to genuinely understanding them. The matching game tests whether you can place each external structure in the right region. The assessment quiz tests whether you understand what each part reveals about a horse's soundness, conformation, and condition.</p>
+    <div class="barn-intro">
+      <h2>Choose Your Activity</h2>
+      <p>Each activity tests a different skill — quick-fire term recognition, grouping structures by region, and matching terms to descriptions. Try all three to reinforce what you have learned.</p>
     </div>
 
-    <!-- ========== ACTIVITY 1 — REGION MATCH ========== -->
     <div class="visual-card">
-      <span style="font-size:0.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">Activity 1</span>
-      <h2 style="margin-top:0.3rem;">Region Match</h2>
-      <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.7;">Match each external structure on the left to the body region it belongs to on the right. Select a term, then select its matching region. A new set loads each round.</p>
+      <h2>Pick an Activity</h2>
 
-      <div class="match-game" id="match-game">
-        <div class="match-cols">
-          <div>
-            <div class="match-col-label">Structure</div>
-            <div id="match-terms"></div>
+      <div class="activity-grid">
+
+        <!-- Label the Horse -->
+        <a href="anatomy-games/label-the-horse.html" class="activity-card">
+          <div class="activity-card-image" style="padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#0a1f3a 0%,#1a3055 100%);">
+            <img src="game-course-card-images/label-the-horse.png" alt="" style="width:100%;height:115%;object-fit:cover;object-position:top center;display:block;margin-top:-8%;">
+            <div class="activity-card-tag">Label &amp; Drop</div>
           </div>
-          <div>
-            <div class="match-col-label">Region</div>
-            <div id="match-regions"></div>
+          <div class="activity-card-body">
+            <div class="activity-card-name">Label the Horse</div>
           </div>
-        </div>
-        <div class="match-score" id="match-score"></div>
-        <div class="match-result" id="match-result"></div>
-        <button class="match-reset" id="match-reset" onclick="initMatch()">New Round</button>
+          <div class="activity-card-footer">
+            <span>Play Now</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </a>
+
+        <!-- Region Sort -->
+        <a href="anatomy-games/region-sort.html" class="activity-card">
+          <div class="activity-card-image" style="padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#1a3a1a 0%,#2d5a2d 100%);">
+            <img src="game-course-card-images/region-sort.png" alt="" style="width:100%;height:115%;object-fit:cover;object-position:top center;display:block;margin-top:-8%;">
+            <div class="activity-card-tag">Sort &amp; Group</div>
+          </div>
+          <div class="activity-card-body">
+            <div class="activity-card-name">Region Sort</div>
+          </div>
+          <div class="activity-card-footer">
+            <span>Play Now</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </a>
+
+        <!-- Term Match -->
+        <a href="anatomy-games/term-match.html" class="activity-card">
+          <div class="activity-card-image" style="padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#3a1a2a 0%,#5a2a4a 100%);">
+            <img src="game-course-card-images/term-match.png" alt="" style="width:100%;height:115%;object-fit:cover;object-position:top center;display:block;margin-top:-8%;">
+            <div class="activity-card-tag">Memory Match</div>
+          </div>
+          <div class="activity-card-body">
+            <div class="activity-card-name">Term Match</div>
+          </div>
+          <div class="activity-card-footer">
+            <span>Play Now</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </a>
+
+        <!-- Downloads -->
+        <a href="downloads/index.html" class="activity-card">
+          <div class="activity-card-image" style="padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#1a2a1a 0%,#2d4a2d 100%);">
+            <img src="downloads/work-sheet-course-card.png" alt="" style="width:100%;height:115%;object-fit:cover;object-position:top center;display:block;margin-top:-8%;">
+            <div class="activity-card-tag">Downloads</div>
+          </div>
+          <div class="activity-card-body">
+            <div class="activity-card-name">Anatomy Downloads</div>
+          </div>
+          <div class="activity-card-footer">
+            <span>Download</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </a>
+
       </div>
     </div>
-
-    <!-- ========== ACTIVITY 2 — ASSESSMENT QUIZ ========== -->
-    <div class="visual-card">
-      <span style="font-size:0.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">Activity 2</span>
-      <h2 style="margin-top:0.3rem;">What Does It Tell You?</h2>
-      <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.7;">Each question asks what an external structure looks like, how to assess it, or what it reveals about the horse. Choose the correct answer and submit when done.</p>
-
-      <div class="fn-quiz" id="fn-quiz"></div>
-      <div class="fn-submit-row">
-        <button class="fn-submit" id="fn-submit-btn">Check Answers</button>
-        <button class="match-reset" id="fn-reset-btn" style="margin-left:0.5rem;">New Questions</button>
-      </div>
-      <div class="fn-score" id="fn-score"></div>
-    </div>
-
-    <div id="course-notes"></div>
-    <script>
-      window.PAGE_NOTES = {
-        items: [
-          'The Region Match game builds confident spatial understanding — knowing not just the name, but where each structure lives.',
-          'The Assessment Quiz tests the "so what" — which is what separates basic naming from genuine observational skill.',
-          'Try both activities more than once. A new set of questions loads each round.',
-          'Return to the Viewing Room or main lesson at any time to review before retrying.'
-        ],
-        highlight: 'Real external anatomy knowledge is knowing what you are looking at AND what it tells you. Keep practicing until both come naturally together.'
-      };
-    </script>
 
   </main>
   <aside class="lesson-right">
@@ -133,313 +220,12 @@
     homeUrl:    '../../../../index.html',
     coursesUrl: '../../../index.html',
     navCta:     { label: 'Back to External Equine Anatomy', url: '1-index.html' },
-    navExtras:  [
-      { label: 'The Viewing Room', url: '4-viewing-room.html' },
-      { label: 'Test Your Knowledge', url: '6-test-your-knowledge.html' }
-    ]
+    navExtras:  [{ label: 'Test Your Knowledge', url: '6-test-your-knowledge.html' }]
   };
 </script>
 <script src="course-config.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/course-nav.js"></script>
-<script>
-/* ===========================================================================
-   ACTIVITY 1 — REGION MATCH
-   All items are external or palpable structures. Internal-only terms removed.
-=========================================================================== */
-const MATCH_POOL = [
-  { term:'Poll',               region:'Head' },
-  { term:'Supraorbital Fossa', region:'Head' },
-  { term:'Throatlatch',        region:'Head' },
-  { term:'Facial Crest',       region:'Head' },
-  { term:'Chin Groove',        region:'Head' },
-  { term:'Mandible',           region:'Head' },
-  { term:'Forelock',           region:'Head' },
-  { term:'Nostril',            region:'Head' },
-  { term:'Jugular Groove',     region:'Neck & Shoulder' },
-  { term:'Crest',              region:'Neck & Shoulder' },
-  { term:'Scapula',            region:'Neck & Shoulder' },
-  { term:'Withers',            region:'Neck & Shoulder' },
-  { term:'Point of Shoulder',  region:'Neck & Shoulder' },
-  { term:'Point of Elbow',     region:'Neck & Shoulder' },
-  { term:'Pectoral Muscles',   region:'Neck & Shoulder' },
-  { term:'Back',               region:'Body' },
-  { term:'Loin',               region:'Body' },
-  { term:'Croup',              region:'Body' },
-  { term:'Barrel',             region:'Body' },
-  { term:'Flank',              region:'Body' },
-  { term:'Point of Hip',       region:'Body' },
-  { term:'Point of Buttock',   region:'Body' },
-  { term:'Dock',               region:'Body' },
-  { term:'Heart Girth',        region:'Body' },
-  { term:'Carpus (Knee)',      region:'Front Leg' },
-  { term:'Splint Area',        region:'Front Leg' },
-  { term:'Fetlock',            region:'Front Leg' },
-  { term:'Cannon Bone',        region:'Front Leg' },
-  { term:'Coronary Band',      region:'Front Leg' },
-  { term:'Chestnut (Front)',   region:'Front Leg' },
-  { term:'Pastern',            region:'Front Leg' },
-  { term:'Hock',               region:'Hind Leg' },
-  { term:'Gaskin',             region:'Hind Leg' },
-  { term:'Point of Hock',      region:'Hind Leg' },
-  { term:'Stifle',             region:'Hind Leg' },
-  { term:'Chestnut (Hind)',    region:'Hind Leg' },
-  { term:'Ergot',              region:'Hind Leg' },
-];
-
-const MATCH_REGIONS = ['Head','Neck & Shoulder','Body','Front Leg','Hind Leg'];
-let matchSelected = null;
-let matchScore = 0;
-let matchTotal = 0;
-
-function shuffle(arr) { return arr.map(v=>({v,s:Math.random()})).sort((a,b)=>a.s-b.s).map(x=>x.v); }
-
-function initMatch() {
-  matchSelected = null;
-  matchScore = 0;
-
-  const picked = shuffle(MATCH_POOL).slice(0, 6);
-  matchTotal = picked.length;
-
-  const termContainer = document.getElementById('match-terms');
-  const regionContainer = document.getElementById('match-regions');
-  const scoreEl = document.getElementById('match-score');
-  const resultEl = document.getElementById('match-result');
-  scoreEl.textContent = '';
-  resultEl.classList.remove('show');
-  resultEl.textContent = '';
-
-  const shuffledRegions = shuffle(picked.map(p => p.region));
-
-  termContainer.innerHTML = picked.map(function(p) {
-    return '<div class="match-item" data-type="term" data-val="' + p.term + '" data-pair="' + p.region + '" onclick="handleMatch(this)">' + p.term + '</div>';
-  }).join('');
-
-  regionContainer.innerHTML = shuffledRegions.map(function(r) {
-    return '<div class="match-item" data-type="region" data-val="' + r + '" onclick="handleMatch(this)">' + r + '</div>';
-  }).join('');
-}
-
-function handleMatch(el) {
-  if (el.classList.contains('matched') || el.classList.contains('used')) return;
-
-  if (!matchSelected) {
-    document.querySelectorAll('.match-item.selected').forEach(function(e) { e.classList.remove('selected'); });
-    el.classList.add('selected');
-    matchSelected = el;
-    return;
-  }
-
-  if (el === matchSelected) {
-    el.classList.remove('selected');
-    matchSelected = null;
-    return;
-  }
-
-  var first = matchSelected;
-  var second = el;
-  var termEl, regionEl;
-
-  if (first.dataset.type === 'term' && second.dataset.type === 'region') {
-    termEl = first; regionEl = second;
-  } else if (first.dataset.type === 'region' && second.dataset.type === 'term') {
-    termEl = second; regionEl = first;
-  } else {
-    first.classList.remove('selected');
-    second.classList.add('selected');
-    matchSelected = second;
-    return;
-  }
-
-  var correct = termEl.dataset.pair === regionEl.dataset.val;
-  first.classList.remove('selected');
-  matchSelected = null;
-
-  if (correct) {
-    termEl.classList.add('matched');
-    regionEl.classList.add('matched');
-    matchScore++;
-    document.getElementById('match-score').textContent = matchScore + ' of ' + matchTotal + ' matched';
-    if (matchScore === matchTotal) {
-      var resultEl = document.getElementById('match-result');
-      resultEl.textContent = 'All matched! Score: ' + matchScore + '/' + matchTotal;
-      resultEl.classList.add('show');
-    }
-  } else {
-    termEl.classList.add('wrong');
-    regionEl.classList.add('wrong');
-    setTimeout(function() {
-      termEl.classList.remove('wrong');
-      regionEl.classList.remove('wrong');
-    }, 700);
-  }
-}
-
-/* ===========================================================================
-   ACTIVITY 2 — ASSESSMENT QUIZ
-   Focused on external observation, assessment, and conformation.
-=========================================================================== */
-const FN_POOL = [
-  {
-    q: 'Running your hand down the back of a front cannon, a healthy leg should feel:',
-    opts: ['Warm with a small amount of filling','Smooth, flat, and cool','Slightly bowed outward on the back','Firm and slightly bumpy'],
-    a: 'Smooth, flat, and cool',
-    fb: 'The back of the cannon should feel smooth, flat, and cool. Any heat, swelling, or thickening along the tendons is a significant finding that warrants veterinary evaluation.'
-  },
-  {
-    q: 'Which external structure is used to measure a horse\'s height?',
-    opts: ['The poll','The point of hip','The withers','The back'],
-    a: 'The withers',
-    fb: 'Horse height is always measured at the withers — the highest point of the topline — in hands (1 hand = 4 inches / 10.16 cm).'
-  },
-  {
-    q: 'A "well-laid-back shoulder" is desirable in most horses because it:',
-    opts: ['Makes the horse easier to shoe','Allows a longer, smoother stride','Creates more upright movement and concussion','Makes the topline more level'],
-    a: 'Allows a longer, smoother stride',
-    fb: 'A laid-back (oblique) scapula angle allows the front leg to swing further forward, producing a longer and smoother stride. An upright shoulder creates a shorter, choppier gait.'
-  },
-  {
-    q: 'The supraorbital fossa is used as an informal indicator of:',
-    opts: ['Bit fit and mouth sensitivity','Body condition and age','Shoulder angle and stride length','Ear canal health'],
-    a: 'Body condition and age',
-    fb: 'The supraorbital fossa is the hollow above the eye. It fills in on a well-nourished horse and becomes noticeably sunken on aged or underweight horses, making it one visual indicator of body condition.'
-  },
-  {
-    q: 'Which of these describes a "short-coupled" horse — and why is it a conformation strength?',
-    opts: ['Short neck — reduces head weight on the front end','Short distance between last rib and point of hip — less unsupported back','Short cannons — reduces strain on tendons','Short pasterns — absorbs less concussion'],
-    a: 'Short distance between last rib and point of hip — less unsupported back',
-    fb: 'Short-coupled refers to a short loin — the unsupported span between the last rib and the point of hip. A shorter span creates a stronger, more efficient back for carrying weight.'
-  },
-  {
-    q: 'Asymmetrical joint filling — one fetlock filling more than the other — is significant because:',
-    opts: ['It is normal in horses with long pasterns','It is often the earliest detectable sign of developing lameness','It indicates the horse needs its chestnuts trimmed','It means the coronary band has been injured'],
-    a: 'It is often the earliest detectable sign of developing lameness',
-    fb: 'Consistent symmetry is normal. When one joint fills noticeably more than the matching joint on the opposite leg, it often indicates inflammation or irritation — frequently before other signs of lameness appear.'
-  },
-  {
-    q: 'A horse that habitually carries a clamped, tight tail is likely signaling:',
-    opts: ['Relaxation and trust','An active bout of exercise','Tension, back pain, or discomfort somewhere in the body','Normal breed-specific behavior in all cases'],
-    a: 'Tension, back pain, or discomfort somewhere in the body',
-    fb: 'Tail carriage is one of the first visible signs to change when a horse is uncomfortable. A consistently clamped tail — especially if this is a change from the horse\'s normal carriage — warrants investigation.'
-  },
-  {
-    q: 'The chestnut on the hind leg is found:',
-    opts: ['Above the knee, on the inside','Just below the hock, on the inside','At the back of the fetlock, hidden under feathering','Along the front of the cannon'],
-    a: 'Just below the hock, on the inside',
-    fb: 'Hind chestnuts are located on the inside of the hind leg, just below the hock. Front chestnuts are above the knee. Both are unique to each individual horse.'
-  },
-  {
-    q: 'What does the frog of the hoof do?',
-    opts: ['Produces the outer hoof wall from the top down','Connects the pastern to the coffin bone','Acts as a shock absorber and helps pump blood up the leg with each step','Protects the coronary band from ground contact'],
-    a: 'Acts as a shock absorber and helps pump blood up the leg with each step',
-    fb: 'The frog is the V-shaped structure on the bottom of the hoof. When it compresses under weight, it helps push blood back up the leg and absorbs impact. A shrunken frog indicates insufficient hoof contact with the ground.'
-  },
-  {
-    q: 'The jugular groove is a visible external landmark on the:',
-    opts: ['Lower neck, from jaw to chest','Side of the face, running below the eye','Inside of the front leg, above the knee','Underside of the jaw, between the jaw branches'],
-    a: 'Lower neck, from jaw to chest',
-    fb: 'The jugular groove is the visible depression running along each side of the lower neck. It marks the path of the jugular vein beneath the skin and is a reference landmark for neck condition and injection sites.'
-  },
-  {
-    q: 'The coronary band is important because any injury to it:',
-    opts: ['Prevents the horse from sweating','Can cause a permanent groove or crack in the hoof wall that grows downward over time','Immediately causes lameness in all four legs','Affects only the frog and sole, not the wall'],
-    a: 'Can cause a permanent groove or crack in the hoof wall that grows downward over time',
-    fb: 'The coronary band produces the hoof wall continuously. An injury or scar here creates a disruption that grows all the way down the hoof wall over 9–12 months, leaving a permanent visible track.'
-  },
-  {
-    q: 'Comparing both hocks from behind, "clean hocks" means:',
-    opts: ['The hocks have been recently bathed','No visible swelling, bony growth, or filling — the hocks look smooth and symmetrical','The horse has never had a hock injection','The hocks are very narrow, with minimal joint tissue'],
-    a: 'No visible swelling, bony growth, or filling — the hocks look smooth and symmetrical',
-    fb: '"Clean hocks" is a term used in soundness evaluation to mean no visible abnormality. Bog spavin (front filling), bone spavin (inside bony growth), and capped hock (back swelling) are the most common visible hock findings.'
-  },
-  {
-    q: 'The facial crest is described as:',
-    opts: ['The highest point of the skull, between the ears','A bony ridge running from below the eye toward the lower jaw','The depression above the eye socket','The groove on the underside of the chin'],
-    a: 'A bony ridge running from below the eye toward the lower jaw',
-    fb: 'The facial crest is a visible and palpable bony ridge on the side of the face, running roughly horizontal from below the eye toward the jaw. It is a key reference landmark for describing locations on the face.'
-  },
-  {
-    q: 'When assessing saddle fit, the saddle must not sit on or past:',
-    opts: ['The supraorbital fossa','The point of shoulder','The point of hip','The jugular groove'],
-    a: 'The point of shoulder',
-    fb: 'The point of shoulder is the most forward bony protrusion of the shoulder joint. A saddle sitting over it restricts the forward swing of the front leg with every stride — directly affecting movement and comfort.'
-  },
-  {
-    q: 'An upside-down or "ewe" neck in a horse is characterized by:',
-    opts: ['Heavy muscling on top of the neck and a thin underside','Heavy muscling on the underside of the neck and weak topline development','A very short neck with a straight profile','A thick, cresty neck due to excess weight'],
-    a: 'Heavy muscling on the underside of the neck and weak topline development',
-    fb: 'A ewe neck (upside-down neck) has more muscle development on the lower neck than the top, creating an inverted or concave upper profile. It usually results from the horse habitually working inverted — head up and out, not working through the topline.'
-  },
-];
-
-var fnAnswered = false;
-
-function initFnQuiz() {
-  fnAnswered = false;
-  document.getElementById('fn-score').classList.remove('show');
-  document.getElementById('fn-score').textContent = '';
-  document.getElementById('fn-submit-btn').disabled = false;
-
-  var pool = shuffle(FN_POOL).slice(0, 5);
-  var quiz = document.getElementById('fn-quiz');
-  quiz.innerHTML = pool.map(function(q, i) {
-    var opts = shuffle(q.opts).map(function(o) {
-      return '<button type="button" class="fn-opt" data-val="' + o.replace(/"/g,'&quot;') + '" onclick="selectFnOpt(this)">' + o + '</button>';
-    }).join('');
-    return '<div class="fn-q" data-answer="' + q.a.replace(/"/g,'&quot;') + '" data-correct="' + q.fb.replace(/"/g,'&quot;') + '">' +
-      '<div class="fn-q-text">Q' + (i+1) + '. ' + q.q + '</div>' +
-      '<div class="fn-options">' + opts + '</div>' +
-      '<div class="fn-feedback correct"></div>' +
-      '<div class="fn-feedback wrong"></div>' +
-    '</div>';
-  }).join('');
-}
-
-function selectFnOpt(btn) {
-  if (fnAnswered) return;
-  var qBlock = btn.closest('.fn-q');
-  qBlock.querySelectorAll('.fn-opt').forEach(function(b) { b.classList.remove('selected'); });
-  btn.classList.add('selected');
-}
-
-document.getElementById('fn-submit-btn').addEventListener('click', function() {
-  if (fnAnswered) return;
-  fnAnswered = true;
-  var score = 0;
-  document.querySelectorAll('.fn-q').forEach(function(qBlock) {
-    var correct = qBlock.dataset.answer;
-    var fbText  = qBlock.dataset.correct;
-    var selected = qBlock.querySelector('.fn-opt.selected');
-    qBlock.querySelectorAll('.fn-opt').forEach(function(btn) {
-      btn.disabled = true;
-      if (btn.dataset.val === correct) btn.classList.add('correct');
-    });
-    var feedbacks = qBlock.querySelectorAll('.fn-feedback');
-    if (selected && selected.dataset.val === correct) {
-      score++;
-      selected.classList.add('correct');
-      feedbacks[0].textContent = '✓ ' + fbText;
-      feedbacks[0].classList.add('show');
-    } else {
-      if (selected) selected.classList.add('wrong');
-      feedbacks[1].textContent = 'Not quite. ' + fbText;
-      feedbacks[1].classList.add('show');
-    }
-  });
-  var scoreEl = document.getElementById('fn-score');
-  scoreEl.textContent = 'Score: ' + score + '/5 — ' + (score === 5 ? 'Perfect!' : score >= 3 ? 'Good work. Review any you missed.' : 'Review the lesson and try again.');
-  scoreEl.classList.add('show');
-  this.disabled = true;
-});
-
-document.getElementById('fn-reset-btn').addEventListener('click', function() {
-  initFnQuiz();
-});
-
-// Init both on page load
-initMatch();
-initFnQuiz();
-</script>
 <script>try{localStorage.setItem('equineEduProgress.equineAnatomy.trainingBarn','true')}catch(e){}</script>
 </body>
 </html>

@@ -4,77 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>External Structures &mdash; External Equine Anatomy &mdash; Equine Edu</title>
-<meta name="description" content="A region-by-region guide to the external structures of the horse — covering the head, neck and shoulder, body, and legs with assessment notes for every part.">
+<meta name="description" content="Explore the external anatomy of the horse region by region — head, neck and shoulder, body, front legs, and back legs — with interactive labeled diagrams.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
 <style>
-/* Tab System */
-.tab-system { display: flex; flex-direction: column; gap: 1.5rem; }
+/* ====== Tab Navigation ====== */
 .tab-bar {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.4rem;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.35rem;
   padding: 0.4rem;
-  margin: 1.35rem 0 1.75rem;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
 }
 .tab-btn {
   min-height: 48px;
-  border: 0;
-  border-radius: var(--radius);
-  background: var(--off-white);
-  color: var(--text-mid);
+  border: 2px solid transparent;
+  border-radius: calc(var(--radius) - 2px);
+  background: rgba(13,27,62,0.08);
+  color: rgba(13,27,62,0.45);
   cursor: pointer;
   font-family: var(--font-body);
-  font-size: 0.82rem;
-  font-weight: 800;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
   line-height: 1.25;
-  padding: 0.75rem 0.5rem;
-  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+  padding: 0.85rem 0.5rem;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+  white-space: nowrap;
+}
+.tab-btn:nth-child(2) {
+  background: rgba(201,168,76,0.12);
+  color: rgba(145,108,26,0.62);
 }
 .tab-btn.active {
   background: var(--navy);
   color: var(--gold);
-  box-shadow: none;
-}
-.tab-btn:not(.active):hover { background: rgba(13,27,62,0.06); color: var(--navy); }
-.tab-panel { display: none; }
-.tab-panel.active { display: flex; flex-direction: column; gap: 1.5rem; }
-.tab-intro { padding: 1rem 1.25rem; background: var(--off-white); border-left: 3px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; color: var(--text-mid); line-height: 1.7; font-size: 0.9rem; }
-
-/* Part grid */
-.part-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
-.part-item { background: var(--off-white); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; padding: 0.9rem 1rem; }
-.part-item h3 { font-family: var(--font-display); color: var(--navy); font-size: 0.95rem; margin-bottom: 0.25rem; }
-.part-item p { color: var(--text-mid); font-size: 0.82rem; line-height: 1.6; margin: 0; }
-.part-region { display: block; font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.15rem; }
-.part-note { display: block; font-size: 0.75rem; font-weight: 600; color: var(--navy); margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--border); }
-
-/* Sub-heading within a tab */
-.region-label {
-  font-size: 0.72rem;
+  border-color: var(--navy);
   font-weight: 800;
-  letter-spacing: 1.5px;
+  opacity: 1;
+  box-shadow: 0 5px 18px rgba(13,27,62,0.2);
+}
+.tab-btn:nth-child(2).active {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+  box-shadow: 0 5px 18px rgba(201,168,76,0.28);
+}
+.tab-btn:not(.active):hover {
+  opacity: 0.85;
+  color: var(--navy);
+}
+/* Bottom jump bar */
+.tab-bar--jump {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.tab-bar--jump .tab-btn.active {
+  font-weight: 900;
+}
+/* Legs group label */
+.legs-group {
+  grid-column: span 2;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0.25rem;
+}
+.legs-group-label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: var(--gold);
-  padding: 1.25rem 0 0.5rem;
-  border-bottom: 1px solid rgba(201,168,76,0.25);
-  margin-bottom: 0.25rem;
+  color: var(--text-light);
+  text-align: center;
+  padding-top: 0.15rem;
+}
+.legs-group-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+}
+@media (max-width: 680px) {
+  .tab-bar { grid-template-columns: 1fr 1fr; }
+  .legs-group { grid-column: span 2; }
+}
+@media (max-width: 440px) {
+  .tab-bar { grid-template-columns: 1fr; }
+  .legs-group { grid-column: span 1; }
+  .legs-group-btns { grid-template-columns: 1fr; }
 }
 
-/* Callout */
-.callout-gold { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.3); border-left: 4px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.1rem 1.4rem; }
-.callout-gold .callout-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
-.callout-gold p { color: var(--text-mid); line-height: 1.7; font-size: 0.88rem; margin: 0; }
+/* ====== Tab Panels ====== */
+.region-panel { display: none; }
+.region-panel.active { display: block; }
 
-@media (max-width: 700px) {
-  .tab-bar { grid-template-columns: repeat(2, 1fr); }
-  .part-grid { grid-template-columns: 1fr; }
-  .tab-btn { font-size: 0.78rem; }
+/* ====== Diagram ====== */
+.diagram-outer { display: flex; justify-content: center; padding: .5rem 0; }
+.diagram-wrap { position: relative; display: inline-block; width: 100%; max-width: 680px; user-select: none; }
+.diagram-wrap img { width: 100%; display: block; border-radius: var(--radius); }
+.diagram-wrap svg.marker-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 2; }
+
+.a-dot { position: absolute; width: 10px; height: 10px; background: var(--gold); border: 2px solid var(--navy); border-radius: 50%; transform: translate(-50%,-50%); z-index: 4; box-shadow: 0 1px 5px rgba(13,27,62,.35); cursor: grab; touch-action: none; }
+.a-dot:active { cursor: grabbing; }
+.a-lbl { position: absolute; transform: translate(-50%,-50%); background: var(--navy); color: var(--gold); font-size: .63rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; padding: .28rem .65rem; border-radius: 999px; white-space: nowrap; z-index: 5; box-shadow: 0 2px 8px rgba(13,27,62,.25); cursor: grab; touch-action: none; }
+.a-lbl:active { cursor: grabbing; }
+
+.diagram-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+.diagram-edit-hint { font-size: .76rem; color: var(--text-light); line-height: 1.5; }
+.reset-btn { display: inline-flex; align-items: center; gap: .35rem; font-size: .72rem; font-weight: 700; color: var(--text-mid); background: none; border: 1px solid var(--border); border-radius: var(--radius); padding: .35rem .85rem; cursor: pointer; transition: border-color .15s, color .15s; }
+.reset-btn:hover { border-color: var(--gold); color: var(--navy); }
+.copy-pos-btn { display: inline-flex; align-items: center; gap: .35rem; font-size: .72rem; font-weight: 700; color: var(--text-mid); background: none; border: 1px solid var(--border); border-radius: var(--radius); padding: .35rem .85rem; cursor: pointer; transition: border-color .15s, color .15s; }
+.copy-pos-btn:hover { border-color: var(--navy); color: var(--navy); }
+.pos-output-wrap { margin-top: .75rem; display: none; }
+.pos-output-wrap.open { display: block; }
+.pos-output-label { font-size: .68rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-light); margin-bottom: .35rem; }
+.pos-output { width: 100%; font-family: monospace; font-size: .72rem; background: var(--off-white); border: 1px solid var(--border); border-radius: var(--radius); padding: .6rem .75rem; resize: vertical; min-height: 100px; color: var(--text-dark); line-height: 1.6; }
+
+/* ====== Vocab Grid ====== */
+.vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-top: 1.5rem; }
+.vocab-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.85rem 1rem; }
+.vocab-term { font-family: var(--font-display); font-size: 0.95rem; color: var(--navy); font-weight: 700; margin-bottom: 0.35rem; }
+.vocab-def { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+
+@media (max-width: 620px) {
+  .vocab-grid { grid-template-columns: 1fr; }
+  .a-lbl { font-size: .52rem; padding: .2rem .44rem; }
+  .a-dot { width: 8px; height: 8px; }
+  .region-tab-btn { font-size: 0.76rem; padding: 0.5rem 0.7rem; }
 }
 </style>
 </head>
@@ -87,7 +147,7 @@
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">External Equine Anatomy</div>
       <h1 class="lesson-hero-title">External <span>Structures</span></h1>
-      <p class="lesson-hero-desc">Work through each region of the horse from the outside. For every structure you will learn what it looks like, how to assess it, and why it matters.</p>
+      <p class="lesson-hero-desc">The horse's exterior, broken into five regions. Each region has an interactive labeled diagram &mdash; drag any dot or label to reposition it.</p>
     </div>
   </div>
 </section>
@@ -96,485 +156,234 @@
   <main class="lesson-left">
 
     <div class="lesson-intro-card">
-      <h2>Four Regions, One Exterior</h2>
-      <p>The horse's external structures are organized here into four tabs. Each tab focuses on a major region of the body so you can build your knowledge one section at a time. Within each tab, structures are covered from top to bottom or front to back — the same order used during a visual or hands-on assessment.</p>
-      <p style="margin-top:0.6rem;font-size:0.88rem;color:var(--text-mid);">Each entry covers what the structure is, where to find it, what to look for, and what it tells you. This is not just naming parts — it is learning to read them.</p>
+      <h2>Five Regions, One Horse</h2>
+      <p>This lesson covers the vocabulary of external equine anatomy organized by region. Select a tab to view the labeled diagram and the structures within it. Drag any dot or label to adjust its position &mdash; changes save automatically per region.</p>
     </div>
 
-    <div class="tab-system" id="anatomy-tabs">
+    <div id="anatomy-tabs" class="visual-card" style="padding: 1.25rem 1.5rem;">
+
+      <!-- Tab buttons -->
       <div class="tab-bar" role="tablist">
-        <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-head"   id="btn-head">Head</button>
-        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-neck"   id="btn-neck">Neck &amp; Shoulder</button>
-        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-body"   id="btn-body">Body</button>
-        <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-legs"   id="btn-legs">Legs</button>
+        <button class="tab-btn active" role="tab" aria-selected="true"  data-tab="head"      onclick="switchTab('head')">Head</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" data-tab="neck"      onclick="switchTab('neck')">Neck &amp; Shoulder</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" data-tab="body"      onclick="switchTab('body')">Body</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" data-tab="frontlegs" onclick="switchTab('frontlegs')">Front Legs</button>
+        <button class="tab-btn"        role="tab" aria-selected="false" data-tab="backlegs"  onclick="switchTab('backlegs')">Back Legs</button>
       </div>
 
-      <!-- ====================== TAB 1 — HEAD ====================== -->
-      <div class="tab-panel active" id="tab-head" role="tabpanel">
-        <div class="tab-intro">The head holds the horse's primary sensory organs, the jaw and teeth, and the critical poll-neck junction. Assessed from the outside, it reveals a great deal about health, expression, fitness, and bridle fit. Work from the top down.</div>
-
-        <div class="visual-card">
-          <h2>The Head</h2>
-          <div class="part-grid">
-
-            <div class="part-item">
-              <span class="part-region">Top of Skull</span>
-              <h3>Poll</h3>
-              <p>The highest point of the skull, located between the base of the ears. It is where the atlas (the first neck vertebra) sits just beneath the surface, making this the most mobile junction of the head and neck. You can feel the bony structure of the poll with gentle pressure.</p>
-              <span class="part-note">The poll is highly sensitive. Any soreness here — from a poorly fitted headstall, a fall, or stiffness — can show up as resistance to bridling, reluctance to flex, or head tossing. It is one of the first places to check when a horse resists contact.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Top of Head</span>
-              <h3>Ears</h3>
-              <p>Two large, funnel-shaped outer ears that rotate nearly 180 degrees independently to pinpoint sounds. Ear position is one of the most reliable indicators of a horse's attention and mood: ears pricked forward signal alertness; ears soft to the side indicate relaxation; ears pinned flat signal aggression or pain.</p>
-              <span class="part-note">Assessing ear position is part of reading a horse's expression. A horse that holds one ear consistently back or at an unusual angle may be signaling discomfort. The outer ear should be clean and free of excessive debris or odor.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Between the Ears</span>
-              <h3>Forelock</h3>
-              <p>The forward extension of the mane growing from the poll and falling between the ears onto the forehead. It provides natural protection from flies and insects around the face. Forelock length and fullness vary widely between breeds — Friesians and draft breeds often have thick, long forelocks while some warmbloods have sparser ones.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Upper Face</span>
-              <h3>Forehead</h3>
-              <p>The broad, flat area of the skull between the eyes and below the forelock. It is formed by the frontal bone. Face markings — stars, stripes, and blazes — are described by their position and shape on the forehead and face. A wide, flat, well-proportioned forehead is a classic sign of breed quality in many types.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Above the Eye</span>
-              <h3>Supraorbital Fossa</h3>
-              <p>The subtle depression or hollow directly above each eye socket. In a well-nourished horse at a healthy weight, this hollow is relatively filled in and smooth. As a horse ages, or in horses that are underweight or losing condition, this hollow becomes noticeably sunken and angular.</p>
-              <span class="part-note">The supraorbital fossa is used as one informal indicator of body condition and age. Assessing it alongside the neck crest, ribs, and hindquarters gives a more complete picture of overall condition.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Side of Head</span>
-              <h3>Eye &amp; Orbit</h3>
-              <p>The horse's eyes are large and set on the sides of the skull, giving a wide field of view of nearly 340 degrees. The pupil is oblong and horizontal, which improves panoramic vision across the ground. The bony rim around the eye — the orbital rim — is clearly visible and palpable. The third eyelid (nictitating membrane) is visible as a small pink membrane in the inner corner of the eye.</p>
-              <span class="part-note">In a healthy eye: the surface is clear, moist, and free of cloudiness. Any tearing, squinting, cloudiness, or visible discharge should be evaluated promptly. Eye injuries deteriorate quickly and are always a veterinary concern.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Mid-Face Landmark</span>
-              <h3>Facial Crest</h3>
-              <p>A bony ridge that runs horizontally from just below the eye toward the lower jaw. It is visible as a defined line on the side of the face and clearly palpable when you run a hand along the side of the head. The facial crest is a key landmark used to describe the location of markings, swellings, and wounds on the face.</p>
-              <span class="part-note">The facial crest is used by vets as a reference point for dental procedures and nerve blocks. Knowing it as a landmark helps you describe where on the face something is located — above the crest, at the crest, or below it.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Side of the Jaw</span>
-              <h3>Cheek</h3>
-              <p>The fleshy, muscled side of the face below the eye and in front of the ear. The masseter muscle — the primary chewing muscle — gives the cheek most of its bulk and fullness. In a well-conditioned horse the cheeks are round and firm. A horse losing weight often shows more defined bony structure and reduced fullness here.</p>
-              <span class="part-note">Asymmetrical cheeks — one side more developed than the other — can indicate uneven dental wear or a horse that tends to chew on one side. Observe both cheeks from in front and compare their symmetry.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Lower Face</span>
-              <h3>Nostril</h3>
-              <p>The external openings of the nasal passages. Each nostril includes a visible pocket of skin called the false nostril (nasal diverticulum), which creates the flapping sound horses make when snorting. Nostrils flare widely during and after exercise to maximize airflow. At rest, they should appear clean, moist, and symmetrical.</p>
-              <span class="part-note">Any nasal discharge — especially from one nostril only, persistent, or with an odor — is worth monitoring. One-sided discharge in particular can indicate a dental, sinus, or airway issue that warrants veterinary attention.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Nose and Lips</span>
-              <h3>Muzzle</h3>
-              <p>The entire lower face including the nostrils, lips, and chin. Short whiskers called vibrissae grow around the muzzle and lips — they are tactile sensors that help the horse judge distance and texture near the ground, especially when grazing. The lips are prehensile, meaning the horse uses them to grasp and sort food. A relaxed muzzle with a slightly soft lower lip generally indicates a calm horse.</p>
-              <span class="part-note">Vibrissae (muzzle whiskers) serve an important sensory function. Many equestrian organizations now prohibit whisker removal for welfare reasons. They should not be clipped for cosmetic purposes.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Underside of Chin</span>
-              <h3>Chin Groove</h3>
-              <p>The groove on the underside of the lower jaw, between the jaw bone and the lower lip. A curb chain on a shank bit or Pelham rests in this groove and applies pressure here when rein contact is taken. The area is sensitive and varies in width between individuals. A wider, deeper chin groove provides a clearer landing zone for the curb chain.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Lower Jaw</span>
-              <h3>Mandible</h3>
-              <p>The lower jawbone, visible externally as the bony contour of the lower face from the chin back toward the throatlatch. The two branches of the jaw widen toward the back. The width between these branches — the inter-mandibular space — matters for bridle fit. A wide, thick jaw can limit how easily a horse flexes at the poll because the jaw presses into the neck on flexion.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Head-Neck Junction</span>
-              <h3>Throatlatch</h3>
-              <p>The area where the underside of the head meets the top of the neck — where the jaw angles back toward the jugular groove. The throatlatch strap of a bridle fits loosely here to prevent the bridle from being pulled over the ears. A thick, fleshy throatlatch can visually indicate restricted flexion and may affect the horse's ability to fully relax through the poll.</p>
-              <span class="part-note">When fitting a bridle, the throatlatch strap should allow three to four fingers of clearance on the side. Too tight restricts breathing and flexion; too loose is ineffective at keeping the bridle in place.</span>
-            </div>
-
+      <!-- HEAD -->
+      <div id="panel-head" class="region-panel active">
+        <div class="diagram-outer">
+          <div class="diagram-wrap" id="dw-head">
+            <img src="equine-anatomy-images/head.png" alt="Horse head — labeled external anatomy" draggable="false">
+            <svg class="marker-svg" id="svg-head" aria-hidden="true"></svg>
           </div>
         </div>
-
-        <div class="callout-gold">
-          <div class="callout-label">Head Region — Assessment Summary</div>
-          <p>The head reveals a lot at a glance: eye clarity tells you about health; ear position tells you about mood; cheek fullness tells you about condition; nostril symmetry and any discharge give you airway information; throatlatch width and poll sensitivity affect how the horse accepts contact. Develop the habit of reading the whole head, not just glancing at one feature.</p>
-        </div>
-
-      </div><!-- /tab-head -->
-
-      <!-- ====================== TAB 2 — NECK & SHOULDER ====================== -->
-      <div class="tab-panel" id="tab-neck" role="tabpanel">
-        <div class="tab-intro">The neck and shoulder region is where topline fitness meets stride mechanics. What you see here — the shape of the crest, the angle of the shoulder, the height of the withers — directly reflects how the horse is conditioned, how it moves, and how well tack fits.</div>
-
-        <div class="visual-card">
-          <h2>Neck</h2>
-          <div class="part-grid">
-
-            <div class="part-item">
-              <span class="part-region">Top of Neck</span>
-              <h3>Crest</h3>
-              <p>The upper ridge of the neck from the poll to the withers. A well-muscled, gently arched crest is a sign of correct fitness and topline development. A thin, poorly muscled crest suggests underconditioning. An overly thick, heavy, or hard crest may indicate a hormonal condition (like Equine Metabolic Syndrome) or excessive weight and can be difficult to reduce once established.</p>
-              <span class="part-note">Running a hand along the crest tells you a lot. A firm, elastic crest with a soft topline is ideal. A crest that feels hard or fatty rather than muscled, or that falls to one side, can indicate metabolic issues worth discussing with a vet.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Side of Neck</span>
-              <h3>Jugular Groove</h3>
-              <p>A visible groove running along each side of the lower neck from just behind the jaw down toward the chest. This groove marks the path of the jugular vein, which lies just beneath the skin. It is a clear external landmark used to describe neck musculature and to locate injection sites. In a fit horse with good neck muscle development, the groove is well-defined on both sides.</p>
-              <span class="part-note">Any swelling, lump, or thickening along the jugular groove — especially after a recent injection or illness — warrants attention. It can indicate local irritation or a reaction and should be evaluated if it does not resolve quickly.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Neck Musculature</span>
-              <h3>Neck Muscling</h3>
-              <p>The muscles of the neck — including the brachiocephalicus along the underside and the splenius along the top — are visible and palpable. A balanced, well-conditioned neck shows muscling both on the top and sides. An upside-down neck (heavy on the underside, weak on top) is a common sign of incorrect training or a horse that habitually travels with its head up and out.</p>
-              <span class="part-note">Neck muscle development reflects how a horse works. Correct training builds the topline muscles; inverted or tense ways of going build the underside. Looking at the neck profile from the side tells you a great deal about a horse's training history and posture.</span>
-            </div>
-
+        <div class="diagram-footer">
+          <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
+          <div style="display:flex;gap:.5rem;">
+            <button class="reset-btn" onclick="resetTab('head')">&#8635; Reset</button>
+            <button class="copy-pos-btn" onclick="toggleExport('head')">&#128203; Copy positions</button>
           </div>
         </div>
+        <div class="pos-output-wrap" id="export-head">
+          <div class="pos-output-label">Paste this to Claude to bake in your positions &mdash; HEAD</div>
+          <textarea class="pos-output" id="pos-text-head" readonly onclick="this.select()"></textarea>
+        </div>
+      </div>
 
-        <div class="visual-card">
-          <h2>Shoulder</h2>
-          <div class="part-grid">
-
-            <div class="part-item">
-              <span class="part-region">Upper Foreleg</span>
-              <h3>Point of Shoulder</h3>
-              <p>The most forward bony protrusion at the top of the front leg, formed by the junction of the shoulder blade and humerus. It is clearly visible and easy to locate. This is a critical saddle-fit landmark — a saddle must not sit over or press on the point of shoulder because this directly restricts the forward swing of the front leg with every stride.</p>
-              <span class="part-note">To locate the point of shoulder, face the horse's side and find the bony point just forward of the upper front leg where the leg meets the chest. When assessing saddle fit, there should be at least two fingers of clearance behind this point before the saddle tree begins.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Shoulder Structure</span>
-              <h3>Shoulder Blade (Scapula)</h3>
-              <p>The large, flat bone lying diagonally against the rib cage behind the shoulder. It is not attached to the skeleton by a bony joint — it is held entirely by muscle, which acts as a natural shock absorber. The scapula's position and angle are palpable with the hand along the back edge of the shoulder. The top of the scapula sits just in front of the withers.</p>
-              <span class="part-note">A "well-laid-back" scapula lies at a more oblique angle (roughly 45–55 degrees), allowing a longer, more fluid stride. An upright scapula produces a shorter, choppier stride with more impact on the front legs. This is a primary conformation evaluation point for any discipline.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Conformation Point</span>
-              <h3>Shoulder Angle</h3>
-              <p>The angle formed between the shoulder blade and the humerus, assessed visually from the side. A more oblique or laid-back shoulder angle is associated with longer, smoother strides — the leg can reach farther forward. A more upright shoulder produces shorter strides with greater ground concussion. Shoulder angle is one of the most discussed conformation points when evaluating horses for sport, pleasure, or trail riding.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Top of Topline</span>
-              <h3>Withers</h3>
-              <p>The highest point of the horse's topline, formed by the elongated bony processes of the upper thoracic vertebrae. Horse height is always measured at the withers in hands (one hand = 4 inches / 10.16 cm). The withers is the primary saddle-fit reference: the saddle must clear the withers completely when a rider is seated, and the gullet channel must be wide enough not to pinch.</p>
-              <span class="part-note">High-withered horses need a saddle with a high gullet and adequate wither clearance. Flat or "mutton" withers make saddle stability a challenge because the saddle tends to slide forward. Feel the withers while someone sits in the saddle to confirm clearance under weight.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Upper Front Leg</span>
-              <h3>Point of Elbow</h3>
-              <p>The bony prominence at the back of the upper front leg where the upper leg meets the chest wall — the olecranon process of the ulna. It is easy to see and feel. The girth or cinch passes just behind this point. Sores, swellings, or irritation in this area are often caused by a girth that rests too far forward or by boots that rub.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Chest Muscles</span>
-              <h3>Pectoral Muscles</h3>
-              <p>The two bands of muscle visible on the front of the chest between the front legs. In a fit horse, the pectorals are rounded and firm, and you can see a clear groove between them in the center of the chest. In a thin horse the chest may appear sunken or flat in this area. A very well-developed pectoral region is characteristic of horses bred for draft or pulling work.</p>
-            </div>
-
+      <!-- NECK & SHOULDER -->
+      <div id="panel-neck" class="region-panel">
+        <div class="diagram-outer">
+          <div class="diagram-wrap" id="dw-neck">
+            <img src="equine-anatomy-images/neck-shoulder.png" alt="Horse neck and shoulder — labeled external anatomy" draggable="false">
+            <svg class="marker-svg" id="svg-neck" aria-hidden="true"></svg>
           </div>
         </div>
-
-        <div class="callout-gold">
-          <div class="callout-label">Neck &amp; Shoulder — Assessment Summary</div>
-          <p>The shoulder angle and scapula position directly predict stride length and quality. The withers height and shape determine saddle fit. The crest and neck musculature reflect training and condition. These are among the most evaluated features when choosing a horse for any purpose or fitting tack to any horse you already own.</p>
-        </div>
-
-      </div><!-- /tab-neck -->
-
-      <!-- ====================== TAB 3 — BODY ====================== -->
-      <div class="tab-panel" id="tab-body" role="tabpanel">
-        <div class="tab-intro">The body is the horse's structural core — visible from above, the sides, and behind. The topline, the hindquarter landmarks, the spring of the rib cage, and the shape of the belly and flank all tell you something about fitness, condition, and conformation. Learn to look at the whole body before focusing on individual parts.</div>
-
-        <div class="visual-card">
-          <h2>Topline — Back to Hindquarters</h2>
-          <div class="part-grid">
-
-            <div class="part-item">
-              <span class="part-region">Saddle Region</span>
-              <h3>Back</h3>
-              <p>The region from just behind the withers to the loin, where the saddle sits. A good back is well-muscled on both sides of the spine, with no visible dip or extreme length. A short, well-muscled back is generally considered stronger and more suitable for carrying weight. A long back can be an asset for flexibility but is structurally more vulnerable to fatigue and soreness under a rider.</p>
-              <span class="part-note">Run a hand firmly along both sides of the spine from behind the withers to the loin. A horse that dips away, pins its ears, or shows skin twitching when the back is touched may have soreness — which is worth investigating before riding continues.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Behind the Saddle</span>
-              <h3>Loin</h3>
-              <p>The short region between the back and the croup, behind the last rib. It is not supported by ribs, making it more flexible but also more prone to muscular fatigue. A "short-coupled" horse — one with little distance between the last rib and the point of hip — tends to have a stronger, more efficient loin. You can see and feel the quality of loin muscling from directly behind the horse by looking at how broad and rounded the top of the hindquarters appears.</p>
-              <span class="part-note">"Short-coupled" means the space between the last rib and the point of hip is short. This is considered a strength in conformation because it means the back and loin have less unsupported span to carry weight across.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Top of Hindquarters</span>
-              <h3>Croup</h3>
-              <p>The rounded area of the hindquarters, from the highest point (the sacrum) down to the tailhead. Croup slope and shape vary significantly between breeds. A flatter, longer croup is associated with Thoroughbreds and warmbloods; a more sloped or rounded croup is common in Quarter Horses. An extremely steep "goose rump" is considered a fault in most disciplines because it limits hindquarter power and reach.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Hip Landmark</span>
-              <h3>Point of Hip (Tuber Coxae)</h3>
-              <p>The most forward, outward bony prominence of the pelvis — visible on each side as the angular "corners" of the hindquarters when viewed from above or behind. In a horse at a healthy weight it is visible but softened by muscle. In an underweight horse it protrudes sharply. A "knocked-down hip" — where one point of hip sits lower than the other — results from a fracture of this prominence, typically from trauma.</p>
-              <span class="part-note">Looking at the hindquarters from directly behind, both points of hip should appear level and symmetrical. An obvious asymmetry that has appeared suddenly is worth having evaluated by a vet.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Hindquarter Landmark</span>
-              <h3>Point of Buttock (Tuber Ischii)</h3>
-              <p>The most rearward bony prominence of the pelvis, visible on each side as the lower "corners" of the hindquarters when viewed from the side or behind. Together with the point of hip, these two landmarks frame the hindquarter silhouette. The distance and angle between them is used to assess pelvis length and slope. A fit horse will show muscle over and around these points; a thin horse will show them sharply.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Base of Tail</span>
-              <h3>Dock</h3>
-              <p>The bony root of the tail, formed by the coccygeal vertebrae that extend from the sacrum. The dock is covered in skin and muscle. It is what allows the tail to move in all directions. Tail wrapping for shipping or braiding always starts at the dock. Tail carriage — whether the dock is held high, low, or clamped — is a consistent indicator of the horse's comfort and tension level.</p>
-              <span class="part-note">A tail that is clamped tightly against the hindquarters often signals pain, tension, or discomfort somewhere in the body. Hindquarter soreness, back pain, or even a poorly fitting saddle can show up as a clamped tail before other signs appear.</span>
-            </div>
-
+        <div class="diagram-footer">
+          <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
+          <div style="display:flex;gap:.5rem;">
+            <button class="reset-btn" onclick="resetTab('neck')">&#8635; Reset</button>
+            <button class="copy-pos-btn" onclick="toggleExport('neck')">&#128203; Copy positions</button>
           </div>
         </div>
+        <div class="pos-output-wrap" id="export-neck">
+          <div class="pos-output-label">Paste this to Claude to bake in your positions &mdash; NECK &amp; SHOULDER</div>
+          <textarea class="pos-output" id="pos-text-neck" readonly onclick="this.select()"></textarea>
+        </div>
+      </div>
 
-        <div class="visual-card">
-          <h2>Barrel, Sides &amp; Underline</h2>
-          <div class="part-grid">
-
-            <div class="part-item">
-              <span class="part-region">Rib Cage</span>
-              <h3>Barrel</h3>
-              <p>The rounded rib cage region of the horse, housing 18 pairs of ribs. The depth and spring of the barrel are assessed visually from the side. "Well-sprung ribs" means the ribs curve outward generously, creating depth and width — this is associated with greater lung and heart capacity and is a positive conformation point. A horse with a very flat, narrow barrel is described as "slab-sided."</p>
-              <span class="part-note">The girth or cinch sits just behind the elbows at the narrowest part of the barrel. Girth sores, rubs, or swellings in this area are visible on close inspection and should be addressed before the horse is ridden again.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Behind the Barrel</span>
-              <h3>Flank</h3>
-              <p>The soft, somewhat hollow area on the side of the abdomen behind the last rib and in front of the hind leg. It is visibly reactive — you can see respiratory rate by watching the flank move. At rest a horse's flank should rise and fall gently and evenly. During exercise it heaves more noticeably. A visibly "heaving" flank at rest, or a flank that lifts twice per breath (double-lift), is an abnormal finding worth monitoring.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Measurement Reference</span>
-              <h3>Heart Girth</h3>
-              <p>The circumference of the barrel measured just behind the elbows and over the withers. Heart girth is one of two measurements used with a weight tape to estimate body weight. A deep heart girth is associated with good cardiovascular and lung capacity. This is the same area where the girth or cinch of the saddle fits — both the body landmark and the piece of equipment share the name.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Belly</span>
-              <h3>Underline &amp; Abdomen</h3>
-              <p>The lower surface of the belly from the heart girth to between the hind legs. In a healthy adult horse the underline has a gradual, gentle curve with no visible drawing-up or distension. A horse that appears "tucked up" — with a tight, drawn-in belly — may be in pain, dehydrated, or anxious. Mares in late pregnancy show a dramatically enlarged, lowered abdomen.</p>
-            </div>
-
+      <!-- BODY -->
+      <div id="panel-body" class="region-panel">
+        <div class="diagram-outer">
+          <div class="diagram-wrap" id="dw-body">
+            <img src="equine-anatomy-images/body.png" alt="Horse body — labeled external anatomy" draggable="false">
+            <svg class="marker-svg" id="svg-body" aria-hidden="true"></svg>
           </div>
         </div>
-
-        <div class="callout-gold">
-          <div class="callout-label">Body Region — Assessment Summary</div>
-          <p>The back and loin are the load-bearing bridge between front and hindquarters — topline muscling reflects both training and saddle fit. The hindquarter landmarks (point of hip, point of buttock, croup slope) tell you about conformation and condition. The barrel and flank tell you about health status and respiratory rate at a glance. Get in the habit of doing a full side view before handling any horse.</p>
-        </div>
-
-      </div><!-- /tab-body -->
-
-      <!-- ====================== TAB 4 — LEGS ====================== -->
-      <div class="tab-panel" id="tab-legs" role="tabpanel">
-        <div class="tab-intro">The legs are where soundness lives. A large percentage of lameness in horses originates in the lower limbs, and most of those issues are first detected by an experienced eye or hand. Both front and hind legs share many structures — cannon, fetlock, pastern, coronet, hoof — but front legs absorb landing impact while hind legs generate forward propulsion.</div>
-
-        <div class="visual-card">
-          <h2>Front Leg — Top to Hoof</h2>
-          <div class="part-grid">
-
-            <div class="part-item">
-              <span class="part-region">Upper Front Leg</span>
-              <h3>Forearm</h3>
-              <p>The region between the elbow and the knee, with the radius as the main bone. The forearm is muscular in its upper half and tapers to a more tendinous, bony structure below. A long, well-muscled forearm contributes to stride length. The forearm muscles attach to the tendons that move the lower leg — so forearm development reflects the overall condition of the front limb.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Inside of Forearm</span>
-              <h3>Chestnut (Front)</h3>
-              <p>A small, oval, horn-like growth on the inside of each front leg, just above and to the inside of the knee. Chestnuts are considered evolutionary remnants of an ancestral toe. Each horse's chestnuts are unique in shape and size — similar to a fingerprint — and have historically been used for individual identification. They grow slowly and can be trimmed when they become rough or overgrown.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Front Leg Joint</span>
-              <h3>Knee (Carpus)</h3>
-              <p>The horse's "knee" is anatomically equivalent to the human wrist, not the human knee. It is a complex joint made up of multiple small bones in two rows. Assessed from the front, a correct knee is straight and square. "Over at the knee" (slightly forward-bent) is a minor fault but generally tolerated. "Back at the knee" (calf-kneed, where the knee bows rearward) is a more serious fault that increases strain on the tendons at the back of the leg.</p>
-              <span class="part-note">Run a hand over the front and sides of the knee. Any heat, swelling, or bony enlargement is abnormal and should be evaluated. Chips in the carpal bones are a common injury in horses that work hard at speed.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Beside the Cannon</span>
-              <h3>Splint Area</h3>
-              <p>The inside and outside of the cannon bone are flanked by two smaller splint bones that taper partway down the leg. You can feel the medial splint bone as a thin ridge along the inside of the upper cannon. Young horses in training sometimes develop hard bony enlargements here — called splints — at the site where these bones attach to the cannon. Once mature and no longer warm, most splints are not a soundness concern unless they press near a ligament.</p>
-              <span class="part-note">Feel along the inside of the upper cannon for any bony bumps or lumps. In young horses, a warm, slightly soft swelling here may indicate an active splint forming. Heat indicates inflammation and should be monitored.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Lower Front Leg</span>
-              <h3>Cannon Bone (Front)</h3>
-              <p>The main bone of the lower front leg between the knee and fetlock — the third metacarpal. It is straight, smooth, and clearly visible. Cannon bone circumference measured just below the knee gives a rough indication of bone density relative to body mass. A horse with a large frame and very fine cannons is considered to have "insufficient bone," which may indicate higher risk of stress injury over time.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Back of Cannon</span>
-              <h3>Flexor Tendons</h3>
-              <p>Two tendons run down the back of the cannon — the superficial digital flexor tendon (SDFT) on top and the deep digital flexor tendon (DDFT) beneath it. They are not visible but are easily palpated. Running a hand down the back of a cool, rested cannon should feel smooth and flat, with a clear separation between the tendons and the cannon bone. Any heat, swelling, or thickening is a significant finding.</p>
-              <span class="part-note">A "bowed tendon" is a visible thickening of the SDFT — it looks like a slight bowing outward of the back cannon line. Palpate daily on performance horses. The back of the cannon should always feel cool and have no filling. Any change from the horse's normal baseline should be investigated.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Lower Leg Joint</span>
-              <h3>Fetlock</h3>
-              <p>The prominent joint at the base of the cannon bone, easily visible and felt. The fetlock drops toward the ground under weight-bearing and springs back when the leg lifts — this motion absorbs significant landing concussion. A healthy fetlock is clean (no swelling or filling), cool, and moves freely. Heat, a "full" feel on the front or back of the joint, or stiffness on flexion are early signs of a problem.</p>
-              <span class="part-note">When assessing the fetlock, feel all the way around it — front, sides, and back — with your fingers. A slight, consistent filling on one fetlock compared to the opposite is worth noting. Asymmetry in joint filling between left and right is often the first detectable sign of developing lameness.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Back of Fetlock</span>
-              <h3>Ergot</h3>
-              <p>A small, firm growth of horn at the back of the fetlock, often hidden under the fetlock hair (feathering). Like the chestnut, the ergot is considered an evolutionary remnant of an ancestral toe. Size varies widely — barely visible in some horses, marble-sized in others, particularly in draft breeds with heavy feathering. Ergots are not generally a health concern but can cause discomfort if they grow large enough to press into the skin.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Below the Fetlock</span>
-              <h3>Pastern</h3>
-              <p>The sloping section between the fetlock and the hoof, formed by two bones: the long pastern and the short pastern. Pastern angle is one of the most assessed conformation points. The ideal front pastern makes roughly a 45–55 degree angle from horizontal, roughly matching the shoulder angle. When viewed from the side, the line from pastern through hoof wall should be straight and continuous — no broken angle at the coronet.</p>
-              <span class="part-note">An overly upright pastern increases concussion on the joints. An overly sloped (long, low) pastern increases strain on the tendons and ligaments. The pastern-hoof axis — the alignment of pastern and hoof wall — is evaluated at every farrier visit. A broken-back or broken-forward axis often indicates a fit and trim issue.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Top of Hoof</span>
-              <h3>Coronary Band</h3>
-              <p>The band of living tissue running around the top of the hoof where skin meets hoof wall. The coronary band continuously produces the entire hoof wall from the top down — a full hoof wall replacement takes roughly 9 to 12 months. Any injury to the coronary band can cause a permanent groove, notch, or crack in the wall that grows downward over time. The band should feel warm and soft, not hot or cold.</p>
-              <span class="part-note">Excessive heat in the coronary band — especially if accompanied by a strong digital pulse in the pastern — can indicate laminitis (founder), a serious condition requiring immediate veterinary attention. Learning what "normal warm" feels like for a specific horse makes this assessment meaningful.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Foot</span>
-              <h3>Hoof (Front)</h3>
-              <p>The hard keratinous structure protecting the internal foot. The outer wall is produced by the coronary band. The sole covers the underside. The frog is the V-shaped, softer horn structure in the center of the sole — it acts as a shock absorber and helps pump blood up the leg with each step. The white line (visible on the bottom between wall and sole) is a common site for bacterial infection. Front hooves are typically rounder and wider than hind hooves.</p>
-              <span class="part-note">A healthy hoof wall is solid, without cracks, rings, or flares. The frog should be full and firm — a shrunken, atrophied frog indicates insufficient hoof contact with the ground. Horses should have farrier care every 6–8 weeks to maintain correct trim and balance.</span>
-            </div>
-
+        <div class="diagram-footer">
+          <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
+          <div style="display:flex;gap:.5rem;">
+            <button class="reset-btn" onclick="resetTab('body')">&#8635; Reset</button>
+            <button class="copy-pos-btn" onclick="toggleExport('body')">&#128203; Copy positions</button>
           </div>
         </div>
-
-        <div class="callout-gold">
-          <div class="callout-label">Front Leg — Assessment Summary</div>
-          <p>Front legs absorb 60–65% of landing impact. The most important daily check is running both hands down each front leg from knee to hoof — feeling for heat, swelling, or any change in texture on the back of the cannon and around the fetlock. Consistency in this check, combined with knowing each horse's individual normal baseline, is what allows early detection of developing problems.</p>
+        <div class="pos-output-wrap" id="export-body">
+          <div class="pos-output-label">Paste this to Claude to bake in your positions &mdash; BODY</div>
+          <textarea class="pos-output" id="pos-text-body" readonly onclick="this.select()"></textarea>
         </div>
+      </div>
 
-        <div class="visual-card">
-          <h2>Hind Leg — Top to Hoof</h2>
-          <div class="part-grid">
-
-            <div class="part-item">
-              <span class="part-region">Upper Hind Leg</span>
-              <h3>Thigh &amp; Hindquarter Musculature</h3>
-              <p>The upper hind leg is enclosed in heavy muscle — the large muscle mass of the hindquarters that drives the horse forward. Viewed from behind, a well-conditioned horse shows broad, rounded, symmetrical hindquarters. Muscle wasting on one side compared to the other is a meaningful observation and can indicate hind limb lameness, injury, or disuse atrophy.</p>
-              <span class="part-note">Look at hindquarters from directly behind the horse. They should be level and symmetrical. One hip dropping noticeably lower on each stride (a "hip hike") or asymmetrical muscling are both signs that suggest a veterinary lameness evaluation is warranted.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Hindquarter Joint</span>
-              <h3>Stifle</h3>
-              <p>The large joint at the top of the gaskin, equivalent to the human knee. It is the largest joint in the horse's body and is clearly visible as the rounded protrusion on the side of the hindquarters just above the gaskin. A healthy stifle moves smoothly without catching or locking. Any visible "jumping," catching, or dragging of the hind leg — especially at the walk — can indicate a stifle problem.</p>
-              <span class="part-note">The stifle can develop soft filling (bog spavin equivalent) when inflamed, which is visible as swelling around the joint capsule. Feel the stifle for warmth and compare both sides. An asymmetrically swollen or warm stifle should be evaluated.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Between Stifle and Hock</span>
-              <h3>Gaskin</h3>
-              <p>The muscular region between the stifle and the hock — sometimes called the "second thigh." It should be wide and well-developed. The quality and angle of the gaskin affects the hock's range of motion and the horse's overall hind-end power and reach. A well-angled, muscular gaskin is consistently evaluated in conformation assessments for sport horses.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Hind Leg Joint</span>
-              <h3>Hock</h3>
-              <p>The large, complex joint on the hind leg, equivalent to the human ankle. It is the primary engine joint of the hind limb and flexes sharply with every stride. "Clean hocks" — no visible swelling, bony enlargement, or filling — is a consistently used phrase in soundness evaluations. Common visible hock conditions include bone spavin (bony enlargement on the inside of the lower hock), bog spavin (soft, fluid-filled swelling on the front of the hock), and capped hock (swelling over the point of hock).</p>
-              <span class="part-note">Run a hand over and around the hock. The front should feel firm and smooth — any soft, fluid-like fullness there is bog spavin. The inside of the lower hock should feel clean — any hard bony growth there is bone spavin. Compare both hocks side by side.</span>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Back of Hock</span>
-              <h3>Point of Hock</h3>
-              <p>The bony prominence at the back of the hock — the tuber calcis, equivalent to the human heel bone. It is very visible and easy to locate. A "capped hock" is a soft, fluid-filled swelling directly over the point of hock, typically caused by a horse kicking stall walls or lying on hard, thin bedding repeatedly. Capped hocks are usually cosmetic unless very large, but the underlying cause of trauma should be addressed.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Inside of Hind Leg</span>
-              <h3>Chestnut (Hind)</h3>
-              <p>On the hind legs, the chestnut is located on the inside of the leg just below the hock — the opposite position from the front chestnut, which is above the knee. Hind chestnuts are often smaller than front ones, and some horses have very small or nearly absent hind chestnuts. Like front chestnuts, they are unique to each individual horse.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Lower Hind Leg</span>
-              <h3>Cannon Bone (Hind)</h3>
-              <p>The main bone of the lower hind leg between the hock and fetlock. Hind cannons are typically slightly shorter than front cannons, which is considered correct conformation. The same assessment applies as the front: the back of the hind cannon should feel smooth, cool, and flat. The flexor tendons run behind the hind cannon just as they do in front.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Hind Leg Joint</span>
-              <h3>Fetlock (Hind)</h3>
-              <p>Structurally identical to the front fetlock. Hind fetlocks are often set at a slightly more upright angle than front fetlocks. The same assessment applies — feel for heat, filling, and symmetry. While hind fetlock injuries are somewhat less common than front ones, they do occur, particularly in horses that jump, work at speed, or are asked for collected movements that load the hind end heavily.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Below Hind Fetlock</span>
-              <h3>Pastern (Hind)</h3>
-              <p>The hind pastern is typically more upright than the front pastern — roughly 50–55 degrees is considered correct and is normal for most horses. As with the front, the hind pastern angle should flow continuously into the hoof wall when viewed from the side, with no broken-back or broken-forward angle at the coronet. Broken angles in the hind are often associated with long toes and are addressed by the farrier.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Top of Hind Hoof</span>
-              <h3>Coronary Band (Hind)</h3>
-              <p>The same structure as the front coronary band — a continuously productive band that generates the hoof wall from the top down over roughly 9 to 12 months. Any injury or pressure on the hind coronary band carries the same risk of permanent hoof wall damage. Hind coronary bands tend to receive less routine attention than front ones but should be assessed equally at each inspection.</p>
-            </div>
-
-            <div class="part-item">
-              <span class="part-region">Hind Foot</span>
-              <h3>Hoof (Hind)</h3>
-              <p>The hind hoof is typically more narrow and oval in shape than the front hoof, and slightly more upright. This reflects the hind leg's primary job — pushing off each stride — rather than absorbing heavy landing concussion. The same external structures are present: wall, sole, frog, white line, and bars. Hind hooves are often slightly smaller in circumference than front hooves, which is one way to distinguish hind shoes from front shoes.</p>
-            </div>
-
+      <!-- FRONT LEGS -->
+      <div id="panel-frontlegs" class="region-panel">
+        <div class="diagram-outer">
+          <div class="diagram-wrap" id="dw-frontlegs">
+            <img src="equine-anatomy-images/front-legs.png" alt="Horse front legs — labeled external anatomy" draggable="false">
+            <svg class="marker-svg" id="svg-frontlegs" aria-hidden="true"></svg>
           </div>
         </div>
-
-        <div class="callout-gold">
-          <div class="callout-label">Hind Leg — Assessment Summary</div>
-          <p>Hind legs generate the propulsive power that drives everything forward. The hock is the primary working joint and one of the most commonly discussed and treated in equine veterinary medicine. Learn the feel of clean, cool, symmetrical hind legs — from stifle to hoof — and you will have a reliable baseline for recognizing when something changes.</p>
+        <div class="diagram-footer">
+          <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
+          <div style="display:flex;gap:.5rem;">
+            <button class="reset-btn" onclick="resetTab('frontlegs')">&#8635; Reset</button>
+            <button class="copy-pos-btn" onclick="toggleExport('frontlegs')">&#128203; Copy positions</button>
+          </div>
         </div>
+        <div class="pos-output-wrap" id="export-frontlegs">
+          <div class="pos-output-label">Paste this to Claude to bake in your positions &mdash; FRONT LEGS</div>
+          <textarea class="pos-output" id="pos-text-frontlegs" readonly onclick="this.select()"></textarea>
+        </div>
+      </div>
 
-      </div><!-- /tab-legs -->
+      <!-- BACK LEGS -->
+      <div id="panel-backlegs" class="region-panel">
+        <div class="diagram-outer">
+          <div class="diagram-wrap" id="dw-backlegs">
+            <img src="equine-anatomy-images/back-legs.png" alt="Horse back legs — labeled external anatomy" draggable="false">
+            <svg class="marker-svg" id="svg-backlegs" aria-hidden="true"></svg>
+          </div>
+        </div>
+        <div class="diagram-footer">
+          <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
+          <div style="display:flex;gap:.5rem;">
+            <button class="reset-btn" onclick="resetTab('backlegs')">&#8635; Reset</button>
+            <button class="copy-pos-btn" onclick="toggleExport('backlegs')">&#128203; Copy positions</button>
+          </div>
+        </div>
+        <div class="pos-output-wrap" id="export-backlegs">
+          <div class="pos-output-label">Paste this to Claude to bake in your positions &mdash; BACK LEGS</div>
+          <textarea class="pos-output" id="pos-text-backlegs" readonly onclick="this.select()"></textarea>
+        </div>
+      </div>
 
-    </div><!-- /tab-system -->
+    </div><!-- /visual-card -->
+
+    <!-- ====== VOCAB CARDS ====== -->
+
+    <div id="vocab-head" class="region-panel active">
+      <h3 style="font-family:var(--font-display);color:var(--navy);margin:2rem 0 0.75rem;">Head Vocabulary</h3>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-term">Ear</div><div class="vocab-def">The pair of upright structures at the top of the head. Horses use their ears for hearing and to show attention and mood.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Poll</div><div class="vocab-def">The highest point of the head, located between the ears.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Foretop</div><div class="vocab-def">The section of mane that grows from the poll and falls forward between the ears onto the forehead.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Forehead</div><div class="vocab-def">The broad area of the face between the ears and the bridge of the nose, above the eyes.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Eye</div><div class="vocab-def">The large, oval eye located on the side of the head. This position gives the horse a wide field of vision.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Cheek</div><div class="vocab-def">The flat area of the face below the eye.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Nostril</div><div class="vocab-def">One of the two openings of the nose. Horses breathe only through their nostrils, which expand to allow airflow.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Muzzle</div><div class="vocab-def">The lower part of the face, including the nose, lips, and chin. Horses use the muzzle to explore and pick up feed.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Upper Lip</div><div class="vocab-def">The upper lip, used to grasp and sort feed.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Lower Lip</div><div class="vocab-def">The lower lip, which is soft and relaxed when the horse is resting.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Chin Groove</div><div class="vocab-def">The groove on the underside of the lower jaw where the two jawbones meet. This is where a curb chain rests.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Jaw</div><div class="vocab-def">The lower bony structure of the head that shapes the cheek and chin.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Throatlatch</div><div class="vocab-def">The area where the head connects to the neck under the jaw. This is where a halter or bridle fastens.</div></div>
+      </div>
+    </div>
+
+    <div id="vocab-neck" class="region-panel">
+      <h3 style="font-family:var(--font-display);color:var(--navy);margin:2rem 0 0.75rem;">Neck &amp; Shoulder Vocabulary</h3>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-term">Throatlatch</div><div class="vocab-def">The area where the head meets the neck, just under the jaw.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Crest</div><div class="vocab-def">The top ridge of the neck that runs from the poll to the withers. The mane grows along the crest.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Mane</div><div class="vocab-def">The long hair that grows along the crest of the neck. It may fall to either side depending on the horse.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Neck</div><div class="vocab-def">The structure that connects the head to the body. Neck shape and length can affect how a horse carries itself and moves.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Jugular Groove</div><div class="vocab-def">The line along the lower side of the neck where the jugular vein runs beneath the skin.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Shoulder</div><div class="vocab-def">The area where the front leg connects to the body, including the shoulder blade. Shoulder angle influences how freely the front leg moves.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Point of Shoulder</div><div class="vocab-def">The forward point of the shoulder where the front of the body meets the upper leg.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Chest</div><div class="vocab-def">The front of the horse between the front legs. Chest width can vary depending on the horse's build.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Upper Arm</div><div class="vocab-def">The section of the front leg between the shoulder and the elbow.</div></div>
+      </div>
+    </div>
+
+    <div id="vocab-body" class="region-panel">
+      <h3 style="font-family:var(--font-display);color:var(--navy);margin:2rem 0 0.75rem;">Body Vocabulary</h3>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-term">Withers</div><div class="vocab-def">The highest point of the back at the base of the neck. Horse height in hands is always measured to the withers.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Back</div><div class="vocab-def">The topline between the withers and the loin. This is the weight-bearing area under the saddle.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Loin</div><div class="vocab-def">The topline between the end of the back and the croup, behind the saddle area.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Croup</div><div class="vocab-def">The rounded top of the hindquarters from the highest hip point to the tail. The angle and length of the croup vary between breeds.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Point of Hip</div><div class="vocab-def">The bony prominence on the side of the pelvis, visible as a bump on most horses when viewed from above or from the side.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Dock</div><div class="vocab-def">The bony, muscular upper part of the tail from which the tail hair grows.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Thigh</div><div class="vocab-def">The large muscular region of the upper hind leg, above the stifle.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Buttock</div><div class="vocab-def">The rounded muscular area at the back of the hindquarters, below the dock.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Tail</div><div class="vocab-def">The long hair growing from the dock. Horses use the tail to swish flies and to communicate mood.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Flank</div><div class="vocab-def">The soft area just behind the last rib and in front of the hind leg. The flank moves visibly with each breath.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Barrel</div><div class="vocab-def">The rounded rib cage section between the forelegs and the flank. Width and depth here reflect lung and organ capacity.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Heart Girth</div><div class="vocab-def">The circumference of the body just behind the elbow and withers. This measurement is used for weight tape estimates.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Sheath</div><div class="vocab-def">The fold of skin on a male horse that encloses and protects the penis at rest.</div></div>
+      </div>
+    </div>
+
+    <div id="vocab-frontlegs" class="region-panel">
+      <h3 style="font-family:var(--font-display);color:var(--navy);margin:2rem 0 0.75rem;">Front Legs Vocabulary</h3>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-term">Upper Arm</div><div class="vocab-def">The section of the front leg between the shoulder joint and the elbow.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Elbow</div><div class="vocab-def">The prominent joint where the forearm meets the body, visible on the inside of the upper front leg.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Forearm</div><div class="vocab-def">The upper portion of the lower front leg between the elbow and the knee. It contains the largest bone section of the front lower leg.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Chestnut</div><div class="vocab-def">A small, oval vestigial growth on the inside of each leg. Every horse has them, and no two sets are identical &mdash; useful for identification.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Knee</div><div class="vocab-def">The large joint in the middle of the front leg between the forearm and the cannon bone. Despite the name, it is equivalent to the human wrist.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Cannon Bone</div><div class="vocab-def">The large bone of the lower leg between the knee and the fetlock. The same structure appears on all four legs.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Fetlock</div><div class="vocab-def">The prominent joint between the cannon bone and the pastern. The tuft of hair at the back of this joint covers the ergot.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Ergot</div><div class="vocab-def">A small vestigial horn growth at the back of the fetlock, hidden in the hair tuft. Most horses have them.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Pastern</div><div class="vocab-def">The sloping section of the leg between the fetlock and the hoof.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Coronet Band</div><div class="vocab-def">The band of soft tissue at the top of the hoof wall. The hoof wall grows down from the coronet band.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Hoof</div><div class="vocab-def">The hard outer structure that protects and supports the foot. It includes the hoof wall, sole, and frog.</div></div>
+      </div>
+    </div>
+
+    <div id="vocab-backlegs" class="region-panel">
+      <h3 style="font-family:var(--font-display);color:var(--navy);margin:2rem 0 0.75rem;">Back Legs Vocabulary</h3>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-term">Stifle</div><div class="vocab-def">The large upper joint of the hind leg, equivalent to the human knee. Located where the thigh meets the gaskin.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Gaskin</div><div class="vocab-def">The muscular region between the stifle and the hock, equivalent to the human calf.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Hock</div><div class="vocab-def">The large angled joint in the middle of the hind leg. It is equivalent to the human ankle and provides much of the hind leg's propulsion.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Cannon Bone</div><div class="vocab-def">The large bone of the lower leg between the hock and the fetlock. The same structure appears on all four legs.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Fetlock</div><div class="vocab-def">The prominent joint between the cannon bone and the pastern. The tuft of hair at the back of this joint covers the ergot.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Ergot</div><div class="vocab-def">A small vestigial horn growth at the back of the fetlock, hidden in the hair tuft. Most horses have them.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Pastern</div><div class="vocab-def">The sloping section of the leg between the fetlock and the hoof. Pastern angle plays a role in how the horse absorbs shock when moving.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Coronet Band</div><div class="vocab-def">The band of soft tissue at the top of the hoof wall. The hoof wall grows down from the coronet band.</div></div>
+        <div class="vocab-card"><div class="vocab-term">Hoof</div><div class="vocab-def">The hard outer structure that protects and supports the foot. It includes the hoof wall, sole, and frog.</div></div>
+      </div>
+    </div>
+
+    <!-- Bottom jump bar -->
+    <div class="tab-bar tab-bar--jump" role="tablist" aria-label="Jump back to region">
+      <button class="tab-btn active" data-jump-target="head"      onclick="jumpToTab('head')">Head</button>
+      <button class="tab-btn"        data-jump-target="neck"      onclick="jumpToTab('neck')">Neck &amp; Shoulder</button>
+      <button class="tab-btn"        data-jump-target="body"      onclick="jumpToTab('body')">Body</button>
+      <button class="tab-btn"        data-jump-target="frontlegs" onclick="jumpToTab('frontlegs')">Front Legs</button>
+      <button class="tab-btn"        data-jump-target="backlegs"  onclick="jumpToTab('backlegs')">Back Legs</button>
+    </div>
 
     <div id="course-notes"></div>
     <script>
       window.PAGE_NOTES = {
         items: [
-          'The poll is highly sensitive — poll soreness often shows up as resistance to bridling or reluctance to flex.',
-          'The scapula has no bony attachment to the skeleton — it is held by muscle, which acts as a shock absorber.',
-          'Front legs absorb 60–65% of landing impact — palpate both front legs daily on any horse in work.',
-          'The hock is anatomically the ankle, not the knee — "clean hocks" means no swelling or bony growth.',
-          'The coronary band grows the entire hoof wall from top to bottom over roughly 9–12 months.',
-          'Asymmetry between left and right — in muscle, joint filling, or heat — is often the earliest sign of a developing problem.'
+          'Drag any dot or label on the diagram to reposition it &mdash; changes save automatically per region.',
+          'Front and back legs share many of the same lower-leg structures: cannon bone, fetlock, pastern, coronet band, and hoof.',
+          'Throatlatch appears in both the Head and Neck &amp; Shoulder regions &mdash; it is the boundary between them.',
+          'The chestnut (inside the leg) and the ergot (back of the fetlock) are both vestigial structures found on nearly every horse.'
         ],
-        highlight: 'Always work systematically: top to bottom, front to back, and compare left to right. Symmetry is normal. Asymmetry is information.'
+        highlight: 'Cover the labels and name each marked structure from the dot alone. That is the habit that makes vocabulary stick.'
       };
     </script>
 
@@ -586,6 +395,305 @@
 </div>
 
 <div id="site-footer"></div>
+
+<script>
+/* ===========================================================================
+   REGIONAL DIAGRAMS — External Equine Anatomy / Lesson Page
+   Each tab has its own DEFAULTS and LS_KEY.
+   ax/ay = anchor dot %, lx/ly = label pill %
+=========================================================================== */
+
+var DIAGRAM_DEFS = {
+  head: {
+    imgId:   'dw-head',
+    svgId:   'svg-head',
+    lsKey:   'equineEduDiagram.externalAnatomy.lesson.head',
+    defaults: [
+      { id:'ear',                 text:'Ear',                 ax:39.1, ay:13.3, lx:38.1, ly:4.4  },
+      { id:'poll',                text:'Poll',                ax:43.3, ay:17.2, lx:55,   ly:4.3  },
+      { id:'foretop',             text:'Foretop',             ax:49.3, ay:20.9, lx:61.7, ly:18.2 },
+      { id:'forehead',            text:'Forehead',            ax:51.5, ay:28.7, lx:65.4, ly:28.1 },
+      { id:'eye',                 text:'Eye',                 ax:47.6, ay:34.5, lx:67,   ly:32.7 },
+      { id:'cheek',               text:'Cheek',               ax:33.3, ay:46.3, lx:28.3, ly:64.4 },
+      { id:'nostril',             text:'Nostril',             ax:69.3, ay:63,   lx:94.6, ly:64.6 },
+      { id:'muzzle',              text:'Muzzle',              ax:60.6, ay:60.4, lx:79.8, ly:45.4 },
+      { id:'upper-lip',           text:'Upper Lip',           ax:66.8, ay:70.9, lx:80.9, ly:74.7 },
+      { id:'lower-lip',           text:'Lower Lip',           ax:63.7, ay:71.5, lx:66.5, ly:81.3 },
+      { id:'chin-groove',         text:'Chin Groove',         ax:55.6, ay:65.9, lx:49.1, ly:76.6 },
+      { id:'jaw',                 text:'Jaw',                 ax:47,   ay:61.7, lx:40.6, ly:67.9 },
+      { id:'throatlatch',         text:'Throatlatch',         ax:22.9, ay:53,   lx:14.3, ly:68.5 }
+    ]
+  },
+  neck: {
+    imgId:   'dw-neck',
+    svgId:   'svg-neck',
+    lsKey:   'equineEduDiagram.externalAnatomy.lesson.neck',
+    defaults: [
+      { id:'throatlatch',         text:'Throatlatch',         ax:8.8,  ay:36.1, lx:10.2, ly:5.7  },
+      { id:'crest',               text:'Crest',               ax:31.7, ay:22.5, lx:33.3, ly:8.8  },
+      { id:'mane',                text:'Mane',                ax:46.7, ay:26.7, lx:52.1, ly:14.1 },
+      { id:'neck',                text:'Neck',                ax:32.2, ay:37.5, lx:17.2, ly:58.5 },
+      { id:'jugular-groove',      text:'Jugular Groove',      ax:17.8, ay:37.3, lx:3.5,  ly:48.7 },
+      { id:'shoulder',            text:'Shoulder',            ax:55.3, ay:65,   lx:78.5, ly:34.8 },
+      { id:'point-of-shoulder',   text:'Point of Shoulder',   ax:41.4, ay:74.3, lx:12.9, ly:66.1 },
+      { id:'chest',               text:'Chest',               ax:36.9, ay:84.6, lx:19.4, ly:81.5 },
+      { id:'upper-arm',           text:'Upper Arm',           ax:52,   ay:83.5, lx:82.1, ly:81.2 }
+    ]
+  },
+  body: {
+    imgId:   'dw-body',
+    svgId:   'svg-body',
+    lsKey:   'equineEduDiagram.externalAnatomy.lesson.body',
+    defaults: [
+      { id:'withers',             text:'Withers',             ax:11.8, ay:25.5, lx:12.4, ly:8.2  },
+      { id:'back',                text:'Back',                ax:28.7, ay:32.7, lx:28.4, ly:18.7 },
+      { id:'loin',                text:'Loin',                ax:46.6, ay:28.5, lx:45,   ly:14.9 },
+      { id:'croup',               text:'Croup',               ax:70.4, ay:25.9, lx:70.8, ly:13.7 },
+      { id:'point-of-hip',        text:'Point of Hip',        ax:55.8, ay:31.8, lx:57.9, ly:13.2 },
+      { id:'dock',                text:'Dock',                ax:79.9, ay:31.7, lx:85.1, ly:17.7 },
+      { id:'thigh',               text:'Thigh',               ax:71.3, ay:50.5, lx:93.9, ly:27.9 },
+      { id:'buttock',             text:'Buttock',             ax:82.6, ay:53.9, lx:99.4, ly:40.2 },
+      { id:'tail',                text:'Tail',                ax:88.2, ay:60.9, lx:99.4, ly:58   },
+      { id:'flank',               text:'Flank',               ax:53.5, ay:56.7, lx:37.1, ly:89.4 },
+      { id:'barrel',              text:'Barrel',              ax:28.2, ay:57.1, lx:28.2, ly:89.6 },
+      { id:'heart-girth',         text:'Heart Girth',         ax:12.4, ay:76.9, lx:13.2, ly:91.1 },
+      { id:'sheath',              text:'Sheath',              ax:56.6, ay:72.3, lx:48.4, ly:87.3 }
+    ]
+  },
+  frontlegs: {
+    imgId:   'dw-frontlegs',
+    svgId:   'svg-frontlegs',
+    lsKey:   'equineEduDiagram.externalAnatomy.lesson.frontlegs',
+    defaults: [
+      { id:'upper-arm',           text:'Upper Arm',           ax:51.1, ay:31.7, lx:17,   ly:36.4 },
+      { id:'elbow',               text:'Elbow',               ax:62.1, ay:38.1, lx:71.7, ly:42   },
+      { id:'forearm',             text:'Forearm',             ax:55.3, ay:45.5, lx:74.9, ly:53   },
+      { id:'chestnut',            text:'Chestnut',            ax:46.9, ay:54.3, lx:23.6, ly:49.9 },
+      { id:'knee',                text:'Knee',                ax:44,   ay:62,   lx:22.4, ly:61.6 },
+      { id:'cannon-bone',         text:'Cannon Bone',         ax:42.8, ay:72,   lx:22.4, ly:71.4 },
+      { id:'fetlock',             text:'Fetlock',             ax:61.6, ay:82.2, lx:76.9, ly:77.8 },
+      { id:'ergot',               text:'Ergot',               ax:44,   ay:82,   lx:20,   ly:82   },
+      { id:'pastern',             text:'Pastern',             ax:59.7, ay:88.5, lx:82.6, ly:86.8 },
+      { id:'coronet-band',        text:'Coronet Band',        ax:36.6, ay:88.5, lx:17.9, ly:89.4 },
+      { id:'hoof',                text:'Hoof',                ax:55.5, ay:94,   lx:80,   ly:93.9 }
+    ]
+  },
+  backlegs: {
+    imgId:   'dw-backlegs',
+    svgId:   'svg-backlegs',
+    lsKey:   'equineEduDiagram.externalAnatomy.lesson.backlegs',
+    defaults: [
+      { id:'stifle',              text:'Stifle',              ax:44.1, ay:21.4, lx:29,   ly:30.4 },
+      { id:'gaskin',              text:'Gaskin',              ax:64.7, ay:37.3, lx:39.2, ly:40.5 },
+      { id:'hock',                text:'Hock',                ax:74.4, ay:49.6, lx:95.9, ly:46.3 },
+      { id:'cannon-bone',         text:'Cannon Bone',         ax:75.3, ay:66.6, lx:99.5, ly:63.9 },
+      { id:'fetlock',             text:'Fetlock',             ax:54.4, ay:76.7, lx:32.9, ly:66.2 },
+      { id:'ergot',               text:'Ergot',               ax:82.5, ay:82.3, lx:97.9, ly:82.5 },
+      { id:'pastern',             text:'Pastern',             ax:51.2, ay:82.9, lx:25.4, ly:78.1 },
+      { id:'coronet-band',        text:'Coronet Band',        ax:49.1, ay:86.8, lx:16,   ly:92   },
+      { id:'hoof',                text:'Hoof',                ax:72.1, ay:90.9, lx:93.3, ly:91.5 }
+    ]
+  }
+};
+
+var tabState = {};
+
+function loadTabState(tabKey) {
+  var def = DIAGRAM_DEFS[tabKey];
+  try {
+    var saved = localStorage.getItem(def.lsKey);
+    if (saved) {
+      var parsed = JSON.parse(saved);
+      tabState[tabKey] = def.defaults.map(function(d) {
+        var s = parsed.find(function(p){ return p.id === d.id; });
+        return s ? Object.assign({}, d, s) : Object.assign({}, d);
+      });
+      return;
+    }
+  } catch(e) {}
+  tabState[tabKey] = def.defaults.map(function(d){ return Object.assign({}, d); });
+}
+
+function saveTabState(tabKey) {
+  try { localStorage.setItem(DIAGRAM_DEFS[tabKey].lsKey, JSON.stringify(tabState[tabKey])); } catch(e) {}
+}
+
+function renderTab(tabKey) {
+  var def  = DIAGRAM_DEFS[tabKey];
+  var wrap = document.getElementById(def.imgId);
+  var svg  = document.getElementById(def.svgId);
+  if (!wrap || !svg) return;
+
+  wrap.querySelectorAll('.a-dot, .a-lbl').forEach(function(el){ el.remove(); });
+
+  tabState[tabKey].forEach(function(part) {
+    var dot = document.createElement('div');
+    dot.className = 'a-dot';
+    dot.id = 'dot-' + tabKey + '-' + part.id;
+    dot.style.left = part.ax + '%';
+    dot.style.top  = part.ay + '%';
+    dot.title = part.text;
+    wrap.appendChild(dot);
+
+    var lbl = document.createElement('div');
+    lbl.className = 'a-lbl';
+    lbl.id = 'lbl-' + tabKey + '-' + part.id;
+    lbl.style.left = part.lx + '%';
+    lbl.style.top  = part.ly + '%';
+    lbl.textContent = part.text;
+    wrap.appendChild(lbl);
+
+    makeDraggable(dot, wrap, tabKey, part.id, 'anchor');
+    makeDraggable(lbl, wrap, tabKey, part.id, 'label');
+  });
+
+  drawTabLines(tabKey);
+}
+
+function drawTabLines(tabKey) {
+  var svg = document.getElementById(DIAGRAM_DEFS[tabKey].svgId);
+  if (!svg) return;
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  tabState[tabKey].forEach(function(part) {
+    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', part.ax + '%');
+    line.setAttribute('y1', part.ay + '%');
+    line.setAttribute('x2', part.lx + '%');
+    line.setAttribute('y2', part.ly + '%');
+    line.setAttribute('stroke', tabKey === 'body' ? 'rgba(13,27,62,0.55)' : 'rgba(201,168,76,0.78)');
+    line.setAttribute('stroke-width', '1.5');
+    line.setAttribute('stroke-dasharray', '4 3');
+    svg.appendChild(line);
+  });
+}
+
+function resetTab(tabKey) {
+  tabState[tabKey] = DIAGRAM_DEFS[tabKey].defaults.map(function(d){ return Object.assign({}, d); });
+  saveTabState(tabKey);
+  renderTab(tabKey);
+}
+
+function makeDraggable(el, wrap, tabKey, partId, type) {
+  var active = false;
+  var startPx, startPy, startMX, startMY;
+
+  function getEl() { return document.getElementById(el.id); }
+
+  function onStart(e) {
+    active = true;
+    var pt = e.touches ? e.touches[0] : e;
+    startPx = parseFloat(getEl().style.left);
+    startPy = parseFloat(getEl().style.top);
+    startMX = pt.clientX;
+    startMY = pt.clientY;
+    getEl().style.zIndex = 20;
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function onMove(e) {
+    if (!active) return;
+    var pt   = e.touches ? e.touches[0] : e;
+    var rect = wrap.getBoundingClientRect();
+    var dx   = ((pt.clientX - startMX) / rect.width)  * 100;
+    var dy   = ((pt.clientY - startMY) / rect.height) * 100;
+    var nx   = Math.max(0, Math.min(100, startPx + dx));
+    var ny   = Math.max(0, Math.min(100, startPy + dy));
+    getEl().style.left = nx + '%';
+    getEl().style.top  = ny + '%';
+    var part = tabState[tabKey].find(function(p){ return p.id === partId; });
+    if (part) {
+      if (type === 'anchor') { part.ax = nx; part.ay = ny; }
+      else                   { part.lx = nx; part.ly = ny; }
+    }
+    drawTabLines(tabKey);
+    e.preventDefault();
+  }
+
+  function onEnd() {
+    if (!active) return;
+    active = false;
+    var elNow = document.getElementById(el.id);
+    if (elNow) elNow.style.zIndex = '';
+    saveTabState(tabKey);
+  }
+
+  el.addEventListener('mousedown',  onStart, { passive: false });
+  el.addEventListener('touchstart', onStart, { passive: false });
+  document.addEventListener('mousemove', onMove, { passive: false });
+  document.addEventListener('touchmove', onMove, { passive: false });
+  document.addEventListener('mouseup',   onEnd);
+  document.addEventListener('touchend',  onEnd);
+}
+
+var currentTab   = 'head';
+var renderedTabs = {};
+
+function switchTab(tabKey) {
+  // Top tab bar
+  document.querySelectorAll('.tab-bar:not(.tab-bar--jump) .tab-btn[data-tab]').forEach(function(btn) {
+    var on = btn.dataset.tab === tabKey;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+
+  // Bottom jump bar
+  document.querySelectorAll('.tab-bar--jump .tab-btn[data-jump-target]').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.jumpTarget === tabKey);
+  });
+
+  // Panels
+  document.querySelectorAll('.region-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  document.getElementById('panel-' + tabKey).classList.add('active');
+  document.getElementById('vocab-' + tabKey).classList.add('active');
+
+  currentTab = tabKey;
+
+  if (!renderedTabs[tabKey]) {
+    loadTabState(tabKey);
+    renderedTabs[tabKey] = true;
+    setTimeout(function() { renderTab(tabKey); }, 30);
+  }
+}
+
+function jumpToTab(tabKey) {
+  switchTab(tabKey);
+  var target = document.getElementById('anatomy-tabs');
+  if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+}
+
+// Init head tab
+(function() {
+  loadTabState('head');
+  renderedTabs['head'] = true;
+  renderTab('head');
+})();
+
+function toggleExport(tabKey) {
+  var wrap = document.getElementById('export-' + tabKey);
+  var ta   = document.getElementById('pos-text-' + tabKey);
+  if (wrap.classList.contains('open')) {
+    wrap.classList.remove('open');
+    return;
+  }
+  // Build DEFAULTS-format output
+  var state = tabState[tabKey] || DIAGRAM_DEFS[tabKey].defaults;
+  var lines = state.map(function(p) {
+    var pad = function(s, n) { return (s + '                ').slice(0, n); };
+    var id  = "'" + p.id + "'";
+    var txt = "'" + p.text + "'";
+    return '  { id:' + pad(id + ',', 22) + ' text:' + pad(txt + ',', 22) +
+           ' ax:' + Math.round(p.ax * 10) / 10 + ', ay:' + Math.round(p.ay * 10) / 10 +
+           ', lx:' + Math.round(p.lx * 10) / 10 + ', ly:' + Math.round(p.ly * 10) / 10 + ' }';
+  });
+  ta.value = '// ' + tabKey.toUpperCase() + '\n' + lines.join(',\n');
+  wrap.classList.add('open');
+  setTimeout(function() { ta.select(); }, 50);
+}
+</script>
+
 <script>
   window.CURRENT_MODULE = 2;
   window.LAYOUT = {
@@ -594,29 +702,13 @@
     navCta:     { label: 'Back to External Equine Anatomy', url: '1-index.html' },
     navExtras:  [
       { label: 'The Viewing Room', url: '4-viewing-room.html' },
-      { label: 'The Training Barn', url: '5-training-barn.html' }
+      { label: 'Training Barn',   url: '5-training-barn.html' }
     ]
   };
 </script>
 <script src="course-config.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/course-nav.js"></script>
-<script>
-/* Tab switching */
-(function() {
-  const tabs = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.tab-panel');
-  tabs.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      tabs.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
-      panels.forEach(function(p) { p.classList.remove('active'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected','true');
-      document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
-    });
-  });
-})();
-</script>
-<script>try{localStorage.setItem('equineEduProgress.equineAnatomy.anatomy','true')}catch(e){}</script>
+<script>try{localStorage.setItem('equineEduProgress.equineAnatomy.lesson','true')}catch(e){}</script>
 </body>
 </html>
