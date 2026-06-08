@@ -1,4 +1,4 @@
-window.COURSE_CONFIG = {
+﻿window.COURSE_CONFIG = {
   id: 'western-equipment',
   title: 'Western Tack & Equipment',
   indexUrl: '1-index.html',
@@ -9,6 +9,7 @@ window.COURSE_CONFIG = {
     { num: 2, title: 'Saddle & Bridle Parts', type: 'Lesson', file: '3-saddle-bridle-parts.html', desc: 'Study the parts of the western saddle and western bridle in two clear tabs.' },
     { num: 3, title: 'The Viewing Room', type: 'Practice', file: '4-viewing-room.html', desc: 'Review common western equipment and how it appears in real barn settings.' },
     { num: 4, title: 'The Training Barn', type: 'Learning Lab', file: '5-training-barn.html', desc: 'Practice labeling western saddle and bridle parts.' },
-    { num: 5, title: 'Show Your Knowledge', type: 'Quiz', file: '6-show-your-knowledge.html', desc: 'Answer randomized questions about western tack and equipment.' }
+    { num: 5, title: 'Test Your Knowledge', type: 'Quiz', file: '6-show-your-knowledge.html', desc: 'Answer randomized questions about western tack and equipment.' }
   ]
 };
+

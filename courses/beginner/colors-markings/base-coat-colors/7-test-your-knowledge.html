@@ -41,6 +41,10 @@
 .btn-submit { background: var(--navy); color: var(--white); border: none; padding: 0.85rem 2rem; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: opacity 0.15s; }
 .btn-submit:hover { opacity: 0.88; }
 @media (max-width: 1050px) { .quiz-layout { grid-template-columns: 1fr; gap: 2rem; } .lesson-right { position: static; } }
+.q-answer-row { display: flex; gap: 1.5rem; align-items: flex-start; }
+.q-answer-row .q-options { flex: 1; }
+.q-image { width: 220px; height: 180px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--border); flex-shrink: 0; }
+@media (max-width: 700px) { .q-answer-row { flex-direction: column; } .q-image { width: 100%; height: 200px; } }
 </style>
 </head>
 <body>
@@ -112,17 +116,17 @@
     { prompt: 'What are "black points" on a bay horse?', options: ['Dark spots on the face','Black coloring on the mane, tail, lower legs, and ear tips','Black hooves only','White markings with black edges'], answer: 'Black coloring on the mane, tail, lower legs, and ear tips', correct: 'Correct. Black points are the defining feature of bay — black mane, tail, lower legs, and often black ear rims.', incorrect: 'Not quite. Black points refer to the black mane, tail, lower legs, and ear tips that define bay.' },
     { prompt: 'A bay horse always has a black mane and tail.', options: ['True','False'], answer: 'True', correct: 'Correct. A black mane and tail are required for a horse to be considered bay.', incorrect: 'Not quite. Black mane and tail are the primary identifier of bay — always present.' },
     { prompt: 'A bay horse has which combination of pigments?', options: ['Phaeomelanin only','Eumelanin only','Both eumelanin and phaeomelanin','Neither pigment'], answer: 'Both eumelanin and phaeomelanin', correct: 'Correct. Bay horses have red phaeomelanin on the body and black eumelanin on the mane, tail, and lower legs.', incorrect: 'Not quite. Bay horses have both pigments — red on the body, black on the points.' },
-    { prompt: 'What is the fastest single way to tell a bay from a chestnut?', options: ['Check the hooves','Look at the mane — black = bay, red/matching = chestnut','Count the white markings','Check the horse\'s age'], answer: 'Look at the mane — black = bay, red/matching = chestnut', correct: 'Correct. The mane color is the fastest single clue. A black mane means bay. A red or matching mane means chestnut.', incorrect: 'Not quite. The mane is the fastest clue: black mane = bay, red or matching mane = chestnut.' },
+    { prompt: 'What is the fastest single way to tell a bay from a chestnut?', options: ['Check the hooves','Look at the mane, tail, and legs — black points = bay, red/matching = chestnut','Count the white markings','Check the horse\'s age'], answer: 'Look at the mane, tail, and legs — black points = bay, red/matching = chestnut', correct: 'Correct. Check the mane, tail, and lower legs. Black on all three means bay. Red or matching color on all three means chestnut.', incorrect: 'Not quite. Check the mane, tail, and lower legs: black points = bay, red or matching = chestnut.' },
     { prompt: 'A bay horse can have a mane that matches the body color.', options: ['True','False'], answer: 'False', correct: 'Correct. Bay horses always have black manes. If the mane matches the red-brown body, the horse is chestnut, not bay.', incorrect: 'Not quite. Bay horses always have a black mane. A matching mane means the horse is chestnut.' },
     // Comparisons
     { prompt: 'Which base coat color has ONLY red pigment and NO black points anywhere?', options: ['Bay','Black','Chestnut','Dark Bay'], answer: 'Chestnut', correct: 'Correct. Chestnut horses express only phaeomelanin — no eumelanin means no black points anywhere.', incorrect: 'Not quite. The color with red pigment only and no black points is chestnut.' },
     { prompt: 'A horse looks almost black but has warm brown tones visible at the muzzle and flanks. What is the most likely base color?', options: ['Liver chestnut','True black','Dark bay','Sorrel'], answer: 'Dark bay', correct: 'Correct. Warm brown tones at the flanks or muzzle indicate dark bay, not true black.', incorrect: 'Not quite. Warm tones at the flanks and muzzle rule out true black — the answer is dark bay.' },
-    { prompt: 'Both bay and chestnut can have red-brown bodies.', options: ['True','False'], answer: 'True', correct: 'Correct. Both bay and chestnut can have red-brown bodies. The difference is the mane: black = bay, matching red = chestnut.', incorrect: 'Not quite. Both colors can have red-brown bodies — the mane is what separates them.' },
+    { prompt: 'Both bay and chestnut can have red-brown bodies.', options: ['True','False'], answer: 'True', correct: 'Correct. Both bay and chestnut can have red-brown bodies. The difference is the points: black mane, tail, and legs = bay; red or matching mane, tail, and legs = chestnut.', incorrect: 'Not quite. Both colors can have red-brown bodies — check the mane, tail, and legs to tell them apart.' },
     { prompt: 'A horse has a dark brown-red body and a mane that is the same dark brown-red — not black. This is most likely:', options: ['Dark bay','Black','Bay','Liver chestnut'], answer: 'Liver chestnut', correct: 'Correct. Liver chestnut has a dark body and a matching dark brown-red mane. A bay would have a black mane.', incorrect: 'Not quite. A matching dark mane rules out bay. A very dark chestnut with a matching mane is liver chestnut.' },
     { prompt: 'The three base coat colors in horses are chestnut, bay, and:', options: ['Palomino','Gray','Black','Roan'], answer: 'Black', correct: 'Correct. The three base coat colors are chestnut, bay, and black. All other colors are modifications of these three.', incorrect: 'Not quite. The three base colors are chestnut, bay, and black.' },
     { prompt: 'Which of these is NOT one of the three base coat colors?', options: ['Chestnut','Palomino','Bay','Black'], answer: 'Palomino', correct: 'Correct. Palomino is a dilute color — a chestnut modified by the cream gene. It is not a base coat color.', incorrect: 'Not quite. Palomino is a modified color, not a base color. The three bases are chestnut, bay, and black.' },
     { prompt: 'Which clue best helps you separate black from very dark bay?', options: ['The horse\'s height','The color of the hooves','Warm red or brown tones at the flanks and muzzle','The length of the tail'], answer: 'Warm red or brown tones at the flanks and muzzle', correct: 'Correct. Warm tones at the flanks or muzzle mean dark bay. No warm tones anywhere means black.', incorrect: 'Not quite. Check the flanks and muzzle for warm tones. Present = dark bay. Absent = black.' },
-    { prompt: 'Why does base coat color matter for horse records?', options: ['It determines how fast a horse can run','It is used for permanent identification on papers, health records, and registrations','It shows the horse\'s bloodline only','It is required only for show horses'], answer: 'It is used for permanent identification on papers, health records, and registrations', correct: 'Correct. Coat color appears on registration papers, health certificates, and is used for identification.', incorrect: 'Not quite. Coat color is used for permanent identification across registration papers and health records.' },
+    { prompt: 'Why is learning to identify coat color accurately important?', options: ['It determines how fast a horse can run','Coat color is recorded on registration papers, health certificates, and is used for identification','It shows the horse\'s bloodline only','It is required only for show horses'], answer: 'Coat color is recorded on registration papers, health certificates, and is used for identification', correct: 'Correct. Horse coat color — including base color, dilutes, and patterns — appears on registration papers and health records and is used for identification.', incorrect: 'Not quite. Coat color in general is recorded on registration papers and health records and used for identification.' },
     { prompt: 'All horse coat colors trace back to chestnut, black, and bay as the three base colors.', options: ['True','False'], answer: 'True', correct: 'Correct. Every coat color in horses — from gray to roan to dun — is a modification of one of the three base coat colors.', incorrect: 'Not quite. Every horse coat color, including gray and roan, is a modification of one of the three base colors.' }
   ];
 
@@ -148,10 +152,14 @@
     const active = shuffle(questionBank).slice(0, QUESTION_COUNT).map(q => ({...q, options: shuffle(q.options)}));
     quizBody.innerHTML = active.map((q, i) => {
       const opts = q.options.map(o => `<button type="button" class="q-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');
-      return `<div class="q-block" data-correct="${esc(q.answer)}">
+      const image = q.image ? `<img src="${esc(q.image)}" alt="Horse coat color to identify" class="q-image">` : '';
+      return `<div class="q-block${q.image ? ' has-image' : ''}" data-correct="${esc(q.answer)}">
         <div class="q-number">Question ${i+1} of ${QUESTION_COUNT}</div>
         <div class="q-text">${esc(q.prompt)}</div>
-        <div class="q-options">${opts}</div>
+        <div class="q-answer-row">
+          <div class="q-options">${opts}</div>
+          ${image}
+        </div>
         <div class="q-feedback correct">${esc(q.correct)}</div>
         <div class="q-feedback incorrect">${esc(q.incorrect)}</div>
       </div>`;
