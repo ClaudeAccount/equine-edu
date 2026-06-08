@@ -32,31 +32,44 @@
     const prevMod  = modules.find(m => m.num === modNum - 1) || null;
     const nextMod  = modules.find(m => m.num === modNum + 1) || null;
 
-    buildBreadcrumb(config, current);
-    buildSidebar(config, modules, modNum);
-    buildSidebarNav(prevMod, nextMod, config);
+    const courseBase = getCourseBasePath();
+    buildBreadcrumb(config, current, courseBase);
+    buildSidebar(config, modules, modNum, courseBase);
+    buildSidebarNav(prevMod, nextMod, config, courseBase);
     buildNotes();
-    patchLessonNav(prevMod, nextMod, config);
+    patchLessonNav(prevMod, nextMod, config, courseBase);
+  }
+
+  function getCourseBasePath() {
+    const scripts = Array.from(document.scripts || []);
+    const configScript = scripts.find(script => /(?:^|\/)course-config\.js(?:\?.*)?$/.test(script.getAttribute('src') || ''));
+    if (!configScript) return '';
+    return (configScript.getAttribute('src') || '').replace(/course-config\.js(?:\?.*)?$/, '');
+  }
+
+  function courseUrl(file, courseBase) {
+    if (!file || /^(?:[a-z]+:|#|\/)/i.test(file)) return file;
+    return (courseBase || '') + file;
   }
 
   /* ---------- BREADCRUMB ---------- */
-  function buildBreadcrumb(config, current) {
+  function buildBreadcrumb(config, current, courseBase) {
     const el = document.getElementById('course-breadcrumb');
     if (!el) return;
     el.outerHTML = `
 <div class="breadcrumb">
   <a href="${config.homeUrl}">Home</a>
-  <span>›</span>
+  <span>&gt;</span>
   <a href="${config.allCoursesUrl}">All Courses</a>
-  <span>›</span>
-  <a href="${config.indexUrl}">${config.title}</a>
-  <span>›</span>
-  <span class="breadcrumb-current">Module ${current.num} — ${current.title}</span>
+  <span>&gt;</span>
+  <a href="${courseUrl(config.indexUrl, courseBase)}">${config.title}</a>
+  <span>&gt;</span>
+  <span class="breadcrumb-current">Module ${current.num} - ${current.title}</span>
 </div>`.trim();
   }
 
   /* ---------- SIDEBAR ---------- */
-  function buildSidebar(config, modules, currentNum) {
+  function buildSidebar(config, modules, currentNum, courseBase) {
     const el = document.getElementById('course-sidebar');
     if (!el) return;
 
@@ -64,7 +77,7 @@
       const isActive = m.num === currentNum ? ' active' : '';
       return `
     <li>
-      <a href="${m.file}" class="sidebar-module${isActive}">
+      <a href="${courseUrl(m.file, courseBase)}" class="sidebar-module${isActive}">
         <div class="sidebar-num">${m.num}</div>
         <div class="sidebar-module-info">
           <div class="sidebar-module-title">${m.title}</div>
@@ -78,7 +91,7 @@
 <div class="module-sidebar">
   <div class="module-sidebar-header">
     <h3>${config.title}</h3>
-    <a href="${config.indexUrl}">View course →</a>
+    <a href="${courseUrl(config.indexUrl, courseBase)}">View course &rarr;</a>
   </div>
   <ul class="module-sidebar-list">
     ${items}
@@ -110,7 +123,7 @@
   }
 
   /* ---------- SIDEBAR NAV ---------- */
-  function buildSidebarNav(prevMod, nextMod, config) {
+  function buildSidebarNav(prevMod, nextMod, config, courseBase) {
     const el = document.getElementById('course-sidebar-nav');
     if (!el) return;
 
@@ -134,10 +147,10 @@
       return;
     }
 
-    const prevHref  = prevMod ? prevMod.file : config.indexUrl;
-    const prevLabel = prevMod ? '← ' + prevMod.title : '← Back to Course';
-    const nextHref  = nextMod ? nextMod.file : config.indexUrl;
-    const nextLabel = nextMod ? nextMod.title + ' →' : 'Back to Course →';
+    const prevHref  = prevMod ? courseUrl(prevMod.file, courseBase) : courseUrl(config.indexUrl, courseBase);
+    const prevLabel = prevMod ? '<- ' + prevMod.title : '<- Back to Course';
+    const nextHref  = nextMod ? courseUrl(nextMod.file, courseBase) : courseUrl(config.indexUrl, courseBase);
+    const nextLabel = nextMod ? nextMod.title + ' ->' : 'Back to Course ->';
 
     el.outerHTML = `
 <div class="sidebar-module-nav">
@@ -161,42 +174,42 @@
   <h3>Up Next</h3>
   <div class="next-lesson-title">${nextMod.title}</div>
   <div class="next-lesson-desc">${nextMod.desc || ''}</div>
-  <a href="${nextMod.file}" class="btn-next-full">Start Next Module →</a>
+  <a href="${courseUrl(nextMod.file, getCourseBasePath())}" class="btn-next-full">Start Next Module -></a>
 </div>`.trim();
   }
 
   /* ---------- LESSON NAV PREV/NEXT BUTTONS ---------- */
   // Lesson pages still define .lesson-nav in HTML but leave hrefs as '#'
   // This patches them with the real prev/next URLs
-  function patchLessonNav(prevMod, nextMod, config) {
+  function patchLessonNav(prevMod, nextMod, config, courseBase) {
     const prevBtn = document.querySelector('.lesson-nav .nav-btn.previous');
     const nextBtn = document.querySelector('.lesson-nav .nav-btn.next');
     const backBtn = document.querySelector('.lesson-nav .back-to-course');
 
     if (prevBtn) {
       if (prevMod) {
-        prevBtn.href = prevMod.file;
+        prevBtn.href = courseUrl(prevMod.file, courseBase);
         prevBtn.classList.remove('disabled');
-        prevBtn.textContent = '← ' + prevMod.title;
+        prevBtn.textContent = '<- ' + prevMod.title;
       } else {
-        // First module — link back to course landing instead of disabling
-        prevBtn.href = config.indexUrl;
+        // First module links back to course landing instead of disabling.
+        prevBtn.href = courseUrl(config.indexUrl, courseBase);
         prevBtn.classList.remove('disabled');
-        prevBtn.textContent = '← Back to Course';
+        prevBtn.textContent = '<- Back to Course';
       }
     }
 
     if (nextBtn) {
       if (nextMod) {
-        nextBtn.href = nextMod.file;
+        nextBtn.href = courseUrl(nextMod.file, courseBase);
       } else {
-        nextBtn.href = config.indexUrl;
-        nextBtn.textContent = 'Back to Course →';
+        nextBtn.href = courseUrl(config.indexUrl, courseBase);
+        nextBtn.textContent = 'Back to Course ->';
       }
     }
 
     if (backBtn) {
-      backBtn.href = config.indexUrl;
+      backBtn.href = courseUrl(config.indexUrl, courseBase);
     }
   }
 

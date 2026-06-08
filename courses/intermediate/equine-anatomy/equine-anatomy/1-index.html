@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>External Equine Anatomy &mdash; Equine Edu</title>
+<meta name="description" content="Develop your eye for horses. External Equine Anatomy covers every visible and palpable structure on the horse's body — organized by region, grounded in real horsemanship application.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.course-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 5%;
+}
+body { background: var(--page-bg); }
+.course-hero { background: var(--navy); }
+.course-hero-text .course-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+.course-hero-text h1 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); color: var(--white); line-height: 1.15; margin-bottom: 1rem; }
+.course-hero-text h1 span { color: var(--gold); }
+.course-hero-desc { font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 1.75rem; max-width: 520px; }
+.course-meta-row { display: flex; flex-wrap: nowrap; gap: 0; margin-bottom: 1.75rem; }
+.meta-item { font-size: 0.74rem; font-weight: 700; color: var(--gold); padding: 0 0.75rem; border-right: 1px solid rgba(201,168,76,0.55); letter-spacing: 0.01em; white-space: nowrap; }
+.meta-item:first-child { padding-left: 0; }
+.meta-item:last-child { border-right: 0; padding-right: 0; }
+.hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+.hero-actions .btn-outline { color: var(--navy) !important; background: var(--white); border-color: var(--white) !important; }
+.course-hero-art { display: flex; justify-content: center; align-items: center; }
+.hero-anatomy-graphic { width: min(100%, 340px); display: flex; align-items: center; justify-content: center; }
+.outcomes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.outcome-item { display: flex; gap: 0.6rem; font-size: 0.88rem; color: var(--text-mid); line-height: 1.5; }
+.outcome-check { color: var(--gold); font-weight: 800; flex-shrink: 0; margin-top: 0.05rem; }
+.module-list { margin-top: 2rem; display: grid; gap: 0.6rem; }
+.module-item { display: grid; grid-template-columns: 40px 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.25rem; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: box-shadow 0.18s, border-color 0.18s; }
+.module-item:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(13,27,62,0.08); }
+.module-num { width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: var(--gold); font-family: var(--font-display); font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.module-title { font-weight: 700; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.2rem; }
+.module-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.5; }
+.module-type { font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); white-space: nowrap; }
+.track-features, .alignment-list { list-style: none; display: grid; gap: 0.75rem; margin-top: 1.25rem; }
+.track-features li, .alignment-list li { display: flex; gap: 0.75rem; color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.6; }
+.learn-section, .curriculum-section, .cta-section { background: var(--page-bg); }
+.cta-section { border-top: 0; }
+.prereq-note { display: flex; gap: 0.75rem; align-items: flex-start; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: var(--radius); padding: 1rem 1.25rem; margin-top: 1.5rem; font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+.prereq-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+@media (max-width: 900px) { .course-hero-inner { grid-template-columns: 1fr; gap: 2rem; } .course-hero-art { display: none; } .outcomes-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .course-meta-row { flex-wrap: wrap; row-gap: 0.6rem; } .meta-item { padding: 0 0.7rem; } .meta-item:nth-child(odd) { padding-left: 0; } }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<section class="course-hero">
+  <div class="course-hero-inner">
+    <div class="course-hero-text">
+      <div class="course-tag"><span>Intermediate</span></div>
+      <h1>External Equine <span>Anatomy</span></h1>
+      <p class="course-hero-desc">Learn to read horses from the outside. This course covers every visible and palpable structure on the horse's body — what each part looks like, how to assess it, and what it tells you about soundness, conformation, and care. Organized into four regions: head, neck and shoulder, body, and legs.</p>
+      <div class="course-meta-row">
+        <div class="meta-item">Intermediate Level</div>
+        <div class="meta-item">Region by Region</div>
+        <div class="meta-item">Visual Assessment</div>
+        <div class="meta-item">Builds on Foundation</div>
+      </div>
+      <div class="hero-actions">
+        <a href="2-why-anatomy-matters.html#top" class="btn-primary">Start Course</a>
+        <a href="#curriculum" class="btn-outline">See All Modules</a>
+      </div>
+    </div>
+    <div class="course-hero-art">
+      <div class="hero-anatomy-graphic">
+        <img src="../../../beginner/equine-anatomy/parts-of-the-horse/images/intro-anatomy-hero-image-index.png" alt="External Equine Anatomy — horse body illustration" style="width:100%;height:100%;object-fit:contain;display:block;opacity:0.92;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="curriculum-section" id="curriculum">
+  <div class="curriculum-inner">
+    <p class="section-label">Course Curriculum</p>
+    <h2 class="section-title">Structured Learning Through Guided Modules</h2>
+    <p class="section-sub">Each module builds on the last — from understanding why external observation matters, to studying every surface structure in depth, to reviewing and testing what you have learned.</p>
+    <div class="module-list" id="course-module-list"></div>
+    <div class="prereq-note">
+      <span class="prereq-icon"></span>
+      <span><strong>Recommended:</strong> Complete <a href="../../../beginner/equine-anatomy/parts-of-the-horse/1-index.html" style="color:var(--navy);font-weight:700;">Intro to Parts of the Horse</a> before starting this course. That foundation course introduces the major regions and landmarks this course builds on.</span>
+    </div>
+  </div>
+</section>
+
+<section class="learn-section">
+  <div class="learn-inner">
+    <div>
+      <p class="section-label">Course Focus</p>
+      <h2 class="section-title">What You Can See and Feel</h2>
+      <p class="section-sub">This course focuses entirely on the exterior of the horse — the structures you can observe with your eyes and assess with your hands. For every part, you will learn what it looks like, how to evaluate it, what good conformation or condition looks like, and why it matters for daily horse care and horsemanship.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Identify and assess every major external landmark from poll to hoof</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Evaluate conformation features like shoulder angle, pastern angle, and topline</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Use palpation to assess tendons, joints, and bony landmarks</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Recognize normal vs. concerning findings on a visual horse exam</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Understand what each external region tells you about soundness and health</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Communicate clearly about external structures with vets, farriers, and trainers</div>
+    </div>
+  </div>
+</section>
+
+<section class="track-section">
+  <div class="track-inner">
+    <div class="fade-in">
+      <h2 class="section-title" style="color:var(--white);">Develop Your Eye for Horses</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.65);">Experienced horse people can walk up to a horse and immediately begin reading it — noticing musculature, joint filling, foot quality, topline, and more. That skill starts with knowing what to look for. This course gives you a systematic foundation for exactly that kind of observation.</p>
+      <ul class="track-features">
+        <li><span class="track-dot"></span>Every region covered from a practical observation standpoint</li>
+        <li><span class="track-dot"></span>Conformation assessment built into every section</li>
+        <li><span class="track-dot"></span>Flip cards and quiz for active review and retention</li>
+        <li><span class="track-dot"></span>Accurate, accessible content grounded in real horsemanship</li>
+      </ul>
+    </div>
+    <div class="fade-in">
+      <h4 style="font-family:var(--font-display);color:var(--gold);font-size:1.1rem;margin-bottom:1rem;">Who This Course is For</h4>
+      <ul class="alignment-list">
+        <li><span class="track-dot"></span>Learners who have completed Intro to Parts of the Horse</li>
+        <li><span class="track-dot"></span>Students preparing for Horse Bowl or similar knowledge competitions</li>
+        <li><span class="track-dot"></span>Riders and handlers developing their eye for conformation and soundness</li>
+        <li><span class="track-dot"></span>Anyone who wants to do a more informed visual and hands-on assessment of a horse</li>
+        <li><span class="track-dot"></span>Instructors building student vocabulary and observation skills beyond basic landmarks</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner fade-in">
+    <p class="section-label" style="text-align:center;display:block;">Ready to Look Closer?</p>
+    <h2 class="section-title">Start Building a Real Eye for the Horse</h2>
+    <p class="section-sub">Organized by region. Grounded in observation. Connected to the care and horsemanship decisions you make at the barn every day.</p>
+    <a href="2-why-anatomy-matters.html#top" class="btn-primary">Start the Course</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script>
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Start Course', url: '2-why-anatomy-matters.html' }
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

@@ -7,7 +7,7 @@
 
 window.COURSE_CONFIG = {
   id:            'parts-of-the-horse',
-  title:         'Intro to Parts of the Horse',
+  title:         'Intro to Equine Anatomy',
   indexUrl:      '1-index.html',
   allCoursesUrl: '../../../index.html',
   homeUrl:       '../../../../index.html',

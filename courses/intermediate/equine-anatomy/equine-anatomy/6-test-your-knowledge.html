@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; External Equine Anatomy &mdash; Equine Edu</title>
+<meta name="description" content="Final quiz for External Equine Anatomy. 15 randomized questions covering all four regions — head, neck and shoulder, body, and legs — from an external assessment standpoint.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.quiz-layout { max-width: 1400px; margin: 0 auto; padding: 2.5rem var(--page-pad) 5rem; display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 5rem; align-items: start; }
+.quiz-main { min-width: 0; }
+.quiz-header { margin-bottom: 2rem; }
+.quiz-header h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--navy); margin-bottom: 0.5rem; }
+.quiz-header p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+.q-block { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: 0 4px 18px rgba(120,90,40,0.22), 0 1px 4px rgba(13,27,62,0.11); transition: border-color 0.2s; }
+.q-block.correct { border-color: #2d7a4f; background: #f0faf5; }
+.q-block.incorrect { border-color: #c0392b; background: #fdf2f2; }
+.q-number { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.q-text { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); line-height: 1.5; margin-bottom: 1rem; }
+.q-options { display: grid; gap: 0.5rem; }
+.q-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 0.88rem; color: var(--text-dark); transition: all 0.15s; background: var(--white); text-align: left; width: 100%; }
+.q-option:hover:not(:disabled) { border-color: var(--navy); background: var(--off-white); }
+.q-option.selected { border-color: var(--navy); background: var(--navy); color: var(--white); }
+.q-option.correct-ans { border-color: #2d7a4f; background: #e8f7ef; color: #1a5c38; }
+.q-option.wrong-ans { border-color: #c0392b; background: #fdf2f2; color: #8b1a1a; }
+.q-option:disabled { cursor: default; }
+.q-feedback { margin-top: 0.85rem; font-size: 0.83rem; line-height: 1.6; padding: 0.7rem 1rem; border-radius: var(--radius); display: none; }
+.q-feedback.show { display: block; }
+.q-feedback.correct { background: #e8f7ef; color: #1a5c38; border-left: 3px solid #2d7a4f; }
+.q-feedback.incorrect { background: #fdf2f2; color: #8b1a1a; border-left: 3px solid #c0392b; }
+.quiz-score-panel { background: var(--navy); border-radius: var(--radius-lg); padding: 2rem; text-align: center; display: none; margin-top: 1.5rem; }
+.quiz-score-panel.show { display: block; }
+.score-number { font-family: var(--font-display); font-size: 3rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+.score-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+.score-message { color: rgba(255,255,255,0.82); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.5rem; }
+.btn-retake { background: var(--gold); color: var(--navy); border: none; padding: 0.7rem 1.5rem; border-radius: var(--radius); font-weight: 700; font-size: 0.88rem; cursor: pointer; }
+.quiz-submit-row { margin-top: 1.5rem; }
+.btn-submit { background: var(--navy); color: var(--white); border: none; padding: 0.85rem 2rem; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: opacity 0.15s; }
+.btn-submit:hover { opacity: 0.88; }
+@media (max-width: 1050px) { .quiz-layout { grid-template-columns: 1fr; gap: 2rem; } .lesson-right { position: static; } }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">External Equine Anatomy</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    </div>
+  </div>
+</section>
+
+<div class="quiz-layout">
+  <div class="quiz-main">
+    <div class="quiz-header">
+      <h2>External Equine Anatomy Final Quiz</h2>
+      <p>This quiz covers all four regions of the horse's exterior — head, neck and shoulder, body, and legs. Each attempt draws 15 questions from a larger bank, so every retake gives you a different set. Questions cover external landmarks, visual assessment, palpation, and conformation.</p>
+    </div>
+
+    <form id="quiz-form">
+      <div id="quiz-questions"></div>
+      <div class="quiz-submit-row">
+        <button type="button" class="btn-submit" id="quiz-submit">Submit Quiz</button>
+      </div>
+    </form>
+
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake">Try Again</button>
+    </div>
+  </div>
+
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+(function() {
+  const QUESTION_COUNT = 15;
+  const questionBank = [
+
+    // ---- HEAD ----
+    {
+      prompt: 'The poll is located where on the horse?',
+      options: ['The bony ridge running from below the eye toward the jaw','The highest point of the skull, between the ears','The junction of the head and lower neck','The hollow above each eye socket'],
+      answer: 'The highest point of the skull, between the ears',
+      correct: 'Correct. The poll is the highest point of the skull, between the ears. The first cervical vertebra (atlas) sits just beneath this point.',
+      incorrect: 'Not quite. The poll is the highest point of the skull, located between the base of the ears.'
+    },
+    {
+      prompt: 'The supraorbital fossa becomes more visible and sunken when a horse:',
+      options: ['Gains muscle through correct training','Is highly fit and in peak athletic condition','Ages or loses significant body weight','Has been recently clipped'],
+      answer: 'Ages or loses significant body weight',
+      correct: 'Correct. The supraorbital fossa — the hollow above the eye socket — fills in when a horse is well-nourished and sunken when the horse is underweight or aging.',
+      incorrect: 'Not quite. The supraorbital fossa hollows as a horse ages or loses body condition — it is an informal visual indicator of age and weight.'
+    },
+    {
+      prompt: 'The facial crest on a horse is best described as:',
+      options: ['The top ridge of the neck from poll to withers','A bony ridge running from below the eye toward the lower jaw','The hollow above the eye socket','The groove under the chin where the curb chain sits'],
+      answer: 'A bony ridge running from below the eye toward the lower jaw',
+      correct: 'Correct. The facial crest is a visible and palpable bony ridge on the side of the face. It is a key reference landmark for describing locations of markings, swellings, or wounds.',
+      incorrect: 'Not quite. The facial crest is a bony horizontal ridge on the side of the face, running from below the eye toward the lower jaw.'
+    },
+    {
+      prompt: 'Muzzle whiskers (vibrissae) on a horse:',
+      options: ['Are purely cosmetic and should be clipped before shows','Are tactile sensors that help the horse judge distance and texture near the ground','Indicate the horse is older or past peak condition','Are unique to draft breeds only'],
+      answer: 'Are tactile sensors that help the horse judge distance and texture near the ground',
+      correct: 'Correct. Vibrissae are sensory structures used for tactile awareness near the ground. Many equestrian organizations now prohibit clipping them for welfare reasons.',
+      incorrect: 'Not quite. Vibrissae are sensory whiskers, not cosmetic features. They should not be clipped — they serve an important tactile function.'
+    },
+    {
+      prompt: 'When fitting a bridle, the throatlatch strap should allow approximately:',
+      options: ['No clearance — it should fit snugly against the skin','One finger of clearance','Three to four fingers of clearance','Six fingers of clearance'],
+      answer: 'Three to four fingers of clearance',
+      correct: 'Correct. The throatlatch strap should allow three to four fingers of clearance on the side. Too tight restricts breathing and flexion; too loose is ineffective.',
+      incorrect: 'Not quite. The throatlatch strap requires three to four fingers of clearance — enough to prevent restriction while still keeping the bridle secure.'
+    },
+    {
+      prompt: 'A consistently clamped tail that is held tightly against the hindquarters often signals:',
+      options: ['The horse is very cold','Normal resting behavior in older horses','Tension, back pain, or discomfort somewhere in the body','The horse needs its tail trimmed'],
+      answer: 'Tension, back pain, or discomfort somewhere in the body',
+      correct: 'Correct. Tail carriage is one of the first visible indicators of discomfort. A habitually clamped tail — especially if it is a change — warrants investigation.',
+      incorrect: 'Not quite. A clamped tail is a behavioral sign. When it persists or is a change from normal, it often indicates tension, pain, or discomfort.'
+    },
+    {
+      prompt: 'What does the chin groove (curb groove) provide for in bitting?',
+      options: ['A resting place for the noseband','The landing zone for the curb chain on a shank or Pelham bit','A guide point for measuring jaw width','A reference for checking wolf teeth location'],
+      answer: 'The landing zone for the curb chain on a shank or Pelham bit',
+      correct: 'Correct. The chin groove is the groove on the underside of the chin between the jawbone and lower lip. A curb chain rests here and applies leverage pressure when rein contact is taken.',
+      incorrect: 'Not quite. The chin groove is where a curb chain sits on a shank bit or Pelham, applying pressure to this sensitive area when rein contact is used.'
+    },
+
+    // ---- NECK & SHOULDER ----
+    {
+      prompt: 'Horse height is always measured at the:',
+      options: ['Poll','Top of the back','Withers','Point of hip'],
+      answer: 'Withers',
+      correct: 'Correct. The withers — the highest point of the topline, formed by elongated vertebral processes — is the universal measurement point. Height is expressed in hands (1 hand = 4 inches).',
+      incorrect: 'Not quite. Horse height is always measured at the withers, the highest point of the topline just in front of the back.'
+    },
+    {
+      prompt: 'A "well-laid-back" shoulder means the scapula sits at an angle of approximately:',
+      options: ['75–85 degrees (very upright)','45–55 degrees (oblique)','90 degrees (vertical)','30–35 degrees (extremely laid-back)'],
+      answer: '45–55 degrees (oblique)',
+      correct: 'Correct. A well-laid-back shoulder has a scapula angle of roughly 45–55 degrees. This allows the front leg to swing further forward, producing a longer and smoother stride.',
+      incorrect: 'Not quite. A well-laid-back shoulder is roughly 45–55 degrees — oblique rather than upright — which produces a longer, freer stride.'
+    },
+    {
+      prompt: 'The scapula (shoulder blade) is held to the horse\'s skeleton by:',
+      options: ['A bony ball-and-socket joint','A cartilage disc like in the human shoulder','Muscle alone — with no bony joint','Three ligaments connecting it to the spine'],
+      answer: 'Muscle alone — with no bony joint',
+      correct: 'Correct. The scapula is held entirely by muscle — a synsarcosis. This muscular connection acts as a natural shock absorber and allows a greater range of shoulder movement.',
+      incorrect: 'Not quite. The scapula has no bony joint to the skeleton — it is held in place by muscle only. This allows shock absorption and free movement.'
+    },
+    {
+      prompt: 'The point of shoulder is critical for saddle fit because:',
+      options: ['It is the highest point of the withers and must always be padded','A saddle sitting on or past it restricts the forward swing of the front leg','It must be directly under the center of the saddle for correct balance','It is the attachment point for the cinch or girth'],
+      answer: 'A saddle sitting on or past it restricts the forward swing of the front leg',
+      correct: 'Correct. The point of shoulder is the forward bony protrusion of the shoulder joint. A saddle that encroaches on it physically limits how far the front leg can reach forward with each stride.',
+      incorrect: 'Not quite. The point of shoulder must have clearance from the saddle tree — if the saddle sits on it, the horse\'s front leg cannot reach forward freely.'
+    },
+    {
+      prompt: 'A horse with an "ewe neck" (inverted neck) has:',
+      options: ['Heavy, well-developed muscle along the top of the neck','Heavy muscling on the underside of the neck, weak topline development','A very short, thick neck with a high head carriage','Excessive crest due to metabolic issues'],
+      answer: 'Heavy muscling on the underside of the neck, weak topline development',
+      correct: 'Correct. An ewe neck has an inverted profile — more development on the underside than the top. It typically results from the horse habitually travelling with its head up and out, working the wrong muscles.',
+      incorrect: 'Not quite. A ewe neck is inverted — heavy on the underside, weak on top. It reflects incorrect muscling from habitually working without topline engagement.'
+    },
+    {
+      prompt: 'The jugular groove runs along the side of the neck and marks the location of the:',
+      options: ['Trachea (windpipe)','Carotid artery','Jugular vein','Esophagus'],
+      answer: 'Jugular vein',
+      correct: 'Correct. The jugular vein runs just beneath the skin in the jugular groove on each side of the lower neck. It is the primary vein used for blood draws and IV injections in horses.',
+      incorrect: 'Not quite. The jugular vein runs in the jugular groove — it is the most accessible vein on the horse and a primary site for veterinary procedures.'
+    },
+
+    // ---- BODY ----
+    {
+      prompt: 'A horse described as "short-coupled" means:',
+      options: ['It has a short, thick neck','The distance between the last rib and the point of hip is short','Its cannons are shorter than average','Its pasterns are very upright'],
+      answer: 'The distance between the last rib and the point of hip is short',
+      correct: 'Correct. Short-coupled means a short loin — little distance between the last rib and the point of hip. This is a conformation strength because it reduces the unsupported span of the back.',
+      incorrect: 'Not quite. Short-coupled refers to the loin — a short distance from last rib to point of hip, which means a stronger, more compact back.'
+    },
+    {
+      prompt: 'The point of buttock (tuber ischii) is located:',
+      options: ['At the very top of the croup','At the most rearward bony prominence of the pelvis, visible as the lower hindquarter corners','At the highest point of the hip, level with the point of hip','Just behind the last rib on each side'],
+      answer: 'At the most rearward bony prominence of the pelvis, visible as the lower hindquarter corners',
+      correct: 'Correct. The tuber ischii (point of buttock) is the most rearward pelvic landmark. Together with the point of hip (tuber coxae), these two points frame the hindquarter outline.',
+      incorrect: 'Not quite. The point of buttock (tuber ischii) is the rearmost pelvic landmark, visible as the lower corners of the hindquarters when viewed from the side.'
+    },
+    {
+      prompt: 'What does "well-sprung ribs" mean in conformation evaluation?',
+      options: ['The ribs are very close together, creating a narrow barrel','The ribs curve outward generously, creating a deep, wide barrel','The last rib is very close to the point of hip','The ribs slope backward more than usual'],
+      answer: 'The ribs curve outward generously, creating a deep, wide barrel',
+      correct: 'Correct. Well-sprung ribs means the ribs have good lateral curvature, giving the horse depth and width in the barrel — associated with greater cardiovascular and lung capacity.',
+      incorrect: 'Not quite. Well-sprung ribs means generously curved ribs that create a deep, wide barrel — a positive conformation trait associated with good internal capacity.'
+    },
+    {
+      prompt: 'A horse resting with its flanks visibly heaving and a "double lift" on each exhale most likely has:',
+      options: ['Just returned from a hard workout and is cooling down','Heaves (equine asthma) or another chronic respiratory condition','A digestive issue causing gas','Normal slow-wave breathing during sleep'],
+      answer: 'Heaves (equine asthma) or another chronic respiratory condition',
+      correct: 'Correct. A double-lift flank movement at rest — where each exhale requires a secondary muscular push — is the hallmark visual sign of heaves (equine asthma/RAO). Veterinary evaluation is warranted.',
+      incorrect: 'Not quite. Double-lift flank heaving at rest is a classic sign of heaves (equine asthma). Flanks should move gently and evenly at rest in a healthy horse.'
+    },
+    {
+      prompt: 'The croup is assessed from which position to evaluate slope and muscling?',
+      options: ['Directly in front of the horse','From the side and from behind','Only from directly overhead','From underneath when the horse is on a lift'],
+      answer: 'From the side and from behind',
+      correct: 'Correct. Croup slope is best seen from the side (to assess angle from sacrum to tailhead) and muscling is evaluated from behind (symmetry and width of hindquarters).',
+      incorrect: 'Not quite. Croup evaluation is done from the side — to see slope — and from behind — to assess muscle symmetry and width.'
+    },
+
+    // ---- LEGS ----
+    {
+      prompt: 'Running your hand down the back of a healthy front cannon should feel:',
+      options: ['Warm, with slight uniform filling across all tendons','Smooth, flat, and cool — with no filling or heat','Slightly rough and bony where the splint bones attach','Soft and spongy from the knee to the fetlock'],
+      answer: 'Smooth, flat, and cool — with no filling or heat',
+      correct: 'Correct. The back of the cannon should feel smooth, flat, and cool. Any heat, filling, or thickening of the tendon profile is a significant finding that should be evaluated.',
+      incorrect: 'Not quite. A healthy leg is cool and smooth down the back of the cannon. Heat or swelling in the tendons is always worth investigating.'
+    },
+    {
+      prompt: 'The horse\'s knee (carpus) is anatomically equivalent to the human:',
+      options: ['Knee','Ankle','Wrist','Elbow'],
+      answer: 'Wrist',
+      correct: 'Correct. The carpus (horse\'s knee) is the wrist equivalent — it contains 7–8 small carpal bones in two rows. The hock, on the hind leg, is the ankle equivalent.',
+      incorrect: 'Not quite. The horse\'s knee is the wrist equivalent. This is a common confusion — the hock is the ankle, and the stifle is the knee equivalent.'
+    },
+    {
+      prompt: 'A "bowed tendon" on the back of the cannon is a thickening of the:',
+      options: ['Suspensory ligament','Deep digital flexor tendon (DDFT)','Superficial digital flexor tendon (SDFT)','Cannon bone itself'],
+      answer: 'Superficial digital flexor tendon (SDFT)',
+      correct: 'Correct. A bowed tendon is thickening and partial tearing of the SDFT — the more superficial tendon on the back of the cannon. It is visible as a bowing bulge when compared to the opposite leg.',
+      incorrect: 'Not quite. The SDFT (superficial digital flexor tendon) is the one that develops a "bow." It is the outer tendon on the back of the cannon, just under the skin.'
+    },
+    {
+      prompt: 'Asymmetrical joint filling — one fetlock filling more than the other — is significant because:',
+      options: ['It is always caused by conformation faults and cannot be prevented','It is often the earliest detectable external sign of developing lameness','It only occurs after visible lameness has already appeared','It indicates the chestnuts need trimming on that leg'],
+      answer: 'It is often the earliest detectable external sign of developing lameness',
+      correct: 'Correct. Symmetry is normal. When one joint fills more than its counterpart, it usually indicates localized inflammation — often detectable before the horse shows obvious lameness.',
+      incorrect: 'Not quite. Asymmetrical joint filling between left and right is often the first external sign something is wrong — frequently before lameness is visible.'
+    },
+    {
+      prompt: 'What does the frog of the hoof do?',
+      options: ['Produces the outer hoof wall from the coronary band downward','Acts as a shock absorber and helps pump blood back up the leg','Connects the deep digital flexor tendon to the coffin bone','Protects the coronary band from ground contact'],
+      answer: 'Acts as a shock absorber and helps pump blood back up the leg',
+      correct: 'Correct. The frog compresses under weight to absorb impact and push blood up the digital circulation. A shrunken, atrophied frog means reduced shock absorption and circulation support.',
+      incorrect: 'Not quite. The frog absorbs shock at each stride AND acts as a circulatory pump — pushing blood back up the leg through the digital vessels.'
+    },
+    {
+      prompt: 'The coronary band is important because:',
+      options: ['It connects the hoof wall to the pastern bone internally','It continuously produces the entire hoof wall from the top down over 9–12 months','It is the primary weight-bearing surface on the bottom of the foot','It regulates moisture balance in the outer hoof wall'],
+      answer: 'It continuously produces the entire hoof wall from the top down over 9–12 months',
+      correct: 'Correct. The coronary band generates new hoof wall from the top down. The entire wall is replaced in roughly 9–12 months. Any injury here creates a permanent groove or notch that grows down over time.',
+      incorrect: 'Not quite. The coronary band produces all of the hoof wall — a complete replacement cycle takes 9–12 months. Injuries to it leave permanent tracks in the wall.'
+    },
+    {
+      prompt: '"Clean hocks" in a soundness evaluation means:',
+      options: ['The hocks have been recently washed and are free of debris','No visible swelling, bony growth, or fluid accumulation — the hocks appear smooth and symmetrical','The horse has never had a veterinary injection in the hocks','The hock joints are very small and tightly constructed'],
+      answer: 'No visible swelling, bony growth, or fluid accumulation — the hocks appear smooth and symmetrical',
+      correct: 'Correct. Clean hocks means no visible bog spavin (front fluid), bone spavin (inside bony growth), or capped hock (back swelling). It is a positive finding in any soundness evaluation.',
+      incorrect: 'Not quite. "Clean hocks" is a soundness term meaning no visible abnormality — no fluid, bony growth, or swelling on or around either hock joint.'
+    },
+    {
+      prompt: 'A capped hock is a soft swelling over the point of hock caused by:',
+      options: ['Arthritis of the lower hock joints','Fluid in the main hock joint capsule','Repeated trauma such as kicking walls or lying on hard bedding','Damage to the coronary band of the hind hoof'],
+      answer: 'Repeated trauma such as kicking walls or lying on hard bedding',
+      correct: 'Correct. A capped hock develops from repeated impact at the point of hock — from kicking, lying on hard/thin bedding, or trailer scrambling. The underlying trauma cause should be addressed.',
+      incorrect: 'Not quite. A capped hock is a soft swelling at the point of hock caused by repeated trauma — most often kicking stall walls or lying on insufficient bedding.'
+    },
+    {
+      prompt: 'Front chestnuts are located above the knee. Hind chestnuts are located:',
+      options: ['Above the hock, on the outside','Below the hock, on the inside','At the back of the hind fetlock, hidden in feathering','On the front of the hind cannon'],
+      answer: 'Below the hock, on the inside',
+      correct: 'Correct. Hind chestnuts are on the inside of the hind leg, below the hock — the opposite position from front chestnuts, which are above and inside the knee.',
+      incorrect: 'Not quite. Hind chestnuts are below the hock on the inside of the leg. Front chestnuts are above the knee on the inside of the leg.'
+    },
+    {
+      prompt: 'An ideal front pastern angle is approximately:',
+      options: ['25–35 degrees (very low and sloping)','45–55 degrees from horizontal, roughly matching shoulder angle','65–75 degrees (very upright)','90 degrees (perpendicular to the ground)'],
+      answer: '45–55 degrees from horizontal, roughly matching shoulder angle',
+      correct: 'Correct. An ideal front pastern angle is 45–55 degrees, roughly matching the shoulder angle. The hoof-pastern axis should be straight and continuous when viewed from the side.',
+      incorrect: 'Not quite. The ideal front pastern is 45–55 degrees from horizontal, aligning with the shoulder angle and creating a straight, continuous hoof-pastern axis.'
+    },
+    {
+      prompt: 'The stifle is equivalent to which human joint?',
+      options: ['Ankle','Wrist','Knee','Hip'],
+      answer: 'Knee',
+      correct: 'Correct. The stifle — containing the patella (kneecap) — is the knee equivalent. It is the largest joint in the horse\'s body, located at the top of the gaskin on the hind leg.',
+      incorrect: 'Not quite. The stifle is the knee equivalent. It is the only equine joint with a patella (kneecap) and is the largest joint on the horse.'
+    },
+    {
+      prompt: 'Front hooves are rounder and wider than hind hooves because:',
+      options: ['Front feet grow faster and spread outward with age','Front hooves are designed to absorb landing concussion; hind hooves are shaped for push-off propulsion','Hind feet naturally develop more hoof wall thickness','Front feet have larger frogs that push the walls apart'],
+      answer: 'Front hooves are designed to absorb landing concussion; hind hooves are shaped for push-off propulsion',
+      correct: 'Correct. The round, wide front hoof absorbs the majority of landing impact (60–65% of concussion is taken by the front legs). The more upright, oval hind hoof is shaped for pushing off at each stride.',
+      incorrect: 'Not quite. Front hooves are rounder for shock absorption; hind hooves are more oval and upright for propulsion. This reflects the different mechanical roles of front and hind legs.'
+    }
+
+  ];
+
+  const form        = document.getElementById('quiz-form');
+  const quizBody    = document.getElementById('quiz-questions');
+  const submit      = document.getElementById('quiz-submit');
+  const scorePanel  = document.getElementById('score-panel');
+  const scoreDisplay= document.getElementById('score-display');
+  const scoreMessage= document.getElementById('score-message');
+  const retake      = document.getElementById('btn-retake');
+  let submitted = false;
+
+  function esc(text) {
+    return String(text || '').replace(/[&<>"']/g, function(ch) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
+    });
+  }
+
+  function shuffle(items) {
+    return items.map(function(value) { return {value: value, sort: Math.random()}; })
+      .sort(function(a,b) { return a.sort - b.sort; })
+      .map(function(item) { return item.value; });
+  }
+
+  function renderQuiz() {
+    submitted = false;
+    var active = shuffle(questionBank).slice(0, QUESTION_COUNT).map(function(q) {
+      return Object.assign({}, q, { options: shuffle(q.options) });
+    });
+    quizBody.innerHTML = active.map(function(q, i) {
+      var opts = q.options.map(function(o) {
+        return '<button type="button" class="q-option" data-val="' + esc(o) + '">' + esc(o) + '</button>';
+      }).join('');
+      return '<div class="q-block" data-correct="' + esc(q.answer) + '">' +
+        '<div class="q-number">Question ' + (i+1) + ' of ' + QUESTION_COUNT + '</div>' +
+        '<div class="q-text">' + esc(q.prompt) + '</div>' +
+        '<div class="q-options">' + opts + '</div>' +
+        '<div class="q-feedback correct">' + esc(q.correct) + '</div>' +
+        '<div class="q-feedback incorrect">' + esc(q.incorrect) + '</div>' +
+      '</div>';
+    }).join('');
+    scorePanel.classList.remove('show');
+    submit.disabled = false;
+    bindOptions();
+  }
+
+  function bindOptions() {
+    quizBody.querySelectorAll('.q-option').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (submitted) return;
+        var qBlock = btn.closest('.q-block');
+        qBlock.querySelectorAll('.q-option').forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+      });
+    });
+  }
+
+  submit.addEventListener('click', function() {
+    if (submitted) return;
+    submitted = true;
+    var score = 0;
+    quizBody.querySelectorAll('.q-block').forEach(function(qBlock) {
+      var correct  = qBlock.dataset.correct;
+      var selected = qBlock.querySelector('.q-option.selected');
+      var fbRight  = qBlock.querySelector('.q-feedback.correct');
+      var fbWrong  = qBlock.querySelector('.q-feedback.incorrect');
+      qBlock.querySelectorAll('.q-option').forEach(function(btn) {
+        btn.disabled = true;
+        if (btn.dataset.val === correct) btn.classList.add('correct-ans');
+      });
+      if (selected && selected.dataset.val === correct) {
+        score++;
+        selected.classList.add('correct-ans');
+        fbRight.classList.add('show');
+        qBlock.classList.add('correct');
+      } else {
+        if (selected) selected.classList.add('wrong-ans');
+        fbWrong.classList.add('show');
+        qBlock.classList.add('incorrect');
+      }
+    });
+    var pct = score / QUESTION_COUNT;
+    scoreDisplay.textContent = score + '/' + QUESTION_COUNT;
+    scoreMessage.textContent =
+      pct === 1   ? 'Perfect score. You have a thorough command of external equine anatomy. Excellent work.' :
+      pct >= 0.8  ? 'Strong result. You have a solid grasp of the material with just a few gaps to revisit.' :
+      pct >= 0.6  ? 'Good effort. Review the regions where you missed questions and try again.' :
+                    'Keep working. Go back through the lesson and Viewing Room, then return for another attempt.';
+    scorePanel.classList.add('show');
+    submit.disabled = true;
+  });
+
+  retake.addEventListener('click', function() {
+    renderQuiz();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  renderQuiz();
+})();
+</script>
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to External Equine Anatomy', url: '1-index.html' },
+    navExtras:  [
+      { label: 'The Viewing Room', url: '4-viewing-room.html' },
+      { label: 'External Structures', url: '3-equine-anatomy.html' }
+    ]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.equineAnatomy.quiz','true')}catch(e){}</script>
+</body>
+</html>

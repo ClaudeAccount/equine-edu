@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="../../../../../assets/css/course.css">
 <style>
 
-/* â”€â”€ Intro block â”€â”€ */
+/* -- Intro block -- */
 .compare-intro {
   background: var(--off-white);
   border: 1px solid var(--border);
@@ -33,7 +33,7 @@
   margin: 0;
 }
 
-/* â”€â”€ Category heading â”€â”€ */
+/* -- Category heading -- */
 .compare-group-label {
   font-size: 0.7rem;
   font-weight: 800;
@@ -44,7 +44,7 @@
 }
 .compare-group-label:first-of-type { margin-top: 0; }
 
-/* â”€â”€ Comparison grid â”€â”€ */
+/* -- Comparison grid -- */
 .compare-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -52,7 +52,7 @@
 }
 @media (max-width: 580px) { .compare-grid { grid-template-columns: 1fr; } }
 
-/* â”€â”€ Single slider card â”€â”€ */
+/* -- Single slider card -- */
 .compare-card {
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -61,7 +61,7 @@
   box-shadow: 0 2px 8px rgba(13,27,62,0.06);
 }
 
-/* â”€â”€ Slider viewport â”€â”€ */
+/* -- Slider viewport -- */
 .slider-viewport {
   position: relative;
   width: 100%;
@@ -73,7 +73,7 @@
   background: var(--off-white);
 }
 
-/* Right image â€” full bleed, behind the clip */
+/* Right image - full bleed, behind the clip */
 .slider-img-right {
   position: absolute;
   inset: 0;
@@ -87,7 +87,7 @@
   background: var(--white);
 }
 
-/* Left image â€” clipped by the divider position */
+/* Left image - clipped by the divider position */
 .slider-img-left-wrap {
   position: absolute;
   inset: 0;
@@ -108,7 +108,7 @@
   background: var(--white);
 }
 
-/* â”€â”€ Divider handle â”€â”€ */
+/* -- Divider handle -- */
 .slider-handle {
   position: absolute;
   top: 0;
@@ -153,7 +153,7 @@
   color: var(--gold);
 }
 
-/* â”€â”€ Labels â”€â”€ */
+/* -- Labels -- */
 .slider-labels {
   position: absolute;
   inset: 0;
@@ -179,7 +179,7 @@
 .slider-label-left  { left: 0.6rem; }
 .slider-label-right { right: 0.6rem; }
 
-/* â”€â”€ Card footer â”€â”€ */
+/* -- Card footer -- */
 .compare-card-footer {
   padding: 0.75rem 1rem;
   border-top: 1px solid var(--border);
@@ -215,7 +215,7 @@
   margin: 0;
 }
 
-/* â”€â”€ Hint â”€â”€ */
+/* -- Hint -- */
 .drag-hint {
   text-align: center;
   font-size: 0.78rem;
@@ -246,32 +246,32 @@
 
       <div class="compare-intro">
         <h2>Why These Pairs?</h2>
-        <p>These are the most commonly confused horse coat colors. Use the sliders to study the differences directly â€” the key details that separate each pair become much clearer when you can slide between them.</p>
+        <p>These are the most commonly confused horse coat colors. Use the sliders to study the differences directly - the key details that separate each pair become much clearer when you can slide between them.</p>
       </div>
 
-      <p class="drag-hint">â† Drag the handle to compare â†’</p>
+      <p class="drag-hint"><- Drag the handle to compare -></p>
 
-      <!-- â”€â”€ RED-BASED COLORS â”€â”€ -->
+      <!-- -- RED-BASED COLORS -- -->
       <div class="compare-group-label">Red-Based Colors</div>
       <div class="compare-grid" id="grid-red"></div>
 
-      <!-- â”€â”€ DARK COLORS â”€â”€ -->
+      <!-- -- DARK COLORS -- -->
       <div class="compare-group-label">Dark Colors</div>
       <div class="compare-grid" id="grid-dark"></div>
 
-      <!-- â”€â”€ GOLDEN COLORS â”€â”€ -->
+      <!-- -- GOLDEN COLORS -- -->
       <div class="compare-group-label">Golden &amp; Lightened</div>
       <div class="compare-grid" id="grid-golden"></div>
 
-      <!-- â”€â”€ GRAY â”€â”€ -->
+      <!-- -- GRAY -- -->
       <div class="compare-group-label">Gray Variations</div>
       <div class="compare-grid" id="grid-gray"></div>
 
-      <!-- â”€â”€ ROAN â”€â”€ -->
+      <!-- -- ROAN -- -->
       <div class="compare-group-label">Roan Colors</div>
       <div class="compare-grid" id="grid-roan"></div>
 
-      <!-- â”€â”€ PATTERNED â”€â”€ -->
+      <!-- -- PATTERNED -- -->
       <div class="compare-group-label">Patterned Coats</div>
       <div class="compare-grid" id="grid-pattern"></div>
 
@@ -306,26 +306,26 @@
 <script src="../../../../../assets/js/course-nav.js"></script>
 
 <script>
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ==============================================================
    COLOR COMPARISONS
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+   ============================================================== */
 
 var COMPARISONS = {
   'grid-red': [
     {
       left:  { name: 'Chestnut',       img: '../colors/chestnut.png' },
       right: { name: 'Sorrel',         img: '../colors/sorrel.png' },
-      tip:   'Sorrel is a lighter, more copper-toned red. Chestnut sits in the middle â€” a warmer, reddish-brown. Both have no black anywhere.'
+      tip:   'Sorrel is a lighter, more copper-toned red. Chestnut sits in the middle - a warmer, reddish-brown. Both have no black anywhere.'
     },
     {
       left:  { name: 'Chestnut',       img: '../colors/chestnut.png' },
       right: { name: 'Liver Chestnut', img: '../colors/liver-chestnut.png' },
-      tip:   'Liver chestnut is the darkest chestnut variant â€” nearly chocolate. The mane and tail stay in the same dark family, never black.'
+      tip:   'Liver chestnut is the darkest chestnut variant - nearly chocolate. The mane and tail stay in the same dark family, never black.'
     },
     {
       left:  { name: 'Chestnut',         img: '../colors/chestnut.png' },
       right: { name: 'Flaxen Chestnut',  img: '../colors/flaxen-chestnut.png' },
-      tip:   'Same reddish body â€” but flaxen chestnut has a distinctly pale, cream, or white mane and tail. No black anywhere on either.'
+      tip:   'Same reddish body - but flaxen chestnut has a distinctly pale, cream, or white mane and tail. No black anywhere on either.'
     },
     {
       left:  { name: 'Sorrel',          img: '../colors/sorrel.png' },
@@ -337,26 +337,26 @@ var COMPARISONS = {
     {
       left:  { name: 'Black', img: '../colors/black.png' },
       right: { name: 'Bay',   img: '../colors/bay.png' },
-      tip:   'Both have black points. Bay has a reddish-brown body â€” black has a solid black body with no brown or reddish tones anywhere.'
+      tip:   'Both have black points. Bay has a reddish-brown body - black has a solid black body with no brown or reddish tones anywhere.'
     },
     {
       left:  { name: 'Bay',            img: '../colors/bay.png' },
       right: { name: 'Liver Chestnut', img: '../colors/liver-chestnut.png' },
-      tip:   'The key: look at the mane, tail, and legs. Bay\'s are black. Liver chestnut\'s are dark brown â€” the same family as the body, never true black.'
+      tip:   'The key: look at the mane, tail, and legs. Bay\'s are black. Liver chestnut\'s are dark brown - the same family as the body, never true black.'
     }
   ],
   'grid-golden': [
     {
       left:  { name: 'Palomino', img: '../colors/palomino.png' },
       right: { name: 'Buckskin', img: '../colors/buckskin.png' },
-      tip:   'Both have golden bodies. Palomino has a white or cream mane and tail. Buckskin has black points â€” black mane, tail, and lower legs.'
+      tip:   'Both have golden bodies. Palomino has a white or cream mane and tail. Buckskin has black points - black mane, tail, and lower legs.'
     }
   ],
   'grid-gray': [
     {
       left:  { name: 'Gray',        img: '../colors/gray.png' },
       right: { name: 'Dapple Gray', img: '../colors/dapple-gray.png' },
-      tip:   'Dapple gray is an intermediate stage â€” look for circular rings of lighter and darker gray. Plain gray lacks that distinct dapple pattern.'
+      tip:   'Dapple gray is an intermediate stage - look for circular rings of lighter and darker gray. Plain gray lacks that distinct dapple pattern.'
     },
     {
       left:  { name: 'Dapple Gray',      img: '../colors/dapple-gray.png' },
@@ -366,24 +366,24 @@ var COMPARISONS = {
     {
       left:  { name: 'Rose Gray', img: '../colors/rose-gray.png' },
       right: { name: 'Gray',      img: '../colors/gray.png' },
-      tip:   'Rose gray has a warm, pinkish tone â€” it\'s an early stage of the graying process on a chestnut or reddish base. Plain gray has cooled to steel tones.'
+      tip:   'Rose gray has a warm, pinkish tone - it\'s an early stage of the graying process on a chestnut or reddish base. Plain gray has cooled to steel tones.'
     },
     {
       left:  { name: 'Flea-Bitten Gray', img: '../colors/flea-bitten-gray.png' },
       right: { name: 'Rose Gray',        img: '../colors/rose-gray.png' },
-      tip:   'Rose gray is warm and early-stage. Flea-bitten is the late stage â€” an almost-white coat with scattered pigment specks.'
+      tip:   'Rose gray is warm and early-stage. Flea-bitten is the late stage - an almost-white coat with scattered pigment specks.'
     }
   ],
   'grid-roan': [
     {
       left:  { name: 'Strawberry Roan', img: '../colors/strawberry-roan.png' },
       right: { name: 'Blue Roan',       img: '../colors/blue-roan.png' },
-      tip:   'Both mix white hairs into the body. Strawberry roan has a chestnut base â€” warm and pinkish. Blue roan has a black base â€” cool and blue-grey.'
+      tip:   'Both mix white hairs into the body. Strawberry roan has a chestnut base - warm and pinkish. Blue roan has a black base - cool and blue-grey.'
     },
     {
       left:  { name: 'Strawberry Roan', img: '../colors/strawberry-roan.png' },
       right: { name: 'Bay Roan',        img: '../colors/bay-roan.png' },
-      tip:   'Strawberry roan has no black points. Bay roan has a black mane, tail, and legs â€” the bay base shows through in the points.'
+      tip:   'Strawberry roan has no black points. Bay roan has a black mane, tail, and legs - the bay base shows through in the points.'
     },
     {
       left:  { name: 'Blue Roan',       img: '../colors/blue-roan.png' },
@@ -393,7 +393,7 @@ var COMPARISONS = {
     {
       left:  { name: 'Bay Roan', img: '../colors/bay-roan.png' },
       right: { name: 'Blue Roan', img: '../colors/blue-roan.png' },
-      tip:   'Same roan pattern â€” different base. Bay roan has warm reddish-grey body with black points. Blue roan has cool blue-grey body with a black head and points.'
+      tip:   'Same roan pattern - different base. Bay roan has warm reddish-grey body with black points. Blue roan has cool blue-grey body with a black head and points.'
     }
   ],
   'grid-pattern': [
@@ -405,12 +405,12 @@ var COMPARISONS = {
     {
       left:  { name: 'Leopard Appaloosa', img: '../colors/leopard-appaloosa.png' },
       right: { name: 'Blanket Appaloosa', img: '../colors/blanket-appaloosa.png' },
-      tip:   'Leopard has spots over most of the body on a white base. Blanket has a solid-colored body with a white patch over the hindquarters only.'
+      tip:   'Leopard Appaloosa has spots over most of the body on a white base. Blanket Appaloosa has a solid-colored body with a white patch over the hindquarters only.'
     }
   ]
 };
 
-/* â”€â”€ Build a single slider card â”€â”€ */
+/* -- Build a single slider card -- */
 function buildSlider(pair) {
   var card = document.createElement('div');
   card.className = 'compare-card';
@@ -480,7 +480,7 @@ function buildSlider(pair) {
 
   var names = document.createElement('div');
   names.className = 'compare-card-names';
-  names.textContent = pair.left.name + '  â†”  ' + pair.right.name;
+  names.textContent = pair.left.name + '  <->  ' + pair.right.name;
 
   var tip = document.createElement('p');
   tip.className = 'compare-card-tip';
@@ -494,7 +494,7 @@ function buildSlider(pair) {
   card.appendChild(vp);
   card.appendChild(footer);
 
-  /* â”€â”€ Slider interaction â”€â”€ */
+  /* -- Slider interaction -- */
   var pct = 50; /* initial split at 50% */
 
   function setPosition(x) {
@@ -543,7 +543,7 @@ function buildSlider(pair) {
   return card;
 }
 
-/* â”€â”€ Populate grids â”€â”€ */
+/* -- Populate grids -- */
 Object.keys(COMPARISONS).forEach(function(gridId) {
   var grid  = document.getElementById(gridId);
   var pairs = COMPARISONS[gridId];

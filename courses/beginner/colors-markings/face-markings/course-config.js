@@ -1,5 +1,5 @@
-﻿/* =============================================================================
-   Equine Edu â€” Horse Face Markings â€” Course Config
+/* =============================================================================
+   Equine Edu - Horse Face Markings - Course Config
    Single source of truth for this course's module list.
    Loaded by every lesson page in this folder.
    To add or reorder a module, edit this file only.

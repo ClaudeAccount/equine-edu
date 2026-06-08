@@ -1,17 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Common Horse Colors &mdash; Equine Edu</title>
-<meta name="description" content="Learn to identify and describe common horse coat colors â€” base coat colors, dilute colors, gray, roan, and patterned coats â€” all in one guided lesson.">
+<meta name="description" content="Learn to identify and describe common horse coat colors - base coat colors, dilute colors, gray, roan, and patterned coats - all in one guided lesson.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
 <style>
 
-  /* â”€â”€ Concept card images â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Concept card images ------------------------------------------- */
   .concept-card img {
     height: 220px;
     width: 100%;
@@ -24,7 +24,7 @@
     padding: 0.5rem 0.5rem 0;
   }
 
-  /* â”€â”€ Compare / callout notes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Compare / callout notes --------------------------------------- */
   .color-compare-note {
     background: rgba(13,27,62,0.04);
     border: 1px solid var(--border);
@@ -37,7 +37,7 @@
   }
   .color-compare-note strong { color: var(--navy); }
 
-  /* â”€â”€ Key-concept callout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Key-concept callout ------------------------------------------- */
   .key-concept-callout {
     background: rgba(201,168,76,0.08);
     border: 1px solid rgba(201,168,76,0.3);
@@ -60,9 +60,9 @@
     margin: 0;
   }
 
-  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  /* ==================================================================
      OUTER SECTION TABS  (5 color categories)
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+  ================================================================== */
   .section-tab-system {
     display: flex;
     flex-direction: column;
@@ -104,9 +104,9 @@
   .section-tab-panel { display: none; }
   .section-tab-panel.active { display: flex; flex-direction: column; gap: 1.5rem; }
 
-  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  /* ==================================================================
      INNER TABS  (used inside Base Coat Colors and Patterned Coats panels)
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+  ================================================================== */
   .inner-tab-system { display: flex; flex-direction: column; gap: 1.5rem; }
   .inner-tab-bar {
     display: grid;
@@ -149,7 +149,7 @@
     line-height: 1.7;
   }
 
-  /* â”€â”€ Gray timeline â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Gray timeline ------------------------------------------------- */
   .gray-timeline {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -165,7 +165,7 @@
     position: relative;
   }
   .timeline-step::after {
-    content: 'â†’';
+    content: '->';
     position: absolute;
     right: -0.7rem;
     top: 50%;
@@ -196,14 +196,14 @@
     margin: 0;
   }
 
-  /* â”€â”€ Bottom nav tab bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Bottom nav tab bar ------------------------------------------- */
   .section-tab-bar-bottom {
     margin-top: 1.5rem;
     border-top: 1px solid var(--border);
     padding-top: 1rem;
   }
 
-  /* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Responsive ---------------------------------------------------- */
   @media (max-width: 760px) {
     .inner-tab-bar { grid-template-columns: 1fr; }
     .gray-timeline { grid-template-columns: 1fr; }
@@ -269,7 +269,7 @@
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Common Horse Colors</div>
       <h1 class="lesson-hero-title">Common Horse <span>Colors</span></h1>
-      <p class="lesson-hero-desc">Horse coat colors can seem like a lot at first â€” but once you know what to look for, they become easy to recognize. This lesson walks through the five main color groups so you can identify them with confidence.</p>
+      <p class="lesson-hero-desc">Horse coat colors can seem like a lot at first - but once you know what to look for, they become easy to recognize. This lesson walks through the five main color groups so you can identify them with confidence.</p>
     </div>
   </div>
 </section>
@@ -282,9 +282,9 @@
       <p>The quickest way to identify a horse's color is to look at three things: body color, mane and tail color, and leg color. Those three details will point you to the right answer almost every time. Use the tabs below to work through each color group.</p>
     </div>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-         OUTER TAB SYSTEM â€” 5 color sections
-    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <!-- ===============================================================
+         OUTER TAB SYSTEM - 5 color sections
+    =================================================================== -->
     <div class="section-tab-system">
       <div class="section-tab-bar" role="tablist">
         <button class="section-tab-btn active" role="tab" aria-selected="true"  aria-controls="sec-core"     id="sbtn-core"     onclick="switchSection('sec-core')">Base Coat Colors</button>
@@ -294,7 +294,7 @@
         <button class="section-tab-btn"        role="tab" aria-selected="false" aria-controls="sec-patterns" id="sbtn-patterns" onclick="switchSection('sec-patterns')">Patterned Coats</button>
       </div>
 
-      <!-- â”€â”€â”€ BASE COAT COLORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+      <!-- --- BASE COAT COLORS -------------------------------------- -->
       <div class="section-tab-panel active" id="sec-core" role="tabpanel">
         <div class="lesson-intro-card" style="margin:0;">
           <h2>The Base Coat Colors</h2>
@@ -308,13 +308,13 @@
           </div>
 
           <div class="inner-tab-panel active" id="core-red" role="tabpanel">
-            <div class="tab-intro"><p>These colors range from bright copper-red to deep reddish-brown. The key thing to look for: the mane, tail, and legs all stay in the same warm reddish family as the body â€” you'll never see black anywhere on a chestnut horse.</p></div>
+            <div class="tab-intro"><p>These colors range from bright copper-red to deep reddish-brown. The key thing to look for: the mane, tail, and legs all stay in the same warm reddish family as the body - you'll never see black anywhere on a chestnut horse.</p></div>
             <div class="visual-card">
               <div class="concept-grid">
                 <article class="concept-card" style="text-align:center;">
                   <img src="colors/chestnut.png" alt="Chestnut horse">
                   <span>Reddish-Brown</span><h3>Chestnut</h3>
-                  <p>A warm reddish-brown body coat with a mane and tail that are the same shade or lighter â€” never black. One of the most common horse colors in the world.</p>
+                  <p>A warm reddish-brown body coat with a mane and tail that are the same shade or lighter - never black. One of the most common horse colors in the world.</p>
                 </article>
                 <article class="concept-card" style="text-align:center;">
                   <img src="colors/sorrel.png" alt="Sorrel horse">
@@ -324,37 +324,37 @@
                 <article class="concept-card" style="text-align:center;">
                   <img src="colors/liver-chestnut.png" alt="Liver Chestnut horse">
                   <span>Dark Chocolatey Brown</span><h3>Liver Chestnut</h3>
-                  <p>A very dark, deep reddish-brown coat â€” almost chocolatey in appearance. The mane and tail remain within the same dark brown family, without any black. The darkest variation of the chestnut color.</p>
+                  <p>A very dark, deep reddish-brown coat - almost chocolatey in appearance. The mane and tail remain within the same dark brown family, without any black. The darkest variation of the chestnut color.</p>
                 </article>
                 <article class="concept-card" style="text-align:center;">
                   <img src="colors/flaxen-chestnut.png" alt="Flaxen chestnut horse">
                   <span>Reddish Body, Pale Mane</span><h3>Flaxen Chestnut</h3>
-                  <p>A chestnut horse with a noticeably lighter â€” flaxen, cream, or white â€” mane and tail while the body coat stays reddish. The pale mane and tail against a warm body coat make this one easy to spot.</p>
+                  <p>A chestnut horse with a noticeably lighter - flaxen, cream, or white - mane and tail while the body coat stays reddish. The pale mane and tail against a warm body coat make this one easy to spot.</p>
                 </article>
               </div>
               <div class="color-compare-note">
-                <strong>Telling Them Apart:</strong> All four are chestnut-based â€” the key is shade and mane color. Sorrel is the lightest and most copper-toned. Standard chestnut sits in the middle. Liver chestnut is the darkest, appearing nearly chocolate. Flaxen chestnut has the same reddish body as chestnut or sorrel but with a distinctly pale or white mane and tail. In all four, the mane and tail <em>never</em> contain black hairs.
+                <strong>Telling Them Apart:</strong> All four are chestnut-based - the key is shade and mane color. Sorrel is the lightest and most copper-toned. Standard chestnut sits in the middle. Liver chestnut is the darkest, appearing nearly chocolate. Flaxen chestnut has the same reddish body as chestnut or sorrel but with a distinctly pale or white mane and tail. In all four, the mane and tail <em>never</em> contain black hairs.
               </div>
             </div>
           </div>
 
           <div class="inner-tab-panel" id="core-dark" role="tabpanel">
-            <div class="tab-intro"><p>Black and bay both have black somewhere on the horse â€” the difference is where. Look at the body color first, then check the mane, tail, and legs. That combination will tell you which one you're looking at.</p></div>
+            <div class="tab-intro"><p>Black and bay both have black somewhere on the horse - the difference is where. Look at the body color first, then check the mane, tail, and legs. That combination will tell you which one you're looking at.</p></div>
             <div class="visual-card">
               <div class="concept-grid">
                 <article class="concept-card" style="text-align:center;">
                   <img src="colors/black.png" alt="Black horse">
                   <span>Solid Black</span><h3>Black</h3>
-                  <p>A true black horse has a solid black body coat, black mane, black tail, and black legs with no reddish or brown tones. True black horses are less common than they appear â€” many horses described as black are actually very dark bay or brown.</p>
+                  <p>A true black horse has a solid black body coat, black mane, black tail, and black legs with no reddish or brown tones. True black horses are less common than they appear - many horses described as black are actually very dark bay or brown.</p>
                 </article>
                 <article class="concept-card" style="text-align:center;">
                   <img src="colors/bay.png" alt="Bay horse">
                   <span>Brown Body, Black Points</span><h3>Bay</h3>
-                  <p>A reddish-brown body coat with a <em>black</em> mane, tail, and lower legs â€” called black points. The body can range from light tan to dark reddish-brown, but the black points are always present and are the defining feature of bay.</p>
+                  <p>A reddish-brown body coat with a <em>black</em> mane, tail, and lower legs - called black points. The body can range from light tan to dark reddish-brown, but the black points are always present and are the defining feature of bay.</p>
                 </article>
               </div>
               <div class="color-compare-note">
-                <strong>Black vs. Bay:</strong> The key difference is the points. A black horse has a black body <em>and</em> black points. A bay horse has a reddish-brown body with black points. If the mane and tail are black but the body has any brown or reddish tones, it is bay â€” not black.
+                <strong>Black vs. Bay:</strong> The key difference is the points. A black horse has a black body <em>and</em> black points. A bay horse has a reddish-brown body with black points. If the mane and tail are black but the body has any brown or reddish tones, it is bay - not black.
               </div>
             </div>
           </div>
@@ -368,30 +368,30 @@
         </div>
       </div><!-- /sec-core -->
 
-      <!-- â”€â”€â”€ GOLDEN & LIGHTENED â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+      <!-- --- GOLDEN & LIGHTENED ------------------------------------- -->
       <div class="section-tab-panel" id="sec-golden" role="tabpanel">
         <div class="lesson-intro-card" style="margin:0;">
           <h2>Golden &amp; Lightened Colors</h2>
-          <p>Palomino and buckskin are two of the most commonly confused colors â€” both are golden, but they look different once you know what to check. The mane, tail, and legs are the quickest way to tell them apart.</p>
+          <p>Palomino and buckskin are two of the most commonly confused colors - both are golden, but they look different once you know what to check. The mane, tail, and legs are the quickest way to tell them apart.</p>
         </div>
 
         <div class="visual-card">
           <h2>Golden Colors</h2>
-          <p class="visual-instructions">Both palomino and buckskin have a golden body â€” look at the mane, tail, and legs to tell them apart.</p>
+          <p class="visual-instructions">Both palomino and buckskin have a golden body - look at the mane, tail, and legs to tell them apart.</p>
           <div class="concept-grid">
             <article class="concept-card" style="text-align:center;">
               <img src="colors/palomino.png" alt="Palomino horse">
               <span>Golden Body, White Mane</span><h3>Palomino</h3>
-              <p>A golden body coat â€” ranging from pale cream-gold to rich honey gold â€” with a white or very light mane and tail. The white or cream mane and tail are the defining feature.</p>
+              <p>A golden body coat - ranging from pale cream-gold to rich honey gold - with a white or very light mane and tail. The white or cream mane and tail are the defining feature.</p>
             </article>
             <article class="concept-card" style="text-align:center;">
               <img src="colors/buckskin.png" alt="Buckskin horse">
               <span>Golden Body, Black Points</span><h3>Buckskin</h3>
-              <p>A golden or tan body coat with a <em>black</em> mane, tail, and lower legs. The black points are what set buckskin apart from palomino â€” same golden body, completely different mane and tail color.</p>
+              <p>A golden or tan body coat with a <em>black</em> mane, tail, and lower legs. The black points are what set buckskin apart from palomino - same golden body, completely different mane and tail color.</p>
             </article>
           </div>
           <div class="color-compare-note">
-            <strong>Palomino vs. Buckskin:</strong> Both are golden â€” but look at the mane, tail, and legs. White or cream mane and tail = palomino. Black mane, tail, and legs = buckskin. The presence of black points is the single clearest distinction.
+            <strong>Palomino vs. Buckskin:</strong> Both are golden - but look at the mane, tail, and legs. White or cream mane and tail = palomino. Black mane, tail, and legs = buckskin. The presence of black points is the single clearest distinction.
           </div>
         </div>
 
@@ -404,32 +404,32 @@
         </div>
       </div><!-- /sec-golden -->
 
-      <!-- â”€â”€â”€ GRAY HORSES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+      <!-- --- GRAY HORSES -------------------------------------------- -->
       <div class="section-tab-panel" id="sec-gray" role="tabpanel">
         <div class="lesson-intro-card" style="margin:0;">
           <h2>Gray Changes Over Time</h2>
-          <p>Gray horses are not born gray â€” they're born with another color and gradually lighten throughout their lives. The same horse can look nearly black as a foal, show dapples as a young horse, and be almost completely white by the time it's older.</p>
-          <p>This is one of the things that makes gray tricky to identify â€” the color looks different depending on the horse's age. Knowing the stages helps a lot.</p>
+          <p>Gray horses are not born gray - they're born with another color and gradually lighten throughout their lives. The same horse can look nearly black as a foal, show dapples as a young horse, and be almost completely white by the time it's older.</p>
+          <p>This is one of the things that makes gray tricky to identify - the color looks different depending on the horse's age. Knowing the stages helps a lot.</p>
         </div>
 
         <div class="key-concept-callout">
           <p class="callout-label">&#128161; Important Distinction</p>
-          <p>Gray horses are often mistaken for white â€” but there's an easy way to tell them apart. A gray horse is born with color and lightens over time. A white horse is born white and stays white. If you can check the skin around the muzzle, gray horses have dark skin while true white horses have pink skin.</p>
+          <p>Gray horses are often mistaken for white - but there's an easy way to tell them apart. A gray horse is born with color and lightens over time. A white horse is born white and stays white. If you can check the skin around the muzzle, gray horses have dark skin while true white horses have pink skin.</p>
         </div>
 
         <div class="visual-card">
           <h2>How Gray Horses Change Over Time</h2>
-          <p class="visual-instructions">Gray horses follow a predictable pattern as they age â€” learning the stages makes them much easier to recognize.</p>
+          <p class="visual-instructions">Gray horses follow a predictable pattern as they age - learning the stages makes them much easier to recognize.</p>
           <div class="gray-timeline">
             <div class="timeline-step">
               <div class="timeline-step-age">Foal / Young Horse</div>
               <div class="timeline-step-label">Base Color Visible</div>
-              <p>Born with their base color â€” may appear black, bay, or chestnut. Gray hairs begin appearing around the eyes and muzzle first.</p>
+              <p>Born with their base color - may appear black, bay, or chestnut. Gray hairs begin appearing around the eyes and muzzle first.</p>
             </div>
             <div class="timeline-step">
               <div class="timeline-step-age">Young Adult</div>
               <div class="timeline-step-label">Dappling Stage</div>
-              <p>Distinctive dapples â€” rings of lighter and darker grey â€” often appear across the body as the coat continues to lighten unevenly.</p>
+              <p>Distinctive dapples - rings of lighter and darker grey - often appear across the body as the coat continues to lighten unevenly.</p>
             </div>
             <div class="timeline-step">
               <div class="timeline-step-age">Mature / Older Horse</div>
@@ -445,17 +445,17 @@
             <article class="concept-card" style="text-align:center;">
               <img src="colors/gray.png" alt="Gray horse">
               <span>Mixed White &amp; Colored Hairs</span><h3>Gray</h3>
-              <p>A mix of white and colored hairs across the body, producing an overall grey appearance. Can range from dark steel grey to near-white â€” the shade depends on the horse's age.</p>
+              <p>A mix of white and colored hairs across the body, producing an overall grey appearance. Can range from dark steel grey to near-white - the shade depends on the horse's age.</p>
             </article>
             <article class="concept-card" style="text-align:center;">
               <img src="colors/dapple-gray.png" alt="Dapple gray horse">
               <span>Intermediate Stage</span><h3>Dapple Gray</h3>
-              <p>A gray horse in the dappling stage â€” showing circular patterns of lighter grey surrounded by slightly darker grey across the body, particularly over the hindquarters and back. Dapples typically disappear as the horse continues to lighten.</p>
+              <p>A gray horse in the dappling stage - showing circular patterns of lighter grey surrounded by slightly darker grey across the body, particularly over the hindquarters and back. Dapples typically disappear as the horse continues to lighten.</p>
             </article>
             <article class="concept-card" style="text-align:center;">
               <img src="colors/flea-bitten-gray.png" alt="Flea-bitten gray horse">
               <span>Later Stage</span><h3>Flea-Bitten Gray</h3>
-              <p>A predominantly white or light grey coat flecked with small specks or clusters of pigmented hairs â€” usually chestnut, bay, or grey. These "flea bites" commonly appear in older gray horses after the coat has lightened nearly completely.</p>
+              <p>A predominantly white or light grey coat flecked with small specks or clusters of pigmented hairs - usually chestnut, bay, or grey. These "flea bites" commonly appear in older gray horses after the coat has lightened nearly completely.</p>
             </article>
             <article class="concept-card" style="text-align:center;">
               <img src="colors/rose-gray.png" alt="Rose gray horse">
@@ -473,22 +473,22 @@
         </div>
       </div><!-- /sec-gray -->
 
-      <!-- â”€â”€â”€ ROAN COLORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+      <!-- --- ROAN COLORS --------------------------------------------- -->
       <div class="section-tab-panel" id="sec-roan" role="tabpanel">
         <div class="lesson-intro-card" style="margin:0;">
           <h2>What Is a Roan?</h2>
-          <p>A roan horse has white hairs mixed evenly throughout its body coat, giving it a frosted or "salt and pepper" look. Unlike gray horses, roans don't keep lightening as they age â€” the color stays roughly the same throughout their life.</p>
+          <p>A roan horse has white hairs mixed evenly throughout its body coat, giving it a frosted or "salt and pepper" look. Unlike gray horses, roans don't keep lightening as they age - the color stays roughly the same throughout their life.</p>
           <p>The most reliable way to identify a roan: the body coat looks mixed, but the head, mane, tail, and lower legs stay solid. That solid head is the biggest visual clue.</p>
         </div>
 
         <div class="key-concept-callout">
           <p class="callout-label">&#128161; Roan vs. Gray</p>
-          <p>This is one of the most common identification mistakes. Both roan and gray horses have white hairs mixed into a colored coat â€” but they behave very differently. A <strong>roan</strong> horse does not change significantly over time and has a solid-colored head. A <strong>gray</strong> horse progressively lightens with age and the white hairs spread across the entire body including the head.</p>
+          <p>This is one of the most common identification mistakes. Both roan and gray horses have white hairs mixed into a colored coat - but they behave very differently. A <strong>roan</strong> horse does not change significantly over time and has a solid-colored head. A <strong>gray</strong> horse progressively lightens with age and the white hairs spread across the entire body including the head.</p>
         </div>
 
         <div class="visual-card">
           <h2>Roan Coat Types</h2>
-          <p class="visual-instructions">The name of a roan comes from its body color â€” what you see underneath the white mixing.</p>
+          <p class="visual-instructions">The name of a roan comes from its body color - what you see underneath the white mixing.</p>
           <div class="concept-grid">
             <article class="concept-card" style="text-align:center;">
               <img src="colors/strawberry-roan.png" alt="Strawberry Roan horse">
@@ -498,12 +498,12 @@
             <article class="concept-card" style="text-align:center;">
               <img src="colors/blue-roan.png" alt="Blue Roan horse">
               <span>Black Base</span><h3>Blue Roan</h3>
-              <p>A black base coat mixed with white hairs, producing a cool blue-grey body appearance. The head, mane, tail, and legs stay black. Despite the name, blue roan horses are not actually blue â€” the name describes the bluish-grey effect of black and white hairs mixed together.</p>
+              <p>A black base coat mixed with white hairs, producing a cool blue-grey body appearance. The head, mane, tail, and legs stay black. Despite the name, blue roan horses are not actually blue - the name describes the bluish-grey effect of black and white hairs mixed together.</p>
             </article>
             <article class="concept-card" style="text-align:center;">
               <img src="colors/bay-roan.png" alt="Bay Roan horse">
               <span>Bay Base</span><h3>Bay Roan</h3>
-              <p>A bay base coat mixed with white hairs throughout the body, producing a warm reddish-grey appearance. The black points â€” mane, tail, and lower legs â€” are retained, distinguishing bay roan from strawberry roan. Follows the same roan pattern rules as the other roan types.</p>
+              <p>A bay base coat mixed with white hairs throughout the body, producing a warm reddish-grey appearance. The black points - mane, tail, and lower legs - are retained, distinguishing bay roan from strawberry roan. Follows the same roan pattern rules as the other roan types.</p>
             </article>
           </div>
           <div class="color-compare-note">
@@ -514,10 +514,10 @@
         <div class="visual-card">
           <h2>Key Features of Roan Coats</h2>
           <div class="key-term-grid">
-            <div class="term-card"><h4>White Hair Mixing</h4><p>Individual white hairs are evenly distributed through the body coat â€” not in patches, but mixed consistently throughout.</p></div>
-            <div class="term-card"><h4>Solid Head &amp; Points</h4><p>The head, mane, tail, and lower legs typically remain the base color without white mixing â€” a key feature that separates roan from gray.</p></div>
+            <div class="term-card"><h4>White Hair Mixing</h4><p>Individual white hairs are evenly distributed through the body coat - not in patches, but mixed consistently throughout.</p></div>
+            <div class="term-card"><h4>Solid Head &amp; Points</h4><p>The head, mane, tail, and lower legs typically remain the base color without white mixing - a key feature that separates roan from gray.</p></div>
             <div class="term-card"><h4>Stable Color</h4><p>Unlike gray horses, roans do not progressively lighten. The coat stays relatively consistent in color throughout the horse's life.</p></div>
-            <div class="term-card"><h4>Winter Darkening</h4><p>Some roan horses appear darker in winter and lighter in summer as the coat sheds and regrows â€” but this is seasonal, not progressive aging.</p></div>
+            <div class="term-card"><h4>Winter Darkening</h4><p>Some roan horses appear darker in winter and lighter in summer as the coat sheds and regrows - but this is seasonal, not progressive aging.</p></div>
           </div>
         </div>
         <div class="section-tab-bar section-tab-bar-bottom" role="tablist">
@@ -529,11 +529,11 @@
         </div>
       </div><!-- /sec-roan -->
 
-      <!-- â”€â”€â”€ PATTERNED COATS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+      <!-- --- PATTERNED COATS ----------------------------------------- -->
       <div class="section-tab-panel" id="sec-patterns" role="tabpanel">
         <div class="lesson-intro-card" style="margin:0;">
           <h2>Patterned Coats</h2>
-          <p>Pinto and Appaloosa are two of the most visually distinctive horse coat patterns â€” large areas of white or spots that make them immediately recognizable. Both are patterns on top of an underlying color, not colors on their own.</p>
+          <p>Pinto and Appaloosa are two of the most visually distinctive horse coat patterns - large areas of white or spots that make them immediately recognizable. Both are patterns on top of an underlying color, not colors on their own.</p>
           <p>Pinto = large white patches over a colored coat. Appaloosa = spots, usually over the hindquarters or across the whole body.</p>
         </div>
 
@@ -544,7 +544,7 @@
           </div>
 
           <div class="inner-tab-panel active" id="pat-pinto" role="tabpanel">
-            <div class="tab-intro"><p>Pinto horses have large irregular white patches over their body. The two most common pinto patterns â€” tobiano and overo â€” look noticeably different from each other. The easiest way to tell them apart is where the white patches are and whether they cross the horse's back.</p></div>
+            <div class="tab-intro"><p>Pinto horses have large irregular white patches over their body. The two most common pinto patterns - tobiano and overo - look noticeably different from each other. The easiest way to tell them apart is where the white patches are and whether they cross the horse's back.</p></div>
             <div class="visual-card">
               <div class="concept-grid">
                 <article class="concept-card" style="text-align:center;">
@@ -570,12 +570,12 @@
               <div class="concept-grid">
                 <article class="concept-card" style="text-align:center;">
                   <img src="colors/leopard-appaloosa.png" alt="Leopard Appaloosa horse">
-                  <span>Appaloosa Pattern</span><h3>Leopard</h3>
-                  <p>A mostly white body coat covered in dark spots of various sizes â€” similar in appearance to a leopard's coat. Spots are usually dark and rounded. The most visually striking Appaloosa pattern.</p>
+                  <span>Appaloosa Pattern</span><h3>Leopard Appaloosa</h3>
+                  <p>A mostly white body coat covered in dark spots of various sizes - similar in appearance to a leopard's coat. Spots are usually dark and rounded. The most visually striking Appaloosa pattern.</p>
                 </article>
                 <article class="concept-card" style="text-align:center;">
                   <img src="colors/blanket-appaloosa.png" alt="Blanket Appaloosa horse">
-                  <span>Appaloosa Pattern</span><h3>Blanket</h3>
+                  <span>Appaloosa Pattern</span><h3>Blanket Appaloosa</h3>
                   <p>A solid-colored body with a distinct white patch (blanket) over the hindquarters. The blanket may contain dark spots within it (spotted blanket) or be solid white (white blanket). The most common Appaloosa pattern.</p>
                 </article>
               </div>
@@ -608,7 +608,7 @@
           p.classList.toggle('active', p.id === id);
         });
       }
-      /* Inner tabs â€” Base Coat Colors */
+      /* Inner tabs - Base Coat Colors */
       function switchCore(id) {
         document.querySelectorAll('#sec-core .inner-tab-btn').forEach(function(b) {
           var on = b.getAttribute('aria-controls') === id;
@@ -619,7 +619,7 @@
           p.classList.toggle('active', p.id === id);
         });
       }
-      /* Inner tabs â€” Patterned Coats */
+      /* Inner tabs - Patterned Coats */
       function switchPattern(id) {
         document.querySelectorAll('#sec-patterns .inner-tab-btn').forEach(function(b) {
           var on = b.getAttribute('aria-controls') === id;

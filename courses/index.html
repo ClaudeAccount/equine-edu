@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>All Courses &mdash; Equine Edu | Equine Education for Every Level</title>
-<meta name="description" content="Explore structured equine education across beginner, intermediate, and advanced levels â€” covering colors, anatomy, genetics, behavior, conformation, health, and more.">
+<meta name="description" content="Explore structured equine education across beginner, intermediate, and advanced levels - covering colors, anatomy, genetics, behavior, conformation, health, and more.">
 <meta name="keywords" content="all courses, beginner horse knowledge, horse colors, horse markings, horse anatomy, horse terms, horse safety, equine education">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -343,17 +343,19 @@ padding: 0;
 transform: none;
 }
 #base-coat-colors-card .lesson-card-thumb {
-  background: #e8e0d0 url('beginner/colors-markings/base-coat-colors/images/course-card-hero.png') center/contain no-repeat;
+  background: #e8e0d0 url('intermediate/colors-markings/base-coat-colors/images/course-card-hero.png') center/contain no-repeat;
   border: 1px solid rgba(201,168,76,0.32);
 }
-#base-coat-colors-loft-card .lesson-card-thumb {
+#base-coat-colors-loft-card .lesson-card-thumb,
+#base-coat-downloads-card .lesson-card-thumb {
   background: #e8e0d0;
 }
-#base-coat-colors-loft-card .lesson-card-thumb img {
+#base-coat-colors-loft-card .lesson-card-thumb img,
+#base-coat-downloads-card .lesson-card-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center center;
+  object-fit: cover;
+  object-position: top center;
   display: block;
 }
   .lesson-icon {
@@ -445,7 +447,7 @@ transform: none;
     color: var(--navy);
   }
 
-  /* â”€â”€ Level Tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Level Tabs ----------------------------------------------------------- */
   .level-tabs-section {
     background: var(--white);
     padding: 0;
@@ -696,9 +698,6 @@ transform: none;
     <button class="level-tab-btn" data-tab="intermediate" role="tab" aria-selected="false" aria-controls="tab-intermediate">
       Core Studies
     </button>
-    <button class="level-tab-btn" data-tab="advanced" role="tab" aria-selected="false" aria-controls="tab-advanced">
-      Expanding Knowledge
-    </button>
     <button class="level-tab-btn" data-tab="lab" role="tab" aria-selected="false" aria-controls="tab-lab">
       The Learning Loft
     </button>
@@ -860,11 +859,11 @@ transform: none;
       <div class="lesson-grid">
 
         <article class="lesson-card has-progress" id="parts-of-horse-card">
-          <a class="lesson-card-overlay" id="parts-of-horse-card-link" href="beginner/equine-anatomy/parts-of-the-horse/1-index.html" aria-label="Open Parts of the Horse course">Open Parts of the Horse course</a>
+          <a class="lesson-card-overlay" id="parts-of-horse-card-link" href="beginner/equine-anatomy/parts-of-the-horse/1-index.html" aria-label="Open Intro to Equine Anatomy course">Open Intro to Equine Anatomy course</a>
           <div class="lesson-card-content">
-            <div class="lesson-card-thumb"><img src="beginner/equine-anatomy/parts-of-the-horse/images/intro-anatomy-course-card.png" alt="Intro to Parts of the Horse course card"></div>
+            <div class="lesson-card-thumb"><img src="beginner/equine-anatomy/parts-of-the-horse/images/intro-anatomy-course-card.png" alt="Intro to Equine Anatomy course card"></div>
             <div>
-              <h3 class="lesson-title">Intro to Parts of the Horse</h3>
+              <h3 class="lesson-title">Intro to Equine Anatomy</h3>
               <p class="lesson-desc">Learn the horse body map: head, neck and shoulders, body, front legs, and hind legs.</p>
               <div class="lesson-progress-wrap">
                 <div class="lesson-progress-top"><span class="lesson-progress-label">Progress</span><span class="lesson-progress-percent" id="parts-of-horse-progress-percent">0%</span></div>
@@ -895,7 +894,8 @@ transform: none;
     </div>
 
     <!-- ── Tack and Equipment ─────────────────────────────────────────────── -->
-    <div class="topic-row fade-in">
+
+<div class="topic-row fade-in">
       <div class="topic-header">
         <div>
           <h2 class="topic-title">Tack &amp; Equipment</h2>
@@ -919,25 +919,42 @@ transform: none;
     <div class="topic-row fade-in">
       <div class="topic-header">
         <div>
+          <h2 class="topic-title">Horse Anatomy</h2>
+        </div>
+      </div>
+      <div class="lesson-grid">
+
+        <a href="intermediate/equine-anatomy/equine-anatomy/1-index.html" class="lesson-card" id="equine-anatomy-card">
+          <div class="lesson-card-thumb"><img src="beginner/equine-anatomy/parts-of-the-horse/images/intro-anatomy-course-card.png" alt="Equine Anatomy course preview"></div>
+          <div><h3 class="lesson-title">Equine Anatomy</h3><p class="lesson-desc">Go beyond the foundation course with deeper anatomy study organized by region, structure, function, and real-world care context.</p></div>
+          <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="topic-row fade-in">
+      <div class="topic-header">
+        <div>
           <h2 class="topic-title">Tack &amp; Equipment</h2>
         </div>
       </div>
       <div class="lesson-grid">
 
-        <a href="beginner/tack-equipment/western-equipment/1-index.html" class="lesson-card" id="western-equipment-card">
-          <div class="lesson-card-thumb"><img src="beginner/tack-equipment/western-equipment/course-cards/hero-image-course-card.png" alt="Western Tack and Equipment course preview"></div>
+        <a href="intermediate/tack-equipment/western-equipment/1-index.html" class="lesson-card" id="western-equipment-card">
+          <div class="lesson-card-thumb"><img src="intermediate/tack-equipment/western-equipment/course-cards/hero-image-course-card.png" alt="Western Tack and Equipment course preview"></div>
           <div><h3 class="lesson-title">Western Tack &amp; Equipment</h3><p class="lesson-desc">Learn the names and function of western saddles, bridles, bits, cinches, and common western discipline equipment.</p></div>
           <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
         </a>
 
-        <a href="beginner/tack-equipment/english-equipment/1-index.html" class="lesson-card" id="english-equipment-card">
-          <div class="lesson-card-thumb"><img src="beginner/tack-equipment/english-equipment/images/english-saddle-parts.png" alt="English saddle course preview"></div>
+        <a href="intermediate/tack-equipment/english-equipment/1-index.html" class="lesson-card" id="english-equipment-card">
+          <div class="lesson-card-thumb"><img src="intermediate/tack-equipment/english-equipment/images/english-saddle-parts.png" alt="English saddle course preview"></div>
           <div><h3 class="lesson-title">English Tack &amp; Equipment</h3><p class="lesson-desc">Learn the names and function of English saddles, bridles, bits, stirrups, girths, and common English discipline equipment.</p></div>
           <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
         </a>
 
-        <a href="beginner/tack-equipment/driving-equipment/1-index.html" class="lesson-card" id="driving-equipment-card">
-          <div class="lesson-card-thumb"><img src="beginner/tack-equipment/driving-equipment/course-cards/hero-image-course-card.png" alt="Driving Harness and Equipment course preview"></div>
+        <a href="intermediate/tack-equipment/driving-equipment/1-index.html" class="lesson-card" id="driving-equipment-card">
+          <div class="lesson-card-thumb"><img src="intermediate/tack-equipment/driving-equipment/course-cards/hero-image-course-card.png" alt="Driving Harness and Equipment course preview"></div>
           <div><h3 class="lesson-title">Driving Harness &amp; Equipment</h3><p class="lesson-desc">Learn the names and function of driving harnesses, bridles, lines, breeching, traces, and common driving styles.</p></div>
           <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
         </a>
@@ -954,7 +971,7 @@ transform: none;
       <div class="lesson-grid">
 
         <article class="lesson-card has-progress" id="base-coat-colors-card">
-          <a class="lesson-card-overlay" id="base-coat-colors-card-link" href="beginner/colors-markings/base-coat-colors/1-index.html" aria-label="Open Base Coat Colors course">Open Base Coat Colors course</a>
+          <a class="lesson-card-overlay" id="base-coat-colors-card-link" href="intermediate/colors-markings/base-coat-colors/1-index.html" aria-label="Open Base Coat Colors course">Open Base Coat Colors course</a>
           <div class="lesson-card-content">
             <div class="lesson-card-thumb"></div>
             <div>
@@ -995,8 +1012,8 @@ transform: none;
 
   </div><!-- /tab-intermediate -->
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• ADVANCED TAB â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
-  <div class="level-tab-pane" id="tab-advanced" role="tabpanel" aria-labelledby="tab-btn-advanced">
+  <!-- =================== ADVANCED TAB =================== -->
+  <div class="level-tab-pane" id="tab-advanced" role="tabpanel" aria-labelledby="tab-btn-advanced" hidden>
 
     <div class="topic-row fade-in">
       <div class="topic-header">
@@ -1126,7 +1143,7 @@ transform: none;
 
   </div><!-- /tab-advanced -->
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• LEARNING LAB TAB â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- =================== LEARNING LAB TAB =================== -->
   <div class="level-tab-pane" id="tab-lab" role="tabpanel" aria-labelledby="tab-btn-lab">
 
     <div class="topic-row fade-in">
@@ -1184,7 +1201,7 @@ transform: none;
         <article class="lesson-card" id="base-coat-colors-loft-card">
           <a class="lesson-card-overlay" href="learning-loft/base-coat-colors/index.html" aria-label="Open Base Coat Colors interactive activities">Open Base Coat Colors interactive activities</a>
           <div class="lesson-card-content">
-            <div class="lesson-card-thumb"><img src="beginner/colors-markings/base-coat-colors/images/course-card-hero.png" alt="Base Coat Colors interactive activities preview"></div>
+            <div class="lesson-card-thumb"><img src="intermediate/colors-markings/base-coat-colors/images/course-card-hero.png" alt="Base Coat Colors interactive activities preview"></div>
             <div>
               <h3 class="lesson-title">Base Coat Colors - Interactive Activities</h3>
               <p class="lesson-desc">Practice base coat color identification through comparisons, identification scenarios, and a word search.</p>
@@ -1364,7 +1381,7 @@ transform: none;
       </div>
       <div class="lesson-grid">
 
-        <!-- Face Markings Downloads ï¿½ LIVE -->
+        <!-- Face Markings Downloads - LIVE -->
         <a href="lesson-board/face-markings-downloads/index.html" class="lesson-card">
           <div class="lesson-card-thumb"><img src="beginner/colors-markings/face-markings/face-marking-downloads/course-card-image.png" alt="Face Markings Downloads preview" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"></div>
           <div>
@@ -1374,7 +1391,17 @@ transform: none;
           <div class="lesson-footer"><span class="lesson-status">Free Download</span></div>
         </a>
 
-        <!-- Common Colors Downloads ï¿½ LIVE -->
+        <!-- Base Coat Colors Downloads - LIVE -->
+        <a href="lesson-board/base-coat-downloads/index.html" class="lesson-card" id="base-coat-downloads-card">
+          <div class="lesson-card-thumb"><img src="lesson-board/base-coat-downloads/worksheet-course-card.png" alt="Base Coat Colors Downloads preview"></div>
+          <div>
+            <h3 class="lesson-title">Base Coat Colors Downloads</h3>
+            <p class="lesson-desc">Free printable base coat color reference and matching worksheets for chestnut, black, and bay.</p>
+          </div>
+          <div class="lesson-footer"><span class="lesson-status">Free Download</span></div>
+        </a>
+
+        <!-- Common Colors Downloads - LIVE -->
         <a href="lesson-board/common-colors-downloads/index.html" class="lesson-card">
           <div class="lesson-card-thumb"><img src="beginner/colors-markings/common-horse-colors/common-colors-worksheets/work-sheets-course-card.png" alt="Common Colors Downloads preview" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"></div>
           <div>
@@ -1384,7 +1411,7 @@ transform: none;
           <div class="lesson-footer"><span class="lesson-status">Free Download</span></div>
         </a>
 
-        <!-- Leg Markings Downloads ï¿½ LIVE -->
+        <!-- Leg Markings Downloads - LIVE -->
         <a href="lesson-board/leg-markings-downloads/index.html" class="lesson-card" id="leg-markings-downloads-card">
           <div class="lesson-card-thumb"><img src="beginner/colors-markings/leg-markings/course-cards/leg-markings-worksheet-course-card.png" alt="Leg Markings Downloads preview"></div>
           <div>
@@ -1514,7 +1541,7 @@ transform: none;
     <span class="cta-label">All Courses</span>
     <h2 class="cta-title">Start at Your Level. Grow From There.</h2>
     <p class="cta-desc">
-      Equine Edu is built to grow with you â€” from your first horse terms to advanced genetics, physiology, and lameness science. Every course is structured, visual, and built for real learning.
+      Equine Edu is built to grow with you - from your first horse terms to advanced genetics, physiology, and lameness science. Every course is structured, visual, and built for real learning.
     </p>
     <a href="index.html" class="btn-primary">Back to All Courses</a>
   </div>
@@ -1571,14 +1598,14 @@ transform: none;
   }
 
 
-/* â”€â”€ Base Coat Colors â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Base Coat Colors ------------------------------------------------------- */
   const BASE_COAT_COLORS_MODULES = [
-    { id: 'whyColorMatters',  url: 'beginner/colors-markings/base-coat-colors/2-why-color-matters.html' },
-    { id: 'pigmentBasics',    url: 'beginner/colors-markings/base-coat-colors/3-pigment-basics.html' },
-    { id: 'baseCoatColors',   url: 'beginner/colors-markings/base-coat-colors/4-base-coat-colors.html' },
-    { id: 'viewingRoom',      url: 'beginner/colors-markings/base-coat-colors/5-viewing-room.html' },
-    { id: 'trainingBarn',     url: 'beginner/colors-markings/base-coat-colors/6-training-barn.html' },
-    { id: 'testYourKnowledge',url: 'beginner/colors-markings/base-coat-colors/7-test-your-knowledge.html' }
+    { id: 'whyColorMatters',  url: 'intermediate/colors-markings/base-coat-colors/2-why-color-matters.html' },
+    { id: 'pigmentBasics',    url: 'intermediate/colors-markings/base-coat-colors/3-pigment-basics.html' },
+    { id: 'baseCoatColors',   url: 'intermediate/colors-markings/base-coat-colors/4-base-coat-colors.html' },
+    { id: 'viewingRoom',      url: 'intermediate/colors-markings/base-coat-colors/5-viewing-room.html' },
+    { id: 'trainingBarn',     url: 'intermediate/colors-markings/base-coat-colors/6-training-barn.html' },
+    { id: 'testYourKnowledge',url: 'intermediate/colors-markings/base-coat-colors/7-test-your-knowledge.html' }
   ];
 
   function getBaseCoatColorsCompletedModules() {
@@ -1609,12 +1636,12 @@ transform: none;
     percentText.textContent = percent + '%';
     copy.textContent = completeCount + ' / ' + total + ' modules complete';
     status.textContent = completeCount === 0 ? 'Start' : 'Continue';
-    cardLink.href = 'beginner/colors-markings/base-coat-colors/1-index.html';
+    cardLink.href = 'intermediate/colors-markings/base-coat-colors/1-index.html';
   }
 
   updateBaseCoatColorsProgressCard();
 
-  /* â”€â”€ Equine Vital Signs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Equine Vital Signs ---------------------------------------------------- */
   const VITAL_SIGNS_MODULES = [
     { id: 'intro',            url: 'vital-signs/vitals-intro.html' },
     { id: 'vitalSignsLesson', url: 'vital-signs/the-vital-signs.html' },
@@ -1657,7 +1684,7 @@ transform: none;
   updateVitalSignsProgressCard();
 
 
-  /* â”€â”€ Face Markings â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* -- Face Markings ---------------------------------------------------------- */
   const FACE_MARKINGS_MODULES = [
     { id: 'whyMarkingsMatter',  url: 'beginner/colors-markings/face-markings/1-why-markings-matter.html' },
     { id: 'faceAnatomy',        url: 'beginner/colors-markings/face-markings/2-face-anatomy.html' },
@@ -1933,7 +1960,7 @@ transform: none;
   <div class="cta-inner">
     <span class="cta-label">Ready to Learn?</span>
     <h2 class="cta-title">Start With What Interests You</h2>
-    <p class="cta-desc">Each course is self-paced and designed to build real, practical horse knowledge ï¿½ no prior experience required.</p>
+    <p class="cta-desc">Each course is self-paced and designed to build real, practical horse knowledge - no prior experience required.</p>
     <a href="#basics" class="btn-primary">Browse Courses</a>
   </div>
 </section>

@@ -1,16 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parts of the Horse &mdash; Intro to Parts of the Horse &mdash; Equine Edu</title>
+<title>Parts of the Horse &mdash; Intro to Equine Anatomy &mdash; Equine Edu</title>
 <meta name="description" content="A visual diagram of the major parts of the horse organized into three views: front, back, and whole horse.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
 <style>
-/* â”€â”€ Tabs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Tabs ------------------------------------------------------------------- */
 .tab-system{display:flex;flex-direction:column;gap:1.5rem;}
 .tab-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.35rem;padding:.4rem;background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);}
 .tab-btn{min-height:48px;border:2px solid transparent;border-radius:calc(var(--radius) - 2px);background:rgba(13,27,62,.08);color:rgba(13,27,62,.45);font-family:var(--font-body);font-size:.84rem;font-weight:700;cursor:pointer;transition:background .18s,color .18s,border-color .18s,box-shadow .18s;padding:0 .5rem;}
@@ -22,7 +22,7 @@
 .tab-panel.active{display:flex;flex-direction:column;gap:1.5rem;}
 .tab-intro{padding:1rem 1.25rem;background:var(--off-white);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;color:var(--text-mid);line-height:1.7;font-size:.9rem;}
 
-/* â”€â”€ Diagram â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Diagram ---------------------------------------------------------------- */
 .diagram-outer{display:flex;justify-content:center;padding:.5rem 0;}
 .diagram-wrap{position:relative;display:inline-block;width:100%;max-width:680px;user-select:none;}
 .diagram-wrap img{width:100%;display:block;border-radius:var(--radius);}
@@ -112,7 +112,7 @@
 <section class="lesson-hero" id="top">
   <div class="lesson-hero-inner">
     <div class="lesson-hero-text">
-      <div class="lesson-module-tag">Intro to Parts of the Horse</div>
+      <div class="lesson-module-tag">Intro to Equine Anatomy</div>
       <h1 class="lesson-hero-title">Parts of <span>the Horse</span></h1>
       <p class="lesson-hero-desc">Every part of the horse has a name. Use the three views below to explore the front, back, and whole horse &mdash; then review the descriptions beneath each diagram.</p>
     </div>
@@ -134,14 +134,14 @@
         <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-whole" id="btn-whole">Whole Horse</button>
       </div>
 
-      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TAB 1 â€” FRONT â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <!-- ======================= TAB 1 - FRONT ======================= -->
       <div class="tab-panel active" id="tab-front" role="tabpanel">
         <div class="tab-intro">Parts from the withers forward &mdash; the head, neck, and front end.</div>
         <div class="visual-card" style="padding:1.25rem;">
           <h2 style="margin-bottom:.75rem;">Front of the Horse</h2>
           <div class="diagram-outer">
             <div class="diagram-wrap" id="dw-front" style="max-width:420px;">
-              <img src="images/parts-front.png" alt="Front of horse â€” labeled anatomy diagram" draggable="false">
+              <img src="images/parts-front.png" alt="Front of horse - labeled anatomy diagram" draggable="false">
               <svg class="marker-svg" id="svg-front" aria-hidden="true"></svg>
             </div>
           </div>
@@ -170,14 +170,14 @@
         </div>
       </div>
 
-      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TAB 2 â€” BACK â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <!-- ======================= TAB 2 - BACK ======================== -->
       <div class="tab-panel" id="tab-back" role="tabpanel">
         <div class="tab-intro">Parts from the withers backward &mdash; the body, hindquarters, and legs.</div>
         <div class="visual-card" style="padding:1.25rem;">
           <h2 style="margin-bottom:.75rem;">Back of the Horse</h2>
           <div class="diagram-outer">
             <div class="diagram-wrap" id="dw-back" style="max-width:420px;">
-              <img src="images/parts-back.png" alt="Back of horse â€” labeled anatomy diagram" draggable="false">
+              <img src="images/parts-back.png" alt="Back of horse - labeled anatomy diagram" draggable="false">
               <svg class="marker-svg" id="svg-back" aria-hidden="true"></svg>
             </div>
           </div>
@@ -197,7 +197,7 @@
             <div class="part-item"><span class="part-region">Ribs Area</span><h3>Barrel</h3><p>The rounded ribcage section between the forelegs and the flank. A rider's leg rests against the barrel when riding.</p></div>
             <div class="part-item"><span class="part-region">Behind Barrel</span><h3>Flank</h3><p>The soft area behind the barrel and in front of the hindquarters. A sensitive region.</p></div>
             <div class="part-item"><span class="part-region">Upper Hind Leg</span><h3>Thigh</h3><p>The muscular upper section of the hind leg. A well-developed thigh indicates good overall conditioning.</p></div>
-            <div class="part-item"><span class="part-region">Rear of Hindquarters</span><h3>Buttock</h3><p>The rounded, muscular area at the back of the hindquarters. The point of buttock is the most rearward bony prominence â€” easy to see when viewing a horse from the side.</p></div>
+            <div class="part-item"><span class="part-region">Rear of Hindquarters</span><h3>Buttock</h3><p>The rounded, muscular area at the back of the hindquarters. The point of buttock is the most rearward bony prominence - easy to see when viewing a horse from the side.</p></div>
             <div class="part-item"><span class="part-region">Hind Leg</span><h3>Hock</h3><p>The large angled joint in the middle of the hind leg, equivalent to the human ankle. Flexes with every stride.</p></div>
             <div class="part-item"><span class="part-region">Lower Leg</span><h3>Cannon</h3><p>The large bone between the knee or hock and the fetlock. The most prominent bone of the lower leg.</p></div>
             <div class="part-item"><span class="part-region">Lower Leg</span><h3>Fetlock</h3><p>The prominent joint between the cannon bone and the pastern, on all four legs.</p></div>
@@ -207,14 +207,14 @@
         </div>
       </div>
 
-      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TAB 3 â€” WHOLE â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <!-- ======================= TAB 3 - WHOLE ======================= -->
       <div class="tab-panel" id="tab-whole" role="tabpanel">
         <div class="tab-intro">All parts together. Use this view to check how everything connects across the whole horse.</div>
         <div class="visual-card" style="padding:1.25rem;">
           <h2 style="margin-bottom:.75rem;">Whole Horse</h2>
           <div class="diagram-outer">
             <div class="diagram-wrap" id="dw-whole">
-              <img src="images/parts-whole.png" alt="Whole horse â€” labeled anatomy diagram" draggable="false">
+              <img src="images/parts-whole.png" alt="Whole horse - labeled anatomy diagram" draggable="false">
               <svg class="marker-svg" id="svg-whole" aria-hidden="true"></svg>
             </div>
           </div>
@@ -240,7 +240,7 @@
           'Poll, withers, and croup are the three key topline parts from front to back.',
           'The hock (hind) and knee (front) are the most discussed joints in soundness conversations.'
         ],
-        highlight: 'Work from the top down and from front to back â€” poll to hoof. This is the order vets, farriers, and trainers use when examining a horse.'
+        highlight: 'Work from the top down and from front to back - poll to hoof. This is the order vets, farriers, and trainers use when examining a horse.'
       };
     </script>
 
@@ -254,11 +254,11 @@
 <div id="site-footer"></div>
 
 <script>
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ===========================================================================
    DIAGRAM LABEL EDITOR
    Drag anchor dots (pinned to the horse) and label pills independently.
    Lines update live. Positions saved to localStorage per diagram.
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+=========================================================================== */
 
 // Default positions: ax/ay = anchor dot %, lx/ly = label pill %
 const DEFAULTS = {
@@ -325,7 +325,7 @@ const DEFAULTS = {
 
 const LS_KEY = 'equineEduDiagram.partsOfTheHorse';
 
-// Live state â€” loaded from localStorage or cloned from DEFAULTS
+// Live state - loaded from localStorage or cloned from DEFAULTS
 let STATE = {};
 
 function loadState() {
@@ -361,7 +361,7 @@ function resetDiagram(tab) {
   renderDiagram(tab);
 }
 
-/* â”€â”€ Rendering â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Rendering -------------------------------------------------------------- */
 function renderDiagram(tab) {
   const wrap = document.getElementById('dw-' + tab);
   const svg  = document.getElementById('svg-' + tab);
@@ -418,7 +418,7 @@ function drawLines(tab) {
   });
 }
 
-/* â”€â”€ Drag handler â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Drag handler ----------------------------------------------------------- */
 function makeDraggable(el, wrap, tab, partId, type) {
   let active = false;
   let startPx, startPy, startMouseX, startMouseY;
@@ -474,7 +474,7 @@ function makeDraggable(el, wrap, tab, partId, type) {
   document.addEventListener('touchend',   onEnd);
 }
 
-/* â”€â”€ Tab switching â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Tab switching ---------------------------------------------------------- */
 (function() {
   function switchTab(id) {
     document.querySelectorAll('#parts-tabs .tab-btn').forEach(function(b) {
@@ -494,7 +494,7 @@ function makeDraggable(el, wrap, tab, partId, type) {
   });
 })();
 
-/* â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* -- Init ------------------------------------------------------------------- */
 (function() {
   loadState();
   // Render the default visible tab immediately; others render on tab switch
