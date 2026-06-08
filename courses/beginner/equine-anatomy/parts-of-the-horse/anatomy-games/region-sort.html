@@ -91,7 +91,7 @@
 <div id="site-footer"></div>
 
 <script>
-window.CURRENT_MODULE = 4;
+window.CURRENT_MODULE = 3;
 window.LAYOUT = {
   homeUrl:   '../../../../../index.html',
   coursesUrl:'../../../../index.html',
@@ -101,6 +101,8 @@ window.LAYOUT = {
 </script>
 <script src="../course-config.js"></script>
 <script src="../../../../../assets/js/layout.js"></script>
+<script src="../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../assets/js/paywall.js"></script>
 <script src="../../../../../assets/js/course-nav.js"></script>
 
 <script>
@@ -159,65 +161,4 @@ window.LAYOUT = {
     { term: 'Hock',             region: 'Legs',             hint: 'Large angled hind leg joint' },
     { term: 'Stifle',           region: 'Legs',             hint: 'Hind leg joint like the human knee' },
     { term: 'Gaskin',           region: 'Legs',             hint: 'Muscular area between stifle and hock' },
-    { term: 'Thigh',            region: 'Legs',             hint: 'Upper muscular section of the hind leg' },
-    { term: 'Chestnut',         region: 'Legs',             hint: 'Callous-like growth on the inside of the leg' },
-    { term: 'Ergot',            region: 'Legs',             hint: 'Small callous at the back of the fetlock' }
-  ];
-
-  function shuffle(a) { return a.map(v => ({ v, s: Math.random() })).sort((a, b) => a.s - b.s).map(x => x.v); }
-
-  let deck, idx, score;
-
-  function startGame() {
-    deck = shuffle(terms).slice(0, ROUND_COUNT);
-    idx = 0; score = 0;
-    document.getElementById('result-panel').classList.remove('show');
-    document.getElementById('game-body').style.display = '';
-    renderTerm();
-  }
-
-  function updateCounter() {
-    document.getElementById('game-counter').textContent = 'Question ' + Math.min(idx + 1, deck.length) + ' of ' + deck.length;
-  }
-
-  function renderTerm() {
-    updateCounter();
-    document.getElementById('current-term').textContent = deck[idx].term;
-    document.getElementById('term-hint').textContent = deck[idx].hint;
-    document.getElementById('feedback-row').textContent = '';
-    document.getElementById('feedback-row').className = 'feedback-row';
-    document.querySelectorAll('.region-btn').forEach(function(b) { b.disabled = false; b.className = 'region-btn'; });
-  }
-
-  document.getElementById('region-grid').addEventListener('click', function(e) {
-    const btn = e.target.closest('.region-btn');
-    if (!btn || btn.disabled) return;
-    document.querySelectorAll('.region-btn').forEach(function(b) { b.disabled = true; });
-    const chosen = btn.dataset.region;
-    const correct = deck[idx].region;
-    const isRight = chosen === correct;
-    if (isRight) { score++; btn.classList.add('correct'); document.getElementById('feedback-row').textContent = 'Correct!'; document.getElementById('feedback-row').className = 'feedback-row correct'; }
-    else { btn.classList.add('incorrect'); document.querySelectorAll('.region-btn').forEach(function(b){ if (b.dataset.region === correct) b.classList.add('correct'); }); document.getElementById('feedback-row').textContent = deck[idx].term + ' belongs to: ' + correct; document.getElementById('feedback-row').className = 'feedback-row incorrect'; }
-    idx++;
-    idx < deck.length ? setTimeout(renderTerm, 1200) : setTimeout(showResult, 1400);
-  });
-
-  document.getElementById('btn-restart').addEventListener('click', startGame);
-
-  function showResult() {
-    document.getElementById('game-body').style.display = 'none';
-    document.getElementById('result-panel').classList.add('show');
-    document.getElementById('result-score').textContent = score + '/' + deck.length;
-    const pct = score / deck.length;
-    document.getElementById('result-msg').textContent =
-      pct === 1 ? 'Perfect. You can place every part in the right region without hesitation.' :
-      pct >= 0.85 ? 'Excellent - just a few regions to review.' :
-      pct >= 0.65 ? 'Good start. Focus on the regions that tripped you up and try again.' :
-      'Review the lesson tabs and come back. With a bit more practice these regions will stick.';
-  }
-
-  startGame();
-})();
-</script>
-</body>
-</html>
+    { term: 'Thigh',            region: 'Legs',      

@@ -179,6 +179,16 @@
 .slider-label-left  { left: 0.6rem; }
 .slider-label-right { right: 0.6rem; }
 
+.slider-range-wrap {
+  display: none;
+  padding: 0.7rem 1rem 0;
+  background: var(--white);
+}
+.slider-range {
+  width: 100%;
+  accent-color: var(--navy);
+}
+
 /* -- Card footer -- */
 .compare-card-footer {
   padding: 0.75rem 1rem;
@@ -222,6 +232,26 @@
   color: var(--text-mid);
   margin-bottom: 1.5rem;
   font-style: italic;
+}
+@media (max-width: 580px) {
+  .slider-viewport {
+    aspect-ratio: 3 / 4;
+    min-height: 320px;
+    touch-action: none;
+  }
+  .slider-range-wrap {
+    display: block;
+  }
+  .slider-label {
+    bottom: 0.45rem;
+    max-width: calc(50% - 1.2rem);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+    letter-spacing: 0.8px;
+  }
+  .slider-label-left { left: 0.45rem; }
+  .slider-label-right { right: 0.45rem; }
 }
 .lesson-wrap { grid-template-columns: minmax(0, 1040px); justify-content: center; }
 .lesson-left { max-width: none; }
@@ -455,6 +485,19 @@ function buildSlider(pair) {
   vp.appendChild(handleIcon);
   vp.appendChild(labels);
 
+  var rangeWrap = document.createElement('div');
+  rangeWrap.className = 'slider-range-wrap';
+
+  var range = document.createElement('input');
+  range.className = 'slider-range';
+  range.type = 'range';
+  range.min = '4';
+  range.max = '96';
+  range.value = '50';
+  range.setAttribute('aria-label', 'Move comparison divider');
+
+  rangeWrap.appendChild(range);
+
   /* Footer */
   var footer = document.createElement('div');
   footer.className = 'compare-card-footer';
@@ -480,25 +523,32 @@ function buildSlider(pair) {
   footer.appendChild(text);
 
   card.appendChild(vp);
+  card.appendChild(rangeWrap);
   card.appendChild(footer);
 
   /* -- Slider interaction -- */
   var pct = 50; /* initial split at 50% */
 
+  function applyPosition(value) {
+    pct = Math.max(4, Math.min(96, value));
+    var clipValue = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    leftWrap.style.setProperty('--split', pct + '%');
+    leftWrap.style.clipPath = clipValue;
+    leftWrap.style.webkitClipPath = clipValue;
+    handle.style.left        = pct + '%';
+    handleIcon.style.left    = pct + '%';
+    range.value = String(Math.round(pct));
+  }
+
   function setPosition(x) {
     var rect  = vp.getBoundingClientRect();
     var raw   = (x - rect.left) / rect.width;
-    pct = Math.max(0.04, Math.min(0.96, raw)) * 100;
-    leftWrap.style.setProperty('--split', pct + '%');
-    handle.style.left        = pct + '%';
-    handleIcon.style.left    = pct + '%';
+    applyPosition(raw * 100);
   }
 
   /* Init */
   function init() {
-    leftWrap.style.setProperty('--split', '50%');
-    handle.style.left     = '50%';
-    handleIcon.style.left = '50%';
+    applyPosition(50);
   }
   /* Re-init on resize */
   window.addEventListener('resize', init);
@@ -507,6 +557,26 @@ function buildSlider(pair) {
   setTimeout(init, 100);
 
   var dragging = false;
+
+  if (window.PointerEvent) {
+    vp.addEventListener('pointerdown', function(e) {
+      dragging = true;
+      vp.setPointerCapture(e.pointerId);
+      setPosition(e.clientX);
+      e.preventDefault();
+    });
+    vp.addEventListener('pointermove', function(e) {
+      if (dragging) {
+        setPosition(e.clientX);
+        e.preventDefault();
+      }
+    });
+    vp.addEventListener('pointerup', function(e) {
+      dragging = false;
+      if (vp.hasPointerCapture(e.pointerId)) vp.releasePointerCapture(e.pointerId);
+    });
+    vp.addEventListener('pointercancel', function() { dragging = false; });
+  }
 
   vp.addEventListener('mousedown', function(e) {
     dragging = true;
@@ -524,9 +594,16 @@ function buildSlider(pair) {
     e.preventDefault();
   }, { passive: false });
   window.addEventListener('touchmove', function(e) {
-    if (dragging) setPosition(e.touches[0].clientX);
-  }, { passive: true });
+    if (dragging) {
+      setPosition(e.touches[0].clientX);
+      e.preventDefault();
+    }
+  }, { passive: false });
   window.addEventListener('touchend', function() { dragging = false; });
+
+  range.addEventListener('input', function() {
+    applyPosition(Number(range.value));
+  });
 
   return card;
 }

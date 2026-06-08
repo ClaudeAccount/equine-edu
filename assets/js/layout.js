@@ -49,6 +49,9 @@
       ? `<li><a href="${navCta.url}" class="nav-cta">${navCta.label}</a></li>`
       : '';
 
+    // Pricing link
+    const pricingLink = `<li><a href="${root}pricing.html">Pricing</a></li>`;
+
     // Auth button — renders as Log In by default; updated after session check below
     const authLink = `<li><a href="${root}auth/login.html" class="nav-auth-btn" id="nav-auth-btn">Log In</a></li>`;
 
@@ -68,6 +71,7 @@
   <a href="${homeUrl}" class="nav-logo">Equine <span>Edu</span></a>
   <ul class="nav-links">
     ${extraLinks}
+    ${pricingLink}
     ${ctaLink}
     ${authLink}
   </ul>
@@ -78,6 +82,7 @@
     <ul class="nav-drawer-links">
       <li><a href="${homeUrl}">Home</a></li>
       <li><a href="${coursesUrl}">All Courses</a></li>
+      <li><a href="${root}pricing.html">Pricing</a></li>
       ${drawerExtras}
       ${drawerCta}
       ${drawerAuth}

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>External Structures &mdash; External Equine Anatomy &mdash; Equine Edu</title>
-<meta name="description" content="Explore the external anatomy of the horse region by region — head, neck and shoulder, body, front legs, and back legs — with interactive labeled diagrams.">
+<title>Parts of the Horse &mdash; Equine Anatomy &mdash; Equine Edu</title>
+<meta name="description" content="Explore the parts of the horse region by region — head, neck and shoulder, body, front legs, and hind legs — with interactive labeled diagrams.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
@@ -145,8 +145,8 @@
 <section class="lesson-hero" id="top">
   <div class="lesson-hero-inner">
     <div class="lesson-hero-text">
-      <div class="lesson-module-tag">External Equine Anatomy</div>
-      <h1 class="lesson-hero-title">External <span>Structures</span></h1>
+      <div class="lesson-module-tag">Equine Anatomy</div>
+      <h1 class="lesson-hero-title">Parts of the <span>Horse</span></h1>
       <p class="lesson-hero-desc">The horse's exterior, broken into five regions. Each region has an interactive labeled diagram &mdash; drag any dot or label to reposition it.</p>
     </div>
   </div>
@@ -157,7 +157,7 @@
 
     <div class="lesson-intro-card">
       <h2>Five Regions, One Horse</h2>
-      <p>This lesson covers the vocabulary of external equine anatomy organized by region. Select a tab to view the labeled diagram and the structures within it. Drag any dot or label to adjust its position &mdash; changes save automatically per region.</p>
+      <p>This lesson covers the vocabulary of equine anatomy organized by region. Select a tab to view the labeled diagram and the parts within it. Drag any dot or label to adjust its position &mdash; changes save automatically per region.</p>
     </div>
 
     <div id="anatomy-tabs" class="visual-card" style="padding: 1.25rem 1.5rem;">
@@ -175,7 +175,7 @@
       <div id="panel-head" class="region-panel active">
         <div class="diagram-outer">
           <div class="diagram-wrap" id="dw-head">
-            <img src="equine-anatomy-images/head.png" alt="Horse head — labeled external anatomy" draggable="false">
+            <img src="equine-anatomy-images/head.png" alt="Horse head — labeled anatomy" draggable="false">
             <svg class="marker-svg" id="svg-head" aria-hidden="true"></svg>
           </div>
         </div>
@@ -196,7 +196,7 @@
       <div id="panel-neck" class="region-panel">
         <div class="diagram-outer">
           <div class="diagram-wrap" id="dw-neck">
-            <img src="equine-anatomy-images/neck-shoulder.png" alt="Horse neck and shoulder — labeled external anatomy" draggable="false">
+            <img src="equine-anatomy-images/neck-shoulder.png" alt="Horse neck and shoulder — labeled anatomy" draggable="false">
             <svg class="marker-svg" id="svg-neck" aria-hidden="true"></svg>
           </div>
         </div>
@@ -217,7 +217,7 @@
       <div id="panel-body" class="region-panel">
         <div class="diagram-outer">
           <div class="diagram-wrap" id="dw-body">
-            <img src="equine-anatomy-images/body.png" alt="Horse body — labeled external anatomy" draggable="false">
+            <img src="equine-anatomy-images/body.png" alt="Horse body — labeled anatomy" draggable="false">
             <svg class="marker-svg" id="svg-body" aria-hidden="true"></svg>
           </div>
         </div>
@@ -238,7 +238,7 @@
       <div id="panel-frontlegs" class="region-panel">
         <div class="diagram-outer">
           <div class="diagram-wrap" id="dw-frontlegs">
-            <img src="equine-anatomy-images/front-legs.png" alt="Horse front legs — labeled external anatomy" draggable="false">
+            <img src="equine-anatomy-images/front-legs.png" alt="Horse front legs — labeled anatomy" draggable="false">
             <svg class="marker-svg" id="svg-frontlegs" aria-hidden="true"></svg>
           </div>
         </div>
@@ -259,7 +259,7 @@
       <div id="panel-backlegs" class="region-panel">
         <div class="diagram-outer">
           <div class="diagram-wrap" id="dw-backlegs">
-            <img src="equine-anatomy-images/back-legs.png" alt="Horse back legs — labeled external anatomy" draggable="false">
+            <img src="equine-anatomy-images/back-legs.png" alt="Horse hind legs labeled anatomy" draggable="false">
             <svg class="marker-svg" id="svg-backlegs" aria-hidden="true"></svg>
           </div>
         </div>
@@ -379,7 +379,7 @@
       window.PAGE_NOTES = {
         items: [
           'Drag any dot or label on the diagram to reposition it &mdash; changes save automatically per region.',
-          'Front and back legs share many of the same lower-leg structures: cannon bone, fetlock, pastern, coronet band, and hoof.',
+          'Front and hind legs share many of the same lower-leg structures: cannon bone, fetlock, pastern, coronet band, and hoof.',
           'Throatlatch appears in both the Head and Neck &amp; Shoulder regions &mdash; it is the boundary between them.',
           'The chestnut (inside the leg) and the ergot (back of the fetlock) are both vestigial structures found on nearly every horse.'
         ],
@@ -398,7 +398,7 @@
 
 <script>
 /* ===========================================================================
-   REGIONAL DIAGRAMS — External Equine Anatomy / Lesson Page
+   REGIONAL DIAGRAMS — Equine Anatomy / Lesson Page
    Each tab has its own DEFAULTS and LS_KEY.
    ax/ay = anchor dot %, lx/ly = label pill %
 =========================================================================== */
@@ -699,15 +699,16 @@ function toggleExport(tabKey) {
   window.LAYOUT = {
     homeUrl:    '../../../../index.html',
     coursesUrl: '../../../index.html',
-    navCta:     { label: 'Back to External Equine Anatomy', url: '1-index.html' },
+    navCta:     { label: 'Back to Equine Anatomy', url: '1-index.html' },
     navExtras:  [
-      { label: 'The Viewing Room', url: '4-viewing-room.html' },
-      { label: 'Training Barn',   url: '5-training-barn.html' }
+      { label: 'Training Barn', url: '5-training-barn.html' }
     ]
   };
 </script>
 <script src="course-config.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
 <script src="../../../../assets/js/course-nav.js"></script>
 <script>try{localStorage.setItem('equineEduProgress.equineAnatomy.lesson','true')}catch(e){}</script>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Viewing Room &mdash; External Equine Anatomy &mdash; Equine Edu</title>
+<title>The Viewing Room &mdash; Equine Anatomy &mdash; Equine Edu</title>
 <meta name="description" content="A labeled whole-horse diagram showing all major external anatomical landmarks across all five regions.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../assets/css/core.css">
@@ -33,7 +33,7 @@
 <section class="lesson-hero hero-centered hero-bg hero-bg-viewing-room" id="top">
   <div class="lesson-hero-inner">
     <div class="lesson-hero-text">
-      <div class="lesson-module-tag">External Equine Anatomy</div>
+      <div class="lesson-module-tag">Equine Anatomy</div>
       <h1 class="lesson-hero-title">The Viewing <span>Room</span></h1>
       <p class="lesson-hero-desc">All major external landmarks on one horse. Use this view to see how the regions connect and to practice identifying structures across the whole body.</p>
     </div>
@@ -45,13 +45,13 @@
 
     <div class="lesson-intro-card">
       <h2>The Whole Horse</h2>
-      <p>Every major external landmark from poll to hoof, shown together on a single diagram. Use this to see how all four regions connect. The regional diagrams — head, neck and shoulder, body, and legs — are in the tabs on the External Structures lesson page.</p>
+      <p>Every major landmark from poll to hoof, shown together on a single diagram. Use this to see how all five regions connect. The regional diagrams — head, neck and shoulder, body, front legs, and hind legs — are in the tabs on the Parts of the Horse lesson page.</p>
     </div>
 
     <div class="visual-card" style="padding:1.25rem;">
       <div class="diagram-outer">
         <div class="diagram-wrap" id="dw-whole">
-          <img src="equine-anatomy-images/whole-horse.png" alt="Whole horse — external anatomy landmarks labeled" draggable="false">
+          <img src="equine-anatomy-images/whole-horse.png" alt="Whole horse — anatomy landmarks labeled" draggable="false">
           <svg class="marker-svg" id="svg-whole" aria-hidden="true"></svg>
         </div>
       </div>
@@ -86,7 +86,7 @@
 
 <script>
 /* ===========================================================================
-   WHOLE HORSE DIAGRAM — External Equine Anatomy / Viewing Room
+   WHOLE HORSE DIAGRAM — Equine Anatomy / Viewing Room
    ax/ay = anchor dot %, lx/ly = label pill %
    Drag either; lines redraw live; saved to localStorage.
    To swap the horse image: change the <img src> above.
@@ -181,15 +181,17 @@ render();
   window.LAYOUT = {
     homeUrl:    '../../../../index.html',
     coursesUrl: '../../../index.html',
-    navCta:     { label: 'Back to External Equine Anatomy', url: '1-index.html' },
+    navCta:     { label: 'Back to Equine Anatomy', url: '1-index.html' },
     navExtras:  [
-      { label: 'External Structures',  url: '3-equine-anatomy.html' },
+      { label: 'Parts of the Horse',  url: '3-equine-anatomy.html' },
       { label: 'The Training Barn',    url: '5-training-barn.html'  }
     ]
   };
 </script>
 <script src="course-config.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
 <script src="../../../../assets/js/course-nav.js"></script>
 <script>try{localStorage.setItem('equineEduProgress.equineAnatomy.viewingRoom','true')}catch(e){}</script>
 </body>

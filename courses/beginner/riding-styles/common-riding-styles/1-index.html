@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Riding Styles &mdash; Equine Edu</title>
+<meta name="description" content="Learn common Western and English riding styles, why disciplines developed, and how to recognize what each style is designed to do.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+body { background: var(--page-bg); }
+.course-hero { background: var(--navy); }
+.course-hero-inner { display:grid; grid-template-columns:1fr 380px; gap:4rem; align-items:center; max-width:1100px; margin:0 auto; padding:72px 5%; }
+.course-tag { display:inline-flex; background:rgba(201,168,76,.12); border:1px solid rgba(201,168,76,.3); color:var(--gold); font-size:.7rem; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:2px; margin-bottom:1.25rem; }
+.course-hero h1 { font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3.25rem); color:var(--white); line-height:1.12; margin-bottom:1rem; }
+.course-hero h1 span { color:var(--gold); }
+.course-hero-desc { color:rgba(255,255,255,.76); font-size:1rem; line-height:1.75; max-width:540px; margin-bottom:1.75rem; }
+.course-meta-row { display:flex; flex-wrap:wrap; gap:.65rem 0; margin-bottom:1.75rem; }
+.meta-item { color:var(--gold); font-weight:800; font-size:.74rem; border-right:1px solid rgba(201,168,76,.55); padding:0 .75rem; white-space:nowrap; }
+.meta-item:first-child { padding-left:0; }
+.meta-item:last-child { border-right:0; }
+.hero-actions { display:flex; gap:.85rem; flex-wrap:wrap; }
+.hero-actions .btn-outline { color:var(--navy)!important; background:var(--white); border-color:var(--white)!important; }
+.course-hero-art img { width:100%; max-width:360px; display:block; filter:drop-shadow(0 18px 28px rgba(0,0,0,.28)); }
+.module-list { margin-top:2rem; display:grid; gap:.6rem; }
+.module-item { display:grid; grid-template-columns:40px 1fr auto; gap:1rem; align-items:center; padding:1rem 1.25rem; background:var(--white); border:1px solid var(--border); border-radius:var(--radius); text-decoration:none; transition:box-shadow .18s,border-color .18s; }
+.module-item:hover { border-color:var(--gold); box-shadow:0 4px 16px rgba(13,27,62,.08); }
+.module-num { width:36px; height:36px; border-radius:50%; background:var(--navy); color:var(--gold); font-family:var(--font-display); display:flex; align-items:center; justify-content:center; }
+.module-title { font-weight:800; color:var(--text-dark); margin-bottom:.2rem; }
+.module-desc { color:var(--text-mid); font-size:.82rem; line-height:1.5; }
+.module-type { color:var(--text-light); font-size:.68rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; white-space:nowrap; }
+.outcomes-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-top:1.5rem; }
+.outcome-item { display:flex; gap:.6rem; color:var(--text-mid); font-size:.88rem; line-height:1.5; }
+.outcome-check { color:var(--gold); font-weight:900; }
+.track-features,.alignment-list { list-style:none; display:grid; gap:.75rem; margin-top:1.25rem; }
+.track-features li,.alignment-list li { display:flex; gap:.75rem; color:rgba(255,255,255,.75); font-size:.9rem; line-height:1.6; }
+.learn-section,.curriculum-section,.cta-section { background:var(--page-bg); }
+.cta-section { border-top:0; }
+@media (max-width:900px){.course-hero-inner{grid-template-columns:1fr}.course-hero-art{display:none}.outcomes-grid{grid-template-columns:1fr}.module-item{grid-template-columns:36px 1fr}.module-type{display:none}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<section class="course-hero">
+  <div class="course-hero-inner">
+    <div class="course-hero-text">
+      <div class="course-tag">Riding Foundations</div>
+      <h1>Common Riding <span>Styles</span></h1>
+      <p class="course-hero-desc">Riding styles developed from the work horses were asked to do, the places they worked, and the sports people built around them. Learn how to recognize common Western and English disciplines and understand what each one is designed to accomplish.</p>
+      <div class="course-meta-row">
+        <div class="meta-item">Western Styles</div>
+        <div class="meta-item">English Styles</div>
+        <div class="meta-item">Visual Study Tools</div>
+        <div class="meta-item">Beginner Friendly</div>
+      </div>
+      <div class="hero-actions">
+        <a href="2-why-styles-developed.html#top" class="btn-primary">Start Course</a>
+        <a href="#curriculum" class="btn-outline">See All Modules</a>
+      </div>
+    </div>
+    <div class="course-hero-art">
+      <img src="course-cards/common-riding-styles-card.svg" alt="Common Riding Styles course artwork">
+    </div>
+  </div>
+</section>
+
+<section class="curriculum-section" id="curriculum">
+  <div class="curriculum-inner">
+    <p class="section-label">Course Curriculum</p>
+    <h2 class="section-title">Structured Learning Through Guided Modules</h2>
+    <p class="section-sub">Move from the reason riding styles exist into the discipline families students are most likely to see in lessons, shows, ranch settings, and recreational riding.</p>
+    <div class="module-list" id="course-module-list"></div>
+  </div>
+</section>
+
+<section class="learn-section">
+  <div class="learn-inner">
+    <div>
+      <p class="section-label">Course Focus</p>
+      <h2 class="section-title">Understand What Each Style Is Built to Do</h2>
+      <p class="section-sub">This course builds the vocabulary students need to talk about riding styles clearly. It keeps the focus on purpose: the job, movement, tradition, and training goals behind each discipline.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Tell Western and English style families apart</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Explain why riding styles developed differently</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Recognize popular disciplines by purpose</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Match riding styles to common jobs or events</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Use discipline names with confidence</div>
+      <div class="outcome-item"><span class="outcome-check">&#10003;</span> Connect tack, rider position, and task</div>
+    </div>
+  </div>
+</section>
+
+<section class="track-section">
+  <div class="track-inner">
+    <div class="fade-in">
+      <h2 class="section-title" style="color:var(--white);">Learn at Any Pace, From Anywhere</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.65);">Built for learners who are beginning to notice that riding is not one single thing. Each style has its own history, tools, goals, and language.</p>
+      <ul class="track-features">
+        <li><span class="track-dot"></span>No prior discipline experience required</li>
+        <li><span class="track-dot"></span>Clear comparisons between Western and English styles</li>
+        <li><span class="track-dot"></span>Interactive activities and review tools</li>
+        <li><span class="track-dot"></span>Designed for independent study or lesson programs</li>
+      </ul>
+    </div>
+    <div class="fade-in">
+      <h4 style="font-family:var(--font-display);color:var(--gold);font-size:1.1rem;margin-bottom:1rem;">Perfect For</h4>
+      <ul class="alignment-list">
+        <li><span class="track-dot"></span>Students comparing riding disciplines for the first time</li>
+        <li><span class="track-dot"></span>Horse Bowl, judging, and general knowledge preparation</li>
+        <li><span class="track-dot"></span>Riders moving between barns, lesson programs, or show settings</li>
+        <li><span class="track-dot"></span>Parents and new horse people learning common riding vocabulary</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner fade-in">
+    <p class="section-label" style="text-align:center;display:block;">Ready to Start?</p>
+    <h2 class="section-title">Begin Comparing Riding Styles</h2>
+    <p class="section-sub">Start with why riding styles developed, then build toward identifying common Western and English disciplines.</p>
+    <a href="2-why-styles-developed.html#top" class="btn-primary">Start the Course</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script>
+  window.LAYOUT = { homeUrl: '../../../../index.html', coursesUrl: '../../../index.html', navCta: { label: 'All Courses', url: '../../../index.html' } };
+</script>
+<script src="course-config.js"></script>
+<script>
+(function(){
+  const list=document.getElementById('course-module-list');
+  if(!list||!window.COURSE_CONFIG)return;
+  list.innerHTML=window.COURSE_CONFIG.modules.map(m=>`<a href="${m.file}" class="module-item fade-in"><div class="module-num">${m.num}</div><div><div class="module-title">${m.title}</div><div class="module-desc">${m.desc}</div></div><div class="module-type">${m.type}</div></a>`).join('');
+  document.querySelectorAll('.fade-in').forEach(el=>setTimeout(()=>el.classList.add('visible'),80));
+})();
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+</body>
+</html>

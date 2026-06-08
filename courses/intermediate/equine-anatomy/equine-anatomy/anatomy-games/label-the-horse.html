@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Label the Horse &mdash; External Equine Anatomy &mdash; Equine Edu</title>
+<title>Label the Horse &mdash; Equine Anatomy &mdash; Equine Edu</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../../assets/css/components.css">
@@ -97,9 +97,9 @@
 /* Drop zones — visible target circles */
 .drop-zone {
   position: absolute;
-  width: 28px;
-  height: 28px;
-  border: 2.5px solid rgba(37,99,235,0.82);
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(37,99,235,0.82);
   border-radius: 50%;
   background: rgba(37,99,235,0.14);
   transform: translate(-50%,-50%);
@@ -114,8 +114,8 @@
 }
 .drop-zone::after {
   content: '';
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background: rgba(37,99,235,0.9);
   border-radius: 50%;
   flex-shrink: 0;
@@ -145,7 +145,7 @@ body.pill-selected .drop-zone:not(.correct) {
 .drop-zone.correct {
   width: auto;
   height: auto;
-  min-width: 28px;
+  min-width: 22px;
   padding: 0.22rem 0.6rem;
   border-radius: 999px;
   border: 2px solid #2d7a4f;
@@ -331,7 +331,7 @@ body.pill-selected .drop-zone:not(.correct) {
 <section class="lesson-hero" id="top">
   <div class="lesson-hero-inner">
     <div class="lesson-hero-text">
-      <div class="lesson-module-tag">External Equine Anatomy</div>
+      <div class="lesson-module-tag">Equine Anatomy</div>
       <h1 class="lesson-hero-title">Label the <span>Horse</span></h1>
       <p class="lesson-hero-desc">Select a region, then drag each label onto the correct dot on the diagram. Work through all five regions to complete the set.</p>
     </div>
@@ -386,7 +386,7 @@ body.pill-selected .drop-zone:not(.correct) {
 
 <script>
 /* ===========================================================================
-   LABEL THE HORSE — External Equine Anatomy Game
+   LABEL THE HORSE — Equine Anatomy Game
    Five regional tabs. Drag or click label pills onto anchor-dot targets.
    Positions match DIAGRAM_DEFS from 3-equine-anatomy.html.
 =========================================================================== */
@@ -832,7 +832,7 @@ function showRegionComplete() {
     nextBtn.textContent = 'All Done ✓';
     nextBtn.onclick = null;
     nextBtn.style.display = '';
-    document.getElementById('rc-msg').textContent = 'You have labeled all five regions. That is the complete external anatomy of the horse.';
+    document.getElementById('rc-msg').textContent = 'You have labeled all five regions. That is the complete anatomy of the horse.';
   }
 
   document.getElementById('rc-reset-btn').onclick = function() {
@@ -848,7 +848,7 @@ switchRegion(0);
 </script>
 
 <script>
-  window.CURRENT_MODULE = 4;
+  window.CURRENT_MODULE = 3;
   window.LAYOUT = {
     homeUrl:    '../../../../../index.html',
     coursesUrl: '../../../../index.html',
@@ -857,6 +857,8 @@ switchRegion(0);
 </script>
 <script src="../course-config.js"></script>
 <script src="../../../../../assets/js/layout.js"></script>
+<script src="../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../assets/js/paywall.js"></script>
 <script src="../../../../../assets/js/course-nav.js"></script>
 </body>
 </html>

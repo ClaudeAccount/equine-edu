@@ -219,7 +219,7 @@
     if (pct === 1) scoreMessage.textContent = 'Perfect score. You have a complete command of horse anatomy for this level.';
     else if (pct >= 0.8) scoreMessage.textContent = 'Excellent work. A strong understanding with only a few details to revisit.';
     else if (pct >= 0.6) scoreMessage.textContent = 'Good effort. Review the questions you missed and try again to strengthen the gaps.';
-    else scoreMessage.textContent = 'Keep going. Work back through the lesson tabs and the Viewing Room, then try again. These terms will stick with practice.';
+    else scoreMessage.textContent = 'Keep going. Work back through the lesson tabs and Training Barn, then try again. These terms will stick with practice.';
     scorePanel.classList.add('show');
     if (pct >= 0.8) {
       try { localStorage.setItem('equineEduProgress.partsOfTheHorse.testYourKnowledge', 'true'); } catch(e) {}
@@ -236,7 +236,7 @@
 })();
 </script>
 <script>
-  window.CURRENT_MODULE = 5;
+  window.CURRENT_MODULE = 4;
   window.LAYOUT = {
     homeUrl:    '../../../../index.html',
     coursesUrl: '../../../index.html',
@@ -246,6 +246,9 @@
 </script>
 <script src="course-config.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
 <script src="../../../../assets/js/course-nav.js"></script>
 </body>
 </html>
+               

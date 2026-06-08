@@ -56,7 +56,7 @@ select.result-bad{border-color:#9d2f2f;background:#fff4f4}
     <div class="game-stage">
       <div class="diagram">
         <div class="equipment-stage" id="label-stage">
-          <img src="images/english-saddle-parts.png" alt="English saddle with numbered callouts">
+          <img id="saddle-image" src="images/english-saddle-parts.png" alt="English saddle with numbered callouts">
           <svg class="leader-layer" aria-hidden="true"></svg>
         </div>
       </div>
@@ -95,6 +95,7 @@ const complete=document.getElementById('complete-count');
 const total=document.getElementById('total-count');
 const scoreCard=document.getElementById('score-card');
 const stage=document.getElementById('label-stage');
+const saddleImage=document.getElementById('saddle-image');
 const svg=stage.querySelector('.leader-layer');
 let currentRound=[];
 let rotationDeck=[];
@@ -117,28 +118,40 @@ function nextRoundParts(){
   return rotationDeck.splice(0,roundSize);
 }
 
+function imagePoint(point){
+  const stageRect=stage.getBoundingClientRect();
+  const imageRect=saddleImage.getBoundingClientRect();
+  return {
+    x:imageRect.left-stageRect.left+(imageRect.width*point.x/100),
+    y:imageRect.top-stageRect.top+(imageRect.height*point.y/100)
+  };
+}
+
 function drawCallouts(roundParts){
   stage.querySelectorAll('.target-dot,.number-callout').forEach(el=>el.remove());
   svg.innerHTML='';
+  svg.setAttribute('viewBox','0 0 '+stage.clientWidth+' '+stage.clientHeight);
   total.textContent=roundParts.length;
   roundParts.forEach((part,index)=>{
+    const anchor=imagePoint(part.anchor);
+    const callout=imagePoint(part.callout);
     const line=document.createElementNS('http://www.w3.org/2000/svg','line');
     line.classList.add('leader-line');
-    line.setAttribute('x1',part.anchor.x+'%');
-    line.setAttribute('y1',part.anchor.y+'%');
-    line.setAttribute('x2',part.callout.x+'%');
-    line.setAttribute('y2',part.callout.y+'%');
+    line.setAttribute('x1',anchor.x);
+    line.setAttribute('y1',anchor.y);
+    line.setAttribute('x2',callout.x);
+    line.setAttribute('y2',callout.y);
     svg.appendChild(line);
     const dot=document.createElement('span');
     dot.className='target-dot';
-    dot.style.left=part.anchor.x+'%';
-    dot.style.top=part.anchor.y+'%';
+    dot.style.left=anchor.x+'px';
+    dot.style.top=anchor.y+'px';
     stage.appendChild(dot);
     const num=document.createElement('span');
     num.className='number-callout';
     num.textContent=index+1;
-    num.style.left=part.callout.x+'%';
-    num.style.top=part.callout.y+'%';
+    num.style.left=callout.x+'px';
+    num.style.top=callout.y+'px';
     stage.appendChild(num);
   });
 }
@@ -180,12 +193,20 @@ document.getElementById('check-btn').addEventListener('click',()=>{
 });
 document.getElementById('clear-btn').addEventListener('click',render);
 document.getElementById('play-again').addEventListener('click',render);
+window.addEventListener('resize',()=>{
+  if(currentRound.length) drawCallouts(currentRound);
+});
+saddleImage.addEventListener('load',()=>{
+  if(currentRound.length) drawCallouts(currentRound);
+});
 render();
 </script>
 <script>
 window.LAYOUT={homeUrl:'../../../index.html',coursesUrl:'../../index.html',navCta:{label:'Back to Learning Loft',url:'index.html'}};
 </script>
 <script src="../../../assets/js/layout.js"></script>
+<script src="../../../assets/js/supabase-client.js"></script>
+<script src="../../../assets/js/paywall.js"></script>
 </body>
 </html>
 

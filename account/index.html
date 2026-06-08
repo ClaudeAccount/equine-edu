@@ -176,7 +176,7 @@
     <div class="plan-card" id="plan-card">
       <div class="plan-name">Free <span>Plan</span></div>
       <p class="plan-desc">Upgrade to unlock all courses, quizzes, horse bowl practice, weekly scenarios, and more.</p>
-      <a href="#" class="plan-upgrade-btn" id="upgrade-btn">Upgrade to Pro</a>
+      <a href="../pricing.html" class="plan-upgrade-btn" id="upgrade-btn">Get Your Barn Pass</a>
     </div>
 
     <!-- Profile info -->
@@ -252,7 +252,7 @@
     if (tier !== 'free' && status === 'active') {
       badge.textContent = tier.charAt(0).toUpperCase() + tier.slice(1);
       badge.className = 'badge badge-active';
-      planCard.querySelector('.plan-name').innerHTML = tier.charAt(0).toUpperCase() + tier.slice(1) + ' <span>Plan</span>';
+      planCard.querySelector('.plan-name').innerHTML = 'Equine Edu <span>Barn Pass</span>';
       planCard.querySelector('.plan-desc').textContent = 'You have full access to all content. Thank you for supporting Equine Edu!';
       document.getElementById('upgrade-btn').style.display = 'none';
     }

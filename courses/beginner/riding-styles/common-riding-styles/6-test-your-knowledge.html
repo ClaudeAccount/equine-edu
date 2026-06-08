@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Common Riding Styles &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.quiz-layout{max-width:1400px;margin:0 auto;padding:2.5rem var(--page-pad) 5rem;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:5rem;align-items:start}.quiz-header{margin-bottom:2rem}.quiz-header h2{font-family:var(--font-display);font-size:1.6rem;color:var(--navy);margin-bottom:.5rem}.quiz-header p{color:var(--text-mid);font-size:.9rem;line-height:1.7}.q-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem;box-shadow:0 4px 18px rgba(120,90,40,.22),0 1px 4px rgba(13,27,62,.11)}.q-block.correct{border-color:#2d7a4f;background:#f0faf5}.q-block.incorrect{border-color:#c0392b;background:#fdf2f2}.q-number{font-size:.7rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}.q-text{font-size:.95rem;font-weight:700;color:var(--text-dark);line-height:1.5;margin-bottom:1rem}.q-options{display:grid;gap:.5rem}.q-option{display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;border:1.5px solid var(--border);border-radius:var(--radius);cursor:pointer;font-size:.88rem;color:var(--text-dark);background:var(--white);text-align:left;width:100%}.q-option:hover:not(:disabled){border-color:var(--navy);background:var(--off-white)}.q-option.selected{border-color:var(--navy);background:var(--navy);color:var(--white)}.q-option.correct-ans{border-color:#2d7a4f;background:#e8f7ef;color:#1a5c38}.q-option.wrong-ans{border-color:#c0392b;background:#fdf2f2;color:#8b1a1a}.q-feedback{margin-top:.85rem;font-size:.83rem;line-height:1.6;padding:.7rem 1rem;border-radius:var(--radius);display:none}.q-feedback.show{display:block}.q-feedback.correct{background:#e8f7ef;color:#1a5c38;border-left:3px solid #2d7a4f}.q-feedback.incorrect{background:#fdf2f2;color:#8b1a1a;border-left:3px solid #c0392b}.quiz-score-panel{background:var(--navy);border-radius:var(--radius-lg);padding:2rem;text-align:center;display:none;margin-top:1.5rem}.quiz-score-panel.show{display:block}.score-number{font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;margin-bottom:.4rem}.score-label{font-size:.82rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}.score-message{color:rgba(255,255,255,.82);font-size:.9rem;line-height:1.65;margin-bottom:1.5rem}.btn-retake,.btn-submit{background:var(--navy);color:var(--white);border:0;padding:.85rem 2rem;border-radius:var(--radius);font-weight:800;cursor:pointer}.btn-retake{background:var(--gold);color:var(--navy)}@media(max-width:1050px){.quiz-layout{grid-template-columns:1fr;gap:2rem}.lesson-right{position:static}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text"><div class="lesson-module-tag">Common Riding Styles</div><h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1></div>
+  </div>
+</section>
+<div class="quiz-layout">
+  <div class="quiz-main">
+    <div class="quiz-header">
+      <h2>Common Riding Styles Final Quiz</h2>
+      <p>This quiz covers why riding styles developed, common Western and English disciplines, and the purpose behind each style. Each attempt gives you 15 questions from a larger bank.</p>
+    </div>
+    <form id="quiz-form"><div id="quiz-questions"></div><div class="quiz-submit-row"><button type="button" class="btn-submit" id="quiz-submit">Submit Quiz</button></div></form>
+    <div class="quiz-score-panel" id="score-panel"><div class="score-number" id="score-display">0/15</div><div class="score-label">Your Score</div><div class="score-message" id="score-message"></div><button class="btn-retake" id="btn-retake">Try Again</button></div>
+  </div>
+  <aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QUESTION_COUNT=15;
+const questionBank=[
+{prompt:'Which statement best explains why riding styles developed?',options:['Different jobs and traditions required horses to work in different ways','All riders wanted identical equipment','Horse breeds stopped changing','Show rules came before practical work'],answer:'Different jobs and traditions required horses to work in different ways',correct:'Correct. Styles grew from practical needs, terrain, traditions, and later sport rules.',incorrect:'Not quite. The biggest reason is that different jobs and places required different ways of riding.'},
+{prompt:'Which discipline is part of the Western style family?',options:['Reining','Dressage','Hunters','Eventing'],answer:'Reining',correct:'Correct. Reining is a Western discipline.',incorrect:'Reining is the Western discipline in this list.'},
+{prompt:'Which discipline is part of the English style family?',options:['Dressage','Barrel racing','Ranch riding','Cutting'],answer:'Dressage',correct:'Correct. Dressage is an English discipline focused on precise, balanced movement.',incorrect:'Dressage is the English discipline listed here.'},
+{prompt:'What is barrel racing designed around?',options:['A timed cloverleaf pattern around three barrels','A judged dressage test','A smooth hunter round','Sorting cattle slowly'],answer:'A timed cloverleaf pattern around three barrels',correct:'Correct. Barrel racing is a timed Western event.',incorrect:'Barrel racing uses a timed cloverleaf pattern around three barrels.'},
+{prompt:'What is dressage designed to show?',options:['Precise, balanced movement and clear communication','Fastest time around barrels','A relaxed jog on the rail only','Cattle handling'],answer:'Precise, balanced movement and clear communication',correct:'Correct. Dressage is built around accuracy, balance, and communication.',incorrect:'Dressage focuses on precise, balanced movement and communication.'},
+{prompt:'In hunter classes, what is usually emphasized?',options:['Smooth rhythm, good form, and a polished jumping round','The fastest possible time only','Sliding stops and spins','A roping run'],answer:'Smooth rhythm, good form, and a polished jumping round',correct:'Correct. Hunters are judged on the quality and smoothness of the round.',incorrect:'Hunters reward smooth rhythm, form, and an attractive round.'},
+{prompt:'In jumper classes, what usually matters most?',options:['Faults and time','Mane braiding only','The quietest jog','A cattle pattern'],answer:'Faults and time',correct:'Correct. Jumpers are scored by faults and time.',incorrect:'Jumpers are about clearing the course with few faults and efficient time.'},
+{prompt:'Which discipline combines dressage, cross-country, and stadium jumping?',options:['Eventing','Western pleasure','Ranch riding','Saddle seat'],answer:'Eventing',correct:'Correct. Eventing has three phases.',incorrect:'Eventing is the three-phase sport.'},
+{prompt:'Which Western discipline rewards a horse that looks useful for ranch-type work?',options:['Ranch riding','Equitation','Hunters','Dressage'],answer:'Ranch riding',correct:'Correct. Ranch riding connects closely to practical ranch movement and usefulness.',incorrect:'Ranch riding is the discipline focused on ranch-type usefulness.'},
+{prompt:'Which Western class focuses on a quiet, willing horse moving steadily at walk, jog, and lope?',options:['Western pleasure','Barrel racing','Jumpers','Eventing'],answer:'Western pleasure',correct:'Correct. Western pleasure rewards a calm, consistent way of going.',incorrect:'Western pleasure is the quiet rail class described here.'},
+{prompt:'Which activity is most connected to cattle work?',options:['Cutting or roping','Dressage','Hunter under saddle','Saddle seat'],answer:'Cutting or roping',correct:'Correct. Cutting and roping are Western cattle-work events.',incorrect:'Cutting and roping are cattle-work events.'},
+{prompt:'What does the term discipline mean in this course?',options:['A specific riding activity or event within a style family','Only the saddle a rider uses','A horse color category','A barn rule'],answer:'A specific riding activity or event within a style family',correct:'Correct. Western and English are broad families; disciplines are the specific activities.',incorrect:'A discipline is the specific riding activity inside a larger style family.'},
+{prompt:'Which pairing is correct?',options:['English - dressage','Western - hunters','English - barrel racing','Western - eventing'],answer:'English - dressage',correct:'Correct. Dressage belongs to the English style family.',incorrect:'The correct pairing is English - dressage.'},
+{prompt:'Which pairing is correct?',options:['Western - reining','English - roping','Western - dressage','English - barrel racing'],answer:'Western - reining',correct:'Correct. Reining is a Western discipline.',incorrect:'Western - reining is the correct pair.'},
+{prompt:'Why does tack often look different between riding styles?',options:['Tack changes to support the task, rider position, and communication needed','Tack differences are only decorative','All disciplines require the same saddle','Tack has no connection to the style'],answer:'Tack changes to support the task, rider position, and communication needed',correct:'Correct. Tack is shaped by purpose.',incorrect:'Tack often supports the job, balance, and communication style.'},
+{prompt:'Which clue points most strongly toward Western riding?',options:['Working cattle or ranch-type tasks','A dressage test','A hunter course','Stadium jumping faults'],answer:'Working cattle or ranch-type tasks',correct:'Correct. Ranch and stock work are major Western roots.',incorrect:'Cattle and ranch work point strongly toward Western riding.'},
+{prompt:'Which clue points most strongly toward English riding?',options:['A formal dressage test or jumping course','A roping run','A cloverleaf barrel pattern','A cutting pen'],answer:'A formal dressage test or jumping course',correct:'Correct. Dressage and jumping are common English discipline clues.',incorrect:'Dressage tests and jumping courses point toward English riding.'},
+{prompt:'True or false: Western and English are broad style families, not just one single event each.',options:['True','False'],answer:'True',correct:'Correct. Each style family includes many disciplines.',incorrect:'Western and English are broad families with many disciplines inside them.'},
+{prompt:'True or false: A horse can only ever learn one riding discipline.',options:['True','False'],answer:'False',correct:'Correct. Many horses can learn more than one discipline with appropriate training.',incorrect:'Horses can learn multiple disciplines, though each one has different expectations.'},
+{prompt:'What is equitation most focused on?',options:['The rider position and effectiveness','Fastest time around barrels','A sliding stop','Sorting cattle'],answer:'The rider position and effectiveness',correct:'Correct. Equitation centers on the rider.',incorrect:'Equitation is focused on rider position and effectiveness.'}
+];
+const quizBody=document.getElementById('quiz-questions'),submit=document.getElementById('quiz-submit'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message'),retake=document.getElementById('btn-retake'),form=document.getElementById('quiz-form');let submitted=false;
+function esc(t){return String(t||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+function shuffle(a){return a.map(value=>({value,sort:Math.random()})).sort((x,y)=>x.sort-y.sort).map(i=>i.value);}
+function render(){submitted=false;const qs=shuffle(questionBank).slice(0,QUESTION_COUNT).map(q=>({...q,options:shuffle(q.options)}));quizBody.innerHTML=qs.map((q,i)=>`<div class="q-block" data-correct="${esc(q.answer)}"><div class="q-number">Question ${i+1} of ${QUESTION_COUNT}</div><div class="q-text">${esc(q.prompt)}</div><div class="q-options">${q.options.map(o=>`<button type="button" class="q-option" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div><div class="q-feedback correct">${esc(q.correct)}</div><div class="q-feedback incorrect">${esc(q.incorrect)}</div></div>`).join('');scorePanel.classList.remove('show');submit.disabled=false;quizBody.querySelectorAll('.q-option').forEach(btn=>btn.addEventListener('click',()=>{if(submitted)return;const block=btn.closest('.q-block');block.querySelectorAll('.q-option').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');}));}
+submit.addEventListener('click',()=>{if(submitted)return;submitted=true;let score=0;quizBody.querySelectorAll('.q-block').forEach(block=>{const correct=block.dataset.correct,selected=block.querySelector('.q-option.selected'),yes=block.querySelector('.q-feedback.correct'),no=block.querySelector('.q-feedback.incorrect');block.querySelectorAll('.q-option').forEach(btn=>{btn.disabled=true;if(btn.dataset.val===correct)btn.classList.add('correct-ans');});if(selected&&selected.dataset.val===correct){score++;selected.classList.add('correct-ans');yes.classList.add('show');block.classList.add('correct');}else{if(selected)selected.classList.add('wrong-ans');no.classList.add('show');block.classList.add('incorrect');}});const pct=score/QUESTION_COUNT;scoreDisplay.textContent=score+'/'+QUESTION_COUNT;scoreMessage.textContent=pct>=.9?'Excellent work. You can clearly connect riding styles to their purpose.':pct>=.75?'Strong work. Review the questions you missed and you will be in good shape.':pct>=.6?'Good effort. Revisit the lesson pages and try another randomized set.':'Keep practicing. The style families and discipline purposes will get easier with repetition.';scorePanel.classList.add('show');if(pct>=.8){try{localStorage.setItem('equineEduProgress.commonRidingStyles.testYourKnowledge','true')}catch(e){}}submit.disabled=true;});
+retake.addEventListener('click',()=>{render();form.scrollIntoView({behavior:'smooth',block:'start'});});
+render();
+})();
+</script>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE=5;
+window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Common Riding Styles',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

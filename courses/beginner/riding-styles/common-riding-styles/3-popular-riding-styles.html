@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popular Riding Styles &mdash; Common Riding Styles &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.style-tabs { display:flex; flex-wrap:wrap; gap:.6rem; margin:1rem 0 1.2rem; }
+.style-tab { border:1px solid var(--border); background:var(--white); color:var(--navy); border-radius:999px; padding:.65rem 1rem; font-weight:800; cursor:pointer; }
+.style-tab.active { background:var(--navy); color:var(--gold); border-color:var(--navy); }
+.discipline-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+.discipline-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.25rem; box-shadow:0 4px 16px rgba(13,27,62,.07); }
+.discipline-card h3 { font-family:var(--font-display); color:var(--navy); margin-bottom:.45rem; }
+.discipline-card p { color:var(--text-mid); line-height:1.65; font-size:.9rem; margin:0; }
+.discipline-label { color:var(--gold); font-size:.68rem; font-weight:900; letter-spacing:1.4px; text-transform:uppercase; margin-bottom:.4rem; }
+.style-panel[hidden]{display:none;}
+@media(max-width:760px){.discipline-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-lesson" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Common Riding Styles</div>
+      <h1 class="lesson-hero-title">Popular Riding <span>Styles</span></h1>
+      <p class="lesson-hero-desc">Western and English are broad riding families. Within each family are disciplines with their own goals, movement, tack, and show standards.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="lesson-intro-card">
+      <h2>Think Family First, Discipline Second</h2>
+      <p>Western and English describe large style families. A discipline is the specific activity or event within that family. For example, reining is a Western discipline, while dressage is an English discipline.</p>
+    </div>
+    <div class="visual-card">
+      <h2>Explore Common Disciplines</h2>
+      <div class="style-tabs" role="tablist" aria-label="Riding style family">
+        <button class="style-tab active" type="button" data-panel="western">Western Styles</button>
+        <button class="style-tab" type="button" data-panel="english">English Styles</button>
+      </div>
+      <div class="style-panel" id="western-panel">
+        <div class="discipline-grid">
+          <div class="discipline-card"><div class="discipline-label">Western</div><h3>Trail Riding</h3><p>Recreational or competitive riding over natural or prepared obstacles. It emphasizes calm handling, good manners, and practical movement.</p></div>
+          <div class="discipline-card"><div class="discipline-label">Western</div><h3>Ranch Riding</h3><p>A style that rewards a horse that looks useful, responsive, and comfortable doing everyday ranch-type work.</p></div>
+          <div class="discipline-card"><div class="discipline-label">Western</div><h3>Western Pleasure</h3><p>A judged rail class focused on a relaxed, consistent horse that moves quietly and willingly at the walk, jog, and lope.</p></div>
+          <div class="discipline-card"><div class="discipline-label">Western</div><h3>Reining</h3><p>A pattern class built around controlled circles, spins, sliding stops, rollbacks, and precise transitions.</p></div>
+          <div class="discipline-card"><div class="discipline-label">Western</div><h3>Barrel Racing</h3><p>A timed event where horse and rider run a cloverleaf pattern around three barrels as quickly and cleanly as possible.</p></div>
+          <div class="discipline-card"><div class="discipline-label">Western</div><h3>Cow Work</h3><p>Includes events such as cutting, roping, and working cow horse, where the horse responds to cattle and rider cues.</p></div>
+        </div>
+      </div>
+      <div class="style-panel" id="english-panel" hidden>
+        <div class="discipline-grid">
+          <div class="discipline-card"><div class="discipline-label">English</div><h3>Dressage</h3><p>A discipline focused on precise, balanced movement and communication through a prepared test of required figures.</p></div>
+          <div class="discipline-card"><div class="discipline-label">English</div><h3>Hunters</h3><p>A judged jumping discipline that values smooth rhythm, steady pace, good form, and an overall polished round.</p></div>
+          <div class="discipline-card"><div class="discipline-label">English</div><h3>Jumpers</h3><p>A jumping discipline scored by speed and faults. The goal is to clear the course accurately and efficiently.</p></div>
+          <div class="discipline-card"><div class="discipline-label">English</div><h3>Eventing</h3><p>A three-phase sport that combines dressage, cross-country, and stadium jumping to test versatility and fitness.</p></div>
+          <div class="discipline-card"><div class="discipline-label">English</div><h3>Equitation</h3><p>A judged discipline focused on the rider's position, effectiveness, and ability to guide the horse smoothly.</p></div>
+          <div class="discipline-card"><div class="discipline-label">English</div><h3>Saddle Seat</h3><p>A style often associated with high-stepping breeds and show-ring presentation, emphasizing animation and presence.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE=2;
+window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Common Riding Styles',url:'1-index.html'},navExtras:[{label:'The Viewing Room',url:'4-viewing-room.html'}]};
+window.PAGE_NOTES={items:['Western and English are style families, not single events.','A discipline is the specific riding activity within a style family.','Look for the purpose: precision, speed, jumping, cattle work, trail skill, or presentation.'],highlight:'Discipline names are easier to remember when they are connected to the job or goal of the ride.'};
+document.querySelectorAll('.style-tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.style-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.style-panel').forEach(p=>p.hidden=true);
+  document.getElementById(btn.dataset.panel+'-panel').hidden=false;
+}));
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

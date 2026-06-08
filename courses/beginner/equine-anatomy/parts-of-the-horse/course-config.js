@@ -29,20 +29,13 @@ window.COURSE_CONFIG = {
     },
     {
       num:   3,
-      title: 'The Viewing Room',
-      type:  'Practice',
-      file:  '4-viewing-room.html',
-      desc:  'Test your recognition using flip cards that reveal each part name and description.'
-    },
-    {
-      num:   4,
       title: 'The Training Barn',
       type:  'Learning Lab',
       file:  '5-training-barn.html',
       desc:  'Practice with three interactive anatomy games designed to sharpen your knowledge.'
     },
     {
-      num:   5,
+      num:   4,
       title: 'Test Your Knowledge',
       type:  'Quiz',
       file:  '6-test-your-knowledge.html',

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plans &amp; Pricing &mdash; Equine Edu</title>
+<meta name="description" content="Choose the plan that's right for you. Start free or unlock everything with Equine Edu Pro.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<style>
+/* ── Hero ─────────────────────────────────────────────────────── */
+.pricing-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a3055 100%);
+  padding: 4.5rem 1.5rem 3.5rem;
+  text-align: center;
+  color: var(--white);
+}
+.pricing-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+.pricing-hero h1 span { color: var(--gold); }
+.pricing-hero p {
+  color: rgba(255,255,255,0.72);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Layout ───────────────────────────────────────────────────── */
+.pricing-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem 5rem;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 640px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Cards ────────────────────────────────────────────────────── */
+.plan-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem 1.75rem;
+  position: relative;
+}
+.plan-card.featured {
+  border-color: var(--navy);
+  box-shadow: 0 12px 48px rgba(13,27,62,0.14);
+}
+.plan-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.plan-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin-bottom: 0.25rem;
+}
+.plan-name span { color: var(--gold); }
+.plan-price {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  margin: 1rem 0 0.2rem;
+}
+.plan-price sup {
+  font-size: 1.1rem;
+  font-weight: 700;
+  vertical-align: super;
+}
+.plan-price sub {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  vertical-align: baseline;
+}
+.plan-price-note {
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  margin-bottom: 1.5rem;
+}
+.plan-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
+}
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+}
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  padding: 0.4rem 0;
+  line-height: 1.45;
+}
+.plan-features li .check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  background: #d1fae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  font-size: 0.65rem;
+  color: #065f46;
+  font-weight: 900;
+}
+.plan-features li .lock {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--off-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  font-size: 0.65rem;
+  color: var(--text-mid);
+}
+.plan-features li.locked { color: var(--text-mid); }
+
+.plan-btn {
+  display: block;
+  width: 100%;
+  padding: 0.85rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  transition: opacity 0.15s, transform 0.1s;
+  letter-spacing: 0.02em;
+  box-sizing: border-box;
+}
+.plan-btn:active { transform: scale(0.99); }
+.plan-btn-free {
+  background: var(--off-white);
+  color: var(--navy);
+  border: 1.5px solid var(--border);
+}
+.plan-btn-free:hover { background: #e8e4dc; }
+.plan-btn-pro {
+  background: var(--navy);
+  color: var(--white);
+}
+.plan-btn-pro:hover { opacity: 0.88; }
+.plan-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── FAQ / note ───────────────────────────────────────────────── */
+.pricing-note {
+  text-align: center;
+  margin-top: 2.5rem;
+  color: var(--text-mid);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.pricing-note a { color: var(--navy); font-weight: 600; text-decoration: none; }
+.pricing-note a:hover { text-decoration: underline; }
+
+/* ── Loading spinner ──────────────────────────────────────────── */
+.spinner {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="pricing-hero">
+  <h1>Simple, honest <span>pricing</span></h1>
+  <p>Start free and learn at your own pace. Upgrade anytime to unlock every course, game, quiz, and weekly scenario.</p>
+</div>
+
+<div class="pricing-wrap">
+  <div class="pricing-grid">
+
+    <!-- Free Plan -->
+    <div class="plan-card">
+      <div class="plan-name">Free</div>
+      <div class="plan-price">$0</div>
+      <p class="plan-price-note">No credit card required</p>
+      <hr class="plan-divider">
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Beginner courses</li>
+        <li><span class="check">✓</span> Parts of the horse</li>
+        <li><span class="check">✓</span> Horse colors &amp; markings</li>
+        <li><span class="check">✓</span> Basic quizzes</li>
+        <li class="locked"><span class="lock">🔒</span> Intermediate &amp; advanced courses</li>
+        <li class="locked"><span class="lock">🔒</span> Interactive labeling games</li>
+        <li class="locked"><span class="lock">🔒</span> Horse Bowl practice</li>
+        <li class="locked"><span class="lock">🔒</span> Weekly real-life scenarios</li>
+        <li class="locked"><span class="lock">🔒</span> Head-to-head multiplayer</li>
+        <li class="locked"><span class="lock">🔒</span> Downloadable study resources</li>
+      </ul>
+      <a href="auth/signup.html" class="plan-btn plan-btn-free" id="free-btn">Get Started Free</a>
+    </div>
+
+    <!-- Pro Plan -->
+    <div class="plan-card featured">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Equine Edu <span>Barn Pass</span></div>
+      <div class="plan-price"><sup>$</sup>15<sub>/mo</sub></div>
+      <p class="plan-price-note">Billed monthly &mdash; cancel anytime</p>
+      <hr class="plan-divider">
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Everything in Free</li>
+        <li><span class="check">✓</span> All intermediate &amp; advanced courses</li>
+        <li><span class="check">✓</span> All interactive games &amp; activities</li>
+        <li><span class="check">✓</span> Horse Bowl practice mode</li>
+        <li><span class="check">✓</span> Weekly real-life horse scenarios</li>
+        <li><span class="check">✓</span> Your own virtual horse with live scores</li>
+        <li><span class="check">✓</span> Head-to-head multiplayer games</li>
+        <li><span class="check">✓</span> All downloadable study resources</li>
+        <li><span class="check">✓</span> New content as it launches</li>
+        <li><span class="check">✓</span> Support independent horse education</li>
+      </ul>
+      <button class="plan-btn plan-btn-pro" id="pro-btn" onclick="handleProClick()">Get Your Barn Pass</button>
+    </div>
+
+  </div>
+
+  <p class="pricing-note">
+    Questions? <a href="mailto:hello@equineedu.com">Contact us</a> &nbsp;&middot;&nbsp;
+    Secure checkout via <strong>Stripe</strong> &nbsp;&middot;&nbsp;
+    Cancel any time from your <a href="account/index.html">account page</a>
+  </p>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/supabase-client.js"></script>
+<script>
+  window.LAYOUT = {
+    homeUrl:    'index.html',
+    coursesUrl: 'courses/index.html'
+  };
+</script>
+<script src="assets/js/layout.js"></script>
+<script>
+// Update buttons based on auth + subscription state
+EEAuth.init(async function (session) {
+  var freeBtn = document.getElementById('free-btn');
+  var proBtn  = document.getElementById('pro-btn');
+
+  if (!session) return; // not logged in — default button text is fine
+
+  // Logged in — check subscription
+  var profile = await EEAuth.getProfile();
+  var tier     = profile && profile.subscription_tier;
+  var status   = profile && profile.subscription_status;
+
+  // Update free button
+  freeBtn.textContent = 'My Account';
+  freeBtn.href = 'account/index.html';
+
+  // Update pro button
+  if (tier !== 'free' && status === 'active') {
+    proBtn.textContent = '✓ Barn Pass Active';
+    proBtn.disabled = true;
+  }
+});
+
+async function handleProClick() {
+  var btn = document.getElementById('pro-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Setting up checkout…';
+
+  // Check if logged in first
+  var session = await EEAuth.getSession();
+  if (!session) {
+    window.location.href = 'auth/signup.html?next=/pricing.html';
+    return;
+  }
+
+  // Call Netlify function to create Stripe checkout session
+  try {
+    var res = await fetch('/.netlify/functions/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: session.user.id, email: session.user.email })
+    });
+    var data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert('Something went wrong starting checkout. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Get Equine Edu Pro';
+    }
+  } catch (err) {
+    alert('Could not connect to checkout. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Get Equine Edu Pro';
+  }
+}
+</script>
+</body>
+</html>
