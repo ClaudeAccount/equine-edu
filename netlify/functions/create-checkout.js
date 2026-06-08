@@ -42,8 +42,8 @@ exports.handler = async function (event) {
       metadata: {
         supabase_user_id: userId
       },
-      success_url: 'https://equineedu.netlify.app/account/index.html?subscribed=1',
-      cancel_url:  'https://equineedu.netlify.app/pricing.html'
+      success_url: 'https://equine-edu.netlify.app/account/index.html?subscribed=1',
+      cancel_url:  'https://equine-edu.netlify.app/pricing.html'
     });
 
     return {
