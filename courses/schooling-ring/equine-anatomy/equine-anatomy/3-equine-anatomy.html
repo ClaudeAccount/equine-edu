@@ -9,88 +9,10 @@
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
-<style>
-/* ====== Tab Navigation ====== */
 
-/* Bottom jump bar */
-/* Legs group label */
-.legs-group {
-  grid-column: span 2;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 0.25rem;
-}
-.legs-group-label {
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--muted-text);
-  text-align: center;
-  padding-top: 0.15rem;
-}
-.legs-group-btns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.35rem;
-}
-@media (max-width: 680px) {
-  .legs-group { grid-column: span 2; }
-}
-@media (max-width: 440px) {
-  .legs-group { grid-column: span 1; }
-  .legs-group-btns { grid-template-columns: 1fr; }
-}
-
-/* ====== Tab Panels ====== */
-.region-panel { display: none; }
-/* Tab panels: intro + diagram card (canonical lesson-tab structure) */
-.region-panel.active { display: flex; flex-direction: column; gap: 1.5rem; }
-[id^="panel-"] .diagram-outer {
-  background: var(--soft-white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); box-shadow: var(--shadow-rest);
-  padding: 1.25rem; margin: 0;
-}
-[id^="vocab-"].region-panel.active { display: block; }
-
-
-/* ====== Diagram ====== */
-.diagram-outer { display: flex; justify-content: center; padding: .5rem 0; }
-.diagram-wrap { position: relative; display: inline-block; width: 100%; max-width: 680px; user-select: none; }
-.diagram-wrap img { width: 100%; display: block; border-radius: var(--radius); }
-.diagram-wrap svg.marker-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 2; }
-
-.a-dot { position: absolute; width: 10px; height: 10px; background: var(--tan); border: 2px solid var(--heading); border-radius: 50%; transform: translate(-50%,-50%); z-index: 4; box-shadow: 0 1px 5px rgba(36, 54, 74,.35); cursor: grab; touch-action: none; }
-.a-dot:active { cursor: grabbing; }
-.a-lbl { position: absolute; transform: translate(-50%,-50%); background:var(--blue-primary); color:var(--white); font-size: .63rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; padding: .28rem .65rem; border-radius: 5px; white-space: nowrap; z-index: 5; box-shadow: 0 2px 8px rgba(36, 54, 74,.25); cursor: grab; touch-action: none; }
-.a-lbl:active { cursor: grabbing; }
-
-.diagram-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
-.diagram-edit-hint { font-size: .76rem; color: var(--muted-text); line-height: 1.5; }
-.reset-btn { display: inline-flex; align-items: center; gap: .35rem; font-size: .72rem; font-weight: 700; color: var(--body-text); background: none; border: 1px solid var(--border); border-radius: var(--radius); padding: .35rem .85rem; cursor: pointer; transition: border-color .15s, color .15s; }
-.reset-btn:hover { border-color: var(--tan); color: var(--heading); }
-.copy-pos-btn { display: inline-flex; align-items: center; gap: .35rem; font-size: .72rem; font-weight: 700; color: var(--body-text); background: none; border: 1px solid var(--border); border-radius: var(--radius); padding: .35rem .85rem; cursor: pointer; transition: border-color .15s, color .15s; }
-.copy-pos-btn:hover { border-color: var(--heading); color: var(--heading); }
-.pos-output-wrap { margin-top: .75rem; display: none; }
-.pos-output-wrap.open { display: block; }
-.pos-output-label { font-size: .68rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted-text); margin-bottom: .35rem; }
-.pos-output { width: 100%; font-family: monospace; font-size: .72rem; background: var(--soft-white); border: 1px solid var(--border); border-radius: var(--radius); padding: .6rem .75rem; resize: vertical; min-height: 100px; color: var(--heading); line-height: 1.6; }
-
-@media (max-width: 620px) {
-  .a-lbl { font-size: .52rem; padding: .2rem .44rem; }
-  .a-dot { width: 8px; height: 8px; }
-  .region-tab-btn { font-size: 0.76rem; padding: 0.5rem 0.7rem; }
-}
-
-/* Hide authoring tools from learners (ANATOMY_EDIT_MODE = false) */
-.is-baked .diagram-edit-hint,
-.is-baked .reset-btn,
-.is-baked .copy-pos-btn,
-.is-baked .pos-output-wrap,
-.is-baked .diagram-footer { display: none !important; }
-</style>
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-equine-anatomy-equine-anatomy-3-equine-anatomy">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -134,7 +56,7 @@
         </div>
         <div class="diagram-footer">
           <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
-          <div style="display:flex;gap:.5rem;">
+          <div class="ee-u-0b44c8ad">
             <button class="reset-btn" onclick="resetTab('head')">&#8635; Reset</button>
             <button class="copy-pos-btn" onclick="toggleExport('head')">&#128203; Copy positions</button>
           </div>
@@ -156,7 +78,7 @@
         </div>
         <div class="diagram-footer">
           <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
-          <div style="display:flex;gap:.5rem;">
+          <div class="ee-u-0b44c8ad">
             <button class="reset-btn" onclick="resetTab('neck')">&#8635; Reset</button>
             <button class="copy-pos-btn" onclick="toggleExport('neck')">&#128203; Copy positions</button>
           </div>
@@ -178,7 +100,7 @@
         </div>
         <div class="diagram-footer">
           <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
-          <div style="display:flex;gap:.5rem;">
+          <div class="ee-u-0b44c8ad">
             <button class="reset-btn" onclick="resetTab('body')">&#8635; Reset</button>
             <button class="copy-pos-btn" onclick="toggleExport('body')">&#128203; Copy positions</button>
           </div>
@@ -200,7 +122,7 @@
         </div>
         <div class="diagram-footer">
           <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
-          <div style="display:flex;gap:.5rem;">
+          <div class="ee-u-0b44c8ad">
             <button class="reset-btn" onclick="resetTab('frontlegs')">&#8635; Reset</button>
             <button class="copy-pos-btn" onclick="toggleExport('frontlegs')">&#128203; Copy positions</button>
           </div>
@@ -222,7 +144,7 @@
         </div>
         <div class="diagram-footer">
           <p class="diagram-edit-hint">&#9998; Drag any dot or label to reposition it.</p>
-          <div style="display:flex;gap:.5rem;">
+          <div class="ee-u-0b44c8ad">
             <button class="reset-btn" onclick="resetTab('backlegs')">&#8635; Reset</button>
             <button class="copy-pos-btn" onclick="toggleExport('backlegs')">&#128203; Copy positions</button>
           </div>
@@ -238,7 +160,7 @@
     <!-- ====== VOCAB CARDS ====== -->
 
     <div id="vocab-head" class="region-panel active">
-      <h3 style="font-family:var(--font-display);color:var(--heading);margin:2rem 0 0.75rem;">Head Vocabulary</h3>
+      <h3 class="ee-u-f8d8d998">Head Vocabulary</h3>
       <div class="vocab-grid">
         <div class="vocab-card"><div class="vocab-term">Ear</div><div class="vocab-def">The pair of upright structures at the top of the head. Horses use their ears for hearing and to show attention and mood.</div></div>
         <div class="vocab-card"><div class="vocab-term">Poll</div><div class="vocab-def">The highest point of the head, located between the ears.</div></div>
@@ -257,7 +179,7 @@
     </div>
 
     <div id="vocab-neck" class="region-panel">
-      <h3 style="font-family:var(--font-display);color:var(--heading);margin:2rem 0 0.75rem;">Neck &amp; Shoulder Vocabulary</h3>
+      <h3 class="ee-u-f8d8d998">Neck &amp; Shoulder Vocabulary</h3>
       <div class="vocab-grid">
         <div class="vocab-card"><div class="vocab-term">Throatlatch</div><div class="vocab-def">The area where the head meets the neck, just under the jaw.</div></div>
         <div class="vocab-card"><div class="vocab-term">Crest</div><div class="vocab-def">The top ridge of the neck that runs from the poll to the withers. The mane grows along the crest.</div></div>
@@ -272,7 +194,7 @@
     </div>
 
     <div id="vocab-body" class="region-panel">
-      <h3 style="font-family:var(--font-display);color:var(--heading);margin:2rem 0 0.75rem;">Body Vocabulary</h3>
+      <h3 class="ee-u-f8d8d998">Body Vocabulary</h3>
       <div class="vocab-grid">
         <div class="vocab-card"><div class="vocab-term">Withers</div><div class="vocab-def">The highest point of the back at the base of the neck. Horse height in hands is always measured to the withers.</div></div>
         <div class="vocab-card"><div class="vocab-term">Back</div><div class="vocab-def">The topline between the withers and the loin. This is the weight-bearing area under the saddle.</div></div>
@@ -291,7 +213,7 @@
     </div>
 
     <div id="vocab-frontlegs" class="region-panel">
-      <h3 style="font-family:var(--font-display);color:var(--heading);margin:2rem 0 0.75rem;">Front Legs Vocabulary</h3>
+      <h3 class="ee-u-f8d8d998">Front Legs Vocabulary</h3>
       <div class="vocab-grid">
         <div class="vocab-card"><div class="vocab-term">Upper Arm</div><div class="vocab-def">The section of the front leg between the shoulder joint and the elbow.</div></div>
         <div class="vocab-card"><div class="vocab-term">Elbow</div><div class="vocab-def">The prominent joint where the forearm meets the body, visible on the inside of the upper front leg.</div></div>
@@ -308,7 +230,7 @@
     </div>
 
     <div id="vocab-backlegs" class="region-panel">
-      <h3 style="font-family:var(--font-display);color:var(--heading);margin:2rem 0 0.75rem;">Back Legs Vocabulary</h3>
+      <h3 class="ee-u-f8d8d998">Back Legs Vocabulary</h3>
       <div class="vocab-grid">
         <div class="vocab-card"><div class="vocab-term">Stifle</div><div class="vocab-def">The large upper joint of the hind leg, equivalent to the human knee. Located where the thigh meets the gaskin.</div></div>
         <div class="vocab-card"><div class="vocab-term">Gaskin</div><div class="vocab-def">The muscular region between the stifle and the hock, equivalent to the human calf.</div></div>

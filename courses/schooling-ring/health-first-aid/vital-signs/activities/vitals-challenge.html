@@ -10,32 +10,10 @@
 <link rel="stylesheet" href="../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../assets/css/game.css">
-<style>
-.progress-bar-wrap { background: var(--border); border-radius: 999px; height: 6px; margin-bottom: 2rem; }
-  .progress-bar-fill { background: var(--tan); height: 6px; border-radius: 999px; transition: width 0.3s ease; }
-  .round-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 1rem; }
-  .vital-display {
-    background: var(--heading); border-radius: var(--radius-lg);
-    padding: 2rem 1.75rem; text-align: center; margin-bottom: 1.5rem;
-  }
-  .vital-display .vd-sign { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.6rem; }
-  .vital-display .vd-reading { font-family: var(--font-display); font-size: 2.2rem; color: var(--tan); line-height: 1.1; margin-bottom: 0.4rem; }
-  .vital-display .vd-context { font-size: 0.84rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
-  .answer-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
-  .ans-btn { padding: 0.85rem 0.5rem; border: 2px solid var(--border); border-radius: var(--radius); background: var(--white); font-family: var(--font-body); font-size: 0.88rem; font-weight: 700; color: var(--heading); cursor: pointer; transition: all 0.15s; }
-  .ans-btn:hover:not(:disabled) { border-color: var(--heading); background: var(--soft-white); }
-  .ans-btn.selected { border-color: var(--heading); background: var(--heading); color: var(--white); }
-  .ans-btn.correct-ans { border-color: var(--success); background: var(--success-bg); color: var(--success); }
-  .ans-btn.wrong-ans { border-color: var(--error); background: var(--error-bg); color: var(--error); }
-  .feedback-box { padding: 1rem 1.2rem; border-radius: var(--radius); font-size: 0.88rem; line-height: 1.65; display: none; margin-bottom: 1.25rem; }
-  .feedback-box.show { display: block; }
-  .feedback-box.correct   { background: var(--success-bg); border-left: 3px solid var(--success); color: var(--success); }
-  .feedback-box.incorrect { background: var(--error-bg); border-left: 3px solid var(--error); color: var(--error); }
-  .btn-next { background: var(--heading); color: var(--white); border: none; padding: 0.8rem 1.75rem; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; cursor: pointer; display: none; }
-  .btn-next.show { display: inline-block; }
-</style>
+
+  <link rel="stylesheet" href="../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-health-first-aid-vital-signs-activities-vitals-challenge">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -59,7 +37,7 @@
 
     <div class="game-play-area" id="game-play">
       <div class="round-label" id="round-label">Round 1 of 10</div>
-      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-bar" style="width:10%"></div></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill ee-u-3b30d038" id="prog-bar"></div></div>
       <div class="vital-display">
         <div class="vd-sign" id="vd-sign">Vital Sign</div>
         <div class="vd-reading" id="vd-reading">&mdash;</div>

@@ -9,92 +9,10 @@
 <link rel="stylesheet" href="../../../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../../assets/css/course.css">
-<style>
-.scenario-intro {
-  background: var(--soft-white);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--heading);
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.5rem;
-}
-.scenario-intro h2 {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--heading);
-  margin-bottom: 0.4rem;
-}
-.scenario-intro p {
-  color: var(--body-text);
-  font-size: 0.88rem;
-  line-height: 1.7;
-  margin: 0;
-}
-.scenario-grid { display: flex; flex-direction: column; gap: 0.85rem; }
-.scenario-card {
-  background: var(--white);
-  border: 1.5px solid var(--border-mid);
-  border-radius: var(--radius);
-  padding: 1rem 1.1rem;
-  transition: border-color 0.18s;
-}
-.scenario-card:hover { border-color: rgba(200, 162, 122,0.5); }
-.scenario-num {
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--tan);
-  margin-bottom: 0.45rem;
-}
-.scenario-q {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--heading);
-  margin-bottom: 0.75rem;
-  line-height: 1.55;
-}
-.scenario-options { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.scenario-btn {
-  padding: 0.45rem 1rem;
-  border-radius: var(--radius);
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  border: 1.5px solid transparent;
-  transition: background 0.15s, border-color 0.15s;
-}
-.opt-chestnut { background: rgba(180,70,30,0.08); color: var(--leather-dark); border-color: rgba(180,70,30,0.25); }
-.opt-chestnut:hover { background: rgba(180,70,30,0.18); }
-.opt-black { background: rgba(36, 54, 74,0.07); color: var(--heading); border-color: rgba(36, 54, 74,0.2); }
-.opt-black:hover { background: rgba(36, 54, 74,0.14); }
-.opt-bay { background: rgba(200, 162, 122,0.1); color: var(--leather-dark); border-color: rgba(200, 162, 122,0.28); }
-.opt-bay:hover { background: rgba(200, 162, 122,0.2); }
-.scenario-btn.correct-pick { background: var(--success-bg) !important; border-color: var(--success) !important; color: var(--success) !important; }
-.scenario-btn.wrong-pick   { background: var(--error-bg)  !important; border-color: var(--error) !important; color: var(--error) !important; }
-.scenario-btn[disabled] { cursor: default; opacity: 0.75; pointer-events: none; }
-/* Feedback: hidden by default, shown only via JS */
-.scenario-feedback {
-  display: none;
-  margin-top: 0.55rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--radius);
-  font-size: 0.84rem;
-  line-height: 1.5;
-}
-.scenario-feedback.fb-correct {
-  background: var(--success-bg);
-  color: var(--success);
-  border: 1px solid var(--success);
-}
-.scenario-feedback.fb-wrong {
-  background: var(--error-bg);
-  color: var(--error);
-  border: 1px solid var(--error);
-}
-</style>
+
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-colors-markings-base-coat-colors-activities-game-2-color-scenarios">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 

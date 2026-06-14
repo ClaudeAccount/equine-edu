@@ -9,69 +9,10 @@
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
-<style>
-  /* Tabs: shared system — see components.css §11b */
-  /* Panels */
-  /* Color swatch strip in cards */
-  .swatch-strip { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.75rem; }
-  .swatch-dot {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.2);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    position: relative;
-  }
-  .swatch-dot::after {
-    content: attr(data-label);
-    position: absolute;
-    top: 34px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.6rem;
-    font-weight: 700;
-    color: var(--muted-text);
-    white-space: nowrap;
-    letter-spacing: 0.5px;
-  }
-  /* Checklist rows */
-  .id-checklist { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 1rem; }
-  .id-check-item { display: flex; gap: 0.75rem; align-items: flex-start; }
-  .id-check-badge {
-    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.65rem; font-weight: 900; margin-top: 0.1rem;
-  }
-  .badge-yes { background: var(--success-bg); color: var(--success); }
-  .badge-no  { background: var(--error-bg); color: var(--error); }
-  .id-check-text { font-size: 0.9rem; color: var(--body-text); line-height: 1.55; }
-  /* Jump bar */
-  /* Real horse photo row inside tabs */
-  .tab-photo-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    margin-top: 0.25rem;
-  }
-  .tab-photo-wrap {
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--soft-white);
-    aspect-ratio: 4 / 3;
-  }
-  .tab-photo-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  @media (max-width: 760px) {
-    .tab-photo-row { grid-template-columns: 1fr; }
-  }
-</style>
+
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-colors-markings-base-coat-colors-4-base-coat-colors">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -115,9 +56,9 @@
             <h3>Red, Copper, or Brown-Red</h3>
             <p>Chestnut body color ranges from pale golden-red to a deep, dark brown-red called liver chestnut. The shade varies between individuals, but the underlying pigment is always phaeomelanin &mdash; the red pigment.</p>
             <div class="swatch-strip">
-              <div class="swatch-dot" style="background:#E8854A;" data-label="Sorrel"></div>
-              <div class="swatch-dot" style="background:#C44C18;" data-label="Chestnut"></div>
-              <div class="swatch-dot" style="background:#6B2A0B;" data-label="Liver"></div>
+              <div class="swatch-dot ee-u-977373c0" data-label="Sorrel"></div>
+              <div class="swatch-dot ee-u-f86043fd" data-label="Chestnut"></div>
+              <div class="swatch-dot ee-u-bd1477d0" data-label="Liver"></div>
             </div>
           </article>
           <article class="concept-card">
@@ -166,7 +107,7 @@
             <h3>Liver Chestnut</h3>
             <p>A very dark red-brown shade of chestnut. Liver chestnuts can appear almost black at a distance. The key clue is the mane and tail, which will be the same dark brown-red as the body &mdash; not black.</p>
           </article>
-          <article class="concept-card" style="grid-column: 1 / -1; max-width: 480px; margin: 0 auto;">
+          <article class="concept-card ee-u-7abb0868">
             <span>Variation</span>
             <h3>Flaxen Chestnut</h3>
             <p>A chestnut with a noticeably lighter, pale cream or blonde mane and tail. The body is red and the mane is significantly lighter &mdash; creating an eye-catching contrast. No black points.</p>
@@ -222,7 +163,7 @@
       </div>
       <div class="visual-card">
         <h2>Fading Black &mdash; A Common Complication</h2>
-        <div class="lesson-intro-card" style="margin:0;">
+        <div class="lesson-intro-card ee-u-1da9facb">
           <h2>Sun Fading and Seasonal Changes</h2>
           <p>Many black horses fade to a brownish or rusty tone in summer due to sun exposure. This is called fading black or sun-faded black. The horse is still genetically black &mdash; the coat color changes seasonally, not genetically. After shedding in autumn, a fading black will return to true black.</p>
           <p>To confirm a fading black, look at protected areas &mdash; under the mane or saddle area &mdash; where the coat has not been exposed to the sun. Those areas will still show the true black.</p>
@@ -242,9 +183,9 @@
             <h3>Red or Brown</h3>
             <p>Bay body color ranges from light brown to a rich, deep red-brown called blood bay. The body color comes from phaeomelanin &mdash; the same red pigment as chestnut. The difference is what happens on the mane, tail, and legs.</p>
             <div class="swatch-strip">
-              <div class="swatch-dot" style="background:#D4A96A;" data-label="Light"></div>
-              <div class="swatch-dot" style="background:#9B5B2A;" data-label="Bay"></div>
-              <div class="swatch-dot" style="background:#2C1A12;" data-label="Dark"></div>
+              <div class="swatch-dot ee-u-c4fd913e" data-label="Light"></div>
+              <div class="swatch-dot ee-u-1d1d83ea" data-label="Bay"></div>
+              <div class="swatch-dot ee-u-10a91a59" data-label="Dark"></div>
             </div>
           </article>
           <article class="concept-card">

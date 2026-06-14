@@ -9,36 +9,10 @@
 <link rel="stylesheet" href="../../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../../assets/css/game.css">
-<style>
-.term-display { background: var(--heading); color: var(--white); border-radius: var(--radius-lg); padding: 1.5rem; text-align: center; margin-bottom: 1.25rem; }
-.term-prompt { font-size: 0.68rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; }
-.term-name { font-family: var(--font-display); font-size: 2rem; color: var(--tan); line-height: 1.2; }
-.terms-remaining { font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 0.4rem; }
 
-.buckets { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
-.bucket-btn { padding: 1rem; border: 2px solid var(--border); border-radius: var(--radius); background: var(--white); color: var(--heading); font-family: var(--font-body); font-weight: 800; font-size: 0.88rem; cursor: pointer; transition: all 0.15s; text-align: center; }
-.bucket-btn:hover:not(:disabled) { border-color: var(--tan); background: rgba(200, 162, 122,0.08); }
-.bucket-btn.correct-flash { border-color: var(--success); background: var(--success-bg); color: var(--success); }
-.bucket-btn.wrong-flash   { border-color: var(--error); background: var(--error-bg); color: var(--error); }
-
-.sort-feedback { font-size: 0.84rem; padding: 0.65rem 0.9rem; border-radius: var(--radius); text-align: center; min-height: 40px; margin-bottom: 0.5rem; display: none; }
-.sort-feedback.show { display: block; }
-.sort-feedback.correct { background: var(--success-bg); color: var(--success); border-left: 3px solid var(--success); }
-.sort-feedback.wrong   { background: var(--error-bg); color: var(--error); border-left: 3px solid var(--error); }
-
-.result-card { background: var(--heading); color: var(--white); border-radius: var(--radius-lg); padding: 2rem; text-align: center; display: none; }
-.result-card.show { display: block; }
-.result-big { font-family: var(--font-display); font-size: 3rem; color: var(--tan); }
-.result-msg { font-size: 0.95rem; color: rgba(255,255,255,0.8); margin: 1rem 0 1.5rem; line-height: 1.6; }
-.restart-btn { background: var(--tan); color: var(--heading); border: none; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 800; font-size: 0.88rem; cursor: pointer; }
-
-@media (max-width: 560px) {
-  .buckets { grid-template-columns: 1fr; }
-  .term-name { font-size: 1.5rem; }
-}
-</style>
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-equine-anatomy-equine-anatomy-activities-game-2-region-sort">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -65,7 +39,7 @@
       <div class="game-progress-bar-wrap">
         <span class="game-progress-label">Correct: <span id="correct-count">0</span></span>
         <div class="game-progress-track">
-          <div class="game-progress-fill" id="progress-fill" style="width:0%"></div>
+          <div class="game-progress-fill ee-u-b05fd1db" id="progress-fill"></div>
         </div>
         <span class="game-score-label">Remaining: <span id="remaining-count">0</span></span>
       </div>
@@ -90,7 +64,7 @@
         </div>
 
         <div class="result-card" id="result-card">
-          <div style="font-size:.68rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);">Final Score</div>
+          <div class="ee-u-9d653e2f">Final Score</div>
           <div class="result-big" id="result-big"></div>
           <div class="result-msg" id="result-msg"></div>
           <button class="restart-btn" onclick="startGame()">Play Again</button>

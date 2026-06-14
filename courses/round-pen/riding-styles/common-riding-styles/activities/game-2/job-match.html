@@ -9,21 +9,10 @@
 <link rel="stylesheet" href="../../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../../assets/css/game.css">
-<style>
-.game-wrap{width:100%;padding:0 0 1rem}
 
-.top{display:flex;justify-content:space-between;color:var(--tan);font-weight:900;margin-bottom:1rem}
-.prompt{background:var(--soft-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem;color:var(--heading);font-weight:800;line-height:1.6;text-align:center}
-.prompt img{width:min(100%,420px);aspect-ratio:16/10;object-fit:contain;object-position:center;display:block;margin:0 auto 1rem;border-radius:var(--radius);background:var(--white);border:1px solid rgba(36, 54, 74,.08)}
-.prompt-text{max-width:680px;margin:0 auto}
-.options{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem}
-
-.option:hover{border-color:var(--tan)}
-.feedback{min-height:2rem;text-align:center;font-weight:800;margin-top:1rem}
-@media(max-width:640px){.options{grid-template-columns:1fr}.prompt img{width:100%}}
-</style>
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -117,20 +106,21 @@ function show(){
       var correct=btn.dataset.answer===item.a;
       document.querySelectorAll('.option').forEach(function(b){
         b.disabled=true;
-        if(b.dataset.answer===item.a){b.style.borderColor='#1a8c4e';b.style.background='rgba(26,140,78,.08)'}
+        b.classList.remove('correct','incorrect');
+        if(b.dataset.answer===item.a){b.classList.add('correct')}
       });
-      if(!correct){btn.style.borderColor='#c0392b';btn.style.background='rgba(192,57,43,.08)'}
+      if(!correct){btn.classList.add('incorrect')}
       if(correct)score++;
       scoreEl.textContent=score+' / '+(round+1);
-      feedbackEl.innerHTML=correct?'<span style="color:#1a8c4e">&#10003; Correct!</span>':'<span style="color:var(--error)">&#10007; That\'s '+esc(item.a)+'</span>';
+      feedbackEl.innerHTML=correct?'<span class="feedback-correct">&#10003; Correct!</span>':'<span class="feedback-incorrect">&#10007; That\'s '+esc(item.a)+'</span>';
     });
   });
 }
 
 function end(){
-  promptEl.innerHTML='<div style="font-family:var(--font-display);font-size:2.5rem;padding:1rem 0;color:var(--heading)">'+score+' / '+active.length+'</div>';
+  promptEl.innerHTML='<div class="end-score">'+score+' / '+active.length+'</div>';
   optionsEl.innerHTML='';
-  feedbackEl.innerHTML='<span style="color:var(--heading)">'+(score===active.length?'Perfect score!':score>=7?'Great job!':'Keep practicing!')+'</span>';
+  feedbackEl.innerHTML='<span class="feedback-summary">'+(score===active.length?'Perfect score!':score>=7?'Great job!':'Keep practicing!')+'</span>';
   nextBtn.disabled=true;
 }
 

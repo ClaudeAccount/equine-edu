@@ -10,35 +10,10 @@
 <link rel="stylesheet" href="../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../assets/css/game.css">
-<style>
-.game-header { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.4rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.game-title { font-family: var(--font-display); font-size: 1.05rem; color: var(--heading); }
-.game-stats { display: flex; gap: 1.25rem; }
-.stat { font-size: 0.78rem; font-weight: 700; }
-.stat-label { color: var(--body-text); }
-.stat-val { color: var(--tan); margin-left: 0.3rem; }
-.memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.95rem; max-width: 1040px; margin: 0 auto; }
-.mem-card { aspect-ratio: 3 / 4; border-radius: var(--radius); perspective: 600px; cursor: pointer; min-height: 140px; }
-.mem-card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.38s ease; }
-.mem-card.flipped .mem-card-inner, .mem-card.matched .mem-card-inner { transform: rotateY(180deg); }
-.mem-front, .mem-back { position: absolute; inset: 0; border-radius: var(--radius); backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 0.6rem; text-align: center; }
-.mem-front { background: var(--heading); border: 1.5px solid rgba(200, 162, 122,0.3); }
-.mem-front-icon { font-size: 1.5rem; color: rgba(200, 162, 122,0.5); }
-.mem-back { background: var(--white); border: 1.5px solid var(--border); transform: rotateY(180deg); font-size: 0.78rem; color: var(--heading); font-weight: 600; line-height: 1.4; flex-direction: column; gap: 0.25rem; }
-.mem-back.is-term { font-family: var(--font-display); font-size: 0.88rem; color: var(--heading); }
-.mem-back.is-def { font-size: 0.72rem; color: var(--body-text); font-weight: 500; }
-.mem-card.matched .mem-back { background: var(--success-bg); border-color: var(--success); color: var(--success); }
-.result-panel { background: var(--heading); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; display: none; margin-top: 1.25rem; }
-.result-panel.show { display: block; }
-.result-score { font-family: var(--font-display); font-size: 2.5rem; color: var(--tan); }
-.result-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
-.result-msg { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; margin-bottom: 1.5rem; }
-.btn-restart { background: var(--tan); color: var(--heading); border: none; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 700; cursor: pointer; }
-@media (max-width: 620px) { .memory-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; } }
-@media (max-width: 420px) { .memory-grid { grid-template-columns: repeat(2, 1fr); } }
-</style>
+
+  <link rel="stylesheet" href="../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-round-pen-equine-anatomy-parts-of-the-horse-anatomy-games-anatomy-memory">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 

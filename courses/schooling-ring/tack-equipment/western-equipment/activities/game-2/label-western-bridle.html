@@ -9,42 +9,10 @@
 <link rel="stylesheet" href="../../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../../assets/css/game.css">
-<style>
-.game-shell{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(36, 54, 74,.09);overflow:visible;width:100%}
-.game-intro-card{padding:1.4rem 1.6rem;background:var(--soft-white);border-bottom:1px solid var(--border);border-radius:var(--radius-lg) var(--radius-lg) 0 0;margin-bottom:.65rem}
-.game-intro-card h2{font-family:var(--font-display);color:var(--heading);font-size:1.25rem;margin-bottom:.4rem}
-.game-intro-card p{color:var(--body-text);font-size:.88rem;line-height:1.65;margin:.2rem 0 0}
-.game-progress-bar-wrap{background:var(--heading);padding:.85rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.gpbw-left{display:flex;align-items:center;gap:.75rem;color:rgba(255,255,255,.85);font-size:.88rem;font-weight:600}
-.round-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:.28rem .7rem;font-size:.67rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.8)}
-.btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
-.diagram-area{padding:1.4rem 1.4rem 1rem;overflow:visible}
-.equipment-stage{position:relative;width:min(100%,360px);margin:0 auto;overflow:visible}
-.equipment-stage img{width:100%;height:auto;display:block;pointer-events:none;user-select:none}
-.leader-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.leader-line{stroke:var(--tan);stroke-width:1.4;stroke-dasharray:5 4;opacity:.9}
-.anchor-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--blue-primary);border:2px solid var(--heading);transform:translate(-50%,-50%);z-index:3;pointer-events:none}
-.drop-box{position:absolute;min-width:80px;max-width:170px;min-height:30px;padding:4px 8px;border:2px dashed rgba(36, 54, 74,.3);border-radius:6px;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);z-index:5;cursor:default;transition:border-color .12s,background .12s;box-sizing:border-box;white-space:nowrap}
-.drop-box.drag-over{border-color:var(--tan);border-style:solid;background:rgba(200, 162, 122,.1)}
-.drop-box.correct{border-color:var(--success);border-style:solid;background:var(--success-bg)}
-.drop-box.incorrect{border-color:var(--error);border-style:solid;background:var(--error-bg)}
-.drop-box.has-pill{border-style:solid;border-color:rgba(36, 54, 74,.32);cursor:grab}
-.drop-placeholder{font-size:.66rem;color:var(--heading);font-weight:700;pointer-events:none;white-space:nowrap}
-.box-label{font-size:.73rem;font-weight:700;color:var(--heading);pointer-events:none;text-align:center;line-height:1.2;white-space:nowrap}
-.word-bank-wrap{padding:.85rem 1.25rem 1.1rem;border-top:1px solid var(--border);background:var(--soft-white);border-radius:0 0 var(--radius-lg) var(--radius-lg)}
-.word-bank-label{font-size:.66rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted-text);margin-bottom:.55rem}
-.word-bank{display:flex;flex-wrap:wrap;gap:.45rem;min-height:40px;align-items:center}
-.drag-tile{display:inline-flex;align-items:center;padding:.36rem .88rem;background:var(--blue-primary);color:var(--white);border-radius:5px;font-size:.78rem;font-weight:700;cursor:grab;user-select:none;touch-action:none;transition:opacity .15s,transform .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(36, 54, 74,.18);white-space:nowrap}
-.drag-tile:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(36, 54, 74,.25)}
-.drag-tile.is-dragging{opacity:.28;cursor:grabbing}
-.drag-ghost{position:fixed;padding:.36rem .88rem;background:var(--blue-primary);color:var(--white);border-radius:5px;font-size:.78rem;font-weight:700;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 6px 20px rgba(36, 54, 74,.35);white-space:nowrap}
-.score-card{display:none;text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border)}
-.score-card.show{display:block}
-.score-emoji{font-size:2.5rem;margin-bottom:.6rem}
-@media(max-width:560px){.drop-box{max-width:120px;font-size:.66rem}.drag-tile{font-size:.72rem;padding:.3rem .7rem}}
-</style>
+
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-tack-equipment-western-equipment-activities-game-2-label-western-bridle">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 <section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
@@ -56,7 +24,7 @@
     </div>
   </div>
 </section>
-<div class="lesson-wrap"><main class="lesson-left" style="padding:0 0 2rem">
+<div class="lesson-wrap"><main class="lesson-left ee-u-ee036e5f">
 
   <div class="game-shell">
     <div class="game-intro-card">
@@ -91,7 +59,7 @@
       <div class="score-emoji" id="score-emoji">🏆</div>
       <h2 id="score-title">Well done!</h2>
       <p id="score-text"></p>
-      <div class="btn-row" style="justify-content:center;margin-top:1.25rem">
+      <div class="btn-row ee-u-4e8d2d13">
         <button class="btn-primary" id="play-again" type="button">Play Again</button>
         <a class="btn-secondary" href="../../6-training-barn.html">Training Barn</a>
       </div>

@@ -10,32 +10,10 @@
 <link rel="stylesheet" href="../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../assets/css/game.css">
-<style>
-.game-header { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.4rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.game-title { font-family: var(--font-display); font-size: 1.05rem; color: var(--heading); }
-.game-counter { font-size: 0.82rem; font-weight: 700; color: var(--tan); }
-.term-queue { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; text-align: center; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.current-term { font-family: var(--font-display); font-size: 2rem; color: var(--heading); margin-bottom: 0.4rem; }
-.term-hint { font-size: 0.82rem; color: var(--body-text); }
-.region-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
-.region-btn { padding: 1.25rem; border: 2px solid var(--border); border-radius: var(--radius-lg); background: var(--white); cursor: pointer; text-align: center; transition: border-color 0.15s, background 0.15s, transform 0.12s; font-family: var(--font-display); font-size: 1rem; color: var(--heading); }
-.region-btn:hover { border-color: var(--heading); background: var(--soft-white); transform: translateY(-2px); }
-.region-btn.correct { border-color: var(--success); background: var(--success-bg); color: var(--success); }
-.region-btn.incorrect { border-color: var(--error); background: var(--error-bg); color: var(--error); }
-.region-btn:disabled { cursor: default; transform: none; }
-.feedback-row { min-height: 44px; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; font-weight: 600; color: var(--body-text); margin-bottom: 0.5rem; text-align: center; }
-.feedback-row.correct { color: var(--success); }
-.feedback-row.incorrect { color: var(--error); }
-.result-panel { background: var(--heading); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; display: none; }
-.result-panel.show { display: block; }
-.result-score { font-family: var(--font-display); font-size: 3rem; color: var(--tan); }
-.result-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
-.result-msg { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; margin-bottom: 1.5rem; }
-.btn-restart { background: var(--tan); color: var(--heading); border: none; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 700; cursor: pointer; }
-@media (max-width: 480px) { .region-grid { grid-template-columns: 1fr; } .current-term { font-size: 1.5rem; } }
-</style>
+
+  <link rel="stylesheet" href="../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-round-pen-equine-anatomy-parts-of-the-horse-anatomy-games-region-sort">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 

@@ -9,64 +9,10 @@
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
-<style>
-body { background: var(--cream-bg); }
 
-/* ── Hero ─────────────────────────────────────────────────────────── */
-.course-hero-inner { display:grid; grid-template-columns:1fr 360px; gap:4rem; align-items:center; max-width:1100px; margin:0 auto; padding:72px 5%; }
-.course-tag { display:inline-flex; align-items:center; gap:.5rem; background:rgba(127,152,178,.12); border:1px solid rgba(127,152,178,.3); color:var(--leather-dark); font-size:.7rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:2px; margin-bottom:1.25rem; }
-.course-hero h1 { font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3.25rem); color:var(--heading); line-height:1.12; margin-bottom:1rem; }
-.course-hero h1 span { color:var(--blue-primary); }
-.course-hero-desc { color:var(--body-text); font-size:1rem; line-height:1.75; max-width:540px; margin-bottom:1.75rem; }
-.course-meta-row { display:flex; flex-wrap:nowrap; gap:0; margin-bottom:1.75rem; align-items:center; min-width:0; }
-.meta-item { color:var(--leather-dark); font-weight:800; font-size:.74rem; border-right:1px solid var(--blue-secondary); padding:0 .75rem; white-space:nowrap; }
-.meta-item:first-child { padding-left:0; }
-.meta-item:last-child { border-right:0; }
-.hero-actions { display:flex; gap:.85rem; flex-wrap:wrap; }
-.course-hero-art { display:flex; justify-content:center; align-items:center; }
-.hero-marking-single { width:min(100%,300px); aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; }
-.hero-marking-single svg { width:100%; height:100%; }
-
-/* ── What You'll Learn ───────────────────────────────────────────── */
-.learn-section { background:var(--white); padding:4rem 5%; }
-.learn-inner { max-width:1100px; margin:0 auto; }
-.learn-header { margin-bottom:2.25rem; }
-.learn-header .section-label { display:block; margin-bottom:.5rem; }
-.learn-header h2 { font-family:var(--font-display); color:var(--heading); font-size:clamp(1.5rem,2.5vw,2rem); line-height:1.2; margin-bottom:.6rem; }
-.learn-header p { color:var(--body-text); font-size:.95rem; line-height:1.7; max-width:620px; }
-.outcome-card { display:flex; align-items:flex-start; gap:1rem; background:var(--cream-bg); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.35rem 1.4rem; }
-.outcome-badge { width:34px; height:34px; background:var(--blue-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:.05rem; }
-.outcome-badge svg { width:16px; height:16px; }
-.outcome-text { color:var(--body-text); font-size:.9rem; line-height:1.65; }
-
-/* ── Curriculum ───────────────────────────────────────────────────── */
-.module-list { margin-top:2rem; display:grid; gap:.6rem; }
-.module-item { display:grid; grid-template-columns:40px 1fr auto; gap:1rem; align-items:center; padding:1rem 1.25rem; background:var(--white); border:1px solid var(--border); border-radius:var(--radius); text-decoration:none; transition:box-shadow .18s,border-color .18s; }
-.module-item:hover { border-color:var(--tan); box-shadow:0 4px 16px rgba(36,54,74,.08); }
-.module-num { width:36px; height:36px; border-radius:50%; background:var(--blue-primary); color:var(--white); font-family:var(--font-display); display:flex; align-items:center; justify-content:center; }
-.module-title { font-weight:800; color:var(--heading); margin-bottom:.2rem; }
-.module-desc { color:var(--body-text); font-size:.82rem; line-height:1.5; }
-.module-type { color:var(--muted-text); font-size:.68rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; white-space:nowrap; }
-.track-features,.alignment-list { list-style:none; display:grid; gap:.75rem; margin-top:1.25rem; }
-.track-features li,.alignment-list li { display:flex; gap:.75rem; color:var(--body-text); font-size:.9rem; line-height:1.6; }
-
-/* ── Responsive ───────────────────────────────────────────────────── */
-@media (max-width:900px) {
-  .course-hero-inner { grid-template-columns:1fr; }
-  .course-hero-art { display:none; }
-
-  .module-item { grid-template-columns:36px 1fr; }
-  .module-type { display:none; }
-}
-@media (max-width:700px) {
-  .course-meta-row { flex-wrap:nowrap !important; gap:0; }
-  .meta-item { font-size:.62rem !important; padding:0 .38rem !important; letter-spacing:0 !important; }
-  .meta-item:first-child { padding-left:0 !important; }
-  .meta-item:last-child { padding-right:0 !important; }
-}
-</style>
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-round-pen-horse-safety-rider-safety-basics-1-index">
 <div id="site-nav"></div>
 
 <!-- ── Hero ───────────────────────────────────────────────────────── -->
@@ -128,7 +74,7 @@ body { background: var(--cream-bg); }
       </ul>
     </div>
     <div class="fade-in">
-      <h4 style="font-family:var(--font-display);color:var(--tan);font-size:1.1rem;margin-bottom:1rem;">Perfect For</h4>
+      <h4 class="ee-u-1a274e5f">Perfect For</h4>
       <ul class="alignment-list">
         <li><span class="track-dot"></span>First-time barn visitors, new lesson students, and volunteers</li>
         <li><span class="track-dot"></span>Parents of new riders who want to understand barn rules</li>
@@ -142,7 +88,7 @@ body { background: var(--cream-bg); }
 <!-- ── CTA ────────────────────────────────────────────────────────── -->
 <section class="cta-section">
   <div class="cta-inner fade-in">
-    <p class="section-label" style="text-align:center;display:block;">Ready to Start?</p>
+    <p class="section-label ee-u-8d3aefa0">Ready to Start?</p>
     <h2 class="section-title">Build the Habits That Keep Riders Safe</h2>
     <p class="section-sub">Ten essential concepts, practiced until they&rsquo;re automatic. Everything here is reinforced with an experienced handler nearby &mdash; supervision is itself a safety rule.</p>
     <a href="2-why-rider-safety.html#top" class="btn-primary">Start the Course</a>

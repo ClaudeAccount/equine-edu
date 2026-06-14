@@ -9,61 +9,10 @@
 <link rel="stylesheet" href="../../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../../assets/css/game.css">
-<style>
-.match-status { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 700; color: var(--body-text); }
-.match-status span { color: var(--heading); }
-.round-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius); padding: 0.3rem 0.75rem; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.8); }
 
-.match-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.match-col-header { font-size: 0.66rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted-text); text-align: center; margin-bottom: 0.6rem; }
-
-.match-card {
-  background: var(--white);
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.65rem 0.8rem;
-  margin-bottom: 0.45rem;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s, opacity 0.2s;
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--heading);
-  line-height: 1.4;
-  min-height: 50px;
-  display: flex;
-  align-items: center;
-}
-.match-card.term { font-family: var(--font-display); font-size: 0.95rem; color: var(--heading); justify-content: center; text-align: center; font-weight: 700; }
-.match-card:hover:not(.matched):not(.selected):not(.no-hover) { border-color: var(--tan); background: rgba(200, 162, 122,0.06); }
-.match-card.selected { border-color: var(--heading); background: rgba(36, 54, 74,0.06); }
-.match-card.matched { border-color: var(--success); background: var(--success-bg); color: var(--success); cursor: default; opacity: 0.7; }
-.match-card.matched.term { color: var(--success); }
-.match-card.wrong-shake { border-color: var(--error); background: var(--error-bg); animation: shake 0.35s ease; }
-
-@keyframes shake {
-  0%,100%{ transform: translateX(0); }
-  20%    { transform: translateX(-6px); }
-  40%    { transform: translateX(6px); }
-  60%    { transform: translateX(-4px); }
-
-.round-feedback { text-align: center; font-size: 0.84rem; padding: 0.55rem; border-radius: var(--radius); min-height: 36px; margin-bottom: 0.75rem; display: none; font-weight: 700; }
-.round-feedback.show { display: block; }
-.round-feedback.correct { background: var(--success-bg); color: var(--success); }
-.round-feedback.wrong   { background: var(--error-bg); color: var(--error); }
-
-.result-card { background: var(--heading); color: var(--white); border-radius: var(--radius-lg); padding: 2rem; text-align: center; display: none; }
-.result-card.show { display: block; }
-.result-big { font-family: var(--font-display); font-size: 3rem; color: var(--tan); }
-.result-msg { font-size: 0.95rem; color: rgba(255,255,255,0.8); margin: 1rem 0 1.5rem; line-height: 1.6; }
-.restart-btn { background: var(--tan); color: var(--heading); border: none; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 800; font-size: 0.88rem; cursor: pointer; }
-
-@media (max-width: 520px) {
-  .match-columns { grid-template-columns: 1fr; }
-  .match-card.term { font-size: 0.85rem; }
-}
-</style>
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-equine-anatomy-equine-anatomy-activities-game-3-term-match">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -87,9 +36,9 @@
 
     <div class="game-shell">
 
-      <div class="game-progress-bar-wrap" style="background:var(--heading);">
-        <div class="match-status" style="width:100%;">
-          <div style="color:rgba(255,255,255,0.7);font-size:0.78rem;">Matched: <span id="matched-count" style="color:var(--tan);">0</span> / <span id="total-count" style="color:var(--tan);">0</span></div>
+      <div class="game-progress-bar-wrap ee-u-63eb9f0e">
+        <div class="match-status ee-u-cad980f4">
+          <div class="ee-u-f989999c">Matched: <span id="matched-count" class="ee-u-b372a2da">0</span> / <span id="total-count" class="ee-u-b372a2da">0</span></div>
           <div class="round-badge">Round <span id="round-num">1</span></div>
         </div>
       </div>
@@ -112,7 +61,7 @@
         </div>
 
         <div class="result-card" id="result-card">
-          <div style="font-size:.68rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.25rem;">Complete!</div>
+          <div class="ee-u-79e3ecc3">Complete!</div>
           <div class="result-big" id="result-big"></div>
           <div class="result-msg" id="result-msg"></div>
           <button class="restart-btn" onclick="startGame()">Play Again</button>

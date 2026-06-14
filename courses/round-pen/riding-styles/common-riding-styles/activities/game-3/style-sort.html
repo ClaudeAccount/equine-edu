@@ -9,21 +9,10 @@
 <link rel="stylesheet" href="../../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../../assets/css/game.css">
-<style>
-.game-wrap{width:100%;padding:0 0 1rem}
 
-.game-top{display:flex;justify-content:space-between;color:var(--tan);font-weight:900;margin-bottom:1rem}
-.prompt{background:var(--soft-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem;text-align:center;margin-bottom:1rem}
-.prompt img{width:min(100%,420px);aspect-ratio:16/10;object-fit:contain;object-position:center;display:block;margin:0 auto 1rem;border-radius:var(--radius);background:var(--white);border:1px solid rgba(36, 54, 74,.08)}
-.prompt-name{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);color:var(--heading);line-height:1.1}
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.choice{border:1.5px solid var(--border);border-radius:var(--radius);background:var(--white);padding:.95rem 1rem;font-weight:900;color:var(--heading);cursor:pointer}
-.choice:hover{border-color:var(--tan)}
-.feedback{min-height:2rem;text-align:center;font-weight:800;margin-top:1rem}
-@media(max-width:640px){.choices{grid-template-columns:1fr}.prompt img{width:100%}}
-</style>
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 <section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
@@ -91,11 +80,11 @@ function show(){
   roundEl.textContent='Round '+(round+1)+' of '+active.length;
   promptEl.innerHTML='<img src="'+imageBase+esc(item.image)+'" alt="'+esc(item.name)+'"><div class="prompt-name">'+esc(item.name)+'</div>';
   feedback.textContent='';
-  document.querySelectorAll('.choice').forEach(function(b){b.disabled=false;b.style.borderColor='';b.style.background=''});
+  document.querySelectorAll('.choice').forEach(function(b){b.disabled=false;b.classList.remove('correct','incorrect')});
 }
 function end(){
-  promptEl.innerHTML='<div class="prompt-name" style="padding:1rem 0">'+score+' / '+active.length+'</div>';
-  feedback.innerHTML='<span style="color:var(--heading)">'+(score===active.length?'Perfect score!':score>=7?'Great job!':'Keep practicing!')+'</span>';
+  promptEl.innerHTML='<div class="prompt-name end-score">'+score+' / '+active.length+'</div>';
+  feedback.innerHTML='<span class="feedback-summary">'+(score===active.length?'Perfect score!':score>=7?'Great job!':'Keep practicing!')+'</span>';
   next.disabled=true;
 }
 document.querySelectorAll('.choice').forEach(function(btn){btn.addEventListener('click',function(){
@@ -103,12 +92,12 @@ document.querySelectorAll('.choice').forEach(function(btn){btn.addEventListener(
   var correct=btn.dataset.answer===item.style;
   document.querySelectorAll('.choice').forEach(function(b){
     b.disabled=true;
-    if(b.dataset.answer===item.style){b.style.borderColor='#1a8c4e';b.style.background='rgba(26,140,78,.08)'}
+    if(b.dataset.answer===item.style){b.classList.add('correct')}
   });
-  if(!correct){btn.style.borderColor='#c0392b';btn.style.background='rgba(192,57,43,.08)'}
+  if(!correct){btn.classList.add('incorrect')}
   if(correct)score++;
   scoreEl.textContent=score+' / '+(round+1);
-  feedback.innerHTML=correct?'<span style="color:#1a8c4e">&#10003; Correct!</span>':'<span style="color:var(--error)">&#10007; That\'s '+esc(item.style)+'</span>';
+  feedback.innerHTML=correct?'<span class="feedback-correct">&#10003; Correct!</span>':'<span class="feedback-incorrect">&#10007; That\'s '+esc(item.style)+'</span>';
 })});
 next.addEventListener('click',function(){round++;show()});
 document.getElementById('reset').addEventListener('click',start);

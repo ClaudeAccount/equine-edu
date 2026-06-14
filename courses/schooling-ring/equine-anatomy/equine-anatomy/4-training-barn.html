@@ -9,114 +9,10 @@
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
-<style>
-.activity-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-.activity-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  text-decoration: none;
-  transition: box-shadow 0.18s, transform 0.18s;
-}
-.activity-card:hover {
-  box-shadow: 0 10px 32px rgba(36, 54, 74,0.12);
-  transform: translateY(-3px);
-}
-.activity-card-image {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.game-thumb {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.activity-card-tag {
-  position: absolute;
-  bottom: 0.75rem;
-  left: 0.75rem;
-  background: rgba(36, 54, 74,0.72);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(200, 162, 122,0.35);
-  border-radius: 999px;
-  padding: 0.25rem 0.7rem;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--tan);
-}
-.activity-card-body {
-  padding: 0.9rem 1rem 0.75rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.activity-card-name {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  color: var(--heading);
-  line-height: 1.3;
-}
-.activity-card-body p { display: none; }
-.activity-card-footer {
-  padding: 0.7rem 1rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.activity-card-footer span {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--tan);
-  letter-spacing: 0.04em;
-}
-.activity-card-footer svg { color: var(--tan); }
-.barn-intro {
-  background: var(--soft-white);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--heading);
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  padding: 1.4rem 1.5rem;
-  margin-bottom: 2rem;
-}
-.barn-intro h2 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: var(--heading);
-  margin-bottom: 0.5rem;
-}
-.barn-intro p {
-  color: var(--body-text);
-  font-size: 0.9rem;
-  line-height: 1.7;
-  margin: 0;
-}
-.thumb-bg-label { background: linear-gradient(135deg, #0a1f3a 0%, #1a3055 100%); }
-@media (max-width: 640px) {
-  .activity-grid { grid-template-columns: 1fr; }
-}
-</style>
+
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-equine-anatomy-equine-anatomy-4-training-barn">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -145,8 +41,8 @@
 
         <!-- Label the Horse -->
         <a href="activities/game-1/label-horse.html" class="activity-card">
-          <div class="activity-card-image" style="padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#0a1f3a 0%,#1a3055 100%);">
-            <img src="activities/game-1/label-horse.png" alt="" style="width:100%;height:115%;object-fit:cover;object-position:top center;display:block;margin-top:-8%;">
+          <div class="activity-card-image ee-u-271c3c92">
+            <img src="activities/game-1/label-horse.png" alt="" class="ee-u-f5054f70">
             <div class="activity-card-tag">Label &amp; Drop</div>
           </div>
           <div class="activity-card-body">
@@ -160,8 +56,8 @@
 
         <!-- Region Sort -->
         <a href="activities/game-2/region-sort.html" class="activity-card">
-          <div class="activity-card-image" style="padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#1a3a1a 0%,#2d5a2d 100%);">
-            <img src="activities/game-2/region-sort.png" alt="" style="width:100%;height:115%;object-fit:cover;object-position:top center;display:block;margin-top:-8%;">
+          <div class="activity-card-image ee-u-648c4d1b">
+            <img src="activities/game-2/region-sort.png" alt="" class="ee-u-f5054f70">
             <div class="activity-card-tag">Sort &amp; Group</div>
           </div>
           <div class="activity-card-body">
@@ -175,8 +71,8 @@
 
         <!-- Term Match -->
         <a href="activities/game-3/term-match.html" class="activity-card">
-          <div class="activity-card-image" style="padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#3a1a2a 0%,#5a2a4a 100%);">
-            <img src="activities/game-3/term-match.png" alt="" style="width:100%;height:115%;object-fit:cover;object-position:top center;display:block;margin-top:-8%;">
+          <div class="activity-card-image ee-u-e3f24f0f">
+            <img src="activities/game-3/term-match.png" alt="" class="ee-u-f5054f70">
             <div class="activity-card-tag">Memory Match</div>
           </div>
           <div class="activity-card-body">
@@ -190,8 +86,8 @@
 
         <!-- Downloads -->
         <a href="activities/downloads/index.html" class="activity-card">
-          <div class="activity-card-image" style="padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#1a2a1a 0%,#2d4a2d 100%);">
-            <img src="activities/downloads/work-sheet-course-card.png" alt="" style="width:100%;height:115%;object-fit:cover;object-position:top center;display:block;margin-top:-8%;">
+          <div class="activity-card-image ee-u-df4ad56d">
+            <img src="activities/downloads/work-sheet-course-card.png" alt="" class="ee-u-f5054f70">
             <div class="activity-card-tag">Downloads</div>
           </div>
           <div class="activity-card-body">

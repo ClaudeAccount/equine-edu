@@ -9,26 +9,10 @@
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
-<style>
-.leg-anatomy-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
-.leg-diagram-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1rem; }
-.leg-diagram-card h3 { font-family:var(--font-display); color:var(--heading); margin-bottom:0.75rem; }
-.leg-diagram-stage { position:relative; min-height:560px; background:var(--white); border:1px solid var(--border); border-radius:var(--radius); overflow:visible; display:flex; align-items:center; justify-content:center; user-select:none; }
-.leg-diagram-stage img { max-width:82%; max-height:520px; object-fit:contain; display:block; }
-.leg-marker-svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:visible; z-index:2; }
-.leg-marker-line { stroke:rgba(127,152,178,0.78); stroke-width:1.5; stroke-dasharray:4 3; }
-.leg-anchor { position:absolute; left:var(--x); top:var(--y); width:9px; height:9px; background:var(--tan); border:2px solid var(--heading); border-radius:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:4; box-shadow:0 1px 5px rgba(36,54,74,0.35); }
-.leg-label { position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%); background:var(--blue-primary); color:var(--white); font-size:0.68rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; padding:0.36rem 0.75rem; border-radius:5px; white-space:nowrap; pointer-events:none; box-shadow:0 2px 8px rgba(36,54,74,0.25); z-index:5; }
-.diagram-help { margin-top:0.75rem; color:var(--body-text); font-size:0.82rem; line-height:1.55; }
-.horse-part-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0.75rem; margin-top:1rem; }
-.horse-part-list article { background:var(--cream-bg); border:1px solid var(--border); border-left:3px solid var(--blue-primary); border-radius:0 var(--radius) var(--radius) 0; padding:0.85rem; }
-.horse-part-list h3 { font-family:var(--font-display); color:var(--heading); font-size:1rem; margin-bottom:0.3rem; }
-.horse-part-list p { color:var(--body-text); font-size:0.86rem; line-height:1.55; margin:0; }
-@media (max-width:980px){ .leg-anatomy-grid,.horse-part-list{grid-template-columns:1fr}.leg-diagram-stage{min-height:500px}.leg-diagram-stage img{max-height:460px} }
-@media (max-width:640px){ .leg-diagram-stage{min-height:430px}.leg-diagram-stage img{max-width:76%;max-height:390px}.leg-label{font-size:0.62rem;padding:0.3rem 0.58rem} }
-</style>
+
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-round-pen-colors-markings-leg-markings-3-leg-anatomy">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -66,16 +50,16 @@
               <line class="leg-marker-line" x1="51.3%" y1="68.3%" x2="29.5%" y2="66%"></line>
               <line class="leg-marker-line" x1="51.6%" y1="70.5%" x2="74.8%" y2="69.4%"></line>
             </svg>
-            <div class="leg-anchor" style="--x:52.2%;--y:48.9%;"></div>
-            <div class="leg-anchor" style="--x:51%;--y:58.9%;"></div>
-            <div class="leg-anchor" style="--x:54.5%;--y:65.1%;"></div>
-            <div class="leg-anchor" style="--x:51.3%;--y:68.3%;"></div>
-            <div class="leg-anchor" style="--x:51.6%;--y:70.5%;"></div>
-            <div class="leg-label" style="--x:74.5%;--y:45.1%;">Knee</div>
-            <div class="leg-label" style="--x:28%;--y:50.5%;">Cannon</div>
-            <div class="leg-label" style="--x:75.7%;--y:60.7%;">Fetlock</div>
-            <div class="leg-label" style="--x:29.5%;--y:66%;">Pastern</div>
-            <div class="leg-label" style="--x:74.8%;--y:69.4%;">Coronet</div>
+            <div class="leg-anchor ee-u-2314ee2e"></div>
+            <div class="leg-anchor ee-u-0a8a3f73"></div>
+            <div class="leg-anchor ee-u-4da41f20"></div>
+            <div class="leg-anchor ee-u-5674a7d2"></div>
+            <div class="leg-anchor ee-u-83559c37"></div>
+            <div class="leg-label ee-u-ff300ad5">Knee</div>
+            <div class="leg-label ee-u-7dc6109d">Cannon</div>
+            <div class="leg-label ee-u-a29213ff">Fetlock</div>
+            <div class="leg-label ee-u-4e49567c">Pastern</div>
+            <div class="leg-label ee-u-70bcb960">Coronet</div>
           </div>
         </article>
 
@@ -90,16 +74,16 @@
               <line class="leg-marker-line" x1="55.2%" y1="68.5%" x2="36.1%" y2="66.2%"></line>
               <line class="leg-marker-line" x1="56.1%" y1="70.5%" x2="77.3%" y2="69.6%"></line>
             </svg>
-            <div class="leg-anchor" style="--x:54.9%;--y:45%;"></div>
-            <div class="leg-anchor" style="--x:54.9%;--y:56.4%;"></div>
-            <div class="leg-anchor" style="--x:58.4%;--y:63.9%;"></div>
-            <div class="leg-anchor" style="--x:55.2%;--y:68.5%;"></div>
-            <div class="leg-anchor" style="--x:56.1%;--y:70.5%;"></div>
-            <div class="leg-label" style="--x:76.7%;--y:45.5%;">Hock</div>
-            <div class="leg-label" style="--x:35.2%;--y:55.1%;">Cannon</div>
-            <div class="leg-label" style="--x:79%;--y:60.5%;">Fetlock</div>
-            <div class="leg-label" style="--x:36.1%;--y:66.2%;">Pastern</div>
-            <div class="leg-label" style="--x:77.3%;--y:69.6%;">Coronet</div>
+            <div class="leg-anchor ee-u-06eec4b6"></div>
+            <div class="leg-anchor ee-u-f84b4b38"></div>
+            <div class="leg-anchor ee-u-31d50621"></div>
+            <div class="leg-anchor ee-u-189dae63"></div>
+            <div class="leg-anchor ee-u-53a43e56"></div>
+            <div class="leg-label ee-u-bd806f45">Hock</div>
+            <div class="leg-label ee-u-c69d039a">Cannon</div>
+            <div class="leg-label ee-u-066503ec">Fetlock</div>
+            <div class="leg-label ee-u-1d47ab59">Pastern</div>
+            <div class="leg-label ee-u-4ccb07c3">Coronet</div>
           </div>
         </article>
       </div>

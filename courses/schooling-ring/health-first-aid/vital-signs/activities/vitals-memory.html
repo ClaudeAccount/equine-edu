@@ -10,144 +10,10 @@
 <link rel="stylesheet" href="../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../../assets/css/game.css">
-<style>
-.progress-bar-wrap { background: var(--border); border-radius: 999px; height: 6px; margin-bottom: 2rem; }
-  .progress-bar-fill { background: var(--tan); height: 6px; border-radius: 999px; transition: width 0.3s ease; }
-  .round-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 0.75rem; }
 
-  .vital-prompt-bar {
-    background: var(--heading);
-    border-radius: var(--radius-lg);
-    padding: 1.1rem 1.5rem;
-    margin-bottom: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .vital-prompt-bar .vp-badge {
-    font-size: 0.58rem;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--tan);
-    background: rgba(200, 162, 122,0.15);
-    border: 1px solid rgba(200, 162, 122,0.3);
-    border-radius: 4px;
-    padding: 3px 8px;
-    flex-shrink: 0;
-  }
-  .vital-prompt-bar .vp-question {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: rgba(255,255,255,0.9);
-    line-height: 1.4;
-  }
-
-  .instruct-line {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--body-text);
-    margin-bottom: 1rem;
-  }
-  .instruct-line em { font-style: normal; color: var(--heading); }
-
-  .steps-grid {
-    display: grid;
-    gap: 0.8rem;
-    margin: 0 auto 1.4rem;
-  }
-
-  .step-tile {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    padding: 1rem 1.15rem;
-    background: var(--white);
-    border: 2px solid var(--border);
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-    text-align: left;
-    width: 100%;
-  }
-  .step-tile:hover:not(.locked):not(.placed) { border-color: var(--heading); background: var(--soft-white); }
-  .step-tile.placed { border-color: var(--heading); background: rgba(36, 54, 74,0.05); cursor: default; }
-  .step-tile.correct { border-color: var(--success); background: var(--success-bg); }
-  .step-tile.wrong   { border-color: var(--error); background: var(--error-bg); }
-  .step-tile.locked  { cursor: default; }
-
-  .step-num-badge {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    font-size: 0.78rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.15s, color 0.15s;
-  }
-  .step-num-badge.empty   { background: var(--soft-white); color: var(--muted-text); border: 2px dashed var(--border); }
-  .step-num-badge.filled  { background:var(--blue-primary); color:var(--white); border: none; }
-  .step-num-badge.correct { background: var(--success); color: #fff; border: none; }
-  .step-num-badge.wrong   { background: var(--error); color: #fff; border: none; }
-
-  .step-text {
-    font-size: 0.88rem;
-    color: var(--heading);
-    line-height: 1.55;
-    padding-top: 0.15rem;
-  }
-  .step-tile.correct .step-text { color: var(--success); }
-  .step-tile.wrong   .step-text { color: #7a1a1a; }
-
-  .correct-order-reveal {
-    display: none;
-    margin-bottom: 1rem;
-    padding: 0.9rem 1.1rem;
-    background: var(--soft-white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
-  .correct-order-reveal.show { display: block; }
-  .cor-label { font-size: 0.65rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--body-text); margin-bottom: 0.5rem; }
-  .cor-steps { display: grid; gap: 0.3rem; }
-  .cor-step { font-size: 0.84rem; color: var(--body-text); line-height: 1.55; display: flex; gap: 0.6rem; }
-  .cor-step-n { font-weight: 800; color: var(--heading); flex-shrink: 0; }
-
-  .feedback-box { padding: 1rem 1.2rem; border-radius: var(--radius); font-size: 0.88rem; line-height: 1.65; display: none; margin-bottom: 1rem; }
-  .feedback-box.show { display: block; }
-  .feedback-box.correct   { background: var(--success-bg); border-left: 3px solid var(--success); color: var(--success); }
-  .feedback-box.incorrect { background: var(--error-bg); border-left: 3px solid var(--error); color: var(--error); }
-  .feedback-box.partial   { background: var(--cream-secondary); border-left: 3px solid var(--tan); color: var(--leather-dark); }
-
-  .action-row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.5rem; }
-  .btn-check {
-    background: var(--heading); color: var(--white); border: none;
-    padding: 0.8rem 1.75rem; border-radius: var(--radius);
-    font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: opacity 0.15s;
-  }
-  .btn-check:hover:not(:disabled) { opacity: 0.88; }
-  .btn-check:disabled { opacity: 0.4; cursor: default; }
-  .btn-clear {
-    background: transparent; color: var(--body-text);
-    border: 1.5px solid var(--border); padding: 0.8rem 1.25rem;
-    border-radius: var(--radius); font-weight: 700; font-size: 0.88rem;
-    cursor: pointer; transition: border-color 0.15s;
-  }
-  .btn-clear:hover:not(:disabled) { border-color: var(--heading); color: var(--heading); }
-  .btn-clear:disabled { opacity: 0.4; cursor: default; }
-  .btn-next {
-    background: transparent; color: var(--heading);
-    border: 2px solid var(--heading); padding: 0.8rem 1.75rem;
-    border-radius: var(--radius); font-weight: 700; font-size: 0.9rem;
-    cursor: pointer; display: none;
-  }
-  .btn-next.show { display: inline-block; }
-</style>
+  <link rel="stylesheet" href="../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-schooling-ring-health-first-aid-vital-signs-activities-vitals-memory">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -171,7 +37,7 @@
 
     <div class="game-play-area" id="game-area">
       <div class="round-label" id="round-label">Round 1 of 10</div>
-      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-bar" style="width:10%"></div></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill ee-u-3b30d038" id="prog-bar"></div></div>
 
       <div class="vital-prompt-bar">
         <span class="vp-badge" id="vp-badge">&mdash;</span>

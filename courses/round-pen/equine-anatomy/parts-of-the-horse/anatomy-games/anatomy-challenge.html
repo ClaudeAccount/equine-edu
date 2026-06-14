@@ -9,43 +9,10 @@
 <link rel="stylesheet" href="../../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../../assets/css/course.css">
-<style>
-.game-shell { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 1.5rem; }
-.game-progress-bar-wrap { background: var(--soft-white); border-bottom: 1px solid var(--border); padding: 0.9rem 1.4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.game-progress-label { font-size: 0.78rem; font-weight: 700; color: var(--body-text); white-space: nowrap; }
-.game-progress-track { flex: 1; height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; }
-.game-progress-fill { height: 100%; background: var(--heading); border-radius: 999px; transition: width 0.35s ease; }
-.game-score-label { font-size: 0.78rem; font-weight: 700; color: var(--tan); white-space: nowrap; }
-.game-question-area { padding: 1.75rem 1.5rem 1.25rem; }
-.game-prompt { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted-text); margin-bottom: 0.75rem; }
-.game-region-tag { display: inline-block; background: rgba(200, 162, 122,0.12); border: 1px solid rgba(200, 162, 122,0.3); color: var(--tan); font-size: 0.68rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; margin-bottom: 0.75rem; }
-.game-question-text { font-family: var(--font-display); font-size: 1.25rem; color: var(--heading); line-height: 1.3; margin-bottom: 0.5rem; }
-.game-sub { font-size: 0.85rem; color: var(--body-text); line-height: 1.6; margin-bottom: 1.25rem; }
-.game-options { display: grid; gap: 0.6rem; padding: 0 1.5rem 1.5rem; }
-.game-option { padding: 0.85rem 1.1rem; border: 1.5px solid var(--border); border-radius: var(--radius); background: var(--white); font-size: 0.88rem; font-weight: 600; color: var(--heading); cursor: pointer; text-align: left; width: 100%; transition: border-color 0.15s, background 0.15s; display: flex; align-items: center; gap: 0.75rem; }
-.game-option:hover:not(:disabled) { border-color: var(--heading); background: var(--soft-white); }
-.game-option.correct { border-color: var(--success); background: var(--success-bg); color: var(--success); }
-.game-option.incorrect { border-color: var(--error); background: var(--error-bg); color: var(--error); }
-.game-option:disabled { cursor: default; }
-.option-letter { width: 26px; height: 26px; border-radius: 50%; background: var(--soft-white); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: var(--body-text); flex-shrink: 0; }
-.game-option.correct .option-letter { background: var(--success); border-color: var(--success); color: white; }
-.game-option.incorrect .option-letter { background: var(--error); border-color: var(--error); color: white; }
-.game-feedback { margin: 0 1.5rem 1.25rem; padding: 0.85rem 1rem; border-radius: var(--radius); font-size: 0.84rem; line-height: 1.6; display: none; }
-.game-feedback.show { display: block; }
-.game-feedback.correct { background: var(--success-bg); color: var(--success); border-left: 3px solid var(--success); }
-.game-feedback.incorrect { background: var(--error-bg); color: var(--error); border-left: 3px solid var(--error); }
-.game-next-row { padding: 0 1.5rem 1.5rem; display: none; }
-.game-next-row.show { display: block; }
-.btn-next { background: var(--heading); color: var(--white); border: none; padding: 0.75rem 1.5rem; border-radius: var(--radius); font-weight: 700; font-size: 0.88rem; cursor: pointer; }
-.game-result { padding: 2.5rem 1.5rem; text-align: center; display: none; }
-.game-result.show { display: block; }
-.result-score { font-family: var(--font-display); font-size: 3.5rem; color: var(--tan); line-height: 1; }
-.result-label { font-size: 0.82rem; color: var(--body-text); text-transform: uppercase; letter-spacing: 1px; margin: 0.4rem 0 1rem; }
-.result-message { font-size: 0.9rem; color: var(--body-text); line-height: 1.65; margin-bottom: 1.5rem; max-width: 420px; margin-left: auto; margin-right: auto; }
-.btn-play-again { background: var(--heading); color: var(--white); border: none; padding: 0.75rem 1.75rem; border-radius: var(--radius); font-weight: 700; cursor: pointer; }
-</style>
+
+  <link rel="stylesheet" href="../../../../../assets/css/course-standardization.css">
 </head>
-<body>
+<body class="ee-page-courses-round-pen-equine-anatomy-parts-of-the-horse-anatomy-games-anatomy-challenge">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
 
@@ -70,7 +37,7 @@
     <div class="game-shell">
       <div class="game-progress-bar-wrap">
         <span class="game-progress-label" id="progress-label">Question 1 of 10</span>
-        <div class="game-progress-track"><div class="game-progress-fill" id="progress-fill" style="width:10%"></div></div>
+        <div class="game-progress-track"><div class="game-progress-fill ee-u-3b30d038" id="progress-fill"></div></div>
         <span class="game-score-label" id="score-label">0 / 0</span>
       </div>
       <div id="question-area">
