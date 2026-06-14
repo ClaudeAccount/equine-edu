@@ -13,6 +13,6 @@ window.COURSE_CONFIG = {
     { num: 4, title: 'Safe Approach & Handling', desc: 'Step-by-step safe approach and basic handling practices grounded in prey animal awareness.', type: 'Lesson', file: '5-safe-approach.html' },
     { num: 5, title: 'The Training Barn', desc: 'Activities to practice reading body language signals, safe approach protocols, and horse behavior patterns.', type: 'Learning Lab', file: '6-training-barn.html' },
     { num: 6, title: 'Study Guide', desc: 'Self-test with reveal prompts covering prey animal instincts, body language, and the safe approach protocol.', type: 'Review', file: '7-study-guide.html' },
-    { num: 7, title: 'Test Your Knowledge', desc: '12-question randomized quiz on horse behavior, body language, flight response, and safe handling.', type: 'Quiz', file: '8-test-your-knowledge.html' }
+    { num: 7, title: 'Test Your Knowledge', desc: 'Randomized quiz drawing from a large question bank. Covers horse behavior, body language, flight response, and safe handling.', type: 'Quiz', file: '8-test-your-knowledge.html' }
   ]
 };

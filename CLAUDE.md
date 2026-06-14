@@ -13,7 +13,8 @@ This file is the single source of truth for how every page in the Equine EDU cod
 3. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Course-Creation-Master.md` — course creation standards
 4. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Voice-and-Content-Standards.md` — voice, tone, and content rules
 5. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\Equine Edu\equine-edu-main\equine-edu-main\page-templates\TEMPLATE-SYSTEM-V2.md` — page template system overview
-6. The relevant T-spec file(s) from `page-templates/` for the page type(s) being built:
+6. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU â€” GOVERNED BUILD SYSTEM\governance\Visual-Standards-Manual.md` â€” visual identity, image generation, and educational asset standards
+7. The relevant T-spec file(s) from `page-templates/` for the page type(s) being built:
    - `T01-course-index.md` — course landing page
    - `T02-why-it-matters.md` — first lesson / orientation
    - `T03-concept-foundation.md` — prerequisite concept page
@@ -26,6 +27,8 @@ This file is the single source of truth for how every page in the Equine EDU cod
    - *(other T-specs as needed for games, downloads, and specialist pages)*
 
 These files define what information may be included in courses, how it must be sourced, how it must be classified, what standards all learner-facing content must meet, and exactly how each page type must be structured. No course work begins until this reading is complete.
+
+For any image, diagram, hero art, viewing-room asset, quiz image, worksheet image, or generated visual media, `Visual-Standards-Manual.md` is mandatory authority. Educational accuracy, subject recognition, and brand consistency override decorative appeal.
 
 **The governed build system is located at:**
 `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\`
@@ -99,12 +102,68 @@ Every lesson page that contains a tab system must follow this structure inside e
 1. `.tab-intro` — one paragraph orienting the learner to the tab topic
 2. `.visual-card` — 2–3 paragraphs of substantive content
 3. `.callout-bar` — a key takeaway or important note
-4. `<details class="quick-check">` — an inline self-check question with a revealed answer
-5. `.barn-note` — only on the **last tab** of the lesson
+4. `.barn-note` — only on the **last tab** of the lesson
+
+**DO NOT add `<details class="quick-check">` elements to any lesson page.** Quick-checks have been removed from the gold standard. The in-page "Things to Remember" block (see below) replaces them.
+
+After the tab system (and before or after the jump tab bar), every tabbed lesson page must include a "Things to Remember" visible block:
+
+```html
+<div class="lesson-notes">
+  <h3>Things to Remember</h3>
+  <ul class="notes-list">
+    <li>Key point one.</li>
+    <li>Key point two.</li>
+    <li>Key point three.</li>
+  </ul>
+</div>
+```
+
+Content in this block must match (or expand on) the items in `window.PAGE_NOTES`. Minimum 3 items, maximum 6.
 
 Lessons without a tab system still require:
 - At least one `.visual-card` block
 - `window.PAGE_NOTES = { items: [...] }` for the Things to Remember sidebar section
+- A `<div class="lesson-notes">` block as described above
+
+---
+
+## Did You Know Callouts
+
+Lesson pages (both "Why It Matters" pages and core content pages) should include at least one "Did You Know" callout box where a naturally interesting, surprising, or contextualizing fact fits. These are optional on pages where no suitable fact exists, but should be added wherever possible.
+
+The Did You Know box uses these obfuscated classes from `assets/css/course-standardization.css`:
+
+```html
+<div class="ee-u-36082faa">
+  <p class="ee-u-273ccaec">&#128161; Did You Know</p>
+  <p class="ee-u-e6b583bc">Fact text goes here. This should be a genuinely interesting contextual note — not a primary teaching point, but something that gives depth or real-world connection to the topic.</p>
+</div>
+```
+
+Rules:
+- Place after a `.visual-card` or `.lesson-intro-card` at a natural break in the flow
+- Content must be a standalone fact or note — not a restatement of the callout-bar
+- Do not place inside a tab panel's `.visual-card` — place it between cards at the page level
+- Do not add more than 2 Did You Know boxes per lesson page
+
+---
+
+## First Lesson Page Image Strip
+
+Every "Why It Matters" page (`2-*.html`) must include a decorative 5-element image strip after the `.lesson-intro-card` and before the first `.visual-card`. If course-specific images exist, use `<img>` tags inside a named strip div (e.g. `.marking-mini-row`). If images do not yet exist, use a CSS placeholder strip:
+
+```html
+<div class="lesson-mini-strip" aria-hidden="true">
+  <div class="strip-placeholder"></div>
+  <div class="strip-placeholder"></div>
+  <div class="strip-placeholder"></div>
+  <div class="strip-placeholder"></div>
+  <div class="strip-placeholder"></div>
+</div>
+```
+
+The `.lesson-mini-strip` and `.strip-placeholder` classes are defined in `assets/css/components.css`. Do not add inline styles. Replace placeholders with real images when course imagery is available.
 
 ---
 

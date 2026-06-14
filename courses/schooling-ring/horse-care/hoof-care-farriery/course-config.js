@@ -14,6 +14,6 @@ window.COURSE_CONFIG = {
     { num: 5, title: 'Daily Hoof Care', desc: 'Hoof picking technique, what to look for during daily inspection, and how routine care prevents the majority of hoof problems.', type: 'Lesson', file: '6-daily-hoof-care.html' },
     { num: 6, title: 'The Training Barn', desc: 'Activities covering hoof anatomy, farriery cycle concepts, and common hoof condition identification.', type: 'Learning Lab', file: '7-training-barn.html' },
     { num: 7, title: 'Study Guide', desc: 'Self-test with reveal prompts on hoof anatomy, growth cycles, shoeing decisions, and common hoof conditions.', type: 'Review', file: '8-study-guide.html' },
-    { num: 8, title: 'Test Your Knowledge', desc: '12-question randomized quiz on hoof anatomy, farriery principles, and daily hoof care practices.', type: 'Quiz', file: '9-test-your-knowledge.html' }
+    { num: 8, title: 'Test Your Knowledge', desc: 'Randomized quiz drawing from a larger question bank. Covers hoof anatomy, farriery principles, and daily hoof care practices.', type: 'Quiz', file: '9-test-your-knowledge.html' }
   ]
 };

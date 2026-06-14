@@ -2441,10 +2441,13 @@ border-color: var(--error-bd);
 @keyframes wrong-flash {
   0%,100% { transform: rotateY(180deg); }
   25%     { transform: rotateY(180deg) scale(0.97); }
+}
 
 @keyframes match-pulse {
   0%   { box-shadow: 0 0 0 0 rgba(46,125,50,0.4); }
   70%  { box-shadow: 0 0 0 8px rgba(46,125,50,0); }
+  100% { box-shadow: 0 0 0 0 rgba(46,125,50,0); }
+}
 
 .mem-card.matched .mem-card-inner {
   animation: match-pulse 0.5s ease forwards;
@@ -3107,7 +3110,7 @@ background:var(--success-bg)
 body.ee-page-courses-round-pen-colors-markings-leg-markings-activities-leg-marking-games-game-2-leg-marking-memory-game .mem-card.wrong-flash .mem-card-front {
 border-color:rgba(198,40,40,.6);background:var(--error-bg);animation:wrong-flash .35s ease
 }
-@keyframes wrong-flash{0%,100%{transform:rotateY(180deg)}25%{transform:rotateY(180deg) scale(.97)}@keyframes match-pulse{0%{box-shadow:0 0 0 0 rgba(46,125,50,.4)}70%{box-shadow:0 0 0 8px rgba(46,125,50,0)}.mem-card.matched .mem-card-inner{animation:match-pulse .5s ease forwards}.win-screen{display:none;flex-direction:column;align-items:center;text-align:center;padding:2.5rem 2rem 2rem;gap:1rem}.win-screen.show{display:flex}.win-trophy{font-size:3rem;line-height:1}.win-title{font-family:var(--font-display);font-size:1.5rem;color:var(--heading)}.win-stats{display:flex;gap:2rem;align-items:center;background:var(--cream-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.5rem}.win-stat{text-align:center}.win-stat .win-val{font-family:var(--font-display);font-size:1.6rem;color:var(--heading);line-height:1}.win-stat .win-lbl{font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted-text)}.win-msg{font-size:.9rem;color:var(--body-text);line-height:1.65;max-width:320px}@media(max-width:480px){.memory-grid{grid-template-columns:repeat(3,1fr);gap:.5rem}.name-card-label{font-size:.78rem}}
+@keyframes wrong-flash{0%,100%{transform:rotateY(180deg)}25%{transform:rotateY(180deg) scale(.97)}}@keyframes match-pulse{0%{box-shadow:0 0 0 0 rgba(46,125,50,.4)}70%{box-shadow:0 0 0 8px rgba(46,125,50,0)}100%{box-shadow:0 0 0 0 rgba(46,125,50,0)}}.mem-card.matched .mem-card-inner{animation:match-pulse .5s ease forwards}.win-screen{display:none;flex-direction:column;align-items:center;text-align:center;padding:2.5rem 2rem 2rem;gap:1rem}.win-screen.show{display:flex}.win-trophy{font-size:3rem;line-height:1}.win-title{font-family:var(--font-display);font-size:1.5rem;color:var(--heading)}.win-stats{display:flex;gap:2rem;align-items:center;background:var(--cream-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.5rem}.win-stat{text-align:center}.win-stat .win-val{font-family:var(--font-display);font-size:1.6rem;color:var(--heading);line-height:1}.win-stat .win-lbl{font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted-text)}.win-msg{font-size:.9rem;color:var(--body-text);line-height:1.65;max-width:320px}@media(max-width:480px){.memory-grid{grid-template-columns:repeat(3,1fr);gap:.5rem}.name-card-label{font-size:.78rem}}
 
 /* Extracted from courses/round-pen/colors-markings/leg-markings/activities/leg-marking-games/game-3/leg-marking-crossword.html */
 body.ee-page-courses-round-pen-colors-markings-leg-markings-activities-leg-marking-games-game-3-leg-marking-crossword .lesson-wrap {
@@ -6597,73 +6600,25 @@ body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-d
 color:var(--body-text); line-height:1.65; font-size:.92rem; margin:0;
 }
 body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row {
-display:flex; justify-content:center; align-items:stretch; gap:.7rem; margin:-.2rem 0 1.4rem;
+display:flex; justify-content:center; align-items:center; gap:.7rem; margin:-.2rem 0 1.4rem;
 }
 body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row img {
-width:118px; height:86px; object-fit:contain; object-position:center bottom; display:block;
+width:100px; height:75px; object-fit:cover; object-position:center; display:block; border-radius:var(--radius); flex-shrink:0;
 }
 @media(max-width:760px) {
 body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .concept-grid, body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .compare-row {
 grid-template-columns:1fr
 }
 body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row {
-gap:.45rem;overflow-x:auto;justify-content:flex-start;padding-bottom:.35rem
+gap:.4rem;overflow-x:auto;justify-content:flex-start;padding-bottom:.3rem
 }
 body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row img {
-flex:0 0 92px;width:92px;height:68px
+flex:0 0 72px;width:72px;height:54px
 }
-
 }
-
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/3-popular-riding-styles.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-grid {
-display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-card {
-background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.25rem; box-shadow:0 4px 16px rgba(36, 54, 74,.07);
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-card h3 {
-font-family:var(--font-display); color:var(--heading); margin-bottom:.45rem;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-card p {
-color:var(--body-text); line-height:1.65; font-size:.9rem; margin:0;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-label {
-color:var(--tan); font-size:.68rem; font-weight:900; letter-spacing:1.4px; text-transform:uppercase; margin-bottom:.4rem;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual {
-position:relative; margin-top:1rem; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--soft-white); aspect-ratio:4/3;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual img {
-width:100%; height:100%; object-fit:cover; object-position:center; display:block;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual .sky {
-fill:#eef3fb;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual .ground {
-fill:#dccda9;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual .horse {
-fill:#8a4c28; stroke:#5b321f; stroke-width:2;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual .rider {
-fill:var(--heading);
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual .accent {
-fill:var(--tan); stroke:#a78326; stroke-width:2;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual .line {
-fill:none; stroke:var(--heading); stroke-width:4; stroke-linecap:round; stroke-linejoin:round;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-visual .soft-line {
-fill:none; stroke:var(--tan); stroke-width:3; stroke-linecap:round; stroke-dasharray:8 8;
-}
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .visual-label {
-position:absolute; left:.75rem; bottom:.65rem; background:rgba(36, 54, 74,.78); color:var(--tan); border-radius:999px; padding:.25rem .65rem; font-size:.62rem; font-weight:900; letter-spacing:1.2px; text-transform:uppercase;
-}
-@media(max-width:760px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-3-popular-riding-styles .discipline-grid {
-grid-template-columns:1fr
+@media(max-width:400px) {
+body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row img {
+flex:0 0 56px;width:56px;height:42px
 }
 
 }
@@ -9447,6 +9402,8 @@ border-color: var(--error); background: var(--error-bg); animation: shake 0.35s 
   20%    { transform: translateX(-6px); }
   40%    { transform: translateX(6px); }
   60%    { transform: translateX(-4px); }
+  80%    { transform: translateX(4px); }
+}
 
 .round-feedback { text-align: center; font-size: 0.84rem; padding: 0.55rem; border-radius: var(--radius); min-height: 36px; margin-bottom: 0.75rem; display: none; font-weight: 700; }
 .round-feedback.show { display: block; }
@@ -11066,12 +11023,13 @@ grid-template-columns:1fr
 /* Extracted from courses/schooling-ring/riding-foundations/gaits-movement/1-index.html */
 body.ee-page-courses-schooling-ring-riding-foundations-gaits-movement-1-index .course-hero-inner {
 display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 4rem;
+  grid-template-columns: minmax(0, 680px) minmax(220px, 320px);
+  gap: clamp(2rem, 4vw, 3rem);
+  justify-content: center;
   align-items: center;
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 72px 5%;
+  padding: 64px var(--page-pad);
 }
 body.ee-page-courses-schooling-ring-riding-foundations-gaits-movement-1-index {
 background: var(--cream-bg);
@@ -11116,10 +11074,10 @@ body.ee-page-courses-schooling-ring-riding-foundations-gaits-movement-1-index .h
 display: flex; gap: 0.85rem; flex-wrap: wrap;
 }
 body.ee-page-courses-schooling-ring-riding-foundations-gaits-movement-1-index .course-hero-art {
-display: flex; justify-content: center; align-items: center;
+display: flex; justify-content: center; align-items: center; justify-self: center;
 }
 body.ee-page-courses-schooling-ring-riding-foundations-gaits-movement-1-index .hero-icon-wrap {
-width: min(100%, 280px);
+width: min(100%, 260px);
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;

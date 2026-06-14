@@ -14,6 +14,6 @@ window.COURSE_CONFIG = {
     { num: 5, title: 'Behavior & Welfare Assessment', desc: 'Using behavioral indicators to assess a horse's physical and psychological welfare, including signs of stress, pain, and environmental mismatch.', type: 'Lesson', file: '6-behavior-welfare.html' },
     { num: 6, title: 'The Training Barn', desc: 'Activities covering advanced body language, herd dynamics, and pressure-release principles through recognition and scenario exercises.', type: 'Learning Lab', file: '7-training-barn.html' },
     { num: 7, title: 'Study Guide', desc: 'Self-test with reveal prompts on ethology, herd structure, pressure-and-release training, and welfare concepts.', type: 'Review', file: '8-study-guide.html' },
-    { num: 8, title: 'Test Your Knowledge', desc: '12-question randomized quiz on equine ethology, behavioral communication, and training principles.', type: 'Quiz', file: '9-test-your-knowledge.html' }
+    { num: 8, title: 'Test Your Knowledge', desc: 'Randomized quiz drawing from a larger question bank. Covers equine ethology, behavioral communication, and training principles.', type: 'Quiz', file: '9-test-your-knowledge.html' }
   ]
 };

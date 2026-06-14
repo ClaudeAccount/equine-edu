@@ -14,6 +14,6 @@ window.COURSE_CONFIG = {
     { num: 5, title: 'Dental Care & Oral Health', desc: 'Why annual dental care is essential, what equine teeth do, and how dental problems affect behavior and nutrition.', type: 'Lesson', file: '6-dental-care.html' },
     { num: 6, title: 'The Training Barn', desc: 'Activities covering vaccine types, parasite control strategies, and disease identification through recognition and scenario exercises.', type: 'Learning Lab', file: '7-training-barn.html' },
     { num: 7, title: 'Study Guide', desc: 'Self-test with reveal prompts on preventive care, vaccination programs, parasite control, and common diseases.', type: 'Review', file: '8-study-guide.html' },
-    { num: 8, title: 'Test Your Knowledge', desc: '12-question randomized quiz on equine health maintenance, vaccination, parasite management, and disease prevention.', type: 'Quiz', file: '9-test-your-knowledge.html' }
+    { num: 8, title: 'Test Your Knowledge', desc: 'Randomized quiz drawing from a larger question bank. Covers equine health maintenance, vaccination, parasite management, and disease prevention.', type: 'Quiz', file: '9-test-your-knowledge.html' }
   ]
 };
