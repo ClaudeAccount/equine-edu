@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Viewing Room &mdash; Common Riding Disciplines &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.style-flip-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:1rem; }
+.style-flip-grid .flip-card { min-height:330px; }
+.flip-front,.flip-back { padding:1.35rem; }
+.flip-front.photo-front { padding:0; overflow:hidden; background:var(--soft-white); }
+.photo-front img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.photo-front img.saddle-seat-photo { object-position:62% center; }
+.photo-cue { position:absolute; left:1rem; bottom:1rem; background:rgba(36, 54, 74,.86); color:var(--tan); border-radius:999px; padding:.42rem .85rem; font-size:.68rem; font-weight:900; letter-spacing:1.2px; text-transform:uppercase; box-shadow:0 10px 24px rgba(36, 54, 74,.18); }
+.style-badge { display:inline-flex; background:var(--blue-primary); color:var(--white); border-radius:999px; padding:.25rem .7rem; font-size:.66rem; font-weight:900; letter-spacing:1.2px; text-transform:uppercase; margin-bottom:1rem; }
+.style-title { font-family:var(--font-display); color:var(--heading); font-size:1.35rem; margin-bottom:.65rem; }
+.style-clues { color:var(--body-text); line-height:1.65; font-size:.92rem; margin:0 0 .65rem; text-align:left; }
+.style-clues:last-child { margin-bottom:0; }
+@media(max-width:760px){.style-flip-grid{grid-template-columns:1fr}.style-flip-grid .flip-card{min-height:300px}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-viewing-room">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Common Riding Disciplines</div>
+      <h1 class="lesson-hero-title">The Viewing <span>Room</span></h1>
+      <p class="lesson-hero-desc">Look at the front of the card and try to identify the riding discipline shown. Then flip the card to check your answer and learn more.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="lesson-intro-card">
+      <h2>Use Purpose as Your First Clue</h2>
+      <p>When identifying a riding style, consider what the horse and rider are trying to accomplish. Speed, jumping, cattle work, precision, or a quiet, formal presentation can all help you determine the correct discipline.</p>
+    </div>
+    <div class="visual-card">
+<div class="style-flip-grid">
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/western-pleasure.png" alt="Western pleasure horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">Western</div><div class="style-title">Western Pleasure</div><p class="style-clues"><strong>Smooth, quiet rail work</strong></p><p class="style-clues">The horse travels calmly at walk, jog, and lope. The class rewards consistency, manners, and a relaxed way of going.</p><p class="style-clues">Western pleasure is judged on a quiet, willing horse that maintains steady gaits and responds softly.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/reigning.png" alt="Reining horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">Western</div><div class="style-title">Reining</div><p class="style-clues"><strong>Circles, spins, and sliding stops</strong></p><p class="style-clues">This pattern class highlights a horse that is responsive, athletic, and precise through required maneuvers.</p><p class="style-clues">Reining uses a set pattern to demonstrate circles, spins, rollbacks, lead changes, and sliding stops.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/barrel-race.png" alt="Barrel racing horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">Western</div><div class="style-title">Barrel Racing</div><p class="style-clues"><strong>Cloverleaf around three barrels</strong></p><p class="style-clues">The clock matters. Horse and rider need speed, balance, and accurate turns around a set pattern.</p><p class="style-clues">Barrel racing is a timed Western event using a cloverleaf pattern around three barrels.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/pole-bending.png" alt="Pole bending horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">Western</div><div class="style-title">Pole Bending</div><p class="style-clues"><strong>Weaving through a line of poles</strong></p><p class="style-clues">This speed event asks for fast turns, careful body control, and a clean path through the pattern.</p><p class="style-clues">Pole bending is a timed Western event where horse and rider weave through poles as quickly and accurately as possible.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/ranch.png" alt="Ranch riding horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">Western</div><div class="style-title">Ranch Riding</div><p class="style-clues"><strong>Useful movement for ranch work</strong></p><p class="style-clues">The horse should look comfortable, forward, responsive, and capable of doing practical work.</p><p class="style-clues">Ranch riding rewards a horse that appears useful and willing in movements connected to ranch-type work.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/trail.png" alt="Trail riding horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">Western</div><div class="style-title">Trail Riding</div><p class="style-clues"><strong>Steady work over trail obstacles</strong></p><p class="style-clues">The horse and rider may cross natural or prepared obstacles while staying calm, careful, and practical.</p><p class="style-clues">Trail riding emphasizes confidence, manners, sure-footed movement, and useful communication outside a standard arena pattern.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/cow-work.png" alt="Cow work horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">Western</div><div class="style-title">Cow Work</div><p class="style-clues"><strong>Reading and moving cattle</strong></p><p class="style-clues">The horse responds to cattle movement and rider cues in events such as cutting, roping, working cow horse, or team penning.</p><p class="style-clues">Cow work disciplines connect strongly to ranch traditions and require quick responses, balance, and attention to livestock.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/horsemanship.png" alt="Western horsemanship horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">Western</div><div class="style-title">Western Horsemanship</div><p class="style-clues"><strong>Rider position and pattern control</strong></p><p class="style-clues">The rider is judged on position, control, accuracy, and how smoothly they guide the horse in Western tack.</p><p class="style-clues">Western horsemanship is the Western form of equitation, with emphasis on the rider position, effectiveness, and polished pattern work.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/dressage.png" alt="Dressage horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">English</div><div class="style-title">Dressage</div><p class="style-clues"><strong>Precise arena test</strong></p><p class="style-clues">The rider follows a test of circles, transitions, and figures designed to show balance and communication.</p><p class="style-clues">Dressage focuses on accurate, balanced movement and clear communication through a required test.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/hunter.png" alt="Hunter horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">English</div><div class="style-title">Hunters</div><p class="style-clues"><strong>Smooth jumping round</strong></p><p class="style-clues">The horse is judged on rhythm, form, manners, and a polished way of going over fences.</p><p class="style-clues">Hunter classes reward a smooth, steady, attractive jumping round rather than the fastest time.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/jumper.png" alt="Jumper horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">English</div><div class="style-title">Jumpers</div><p class="style-clues"><strong>Fast, clean jumping</strong></p><p class="style-clues">Faults and time matter. The goal is to clear the course accurately and efficiently.</p><p class="style-clues">Jumper classes are scored by faults and time, so speed and clean jumping are central.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/eventing.png" alt="Eventing horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">English</div><div class="style-title">Eventing</div><p class="style-clues"><strong>Three phases in one sport</strong></p><p class="style-clues">The same horse and rider complete dressage, cross-country, and stadium jumping.</p><p class="style-clues">Eventing tests versatility through dressage, cross-country, and stadium jumping phases.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/equitation.png" alt="Equitation horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">English</div><div class="style-title">Equitation</div><p class="style-clues"><strong>Rider position and effectiveness</strong></p><p class="style-clues">The rider is judged on position, balance, control, and how effectively they guide the horse.</p><p class="style-clues">Equitation focuses on the rider form and influence, especially in flatwork or jumping patterns.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img class="saddle-seat-photo" src="images/viewing-room/saddle-seat.png" alt="Saddle seat horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">English</div><div class="style-title">Saddle Seat</div><p class="style-clues"><strong>Animated show-ring presentation</strong></p><p class="style-clues">This style often features a more upright rider position, energetic movement, and horses shown with presence.</p><p class="style-clues">Saddle seat is an English discipline associated with animation, show-ring presence, and expressive movement.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/polo.png" alt="Polo horse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">English</div><div class="style-title">Polo</div><p class="style-clues"><strong>Team sport with mallets</strong></p><p class="style-clues">Riders work together at speed, turning quickly while using a mallet to move a ball toward goal.</p><p class="style-clues">Polo is a fast English-style team sport that depends on balance, responsiveness, and teamwork.</p></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front photo-front"><img src="images/viewing-room/racing.png" alt="Racehorse and rider"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="style-badge">English</div><div class="style-title">Horse Racing</div><p class="style-clues"><strong>Galloping for fastest time</strong></p><p class="style-clues">Horse and rider travel over a set distance at speed, with the rider balanced in a forward position.</p><p class="style-clues">Horse racing is a speed-focused English-style sport where the goal is to cover a set distance fastest.</p></div></div></button>
+      </div>
+    </div>
+  </main>
+  <aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE=3;
+window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Common Riding Disciplines',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};
+window.PAGE_NOTES={items:['Identify the discipline by its goal first.','Western styles often connect to ranch work, stock work, or Western show standards.','English styles often connect to arena precision, jumping, rider position, or sport phases.'],highlight:'The same horse can learn more than one discipline, but each discipline has its own purpose and standards.'};
+try{localStorage.setItem('equineEduProgress.commonRidingStyles.viewingRoom','true')}catch(e){}
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

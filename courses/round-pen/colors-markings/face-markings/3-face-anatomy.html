@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parts of the Face &mdash; Face Markings &mdash; Equine Edu</title>
+<meta name="description" content="Learn the basic parts of a horse's face and how they relate to the names used for facial markings. Understanding these areas makes it easier to recognize and identify a horse.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Face Markings</div>
+      <h1 class="lesson-hero-title">Parts of <span>the Face</span></h1>
+      <p class="lesson-hero-desc">Before you can identify facial markings, it helps to understand the basic areas of the horse's face where they occur. This makes it easier to understand how markings are described and named.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="lesson-intro-card">
+      <h2>Face Marking Basics</h2>
+      <p>Facial markings are named and described based on where they appear on the horse's face. A star is a white marking on the forehead, while a snip is a small white marking on or around the muzzle between the nostrils.</p>
+      <p>Learning the basic parts of the horse's face first makes it easier to understand how these markings are named and how to describe them clearly.</p>
+    </div>
+    <div class="visual-card" style="padding:1.25rem;">
+      <h2 style="margin-bottom:1rem;">Face Regions Diagram</h2>
+
+      <!-- Diagram container -->
+      <div style="display:flex;justify-content:center;">
+      <div id="diagram-wrap" style="position:relative;display:inline-block;width:55%;user-select:none;">
+        <img src="images/markings/no-markings.png" alt="Horse face diagram for region labelling" id="diagram-img" style="width:100%;display:block;border-radius:var(--radius);">
+
+        <!-- SVG leader lines — update dynamically as anchors/labels move -->
+        <svg id="marker-svg" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;">
+          <line id="line-poll"     x1="50.3%" y1="18.4%" x2="19.6%" y2="18.3%" stroke="rgba(127,152,178,0.75)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line id="line-forehead" x1="50.9%" y1="39.6%" x2="80.9%" y2="28.6%" stroke="rgba(127,152,178,0.75)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line id="line-nasal"    x1="49.7%" y1="53.6%" x2="17.8%" y2="47.7%" stroke="rgba(127,152,178,0.75)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line id="line-muzzle"   x1="49.7%" y1="82.2%" x2="82.4%" y2="67.1%" stroke="rgba(127,152,178,0.75)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line id="line-nostrils" x1="43.9%" y1="79.2%" x2="18.1%" y2="76.2%" stroke="rgba(127,152,178,0.75)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line id="line-lips"     x1="50%"   y1="88.4%" x2="81%"   y2="87%"   stroke="rgba(127,152,178,0.75)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        </svg>
+
+        <!-- Anchor dots — the anatomical pin point on the horse face -->
+        <div class="face-anchor" id="a-poll"     style="left:50.3%;top:18.4%;"></div>
+        <div class="face-anchor" id="a-forehead" style="left:50.9%;top:39.6%;"></div>
+        <div class="face-anchor" id="a-nasal"    style="left:49.7%;top:53.6%;"></div>
+        <div class="face-anchor" id="a-muzzle"   style="left:49.7%;top:82.2%;"></div>
+        <div class="face-anchor" id="a-nostrils" style="left:43.9%;top:79.2%;"></div>
+        <div class="face-anchor" id="a-lips"     style="left:50%;top:88.4%;"></div>
+
+        <!-- Label pills — draggable independently from their anchors -->
+        <div class="face-label" id="l-poll"     data-key="poll"     style="left:19.6%;top:18.3%;">Poll</div>
+        <div class="face-label" id="l-forehead" data-key="forehead" style="left:80.9%;top:28.6%;">Forehead</div>
+        <div class="face-label" id="l-nasal"    data-key="nasal"    style="left:17.8%;top:47.7%;">Nasal Bone</div>
+        <div class="face-label" id="l-muzzle"   data-key="muzzle"   style="left:82.4%;top:67.1%;">Muzzle</div>
+        <div class="face-label" id="l-nostrils" data-key="nostrils" style="left:18.1%;top:76.2%;">Nostrils</div>
+        <div class="face-label" id="l-lips"     data-key="lips"     style="left:81%;top:87%;">Lips &amp; Chin</div>
+      </div>
+
+      </div><!-- /centering wrapper -->
+    </div>
+
+    <style>
+      .face-anchor {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--tan);
+        border: 2px solid var(--heading);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 3;
+        box-shadow: 0 1px 5px rgba(36,54,74,0.35);
+      }
+      .face-label {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        background:var(--blue-primary);
+        color:var(--white);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.28rem 0.6rem;
+        border-radius: 5px;
+        white-space: nowrap;
+        pointer-events: none;
+        box-shadow: 0 2px 8px rgba(36,54,74,0.25);
+        z-index: 4;
+        transition: box-shadow 0.15s ease;
+      }
+    </style>
+
+    <div class="visual-card">
+      <h2>Parts of the Horse's Face</h2>
+      <p class="visual-instructions">When recording facial markings, always work from the top of the horse's face downward. This follows the standard format used in official identification and documentation.</p>
+      <div class="concept-grid">
+        <article class="concept-card">
+          <span>Top of Face</span>
+          <h3>Poll</h3>
+          <p>The very top of the head, between the ears. Not a marking location, but the anatomical starting point when examining a horse's head.</p>
+        </article>
+        <article class="concept-card">
+          <span>Upper Face</span>
+          <h3>Forehead</h3>
+          <p>The broad, flat area between the eyes and below the forelock. The primary location for stars and the upper portion of strips.</p>
+        </article>
+        <article class="concept-card">
+          <span>Mid Face</span>
+          <h3>Face / Nasal Bone</h3>
+          <p>The central section of the face running from below the eyes to above the nostrils. Strips and blazes commonly extend through this region.</p>
+        </article>
+        <article class="concept-card">
+          <span>Lower Face</span>
+          <h3>Muzzle</h3>
+          <p>The soft, rounded area that includes the nostrils and upper lip. The location of snips.</p>
+        </article>
+        <article class="concept-card">
+          <span>Soft Tissue</span>
+          <h3>Nostrils</h3>
+          <p>The paired openings used for breathing. Snips often appear between or along the edges of the nostrils.</p>
+        </article>
+        <article class="concept-card">
+          <span>Lower Soft Tissue</span>
+          <h3>Lips &amp; Chin</h3>
+          <p>The lips and chin area of the horse's face. Bald faces and wide blazes may extend into this region.</p>
+        </article>
+      </div>
+    </div>
+    <div style="background:rgba(127,152,178,0.08);border:1px solid rgba(127,152,178,0.3);border-left:4px solid var(--tan);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;margin:0.5rem 0;">
+      <p style="font-size:0.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--leather);margin-bottom:0.5rem;">&#x1F4A1; Did You Know</p>
+      <p style="color:var(--body-text);line-height:1.7;">Facial markings often appear in similar types and combinations, but the exact pattern, placement, and shape vary from horse to horse, making each horse individually identifiable.</p>
+    </div>
+    <div class="visual-card">
+      <h2>Reading a Face from Top to Bottom</h2>
+      <div style="display:flex;flex-direction:column;gap:1.25rem;margin-top:1rem;">
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--tan);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">1</div>
+          <div>
+            <h4 style="font-family:var(--font-display);color:var(--heading);margin-bottom:0.3rem;">Start at the Forelock</h4>
+            <p style="font-size:0.9rem;color:var(--body-text);line-height:1.6;">Begin your examination at the forelock and poll. Note the colour of the hair and skin at the top of the head before any facial markings begin.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--tan);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">2</div>
+          <div>
+            <h4 style="font-family:var(--font-display);color:var(--heading);margin-bottom:0.3rem;">Assess the Forehead</h4>
+            <p style="font-size:0.9rem;color:var(--body-text);line-height:1.6;">Examine the flat area between the eyes. Any white marking here &mdash; even a faint patch &mdash; is recorded as a star.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--tan);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">3</div>
+          <div>
+            <h4 style="font-family:var(--font-display);color:var(--heading);margin-bottom:0.3rem;">Follow the Nasal Bone</h4>
+            <p style="font-size:0.9rem;color:var(--body-text);line-height:1.6;">Move your focus down the center of the face along the nasal bone. A narrow white marking in this area is recorded as a strip. Wider markings that extend through this region may be part of a blaze or bald face.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--tan);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">4</div>
+          <div>
+            <h4 style="font-family:var(--font-display);color:var(--heading);margin-bottom:0.3rem;">Examine the Muzzle</h4>
+            <p style="font-size:0.9rem;color:var(--body-text);line-height:1.6;">Inspect the muzzle and nostrils carefully. White markings in this area are recorded as snips. These may appear between the nostrils, cover one nostril, or extend across both.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--tan);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">5</div>
+          <div>
+            <h4 style="font-family:var(--font-display);color:var(--heading);margin-bottom:0.3rem;">Note the Full Extent</h4>
+            <p style="font-size:0.9rem;color:var(--body-text);line-height:1.6;">Record the full extent of each marking. Note how far it extends and which areas it includes, as this is part of an accurate official description.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="visual-card">
+      <h2>Three Main Areas</h2>
+      <div class="key-term-grid">
+        <div class="term-card">
+          <h4>Forehead</h4>
+          <p>The broad, flat area between the eyes on the face. This is the primary location for star markings.</p>
+        </div>
+        <div class="term-card">
+          <h4>Nasal Bone</h4>
+          <p>The central ridge of the face running from the forehead to the muzzle. Strips and blazes follow this region.</p>
+        </div>
+        <div class="term-card">
+          <h4>Muzzle</h4>
+          <p>The lower, soft portion of the face that includes the nostrils and lips. Snips appear here, and blazes may extend into this area.</p>
+        </div>
+        <div class="term-card" style="padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:120px;">
+          <img src="images/markings/bald-face-3.png" alt="Horse with a bald face marking showing forehead, nasal bone, and muzzle regions" style="width:100%;height:100%;object-fit:cover;display:block;min-height:120px;">
+        </div>
+      </div>
+    </div>    <div id="course-notes"></div>
+<script>
+  window.PAGE_NOTES = {
+    items: ['Markings are named for the region of the face where they appear &mdash; understanding anatomy makes the terminology logical.', 'Always assess a face from top (poll) to bottom (chin) in a consistent direction.', 'The nasal bone is the central "highway" of the face &mdash; strip and blaze markings follow its path.', 'Muzzle markings (snips) are distinct from face markings &mdash; they are isolated to the lower soft tissue.'],
+    highlight: 'Know the regions first, and marking names will make immediate sense. Every marking name describes a location.'
+  };
+</script>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 2;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Face Markings', url: '1-index.html' },
+    navExtras: [{ label: 'Horse Face Markings', url: '4-face-markings.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.faceMarkings.faceAnatomy','true')}catch(e){}</script>
+</body>
+</html>

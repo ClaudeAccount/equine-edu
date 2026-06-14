@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harness &amp; Bridle Parts - Driving Harness &amp; Equipment - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+/* ── Tabs ──────────────────────────────────────────────────── */
+
+
+/* ── Diagram stage ─────────────────────────────────────────── */
+.diagram-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem 3rem;margin-bottom:1rem;overflow:visible}
+.diagram-stage{position:relative;margin:0 auto;overflow:visible}
+.diagram-stage img{width:100%;height:auto;display:block;pointer-events:none;user-select:none}
+.diagram-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.d-leader{stroke:var(--tan);stroke-width:1.4;stroke-dasharray:5 4;opacity:.55;transition:opacity .15s,stroke-width .15s;vector-effect:non-scaling-stroke}
+.d-leader.active{opacity:1;stroke-width:2;vector-effect:non-scaling-stroke}
+
+/* ── Dots ──────────────────────────────────────────────────── */
+.d-dot{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--blue-primary);border:2.5px solid var(--heading);transform:translate(-50%,-50%);cursor:pointer;z-index:5;transition:transform .15s,box-shadow .15s;box-sizing:border-box}
+.d-dot:hover,.d-dot.active{transform:translate(-50%,-50%) scale(1.5);box-shadow:0 0 0 5px rgba(23,185,196,.25)}
+
+/* ── Callout labels ────────────────────────────────────────── */
+.d-label{position:absolute;background:var(--blue-primary);color:var(--white);font-size:.62rem;font-weight:800;letter-spacing:.5px;padding:3px 8px;border-radius:3px;white-space:nowrap;transform:translate(-50%,-50%);z-index:4;cursor:pointer;transition:background .15s,color .15s;pointer-events:all;line-height:1.3;text-align:center}
+.d-label:hover,.d-label.active{background:var(--tan);color:var(--heading)}
+
+/* ── Parts reference grid ──────────────────────────────────── */
+.parts-reference{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem 1rem;margin-top:1rem}
+.parts-reference div{background:var(--soft-white);border:1px solid var(--border);border-radius:var(--radius);padding:.55rem .7rem;transition:border-color .18s,box-shadow .18s}
+.parts-reference div.highlighted{border-color:var(--tan);box-shadow:0 0 0 2px rgba(200, 162, 122,.25)}
+.parts-reference h4{font-family:var(--font-display);color:var(--heading);font-size:.95rem;margin:0 0 .25rem}
+.parts-reference p{color:var(--body-text);font-size:.82rem;line-height:1.55;margin:0}
+
+@media(max-width:760px){
+  .diagram-wrap{padding:1rem 1.5rem}
+}
+@media(max-width:600px){.parts-reference{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Driving Harness &amp; Equipment</div>
+    <h1 class="lesson-hero-title">Harness &amp; Bridle <span>Parts</span></h1>
+    <p class="lesson-hero-desc">Use the tabs to study the main parts of a driving harness, driving bridle, and how the full harness looks on the horse.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap"><main class="lesson-left">
+
+<!-- ═══ PANEL 1 — DRIVING HARNESS ════════════════════════════ -->
+<div class="tab-bar" id="equip-tabs" role="tablist" aria-label="Driving equipment parts">
+  <button class="part-tab active" data-panel="harness" type="button">Driving Harness</button>
+  <button class="part-tab" data-panel="bridle" type="button">Driving Bridle</button>
+  <button class="part-tab" data-panel="harnessed" type="button">Harnessed Horse</button>
+</div>
+
+<section class="part-panel active" id="panel-harness">
+  <div class="lesson-intro-card">
+    <h2>Parts of the Driving Harness</h2>
+    <p>A driving harness connects the horse to the vehicle and manages pulling, holding back, and balance. Click any dot or label to learn what each part does.</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-stage" id="stage-harness" style="max-width:680px">
+      <img src="images/harness-bridle-parts/parts-of-driving-harness.png" alt="Parts of a driving harness">
+      <svg class="diagram-svg" id="svg-harness" aria-hidden="true"></svg>
+    </div>
+  </div>
+  <div class="parts-reference" id="ref-harness"></div>
+</section>
+
+<!-- ═══ PANEL 2 — DRIVING BRIDLE ══════════════════════════════ -->
+<section class="part-panel" id="panel-bridle">
+  <div class="lesson-intro-card">
+    <h2>Parts of the Driving Bridle</h2>
+    <p>A driving bridle guides the horse from behind and usually includes blinkers to help the horse focus forward. Click any dot or label to learn about each part.</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-stage" id="stage-bridle" style="max-width:680px">
+      <img src="images/harness-bridle-parts/parts-of-driving-bridle.png" alt="Parts of a driving bridle">
+      <svg class="diagram-svg" id="svg-bridle" aria-hidden="true"></svg>
+    </div>
+  </div>
+  <div class="parts-reference" id="ref-bridle"></div>
+</section>
+
+<!-- ═══ PANEL 3 — HARNESSED HORSE ════════════════════════════ -->
+<section class="part-panel" id="panel-harnessed">
+  <div class="lesson-intro-card">
+    <h2>The Harness on the Horse</h2>
+    <p>Every piece of the harness and bridle together on the horse. Click any dot or label to see what it is and what it does.</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="diagram-stage" id="stage-harnessed" style="max-width:760px">
+      <img src="images/harness-bridle-parts/harness-on-horse.png" alt="Full driving harness on a horse">
+      <svg class="diagram-svg" id="svg-harnessed" aria-hidden="true"></svg>
+    </div>
+  </div>
+  <div class="parts-reference" id="ref-harnessed"></div>
+</section>
+
+<div class="tab-bar tab-bar--jump" role="tablist" aria-label="Driving equipment parts">
+  <button class="part-tab active" data-panel="harness" type="button">Driving Harness</button>
+  <button class="part-tab" data-panel="bridle" type="button">Driving Bridle</button>
+  <button class="part-tab" data-panel="harnessed" type="button">Harnessed Horse</button>
+</div>
+
+
+</main><aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside></div>
+<div id="site-footer"></div>
+
+<script>
+/* ── Diagram data ──────────────────────────────────────────── */
+const DIAGRAMS = {
+  harness: {
+    stageId: 'stage-harness',
+    svgId:   'svg-harness',
+    parts: [
+      { id:'neck-strap',    label:'Neck Strap',          ax:19, ay:21, cx:13, cy:9,
+        desc:'A strap that encircles the base of the horse\'s neck, used as an attachment point for the bearing rein or check rein to help maintain head position during driving.' },
+      { id:'terrets',       label:'Terrets',             ax:50, ay:20, cx:59, cy:12,
+        desc:'Metal rings on top of the harness saddle that guide the reins from the bit back to the driver\'s hands.' },
+      { id:'bearing-hook',  label:'Bearing Rein Hook',   ax:45, ay:19, cx:47, cy:4,
+        desc:'A small hook on the front of the harness saddle where a bearing rein or check rein can attach to help control head position.' },
+      { id:'saddle',        label:'Saddle / Pad',         ax:39, ay:28, cx:29, cy:12,
+        desc:'The padded piece that sits on the horse\'s back. It is not a riding saddle — it acts as a support point for the terrets, tugs, and other straps.' },
+      { id:'back-strap',    label:'Back Strap',           ax:65, ay:25, cx:75, cy:12,
+        desc:'The strap that runs from the harness saddle back toward the hindquarters, helping connect the saddle to the breeching and crupper.' },
+      { id:'loin-strap',    label:'Loin Strap',           ax:74, ay:30, cx:94, cy:44,
+        desc:'A strap connecting the saddle area to the breeching, helping keep everything in correct alignment along the horse\'s back.' },
+      { id:'tug',           label:'Tug',                  ax:46, ay:68, cx:34, cy:77,
+        desc:'The loop on the side of the harness saddle that supports and holds the shaft of the vehicle in position.' },
+      { id:'belly-band',    label:'Belly Band',           ax:46, ay:55, cx:57, cy:77,
+        desc:'The strap that passes under the belly to help stabilize the harness saddle and keep it from shifting side to side.' },
+      { id:'crupper',       label:'Crupper',              ax:89, ay:33, cx:94, cy:11,
+        desc:'A loop that fits under the horse\'s tail and attaches to the back of the harness saddle to prevent the saddle from sliding forward.' },
+      { id:'breeching',     label:'Breeching',            ax:86, ay:55, cx:91, cy:67,
+        desc:'The wide strap that wraps around the hindquarters. When the horse slows or backs up, it pushes into the breeching to slow or hold back the vehicle.' },
+      { id:'holdback',      label:'Holdback',             ax:67, ay:66, cx:78, cy:92,
+        desc:'A strap or loop attached to the breeching that wraps around the vehicle shaft, transferring braking force from the horse\'s hindquarters directly to the vehicle when slowing or going downhill.' },
+      { id:'breast-collar', label:'Breast Collar',        ax:12, ay:41, cx:6,  cy:25,
+        desc:'The padded strap across the chest that the horse pushes forward into to pull the vehicle. Used in lighter harness work as an alternative to a full collar.' },
+      { id:'traces',        label:'Traces',               ax:32, ay:59, cx:14, cy:68,
+        desc:'The long straps or lines that run from the breastcollar or collar back to the vehicle. They carry the pulling load from the horse to the cart or carriage.' },
+    ]
+  },
+  bridle: {
+    stageId: 'stage-bridle',
+    svgId:   'svg-bridle',
+    parts: [
+      { id:'headpiece',     label:'Head Piece',                  ax:27, ay:7,  cx:8,  cy:7,
+        desc:'The main strap that goes over the poll behind the ears. It supports the browband, cheekpieces, and the rest of the bridle.' },
+      { id:'browband',      label:'Browband',                    ax:19, ay:25, cx:8,  cy:18,
+        desc:'The horizontal strap across the forehead that keeps the headpiece from sliding back toward the ears.' },
+      { id:'bearing-rein',  label:'Bearing Rein / Side Check',   ax:47, ay:44, cx:72, cy:40,
+        desc:'A rein or strap that attaches to the bit and connects to a hook on the harness saddle to help limit downward head movement during driving.' },
+      { id:'blinker-stay',  label:'Blinker Stay',                ax:35, ay:28, cx:67, cy:28,
+        desc:'The strap that attaches the blinker to the cheekpiece and keeps it correctly positioned beside the horse\'s eye.' },
+      { id:'throatlatch',   label:'Throatlatch',                 ax:31, ay:64, cx:8,  cy:61,
+        desc:'The strap that passes loosely under the throat to prevent the bridle from being pulled off forward. It should have room for a fist width when fitted.' },
+      { id:'blinkers',      label:'Blinkers',                    ax:14, ay:46, cx:5,  cy:37,
+        desc:'The square or rounded leather side pieces that limit the horse\'s rear and side vision. They help the horse stay focused forward and reduce spooking from the vehicle behind.' },
+      { id:'cheekpiece',    label:'Cheek Piece',                 ax:39, ay:61, cx:62, cy:65,
+        desc:'The strap on each side of the bridle that connects the headpiece to the bit and sets the bit height in the horse\'s mouth.' },
+      { id:'noseband',      label:'Noseband',                    ax:24, ay:73, cx:7,  cy:70,
+        desc:'The strap around the nose that helps stabilize the bridle and can assist in keeping the mouth closed. Fit should allow two fingers beneath it.' },
+      { id:'bit',           label:'Bit',                         ax:32, ay:90, cx:13, cy:90,
+        desc:'The mouthpiece that connects to the reins or driving lines. Driving bits vary in design and leverage depending on the discipline and training level.' },
+      { id:'driving-lines', label:'Driving Lines',               ax:72, ay:52, cx:92, cy:52,
+        desc:'The long reins held by the driver. They run from the bit through the terrets on the harness back to the driver\'s hands, allowing communication from behind the horse.' },
+    ]
+  },
+  harnessed: {
+    stageId: 'stage-harnessed',
+    svgId:   'svg-harnessed',
+    parts: [
+      { id:'h-headpiece',    label:'Head Piece',                ax:31, ay:15, cx:31, cy:4,
+        desc:'The main strap that goes over the poll behind the ears. It supports the browband, cheekpieces, and the rest of the bridle.' },
+      { id:'h-browband',     label:'Browband',                  ax:25, ay:15, cx:12, cy:7,
+        desc:'The horizontal strap across the forehead that keeps the headpiece from sliding back toward the ears.' },
+      { id:'h-blinkers',     label:'Blinkers',                  ax:25, ay:22, cx:7,  cy:21,
+        desc:'Side pieces that limit the horse\'s rear and side vision, helping the horse stay focused forward.' },
+      { id:'h-blinker-stay', label:'Blinker Stay',              ax:26, ay:18, cx:12, cy:15,
+        desc:'The strap that attaches the blinker to the cheekpiece and keeps it correctly positioned beside the horse\'s eye.' },
+      { id:'h-bearing-rein', label:'Bearing Rein / Side Check', ax:43, ay:24, cx:50, cy:15,
+        desc:'Attaches to the bit and connects to a hook on the harness saddle to help limit downward head movement during driving.' },
+      { id:'h-throatlatch',  label:'Throatlatch',               ax:31, ay:22, cx:38, cy:10,
+        desc:'The strap that passes loosely under the throat to prevent the bridle from being pulled off forward.' },
+      { id:'h-cheekpiece',   label:'Cheek Piece',               ax:27, ay:25, cx:9,  cy:39,
+        desc:'Connects the headpiece to the bit and sets the bit height in the horse\'s mouth.' },
+      { id:'h-noseband',     label:'Noseband',                  ax:21, ay:25, cx:8,  cy:29,
+        desc:'The strap around the nose that helps stabilize the bridle and can assist in keeping the mouth closed.' },
+      { id:'h-bit',          label:'Bit',                       ax:25, ay:31, cx:11, cy:48,
+        desc:'The mouthpiece that connects to the driving lines. Driving bits vary in design depending on discipline and training level.' },
+      { id:'h-driving-lines',label:'Driving Lines',             ax:37, ay:32, cx:9,  cy:56,
+        desc:'Long reins held by the driver that run from the bit through the terrets back to the driver\'s hands.' },
+      { id:'h-neck-strap',   label:'Neck Strap',                ax:45, ay:37, cx:22, cy:77,
+        desc:'A strap encircling the base of the neck, used as an attachment point for the bearing rein to help maintain head position.' },
+      { id:'h-breast-collar',label:'Breast Collar',             ax:36, ay:45, cx:12, cy:67,
+        desc:'The padded strap across the chest that the horse pushes into to pull the vehicle.' },
+      { id:'h-traces',       label:'Traces',                    ax:53, ay:48, cx:37, cy:75,
+        desc:'Long straps running from the breastcollar back to the vehicle, carrying the pulling load from horse to cart.' },
+      { id:'h-terrets',      label:'Terrets',                   ax:55, ay:34, cx:64, cy:24,
+        desc:'Metal rings on top of the harness saddle that guide the reins from the bit back to the driver\'s hands.' },
+      { id:'h-bearing-hook', label:'Bearing Rein Hook',         ax:42, ay:32, cx:60, cy:19,
+        desc:'A small hook on the front of the harness saddle where the bearing rein attaches to help control head position.' },
+      { id:'h-saddle',       label:'Saddle / Pad',              ax:54, ay:38, cx:67, cy:30,
+        desc:'The padded piece on the horse\'s back that acts as a support point for the terrets, tugs, and other straps.' },
+      { id:'h-tug',          label:'Tug',                       ax:57, ay:49, cx:57, cy:63,
+        desc:'The loop on the side of the harness saddle that supports and holds the vehicle shaft in position.' },
+      { id:'h-belly-band',   label:'Belly Band',                ax:52, ay:58, cx:53, cy:76,
+        desc:'Passes under the belly to help stabilize the harness saddle and keep it from shifting side to side.' },
+      { id:'h-back-strap',   label:'Back Strap',                ax:64, ay:37, cx:82, cy:27,
+        desc:'Runs from the harness saddle toward the hindquarters, connecting the saddle to the breeching and crupper.' },
+      { id:'h-loin-strap',   label:'Loin Strap',                ax:76, ay:42, cx:91, cy:38,
+        desc:'Connects the saddle area to the breeching, keeping everything in correct alignment along the horse\'s back.' },
+      { id:'h-crupper',      label:'Crupper',                   ax:77, ay:39, cx:91, cy:32,
+        desc:'A loop under the horse\'s tail that attaches to the harness saddle to prevent it from sliding forward.' },
+      { id:'h-breeching',    label:'Breeching',                 ax:78, ay:50, cx:84, cy:77,
+        desc:'The wide strap around the hindquarters. The horse pushes into it to slow or hold back the vehicle.' },
+      { id:'h-holdback',     label:'Holdback',                  ax:66, ay:52, cx:64, cy:67,
+        desc:'A strap or loop attached to the breeching that wraps around the vehicle shaft, transferring braking force when slowing.' },
+    ]
+  }
+};
+
+/* ── Render a diagram ──────────────────────────────────────── */
+function renderDiagram(key) {
+  const cfg   = DIAGRAMS[key];
+  const stage = document.getElementById(cfg.stageId);
+  const svg   = document.getElementById(cfg.svgId);
+  const img   = stage.querySelector('img');
+
+  function build() {
+    stage.querySelectorAll('.d-dot,.d-label').forEach(e=>e.remove());
+    svg.innerHTML='';
+    svg.setAttribute('viewBox','0 0 100 100');
+    svg.setAttribute('preserveAspectRatio','none');
+
+    cfg.parts.forEach(p=>{
+      const dot = document.createElement('button');
+      dot.type='button'; dot.className='d-dot'; dot.dataset.id=p.id;
+      dot.setAttribute('aria-label',p.label);
+      dot.style.left=p.ax+'%'; dot.style.top=p.ay+'%';
+      stage.appendChild(dot);
+
+      const lbl = document.createElement('div');
+      lbl.className='d-label'; lbl.dataset.id=p.id;
+      lbl.textContent=p.label;
+      lbl.style.left=p.cx+'%'; lbl.style.top=p.cy+'%';
+      stage.appendChild(lbl);
+
+      const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.classList.add('d-leader'); line.dataset.id=p.id;
+      line.setAttribute('x1',p.ax); line.setAttribute('y1',p.ay);
+      line.setAttribute('x2',p.cx); line.setAttribute('y2',p.cy);
+      svg.appendChild(line);
+
+      dot.addEventListener('click',()=>activate(key,p.id));
+      lbl.addEventListener('click',()=>activate(key,p.id));
+    });
+  }
+
+  if(img.complete && img.naturalWidth){ build(); }
+  else { img.addEventListener('load',build,{once:true}); }
+}
+
+/* ── Reference grid ─────────────────────────────────────────── */
+function renderReference(key){
+  const ref=document.getElementById('ref-'+key);
+  ref.innerHTML=DIAGRAMS[key].parts.map(p=>
+    `<div data-ref="${p.id}"><h4>${p.label}</h4><p>${p.desc}</p></div>`
+  ).join('');
+}
+
+/* ── Activate ───────────────────────────────────────────────── */
+function activate(key, partId){
+  const stage=document.getElementById(DIAGRAMS[key].stageId);
+  const svg=document.getElementById(DIAGRAMS[key].svgId);
+  const ref=document.getElementById('ref-'+key);
+  stage.querySelectorAll('.d-dot,.d-label').forEach(e=>e.classList.remove('active'));
+  svg.querySelectorAll('.d-leader').forEach(e=>e.classList.remove('active'));
+  stage.querySelectorAll(`[data-id="${partId}"]`).forEach(e=>e.classList.add('active'));
+  svg.querySelectorAll(`[data-id="${partId}"]`).forEach(e=>e.classList.add('active'));
+  ref.querySelectorAll('div').forEach(d=>d.classList.remove('highlighted'));
+  const card=ref.querySelector(`[data-ref="${partId}"]`);
+  if(card){ card.classList.add('highlighted'); card.scrollIntoView({block:'nearest',behavior:'smooth'}); }
+}
+
+/* ── Tab switching ──────────────────────────────────────────── */
+document.querySelectorAll('.part-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const panel=btn.dataset.panel;
+    document.querySelectorAll('.part-tab').forEach(t=>t.classList.toggle('active',t.dataset.panel===panel));
+    document.querySelectorAll('.part-panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+panel));
+    renderDiagram(panel); renderReference(panel);
+  });
+});
+
+/* ── Init ───────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded',()=>{ renderDiagram('harness'); renderReference('harness'); });
+</script>
+
+<script>
+window.CURRENT_MODULE=2;
+window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Driving Equipment',url:'1-index.html'},navExtras:[{label:'The Viewing Room',url:'4-viewing-room.html'}]};
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.drivingEquipment.saddleBridleParts','true')}catch(e){}</script>
+</body>
+</html>

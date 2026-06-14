@@ -9,24 +9,24 @@
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --navy: #0D1B3E; --navy-mid: #1A2F6B; --gold: #C8991A;
+  --navy: var(--heading); --navy-mid: var(--blue-primary); --gold: #C8991A;
   --off-white: #F8F7F4; --white: #FFFFFF; --text-mid: #5A6272;
   --border: #E2E4EA; --radius: 10px; --sidebar-w: 300px;
   --font: 'DM Sans', sans-serif;
 }
-body { font-family: var(--font); background: var(--off-white); color: var(--navy); min-height: 100vh; }
+body { font-family: var(--font); background: var(--soft-white); color: var(--heading); min-height: 100vh; }
 
 /* ===== TOPBAR ===== */
 .topbar {
   position: sticky; top: 0; z-index: 100;
-  background: var(--navy); color: var(--white);
+  background: var(--heading); color: var(--white);
   display: flex; align-items: center; gap: 1rem;
-  padding: 0 1.5rem; height: 56px; border-bottom: 2px solid var(--gold);
+  padding: 0 1.5rem; height: 56px; border-bottom: 2px solid var(--tan);
 }
 .topbar-title { font-size: 1rem; font-weight: 700; letter-spacing: .02em; flex: 1; }
-.topbar-title span { color: var(--gold); }
+.topbar-title span { color: var(--tan); }
 .topbar-btn {
-  background: var(--gold); color: var(--navy); border: none; cursor: pointer;
+  background: var(--tan); color: var(--heading); border: none; cursor: pointer;
   font-family: var(--font); font-size: 0.78rem; font-weight: 700;
   padding: 0.4rem 0.9rem; border-radius: 6px; transition: opacity .15s;
 }
@@ -47,18 +47,18 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
   position: sticky; top: 56px; height: calc(100vh - 56px);
 }
 .sidebar h3 { font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .12em; color: var(--text-mid); margin: 1rem 0 0.5rem; }
+  letter-spacing: .12em; color: var(--body-text); margin: 1rem 0 0.5rem; }
 .sidebar h3:first-child { margin-top: 0; }
 .add-btn {
   display: block; width: 100%; text-align: left;
-  background: var(--off-white); border: 1px solid var(--border);
+  background: var(--soft-white); border: 1px solid var(--border);
   border-radius: 8px; padding: 0.5rem 0.75rem;
   font-family: var(--font); font-size: 0.82rem; font-weight: 600;
-  color: var(--navy); cursor: pointer; margin-bottom: 0.4rem;
+  color: var(--heading); cursor: pointer; margin-bottom: 0.4rem;
   transition: background .15s, border-color .15s;
 }
-.add-btn:hover { background: #EEF0F6; border-color: var(--navy-mid); }
-.add-btn .add-icon { color: var(--gold); font-weight: 900; margin-right: 0.4rem; font-size: 1rem; }
+.add-btn:hover { background: #EEF0F6; border-color: var(--blue-primary); }
+.add-btn .add-icon { color: var(--tan); font-weight: 900; margin-right: 0.4rem; font-size: 1rem; }
 
 /* ===== MAIN CANVAS ===== */
 .canvas { flex: 1; padding: 1.5rem 2rem; overflow-y: auto; }
@@ -71,7 +71,7 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
 }
 .section-header {
   display: flex; align-items: center; gap: 0.75rem;
-  padding: 0.85rem 1.1rem; background: var(--navy);
+  padding: 0.85rem 1.1rem; background: var(--heading);
   color: var(--white); cursor: pointer; user-select: none;
 }
 .section-header .section-icon { font-size: 1rem; }
@@ -88,47 +88,47 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
 .field-row.thirds { grid-template-columns: 1fr 1fr 1fr; }
 .field-group { display: flex; flex-direction: column; gap: 0.3rem; }
 .field-group label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .08em; color: var(--text-mid); }
+  letter-spacing: .08em; color: var(--body-text); }
 .field-group input, .field-group select, .field-group textarea {
   border: 1px solid var(--border); border-radius: 6px;
   padding: 0.48rem 0.7rem; font-family: var(--font); font-size: 0.85rem;
-  color: var(--navy); background: var(--off-white); outline: none;
+  color: var(--heading); background: var(--soft-white); outline: none;
   transition: border-color .15s;
 }
 .field-group input:focus, .field-group select:focus, .field-group textarea:focus {
-  border-color: var(--navy-mid); background: var(--white);
+  border-color: var(--blue-primary); background: var(--white);
 }
 .field-group textarea { resize: vertical; min-height: 68px; }
-.field-hint { font-size: 0.72rem; color: var(--text-mid); margin-top: 0.2rem; }
+.field-hint { font-size: 0.72rem; color: var(--body-text); margin-top: 0.2rem; }
 
 /* ===== REPEATING ITEM ===== */
 .repeating-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.75rem; }
 .repeating-item {
   border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 0.85rem;
-  background: var(--off-white); position: relative;
+  background: var(--soft-white); position: relative;
 }
 .repeating-item .item-header {
   display: flex; align-items: center; gap: 0.5rem;
-  margin-bottom: 0.5rem; font-size: 0.8rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 0.5rem; font-size: 0.8rem; font-weight: 700; color: var(--heading);
 }
 .repeating-item .item-num {
   width: 22px; height: 22px; border-radius: 50%;
-  background: var(--navy); color: var(--white);
+  background: var(--heading); color: var(--white);
   display: flex; align-items: center; justify-content: center;
   font-size: 0.7rem; font-weight: 800; flex-shrink: 0;
 }
 .remove-btn {
   margin-left: auto; background: none; border: none; cursor: pointer;
-  color: #c0392b; font-size: 1rem; line-height: 1; padding: 0.1rem 0.3rem;
+  color: var(--error); font-size: 1rem; line-height: 1; padding: 0.1rem 0.3rem;
   border-radius: 4px; transition: background .15s;
 }
 .remove-btn:hover { background: #fdecea; }
 .add-item-btn {
   background: none; border: 1px dashed var(--border); border-radius: 8px;
   width: 100%; padding: 0.5rem; font-family: var(--font); font-size: 0.82rem;
-  font-weight: 600; color: var(--text-mid); cursor: pointer; transition: all .15s;
+  font-weight: 600; color: var(--body-text); cursor: pointer; transition: all .15s;
 }
-.add-item-btn:hover { border-color: var(--navy-mid); color: var(--navy); background: var(--white); }
+.add-item-btn:hover { border-color: var(--blue-primary); color: var(--heading); background: var(--white); }
 
 /* ===== TYPE BADGE ===== */
 .type-select { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
@@ -138,7 +138,7 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
   cursor: pointer; transition: all .15s; background: var(--white);
   user-select: none;
 }
-.type-opt.selected { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.type-opt.selected { background: var(--heading); color: var(--white); border-color: var(--heading); }
 
 /* ===== OUTPUT ===== */
 .output-section { margin-top: 1.5rem; }
@@ -146,26 +146,26 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
 .output-tab {
   padding: 0.55rem 1.1rem; font-family: var(--font); font-size: 0.82rem;
   font-weight: 700; border: none; background: none; cursor: pointer;
-  color: var(--text-mid); border-bottom: 3px solid transparent;
+  color: var(--body-text); border-bottom: 3px solid transparent;
   margin-bottom: -2px; transition: all .15s;
 }
-.output-tab.active { color: var(--navy); border-bottom-color: var(--gold); }
+.output-tab.active { color: var(--heading); border-bottom-color: var(--tan); }
 .output-pane { display: none; }
 .output-pane.active { display: block; }
 .output-box {
-  background: #0D1B3E; color: #e8ecf5; border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--heading); color: #e8ecf5; border-radius: 0 0 var(--radius) var(--radius);
   padding: 1.2rem; font-family: 'Courier New', monospace; font-size: 0.78rem;
   line-height: 1.7; white-space: pre-wrap; overflow-x: auto;
   max-height: 460px; overflow-y: auto;
 }
-.output-actions { display: flex; gap: 0.5rem; padding: 0.6rem 0.75rem; background: var(--navy); border-radius: var(--radius) var(--radius) 0 0; }
+.output-actions { display: flex; gap: 0.5rem; padding: 0.6rem 0.75rem; background: var(--heading); border-radius: var(--radius) var(--radius) 0 0; }
 .out-btn {
   background: rgba(255,255,255,.12); color: var(--white); border: none;
   padding: 0.35rem 0.75rem; border-radius: 5px; font-family: var(--font);
   font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: background .15s;
 }
 .out-btn:hover { background: rgba(255,255,255,.22); }
-.out-btn.gold { background: var(--gold); color: var(--navy); }
+.out-btn.gold { background: var(--tan); color: var(--heading); }
 .out-btn.gold:hover { opacity: .85; }
 
 /* ===== MODE PILL ===== */
@@ -178,8 +178,8 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
   background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
 }
 .mode-pill.edit-active {
-  background: var(--gold); color: var(--navy);
-  border-color: var(--gold);
+  background: var(--tan); color: var(--heading);
+  border-color: var(--tan);
 }
 .mode-pill .mode-dot {
   width: 6px; height: 6px; border-radius: 50%;
@@ -206,9 +206,9 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
 /* ===== TOAST ===== */
 .toast {
   position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
-  background: var(--navy); color: var(--white); padding: 0.65rem 1.1rem;
+  background: var(--heading); color: var(--white); padding: 0.65rem 1.1rem;
   border-radius: 8px; font-size: 0.82rem; font-weight: 600;
-  border-left: 3px solid var(--gold); opacity: 0;
+  border-left: 3px solid var(--tan); opacity: 0;
   transform: translateY(8px); transition: all .25s;
   pointer-events: none;
 }
@@ -216,7 +216,7 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
 
 /* ===== UTILS ===== */
 .divider { height: 1px; background: var(--border); margin: 0.9rem 0; }
-.section-note { font-size: 0.78rem; color: var(--text-mid); line-height: 1.5; margin-bottom: 0.75rem; padding: 0.5rem 0.7rem; background: #F0F2F8; border-radius: 6px; border-left: 3px solid var(--gold); }
+.section-note { font-size: 0.78rem; color: var(--body-text); line-height: 1.5; margin-bottom: 0.75rem; padding: 0.5rem 0.7rem; background: #F0F2F8; border-radius: 6px; border-left: 3px solid var(--tan); }
 .baked-badge { font-size: 0.65rem; background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; border-radius: 4px; padding: 0.15rem 0.4rem; font-weight: 700; margin-left: 0.4rem; vertical-align: middle; }
 </style>
 </head>
@@ -253,7 +253,7 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
 
     <div class="divider"></div>
     <h3>Module Types</h3>
-    <div style="font-size:0.78rem; color:var(--text-mid); line-height:1.7;">
+    <div style="font-size:0.78rem; color:var(--body-text); line-height:1.7;">
       <strong>Lesson</strong> — Core instructional content<br>
       <strong>Quiz</strong> — Knowledge check / final assessment<br>
       <strong>Activity</strong> — Interactive game or exercise<br>
@@ -266,7 +266,7 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
     <div class="divider"></div>
     <h3>Save Your Work</h3>
     <button class="add-btn" onclick="saveJSON()"><span class="add-icon">💾</span> Save as JSON</button>
-    <p style="font-size:0.72rem; color:var(--text-mid); margin-top:0.3rem;">Save progress to re-edit later. Use Load Saved to restore.</p>
+    <p style="font-size:0.72rem; color:var(--body-text); margin-top:0.3rem;">Save progress to re-edit later. Use Load Saved to restore.</p>
   </aside>
 
   <!-- MAIN -->
@@ -283,12 +283,12 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
         <div class="section-note">These values wire up the CSS paths, nav links, and course-config.js. Set these first.</div>
         <div class="field-row">
           <div class="field-group">
-            <label>Course ID <span style="color:var(--gold)">*</span></label>
+            <label>Course ID <span style="color:var(--tan)">*</span></label>
             <input type="text" id="cfg-id" placeholder="face-markings">
             <span class="field-hint">Used in course-config.js. Lowercase, no spaces.</span>
           </div>
           <div class="field-group">
-            <label>Course Title <span style="color:var(--gold)">*</span></label>
+            <label>Course Title <span style="color:var(--tan)">*</span></label>
             <input type="text" id="cfg-title" placeholder="Horse Face Markings">
           </div>
         </div>
@@ -301,10 +301,10 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
         </div>
         <button class="add-item-btn" type="button" onclick="fillPathsFromCoursePath()" style="margin-bottom:0.9rem;">Fill Paths from Course Folder</button>
         <details style="margin-top:0.2rem;">
-          <summary style="cursor:pointer;font-size:0.78rem;font-weight:700;color:var(--text-mid);text-transform:uppercase;letter-spacing:.08em;margin-bottom:0.75rem;">Advanced calculated paths</summary>
+          <summary style="cursor:pointer;font-size:0.78rem;font-weight:700;color:var(--body-text);text-transform:uppercase;letter-spacing:.08em;margin-bottom:0.75rem;">Advanced calculated paths</summary>
         <div class="field-row">
           <div class="field-group">
-            <label>Depth from Root <span style="color:var(--gold)">*</span></label>
+            <label>Depth from Root <span style="color:var(--tan)">*</span></label>
             <select id="cfg-depth">
               <option value="2">2 levels (courses/courseName/)</option>
               <option value="3">3 levels (courses/cat/courseName/)</option>
@@ -405,7 +405,7 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
           </div>
         </div>
         <div class="divider"></div>
-        <p style="font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">Meta Badges <span style="font-weight:400; color:var(--text-mid);">(shown as pills under description)</span></p>
+        <p style="font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">Meta Badges <span style="font-weight:400; color:var(--body-text);">(shown as pills under description)</span></p>
         <div id="badge-list" class="repeating-list"></div>
         <button class="add-item-btn" onclick="addBadge()">+ Add Meta Badge</button>
       </div>
@@ -434,7 +434,7 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
           </div>
         </div>
         <div class="divider"></div>
-        <p style="font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">Learning Outcomes <span style="font-weight:400; color:var(--text-mid);">(checkmark list)</span></p>
+        <p style="font-size:0.8rem; font-weight:700; margin-bottom:0.5rem;">Learning Outcomes <span style="font-weight:400; color:var(--body-text);">(checkmark list)</span></p>
         <div id="outcome-list" class="repeating-list"></div>
         <button class="add-item-btn" onclick="addOutcome()">+ Add Outcome</button>
       </div>
@@ -541,7 +541,7 @@ body { font-family: var(--font); background: var(--off-white); color: var(--navy
 
     <!-- OUTPUT -->
     <div style="text-align:right; margin-bottom:0.5rem;">
-      <button class="topbar-btn" onclick="generateAll()" style="background:var(--gold); color:var(--navy); border:none; cursor:pointer; font-family:var(--font); font-size:0.82rem; font-weight:700; padding:0.55rem 1.2rem; border-radius:8px;">⚡ Generate Files</button>
+      <button class="topbar-btn" onclick="generateAll()" style="background:var(--tan); color:var(--heading); border:none; cursor:pointer; font-family:var(--font); font-size:0.82rem; font-weight:700; padding:0.55rem 1.2rem; border-radius:8px;">⚡ Generate Files</button>
     </div>
     <div class="section-card output-section" id="s-output">
       <div class="section-header" onclick="toggleSection(this)">

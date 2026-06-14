@@ -52,6 +52,69 @@
     return (courseBase || '') + file;
   }
 
+  /* ---------- PROGRESS HELPERS ----------
+     Progress is tracked in localStorage as:
+       equineEduProgress.<camelCaseCourseId>.<moduleKey> = 'true'
+     The CANONICAL module key is derived from the module's file name
+     ('4-viewing-room.html' → 'viewingRoom') — this is what lesson pages
+     write on visit. For backward compatibility with older stored progress,
+     completion also checks the title-derived key and its leading-'The'
+     stripped variant ('The Viewing Room' → 'theViewingRoom' / 'viewingRoom'). */
+  function toCamel(str) {
+    const words = String(str || '').replace(/[^a-zA-Z0-9 ]/g, '').trim().split(/\s+/);
+    return words.map((w, i) => {
+      if (!w) return '';
+      return i === 0
+        ? w.charAt(0).toLowerCase() + w.slice(1)
+        : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+    }).join('');
+  }
+
+  function courseIdCamel(id) {
+    return String(id || '').split('-').map((w, i) => {
+      if (!w) return '';
+      return i === 0 ? w : w.charAt(0).toUpperCase() + w.slice(1);
+    }).join('');
+  }
+
+  function fileKeyCamel(file) {
+    // '4-viewing-room.html' → 'viewingRoom'
+    const base = String(file || '')
+      .split('/').pop()
+      .replace(/\.html?(\?.*)?$/i, '')
+      .replace(/^\d+[-_]?/, '');
+    if (!base) return '';
+    return base.split(/[-_]+/).filter(Boolean).map(function (w, i) {
+      return i === 0
+        ? w.charAt(0).toLowerCase() + w.slice(1)
+        : w.charAt(0).toUpperCase() + w.slice(1);
+    }).join('');
+  }
+
+  function moduleKeyCandidates(m) {
+    const cands = [];
+    const fk = fileKeyCamel(m.file);
+    if (fk) cands.push(fk);
+    const tk = toCamel(m.title);
+    if (tk && cands.indexOf(tk) === -1) cands.push(tk);
+    if (/^the[A-Z]/.test(tk)) {
+      const stripped = tk.charAt(3).toLowerCase() + tk.slice(4);
+      if (cands.indexOf(stripped) === -1) cands.push(stripped);
+    }
+    return cands;
+  }
+
+  function isModuleComplete(config, m) {
+    try {
+      const prefix = 'equineEduProgress.' + courseIdCamel(config.id) + '.';
+      return moduleKeyCandidates(m).some(function (k) {
+        return localStorage.getItem(prefix + k) === 'true';
+      });
+    } catch (e) {
+      return false;
+    }
+  }
+
   /* ---------- BREADCRUMB ---------- */
   function buildBreadcrumb(config, current, courseBase) {
     const el = document.getElementById('course-breadcrumb');
@@ -59,12 +122,12 @@
     el.outerHTML = `
 <div class="breadcrumb">
   <a href="${config.homeUrl}">Home</a>
-  <span>&gt;</span>
+  <span>&middot;</span>
   <a href="${config.allCoursesUrl}">All Courses</a>
-  <span>&gt;</span>
+  <span>&middot;</span>
   <a href="${courseUrl(config.indexUrl, courseBase)}">${config.title}</a>
-  <span>&gt;</span>
-  <span class="breadcrumb-current">Module ${current.num} - ${current.title}</span>
+  <span>&middot;</span>
+  <span class="breadcrumb-current">Module ${current.num} &mdash; ${current.title}</span>
 </div>`.trim();
   }
 
@@ -73,12 +136,17 @@
     const el = document.getElementById('course-sidebar');
     if (!el) return;
 
+    let completeCount = 0;
     const items = modules.map(m => {
       const isActive = m.num === currentNum ? ' active' : '';
+      const complete = isModuleComplete(config, m);
+      if (complete) completeCount++;
+      const completeClass = complete ? ' is-complete' : '';
+      const numContent = complete ? '&#10003;' : m.num;
       return `
     <li>
-      <a href="${courseUrl(m.file, courseBase)}" class="sidebar-module${isActive}">
-        <div class="sidebar-num">${m.num}</div>
+      <a href="${courseUrl(m.file, courseBase)}" class="sidebar-module${isActive}${completeClass}">
+        <div class="sidebar-num">${numContent}</div>
         <div class="sidebar-module-info">
           <div class="sidebar-module-title">${m.title}</div>
           <div class="sidebar-module-type">${m.type}</div>
@@ -87,11 +155,20 @@
     </li>`.trim();
     }).join('\n');
 
+    const total = modules.length;
+    const pct = total ? Math.round((completeCount / total) * 100) : 0;
+
     el.outerHTML = `
 <div class="module-sidebar">
   <div class="module-sidebar-header">
     <h3>${config.title}</h3>
     <a href="${courseUrl(config.indexUrl, courseBase)}">View course &rarr;</a>
+  </div>
+  <div class="sidebar-progress">
+    <div class="sidebar-progress-track">
+      <div class="sidebar-progress-fill" style="width: ${pct}%;"></div>
+    </div>
+    <div class="sidebar-progress-label">${completeCount} of ${total} complete</div>
   </div>
   <ul class="module-sidebar-list">
     ${items}
@@ -156,25 +233,6 @@
 <div class="sidebar-module-nav">
   <a href="${prevHref}" class="sidebar-nav-btn">${prevLabel}</a>
   <a href="${nextHref}" class="sidebar-nav-btn next">${nextLabel}</a>
-</div>`.trim();
-  }
-
-  /* ---------- UP NEXT ---------- */
-  function buildUpNext(nextMod) {
-    const el = document.getElementById('course-upnext');
-    if (!el) return;
-
-    if (!nextMod) {
-      el.remove();
-      return;
-    }
-
-    el.outerHTML = `
-<div class="whats-next">
-  <h3>Up Next</h3>
-  <div class="next-lesson-title">${nextMod.title}</div>
-  <div class="next-lesson-desc">${nextMod.desc || ''}</div>
-  <a href="${courseUrl(nextMod.file, getCourseBasePath())}" class="btn-next-full">Start Next Module -></a>
 </div>`.trim();
   }
 

@@ -8,16 +8,16 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy: #0D1B3E;
-    --gold: #C9A84C;
-    --gold-light: rgba(201,168,76,0.12);
+    --navy: var(--heading);
+    --gold: var(--tan);
+    --gold-light: rgba(200, 162, 122,0.12);
     --white: #ffffff;
     --off-white: #F7F6F2;
     --border: #e2ddd6;
     --text: #1a1a2e;
     --text-mid: #5a5a7a;
-    --success: #2d7a4f;
-    --error: #c0392b;
+    --success: var(--success);
+    --error: var(--error);
     --radius: 6px;
     --sidebar: 280px;
   }
@@ -26,7 +26,7 @@
 
   /* ── Top bar ── */
   .topbar {
-    background: var(--navy); color: var(--white);
+    background: var(--heading); color: var(--white);
     padding: 0 1.5rem; height: 56px;
     display: flex; align-items: center; justify-content: space-between;
     position: sticky; top: 0; z-index: 100;
@@ -34,7 +34,7 @@
   }
   .topbar-left { display: flex; align-items: center; gap: 1rem; }
   .topbar h1 { font-size: 1rem; font-weight: 700; letter-spacing: 0.3px; }
-  .topbar h1 span { color: var(--gold); }
+  .topbar h1 span { color: var(--tan); }
   .topbar-actions { display: flex; gap: 0.5rem; align-items: center; }
   .topbar-btn {
     padding: 0.45rem 1rem; border-radius: var(--radius);
@@ -42,10 +42,10 @@
     border: none; transition: opacity 0.15s;
   }
   .topbar-btn:hover { opacity: 0.85; }
-  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold { background: var(--tan); color: var(--heading); }
   .btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.35); }
-  .btn-outline-white:hover { border-color: var(--gold); color: var(--gold); }
-  .btn-danger { background: #c0392b; color: #fff; }
+  .btn-outline-white:hover { border-color: var(--tan); color: var(--tan); }
+  .btn-danger { background: var(--error); color: #fff; }
 
   /* ── Layout ── */
   .builder-layout { display: grid; grid-template-columns: var(--sidebar) 1fr; min-height: calc(100vh - 56px); }
@@ -56,34 +56,34 @@
     padding: 1.25rem; overflow-y: auto;
     position: sticky; top: 56px; height: calc(100vh - 56px);
   }
-  .sidebar h2 { font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .sidebar h2 { font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); margin-bottom: 1rem; }
   .component-btn {
     display: flex; align-items: center; gap: 0.6rem;
     width: 100%; padding: 0.65rem 0.85rem; margin-bottom: 0.35rem;
-    background: var(--off-white); border: 1px solid var(--border);
+    background: var(--soft-white); border: 1px solid var(--border);
     border-radius: var(--radius); cursor: pointer;
     font-size: 0.82rem; font-weight: 600; color: var(--text);
     text-align: left; transition: all 0.15s;
   }
-  .component-btn:hover { background: var(--gold-light); border-color: var(--gold); color: var(--navy); }
+  .component-btn:hover { background: var(--gold-light); border-color: var(--tan); color: var(--heading); }
   .component-btn .icon { font-size: 1rem; flex-shrink: 0; }
   .sidebar-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
   .sidebar-section { margin-bottom: 0.25rem; }
-  .sidebar-meta { font-size: 0.72rem; color: var(--text-mid); margin-bottom: 1rem; line-height: 1.5; }
+  .sidebar-meta { font-size: 0.72rem; color: var(--body-text); margin-bottom: 1rem; line-height: 1.5; }
 
   /* ── Page settings panel ── */
   .page-settings {
     background: var(--white); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem;
   }
-  .page-settings h3 { font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .page-settings h3 { font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 1rem; }
 
   /* ── Canvas ── */
   .canvas { padding: 1.5rem; }
   .canvas-empty {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     min-height: 300px; border: 2px dashed var(--border); border-radius: 8px;
-    color: var(--text-mid); text-align: center; padding: 2rem; margin-top: 1rem;
+    color: var(--body-text); text-align: center; padding: 2rem; margin-top: 1rem;
   }
   .canvas-empty p { font-size: 0.9rem; margin-top: 0.5rem; }
 
@@ -95,23 +95,23 @@
     transition: box-shadow 0.15s;
   }
   .component-block.dragging { opacity: 0.5; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-  .component-block.drag-over { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(201,168,76,0.3); }
+  .component-block.drag-over { border-color: var(--tan); box-shadow: 0 0 0 2px rgba(200, 162, 122,0.3); }
 
   .block-header {
     display: flex; align-items: center; gap: 0.75rem;
     padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);
-    background: var(--off-white); border-radius: 8px 8px 0 0; cursor: grab;
+    background: var(--soft-white); border-radius: 8px 8px 0 0; cursor: grab;
   }
   .block-header:active { cursor: grabbing; }
-  .block-drag-handle { color: var(--text-mid); font-size: 1.1rem; cursor: grab; }
-  .block-type-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); flex: 1; }
+  .block-drag-handle { color: var(--body-text); font-size: 1.1rem; cursor: grab; }
+  .block-type-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); flex: 1; }
   .block-controls { display: flex; gap: 0.35rem; }
   .block-btn {
     padding: 0.3rem 0.55rem; border-radius: 4px; border: 1px solid var(--border);
-    background: var(--white); cursor: pointer; font-size: 0.75rem; color: var(--text-mid);
+    background: var(--white); cursor: pointer; font-size: 0.75rem; color: var(--body-text);
     transition: all 0.15s;
   }
-  .block-btn:hover { background: var(--off-white); color: var(--text); }
+  .block-btn:hover { background: var(--soft-white); color: var(--text); }
   .block-btn.delete:hover { background: #fdf0ee; border-color: #e74c3c; color: #e74c3c; }
   .block-btn.collapse-btn { font-size: 0.8rem; }
 
@@ -121,7 +121,7 @@
   /* ── Form fields ── */
   .field-group { margin-bottom: 1rem; }
   .field-group:last-child { margin-bottom: 0; }
-  .field-label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-mid); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .field-label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--body-text); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
   .field-input, .field-textarea, .field-select {
     width: 100%; padding: 0.6rem 0.8rem;
     border: 1.5px solid var(--border); border-radius: var(--radius);
@@ -129,22 +129,22 @@
     background: var(--white); transition: border-color 0.15s;
   }
   .field-input:focus, .field-textarea:focus, .field-select:focus {
-    outline: none; border-color: var(--gold);
+    outline: none; border-color: var(--tan);
   }
   .field-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
-  .field-hint { font-size: 0.72rem; color: var(--text-mid); margin-top: 0.3rem; }
+  .field-hint { font-size: 0.72rem; color: var(--body-text); margin-top: 0.3rem; }
 
   /* ── Repeating items (cards, bullets, etc.) ── */
   .repeat-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.75rem; }
   .repeat-item {
-    background: var(--off-white); border: 1px solid var(--border);
+    background: var(--soft-white); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 0.85rem;
     position: relative;
   }
   .repeat-item-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
-  .repeat-item-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--text-mid); flex: 1; }
+  .repeat-item-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--body-text); flex: 1; }
   .repeat-remove {
     padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid #e2ddd6;
     background: white; cursor: pointer; font-size: 0.75rem; color: #e74c3c;
@@ -155,15 +155,15 @@
     display: flex; align-items: center; gap: 0.5rem;
     padding: 0.55rem 0.9rem; border-radius: var(--radius);
     border: 1.5px dashed var(--border); background: transparent;
-    cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--text-mid);
+    cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--body-text);
     width: 100%; transition: all 0.15s;
   }
-  .add-item-btn:hover { border-color: var(--gold); color: var(--navy); background: var(--gold-light); }
+  .add-item-btn:hover { border-color: var(--tan); color: var(--heading); background: var(--gold-light); }
 
   /* ── Tab builder ── */
   .tab-builder { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .tab-builder-nav {
-    display: flex; gap: 0; background: var(--off-white);
+    display: flex; gap: 0; background: var(--soft-white);
     border-bottom: 1px solid var(--border); overflow-x: auto;
     scrollbar-width: none;
   }
@@ -171,14 +171,14 @@
   .tab-nav-btn {
     padding: 0.6rem 1rem; border: none; border-right: 1px solid var(--border);
     background: transparent; cursor: pointer; font-size: 0.8rem; font-weight: 600;
-    color: var(--text-mid); white-space: nowrap; transition: all 0.15s;
+    color: var(--body-text); white-space: nowrap; transition: all 0.15s;
     display: flex; align-items: center; gap: 0.4rem;
   }
-  .tab-nav-btn.active { background: var(--white); color: var(--navy); border-bottom: 2px solid var(--gold); }
+  .tab-nav-btn.active { background: var(--white); color: var(--heading); border-bottom: 2px solid var(--tan); }
   .tab-nav-btn .remove-tab { color: #e74c3c; font-size: 0.7rem; }
   .add-tab-btn {
     padding: 0.6rem 1rem; border: none; background: transparent;
-    cursor: pointer; font-size: 0.8rem; color: var(--gold); font-weight: 700;
+    cursor: pointer; font-size: 0.8rem; color: var(--tan); font-weight: 700;
     white-space: nowrap;
   }
   .add-tab-btn:hover { background: var(--gold-light); }
@@ -187,19 +187,19 @@
 
   /* ── Output area ── */
   .output-section {
-    background: var(--navy); color: var(--white);
+    background: var(--heading); color: var(--white);
     padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem;
     display: none;
   }
   .output-section.show { display: block; }
-  .output-section h3 { font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .output-section h3 { font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 1rem; }
   .output-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
   .output-tab-btn {
     padding: 0.4rem 0.9rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);
     background: transparent; color: rgba(255,255,255,0.6); cursor: pointer;
     font-size: 0.8rem; font-weight: 600; transition: all 0.15s;
   }
-  .output-tab-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+  .output-tab-btn.active { background: var(--tan); color: var(--heading); border-color: var(--tan); }
   .output-code {
     background: rgba(0,0,0,0.3); border-radius: var(--radius);
     padding: 1rem; font-family: 'Courier New', monospace; font-size: 0.78rem;
@@ -212,17 +212,17 @@
     font-size: 0.82rem; font-weight: 700; cursor: pointer; border: none;
     transition: opacity 0.15s;
   }
-  .copy-btn { background: var(--gold); color: var(--navy); }
+  .copy-btn { background: var(--tan); color: var(--heading); }
   .download-btn { background: rgba(255,255,255,0.15); color: var(--white); border: 1px solid rgba(255,255,255,0.3); }
   .copy-btn:hover, .download-btn:hover { opacity: 0.85; }
 
   /* ── Notification ── */
   .toast {
     position: fixed; bottom: 1.5rem; right: 1.5rem;
-    background: var(--navy); color: var(--white);
+    background: var(--heading); color: var(--white);
     padding: 0.75rem 1.25rem; border-radius: var(--radius);
     font-size: 0.85rem; font-weight: 600;
-    border-left: 4px solid var(--gold);
+    border-left: 4px solid var(--tan);
     box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     transform: translateY(100px); opacity: 0;
     transition: all 0.3s; z-index: 999;
@@ -237,20 +237,20 @@
     border: 1px solid rgba(255,255,255,0.18); pointer-events: none;
   }
   .mode-pill.edit-active {
-    background: rgba(201,168,76,0.22); color: var(--gold);
-    border-color: rgba(201,168,76,0.5);
+    background: rgba(200, 162, 122,0.22); color: var(--tan);
+    border-color: rgba(200, 162, 122,0.5);
   }
 
   /* ── Edit banner ── */
   .edit-banner {
     display: none; align-items: center; gap: 0.75rem;
-    background: #fffbef; border-bottom: 2px solid var(--gold);
+    background: #fffbef; border-bottom: 2px solid var(--tan);
     padding: 0.55rem 1.5rem; font-size: 0.82rem; color: #7a6000;
   }
   .edit-banner.show { display: flex; }
   .edit-banner strong { flex: 1; }
   .edit-banner-exit {
-    padding: 0.3rem 0.8rem; border-radius: 4px; border: 1px solid #c9a84c;
+    padding: 0.3rem 0.8rem; border-radius: 4px; border: 1px solid var(--tan);
     background: transparent; color: #7a6000; font-size: 0.78rem; font-weight: 700;
     cursor: pointer;
   }
@@ -1492,14 +1492,14 @@ function generateBlockHTML(block, settings) {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;">
         ${d.layout==='left' ? imgEl + textEl : textEl + imgEl}
       </div>
-      ${d.caption ? `<p style="font-size:0.82rem;color:var(--text-mid);margin-top:0.5rem;text-align:center;">${esc(d.caption)}</p>` : ''}
+      ${d.caption ? `<p style="font-size:0.82rem;color:var(--body-text);margin-top:0.5rem;text-align:center;">${esc(d.caption)}</p>` : ''}
     </div>
 `;
       }
       return `
     <div class="visual-card">
       <img src="${esc(d.src)}" alt="${esc(d.alt)}" style="width:100%;border-radius:var(--radius);">
-      ${d.caption ? `<p style="font-size:0.82rem;color:var(--text-mid);margin-top:0.5rem;text-align:center;">${esc(d.caption)}</p>` : ''}
+      ${d.caption ? `<p style="font-size:0.82rem;color:var(--body-text);margin-top:0.5rem;text-align:center;">${esc(d.caption)}</p>` : ''}
     </div>
 `;
 
@@ -1607,13 +1607,13 @@ function generateBlockHTML(block, settings) {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1rem;">
         <div style="text-align:center;">
           ${d.leftImage ? `<img src="${esc(d.leftImage)}" alt="${esc(d.leftLabel)}" style="width:100%;border-radius:var(--radius);margin-bottom:0.75rem;">` : ''}
-          <h3 style="font-family:var(--font-display);color:var(--navy);margin-bottom:0.5rem;">${esc(d.leftLabel)}</h3>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">${esc(d.leftDesc)}</p>
+          <h3 style="font-family:var(--font-display);color:var(--heading);margin-bottom:0.5rem;">${esc(d.leftLabel)}</h3>
+          <p style="font-size:0.9rem;color:var(--body-text);line-height:1.6;">${esc(d.leftDesc)}</p>
         </div>
         <div style="text-align:center;">
           ${d.rightImage ? `<img src="${esc(d.rightImage)}" alt="${esc(d.rightLabel)}" style="width:100%;border-radius:var(--radius);margin-bottom:0.75rem;">` : ''}
-          <h3 style="font-family:var(--font-display);color:var(--navy);margin-bottom:0.5rem;">${esc(d.rightLabel)}</h3>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">${esc(d.rightDesc)}</p>
+          <h3 style="font-family:var(--font-display);color:var(--heading);margin-bottom:0.5rem;">${esc(d.rightLabel)}</h3>
+          <p style="font-size:0.9rem;color:var(--body-text);line-height:1.6;">${esc(d.rightDesc)}</p>
         </div>
       </div>
     </div>
@@ -1623,7 +1623,7 @@ function generateBlockHTML(block, settings) {
       const imgs = (d.images||[]).map(img => `
         <div>
           <img src="${esc(img.src)}" alt="${esc(img.alt)}" style="width:100%;border-radius:var(--radius);">
-          ${img.caption ? `<p style="font-size:0.8rem;color:var(--text-mid);margin-top:0.4rem;text-align:center;">${esc(img.caption)}</p>` : ''}
+          ${img.caption ? `<p style="font-size:0.8rem;color:var(--body-text);margin-top:0.4rem;text-align:center;">${esc(img.caption)}</p>` : ''}
         </div>`).join('');
       return `
     <div class="visual-card">
@@ -1637,10 +1637,10 @@ function generateBlockHTML(block, settings) {
     case 'steps': {
       const steps = (d.steps||[]).map((s,i) => `
         <div style="display:flex;gap:1rem;align-items:flex-start;">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">${i+1}</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--tan);color:var(--heading);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;flex-shrink:0;">${i+1}</div>
           <div>
-            <h4 style="font-family:var(--font-display);color:var(--navy);margin-bottom:0.3rem;">${esc(s.heading)}</h4>
-            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">${esc(s.body)}</p>
+            <h4 style="font-family:var(--font-display);color:var(--heading);margin-bottom:0.3rem;">${esc(s.heading)}</h4>
+            <p style="font-size:0.9rem;color:var(--body-text);line-height:1.6;">${esc(s.body)}</p>
           </div>
         </div>`).join('');
       return `
@@ -1654,43 +1654,43 @@ function generateBlockHTML(block, settings) {
 
     case 'did-you-know':
       return `
-    <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;margin:0.5rem 0;">
-      <p style="font-size:0.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;">💡 Did You Know</p>
-      <p style="color:var(--text-mid);line-height:1.7;">${esc(d.fact)}</p>
+    <div style="background:rgba(200, 162, 122,0.08);border:1px solid rgba(200, 162, 122,0.3);border-left:4px solid var(--tan);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;margin:0.5rem 0;">
+      <p style="font-size:0.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--tan);margin-bottom:0.5rem;">💡 Did You Know</p>
+      <p style="color:var(--body-text);line-height:1.7;">${esc(d.fact)}</p>
     </div>
 `;
 
     case 'warning': {
       const icons = { warning:'⚠️', important:'📌', safety:'🛡' };
-      const colors = { warning:'#c0392b', important:'var(--navy)', safety:'var(--navy)' };
+      const colors = { warning:'#c0392b', important:'var(--heading)', safety:'var(--heading)' };
       return `
-    <div style="background:rgba(192,57,43,0.06);border:1px solid rgba(192,57,43,0.25);border-left:4px solid ${colors[d.type]||'#c0392b'};border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;">
-      <p style="font-size:0.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:${colors[d.type]||'#c0392b'};margin-bottom:0.5rem;">${icons[d.type]||'⚠️'} ${(d.type||'Warning').charAt(0).toUpperCase()+(d.type||'Warning').slice(1)}</p>
-      <p style="color:var(--text-mid);line-height:1.7;">${esc(d.message)}</p>
+    <div style="background:rgba(192,57,43,0.06);border:1px solid rgba(192,57,43,0.25);border-left:4px solid ${colors[d.type]||'var(--error)'};border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;">
+      <p style="font-size:0.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:${colors[d.type]||'var(--error)'};margin-bottom:0.5rem;">${icons[d.type]||'⚠️'} ${(d.type||'Warning').charAt(0).toUpperCase()+(d.type||'Warning').slice(1)}</p>
+      <p style="color:var(--body-text);line-height:1.7;">${esc(d.message)}</p>
     </div>
 `;
     }
 
     case 'video-link':
       return `
-    <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+    <div style="background:var(--soft-white);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
       <div style="font-size:2rem;">🎬</div>
       <div>
-        <p style="font-weight:700;color:var(--navy);margin-bottom:0.2rem;">${esc(d.label)}</p>
-        ${d.description ? `<p style="font-size:0.85rem;color:var(--text-mid);">${esc(d.description)}</p>` : ''}
-        <a href="${esc(d.url)}" style="font-size:0.85rem;color:var(--gold);font-weight:600;">Watch now →</a>
+        <p style="font-weight:700;color:var(--heading);margin-bottom:0.2rem;">${esc(d.label)}</p>
+        ${d.description ? `<p style="font-size:0.85rem;color:var(--body-text);">${esc(d.description)}</p>` : ''}
+        <a href="${esc(d.url)}" style="font-size:0.85rem;color:var(--tan);font-weight:600;">Watch now →</a>
       </div>
     </div>
 `;
 
     case 'activity-links': {
-      const typeBadgeColor = { Game:'var(--navy)', Video:'#1a7a4f', Download:'#7a4f1a', Quiz:'var(--navy)', Reference:'#4f1a7a' };
+      const typeBadgeColor = { Game:'var(--heading)', Video:'#1a7a4f', Download:'#7a4f1a', Quiz:'var(--heading)', Reference:'#4f1a7a' };
       const links = (d.links||[]).map(l => `
         <a href="${esc(l.url)}" style="display:block;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;text-decoration:none;transition:box-shadow 0.15s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.12)'" onmouseout="this.style.boxShadow='none'">
-          ${l.image ? `<img src="${esc(l.image)}" alt="${esc(l.label)}" style="width:100%;height:140px;object-fit:cover;">` : '<div style="width:100%;height:140px;background:var(--off-white);"></div>'}
+          ${l.image ? `<img src="${esc(l.image)}" alt="${esc(l.label)}" style="width:100%;height:140px;object-fit:cover;">` : '<div style="width:100%;height:140px;background:var(--soft-white);"></div>'}
           <div style="padding:0.75rem 1rem;">
-            <span style="font-size:0.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:${typeBadgeColor[l.type]||'var(--navy)'};">${esc(l.type)}</span>
-            <p style="font-weight:700;color:var(--navy);font-size:0.9rem;margin-top:0.25rem;">${esc(l.label)}</p>
+            <span style="font-size:0.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:${typeBadgeColor[l.type]||'var(--heading)'};">${esc(l.type)}</span>
+            <p style="font-weight:700;color:var(--heading);font-size:0.9rem;margin-top:0.25rem;">${esc(l.label)}</p>
           </div>
         </a>`).join('');
       return `
@@ -1710,7 +1710,7 @@ function generateBlockHTML(block, settings) {
       .quiz-question-layout { display: grid; gap: 1rem; align-items: stretch; }
       .question-card.has-side-image .quiz-question-layout { grid-template-columns: minmax(0, 1fr) minmax(180px, 260px); }
       .quiz-answer-column { min-width: 0; }
-      .quiz-side-image-wrap { height: 100%; min-height: 236px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--off-white); }
+      .quiz-side-image-wrap { height: 100%; min-height: 236px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--soft-white); }
       .quiz-side-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
       @media (max-width: 720px) {
         .question-card.has-side-image .quiz-question-layout { grid-template-columns: 1fr; }

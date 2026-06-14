@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Equine Anatomy &mdash; Equine Edu</title>
+<meta name="description" content="Final quiz for Equine Anatomy. 15 randomized questions covering the head, neck and shoulder, body, front legs, and hind legs.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Equine Anatomy</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">This quiz expands on the foundations course by covering the horse's exterior in more detail: head, neck and shoulder, body, front legs, and hind legs. Each attempt draws 15 questions from a larger bank, so every retake gives you a different set. Questions focus on naming, locating, and understanding visible parts of the physical horse.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/15</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+(function(){
+const QUESTION_COUNT=15;
+const questionBank=[
+
+    // ---- HEAD ----
+    {
+      prompt: 'The poll is located where on the horse?',
+      options: ['The bony ridge running from below the eye toward the jaw','The highest point of the skull, between the ears','The junction of the head and lower neck','The hollow above each eye socket'],
+      answer: 'The highest point of the skull, between the ears',
+      correct: 'Correct. The poll is the highest point of the skull, between the ears. The first cervical vertebra (atlas) sits just beneath this point.',
+      incorrect: 'Not quite. The poll is the highest point of the skull, located between the base of the ears.'
+    },
+    {
+      prompt: 'The supraorbital fossa becomes more visible and sunken when a horse:',
+      options: ['Gains muscle through correct training','Is highly fit and in peak athletic condition','Ages or loses significant body weight','Has been recently clipped'],
+      answer: 'Ages or loses significant body weight',
+      correct: 'Correct. The supraorbital fossa — the hollow above the eye socket — fills in when a horse is well-nourished and sunken when the horse is underweight or aging.',
+      incorrect: 'Not quite. The supraorbital fossa hollows as a horse ages or loses body condition — it is an informal visual indicator of age and weight.'
+    },
+    {
+      prompt: 'The facial crest on a horse is best described as:',
+      options: ['The top ridge of the neck from poll to withers','A bony ridge running from below the eye toward the lower jaw','The hollow above the eye socket','The groove under the chin where the curb chain sits'],
+      answer: 'A bony ridge running from below the eye toward the lower jaw',
+      correct: 'Correct. The facial crest is a visible and palpable bony ridge on the side of the face. It is a key reference landmark for describing locations of markings, swellings, or wounds.',
+      incorrect: 'Not quite. The facial crest is a bony horizontal ridge on the side of the face, running from below the eye toward the lower jaw.'
+    },
+    {
+      prompt: 'Muzzle whiskers (vibrissae) on a horse:',
+      options: ['Are purely cosmetic and should be clipped before shows','Are tactile sensors that help the horse judge distance and texture near the ground','Indicate the horse is older or past peak condition','Are unique to draft breeds only'],
+      answer: 'Are tactile sensors that help the horse judge distance and texture near the ground',
+      correct: 'Correct. Vibrissae are sensory structures used for tactile awareness near the ground. Many equestrian organizations now prohibit clipping them for welfare reasons.',
+      incorrect: 'Not quite. Vibrissae are sensory whiskers, not cosmetic features. They should not be clipped — they serve an important tactile function.'
+    },
+    {
+      prompt: 'The throatlatch area is located:',
+      options: ['Where the head meets the underside of the neck','At the top of the croup','Behind the fetlock','Along the front of the cannon bone'],
+      answer: 'Where the head meets the underside of the neck',
+      correct: 'Correct. The throatlatch is the area where the head joins the underside of the neck.',
+      incorrect: 'Not quite. The throatlatch is under the head at the junction with the neck.'
+    },
+    {
+      prompt: 'The dock is best described as:',
+      options: ['The bony base of the tail','The hollow above the eye','The lower front leg below the knee','The underside of the hoof'],
+      answer: 'The bony base of the tail',
+      correct: 'Correct. The dock is the bony base of the tail where it attaches to the hindquarters.',
+      incorrect: 'Not quite. The dock is part of the tail, located at the base where the tail attaches.'
+    },
+    {
+      prompt: 'What does the chin groove (curb groove) provide for in bitting?',
+      options: ['A resting place for the noseband','The landing zone for the curb chain on a shank or Pelham bit','A guide point for measuring jaw width','A reference for checking wolf teeth location'],
+      answer: 'The landing zone for the curb chain on a shank or Pelham bit',
+      correct: 'Correct. The chin groove is the groove on the underside of the chin between the jawbone and lower lip. A curb chain rests here and applies leverage pressure when rein contact is taken.',
+      incorrect: 'Not quite. The chin groove is where a curb chain sits on a shank bit or Pelham, applying pressure to this sensitive area when rein contact is used.'
+    },
+
+    // ---- NECK & SHOULDER ----
+    {
+      prompt: 'Horse height is always measured at the:',
+      options: ['Poll','Top of the back','Withers','Point of hip'],
+      answer: 'Withers',
+      correct: 'Correct. The withers — the highest point of the topline, formed by elongated vertebral processes — is the universal measurement point. Height is expressed in hands (1 hand = 4 inches).',
+      incorrect: 'Not quite. Horse height is always measured at the withers, the highest point of the topline just in front of the back.'
+    },
+    {
+      prompt: 'The scapula is another name for the horse\'s:',
+      options: ['Shoulder blade','Point of hip','Breastbone','Upper jaw'],
+      answer: 'Shoulder blade',
+      correct: 'Correct. The scapula is the shoulder blade. It is the large flat bone of the shoulder region.',
+      incorrect: 'Not quite. The scapula is the shoulder blade, one of the main structures of the neck and shoulder region.'
+    },
+    {
+      prompt: 'The scapula (shoulder blade) is held to the horse\'s skeleton by:',
+      options: ['A bony ball-and-socket joint','A cartilage disc like in the human shoulder','Muscle alone — with no bony joint','Three ligaments connecting it to the spine'],
+      answer: 'Muscle alone — with no bony joint',
+      correct: 'Correct. The scapula is held entirely by muscle — a synsarcosis. This muscular connection acts as a natural shock absorber and allows a greater range of shoulder movement.',
+      incorrect: 'Not quite. The scapula has no bony joint to the skeleton — it is held in place by muscle only. This allows shock absorption and free movement.'
+    },
+    {
+      prompt: 'The point of shoulder is best described as:',
+      options: ['The forward bony point of the shoulder joint','The highest point of the withers','The hollow above the eye','The rear point of the pelvis'],
+      answer: 'The forward bony point of the shoulder joint',
+      correct: 'Correct. The point of shoulder is the forward bony point of the shoulder joint on the front of the horse.',
+      incorrect: 'Not quite. The point of shoulder is the forward bony landmark of the shoulder, not the withers, eye, or pelvis.'
+    },
+    {
+      prompt: 'The crest is located:',
+      options: ['Along the top of the neck','Under the jaw','Behind the elbow','At the back of the fetlock'],
+      answer: 'Along the top of the neck',
+      correct: 'Correct. The crest is the upper line of the neck, running from the poll toward the withers.',
+      incorrect: 'Not quite. The crest is along the top of the neck, not the underside or lower leg.'
+    },
+    {
+      prompt: 'The jugular groove runs along the side of the neck and marks the location of the:',
+      options: ['Trachea (windpipe)','Carotid artery','Jugular vein','Esophagus'],
+      answer: 'Jugular vein',
+      correct: 'Correct. The jugular vein runs just beneath the skin in the jugular groove on each side of the lower neck.',
+      incorrect: 'Not quite. The jugular vein runs in the jugular groove along the side of the lower neck.'
+    },
+
+    // ---- BODY ----
+    {
+      prompt: 'The loin is located:',
+      options: ['Between the last rib and the point of hip','Between the nostril and upper lip','Behind the fetlock','At the base of the ear'],
+      answer: 'Between the last rib and the point of hip',
+      correct: 'Correct. The loin is the area between the last rib and the point of hip, just behind the back.',
+      incorrect: 'Not quite. The loin is part of the body region, located between the last rib and the point of hip.'
+    },
+    {
+      prompt: 'The point of buttock (tuber ischii) is located:',
+      options: ['At the very top of the croup','At the most rearward bony prominence of the pelvis, visible as the lower hindquarter corners','At the highest point of the hip, level with the point of hip','Just behind the last rib on each side'],
+      answer: 'At the most rearward bony prominence of the pelvis, visible as the lower hindquarter corners',
+      correct: 'Correct. The tuber ischii (point of buttock) is the most rearward pelvic landmark. Together with the point of hip (tuber coxae), these two points frame the hindquarter outline.',
+      incorrect: 'Not quite. The point of buttock (tuber ischii) is the rearmost pelvic landmark, visible as the lower corners of the hindquarters when viewed from the side.'
+    },
+    {
+      prompt: 'The barrel refers to which area of the horse?',
+      options: ['The main ribcage/body area','The lower part of the face','The back of the hind leg','The top of the hoof'],
+      answer: 'The main ribcage/body area',
+      correct: 'Correct. The barrel is the main ribcage area of the horse\'s body.',
+      incorrect: 'Not quite. The barrel is the rounded body area formed by the ribs, not a head or leg structure.'
+    },
+    {
+      prompt: 'The flank is located:',
+      options: ['On the side of the body behind the barrel and in front of the hind leg','Between the poll and withers','At the front of the knee','Inside the hoof wall'],
+      answer: 'On the side of the body behind the barrel and in front of the hind leg',
+      correct: 'Correct. The flank is the side area behind the barrel and in front of the hind leg.',
+      incorrect: 'Not quite. The flank is part of the body region, behind the barrel and ahead of the hind leg.'
+    },
+    {
+      prompt: 'The croup is located:',
+      options: ['Over the top of the hindquarters, between the loin and tailhead','At the front of the chest','Along the underside of the neck','Between the knee and fetlock'],
+      answer: 'Over the top of the hindquarters, between the loin and tailhead',
+      correct: 'Correct. The croup is the top of the hindquarter area, running from the loin toward the tailhead.',
+      incorrect: 'Not quite. The croup is part of the body/hindquarter region, not the chest, neck, or lower leg.'
+    },
+
+    // ---- LEGS ----
+    {
+      prompt: 'The cannon bone is located:',
+      options: ['Between the knee or hock and the fetlock','Between the poll and withers','Inside the hoof capsule','Between the eye and nostril'],
+      answer: 'Between the knee or hock and the fetlock',
+      correct: 'Correct. The cannon bone is the long lower-leg bone between the knee or hock and the fetlock.',
+      incorrect: 'Not quite. The cannon bone is a lower-leg structure found between the knee or hock and the fetlock.'
+    },
+    {
+      prompt: 'The horse\'s knee (carpus) is anatomically equivalent to the human:',
+      options: ['Knee','Ankle','Wrist','Elbow'],
+      answer: 'Wrist',
+      correct: 'Correct. The carpus (horse\'s knee) is the wrist equivalent — it contains 7–8 small carpal bones in two rows. The hock, on the hind leg, is the ankle equivalent.',
+      incorrect: 'Not quite. The horse\'s knee is the wrist equivalent. This is a common confusion — the hock is the ankle, and the stifle is the knee equivalent.'
+    },
+    {
+      prompt: 'The fetlock is located:',
+      options: ['Between the cannon bone and the pastern','Between the ear and poll','At the top of the shoulder','On the underside of the barrel'],
+      answer: 'Between the cannon bone and the pastern',
+      correct: 'Correct. The fetlock is the joint between the cannon bone and pastern.',
+      incorrect: 'Not quite. The fetlock is a lower-leg joint between the cannon bone and pastern.'
+    },
+    {
+      prompt: 'The pastern is located:',
+      options: ['Between the fetlock and the hoof','Between the stifle and hock','Between the withers and back','Between the nostril and muzzle'],
+      answer: 'Between the fetlock and the hoof',
+      correct: 'Correct. The pastern is the sloping area between the fetlock and the hoof.',
+      incorrect: 'Not quite. The pastern is below the fetlock and above the hoof.'
+    },
+    {
+      prompt: 'What does the frog of the hoof do?',
+      options: ['Produces the outer hoof wall from the coronary band downward','Acts as a shock absorber and helps pump blood back up the leg','Connects the deep digital flexor tendon to the coffin bone','Protects the coronary band from ground contact'],
+      answer: 'Acts as a shock absorber and helps pump blood back up the leg',
+      correct: 'Correct. The frog is the V-shaped structure on the underside of the hoof. It helps absorb impact and supports circulation in the foot.',
+      incorrect: 'Not quite. The frog absorbs shock at each stride AND acts as a circulatory pump — pushing blood back up the leg through the digital vessels.'
+    },
+    {
+      prompt: 'The coronary band is important because:',
+      options: ['It connects the hoof wall to the pastern bone internally','It continuously produces the entire hoof wall from the top down over 9–12 months','It is the primary weight-bearing surface on the bottom of the foot','It regulates moisture balance in the outer hoof wall'],
+      answer: 'It continuously produces the entire hoof wall from the top down over 9–12 months',
+      correct: 'Correct. The coronary band generates new hoof wall from the top down. The entire wall is replaced in roughly 9–12 months. Any injury here creates a permanent groove or notch that grows down over time.',
+      incorrect: 'Not quite. The coronary band produces all of the hoof wall — a complete replacement cycle takes 9–12 months. Injuries to it leave permanent tracks in the wall.'
+    },
+    {
+      prompt: 'The hock is found on which leg region?',
+      options: ['Hind leg','Front leg','Head','Neck and shoulder'],
+      answer: 'Hind leg',
+      correct: 'Correct. The hock is a major joint of the hind leg.',
+      incorrect: 'Not quite. The hock belongs to the hind leg. The front leg has the knee/carpus instead.'
+    },
+    {
+      prompt: 'The point of hock is located:',
+      options: ['At the back of the hock joint','At the front of the knee','On the side of the face','At the top of the croup'],
+      answer: 'At the back of the hock joint',
+      correct: 'Correct. The point of hock is the prominent point at the back of the hock joint.',
+      incorrect: 'Not quite. The point of hock is the rear point of the hock on the hind leg.'
+    },
+    {
+      prompt: 'Front chestnuts are located above the knee. Hind chestnuts are located:',
+      options: ['Above the hock, on the outside','Below the hock, on the inside','At the back of the hind fetlock, hidden in feathering','On the front of the hind cannon'],
+      answer: 'Below the hock, on the inside',
+      correct: 'Correct. Hind chestnuts are on the inside of the hind leg, below the hock — the opposite position from front chestnuts, which are above and inside the knee.',
+      incorrect: 'Not quite. Hind chestnuts are below the hock on the inside of the leg. Front chestnuts are above the knee on the inside of the leg.'
+    },
+    {
+      prompt: 'The ergot is found:',
+      options: ['At the back of the fetlock','In the hollow above the eye','Along the top of the neck','At the front of the muzzle'],
+      answer: 'At the back of the fetlock',
+      correct: 'Correct. The ergot is a small callus-like structure at the back of the fetlock.',
+      incorrect: 'Not quite. The ergot is found at the back of the fetlock, not on the head or neck.'
+    },
+    {
+      prompt: 'The stifle is equivalent to which human joint?',
+      options: ['Ankle','Wrist','Knee','Hip'],
+      answer: 'Knee',
+      correct: 'Correct. The stifle — containing the patella (kneecap) — is the knee equivalent. It is the largest joint in the horse\'s body, located at the top of the gaskin on the hind leg.',
+      incorrect: 'Not quite. The stifle is the knee equivalent. It is the only equine joint with a patella (kneecap) and is the largest joint on the horse.'
+    },
+    {
+      prompt: 'Front hooves are rounder and wider than hind hooves because:',
+      options: ['Front feet grow faster and spread outward with age','Front hooves are designed to absorb landing concussion; hind hooves are shaped for push-off propulsion','Hind feet naturally develop more hoof wall thickness','Front feet have larger frogs that push the walls apart'],
+      answer: 'Front hooves are designed to absorb landing concussion; hind hooves are shaped for push-off propulsion',
+      correct: 'Correct. The round, wide front hoof absorbs the majority of landing impact (60–65% of concussion is taken by the front legs). The more upright, oval hind hoof is shaped for pushing off at each stride.',
+      incorrect: 'Not quite. Front hooves are rounder for shock absorption; hind hooves are more oval and upright for propulsion. This reflects the different mechanical roles of front and hind legs.'
+    }
+
+  ];
+function esc(t){return String(t||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(i=>i.v)}
+const cardEl=document.getElementById('quiz-card'),countEl=document.getElementById('quiz-count'),scoreEl=document.getElementById('quiz-score'),qEl=document.getElementById('quiz-question'),optEl=document.getElementById('quiz-options'),fbEl=document.getElementById('quiz-feedback'),nextBtn=document.getElementById('quiz-next'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message'),retake=document.getElementById('btn-retake');
+let active=[],idx=0,score=0,answered=false;
+function start(){active=shuffle(questionBank).slice(0,Math.min(QUESTION_COUNT,questionBank.length)).map(q=>({...q,options:shuffle(q.options)}));idx=0;score=0;scorePanel.classList.remove('show');cardEl.style.display='';showQuestion()}
+function showQuestion(){answered=false;const q=active[idx];countEl.textContent='Question '+(idx+1)+' of '+active.length;scoreEl.textContent='Score: '+score;qEl.textContent=q.prompt;fbEl.className='quiz-feedback';fbEl.textContent='';nextBtn.disabled=true;nextBtn.textContent='Next Question';optEl.innerHTML=q.options.map(o=>`<button type="button" class="quiz-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');optEl.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(btn,q)))}
+function selectAnswer(btn,q){if(answered)return;answered=true;const correct=q.answer;optEl.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.val===correct)b.classList.add('correct-ans')});const ok=btn.dataset.val===correct;if(ok)score++;else btn.classList.add('wrong-ans');fbEl.textContent=ok?q.correct:q.incorrect;fbEl.classList.add('show',ok?'correct':'incorrect');scoreEl.textContent='Score: '+score;nextBtn.textContent=idx+1<active.length?'Next Question':'See Results';nextBtn.disabled=false}
+nextBtn.addEventListener('click',()=>{idx++;if(idx>=active.length){finish();return}showQuestion()});
+function finish(){cardEl.style.display='none';const pct=score/active.length;scoreDisplay.textContent=score+'/'+active.length;scoreMessage.textContent=pct>=.9?'Excellent work. You have a strong command of this material.':pct>=.75?'Good work. Review the questions you missed and try another round.':pct>=.6?'You are getting there. Revisit the lesson and Training Barn, then try again.':'Keep practicing. These terms will get easier with review.';scorePanel.classList.add('show');if(pct>=.8){try{localStorage.setItem('equineEduProgress.equineAnatomy.testYourKnowledge','true')}catch(e){}}}
+retake.addEventListener('click',()=>{start();cardEl.scrollIntoView({behavior:'smooth',block:'start'})});
+start()
+})();
+</script>
+<script>
+  window.CURRENT_MODULE=5;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Equine Anatomy', url: '1-index.html' },
+    navExtras:  [
+      { label: 'The Training Barn', url: '4-training-barn.html' },
+      { label: 'Parts of the Horse', url: '3-equine-anatomy.html' }
+    ]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.equineAnatomy.testYourKnowledge','true')}catch(e){}</script>
+</body>
+</html>

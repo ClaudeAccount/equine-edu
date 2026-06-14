@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge — Introduction to Horse Behavior — Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css"><link rel="stylesheet" href="../../../../assets/css/game.css">
+</head><body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Horse Behavior</div>
+    <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    <p class="lesson-hero-desc">Each attempt draws 12 questions from a larger bank — answers rotate so repeated attempts are never the same quiz.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 12</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/12</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QC=12;
+const bank=[
+{q:"Why is a horse described as a prey animal?",opts:["It evolved to flee from predators rather than fight", "It is hunted by domestic dogs", "It prefers meat when available", "It lives only in open grasslands"],a:"It evolved to flee from predators rather than fight",ok:"Correct. Horses evolved where predators were common \u2014 their survival strategy is flight.",no:"Horses are prey animals because they evolved to detect and flee predators."},
+{q:"What is the flight response?",opts:["The horse's instinct to flee suddenly from perceived danger", "A trained jumping response", "The way a horse runs toward food", "A response to a specific leg aid"],a:"The horse's instinct to flee suddenly from perceived danger",ok:"Correct. The flight response is instinctive and immediate \u2014 the horse runs first.",no:"The flight response is the instinct to run first. It is not trained behavior."},
+{q:"Where are a horse's two blind spots?",opts:["Directly behind the body and directly in front of the face", "Directly to the left and right", "Above the head and below the hooves", "Just behind the shoulders"],a:"Directly behind the body and directly in front of the face",ok:"Correct. Directly behind the body and directly in front of the face (within four feet).",no:"The two blind spots: directly behind the body and directly in front of the face."},
+{q:"Ears pinned flat against the neck indicate:",opts:["The horse may kick or bite", "The horse is relaxed", "The horse is listening behind it", "The horse is tired"],a:"The horse may kick or bite",ok:"Correct. Ears pinned flat against the neck warn of potential aggression.",no:"Pinned ears signal aggression. Loosely turned-back ears mean listening or resting."},
+{q:"The correct side to approach a horse from is:",opts:["The left side, toward the shoulder", "The right side, toward the hip", "Directly from behind", "Directly from the front"],a:"The left side, toward the shoulder",ok:"Correct. Approach at an angle toward the left shoulder \u2014 the horse can see and hear you.",no:"Always approach from the left side, toward the shoulder, speaking calmly."},
+{q:"A horse with a low head, soft eyes, and loose lower lip is:",opts:["Relaxed", "Alarmed", "Aggressive", "About to bolt"],a:"Relaxed",ok:"Correct. These are all signs of a relaxed, comfortable horse.",no:"Low head, soft eyes, and a loose lip all signal relaxation."},
+{q:"How do horses primarily communicate with each other?",opts:["Through body language \u2014 ears, tail, head, and posture", "Through vocal calls", "Through scent marking", "Through eye contact alone"],a:"Through body language \u2014 ears, tail, head, and posture",ok:"Correct. Horses are primarily visual communicators.",no:"Horses communicate primarily through body language."},
+{q:"Why is standing directly behind a horse at middle distance dangerous?",opts:["A kick connects with full force at that distance", "The horse cannot sense you there", "It is the only safe position", "The tail causes injury"],a:"A kick connects with full force at that distance",ok:"Correct. At middle distance, a kick reaches with maximum momentum.",no:"The most dangerous position: a few feet behind. A kick has room to build full force."},
+{q:"A raised head, wide eyes, and tense muscles indicate:",opts:["Alertness or alarm", "Deep relaxation", "Hunger", "A desire for grooming"],a:"Alertness or alarm",ok:"Correct. These are alarm signals \u2014 the horse has perceived a potential threat.",no:"Raised head, wide eyes, and tension are alarm signals."},
+{q:"What is the purpose of speaking to a horse before touching it?",opts:["To alert the horse to your presence before contact", "To teach voice commands", "To calm a startled horse", "To establish dominance"],a:"To alert the horse to your presence before contact",ok:"Correct. Speaking gives an auditory cue, preventing surprise contact.",no:"Speaking before touching alerts the horse so contact is never a surprise."},
+{q:"The flight zone is:",opts:["The invisible perimeter within which a horse feels threatened", "The distance a horse can kick", "The area around a water source a horse protects", "The range of a horse's sight"],a:"The invisible perimeter within which a horse feels threatened",ok:"Correct. Entering the flight zone applies spatial pressure that causes the horse to move.",no:"The flight zone is the personal space around a horse \u2014 entering it causes movement away."},
+{q:"Loosely backward ears typically mean:",opts:["The horse is listening behind it or resting", "The horse is about to kick", "The horse is in pain", "The horse is communicating with another horse"],a:"The horse is listening behind it or resting",ok:"Correct. Loosely backward ears are neutral \u2014 listening or resting.",no:"Loosely backward ears are neutral. Only flat-pinned ears signal aggression."},
+{q:"Herd instinct means:",opts:["Horses feel safest in groups and are stressed when isolated", "Horses fight constantly for resources", "Horses prefer to live alone with one companion", "Horses always follow the stallion"],a:"Horses feel safest in groups and are stressed when isolated",ok:"Correct. Horses are social herd animals \u2014 isolation causes significant stress.",no:"Horses are highly social and are distressed when isolated."},
+{q:"The correct response when a horse shows signs of agitation is:",opts:["Stop, create space, and allow the horse to settle", "Apply more pressure to establish dominance", "Move faster to finish before it escalates", "Make loud noises for compliance"],a:"Stop, create space, and allow the horse to settle",ok:"Correct. Reducing pressure and allowing space is the safest response.",no:"When a horse escalates, reduce pressure, create space, and let it settle."},
+{q:"Pressure-and-release training works because:",opts:["The immediate release of pressure is the reward", "Constant pressure teaches tolerance", "The pressure physically positions the horse", "Release signals the end of training"],a:"The immediate release of pressure is the reward",ok:"Correct. The instant the horse responds correctly, pressure disappears \u2014 that release is the reward.",no:"In pressure-and-release, the release IS the reward."},
+];
+function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let qs=[],cur=0,sc=0,ans=false;
+function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
+  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
+function show(){const q=qs[cur];
+  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
+  document.getElementById('quiz-score').textContent='Score: '+sc;
+  document.getElementById('quiz-question').textContent=q.q;
+  document.getElementById('quiz-feedback').textContent='';
+  document.getElementById('quiz-next').disabled=true;ans=false;
+  const opts=sh([...q.opts]);
+  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
+  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
+    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
+    if(ok)sc++;
+    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
+      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
+      else if(x===this&&!ok)x.classList.add('incorrect');
+    });
+    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
+    document.getElementById('quiz-next').disabled=false;
+  }));}
+document.getElementById('quiz-next').addEventListener('click',function(){cur++;
+  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
+    document.getElementById('score-panel').style.display='';
+    document.getElementById('score-display').textContent=sc+'/'+QC;
+    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
+  }else show();});
+document.getElementById('btn-retake').addEventListener('click',init);init();
+})();
+</script>
+<script src="course-config.js"></script>
+<script>window.CURRENT_MODULE=7;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};</script>
+<script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+</body></html>

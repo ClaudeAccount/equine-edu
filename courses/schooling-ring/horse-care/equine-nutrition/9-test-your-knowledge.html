@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge — Equine Nutrition & Feed Management — Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css"><link rel="stylesheet" href="../../../../assets/css/game.css">
+</head><body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Horse Care</div>
+    <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    <p class="lesson-hero-desc">Each attempt draws 12 questions from a larger bank — answers rotate so repeated attempts are never the same quiz.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 12</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/12</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QC=12;
+const bank=[
+{q:"Where does most fiber digestion occur in the horse?",opts:["The hindgut \u2014 cecum and large colon", "The stomach", "The small intestine", "The liver"],a:"The hindgut \u2014 cecum and large colon",ok:"Correct. Horses are hindgut fermenters \u2014 the cecum and large colon are where microbial fermentation breaks down fiber.",no:"The horse is a hindgut fermenter. Most fiber digestion happens in the cecum and large colon through microbial fermentation."},
+{q:"The horse's stomach is best described as:",opts:["Small and fast-emptying, requiring frequent small meals", "Large and slow-emptying, suited to twice-daily feeding", "Similar in size and function to a cow's rumen", "Capable of digesting large amounts of grain efficiently"],a:"Small and fast-emptying, requiring frequent small meals",ok:"Correct. The horse's small stomach empties rapidly \u2014 it is designed for near-continuous, small meals of forage.",no:"The horse's stomach is small and empties quickly. Horses should eat small amounts frequently, not large meals."},
+{q:"Forage should make up what proportion of the equine diet?",opts:["At least 50% by dry weight, and ideally more", "No more than 25% \u2014 grain provides better energy", "Equal parts forage and grain", "As little as possible to control weight"],a:"At least 50% by dry weight, and ideally more",ok:"Correct. Forage is the foundation \u2014 the digestive system is designed around it. At least 50% and ideally 100% should come from hay or pasture.",no:"Forage should form the majority \u2014 ideally all \u2014 of the equine diet. It drives hindgut fermentation and keeps the gut healthy."},
+{q:"Which number on the Henneke Body Condition Score scale is considered ideal for most horses?",opts:["4 to 6", "1 to 3", "7 to 9", "Only 5"],a:"4 to 6",ok:"Correct. The Henneke scale runs 1\u20139. A score of 4\u20136 is considered healthy for most horses.",no:"The Henneke BCS scale runs from 1 (emaciated) to 9 (obese). A score of 4\u20136 is the healthy target for most horses."},
+{q:"Concentrates are best described as:",opts:["A supplement added when forage cannot meet energy demands", "The primary energy source for all horses", "A required daily component of the equine diet", "A replacement for forage in working horses"],a:"A supplement added when forage cannot meet energy demands",ok:"Correct. Concentrates are an energy supplement \u2014 only needed when forage alone is insufficient for the horse's demands.",no:"Concentrates are a supplement, not a foundation. They are added to forage when energy needs exceed what hay or pasture can provide."},
+{q:"Which of the following is most directly linked to laminitis?",opts:["High non-structural carbohydrate intake from grain or lush pasture", "Feeding too much hay", "Low protein intake", "Feeding grain twice daily instead of three times"],a:"High non-structural carbohydrate intake from grain or lush pasture",ok:"Correct. Excess non-structural carbohydrates (sugars and starches) disrupt hindgut fermentation and trigger laminitis in susceptible horses.",no:"Laminitis in horses is strongly associated with high NSC intake \u2014 sugars and starches from grain and lush pasture."},
+{q:"Colic risk is increased by:",opts:["Sudden feed changes, large grain meals, and insufficient forage", "Consistent forage feeding throughout the day", "Feeding high-quality hay twice daily", "Reducing grain and increasing pasture access"],a:"Sudden feed changes, large grain meals, and insufficient forage",ok:"Correct. Sudden changes disrupt the hindgut microbiome. Large grain meals ferment rapidly and produce gas or acid that causes pain.",no:"Colic risk factors include sudden feed changes, large grain meals, insufficient forage, and inadequate water."},
+{q:"Hay quality is most accurately determined by:",opts:["Forage analysis \u2014 a lab test measuring actual nutrient content", "Color alone \u2014 green hay is always high quality", "Price \u2014 more expensive hay is always better", "Weight \u2014 heavier bales have more energy"],a:"Forage analysis \u2014 a lab test measuring actual nutrient content",ok:"Correct. Forage analysis measures actual protein, energy, and non-structural carbohydrate content \u2014 visual assessment alone is insufficient.",no:"Forage analysis (lab testing) is the only reliable way to know actual nutrient content. Visual quality is a starting point, not a conclusion."},
+{q:"Which type of horse most likely needs concentrates added to its diet?",opts:["A horse in heavy work training or a lactating mare", "A healthy mature horse at pasture rest", "A horse on a weight-loss program", "A horse that prefers grain to hay"],a:"A horse in heavy work training or a lactating mare",ok:"Correct. Horses in heavy work, growing horses, and lactating mares have energy demands that often exceed what forage alone can provide.",no:"Concentrates are most justified for horses in heavy work, growing horses, and mares in late gestation or lactation."},
+{q:"Non-structural carbohydrates (NSC) in horse feeds are primarily:",opts:["Sugars and starches", "Cellulose and hemicellulose", "Protein and fat", "Minerals and vitamins"],a:"Sugars and starches",ok:"Correct. NSC = sugars + starches. They are rapidly fermented and can cause metabolic problems in high amounts.",no:"NSC refers to sugars and starches \u2014 the rapidly fermented carbohydrates that can trigger laminitis and metabolic issues in susceptible horses."},
+{q:"The cecum is important for equine nutrition because:",opts:["It is where hindgut fermentation of fiber begins", "It produces digestive enzymes for protein breakdown", "It absorbs all vitamins and minerals from feed", "It stores excess glucose for energy use"],a:"It is where hindgut fermentation of fiber begins",ok:"Correct. The cecum is the first section of the hindgut where microbial fermentation of fiber starts.",no:"The cecum is where microbial fermentation of fiber begins \u2014 it is the critical first chamber of the hindgut."},
+{q:"What does 'free-choice forage' mean?",opts:["Hay or pasture available to the horse at all times", "Grain available without restriction", "A choice between two types of hay", "Grazing with no time limits for any horse"],a:"Hay or pasture available to the horse at all times",ok:"Correct. Free-choice forage means hay or pasture is available continuously \u2014 mimicking natural near-constant grazing behavior.",no:"Free-choice forage means the horse has access to hay or pasture at all times, allowing near-continuous grazing consistent with natural behavior."},
+{q:"A horse that has lost muscle over the topline and has visible ribs is likely:",opts:["Underconditioned \u2014 BCS below 4", "At ideal condition \u2014 BCS of 5", "Overconditioned \u2014 BCS above 6", "Showing normal seasonal variation only"],a:"Underconditioned \u2014 BCS below 4",ok:"Correct. Visible ribs and muscle loss over the topline indicate a BCS below 4 \u2014 the horse needs more caloric intake.",no:"Visible ribs and topline muscle loss indicate undercondition \u2014 a BCS below 4 that requires dietary adjustment."},
+{q:"Fresh spring pasture can be dangerous for susceptible horses because:",opts:["It is very high in non-structural carbohydrates, triggering laminitis", "It does not contain enough protein", "It is too low in fiber to support hindgut function", "It causes sudden weight loss"],a:"It is very high in non-structural carbohydrates, triggering laminitis",ok:"Correct. Rapidly growing spring grass is extremely high in NSC and can trigger laminitis in horses with metabolic conditions.",no:"Lush spring grass is high in NSC \u2014 horses with EMS or PPID (Cushing's) are at high risk of laminitis from unmanaged pasture access."},
+{q:"Why should feed changes always be made gradually?",opts:["To allow the hindgut microbiome to adjust without disruption", "To save money by extending the old feed supply", "To prevent the horse from refusing the new feed", "To allow the stomach to expand to the new feed volume"],a:"To allow the hindgut microbiome to adjust without disruption",ok:"Correct. The hindgut microbiome is sensitive to change. Sudden switches cause microbial imbalance, gas, and colic risk.",no:"Feed changes must be gradual because the hindgut microbiome adapts slowly \u2014 sudden changes disrupt fermentation and increase colic risk."},
+];
+function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let qs=[],cur=0,sc=0,ans=false;
+function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
+  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
+function show(){const q=qs[cur];
+  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
+  document.getElementById('quiz-score').textContent='Score: '+sc;
+  document.getElementById('quiz-question').textContent=q.q;
+  document.getElementById('quiz-feedback').textContent='';
+  document.getElementById('quiz-next').disabled=true;ans=false;
+  const opts=sh([...q.opts]);
+  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
+  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
+    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
+    if(ok)sc++;
+    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
+      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
+      else if(x===this&&!ok)x.classList.add('incorrect');
+    });
+    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
+    document.getElementById('quiz-next').disabled=false;
+  }));}
+document.getElementById('quiz-next').addEventListener('click',function(){cur++;
+  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
+    document.getElementById('score-panel').style.display='';
+    document.getElementById('score-display').textContent=sc+'/'+QC;
+    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
+  }else show();});
+document.getElementById('btn-retake').addEventListener('click',init);init();
+})();
+</script>
+<script src="course-config.js"></script>
+<script>window.CURRENT_MODULE=8;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};</script>
+<script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+</body></html>

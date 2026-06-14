@@ -1,6 +1,7 @@
 /* =============================================================================
    Equine Edu — layout.js
-   Injects shared nav + footer into every page. Also runs the motion observer.
+   Injects shared nav + footer into every page. Also runs the motion observer
+   and sets the room accent (data-room) for the barn areas.
    Load this at the bottom of every page's <body>.
 
    Each page must have these placeholder elements in its HTML:
@@ -27,27 +28,51 @@
   function depthPrefix() {
     // Count how many folders deep we are from the root
     const parts = window.location.pathname.replace(/\/[^/]*$/, '').split('/').filter(Boolean);
-    // On GitHub Pages the first segment is the repo name — skip it if present
     // We just want enough "../" to reach root
     return parts.map(() => '../').join('') || './';
   }
 
   const root   = depthPrefix();
   const cfg    = window.LAYOUT || {};
+
+  /* ---------- ROOM DETECTION ----------
+     The rooms of the barn share one design system; each gets an accent tint.
+     Setting data-room on <body> activates the room's --room-accent/--room-wash
+     tokens (see core.css §2). Derived from the URL — no per-page setup. */
+  const ROOMS = {
+    'round-pen':      'The Round Pen',
+    'schooling-ring': 'The Schooling Ring',
+    'quiz-corral':    'The Quiz Corral',
+    'lesson-board':   'The Lesson Board'
+  };
+  let roomName = '';
+  (function detectRoom() {
+    const path = window.location.pathname;
+    for (const slug in ROOMS) {
+      if (path.indexOf('/' + slug + '/') !== -1) {
+        document.body.setAttribute('data-room', slug);
+        roomName = ROOMS[slug];
+        return;
+      }
+    }
+  })();
+
   const homeUrl    = cfg.homeUrl    || root + 'index.html';
   const coursesUrl = cfg.coursesUrl || root + 'courses/index.html';
-  const navCta     = cfg.navCta     || null;
   const navExtras  = cfg.navExtras  || [];
 
-  /* ---------- NAV ---------- */
+  /* ---------- NAV ----------
+     Note: the large "Back to Course" / "Back to All Courses" CTA buttons
+     (window.LAYOUT.navCta) are not rendered in the header — that navigation
+     lives in the per-page sidebar (see course-nav.js / .sidebar-module-nav).
+     navCta is still read by course-nav.js for the sidebar's "Back to
+     Training Barn" button on game/activity pages, so leave it set there.
+     navExtras text links are rendered here — space for future
+     top-level nav links. */
   function buildNav() {
     const extraLinks = navExtras.map(e =>
       `<li><a href="${e.url}">${e.label}</a></li>`
     ).join('');
-
-    const ctaLink = navCta
-      ? `<li><a href="${navCta.url}" class="nav-cta">${navCta.label}</a></li>`
-      : '';
 
     // Pricing link
     const pricingLink = `<li><a href="${root}pricing.html">Pricing</a></li>`;
@@ -60,19 +85,19 @@
       `<li><a href="${e.url}">${e.label}</a></li>`
     ).join('');
 
-    const drawerCta = navCta
-      ? `<li><a href="${navCta.url}" class="nav-drawer-cta">${navCta.label}</a></li>`
-      : '';
-
     const drawerAuth = `<li><a href="${root}auth/login.html" id="nav-drawer-auth-btn">Log In</a></li>`;
+
+    const roomLabel = roomName ? `<span class="nav-room">${roomName}</span>` : '';
 
     return `
 <nav>
-  <a href="${homeUrl}" class="nav-logo">Equine <span>Edu</span></a>
+  <span style="display:flex;align-items:center;min-width:0;">
+    <a href="${homeUrl}" class="nav-logo">Equine <span>Edu</span></a>
+    ${roomLabel}
+  </span>
   <ul class="nav-links">
     ${extraLinks}
     ${pricingLink}
-    ${ctaLink}
     ${authLink}
   </ul>
   <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
@@ -84,7 +109,6 @@
       <li><a href="${coursesUrl}">All Courses</a></li>
       <li><a href="${root}pricing.html">Pricing</a></li>
       ${drawerExtras}
-      ${drawerCta}
       ${drawerAuth}
     </ul>
   </div>
@@ -146,7 +170,9 @@
     });
   }
 
-  /* ---------- MOTION OBSERVER ---------- */
+  /* ---------- MOTION OBSERVER ----------
+     The single site-wide reveal system (.motion-reveal). Pages should not
+     define their own observers or fade systems — add selectors here. */
   function setupMotion() {
     const prefersReduced = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -159,7 +185,11 @@
       '.module-item', '.outcomes-grid', '.track-visual', '.cta-inner',
       '.note-card', '.lesson-card', '.quiz-panel', '.game-panel',
       '.practice-card', '.flip-card', '.study-card', '.resource-card',
-      '.fade-in'
+      '.fade-in',
+      /* homepage editorial blocks */
+      '.cover-text', '.cover-art', '.hallmark', '.library-content',
+      '.library-art', '.step', '.beyond-card', '.beyond-art',
+      '.about-text', '.about-visual', '.faq-item'
     ];
 
     const items = Array.from(
@@ -188,18 +218,93 @@
     items.forEach(el => obs.observe(el));
   }
 
-  /* ---------- ALSO handle old fade-in observer (index pages) ---------- */
-  function setupFadeIn() {
-    const fadeItems = document.querySelectorAll('.fade-in');
-    if (!fadeItems.length) return;
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        }
+  /* ---------- LESSON TABS ----------
+     Global handlers for the canonical .tab-system pattern (see components.css
+     §11b). Top tab bars switch panels; bottom ".tab-bar--jump" bars switch
+     panels AND scroll back to the top of the tab system at a medium speed.
+     Pages only provide markup — no per-page tab JS. */
+  function systemOf(id) {
+    const panel = document.getElementById(id);
+    if (!panel) return null;
+    return panel.closest('.tab-system') || document.body;
+  }
+
+  /* Animated scroll used by jump bars — medium speed, eased. Exposed so
+     pages with custom tab logic can reuse the same feel. */
+  window.eeScrollTo = function (target) {
+    if (!target) return;
+    const navOffset = 84;
+    const destY = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, destY);
+      return;
+    }
+    const startY = window.pageYOffset;
+    const dist = destY - startY;
+    const duration = 650;
+    const t0 = performance.now();
+    function easeInOut(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+    (function step(now) {
+      const p = Math.min((now - t0) / duration, 1);
+      window.scrollTo(0, startY + dist * easeInOut(p));
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  };
+
+  if (!window.switchTab) window.switchTab = function (id) {
+    const system = systemOf(id);
+    if (!system) return;
+    document.querySelectorAll('.tab-panel').forEach(function (p) {
+      if ((p.closest('.tab-system') || document.body) === system) {
+        p.classList.toggle('active', p.id === id);
+      }
+    });
+    document.querySelectorAll('.tab-btn[aria-controls]').forEach(function (b) {
+      if (systemOf(b.getAttribute('aria-controls')) === system) {
+        const on = b.getAttribute('aria-controls') === id;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      }
+    });
+    document.querySelectorAll('.tab-btn[data-jump-target]').forEach(function (b) {
+      if (systemOf(b.dataset.jumpTarget) === system) {
+        b.classList.toggle('active', b.dataset.jumpTarget === id);
+      }
+    });
+  };
+
+  if (!window.jumpToTab) window.jumpToTab = function (id) {
+    window.switchTab(id);
+    const panel = document.getElementById(id);
+    const target = panel ? (panel.closest('.tab-system') || panel) : null;
+    window.eeScrollTo(target);
+  };
+
+  function setupTabs() {
+    /* Buttons with their own onclick keep their page-defined behavior. */
+    document.querySelectorAll('.tab-btn[aria-controls]').forEach(function (b) {
+      if (b.dataset.tabWired || b.hasAttribute('onclick')) return;
+      b.dataset.tabWired = '1';
+      b.addEventListener('click', function () {
+        window.switchTab(b.getAttribute('aria-controls'));
       });
-    }, { threshold: 0.1 });
-    fadeItems.forEach(el => obs.observe(el));
+    });
+    document.querySelectorAll('.tab-btn[data-jump-target]').forEach(function (b) {
+      if (b.dataset.tabWired || b.hasAttribute('onclick')) return;
+      b.dataset.tabWired = '1';
+      b.addEventListener('click', function () {
+        window.jumpToTab(b.dataset.jumpTarget);
+      });
+    });
+    /* Bottom bars whose buttons are wired by page JS (e.g. .part-tab) still
+       get the scroll-back-to-top-bar behavior. */
+    document.querySelectorAll('.tab-bar--jump button:not([data-jump-target]):not([onclick])').forEach(function (b) {
+      if (b.dataset.jumpWired) return;
+      b.dataset.jumpWired = '1';
+      b.addEventListener('click', function () {
+        window.eeScrollTo(document.querySelector('.tab-bar:not(.tab-bar--jump)'));
+      });
+    });
   }
 
   /* ---------- AUTH NAV UPDATE ---------- */
@@ -207,7 +312,7 @@
   function updateAuthNav() {
     if (!window.EEAuth) return;
     EEAuth.getSession().then(function (session) {
-      var btn   = document.getElementById('nav-auth-btn');
+      var btn    = document.getElementById('nav-auth-btn');
       var drawer = document.getElementById('nav-drawer-auth-btn');
       if (!session) return; // not logged in — keep "Log In"
       var accountUrl = root + 'account/index.html';
@@ -225,11 +330,11 @@
   /* ---------- INIT ---------- */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      inject(); setupMobileNav(); setupMotion(); setupFadeIn();
+      inject(); setupMobileNav(); setupMotion(); setupTabs();
       updateAuthNav();
     });
   } else {
-    inject(); setupMobileNav(); setupMotion(); setupFadeIn();
+    inject(); setupMobileNav(); setupMotion(); setupTabs();
     updateAuthNav();
   }
 

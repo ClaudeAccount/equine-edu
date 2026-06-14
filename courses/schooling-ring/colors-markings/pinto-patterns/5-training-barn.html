@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Training Barn &mdash; Pinto Patterns &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.practice-stack{display:grid;gap:1rem}.practice-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.35rem;box-shadow:0 4px 16px rgba(36, 54, 74,.07)}.practice-card h2{font-family:var(--font-display);color:var(--heading);font-size:1.35rem;margin-bottom:.45rem}.practice-card p{color:var(--body-text);line-height:1.65;margin:0 0 1rem}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}.choice-btn{border:1px solid var(--border);border-radius:var(--radius);background:var(--soft-white);color:var(--heading);font-weight:800;padding:.85rem 1rem;text-align:left;cursor:pointer}.choice-btn:hover,.choice-btn.selected{border-color:var(--tan);box-shadow:inset 0 0 0 1px var(--tan)}.term-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;align-items:center;padding:.65rem 0;border-top:1px solid var(--border)}select{width:100%;border:1px solid var(--border);border-radius:var(--radius);padding:.7rem;color:var(--heading);font-weight:700;background:var(--white)}.barn-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}.barn-btn{border:0;border-radius:var(--radius);background:var(--blue-primary);color:var(--white);font-weight:900;padding:.8rem 1rem;cursor:pointer}.barn-btn.secondary{background:var(--white);color:var(--heading);border:1px solid var(--border)}.feedback{font-weight:800;color:var(--heading);margin-top:.8rem;min-height:1.4rem}@media(max-width:760px){.choice-grid,.term-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-lesson" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Learning Lab</div>
+      <h1 class="lesson-hero-title">The Training <span>Barn</span></h1>
+      <p class="lesson-hero-desc">Practice pinto pattern vocabulary with rotating clues and quick term matching.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+  <div class="lesson-intro-card">
+    <h2>Practice Before the Quiz</h2>
+    <p>These activities provide practice comparing pattern families from their visual clues. Reset a round to rotate in a new mix.</p>
+  </div>
+  <div class="practice-stack">
+    <section class="practice-card">
+      <h2>Pattern Clue Sort</h2>
+      <p id="sort-prompt">Choose the best pattern family for the clue shown.</p>
+      <div class="choice-grid" id="sort-choices"></div>
+      <div class="barn-actions">
+        <button class="barn-btn" id="sort-next" type="button">Next Clue</button>
+        <button class="barn-btn secondary" id="sort-reset" type="button">New Round</button>
+      </div>
+      <div class="feedback" id="sort-feedback"></div>
+    </section>
+    <section class="practice-card">
+      <h2>Term Match</h2>
+      <p>Match each pinto term with the clue that best describes it.</p>
+      <div id="match-rows"></div>
+      <div class="barn-actions">
+        <button class="barn-btn" id="match-check" type="button">Check Answers</button>
+        <button class="barn-btn secondary" id="match-reset" type="button">Reset Matches</button>
+      </div>
+      <div class="feedback" id="match-feedback"></div>
+    </section>
+  </div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE=4;
+window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Pinto Patterns',url:'1-index.html'},navExtras:[{label:'Take the Quiz',url:'6-test-your-knowledge.html'}]};
+const sortTerms=[
+  {term:'White crosses the topline in rounded patches.',group:'Tobiano'},
+  {term:'Dark and white areas may look irregular or framed.',group:'Overo'},
+  {term:'Broad face white, high leg white, belly white, and possible blue eyes.',group:'Splash White'},
+  {term:'Leg white, face white, roaning or lace-like edges.',group:'Sabino'},
+  {term:'Tobiano plus one or more overo-type clues.',group:'Tovero'},
+  {term:'White may be framed by darker body color and has important breeding implications.',group:'Frame Overo'},
+  {term:'Small dark spots inside white patches.',group:'Tobiano'},
+  {term:'Mostly white horse with dark color mainly over the ears and poll.',group:'Named Looks'}
+];
+const groups=['Tobiano','Overo','Tovero','Splash White','Sabino','Frame Overo','Named Looks'];
+let sortDeck=[],sortCurrent=null;
+function shuffle(items){return [...items].sort(()=>Math.random()-.5)}
+function nextSort(){if(!sortDeck.length)sortDeck=shuffle(sortTerms);sortCurrent=sortDeck.pop();document.getElementById('sort-prompt').textContent='Choose the best pattern family for: '+sortCurrent.term;document.getElementById('sort-feedback').textContent='';const wrap=document.getElementById('sort-choices');wrap.innerHTML='';const choices=shuffle([sortCurrent.group,...groups.filter(g=>g!==sortCurrent.group)]).slice(0,4);if(!choices.includes(sortCurrent.group))choices[0]=sortCurrent.group;shuffle(choices).forEach(group=>{const btn=document.createElement('button');btn.className='choice-btn';btn.type='button';btn.textContent=group;btn.addEventListener('click',()=>{document.querySelectorAll('#sort-choices .choice-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');document.getElementById('sort-feedback').textContent=group===sortCurrent.group?'Correct. That clue fits '+group+'.':'Not quite. Compare where the white appears and try the next clue.'});wrap.appendChild(btn);});}
+document.getElementById('sort-next').addEventListener('click',nextSort);document.getElementById('sort-reset').addEventListener('click',()=>{sortDeck=[];nextSort();});
+const matchItems=[
+  ['Tobiano','White often crosses the topline with rounded, distinct patches.'],
+  ['Overo','A broad group where white may be irregular, splashy, or framed.'],
+  ['Tovero','A combination showing tobiano and overo-type traits.'],
+  ['Splash White','A dipped-in-white look, often with broad face white and blue eyes.']
+];
+function renderMatch(){const clues=shuffle(matchItems.map(i=>i[1]));const rows=document.getElementById('match-rows');rows.innerHTML='';matchItems.forEach(([term,answer])=>{const row=document.createElement('div');row.className='term-row';row.innerHTML='<strong>'+term+'</strong><select data-answer="'+answer+'"><option value="">Choose a clue</option>'+clues.map(c=>'<option value="'+c+'">'+c+'</option>').join('')+'</select>';rows.appendChild(row);});document.getElementById('match-feedback').textContent='';}
+document.getElementById('match-check').addEventListener('click',()=>{let correct=0;document.querySelectorAll('#match-rows select').forEach(sel=>{if(sel.value===sel.dataset.answer)correct++;});document.getElementById('match-feedback').textContent=correct+' of '+matchItems.length+' correct.';});
+document.getElementById('match-reset').addEventListener('click',renderMatch);
+nextSort();renderMatch();
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.pintoPatterns.trainingBarn','true')}catch(e){}</script>
+</body>
+</html>

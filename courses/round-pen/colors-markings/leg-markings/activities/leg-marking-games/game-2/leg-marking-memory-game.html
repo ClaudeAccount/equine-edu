@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leg Marking Memory Game &mdash; Leg Markings &mdash; Equine Edu</title>
+<meta name="description" content="Flip pairs of cards and match each leg marking illustration to its marking name.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../../../../assets/css/game.css">
+<style>
+.memory-stats-bar{background:var(--heading);padding:.85rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.stat-chip{display:flex;flex-direction:column;align-items:center;gap:.1rem}.stat-chip .stat-val{font-family:var(--font-display);font-size:1.3rem;color:var(--tan);line-height:1}.stat-chip .stat-lbl{font-size:.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45)}.stat-divider{width:1px;height:32px;background:rgba(255,255,255,.15)}.memory-grid-wrap{padding:1.75rem 2rem 2rem}.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.95rem;max-width:920px;margin:0 auto}.mem-card{perspective:800px;cursor:pointer;aspect-ratio:1/1;border:0;background:transparent;padding:0}.mem-card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .4s cubic-bezier(.4,0,.2,1);border-radius:var(--radius)}.mem-card.flipped .mem-card-inner,.mem-card.matched .mem-card-inner{transform:rotateY(180deg)}.mem-card-back,.mem-card-front{position:absolute;inset:0;border-radius:var(--radius);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}.mem-card-back{background:var(--heading);border:2px solid rgba(200,162,122,.35);display:flex;align-items:center;justify-content:center}.mem-card-back img{width:100%;height:100%;object-fit:cover;display:block}.mem-card-front{transform:rotateY(180deg);background:var(--cream-bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;padding:.3rem}.mem-card.matched .mem-card-front{border-color:rgba(46,125,50,.7);background:var(--success-bg)}.mem-card-front.img-card img{width:100%;height:100%;object-fit:contain;display:block}.mem-card-front.name-card{flex-direction:column;gap:.25rem;background:var(--white);text-align:center;padding:.55rem}.name-card-label{font-family:var(--font-display);font-size:clamp(.92rem,1.6vw,1.2rem);font-weight:900;color:var(--heading);line-height:1.15}.mem-card.matched .mem-card-front.name-card{background:var(--success-bg)}.mem-card.wrong-flash .mem-card-front{border-color:rgba(198,40,40,.6);background:var(--error-bg);animation:wrong-flash .35s ease}@keyframes wrong-flash{0%,100%{transform:rotateY(180deg)}25%{transform:rotateY(180deg) scale(.97)}@keyframes match-pulse{0%{box-shadow:0 0 0 0 rgba(46,125,50,.4)}70%{box-shadow:0 0 0 8px rgba(46,125,50,0)}.mem-card.matched .mem-card-inner{animation:match-pulse .5s ease forwards}.win-screen{display:none;flex-direction:column;align-items:center;text-align:center;padding:2.5rem 2rem 2rem;gap:1rem}.win-screen.show{display:flex}.win-trophy{font-size:3rem;line-height:1}.win-title{font-family:var(--font-display);font-size:1.5rem;color:var(--heading)}.win-stats{display:flex;gap:2rem;align-items:center;background:var(--cream-bg);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.5rem}.win-stat{text-align:center}.win-stat .win-val{font-family:var(--font-display);font-size:1.6rem;color:var(--heading);line-height:1}.win-stat .win-lbl{font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted-text)}.win-msg{font-size:.9rem;color:var(--body-text);line-height:1.65;max-width:320px}@media(max-width:480px){.memory-grid{grid-template-columns:repeat(3,1fr);gap:.5rem}.name-card-label{font-size:.78rem}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Leg Markings</div>
+      <h1 class="lesson-hero-title">Leg Marking <span>Memory Game</span></h1>
+      <p class="lesson-hero-desc">Flip pairs of cards to match each leg marking illustration to its marking name. Find all six pairs to finish.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="game-intro-card">
+      <h2>How to Play</h2>
+      <p>The grid has 12 face-down cards: six leg marking illustrations and their six matching name cards. Flip two at a time. If they match, they stay revealed. If not, they flip back. Complete all six pairs with the fewest moves.</p>
+    </div>
+
+    <div class="game-shell">
+      <div class="game-play-area" id="game-play">
+        <div class="memory-stats-bar">
+          <div class="stat-chip"><div class="stat-val" id="stat-pairs">0 / 6</div><div class="stat-lbl">Pairs Found</div></div>
+          <div class="stat-divider"></div>
+          <div class="stat-chip"><div class="stat-val" id="stat-moves">0</div><div class="stat-lbl">Moves</div></div>
+          <div class="stat-divider"></div>
+          <div class="stat-chip"><div class="stat-val" id="stat-time">0:00</div><div class="stat-lbl">Time</div></div>
+        </div>
+        <div class="memory-grid-wrap"><div class="memory-grid" id="memory-grid"></div></div>
+      </div>
+
+      <div class="win-screen" id="win-screen">
+        <div class="win-trophy">&#127942;</div>
+        <div class="win-title" id="win-title">All pairs matched!</div>
+        <div class="win-stats">
+          <div class="win-stat"><div class="win-val" id="win-moves">&mdash;</div><div class="win-lbl">Moves</div></div>
+          <div class="win-stat"><div class="win-val" id="win-time">&mdash;</div><div class="win-lbl">Time</div></div>
+        </div>
+        <p class="win-msg" id="win-msg"></p>
+        <div class="score-actions">
+          <button class="score-btn primary" onclick="initGame()">Play Again</button>
+          <a class="score-btn secondary" href="../../../6-training-barn.html">Back to Training Barn</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+const PAIRS = [
+  { id: 'coronet',      name: 'Coronet',      img: '../../../images/leg-marking-images/coronet.png' },
+  { id: 'pastern',      name: 'Pastern',      img: '../../../images/leg-marking-images/pastern.png' },
+  { id: 'fetlock',      name: 'Fetlock',      img: '../../../images/leg-marking-images/fetluck.png' },
+  { id: 'sock',         name: 'Sock',         img: '../../../images/leg-marking-images/sock.png' },
+  { id: 'stocking',     name: 'Stocking',     img: '../../../images/leg-marking-images/stocking.png' },
+  { id: 'ermine-marks', name: 'Ermine Marks', img: '../../../images/leg-marking-images/ermine marks.png' }
+];
+
+let flipped = [];
+let matched = 0;
+let moves = 0;
+let locked = false;
+let timerInt = null;
+let elapsed = 0;
+let started = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function fmtTime(s) {
+  return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+}
+
+function initGame() {
+  clearInterval(timerInt);
+  flipped = [];
+  matched = 0;
+  moves = 0;
+  elapsed = 0;
+  locked = false;
+  started = false;
+
+  document.getElementById('win-screen').classList.remove('show');
+  document.getElementById('game-play').classList.remove('hidden');
+  document.getElementById('stat-pairs').textContent = '0 / 6';
+  document.getElementById('stat-moves').textContent = '0';
+  document.getElementById('stat-time').textContent = '0:00';
+
+  const activePairs = shuffle([...PAIRS]).slice(0, 6);
+  const imgCards = activePairs.map(p => ({ pairId: p.id, type: 'img', img: p.img, name: p.name }));
+  const nameCards = activePairs.map(p => ({ pairId: p.id, type: 'name', img: p.img, name: p.name }));
+  const deck = shuffle([...imgCards, ...nameCards]);
+
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML = '';
+  deck.forEach(function(card, idx) {
+    var el = document.createElement('button');
+    el.className = 'mem-card';
+    el.type = 'button';
+    el.dataset.pairId = card.pairId;
+    el.dataset.type = card.type;
+    el.dataset.idx = idx;
+
+    var inner = document.createElement('div');
+    inner.className = 'mem-card-inner';
+
+    var back = document.createElement('div');
+    back.className = 'mem-card-back';
+    var backImg = document.createElement('img');
+    backImg.src = 'match-game-card-backs.png';
+    backImg.alt = 'Card back';
+    back.appendChild(backImg);
+
+    var front = document.createElement('div');
+    if (card.type === 'img') {
+      front.className = 'mem-card-front img-card';
+      var img = document.createElement('img');
+      img.src = card.img;
+      img.alt = card.name;
+      front.appendChild(img);
+    } else {
+      front.className = 'mem-card-front name-card';
+      var lbl = document.createElement('div');
+      lbl.className = 'name-card-label';
+      lbl.textContent = card.name;
+      front.appendChild(lbl);
+    }
+
+    inner.appendChild(back);
+    inner.appendChild(front);
+    el.appendChild(inner);
+    el.addEventListener('click', function() { handleCardClick(el); });
+    grid.appendChild(el);
+  });
+}
+
+function handleCardClick(el) {
+  if (locked || el.classList.contains('flipped') || el.classList.contains('matched')) return;
+  if (!started) {
+    started = true;
+    timerInt = setInterval(function() {
+      elapsed++;
+      document.getElementById('stat-time').textContent = fmtTime(elapsed);
+    }, 1000);
+  }
+  el.classList.add('flipped');
+  flipped.push(el);
+  if (flipped.length === 2) {
+    moves++;
+    document.getElementById('stat-moves').textContent = moves;
+    locked = true;
+    checkMatch();
+  }
+}
+
+function checkMatch() {
+  var a = flipped[0];
+  var b = flipped[1];
+  var isMatch = a.dataset.pairId === b.dataset.pairId && a.dataset.type !== b.dataset.type;
+  if (isMatch) {
+    matched++;
+    document.getElementById('stat-pairs').textContent = matched + ' / 6';
+    setTimeout(function() {
+      a.classList.add('matched');
+      b.classList.add('matched');
+      a.classList.remove('flipped');
+      b.classList.remove('flipped');
+      flipped = [];
+      locked = false;
+      if (matched === 6) setTimeout(showWin, 400);
+    }, 400);
+  } else {
+    a.classList.add('wrong-flash');
+    b.classList.add('wrong-flash');
+    setTimeout(function() {
+      a.classList.remove('flipped', 'wrong-flash');
+      b.classList.remove('flipped', 'wrong-flash');
+      flipped = [];
+      locked = false;
+    }, 900);
+  }
+}
+
+function showWin() {
+  clearInterval(timerInt);
+  document.getElementById('game-play').classList.add('hidden');
+  var ws = document.getElementById('win-screen');
+  ws.classList.add('show');
+  document.getElementById('win-moves').textContent = moves;
+  document.getElementById('win-time').textContent = fmtTime(elapsed);
+
+  var title, msg;
+  if (moves <= 8) {
+    title = 'Incredible Memory!';
+    msg = moves + ' moves to find all six pairs. That is exceptional. You clearly know these markings well.';
+  } else if (moves <= 11) {
+    title = 'Well Played!';
+    msg = moves + ' moves to find all six pairs. Sharp focus and strong recognition.';
+  } else if (moves <= 16) {
+    title = 'Well Done!';
+    msg = 'All six pairs found in ' + moves + ' moves. Play again to improve your score.';
+  } else {
+    title = 'All Pairs Found!';
+    msg = 'You did it in ' + moves + ' moves. Practice a few more rounds to build faster recognition.';
+  }
+
+  document.getElementById('win-title').textContent = title;
+  document.getElementById('win-msg').textContent = msg;
+}
+
+initGame();
+</script>
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl: '../../../../../../../index.html',
+    coursesUrl: '../../../../../../index.html',
+    navCta: { label: 'Back to Training Barn', url: '../../../6-training-barn.html' }
+  };
+</script>
+<script src="../../../course-config.js"></script>
+<script>
+  (function() {
+    var cfg = window.COURSE_CONFIG;
+    if (!cfg) return;
+    cfg.homeUrl = '../../../' + cfg.homeUrl;
+    cfg.allCoursesUrl = '../../../' + cfg.allCoursesUrl;
+  })();
+</script>
+<script src="../../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../../../assets/js/paywall.js"></script>
+<script src="../../../../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.legMarkings.memoryGame','true')}catch(e){}</script>
+</body>
+</html>

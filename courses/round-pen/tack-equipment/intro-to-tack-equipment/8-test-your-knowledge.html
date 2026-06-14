@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge — Introduction to Tack & Equipment — Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css"><link rel="stylesheet" href="../../../../assets/css/game.css">
+</head><body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Tack &amp; Equipment</div>
+    <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    <p class="lesson-hero-desc">Each attempt draws 12 questions from a larger bank — answers rotate so repeated attempts are never the same quiz.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 12</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/12</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QC=12;
+const bank=[
+{q:"What is tack?",opts:["Any equipment placed on a horse to enable riding, driving, or handling", "The brushes and grooming tools used on a horse", "The bucket and feed containers stored in the barn", "Any fencing used in an equine facility"],a:"Any equipment placed on a horse to enable riding, driving, or handling",ok:"Correct. Tack includes any equipment placed on the horse \u2014 saddle, bridle, halter, and related accessories.",no:"Tack is any equipment placed on a horse to make riding, driving, or safe handling possible."},
+{q:"Which part gives the saddle its shape?",opts:["The tree", "The skirt", "The cantle", "The pommel"],a:"The tree",ok:"Correct. The tree is the internal framework of the saddle \u2014 every other part attaches to it.",no:"The tree is the internal frame of the saddle."},
+{q:"What is the pommel of a saddle?",opts:["The front raised arch of the saddle", "The rear raised arch", "The flat seat area", "The leather flap over the stirrup"],a:"The front raised arch of the saddle",ok:"Correct. The pommel is the front raised arch \u2014 Western pommels have a horn.",no:"The pommel is the front raised arch. The cantle is the rear raised arch."},
+{q:"What part of the bridle rests inside the horse's mouth?",opts:["The bit", "The noseband", "The browband", "The throatlatch"],a:"The bit",ok:"Correct. The bit is placed in the horse's mouth and connects to the reins.",no:"The bit rests on the bars of the horse's mouth and connects to the reins."},
+{q:"What is the crown piece of a bridle?",opts:["The main strap that runs over the horse's poll", "The strap that crosses the forehead", "The strap under the jaw", "The ring where the reins attach"],a:"The main strap that runs over the horse's poll",ok:"Correct. The crown piece runs over the poll and supports the rest of the bridle.",no:"The crown piece runs over the poll. The browband crosses the forehead."},
+{q:"What is the function of a cinch?",opts:["To hold the Western saddle in place around the barrel", "To attach an English saddle to a pad", "To connect the bridle to the headstall", "To adjust stirrup length"],a:"To hold the Western saddle in place around the barrel",ok:"Correct. The cinch encircles the barrel behind the elbow to keep the Western saddle from sliding.",no:"A cinch holds the Western saddle. The English equivalent is called a girth."},
+{q:"Which saddle type has a horn?",opts:["Western saddle", "English saddle", "Endurance saddle", "McClellan saddle"],a:"Western saddle",ok:"Correct. The horn is a defining feature of the Western saddle.",no:"Western saddles have a horn. English-style saddles do not."},
+{q:"Why does saddle fit matter?",opts:["Poorly fitting saddles cause pain, resistance, and injury", "Saddle fit affects only rider comfort", "Saddle fit matters only for show horses", "Poorly fitting saddles only affect appearance"],a:"Poorly fitting saddles cause pain, resistance, and injury",ok:"Correct. Pressure from a poorly fitted saddle damages muscle and creates behavioral resistance.",no:"A poorly fitted saddle creates pressure points that cause pain and resistance."},
+{q:"What is a girth?",opts:["The strap that holds an English saddle on the horse", "The strap that holds a Western saddle on", "The rein attachment on a Western bridle", "The front arch of the saddle"],a:"The strap that holds an English saddle on the horse",ok:"Correct. A girth holds the English saddle. The Western equivalent is a cinch.",no:"A girth is the English equivalent of a cinch."},
+{q:"Which part of the bridle prevents the headstall from sliding back?",opts:["The browband", "The noseband", "The throatlatch", "The cheek pieces"],a:"The browband",ok:"Correct. The browband crosses the forehead and keeps the crown piece from slipping backward.",no:"The browband prevents the crown piece from sliding back off the poll."},
+{q:"What is the purpose of a noseband?",opts:["To keep the mouth closed and support the bridle", "To control head position", "To attach the reins", "To protect the nose from flies"],a:"To keep the mouth closed and support the bridle",ok:"Correct. The noseband stabilizes the bridle and limits excessive mouth opening.",no:"The noseband stabilizes the bridle and prevents excessive mouth opening."},
+{q:"Cracked leather on tack is a safety concern because:",opts:["It can break under load, causing a fall", "It makes equipment look old", "It changes how the bit sits", "It stains the horse's coat"],a:"It can break under load, causing a fall",ok:"Correct. Cracked, dry leather loses structural strength and can snap under load.",no:"Cracked leather is structurally weakened and can break suddenly."},
+{q:"What is the cantle?",opts:["The raised rear portion of the saddle seat", "The front knob on a Western saddle", "The leather piece for the stirrup", "The strap connecting saddle to horse"],a:"The raised rear portion of the saddle seat",ok:"Correct. The cantle is the raised rear arch of the saddle seat.",no:"The cantle is the raised back of the saddle seat."},
+{q:"Stirrup leathers attach to the saddle at the:",opts:["Stirrup bar, under the skirt", "Pommel, at the front", "Cinch ring, at the bottom", "Cantle, at the rear"],a:"Stirrup bar, under the skirt",ok:"Correct. Stirrup leathers run through the stirrup bar built into the tree under the skirt.",no:"Stirrup leathers attach to the stirrup bar under the saddle skirt."},
+{q:"The throatlatch prevents:",opts:["The headstall from being pulled over the ears", "The bit from sliding out of the mouth", "The saddle from sliding back", "The reins from tangling"],a:"The headstall from being pulled over the ears",ok:"Correct. The throatlatch buckles under the jaw to keep the headstall in place.",no:"The throatlatch keeps the headstall from coming off over the horse's ears."},
+];
+function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let qs=[],cur=0,sc=0,ans=false;
+function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
+  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
+function show(){const q=qs[cur];
+  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
+  document.getElementById('quiz-score').textContent='Score: '+sc;
+  document.getElementById('quiz-question').textContent=q.q;
+  document.getElementById('quiz-feedback').textContent='';
+  document.getElementById('quiz-next').disabled=true;ans=false;
+  const opts=sh([...q.opts]);
+  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
+  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
+    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
+    if(ok)sc++;
+    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
+      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
+      else if(x===this&&!ok)x.classList.add('incorrect');
+    });
+    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
+    document.getElementById('quiz-next').disabled=false;
+  }));}
+document.getElementById('quiz-next').addEventListener('click',function(){cur++;
+  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
+    document.getElementById('score-panel').style.display='';
+    document.getElementById('score-display').textContent=sc+'/'+QC;
+    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
+  }else show();});
+document.getElementById('btn-retake').addEventListener('click',init);init();
+})();
+</script>
+<script src="course-config.js"></script>
+<script>window.CURRENT_MODULE=7;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};</script>
+<script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+</body></html>

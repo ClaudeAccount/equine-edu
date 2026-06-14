@@ -1,0 +1,608 @@
+/* =============================================================================
+   Equine Edu — game.css
+   Shared normalizations for all course game pages (Training Barn activities).
+   Load after core.css, components.css, and course.css.
+
+   Goal: every course game page should feel like it belongs to the same system —
+   same hero treatment, same card framing, same progress bar chrome — regardless
+   of which game mechanic is inside.
+   ============================================================================= */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   1. GAME CONTAINER PANELS
+   Normalize .game-shell and .game-card to match the .visual-card treatment
+   already defined in components.css. Each mechanic uses a different wrapper
+   class, but they should all look identical from the outside.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* .game-shell (face markings, leg markings, anatomy match games)
+   White card on cream page — border and shadow lift it clearly off the bg.
+   Note: label/pin games that need overflow:visible or dark backgrounds keep
+   a small override inline. */
+.game-shell {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-rest);
+}
+
+/* .game-card (riding style games, label games — sits inside .game-wrap)
+   Bring in line with .visual-card */
+.game-card {
+  background: var(--soft-white);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-rest);
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+/* Remove the extra outer padding .game-wrap adds — .game-card handles it */
+.lesson-left .game-wrap {
+  padding: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   2. GAME INTRO CARD
+   The brief description card that appears above .game-shell on match/pin games.
+   (Its rest shadow is applied in components.css alongside .barn-intro so the
+   treatment is identical platform-wide.)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.game-intro-card {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--room-accent);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.1rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.game-intro-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--heading);
+  margin-bottom: 0.35rem;
+}
+
+.game-intro-card p {
+  font-size: 0.87rem;
+  color: var(--body-text);
+  line-height: 1.65;
+  margin: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   3. PROGRESS BAR CHROME
+   Used across challenge, match, and pin games. The header row shows round
+   count (left), a fill bar (center), and score (right).
+   Note: label/pin games that need a dark header keep an override inline.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.game-progress-bar-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--cream-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 1.4rem;
+}
+
+.game-progress-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--body-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.game-score-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--leather);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.game-progress-track {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.game-progress-fill {
+  height: 100%;
+  background: var(--blue-primary);
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   4. GAME PLAY AREA
+   Inner content region inside .game-shell. Consistent padding so game content
+   doesn't hug the card edges.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.game-play-area {
+  display: block;
+}
+
+.game-play-area.hidden {
+  display: none;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   5. QUESTION AREA & IMAGE FRAME
+   The padded question region, the uppercase prompt label, and the framed image
+   used on match/challenge games.
+   Note: face-marking games use a dark image frame (heading bg) — they keep
+   an inline override for the background/border only.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.game-question-area {
+  padding: 1.5rem 1.4rem 1rem;
+}
+
+.game-prompt {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted-text);
+  margin-bottom: 1rem;
+}
+
+.game-image-frame {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 1.25rem;
+  aspect-ratio: 1 / 1.05;
+  background: var(--cream-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 0.5rem;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   6. ANSWER GRID & ANSWER BUTTONS
+   2-column grid of answer choices. Buttons are white on cream — the border and
+   shadow are essential to keep them visible. Correct/wrong/reveal states use
+   semantic colour tokens so they stay in sync with the platform palette.
+   (The nested halo shadow on .answer-btn comes from components.css.)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.answer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  padding: 0 1.4rem 1.5rem;
+}
+
+.answer-btn {
+  padding: 0.85rem 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--heading);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.35;
+  transition: border-color 0.15s ease, background 0.15s ease,
+              color 0.15s ease, transform 0.1s ease;
+}
+
+.answer-btn:hover:not(:disabled) {
+  border-color: var(--blue-primary);
+  background: rgba(36, 54, 74, 0.05);
+  transform: translateY(-1px);
+}
+
+.answer-btn:disabled {
+  cursor: default;
+}
+
+.answer-btn.correct,
+.answer-btn.reveal {
+  background: var(--success-bg);
+  border-color: var(--success-bd);
+  color: var(--success);
+}
+
+.answer-btn.wrong {
+  background: var(--error-bg);
+  border-color: var(--error-bd);
+  color: var(--error);
+}
+
+.answer-btn.reveal {
+  animation: pulse-correct 0.4s ease;
+}
+
+@keyframes pulse-correct {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.03); }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   7. FEEDBACK BANNER
+   Inline banner that appears between the answer grid and the Next button.
+   Hidden by default; toggled by JS adding .show, .correct-fb, or .wrong-fb.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.feedback-banner {
+  margin: 0 1.4rem 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.87rem;
+  font-weight: 600;
+  line-height: 1.5;
+  display: none;
+}
+
+.feedback-banner.show {
+  display: block;
+}
+
+.feedback-banner.correct-fb {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid var(--success-bd);
+}
+
+.feedback-banner.wrong-fb {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid var(--error-bd);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   8. NEXT / SUBMIT BUTTON ROW
+   Hidden by default; shown when an answer is submitted. Full-width tan button
+   confirms the response and advances to the next round.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.game-next-wrap {
+  padding: 0 1.4rem 1.5rem;
+  display: none;
+}
+
+.game-next-wrap.show {
+  display: block;
+}
+
+.game-next-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--tan);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.game-next-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.game-next-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   9. SCORE / COMPLETION SCREEN
+   Full end-of-game panel that replaces the play area. Shows a circular score
+   ring, a title, a message, and two action buttons.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.score-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 2rem 2rem;
+  gap: 1rem;
+}
+
+.score-screen.show {
+  display: flex;
+}
+
+.score-ring {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--heading);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.score-ring .score-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--tan);
+  line-height: 1;
+}
+
+.score-ring .score-denom {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.5px;
+}
+
+.score-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--heading);
+}
+
+.score-msg {
+  font-size: 0.9rem;
+  color: var(--body-text);
+  line-height: 1.65;
+  max-width: 340px;
+}
+
+.score-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* Base score button (shared by both primary and secondary) */
+.score-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.score-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* Primary: tan fill — "Play Again" */
+.score-btn.primary {
+  background: var(--tan);
+  color: var(--white);
+  border: none;
+}
+
+/* Secondary: blue outline — "Back to Training Barn" */
+.score-btn.secondary {
+  background: transparent;
+  color: var(--blue-primary);
+  border: 2px solid var(--blue-primary);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   10. GAME ACTION BUTTONS (.actions)
+   Shared Next/Check + Reset/Play Again pair used on match, sort, and quiz
+   games. Stacked, long, and narrow, with the primary action emphasized.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 320px;
+  margin: 1.25rem auto 0;
+}
+
+.actions button {
+  width: 100%;
+  border: 1.5px solid var(--border-mid);
+  border-radius: 999px;
+  padding: 0.7rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--heading);
+  background: var(--cream-secondary);
+  box-shadow: 0 1px 4px rgba(94, 71, 52, 0.10);
+  cursor: pointer;
+  transition: background var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease),
+              transform var(--motion-quick) var(--ease);
+}
+
+.actions button:hover {
+  background: #d9cdb8;
+  border-color: var(--tan);
+  box-shadow: var(--shadow-rest);
+  transform: translateY(-1px);
+}
+
+.actions button:active {
+  transform: scale(0.98);
+}
+
+.actions button.primary {
+  border: none;
+  background: var(--blue-primary);
+  color: var(--white);
+  padding: 0.95rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+.actions button.primary:hover {
+  background: var(--leather);
+}
+
+.actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   11. HERO SECTION — GAME COMPACT VARIANT
+   All course game pages use .lesson-hero.hero-centered.hero-bg.
+   Keep the min-height consistent and ensure the description doesn't add
+   extra padding below it (already handled in components.css but reinforced).
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.lesson-hero.hero-centered.hero-bg {
+  min-height: 280px;
+}
+
+.lesson-hero.hero-centered .lesson-hero-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.lesson-hero.hero-centered .lesson-hero-desc {
+  font-size: 0.92rem;
+  max-width: 580px;
+  margin-bottom: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   12. DOWNLOAD / RESOURCE CARDS
+   Media cards used on downloads/worksheets pages. Each card has a preview
+   image area, badge, body text, and a footer action row.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--soft-white);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-rest);
+  transition: box-shadow var(--motion-quick) var(--ease),
+              transform var(--motion-quick) var(--ease);
+}
+
+.download-card:hover {
+  box-shadow: var(--shadow-raised);
+  transform: translateY(-3px);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   13. IMAGE ROWS IN GAME PANELS
+   Horse images, tack images, etc. rendered inside .row containers. A visible
+   border keeps the image from bleeding into the surrounding white card.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.row img {
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(94, 71, 52, 0.10);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   14. OPTION BUTTONS (answer choices in quiz-style games)
+   Used on job-match and similar games. White on white → needs visible surface.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.option {
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius);
+  background: var(--white);
+  padding: 0.85rem 1rem;
+  font-weight: 800;
+  color: var(--heading);
+  cursor: pointer;
+  box-shadow: var(--shadow-nested);
+  transition: border-color var(--motion-quick) var(--ease),
+              background var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease),
+              transform var(--motion-quick) var(--ease);
+}
+
+.option:hover {
+  border-color: var(--tan);
+  background: var(--cream-secondary);
+  box-shadow: var(--shadow-rest);
+  transform: translateY(-1px);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   15. NATIVE SELECT WITH CLASS "select"
+   Some game pages apply class="select" directly to a <select> element.
+   The global select baseline in core.css already provides the warm surface.
+   This rule only overrides width so the select fills its container.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+select.select {
+  width: 100%;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   16. RESPONSIVE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .game-progress-bar-wrap {
+    padding: 0.7rem 1.1rem;
+  }
+  .game-play-area {
+    padding: 1.1rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .game-progress-bar-wrap {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .game-progress-track {
+    width: 100%;
+  }
+  .answer-grid {
+    grid-template-columns: 1fr;
+  }
+}

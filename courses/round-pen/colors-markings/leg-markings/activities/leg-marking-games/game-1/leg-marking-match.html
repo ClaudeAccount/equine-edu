@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leg Marking Challenge &mdash; Leg Markings &mdash; Equine Edu</title>
+<meta name="description" content="Look at the leg illustration and identify the correct leg marking name in ten rounds.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../../../../assets/css/game.css">
+
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Leg Markings</div>
+      <h1 class="lesson-hero-title">Leg Marking <span>Challenge</span></h1>
+      <p class="lesson-hero-desc">Look at the illustration, then choose the correct leg marking name.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="game-intro-card">
+      <h2>How to Play</h2>
+      <p>Each round shows a leg marking illustration. Select the correct name from the four options. You will get instant feedback and a final score after ten rounds.</p>
+    </div>
+
+    <div class="game-shell">
+      <div class="game-play-area" id="game-play">
+        <div class="game-progress-bar-wrap">
+          <span class="game-progress-label" id="progress-label">Question 1 of 10</span>
+          <div class="game-progress-track"><div class="game-progress-fill" id="progress-fill" style="width:10%"></div></div>
+          <span class="game-score-label" id="score-label">0 / 0</span>
+        </div>
+
+        <div class="game-question-area">
+          <div class="game-prompt">What leg marking does this horse have?</div>
+          <div class="game-image-frame">
+            <img id="game-img" src="" alt="Horse leg marking illustration to identify">
+          </div>
+        </div>
+
+        <div class="answer-grid" id="answer-grid">
+          <button class="answer-btn" id="btn-0" type="button"></button>
+          <button class="answer-btn" id="btn-1" type="button"></button>
+          <button class="answer-btn" id="btn-2" type="button"></button>
+          <button class="answer-btn" id="btn-3" type="button"></button>
+        </div>
+
+        <div class="feedback-banner" id="feedback-banner"></div>
+
+        <div class="game-next-wrap" id="next-wrap">
+          <button class="game-next-btn" id="next-btn" type="button"></button>
+        </div>
+      </div>
+
+      <div class="score-screen" id="score-screen">
+        <div class="score-ring">
+          <div class="score-num" id="final-score">&mdash;</div>
+          <div class="score-denom">/ 10</div>
+        </div>
+        <div class="score-title" id="score-title">Well done!</div>
+        <p class="score-msg" id="score-msg"></p>
+        <div class="score-actions">
+          <button class="score-btn primary" type="button" onclick="initGame()">Play Again</button>
+          <a class="score-btn secondary" href="../../../6-training-barn.html">Back to Training Barn</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+const MARKINGS = [
+  { name: 'Coronet', img: '../../../images/leg-marking-images/coronet.png', desc: 'A narrow band of white at or just above the coronet band near the hoof.' },
+  { name: 'Pastern', img: '../../../images/leg-marking-images/pastern.png', desc: 'White that rises above the coronet through the pastern but does not reach the fetlock.' },
+  { name: 'Fetlock', img: '../../../images/leg-marking-images/fetluck.png', desc: 'White that reaches the fetlock area, with the height still lower than a sock.' },
+  { name: 'Sock', img: '../../../images/leg-marking-images/sock.png', desc: 'White that extends above the fetlock and partway up the cannon bone.' },
+  { name: 'Stocking', img: '../../../images/leg-marking-images/stocking.png', desc: 'A taller white marking that extends well up the leg.' },
+  { name: 'High Stocking', img: '../../../images/leg-marking-images/high-stocking.png', desc: 'A very high white marking that reaches at or above the knee or hock.' },
+  { name: 'Partial Coronet', img: '../../../images/leg-marking-images/partial-coronet.png', desc: 'White that covers only part of the coronet area rather than circling the leg.' },
+  { name: 'Partial Fetlock', img: '../../../images/leg-marking-images/partial-fetlock.png', desc: 'White that reaches part of the fetlock area without making a complete marking.' },
+  { name: 'Ermine Marks', img: '../../../images/leg-marking-images/ermine marks.png', desc: 'Dark spots that appear within white markings, often near the coronet band.' },
+  { name: 'No Marking', img: '../../../images/leg-marking-images/no-marking.png', desc: 'A leg with no visible white marking.' }
+];
+
+const ALL_NAMES = MARKINGS.map(m => m.name);
+let questions = [];
+let currentQ = 0;
+let score = 0;
+let answered = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildChoices(correct) {
+  return shuffle([correct, ...shuffle(ALL_NAMES.filter(n => n !== correct)).slice(0, 3)]);
+}
+
+function initGame() {
+  questions = shuffle([...MARKINGS]).slice(0, 10);
+  currentQ = 0;
+  score = 0;
+  answered = false;
+  document.getElementById('score-screen').classList.remove('show');
+  document.getElementById('game-play').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  answered = false;
+  const q = questions[currentQ];
+  const choices = buildChoices(q.name);
+  const num = currentQ + 1;
+  document.getElementById('progress-label').textContent = 'Question ' + num + ' of 10';
+  document.getElementById('progress-fill').style.width = (num * 10) + '%';
+  document.getElementById('score-label').textContent = score + ' / ' + currentQ;
+  document.getElementById('game-img').src = q.img;
+  document.getElementById('game-img').alt = q.name + ' leg marking illustration';
+
+  for (let i = 0; i < 4; i++) {
+    const btn = document.getElementById('btn-' + i);
+    btn.textContent = choices[i];
+    btn.className = 'answer-btn';
+    btn.disabled = false;
+    btn.dataset.choice = choices[i];
+    btn.onclick = () => handleAnswer(choices[i], q.name, q.desc);
+  }
+
+  const fb = document.getElementById('feedback-banner');
+  fb.className = 'feedback-banner';
+  fb.textContent = '';
+  document.getElementById('next-wrap').classList.remove('show');
+}
+
+function handleAnswer(chosen, correct, desc) {
+  if (answered) return;
+  answered = true;
+  const isCorrect = chosen === correct;
+  if (isCorrect) score++;
+
+  for (let i = 0; i < 4; i++) {
+    const btn = document.getElementById('btn-' + i);
+    btn.disabled = true;
+    if (btn.dataset.choice === correct) {
+      btn.classList.add(isCorrect ? 'correct' : 'reveal');
+    } else if (btn.dataset.choice === chosen && !isCorrect) {
+      btn.classList.add('wrong');
+    }
+  }
+
+  const fb = document.getElementById('feedback-banner');
+  fb.classList.add('show');
+  if (isCorrect) {
+    fb.classList.add('correct-fb');
+    fb.innerHTML = '<strong>Correct!</strong> ' + desc;
+  } else {
+    fb.classList.add('wrong-fb');
+    fb.innerHTML = '<strong>Not quite.</strong> That was <strong>' + correct + '</strong>. ' + desc;
+  }
+
+  const nextWrap = document.getElementById('next-wrap');
+  const nextBtn = document.getElementById('next-btn');
+  nextWrap.classList.add('show');
+  const isLast = currentQ >= 9;
+  nextBtn.textContent = isLast ? 'See My Score' : 'Next Question';
+  nextBtn.onclick = isLast ? showScore : nextQuestion;
+}
+
+function nextQuestion() {
+  currentQ++;
+  renderQuestion();
+}
+
+function showScore() {
+  document.getElementById('game-play').classList.add('hidden');
+  document.getElementById('score-screen').classList.add('show');
+  document.getElementById('final-score').textContent = score;
+  document.getElementById('score-label').textContent = score + ' / 10';
+
+  let title, msg;
+  if (score === 10) {
+    title = 'Perfect Score!';
+    msg = 'You identified every leg marking correctly. Strong visual recognition and clear marking language.';
+  } else if (score >= 8) {
+    title = 'Excellent!';
+    msg = 'You got ' + score + ' out of 10. Review any misses, then try again for a clean run.';
+  } else if (score >= 6) {
+    title = 'Good Work';
+    msg = 'You got ' + score + ' out of 10. Revisit the leg marking height guide to strengthen the trickier terms.';
+  } else {
+    title = 'Keep Practicing';
+    msg = 'You got ' + score + ' out of 10. Head back to the leg markings lesson, then come back for another round.';
+  }
+
+  document.getElementById('score-title').textContent = title;
+  document.getElementById('score-msg').textContent = msg;
+}
+
+initGame();
+</script>
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl: '../../../../../../../index.html',
+    coursesUrl: '../../../../../../index.html',
+    navCta: { label: 'Back to Training Barn', url: '../../../6-training-barn.html' }
+  };
+</script>
+<script src="../../../course-config.js"></script>
+<script>
+  (function() {
+    var cfg = window.COURSE_CONFIG;
+    if (!cfg) return;
+    cfg.homeUrl = '../../../' + cfg.homeUrl;
+    cfg.allCoursesUrl = '../../../' + cfg.allCoursesUrl;
+  })();
+</script>
+<script src="../../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../../../assets/js/paywall.js"></script>
+<script src="../../../../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.legMarkings.legMarkingChallenge','true')}catch(e){}</script>
+</body>
+</html>

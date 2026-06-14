@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Do You Check It? &mdash; Vital Signs &mdash; Equine Edu</title>
+<meta name="description" content="A vital sign appears — choose the correct method for checking it from four options.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../../assets/css/game.css">
+<style>
+.progress-bar-wrap { background: var(--border); border-radius: 999px; height: 6px; margin-bottom: 2rem; }
+  .progress-bar-fill { background: var(--tan); height: 6px; border-radius: 999px; transition: width 0.3s ease; }
+  .round-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 1rem; }
+  .vital-prompt {
+    background: var(--heading);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.75rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .vital-prompt .vp-tag { font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.7rem; }
+  .vital-prompt .vp-sign { font-family: var(--font-display); font-size: 1.8rem; color: var(--tan); line-height: 1.15; }
+  .vital-prompt .vp-emoji { font-size: 0.6rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tan); background: rgba(200, 162, 122,0.15); border: 1px solid rgba(200, 162, 122,0.3); border-radius: 4px; padding: 4px 10px; margin-bottom: 0.5rem; display: inline-block; }
+  .options-grid { display: grid; gap: 0.65rem; margin-bottom: 1.25rem; }
+  .opt-btn {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--heading);
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.5;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+  .opt-btn:hover:not(:disabled) { border-color: var(--heading); background: var(--soft-white); }
+  .opt-btn.selected { border-color: var(--heading); background: var(--heading); color: var(--white); }
+  .opt-btn.correct-ans { border-color: var(--success); background: var(--success-bg); color: var(--success); font-weight: 600; }
+  .opt-btn.wrong-ans { border-color: var(--error); background: var(--error-bg); color: var(--error); }
+  .feedback-box { padding: 1rem 1.2rem; border-radius: var(--radius); font-size: 0.88rem; line-height: 1.65; display: none; margin-bottom: 1.25rem; }
+  .feedback-box.show { display: block; }
+  .feedback-box.correct { background: var(--success-bg); border-left: 3px solid var(--success); color: var(--success); }
+  .feedback-box.incorrect { background: var(--error-bg); border-left: 3px solid var(--error); color: var(--error); }
+  .btn-next { background: var(--heading); color: var(--white); border: none; padding: 0.8rem 1.75rem; border-radius: var(--radius); font-weight: 700; font-size: 0.9rem; cursor: pointer; display: none; }
+  .btn-next.show { display: inline-block; }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Equine Vital Signs</div>
+      <h1 class="lesson-hero-title">How Do You <span>Check It?</span></h1>
+      <p class="lesson-hero-desc">A vital sign appears &mdash; choose the correct method for checking it from four options.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="game-intro-card">
+      <h2>How to Play</h2>
+      <p>Each round names a vital sign. Choose the correct method for checking it from four options. You will get instant feedback after each round and a final score at the end. Ten rounds total.</p>
+    </div>
+
+    <div class="game-play-area" id="game-area">
+      <div class="round-label" id="round-label">Round 1 of 10</div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-bar" style="width:10%"></div></div>
+
+      <div class="vital-prompt">
+        <div class="vp-tag">How do you check this vital sign?</div>
+        <div class="vp-emoji" id="vp-emoji">TEMP</div>
+        <div class="vp-sign" id="vp-sign">&mdash;</div>
+      </div>
+
+      <div class="options-grid" id="options-grid"></div>
+      <div class="feedback-box" id="feedback"></div>
+      <button class="btn-next" id="btn-next" onclick="nextRound()">Next Round &#8594;</button>
+    </div>
+
+    <div class="score-screen" id="score-screen">
+      <div class="score-ring">
+        <div class="score-num" id="final-score">&mdash;</div>
+        <div class="score-denom">/ 10</div>
+      </div>
+      <div class="score-title" id="score-title">Well done!</div>
+      <p class="score-msg" id="score-msg"></p>
+      <div class="score-actions">
+        <button class="score-btn primary" onclick="startGame()">Play Again</button>
+        <a class="score-btn secondary" href="../5-training-barn.html">Back to Training Barn</a>
+      </div>
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+const questions = [
+  {
+    sign: 'Temperature', emoji: 'TEMP',
+    answer: 'Insert a lubricated digital thermometer into the rectum and wait for the beep.',
+    distractors: [
+      'Place a stethoscope behind the left elbow and listen for heartbeats.',
+      'Watch the flank rise and fall for 30 seconds and multiply by two.',
+      'Press your thumb against the upper gum for two seconds and release.'
+    ],
+    correct: 'Temperature is taken rectally using a digital thermometer. Always lubricate the tip and stand to the side for safety.',
+    incorrect: 'Temperature is measured rectally using a digital thermometer, not by listening, watching breathing, or checking the gums.'
+  },
+  {
+    sign: 'Heart Rate', emoji: 'HR',
+    answer: 'Feel for the pulse at the facial artery under the jaw, or use a stethoscope behind the left elbow.',
+    distractors: [
+      'Insert a thermometer into the rectum and read the display.',
+      'Pinch a fold of skin on the neck and count how long it takes to return flat.',
+      'Listen for gurgling sounds with a stethoscope pressed against the flank.'
+    ],
+    correct: 'Heart rate is measured by feeling the pulse at an artery or listening with a stethoscope placed behind the left elbow on the chest wall.',
+    incorrect: 'Heart rate is taken at a pulse point or with a stethoscope — not with a thermometer, skin test, or gut sound check.'
+  },
+  {
+    sign: 'Respiratory Rate', emoji: 'RESP',
+    answer: 'Watch the rise and fall of the flank for 30 seconds, then multiply by two.',
+    distractors: [
+      'Press a stethoscope to four spots along the abdomen and listen for movement.',
+      'Use a digital thermometer inserted rectally and read the result.',
+      'Lift the upper lip and note the color and moisture of the gums.'
+    ],
+    correct: 'Respiratory rate is counted by watching the flank. Each rise and fall equals one breath. Count for 30 seconds and multiply by two.',
+    incorrect: 'Respiratory rate is counted by watching flank movement — not by listening to the gut, using a thermometer, or checking the gums.'
+  },
+  {
+    sign: 'Gut Sounds', emoji: 'GUT',
+    answer: 'Press a stethoscope to four quadrants of the abdomen and listen for at least 60 seconds in each.',
+    distractors: [
+      'Count the rise and fall of the flank for 30 seconds and double the result.',
+      'Pinch the skin on the neck and time how quickly it snaps back.',
+      'Feel the pulse at the facial artery under the lower jaw.'
+    ],
+    correct: 'Gut sounds are checked using a stethoscope pressed against four quadrants of the abdomen — upper and lower on both left and right sides.',
+    incorrect: 'Gut sounds require a stethoscope placed on the abdomen in four locations — not by watching breathing, checking the skin, or feeling a pulse.'
+  },
+  {
+    sign: 'Skin Tenting Test', emoji: 'SKIN',
+    answer: 'Pinch a fold of skin on the neck or shoulder, release, and count how long it takes to return flat.',
+    distractors: [
+      'Listen to the abdomen with a stethoscope in four locations.',
+      'Lift the horse\'s upper lip and press the gum for two seconds, then release.',
+      'Insert a digital thermometer into the rectum and wait for a reading.'
+    ],
+    correct: 'The skin tenting test assesses hydration by pinching skin on the neck or shoulder and timing how quickly it snaps back. Normal is within 1–2 seconds.',
+    incorrect: 'The skin tenting test involves pinching the skin and timing its return — not checking the gut, gums, or temperature.'
+  },
+  {
+    sign: 'Gum Color & Moisture', emoji: 'GUMS',
+    answer: 'Lift the upper lip and observe the color and texture of the gums, then press and release to check capillary refill time.',
+    distractors: [
+      'Watch the flank for one minute and count each visible breath.',
+      'Feel along the underside of the jaw for the facial artery pulse.',
+      'Listen with a stethoscope placed just behind the left elbow.'
+    ],
+    correct: 'Gum color and moisture are checked by lifting the upper lip. Note the color, feel for moisture, and press the gum to check capillary refill time (CRT).',
+    incorrect: 'Gum color is checked by lifting the lip and looking — not by watching breathing, feeling a pulse, or using a stethoscope on the chest.'
+  },
+  {
+    sign: 'Capillary Refill Time (CRT)', emoji: 'GUMS',
+    answer: 'Press your thumb firmly on the gum for two seconds, release, and count the seconds until the pink color returns.',
+    distractors: [
+      'Pinch the skin on the neck, release, and count how quickly it flattens.',
+      'Count flank rises and falls for 30 seconds and multiply by two.',
+      'Insert a thermometer rectally and wait for the digital reading.'
+    ],
+    correct: 'CRT is tested by pressing on the gum to blanch it, then timing how fast the pink color refills. Normal is under 2 seconds.',
+    incorrect: 'CRT is tested on the gum — not by checking the skin, watching breathing, or using a thermometer.'
+  },
+  {
+    sign: 'Heart Rate', emoji: 'HR',
+    answer: 'Count beats for 15 seconds, then multiply by four to get beats per minute.',
+    distractors: [
+      'Count the number of gut sounds heard in 60 seconds across all four quadrants.',
+      'Watch nostrils for movement for 30 seconds and double the count.',
+      'Pinch the upper gum for two seconds and count refill time.'
+    ],
+    correct: 'Once you have located the pulse or are listening with a stethoscope, count beats for 15 seconds × 4 — or 30 seconds × 2 — to get beats per minute.',
+    incorrect: 'Heart rate is calculated from beats counted at a pulse point or with a stethoscope — not from gut sounds, breathing, or gum checks.'
+  },
+  {
+    sign: 'Temperature', emoji: 'TEMP',
+    answer: 'Wait at least 30 minutes after exercise before taking a resting temperature reading.',
+    distractors: [
+      'Take temperature immediately after exercise to get the most accurate result.',
+      'Temperature does not need to be taken rectally — any body surface works.',
+      'A horse\'s temperature should always be the same regardless of activity level.'
+    ],
+    correct: 'Exercise raises body temperature temporarily. Waiting at least 30 minutes after activity ensures you are measuring the true resting temperature.',
+    incorrect: 'For an accurate resting temperature, always wait at least 30 minutes after exercise before measuring. Activity raises temperature temporarily.'
+  },
+  {
+    sign: 'Gut Sounds', emoji: 'GUT',
+    answer: 'Listen for at least 60 seconds in each quadrant before deciding sounds are absent.',
+    distractors: [
+      'A quick 10-second listen in one spot is enough to confirm gut sounds are normal.',
+      'Gut sounds only need to be checked on the left side of the horse.',
+      'Loud, rushing sounds in all quadrants are the best possible finding.'
+    ],
+    correct: 'Gut sounds can be intermittent. Always listen for at least 60 seconds in each of the four quadrants before concluding sounds are absent.',
+    incorrect: 'You need to listen for a full 60 seconds per quadrant and check all four locations — a brief listen in one spot is not sufficient.'
+  }
+];
+
+let currentRound = 0;
+let score = 0;
+let answered = false;
+let activeRounds = [];
+
+function shuffle(arr) {
+  return arr.map(v => ({ v, r: Math.random() })).sort((a,b) => a.r - b.r).map(x => x.v);
+}
+
+function shuffleOptions(q) {
+  const opts = shuffle([q.answer, ...q.distractors]);
+  return opts;
+}
+
+function startGame() {
+  currentRound = 0;
+  score = 0;
+  answered = false;
+  activeRounds = shuffle(questions).slice(0, 10);
+  document.getElementById('game-play').classList.remove('hidden');
+  document.getElementById('score-screen').classList.remove('show');
+  loadRound();
+}
+
+function loadRound() {
+  answered = false;
+  const q = activeRounds[currentRound];
+  document.getElementById('round-label').textContent = 'Round ' + (currentRound + 1) + ' of 10';
+  document.getElementById('prog-bar').style.width = ((currentRound + 1) / 10 * 100) + '%';
+  document.getElementById('vp-emoji').textContent = q.emoji;
+  document.getElementById('vp-sign').textContent = q.sign;
+
+  const opts = shuffleOptions(q);
+  const grid = document.getElementById('options-grid');
+  grid.innerHTML = opts.map(opt => `<button class="opt-btn" onclick="checkAnswer(this)" data-correct="${opt === q.answer}">${opt}</button>`).join('');
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback-box';
+  fb.textContent = '';
+  document.getElementById('btn-next').className = 'btn-next';
+}
+
+function checkAnswer(btn) {
+  if (answered) return;
+  answered = true;
+  const q = activeRounds[currentRound];
+  const correct = btn.dataset.correct === 'true';
+  if (correct) score++;
+
+  document.querySelectorAll('.opt-btn').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.correct === 'true') b.classList.add('correct-ans');
+  });
+  if (!correct) btn.classList.add('wrong-ans');
+
+  const fb = document.getElementById('feedback');
+  fb.textContent = correct ? q.correct : q.incorrect;
+  fb.className = 'feedback-box show ' + (correct ? 'correct' : 'incorrect');
+  document.getElementById('btn-next').className = 'btn-next show';
+}
+
+function nextRound() {
+  currentRound++;
+  if (currentRound >= 10) {
+    showScore();
+  } else {
+    loadRound();
+  }
+}
+
+function showScore() {
+  document.getElementById('game-play').classList.add('hidden');
+  document.getElementById('score-screen').classList.add('show');
+  document.getElementById('final-score').textContent = score + '/10';
+  const pct = score / 10;
+  let msg = '';
+  if (pct === 1) msg = 'Perfect. You know exactly how each vital sign is checked.';
+  else if (pct >= 0.8) msg = 'Well done — just a couple of techniques to revisit.';
+  else if (pct >= 0.6) msg = 'Good effort. Review the techniques in the vital signs lesson and give it another go.';
+  else msg = 'Head back to the lesson to review how each vital sign is measured, then try again.';
+  let title = score === 10 ? 'Perfect Score!' : score >= 8 ? 'Excellent!' : score >= 6 ? 'Good Work' : 'Keep Practising';
+  document.getElementById('score-title').textContent = title;
+  document.getElementById('score-msg').textContent = msg;
+}
+
+startGame();
+</script>
+<script>
+  window.CURRENT_MODULE = 4;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../index.html',
+    navCta:     { label: 'Back to Training Barn', url: '../5-training-barn.html' }
+  };
+</script>
+<script src="../course-config.js"></script>
+<script>
+  (function() {
+    var cfg = window.COURSE_CONFIG;
+    if (!cfg) return;
+    cfg.indexUrl      = '../' + cfg.indexUrl;
+    cfg.allCoursesUrl = '../' + cfg.allCoursesUrl;
+    cfg.modules.forEach(function(m) { m.file = '../' + m.file; });
+  })();
+</script>
+<script src="../../../../../assets/js/layout.js"></script>
+<script src="../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../assets/js/paywall.js"></script>
+<script src="../../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

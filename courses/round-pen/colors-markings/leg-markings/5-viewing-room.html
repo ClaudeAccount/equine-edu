@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Viewing Room - Horse Leg Markings - Equine Edu</title>
+<meta name="description" content="Study leg marking examples and flip each card to check the marking name and identifying clues.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.real-horse-flip-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:1rem; }
+.real-horse-flip-grid .flip-card { min-height:320px; }
+.real-horse-flip-grid .flip-front { position:relative; padding:0; overflow:hidden; border-radius:var(--radius); }
+.real-horse-flip-grid .flip-back { padding:1rem; text-align:center; }
+.real-horse-flip-grid .term-name { font-family:var(--font-display); font-size:1.05rem; color:var(--heading); margin-bottom:0.6rem; }
+.real-horse-photo { width:100%; height:100%; min-height:320px; object-fit:cover; object-position:center; border-radius:var(--radius); background:var(--cream-bg); display:block; }
+.real-horse-flip-grid .term-def { color:var(--body-text); font-size:0.9rem; line-height:1.55; text-align:left; }
+.gallery-instructions { color:var(--body-text); font-size:1rem; font-weight:700; line-height:1.6; margin-top:0.5rem; }
+@media (max-width:760px){ .real-horse-flip-grid{grid-template-columns:1fr;} }
+.photo-cue { position:absolute; left:1rem; bottom:1rem; background:rgba(36,54,74,.86); color:var(--tan); border-radius:999px; padding:.42rem .85rem; font-size:.68rem; font-weight:900; letter-spacing:1.2px; text-transform:uppercase; pointer-events:none; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-viewing-room">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Leg Markings</div>
+      <h1 class="lesson-hero-title">The Viewing <span>Room</span></h1>
+      <p class="lesson-hero-desc">Study each leg, name the marking, then flip the card to check your answer.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="lesson-intro-card">
+      <h2>Study Each Photo Carefully</h2>
+      <p>Start by identifying which leg is shown, then note how high the white extends, whether it wraps around the leg, and whether there are any dark spots within the white.</p>
+      <p class="gallery-instructions">Click any card to flip it and reveal the marking name and description.</p>
+    </div>
+
+    <div class="visual-card">
+      <div class="real-horse-flip-grid">
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/viewing-room/real-coronet.png" alt="Real horse coronet marking" class="real-horse-photo">
+              <span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Coronet</div><div class="term-def">White sits low around the top of the hoof near the coronet band. Check whether it is complete or partial.</div></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/viewing-room/real-pastern.png" alt="Real horse pastern marking" class="real-horse-photo">
+              <span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Pastern</div><div class="term-def">White extends up over the pastern area but remains lower than a full sock or stocking.</div></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/viewing-room/real-fetlock.png" alt="Real horse fetlock marking" class="real-horse-photo">
+              <span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Fetlock</div><div class="term-def">White reaches the fetlock area. Look for whether it rises evenly or only on part of the leg.</div></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/viewing-room/real-sock.png" alt="Real horse sock marking" class="real-horse-photo">
+              <span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Sock</div><div class="term-def">White extends above the fetlock and partway up the cannon bone, but not as high as a stocking.</div></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/viewing-room/real-stocking.png" alt="Real horse stocking marking" class="real-horse-photo">
+              <span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Stocking</div><div class="term-def">White extends high up the leg. Describe exactly how high it reaches on the specific leg.</div></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/viewing-room/real-high-stocking.png" alt="Real horse high stocking marking" class="real-horse-photo">
+              <span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">High Stocking</div><div class="term-def">A very high white marking that reaches near the knee or hock. Note any uneven edges.</div></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/viewing-room/real-partial-fetlock.png" alt="Real horse partial fetlock marking" class="real-horse-photo">
+              <span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Partial Fetlock</div><div class="term-def">White reaches the fetlock but does not wrap evenly around the whole leg. Use “partial” in the description.</div></div></div></button>
+        <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/viewing-room/real-ermine-marks.png" alt="Real horse ermine marks" class="real-horse-photo">
+              <span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Ermine Marks</div><div class="term-def">Dark spots inside the white marking, often near the coronet. These are important identifying details.</div></div></div></button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+  window.CURRENT_MODULE = 4;
+  window.LAYOUT = {
+    homeUrl: '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta: { label: 'Back to Leg Markings', url: '1-index.html' },
+    navExtras: [{ label: 'The Training Barn', url: '6-training-barn.html' }]
+  };
+  window.PAGE_NOTES = {
+    items: [
+      'Name the specific leg whenever possible.',
+      'Look for height, wrap, and dark spots inside white.',
+      'Real markings often have uneven edges.'
+    ],
+    highlight: 'Real examples can vary, so focus on location, height, and individual detail.'
+  };
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.legMarkings.viewingRoom','true')}catch(e){}</script>
+</body>
+</html>

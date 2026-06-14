@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Comparisons &mdash; Common Horse Colors &mdash; Equine Edu</title>
+<meta name="description" content="Side-by-side comparisons for easily confused horse coat colors. Drag the divider to compare dapple gray vs. flea-bitten gray, chestnut vs. liver chestnut, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../../../assets/css/game.css">
+<style>
+.compare-intro {
+  background: var(--cream-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--heading);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.compare-intro h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--heading);
+  margin-bottom: 0.4rem;
+}
+.compare-intro p {
+  color: var(--body-text);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.compare-group-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--leather);
+  margin: 2rem 0 0.9rem;
+}
+.compare-group-label:first-of-type { margin-top: 0; }
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 580px) { .compare-grid { grid-template-columns: 1fr; } }
+
+.compare-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(36,54,74,0.06);
+}
+
+.slider-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 230px;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  background: var(--cream-bg);
+}
+
+.slider-img-right {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  display: block;
+  background: var(--white);
+}
+
+.slider-img-left-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  width: 100%;
+  clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
+  -webkit-clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
+}
+.slider-img-left {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  display: block;
+  background: var(--white);
+}
+
+.slider-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--heading);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 10;
+}
+.slider-handle::before,
+.slider-handle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--heading);
+  border: 3px solid var(--leather);
+}
+.slider-handle::before { top: 50%; transform: translate(-50%, -50%); }
+.slider-handle::after  { display: none; }
+
+.slider-handle-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--heading);
+  border: 3px solid var(--leather);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 11;
+  color: var(--leather);
+}
+
+.slider-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.slider-label {
+  position: absolute;
+  bottom: 0.6rem;
+  background: rgba(36,54,74,0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(127,152,178,0.35);
+  border-radius: 999px;
+  padding: 0.22rem 0.65rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--tan);
+  white-space: nowrap;
+}
+.slider-label-left  { left: 0.6rem; }
+.slider-label-right { right: 0.6rem; }
+
+.slider-range-wrap {
+  display: none;
+  padding: 0.7rem 1rem 0;
+  background: var(--white);
+}
+.slider-range {
+  width: 100%;
+  accent-color: var(--blue-primary);
+}
+
+.compare-card-footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.compare-vs {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--leather);
+  background: rgba(127,152,178,0.1);
+  border: 1px solid rgba(127,152,178,0.3);
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  margin-top: 0.15rem;
+}
+.compare-card-text {}
+.compare-card-names {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--heading);
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+.compare-card-tip {
+  font-size: 0.78rem;
+  color: var(--body-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.drag-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--body-text);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+@media (max-width: 580px) {
+  .lesson-wrap { padding-top: 1.5rem; }
+  .visual-card { padding: 1rem; }
+  .compare-intro {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .drag-hint {
+    margin-bottom: 1rem;
+  }
+  .slider-viewport {
+    aspect-ratio: 3 / 4;
+    min-height: 320px;
+  }
+
+  .slider-img-left {
+    padding: 0.35rem;
+    object-position: center center;
+  }
+  .slider-label {
+    bottom: 0.45rem;
+    max-width: calc(50% - 1.2rem);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+    letter-spacing: 0.8px;
+  }
+  .slider-label-left { left: 0.45rem; }
+  .slider-label-right { right: 0.45rem; }
+  .compare-card-footer {
+    padding: 0.8rem;
+  }
+  .slider-range-wrap {
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Training Barn</div>
+      <h1 class="lesson-hero-title">Color <span>Comparisons</span></h1>
+      <p class="lesson-hero-desc">Drag the divider left and right to compare easily confused coat colors side by side.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="visual-card">
+
+      <div class="compare-intro">
+        <h2>Why These Pairs?</h2>
+        <p>These are the most commonly confused horse coat colors. Use the sliders to study the differences directly - the key details that separate each pair become much clearer when you can slide between them.</p>
+      </div>
+
+      <p class="drag-hint"><- Drag the handle to compare -></p>
+
+      <!-- -- RED-BASED COLORS -- -->
+      <div class="compare-group-label">Red-Based Colors</div>
+      <div class="compare-grid" id="grid-red"></div>
+
+      <!-- -- DARK COLORS -- -->
+      <div class="compare-group-label">Dark Colors</div>
+      <div class="compare-grid" id="grid-dark"></div>
+
+      <!-- -- GOLDEN COLORS -- -->
+      <div class="compare-group-label">Golden &amp; Lightened</div>
+      <div class="compare-grid" id="grid-golden"></div>
+
+      <!-- -- GRAY -- -->
+      <div class="compare-group-label">Gray Variations</div>
+      <div class="compare-grid" id="grid-gray"></div>
+
+      <!-- -- ROAN -- -->
+      <div class="compare-group-label">Roan Colors</div>
+      <div class="compare-grid" id="grid-roan"></div>
+
+      <!-- -- PATTERNED -- -->
+      <div class="compare-group-label">Patterned Coats</div>
+      <div class="compare-grid" id="grid-pattern"></div>
+
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 4;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../../../index.html',
+    navCta:     { label: 'Back to Training Barn', url: '../../5-training-barn.html' }
+  };
+</script>
+<script src="../../course-config.js"></script>
+<script>
+  (function(){
+    if(!window.COURSE_CONFIG) return;
+    window.COURSE_CONFIG.homeUrl       = '../' + window.COURSE_CONFIG.homeUrl;
+    window.COURSE_CONFIG.allCoursesUrl = '../' + window.COURSE_CONFIG.allCoursesUrl;
+  })();
+</script>
+<script src="../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../assets/js/course-nav.js"></script>
+
+<script>
+/* ==============================================================
+   COLOR COMPARISONS
+   ============================================================== */
+
+var COMPARISONS = {
+  'grid-red': [
+    {
+      left:  { name: 'Chestnut',       img: '../../images/common-horse-colors/chestnut.png' },
+      right: { name: 'Sorrel',         img: '../../images/common-horse-colors/sorrel.png' },
+      tip:   'Sorrel is a lighter, more copper-toned red. Chestnut sits in the middle - a warmer, reddish-brown. Both have no black anywhere.'
+    },
+    {
+      left:  { name: 'Chestnut',       img: '../../images/common-horse-colors/chestnut.png' },
+      right: { name: 'Liver Chestnut', img: '../../images/common-horse-colors/liver-chestnut.png' },
+      tip:   'Liver chestnut is the darkest chestnut variant - nearly chocolate. The mane and tail stay in the same dark family, never black.'
+    },
+    {
+      left:  { name: 'Chestnut',         img: '../../images/common-horse-colors/chestnut.png' },
+      right: { name: 'Flaxen Chestnut',  img: '../../images/common-horse-colors/flaxen-chestnut.png' },
+      tip:   'Same reddish body - but flaxen chestnut has a distinctly pale, cream, or white mane and tail. No black anywhere on either.'
+    },
+    {
+      left:  { name: 'Sorrel',          img: '../../images/common-horse-colors/sorrel.png' },
+      right: { name: 'Flaxen Chestnut', img: '../../images/common-horse-colors/flaxen-chestnut.png' },
+      tip:   'Both are light and warm-toned. Sorrel\'s mane matches its coat. Flaxen chestnut\'s mane is noticeably lighter or white.'
+    }
+  ],
+  'grid-dark': [
+    {
+      left:  { name: 'Black', img: '../../images/common-horse-colors/black.png' },
+      right: { name: 'Bay',   img: '../../images/common-horse-colors/bay.png' },
+      tip:   'Both have black points. Bay has a reddish-brown body - black has a solid black body with no brown or reddish tones anywhere.'
+    },
+    {
+      left:  { name: 'Bay',            img: '../../images/common-horse-colors/bay.png' },
+      right: { name: 'Liver Chestnut', img: '../../images/common-horse-colors/liver-chestnut.png' },
+      tip:   'The key: look at the mane, tail, and legs. Bay\'s are black. Liver chestnut\'s are dark brown - the same family as the body, never true black.'
+    }
+  ],
+  'grid-golden': [
+    {
+      left:  { name: 'Palomino', img: '../../images/common-horse-colors/palomino.png' },
+      right: { name: 'Buckskin', img: '../../images/common-horse-colors/buckskin.png' },
+      tip:   'Both have golden bodies. Palomino has a white or cream mane and tail. Buckskin has black points - black mane, tail, and lower legs.'
+    }
+  ],
+  'grid-gray': [
+    {
+      left:  { name: 'Gray',        img: '../../images/common-horse-colors/gray.png' },
+      right: { name: 'Dapple Gray', img: '../../images/common-horse-colors/dapple-gray.png' },
+      tip:   'Dapple gray is an intermediate stage - look for circular rings of lighter and darker gray. Plain gray lacks that distinct dapple pattern.'
+    },
+    {
+      left:  { name: 'Dapple Gray',      img: '../../images/common-horse-colors/dapple-gray.png' },
+      right: { name: 'Flea-Bitten Gray', img: '../../images/common-horse-colors/flea-bitten-gray.png' },
+      tip:   'Dapple gray shows rings; flea-bitten gray shows small specks of pigment on a light or white base. Flea-bitten typically appears in older horses.'
+    },
+    {
+      left:  { name: 'Rose Gray', img: '../../images/common-horse-colors/rose-gray.png' },
+      right: { name: 'Gray',      img: '../../images/common-horse-colors/gray.png' },
+      tip:   'Rose gray has a warm, pinkish tone - it\'s an early stage of the graying process on a chestnut or reddish base. Plain gray has cooled to steel tones.'
+    },
+    {
+      left:  { name: 'Flea-Bitten Gray', img: '../../images/common-horse-colors/flea-bitten-gray.png' },
+      right: { name: 'Rose Gray',        img: '../../images/common-horse-colors/rose-gray.png' },
+      tip:   'Rose gray is warm and early-stage. Flea-bitten is the late stage - an almost-white coat with scattered pigment specks.'
+    }
+  ],
+  'grid-roan': [
+    {
+      left:  { name: 'Strawberry Roan', img: '../../images/common-horse-colors/strawberry-roan.png' },
+      right: { name: 'Blue Roan',       img: '../../images/common-horse-colors/blue-roan.png' },
+      tip:   'Both mix white hairs into the body. Strawberry roan has a chestnut base - warm and pinkish. Blue roan has a black base - cool and blue-grey.'
+    },
+    {
+      left:  { name: 'Strawberry Roan', img: '../../images/common-horse-colors/strawberry-roan.png' },
+      right: { name: 'Bay Roan',        img: '../../images/common-horse-colors/bay-roan.png' },
+      tip:   'Strawberry roan has no black points. Bay roan has a black mane, tail, and legs - the bay base shows through in the points.'
+    },
+    {
+      left:  { name: 'Blue Roan',       img: '../../images/common-horse-colors/blue-roan.png' },
+      right: { name: 'Gray',            img: '../../images/common-horse-colors/gray.png' },
+      tip:   'A common confusion. Roan stays stable with age and has a solid head. Gray progressively lightens and the white hairs spread to the face and head too.'
+    },
+    {
+      left:  { name: 'Bay Roan', img: '../../images/common-horse-colors/bay-roan.png' },
+      right: { name: 'Blue Roan', img: '../../images/common-horse-colors/blue-roan.png' },
+      tip:   'Same roan pattern - different base. Bay roan has warm reddish-grey body with black points. Blue roan has cool blue-grey body with a black head and points.'
+    }
+  ],
+  'grid-pattern': [
+    {
+      left:  { name: 'Tobiano', img: '../../images/common-horse-colors/tobiano.png' },
+      right: { name: 'Overo',   img: '../../images/common-horse-colors/overo.png' },
+      tip:   'Tobiano white crosses the topline; legs are often white. Overo white spreads from the belly up and rarely crosses the back; legs often dark.'
+    },
+    {
+      left:  { name: 'Leopard Appaloosa', img: '../../images/common-horse-colors/leopard-appaloosa.png' },
+      right: { name: 'Blanket Appaloosa', img: '../../images/common-horse-colors/blanket-appaloosa.png' },
+      tip:   'Leopard Appaloosa has spots over most of the body on a white base. Blanket Appaloosa has a solid-colored body with a white patch over the hindquarters only.'
+    }
+  ]
+};
+
+/* -- Build a single slider card -- */
+function buildSlider(pair) {
+  var card = document.createElement('div');
+  card.className = 'compare-card';
+
+  /* Viewport */
+  var vp = document.createElement('div');
+  vp.className = 'slider-viewport';
+
+  /* Right image (behind) */
+  var imgRight = document.createElement('img');
+  imgRight.className = 'slider-img-right';
+  imgRight.src = pair.right.img;
+  imgRight.alt = pair.right.name;
+  imgRight.draggable = false;
+
+  /* Left image wrap (clipped) */
+  var leftWrap = document.createElement('div');
+  leftWrap.className = 'slider-img-left-wrap';
+
+  var imgLeft = document.createElement('img');
+  imgLeft.className = 'slider-img-left';
+  imgLeft.src = pair.left.img;
+  imgLeft.alt = pair.left.name;
+  imgLeft.draggable = false;
+
+  leftWrap.appendChild(imgLeft);
+
+  /* Divider handle */
+  var handle = document.createElement('div');
+  handle.className = 'slider-handle';
+
+  var handleIcon = document.createElement('div');
+  handleIcon.className = 'slider-handle-icon';
+  handleIcon.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 4l-3 4 3 4M11 4l3 4-3 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  /* Labels */
+  var labels = document.createElement('div');
+  labels.className = 'slider-labels';
+
+  var lblLeft = document.createElement('div');
+  lblLeft.className = 'slider-label slider-label-left';
+  lblLeft.textContent = pair.left.name;
+
+  var lblRight = document.createElement('div');
+  lblRight.className = 'slider-label slider-label-right';
+  lblRight.textContent = pair.right.name;
+
+  labels.appendChild(lblLeft);
+  labels.appendChild(lblRight);
+
+  vp.appendChild(imgRight);
+  vp.appendChild(leftWrap);
+  vp.appendChild(handle);
+  vp.appendChild(handleIcon);
+  vp.appendChild(labels);
+
+  var rangeWrap = document.createElement('div');
+  rangeWrap.className = 'slider-range-wrap';
+
+  var range = document.createElement('input');
+  range.className = 'slider-range';
+  range.type = 'range';
+  range.min = '4';
+  range.max = '96';
+  range.value = '50';
+  range.setAttribute('aria-label', 'Move comparison divider');
+
+  rangeWrap.appendChild(range);
+
+  /* Footer */
+  var footer = document.createElement('div');
+  footer.className = 'compare-card-footer';
+
+  var vs = document.createElement('span');
+  vs.className = 'compare-vs';
+  vs.textContent = 'vs';
+
+  var text = document.createElement('div');
+  text.className = 'compare-card-text';
+
+  var names = document.createElement('div');
+  names.className = 'compare-card-names';
+  names.textContent = pair.left.name + '  <->  ' + pair.right.name;
+
+  var tip = document.createElement('p');
+  tip.className = 'compare-card-tip';
+  tip.textContent = pair.tip;
+
+  text.appendChild(names);
+  text.appendChild(tip);
+  footer.appendChild(vs);
+  footer.appendChild(text);
+
+  card.appendChild(vp);
+  card.appendChild(rangeWrap);
+  card.appendChild(footer);
+
+  /* -- Slider interaction -- */
+  var pct = 50; /* initial split at 50% */
+
+  function applyPosition(value) {
+    pct = Math.max(4, Math.min(96, value));
+    var clipValue = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    leftWrap.style.setProperty('--split', pct + '%');
+    leftWrap.style.clipPath = clipValue;
+    leftWrap.style.webkitClipPath = clipValue;
+    handle.style.left        = pct + '%';
+    handleIcon.style.left    = pct + '%';
+    range.value = String(Math.round(pct));
+  }
+
+  function setPosition(x) {
+    var rect  = vp.getBoundingClientRect();
+    var raw   = (x - rect.left) / rect.width;
+    applyPosition(raw * 100);
+  }
+
+  /* Init */
+  function init() {
+    applyPosition(50);
+  }
+  /* Register pointer events */
+  var dragging = false;
+
+  vp.addEventListener('mousedown', function(e) {
+    dragging = true;
+    setPosition(e.clientX);
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    setPosition(e.clientX);
+  });
+  document.addEventListener('mouseup', function() {
+    dragging = false;
+  });
+
+  vp.addEventListener('touchstart', function(e) {
+    dragging = true;
+    setPosition(e.touches[0].clientX);
+    e.preventDefault();
+  }, { passive: false });
+  vp.addEventListener('touchmove', function(e) {
+    if (!dragging) return;
+    setPosition(e.touches[0].clientX);
+    e.preventDefault();
+  }, { passive: false });
+  vp.addEventListener('touchend', function() { dragging = false; });
+
+  range.addEventListener('input', function() {
+    applyPosition(Number(range.value));
+  });
+
+  init();
+  return card;
+}
+
+/* -- Build all grids -- */
+function buildAll() {
+  Object.keys(COMPARISONS).forEach(function(gridId) {
+    var grid = document.getElementById(gridId);
+    if (!grid) return;
+    COMPARISONS[gridId].forEach(function(pair) {
+      grid.appendChild(buildSlider(pair));
+    });
+  });
+}
+
+/* Boot */
+buildAll();
+</script>
+</body>
+</html>

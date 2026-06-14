@@ -1,10 +1,11 @@
 /* =============================================================================
    Equine Edu — core.css
-   Design tokens, base reset, typography, site chrome, motion utilities.
+   Design tokens, base reset, typography, atmosphere, site chrome, motion.
    Loaded on EVERY page. Keep this file lean.
    ----------------------------------------------------------------------------
-   To change brand colors, fonts, or motion behavior platform-wide,
-   edit the CSS custom properties in :root below.
+   This is the single source of truth for the design system:
+   color, type scale, spacing scale, radius, elevation, motion, room accents.
+   Pages and components consume these tokens — never redefine them.
    ============================================================================= */
 
 
@@ -22,57 +23,122 @@
 
 /* -----------------------------------------------------------------------------
    2. Design tokens
-   Single source of truth for color, typography, spacing, motion.
    ----------------------------------------------------------------------------- */
 :root {
-  /* Brand colors */
-  --navy:        #0D1B3E;
-  --navy-mid:    #1A2F6B;
-  --navy-light:  #2B4494;
-  --gold:        #C9A84C;
-  --gold-bright: #E8C56A;
-  --gold-pale:   #F5E9C8;
-  --white:       #FFFFFF;
-  --off-white:   #F9F6EF;
-  --page-bg:     #F1E7D0;
+  /* ---- Brand palette (creams / dusty blue / leather) ---- */
+  --cream-bg:        #F1E9DC;   /* primary background — deep enough that white surfaces pop */
+  --cream-secondary: #E7DCCB;
+  --soft-white:      #FCFAF7;
+  --blue-primary:    #7F98B2;   /* dusty blue */
+  --blue-secondary:  #A9BACB;
+  --blue-light:      #D9E3EC;
+  --tan:             #C8A27A;   /* warm tan — primary actions */
+  --leather:         #A9825A;   /* leather brown — hover */
+  --leather-dark:    #7A5D45;   /* dark leather — accents */
+  --heading:         #24364A;
+  --body-text:       #4F5B66;
+  --muted-text:      #7D858D;
+  --white:           #FFFFFF;
 
-  /* Text colors */
-  --text-dark:   #0D1B3E;
-  --text-mid:    #3D4F7C;
-  --text-light:  #7A8BAD;
+  /* Soft feedback colors (quiz/lesson) — calm, no bright green/red */
+  --success:     #5C8A6E;
+  --success-bg:  rgba(92, 138, 110, 0.10);
+  --success-bd:  rgba(92, 138, 110, 0.28);
+  --error:       #B5705A;
+  --error-bg:    rgba(181, 112, 90, 0.10);
+  --error-bd:    rgba(181, 112, 90, 0.28);
+
+  /* Illustration constants (tack/equipment diagrams) — documented, not stray */
+  --ill-leather:      #8B4513;
+  --ill-leather-mid:  #A9825A;
+  --ill-saddle:       #D2691E;
+  --ill-metal:        #A8A8A8;
+  --ill-rawhide:      #B5936A;
 
   /* Borders / surfaces */
-  --border:      rgba(13, 27, 62, 0.08);
-  --border-mid:  rgba(13, 27, 62, 0.16);
+  --border:      rgba(36, 54, 74, 0.10);
+  --border-mid:  rgba(36, 54, 74, 0.16);
 
-  /* Feedback (quiz/lesson) */
-  --success:     #256F2A;
-  --success-bg:  rgba(80, 180, 80, 0.12);
-  --success-bd:  rgba(80, 180, 80, 0.25);
-  --error:       #9D2626;
-  --error-bg:    rgba(220, 60, 60, 0.10);
-  --error-bd:    rgba(220, 60, 60, 0.20);
+  /* ---- Room accents (the rooms of the barn — one system, four tints) ----
+     Set automatically on <body data-room> by layout.js from the URL.
+     Components reference --room-accent / --room-wash; they never hardcode. */
+  --room-accent: var(--tan);
+  --room-wash:   rgba(200, 162, 122, 0.10);
 
-  /* Typography */
+  /* ---- Typography ---- */
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'DM Sans', system-ui, -apple-system, Segoe UI, sans-serif;
 
-  /* Motion */
-  --ease:        cubic-bezier(0.2, 0.8, 0.2, 1);
+  --text-xs:      0.78rem;
+  --text-sm:      0.9rem;
+  --text-base:    1rem;
+  --text-md:      1.0625rem;  /* lesson reading size */
+  --text-lg:      1.2rem;
+  --text-xl:      1.45rem;
+  --text-2xl:     clamp(1.6rem, 2.5vw, 2rem);
+  --text-3xl:     clamp(2rem, 4vw, 3rem);
+  --text-display: clamp(2.5rem, 5.5vw, 4.1rem);
+
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---- Elevation (exactly three; warm leather-brown so white surfaces
+          lift clearly off the cream atmosphere) ---- */
+  --shadow-rest:   0 1px 3px rgba(94, 71, 52, 0.10), 0 6px 20px rgba(94, 71, 52, 0.13);
+  --shadow-raised: 0 3px 8px rgba(94, 71, 52, 0.12), 0 12px 32px rgba(94, 71, 52, 0.17);
+  --shadow-float:  0 6px 16px rgba(94, 71, 52, 0.14), 0 22px 52px rgba(94, 71, 52, 0.22);
+
+  /* Nested halo — the ONE shadow for white cards/buttons sitting INSIDE a
+     white panel. Ambient all-around glow (not just a drop below) so the
+     surface reads as its own layer instead of blending into the parent.
+     Every nested white-on-white surface uses this token — never hardcode. */
+  --shadow-nested: 0 0 16px rgba(94, 71, 52, 0.16), 0 4px 14px rgba(94, 71, 52, 0.12);
+
+  /* ---- Motion ---- */
+  --ease:         cubic-bezier(0.2, 0.8, 0.2, 1);
   --motion-quick: 160ms;
   --motion-soft:  420ms;
 
-  /* Layout */
+  /* ---- Layout ---- */
   --nav-height:  68px;
   --page-pad:    5%;
-  --radius-sm:   4px;
-  --radius:      6px;
-  --radius-lg:   8px;
+  --radius-sm:   8px;
+  --radius:      14px;
+  --radius-lg:   20px;
+  --measure:     68ch;       /* editorial reading measure */
+  --content-w:   1100px;     /* editorial content width */
+  --shell-w:     1400px;     /* app-shell width (lesson 2-col) */
+}
+
+/* Room tints — applied via body[data-room], derived from URL in layout.js */
+body[data-room="round-pen"] {
+  --room-accent: var(--tan);
+  --room-wash:   rgba(200, 162, 122, 0.10);
+}
+body[data-room="schooling-ring"] {
+  --room-accent: var(--blue-primary);
+  --room-wash:   rgba(127, 152, 178, 0.12);
+}
+body[data-room="quiz-corral"] {
+  --room-accent: var(--success);
+  --room-wash:   rgba(92, 138, 110, 0.09);
+}
+body[data-room="lesson-board"] {
+  --room-accent: var(--leather);
+  --room-wash:   rgba(169, 130, 90, 0.10);
 }
 
 
 /* -----------------------------------------------------------------------------
-   3. Base typography
+   3. Base typography & atmosphere
    ----------------------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
@@ -80,10 +146,28 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--page-bg);
-  color: var(--text-dark);
+  background: var(--cream-bg);
+  color: var(--heading);
   overflow-x: hidden;
   line-height: 1.5;
+}
+
+/* Atmosphere — fixed layered terrain canvas behind every page.
+   Soft dusty-blue hills at the horizon, warm sand toward the foreground.
+   Low contrast by design: it must never compete with reading content. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 55% at 108% -12%, rgba(127, 152, 178, 0.14), transparent 62%),
+    radial-gradient(ellipse 65% 45% at -12% 2%,  rgba(169, 186, 203, 0.16), transparent 58%),
+    radial-gradient(ellipse 95% 50% at 50% 116%, rgba(200, 162, 122, 0.10), transparent 62%),
+    radial-gradient(ellipse 55% 40% at 88% 78%,  rgba(231, 220, 203, 0.9), transparent 65%),
+    var(--room-wash);
+  background-color: transparent;
 }
 
 a {
@@ -98,17 +182,127 @@ img {
 
 
 /* -----------------------------------------------------------------------------
-   4. Accessibility — focus styles
+   4. Editorial primitives
+   Shared typographic voice — use these instead of inventing per-page styles.
+   ----------------------------------------------------------------------------- */
+.eyebrow {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--room-accent);
+  margin-bottom: var(--space-3);
+}
+
+.standfirst {
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  color: var(--body-text);
+  max-width: var(--measure);
+}
+
+.prose {
+  max-width: var(--measure);
+  font-size: var(--text-md);
+  line-height: 1.75;
+  color: var(--body-text);
+}
+.prose h2, .prose h3 {
+  font-family: var(--font-display);
+  color: var(--heading);
+  margin: var(--space-6) 0 var(--space-4);
+}
+.prose p { margin-bottom: var(--space-4); }
+.prose strong { color: var(--heading); }
+
+.pull-quote {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  line-height: 1.45;
+  color: var(--heading);
+  border-left: 3px solid var(--room-accent);
+  padding: var(--space-2) 0 var(--space-2) var(--space-5);
+  margin: var(--space-6) 0;
+  max-width: 36ch;
+}
+
+.chapter-numeral {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(4rem, 10vw, 7rem);
+  line-height: 1;
+  color: var(--room-accent);
+  opacity: 0.16;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Flow divider — a soft cream swell between content areas.
+   Pure gradient: no edges anywhere. Place as <div class="flow-divider"></div>. */
+.flow-divider {
+  height: 72px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(231, 220, 203, 0.55) 50%,
+    transparent 100%);
+}
+
+
+/* -----------------------------------------------------------------------------
+   5. Accessibility — focus styles
    ----------------------------------------------------------------------------- */
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--blue-primary);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
 
 /* -----------------------------------------------------------------------------
-   5. Top navigation
+   5b. Form controls — global baseline
+   All select, input, and textarea elements get a consistent warm-cream surface
+   with a visible border so they always lift off white/soft-white card backgrounds.
+   Game and quiz pages must NOT re-define background/border on these natively —
+   use this baseline and override only what is truly unique.
+   ----------------------------------------------------------------------------- */
+select,
+input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="email"],
+textarea {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--heading);
+  background: var(--soft-white);
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.9rem;
+  box-shadow: 0 1px 4px rgba(94, 71, 52, 0.08);
+  transition: border-color var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease);
+  appearance: auto;
+}
+select:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--tan);
+  box-shadow: 0 0 0 3px rgba(200, 162, 122, 0.18);
+  outline: none;
+}
+select {
+  /* Extra right padding for the native arrow */
+  padding-right: 2rem;
+  cursor: pointer;
+}
+
+
+/* -----------------------------------------------------------------------------
+   6. Top navigation — soft-glass rail
    ----------------------------------------------------------------------------- */
 nav {
   position: fixed;
@@ -116,25 +310,40 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--navy);
+  background: rgba(252, 250, 247, 0.82);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--page-pad);
   height: var(--nav-height);
-  border-bottom: 2px solid var(--gold);
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-logo {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  color: var(--white);
+  color: var(--heading);
   letter-spacing: -0.5px;
   text-decoration: none;
 }
 
 .nav-logo span {
-  color: var(--gold);
+  color: var(--blue-primary);
+}
+
+/* Room indicator — small serif label beside the logo when inside a course area */
+.nav-room {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--room-accent);
+  margin-left: var(--space-4);
+  padding-left: var(--space-4);
+  border-left: 1px solid var(--border-mid);
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -145,37 +354,43 @@ nav {
 }
 
 .nav-links a {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--body-text);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   transition: color var(--motion-quick) var(--ease);
 }
 
 .nav-links a:hover {
-  color: var(--gold);
+  color: var(--blue-primary);
 }
 
 .nav-cta {
-  background: var(--gold) !important;
-  color: var(--navy) !important;
+  background: var(--tan) !important;
+  color: var(--white) !important;
   padding: 8px 20px;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   font-weight: 700 !important;
+  transition: background var(--motion-quick) var(--ease);
+}
+.nav-cta:hover {
+  background: var(--leather) !important;
 }
 
 .nav-auth-btn {
-  border: 1.5px solid rgba(255,255,255,0.35) !important;
-  color: var(--white) !important;
+  border: 1.5px solid var(--blue-primary) !important;
+  color: var(--blue-primary) !important;
   padding: 7px 18px;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   font-weight: 600 !important;
-  transition: background 0.18s, border-color 0.18s;
+  transition: background var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease),
+              color var(--motion-quick) var(--ease);
 }
 .nav-auth-btn:hover {
-  background: rgba(255,255,255,0.12) !important;
-  border-color: rgba(255,255,255,0.6) !important;
-  color: var(--white) !important;
+  background: var(--blue-light) !important;
+  border-color: var(--blue-primary) !important;
+  color: var(--heading) !important;
 }
 
 /* ── Hamburger button ─────────────────────────────────────── */
@@ -185,7 +400,7 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -195,7 +410,7 @@ nav {
 .nav-burger span {
   display: block;
   width: 22px; height: 2px;
-  background: var(--white);
+  background: var(--heading);
   border-radius: 2px;
   transition: transform 0.22s var(--ease), opacity 0.22s var(--ease);
 }
@@ -209,10 +424,13 @@ nav.open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45d
   position: fixed;
   top: var(--nav-height);
   left: 0; right: 0;
-  background: var(--navy);
-  border-bottom: 2px solid var(--gold);
+  background: rgba(252, 250, 247, 0.96);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
   z-index: 99;
   padding: 0.5rem var(--page-pad) 1.5rem;
+  box-shadow: var(--shadow-raised);
 }
 @keyframes drawerIn {
   from { opacity: 0; transform: translateY(-6px); }
@@ -227,41 +445,42 @@ nav.open .nav-drawer {
   flex-direction: column;
 }
 .nav-drawer-links li {
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--border);
 }
 .nav-drawer-links li:last-child { border-bottom: none; }
 .nav-drawer-links a {
   display: block;
-  color: rgba(255,255,255,0.85);
+  color: var(--body-text);
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
   padding: 0.9rem 0;
-  transition: color 0.15s;
+  transition: color var(--motion-quick) var(--ease);
 }
-.nav-drawer-links a:hover { color: var(--gold); }
+.nav-drawer-links a:hover { color: var(--blue-primary); }
 .nav-drawer-cta {
   display: block !important;
   margin-top: 0.75rem;
-  background: var(--gold) !important;
-  color: var(--navy) !important;
+  background: var(--tan) !important;
+  color: var(--white) !important;
   text-align: center;
   padding: 12px 24px !important;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   font-weight: 700 !important;
   border-bottom: none !important;
 }
 
 
 /* -----------------------------------------------------------------------------
-   6. Breadcrumb
+   7. Breadcrumb — editorial wayfinding line (no band)
    ----------------------------------------------------------------------------- */
 .breadcrumb {
   margin-top: var(--nav-height);
-  background: var(--navy-mid);
-  padding: 12px var(--page-pad);
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  padding: 14px var(--page-pad) 2px;
+  font-size: var(--text-xs);
+  letter-spacing: 0.4px;
+  color: var(--muted-text);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -269,37 +488,39 @@ nav.open .nav-drawer {
 }
 
 .breadcrumb a {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted-text);
   text-decoration: none;
   transition: color var(--motion-quick) var(--ease);
 }
 
 .breadcrumb a:hover {
-  color: var(--gold);
+  color: var(--blue-primary);
 }
 
 .breadcrumb span {
-  color: var(--gold);
+  color: var(--room-accent);
   margin: 0 4px;
 }
 
 .breadcrumb-current {
-  color: var(--white);
+  color: var(--heading);
+  font-weight: 600;
 }
 
 
 /* -----------------------------------------------------------------------------
-   7. Footer
+   8. Footer — quiet editorial close
    ----------------------------------------------------------------------------- */
 footer {
-  background: var(--navy);
-  border-top: 2px solid var(--gold);
-  padding: 2rem var(--page-pad);
-  margin-top: 2rem;
+  background: linear-gradient(180deg, transparent, rgba(231, 220, 203, 0.45));
+  border-top: none;
+  padding: var(--space-7) var(--page-pad) var(--space-6);
+  margin-top: var(--space-8);
+  position: relative;
 }
 
 .footer-inner {
-  max-width: 1200px;
+  max-width: var(--content-w);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -311,16 +532,16 @@ footer {
 .footer-logo {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  color: var(--white);
+  color: var(--heading);
 }
 
 .footer-logo span {
-  color: var(--gold);
+  color: var(--blue-primary);
 }
 
 .footer-copy {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: var(--text-xs);
+  color: var(--muted-text);
 }
 
 .footer-links {
@@ -331,19 +552,19 @@ footer {
 
 .footer-links a {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--body-text);
   text-decoration: none;
   transition: color var(--motion-quick) var(--ease);
 }
 
 .footer-links a:hover {
-  color: var(--gold);
+  color: var(--blue-primary);
 }
 
 
 /* -----------------------------------------------------------------------------
-   8. Motion utilities
-   .motion-reveal: fade-and-rise on scroll (toggled by site.js)
+   9. Motion — the single site-wide reveal system
+   .motion-reveal: fade-and-rise on scroll (observed by layout.js)
    ----------------------------------------------------------------------------- */
 .motion-reveal {
   opacity: 0;
@@ -361,7 +582,7 @@ footer {
 
 
 /* -----------------------------------------------------------------------------
-   9. Reduced motion preference
+   10. Reduced motion preference
    ----------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -383,11 +604,14 @@ footer {
 
 
 /* -----------------------------------------------------------------------------
-   10. Responsive — site chrome
+   11. Responsive — site chrome
    Component/layout breakpoints live in their own partials.
    ----------------------------------------------------------------------------- */
 @media (max-width: 760px) {
   .nav-links {
+    display: none;
+  }
+  .nav-room {
     display: none;
   }
   .nav-burger {
@@ -403,5 +627,12 @@ footer {
   .footer-links {
     justify-content: center;
     flex-wrap: wrap;
+  }
+  /* Simplified atmosphere on small screens (paint cost) */
+  body::before {
+    background:
+      radial-gradient(ellipse 120% 45% at 50% -8%, rgba(127, 152, 178, 0.12), transparent 60%),
+      radial-gradient(ellipse 120% 45% at 50% 112%, rgba(200, 162, 122, 0.08), transparent 60%),
+      var(--room-wash);
   }
 }

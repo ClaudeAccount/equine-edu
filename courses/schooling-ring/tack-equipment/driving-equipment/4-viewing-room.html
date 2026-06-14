@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Viewing Room - Driving Harness &amp; Equipment - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css"><link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+  .equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .equipment-grid .flip-card { min-height: 300px; }
+  .equipment-grid .flip-front {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  .equipment-grid .flip-back { padding: 1rem; text-align: center; }
+  .image-slot {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    background: linear-gradient(135deg, rgba(200, 162, 122,.14), rgba(36, 54, 74,.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--radius);
+  }
+  .image-slot span {
+    display: block;
+    color: var(--tan);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .image-slot small {
+    display: block;
+    color: var(--heading);
+    font-weight: 800;
+    margin-top: 0.35rem;
+  }
+  .equipment-grid .flip-back .term-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--heading);
+    margin-bottom: 0.6rem;
+  }
+  .equipment-grid .flip-back .term-def {
+    color: var(--body-text);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    text-align: left;
+  }
+  .gallery-instructions {
+    color: var(--body-text);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 760px) {
+    .equipment-grid { grid-template-columns: 1fr; }
+  }
+  .photo-cue { position:absolute; left:1rem; bottom:1rem; background:rgba(36, 54, 74,.86); color:var(--tan); border-radius:999px; padding:.42rem .85rem; font-size:.68rem; font-weight:900; letter-spacing:1.2px; text-transform:uppercase; pointer-events:none; white-space:nowrap; }
+</style>
+</head>
+<body><div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-viewing-room" id="top"><div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text"><div class="lesson-module-tag">Driving Harness & Equipment</div><h1 class="lesson-hero-title">The Viewing <span>Room</span></h1><p class="lesson-hero-desc">Review common types of horse driving and how driving equipment changes by purpose.</p></div></div></section>
+<div class="lesson-wrap"><main class="lesson-left">
+  <div class="lesson-intro-card"><h2>Driving in the Real World</h2><p>Driving can look very different depending on the horse, vehicle, setting, and job. The harness still has to do the same essential things: connect the horse safely, allow clear communication, manage pull, and help control the vehicle.</p><p class="gallery-instructions">Click any card to flip it and reveal the driving type and short description.</p></div>
+  <div class="visual-card"><h2>Driving Gallery</h2><div class="equipment-grid">
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/the-viewing-room/pleasure-driving.png" alt="Pleasure driving" style="width:100%;height:100%;object-fit:contain;background:var(--soft-white);border-radius:var(--radius);"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Pleasure Driving</div><div class="term-def">Driving for recreation, schooling, or relaxed presentation. The turnout should be safe, tidy, comfortable, and suitable for the horse and vehicle.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/the-viewing-room/carriage-driving.png" alt="Carriage driving" style="width:100%;height:100%;object-fit:contain;background:var(--soft-white);border-radius:var(--radius);"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Carriage Driving</div><div class="term-def">Driving with a carriage or similar vehicle, often emphasizing turnout, rein handling, smoothness, and correct harness presentation.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/the-viewing-room/combined-driving.png" alt="Combined driving" style="width:100%;height:100%;object-fit:contain;background:var(--soft-white);border-radius:var(--radius);"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Combined Driving</div><div class="term-def">A competitive sport with phases that may include dressage-style work, obstacle driving, and marathon-style challenges requiring precision and control.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/the-viewing-room/fine-harness.png" alt="Fine harness driving" style="width:100%;height:100%;object-fit:contain;background:var(--soft-white);border-radius:var(--radius);"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Fine Harness</div><div class="term-def">A show-ring driving style often associated with high-stepping, elegant presentation and a light vehicle suited to the discipline.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/the-viewing-room/draft-horse.png" alt="Draft horse driving" style="width:100%;height:100%;object-fit:contain;background:var(--soft-white);border-radius:var(--radius);"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Draft Driving</div><div class="term-def">Driving larger horses or teams for work, show, or demonstration. Harnesses are often heavier and built to distribute pulling pressure well.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/the-viewing-room/team-driving.png" alt="Team driving" style="width:100%;height:100%;object-fit:contain;background:var(--soft-white);border-radius:var(--radius);"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Pair or Team Driving</div><div class="term-def">Driving more than one horse together. The driver must manage multiple lines, matched movement, and correct hitching for the group.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/the-viewing-room/hackney-roadster-pony.png" alt="Hackney and roadster pony driving" style="width:100%;height:100%;object-fit:contain;background:var(--soft-white);border-radius:var(--radius);"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Hackney & Roadster</div><div class="term-def">High-stepping, animated driving disciplines where the horse's movement and presence are a key part of the presentation. Often seen in show rings with light vehicles.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="images/the-viewing-room/harness-racing.png" alt="Harness racing" style="width:100%;height:100%;object-fit:contain;background:var(--soft-white);border-radius:var(--radius);"><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Harness Racing</div><div class="term-def">A competitive speed discipline where horses trot or pace while pulling a lightweight sulky. Strict rules govern gait, equipment, and race conduct.</div></div></div></button>
+  </div></div>
+</main><aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside></div>
+<div id="site-footer"></div><script>window.CURRENT_MODULE=3;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Driving Equipment',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};</script><script src="course-config.js"></script><script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script><script>try{localStorage.setItem('equineEduProgress.drivingEquipment.viewingRoom','true')}catch(e){}</script>
+</body></html>

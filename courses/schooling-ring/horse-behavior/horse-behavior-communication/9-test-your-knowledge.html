@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge — Horse Behavior & Communication — Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css"><link rel="stylesheet" href="../../../../assets/css/game.css">
+</head><body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Horse Behavior</div>
+    <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    <p class="lesson-hero-desc">Each attempt draws 12 questions from a larger bank — answers rotate so repeated attempts are never the same quiz.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 12</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/12</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QC=12;
+const bank=[
+{q:"What is equine ethology?",opts:["The scientific study of horse behavior in natural conditions", "The study of horse nutrition", "The practice of training horses for competition", "The field of veterinary medicine focused on horse diseases"],a:"The scientific study of horse behavior in natural conditions",ok:"Correct. Ethology is the scientific study of animal behavior \u2014 equine ethology focuses specifically on horses in their natural social environment.",no:"Ethology is the scientific study of animal behavior in natural conditions. It forms the scientific basis for understanding how and why horses behave as they do."},
+{q:"The lead mare in a wild herd primarily:",opts:["Guides daily movement, routes, and grazing decisions", "Protects the herd from predators", "Determines the breeding order", "Disciplines young horses in the group"],a:"Guides daily movement, routes, and grazing decisions",ok:"Correct. The lead mare is the primary decision-maker for daily movement, routes, and when to move to food and water.",no:"The lead mare controls the day-to-day movement of the herd \u2014 her role is often more influential than the stallion's."},
+{q:"What is the flight zone?",opts:["The invisible perimeter within which a horse feels threatened and moves away", "The distance a horse can jump", "The area around a water source that a horse protects", "The range of a horse's kick"],a:"The invisible perimeter within which a horse feels threatened and moves away",ok:"Correct. The flight zone is the personal space around a horse \u2014 entering it applies spatial pressure that causes the horse to move.",no:"The flight zone is the perimeter within which a horse feels threatened and will move away. Handlers use it to control movement without touching the horse."},
+{q:"Pressure-and-release training works because:",opts:["The immediate release of pressure reinforces the correct response", "Consistent pressure teaches the horse to ignore discomfort", "The pressure physically moves the horse into position", "Release signals the end of a training session"],a:"The immediate release of pressure reinforces the correct response",ok:"Correct. The instant the horse gives the correct response, the pressure disappears \u2014 that moment of release is what the horse learns from.",no:"In pressure-and-release, the release IS the reward. The horse learns that giving the correct response makes the pressure stop."},
+{q:"Desensitization differs from flooding in that:",opts:["Desensitization uses gradual exposure below the fear threshold; flooding uses full exposure immediately", "Desensitization uses negative reinforcement; flooding uses positive reinforcement", "Desensitization is faster and more efficient than flooding", "Desensitization requires sedation; flooding does not"],a:"Desensitization uses gradual exposure below the fear threshold; flooding uses full exposure immediately",ok:"Correct. Desensitization is careful, gradual, sub-threshold exposure. Flooding forces full exposure and carries welfare risks.",no:"Desensitization builds tolerance gradually. Flooding exposes the horse to the full stimulus immediately \u2014 it can cause learned helplessness rather than genuine calm."},
+{q:"A horse that has 'habituated' to a stimulus:",opts:["No longer reacts because it has learned the stimulus is safe", "Is trained to stop all movement on command", "Has been medicated to reduce fear responses", "Reacts more strongly over time due to repeated exposure"],a:"No longer reacts because it has learned the stimulus is safe",ok:"Correct. Habituation is the natural result of repeated, non-threatening exposure \u2014 the horse learns to classify the stimulus as safe.",no:"Habituation means the horse has learned through repeated safe exposure that the stimulus is not a threat, so it stops reacting."},
+{q:"Learned helplessness in horses is a welfare concern because:",opts:["The horse has stopped responding because its responses have no effect", "The horse has learned to be calm through consistent training", "The horse has become too confident in unfamiliar settings", "The horse reacts excessively to stimuli it cannot control"],a:"The horse has stopped responding because its responses have no effect",ok:"Correct. Learned helplessness can resemble calmness but indicates the horse has given up, not that it has learned \u2014 a significant welfare problem.",no:"Learned helplessness is when a horse stops responding because it believes its responses have no effect. It can look like calm but is a welfare red flag."},
+{q:"Which of the five freedoms addresses an animal's ability to engage in species-typical behaviors?",opts:["Freedom to express normal behavior", "Freedom from hunger and thirst", "Freedom from discomfort", "Freedom from fear and distress"],a:"Freedom to express normal behavior",ok:"Correct. The freedom to express normal behavior means the animal should be able to engage in the social, physical, and behavioral patterns typical for its species.",no:"Freedom to express normal behavior is one of the five freedoms \u2014 it addresses whether an animal can engage in species-typical activity."},
+{q:"What does negative reinforcement mean in equine training?",opts:["Removing a pressure or stimulus immediately after the correct response", "Punishing the horse for incorrect behavior", "Using food rewards as motivation", "Applying pressure continuously until the horse complies"],a:"Removing a pressure or stimulus immediately after the correct response",ok:"Correct. Negative reinforcement = removing (negative) something the horse wants gone. Pressure-and-release is the most common form in horse training.",no:"Negative reinforcement removes an unpleasant stimulus when the horse gives the correct response. It is not punishment \u2014 it is the basis of pressure-and-release training."},
+{q:"A horse pinning its ears and swishing its tail sharply during grooming is communicating:",opts:["Discomfort or irritation", "Relaxation", "Hunger", "Interest in another horse"],a:"Discomfort or irritation",ok:"Correct. Pinned ears and sharp tail swishing during handling are clear signals of discomfort, pain, or irritation.",no:"Pinned ears and sharp tail swishing are discomfort or irritation signals \u2014 the horse is asking for the stimulus to stop."},
+{q:"In herd hierarchy, resources are controlled by:",opts:["Higher-ranking horses, which displace lower-ranking horses from food and water", "The largest horse in the group", "The horse that arrived in the herd first", "All horses equally through mutual agreement"],a:"Higher-ranking horses, which displace lower-ranking horses from food and water",ok:"Correct. Higher-ranking horses have priority access to food, water, space, and social partners \u2014 they displace lower-ranking horses.",no:"Herd hierarchy determines resource access. Higher-ranking horses displace lower-ranking horses from food, water, and preferred space."},
+{q:"What is positive reinforcement in horse training?",opts:["Adding something the horse wants when it gives the correct response", "Removing a stimulus the horse finds unpleasant", "Using pressure to guide the horse", "Repeating a cue until the horse complies"],a:"Adding something the horse wants when it gives the correct response",ok:"Correct. Positive reinforcement adds something desirable \u2014 often food \u2014 immediately after the correct response.",no:"Positive reinforcement adds something the horse values (usually food) immediately after the desired response."},
+{q:"Approach and retreat during desensitization means:",opts:["Move the stimulus closer only when the horse relaxes, then retreat before the horse reacts", "Approach the horse quickly and retreat slowly", "Advance toward a horse until it moves, then pursue it", "Remove the stimulus permanently when the horse reacts"],a:"Move the stimulus closer only when the horse relaxes, then retreat before the horse reacts",ok:"Correct. Approach-and-retreat keeps exposure below the fear threshold by advancing only when the horse is calm and retreating before it reacts.",no:"Approach-and-retreat is the technique of advancing the stimulus only when the horse is calm, then retreating before reaction \u2014 building tolerance systematically."},
+{q:"A horse's body weight shifted to one hindleg while standing is typically:",opts:["A resting posture \u2014 relaxed", "A preparation for a kick", "A sign of lameness in that leg", "An aggressive displacement gesture"],a:"A resting posture \u2014 relaxed",ok:"Correct. Resting a hindleg (hip dropped) is a normal resting posture, not a sign of pain or aggression \u2014 common in relaxed horses.",no:"A resting hindleg with the hip dropped is a normal relaxation posture. It is not a preparation to kick or a lameness sign on its own."},
+{q:"What does 'reading a horse' mean in practice?",opts:["Observing and interpreting body language to assess the horse's emotional and physical state", "Examining the horse's registration papers", "Reviewing the horse's veterinary records before riding", "Watching the horse move from a distance to evaluate conformation"],a:"Observing and interpreting body language to assess the horse's emotional and physical state",ok:"Correct. Reading a horse means continuously observing its body language \u2014 ear position, eye expression, posture, tail carriage \u2014 to understand its current state.",no:"Reading a horse means observing and interpreting the whole-body signals it is giving to understand how it feels in the moment."},
+];
+function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let qs=[],cur=0,sc=0,ans=false;
+function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
+  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
+function show(){const q=qs[cur];
+  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
+  document.getElementById('quiz-score').textContent='Score: '+sc;
+  document.getElementById('quiz-question').textContent=q.q;
+  document.getElementById('quiz-feedback').textContent='';
+  document.getElementById('quiz-next').disabled=true;ans=false;
+  const opts=sh([...q.opts]);
+  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
+  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
+    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
+    if(ok)sc++;
+    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
+      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
+      else if(x===this&&!ok)x.classList.add('incorrect');
+    });
+    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
+    document.getElementById('quiz-next').disabled=false;
+  }));}
+document.getElementById('quiz-next').addEventListener('click',function(){cur++;
+  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
+    document.getElementById('score-panel').style.display='';
+    document.getElementById('score-display').textContent=sc+'/'+QC;
+    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
+  }else show();});
+document.getElementById('btn-retake').addEventListener('click',init);init();
+})();
+</script>
+<script src="course-config.js"></script>
+<script>window.CURRENT_MODULE=8;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};</script>
+<script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Intro to Hoof Anatomy &mdash; Equine Edu</title>
+<meta name="description" content="Randomized quiz on the outside structures, including the periople, and the underside of the horse hoof.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text"><div class="lesson-module-tag">Intro to Hoof Anatomy</div><h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">This quiz covers the outside hoof structures, including the periople, and the underneath of the hoof. Each attempt gives you 15 questions from a larger bank.</p></div>
+  </div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/15</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QUESTION_COUNT=15;
+const questionBank=[
+{prompt:'Which structure is the hard outer covering of the hoof?',options:['Hoof Wall','Frog','Sole','Navicular Bone'],answer:'Hoof Wall',correct:'Correct. The hoof wall is the hard outer covering.',incorrect:'The hard outer covering is the hoof wall.'},
+{prompt:'Where does new hoof wall growth begin?',options:['Coronet / Coronary Band','Frog','Central Sulcus','Coffin Bone'],answer:'Coronet / Coronary Band',correct:'Correct. Hoof wall grows downward from the coronet.',incorrect:'Hoof wall growth begins at the coronet, also called the coronary band.'},
+{prompt:'Which part is the front of the hoof wall?',options:['Toe','Heel Bulb','Bar','Sole'],answer:'Toe',correct:'Correct. The toe is the front of the hoof.',incorrect:'The front of the hoof is called the toe.'},
+{prompt:'Which structures are the side portions of the hoof wall?',options:['Quarters','Collateral Grooves','Heel Bulbs','Bars'],answer:'Quarters',correct:'Correct. The quarters are the side areas of the hoof wall.',incorrect:'The side areas of the hoof wall are the quarters.'},
+{prompt:'Which part is the rounded soft area at the back of the hoof?',options:['Heel Bulb','White Line','Toe','Short Pastern Bone'],answer:'Heel Bulb',correct:'Correct. Heel bulbs are the rounded soft areas at the back of the hoof.',incorrect:'The rounded soft areas at the back are the heel bulbs.'},
+{prompt:'Which bottom structure is V-shaped and rubbery?',options:['Frog','Sole','White Line','Bar'],answer:'Frog',correct:'Correct. The frog is the V-shaped rubbery pad.',incorrect:'The V-shaped rubbery structure is the frog.'},
+{prompt:'Which structure is the bottom surface that protects the inner foot?',options:['Sole','Coronet','Quarter','Navicular Bone'],answer:'Sole',correct:'Correct. The sole is the bottom protective surface.',incorrect:'The bottom protective surface is the sole.'},
+{prompt:'Which line marks where the hoof wall and sole meet underneath?',options:['White Line','Central Sulcus','Coronet','Collateral Groove'],answer:'White Line',correct:'Correct. The white line marks the junction of wall and sole.',incorrect:'The wall and sole meet at the white line.'},
+{prompt:'Where are the collateral grooves?',options:['On each side of the frog','At the front of the hoof wall','Inside the coffin bone','Around the coronet'],answer:'On each side of the frog',correct:'Correct. Collateral grooves sit beside the frog.',incorrect:'Collateral grooves are the grooves on each side of the frog.'},
+{prompt:'What is the groove down the middle of the frog called?',options:['Central Sulcus','White Line','Quarter','Bar'],answer:'Central Sulcus',correct:'Correct. The central sulcus runs down the middle of the frog.',incorrect:'The center groove of the frog is the central sulcus.'},
+{prompt:'Which structures are inward folds of the hoof wall near the heels?',options:['Bars','Heel Bulbs','Quarters','Collateral Grooves'],answer:'Bars',correct:'Correct. Bars are inward folds near the heels.',incorrect:'The inward folds near the heels are called bars.'},
+{prompt:'Which band of soft tissue sits just above the hoof wall, where hair meets hoof?',options:['Periople','Frog','White Line','Bar'],answer:'Periople',correct:'Correct. The periople is the band above the hoof wall where hair meets hoof.',incorrect:'The band above the hoof wall where hair meets hoof is the periople.'},
+{prompt:'What does the periople produce as new hoof wall grows down?',options:['A thin, protective coating over the new wall','The white line','The central sulcus','The digital cushion'],answer:'A thin, protective coating over the new wall',correct:'Correct. The periople produces a protective coating over new hoof wall.',incorrect:'The periople produces a thin, protective coating over the new hoof wall.'},
+{prompt:'Which view shows the sole, frog, bars, and white line?',options:['Underneath of the hoof','Outer structures','Periople','Withers view'],answer:'Underneath of the hoof',correct:'Correct. Those parts are seen when the hoof is picked up.',incorrect:'Sole, frog, bars, and white line are underneath structures.'},
+{prompt:'Which view includes the hoof wall, toe, quarters, heels, coronet, periople, and heel bulbs?',options:['Outer structures','Underneath of the hoof','Quiz Corral','Leg markings'],answer:'Outer structures',correct:'Correct. Those are outside landmarks.',incorrect:'Those parts belong to the outer structures view.'},
+{prompt:'Why should beginners learn hoof anatomy?',options:['To describe what they see during care and communicate clearly','To replace farrier care','To diagnose lameness without help','To avoid picking hooves'],answer:'To describe what they see during care and communicate clearly',correct:'Correct. The goal is clear observation and communication.',incorrect:'Beginners learn hoof anatomy to observe and communicate clearly, not to replace professionals.'},
+{prompt:'True or false: The periople is visible from the outside of the hoof.',options:['True','False'],answer:'True',correct:'Correct. The periople can be seen as a band just above the hoof wall.',incorrect:'The periople is an outer structure, visible just above the hoof wall.'},
+{prompt:'True or false: The frog is part of the underside of the hoof.',options:['True','False'],answer:'True',correct:'Correct. The frog is visible on the underside.',incorrect:'The frog is an underneath structure.'},
+{prompt:'Which part is most important as a farrier landmark where the wall and sole meet?',options:['White Line','Mane','Dock','Gaskin'],answer:'White Line',correct:'Correct. The white line is an important farrier landmark.',incorrect:'The landmark where wall and sole meet is the white line.'}
+];
+function esc(t){return String(t||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(i=>i.v)}
+const cardEl=document.getElementById('quiz-card'),countEl=document.getElementById('quiz-count'),scoreEl=document.getElementById('quiz-score'),qEl=document.getElementById('quiz-question'),optEl=document.getElementById('quiz-options'),fbEl=document.getElementById('quiz-feedback'),nextBtn=document.getElementById('quiz-next'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message'),retake=document.getElementById('btn-retake');
+let active=[],idx=0,score=0,answered=false;
+function start(){active=shuffle(questionBank).slice(0,Math.min(QUESTION_COUNT,questionBank.length)).map(q=>({...q,options:shuffle(q.options)}));idx=0;score=0;scorePanel.classList.remove('show');cardEl.style.display='';showQuestion()}
+function showQuestion(){answered=false;const q=active[idx];countEl.textContent='Question '+(idx+1)+' of '+active.length;scoreEl.textContent='Score: '+score;qEl.textContent=q.prompt;fbEl.className='quiz-feedback';fbEl.textContent='';nextBtn.disabled=true;nextBtn.textContent='Next Question';optEl.innerHTML=q.options.map(o=>`<button type="button" class="quiz-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');optEl.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(btn,q)))}
+function selectAnswer(btn,q){if(answered)return;answered=true;const correct=q.answer;optEl.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.val===correct)b.classList.add('correct-ans')});const ok=btn.dataset.val===correct;if(ok)score++;else btn.classList.add('wrong-ans');fbEl.textContent=ok?q.correct:q.incorrect;fbEl.classList.add('show',ok?'correct':'incorrect');scoreEl.textContent='Score: '+score;nextBtn.textContent=idx+1<active.length?'Next Question':'See Results';nextBtn.disabled=false}
+nextBtn.addEventListener('click',()=>{idx++;if(idx>=active.length){finish();return}showQuestion()});
+function finish(){cardEl.style.display='none';const pct=score/active.length;scoreDisplay.textContent=score+'/'+active.length;scoreMessage.textContent=pct>=.9?'Excellent work. You have a strong command of this material.':pct>=.75?'Good work. Review the questions you missed and try another round.':pct>=.6?'You are getting there. Revisit the lesson and Training Barn, then try again.':'Keep practicing. These terms will get easier with review.';scorePanel.classList.add('show');if(pct>=.8){try{localStorage.setItem('equineEduProgress.introToHoofAnatomy.testYourKnowledge','true')}catch(e){}}}
+retake.addEventListener('click',()=>{start();cardEl.scrollIntoView({behavior:'smooth',block:'start'})});
+start()
+})();
+</script>
+<script src="course-config.js"></script>
+<script>window.CURRENT_MODULE=4;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Intro to Hoof Anatomy',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'4-training-barn.html'}]};</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

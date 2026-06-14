@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge — Equine Health & Disease Prevention — Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css"><link rel="stylesheet" href="../../../../assets/css/game.css">
+</head><body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Health &amp; First Aid</div>
+    <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    <p class="lesson-hero-desc">Each attempt draws 12 questions from a larger bank — answers rotate so repeated attempts are never the same quiz.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 12</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/12</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QC=12;
+const bank=[
+{q:"What is the normal temperature range for an adult horse?",opts:["99\u2013101\u00b0F (37.2\u201338.3\u00b0C)", "95\u201398\u00b0F (35\u201337\u00b0C)", "102\u2013104\u00b0F (38.9\u201340\u00b0C)", "97\u2013100\u00b0F (36.1\u201337.8\u00b0C)"],a:"99\u2013101\u00b0F (37.2\u201338.3\u00b0C)",ok:"Correct. Normal equine temperature is 99\u2013101\u00b0F. Above 101\u00b0F may indicate fever; above 102\u00b0F is a veterinary concern.",no:"Normal equine temperature is 99\u2013101\u00b0F (37.2\u201338.3\u00b0C). Temperature should be taken rectally."},
+{q:"What is the normal resting heart rate for an adult horse?",opts:["28\u201344 beats per minute", "60\u201380 beats per minute", "15\u201325 beats per minute", "50\u201370 beats per minute"],a:"28\u201344 beats per minute",ok:"Correct. A resting heart rate of 28\u201344 bpm is normal for adult horses. An elevated rate at rest is a pain or distress signal.",no:"Normal resting heart rate is 28\u201344 bpm. Rates above 60 bpm at rest suggest significant pain or illness."},
+{q:"Which vaccines are considered 'core' for all horses in North America?",opts:["Tetanus, EEE/WEE, West Nile Virus, and Rabies", "Strangles, Influenza, Herpesvirus, and Botulism", "Potomac Horse Fever, Anthrax, and Rotavirus", "All vaccines listed are core"],a:"Tetanus, EEE/WEE, West Nile Virus, and Rabies",ok:"Correct. Tetanus, EEE/WEE, West Nile, and Rabies are the four AAEP core vaccines recommended for all horses annually.",no:"AAEP core vaccines: Tetanus, Eastern/Western Equine Encephalomyelitis, West Nile Virus, and Rabies."},
+{q:"What does a Coggins test detect?",opts:["Antibodies to Equine Infectious Anemia (EIA)", "Intestinal parasite eggs", "Respiratory viruses including Influenza", "Blood glucose levels"],a:"Antibodies to Equine Infectious Anemia (EIA)",ok:"Correct. The Coggins test screens for EIA \u2014 a reportable viral disease with no vaccine or cure.",no:"The Coggins test detects Equine Infectious Anemia (EIA). A negative test is required for transport and competition in most states."},
+{q:"What is the purpose of fecal egg counting?",opts:["To identify which horses actually carry significant parasite burdens and need treatment", "To determine the correct dewormer brand for all horses", "To detect tapeworm infections specifically", "To replace annual vaccination with parasite testing"],a:"To identify which horses actually carry significant parasite burdens and need treatment",ok:"Correct. Fecal egg counts identify the horses that need deworming rather than treating all horses on a blanket schedule.",no:"Fecal egg counting allows targeted treatment \u2014 only horses with significant burdens are dewormed, slowing resistance development."},
+{q:"Anthelmintic resistance develops because:",opts:["Blanket deworming selects for resistant parasite populations over time", "Horses develop immunity to dewormers after repeated use", "Wild horses carry resistant parasites into domestic herds", "Dewormers lose potency when stored incorrectly"],a:"Blanket deworming selects for resistant parasite populations over time",ok:"Correct. Treating all horses on a schedule, regardless of need, selects strongly for worm populations that can survive the drug.",no:"Resistance develops through selection pressure \u2014 treating all horses repeatedly selects for worms that survive deworming."},
+{q:"Early colic signs include:",opts:["Pawing, looking at the flank, elevated heart rate, and lack of gut sounds", "Increased appetite, high energy, and bright attitude", "Nasal discharge and elevated respiratory rate", "Swelling in all four limbs"],a:"Pawing, looking at the flank, elevated heart rate, and lack of gut sounds",ok:"Correct. Pawing, flank-watching, and elevated heart rate are hallmark early colic signs. Lack of gut sounds indicates reduced motility.",no:"Early colic signs: pawing, looking at the flank, elevated heart rate, reduced or absent gut sounds, and reluctance to move."},
+{q:"What is floating a horse's teeth?",opts:["Filing down sharp points and hooks to restore even grinding surfaces", "Removing all upper premolars to improve bit contact", "Polishing the incisors for appearance", "A diagnostic procedure using dental radiographs"],a:"Filing down sharp points and hooks to restore even grinding surfaces",ok:"Correct. Floating removes the sharp points that form on cheek teeth from uneven wear, preventing pain and feed inefficiency.",no:"Dental floating files the sharp edges that develop on a horse's cheek teeth, allowing comfortable, efficient chewing."},
+{q:"Capillary refill time should be under:",opts:["2 seconds", "5 seconds", "10 seconds", "30 seconds"],a:"2 seconds",ok:"Correct. Press the gums firmly, release, and count. Pink color should return within 2 seconds. Longer times suggest circulatory compromise.",no:"Capillary refill time should be under 2 seconds. Press the gum, release, and watch color return. Over 2 seconds is abnormal."},
+{q:"A biosecurity measure when a new horse arrives at a facility is:",opts:["Isolating it from the resident herd for 2\u20134 weeks", "Turning it out with the herd immediately so it can adjust", "Deworming it immediately before any contact with the facility", "Vaccinating it before transport so it is protected on arrival"],a:"Isolating it from the resident herd for 2\u20134 weeks",ok:"Correct. New arrivals should be isolated for at least 2\u20134 weeks to allow any incubating illness to become apparent before herd contact.",no:"Biosecurity isolation of 2\u20134 weeks for new arrivals prevents introduction of disease that may not yet be showing symptoms."},
+{q:"West Nile Virus is transmitted to horses by:",opts:["Mosquitoes carrying the virus from infected birds", "Direct horse-to-horse contact", "Contaminated water sources", "Infected ticks in tall grass"],a:"Mosquitoes carrying the virus from infected birds",ok:"Correct. West Nile Virus is an arbovirus \u2014 mosquitoes transmit it to horses after feeding on infected birds.",no:"West Nile Virus is transmitted by mosquitoes that have fed on infected birds. It is not spread between horses directly."},
+{q:"Normal gut sounds in a horse should be present in:",opts:["All four quadrants of the abdomen", "The right side only", "The upper left quadrant only", "Gut sounds are not present in healthy horses"],a:"All four quadrants of the abdomen",ok:"Correct. Normal gut sounds \u2014 borborygmi \u2014 should be audible in all four quadrants with a stethoscope.",no:"Gut sounds should be present in all four quadrants. Absent or very reduced sounds indicate reduced gut motility."},
+{q:"Equine Infectious Anemia (EIA) is notable because:",opts:["It has no vaccine or treatment and is reportable in most states", "It is easily treated with antibiotics", "It affects only horses under five years old", "It is caused by a common intestinal parasite"],a:"It has no vaccine or treatment and is reportable in most states",ok:"Correct. EIA has no vaccine, no cure, and positive horses must be either humanely destroyed or permanently quarantined by law in most states.",no:"EIA has no vaccine or cure and is reportable \u2014 positive horses face quarantine or euthanasia. This is why Coggins testing is required for transport."},
+{q:"The best time to check for abnormalities in a horse's legs is:",opts:["During daily grooming and handling when legs are at rest and relaxed", "Only before and after competition", "Annually during veterinary examination", "After a ride when the horse is warm"],a:"During daily grooming and handling when legs are at rest and relaxed",ok:"Correct. Daily handling during grooming is when handlers learn what is normal for each horse \u2014 making early detection of heat, swelling, or pain possible.",no:"Daily leg checks during grooming establish a baseline of normal for each horse, making early detection of problems possible."},
+{q:"Tetanus in horses is caused by:",opts:["Clostridium tetani bacteria found in soil and manure", "A viral infection transmitted by flies", "A fungal infection from contaminated hay", "A nutritional deficiency in selenium"],a:"Clostridium tetani bacteria found in soil and manure",ok:"Correct. Clostridium tetani produces a potent neurotoxin. The bacteria are ubiquitous in soil \u2014 any wound is a potential entry point. Annual tetanus vaccination is essential.",no:"Tetanus is caused by Clostridium tetani, found in soil and manure. Horses are highly susceptible \u2014 annual vaccination is a core requirement."},
+];
+function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let qs=[],cur=0,sc=0,ans=false;
+function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
+  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
+function show(){const q=qs[cur];
+  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
+  document.getElementById('quiz-score').textContent='Score: '+sc;
+  document.getElementById('quiz-question').textContent=q.q;
+  document.getElementById('quiz-feedback').textContent='';
+  document.getElementById('quiz-next').disabled=true;ans=false;
+  const opts=sh([...q.opts]);
+  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
+  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
+    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
+    if(ok)sc++;
+    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
+      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
+      else if(x===this&&!ok)x.classList.add('incorrect');
+    });
+    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
+    document.getElementById('quiz-next').disabled=false;
+  }));}
+document.getElementById('quiz-next').addEventListener('click',function(){cur++;
+  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
+    document.getElementById('score-panel').style.display='';
+    document.getElementById('score-display').textContent=sc+'/'+QC;
+    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
+  }else show();});
+document.getElementById('btn-retake').addEventListener('click',init);init();
+})();
+</script>
+<script src="course-config.js"></script>
+<script>window.CURRENT_MODULE=8;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};</script>
+<script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+</body></html>

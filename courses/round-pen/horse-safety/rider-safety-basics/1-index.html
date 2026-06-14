@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rider Safety Basics &mdash; Equine Edu</title>
+<meta name="description" content="Learn the safety habits every horseperson needs first — reading the horse, blind spots, certified helmets and proper boots, and safe leading and tying.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+body { background: var(--cream-bg); }
+
+/* ── Hero ─────────────────────────────────────────────────────────── */
+.course-hero-inner { display:grid; grid-template-columns:1fr 360px; gap:4rem; align-items:center; max-width:1100px; margin:0 auto; padding:72px 5%; }
+.course-tag { display:inline-flex; align-items:center; gap:.5rem; background:rgba(127,152,178,.12); border:1px solid rgba(127,152,178,.3); color:var(--leather-dark); font-size:.7rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:2px; margin-bottom:1.25rem; }
+.course-hero h1 { font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3.25rem); color:var(--heading); line-height:1.12; margin-bottom:1rem; }
+.course-hero h1 span { color:var(--blue-primary); }
+.course-hero-desc { color:var(--body-text); font-size:1rem; line-height:1.75; max-width:540px; margin-bottom:1.75rem; }
+.course-meta-row { display:flex; flex-wrap:nowrap; gap:0; margin-bottom:1.75rem; align-items:center; min-width:0; }
+.meta-item { color:var(--leather-dark); font-weight:800; font-size:.74rem; border-right:1px solid var(--blue-secondary); padding:0 .75rem; white-space:nowrap; }
+.meta-item:first-child { padding-left:0; }
+.meta-item:last-child { border-right:0; }
+.hero-actions { display:flex; gap:.85rem; flex-wrap:wrap; }
+.course-hero-art { display:flex; justify-content:center; align-items:center; }
+.hero-marking-single { width:min(100%,300px); aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; }
+.hero-marking-single svg { width:100%; height:100%; }
+
+/* ── What You'll Learn ───────────────────────────────────────────── */
+.learn-section { background:var(--white); padding:4rem 5%; }
+.learn-inner { max-width:1100px; margin:0 auto; }
+.learn-header { margin-bottom:2.25rem; }
+.learn-header .section-label { display:block; margin-bottom:.5rem; }
+.learn-header h2 { font-family:var(--font-display); color:var(--heading); font-size:clamp(1.5rem,2.5vw,2rem); line-height:1.2; margin-bottom:.6rem; }
+.learn-header p { color:var(--body-text); font-size:.95rem; line-height:1.7; max-width:620px; }
+.outcome-card { display:flex; align-items:flex-start; gap:1rem; background:var(--cream-bg); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.35rem 1.4rem; }
+.outcome-badge { width:34px; height:34px; background:var(--blue-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:.05rem; }
+.outcome-badge svg { width:16px; height:16px; }
+.outcome-text { color:var(--body-text); font-size:.9rem; line-height:1.65; }
+
+/* ── Curriculum ───────────────────────────────────────────────────── */
+.module-list { margin-top:2rem; display:grid; gap:.6rem; }
+.module-item { display:grid; grid-template-columns:40px 1fr auto; gap:1rem; align-items:center; padding:1rem 1.25rem; background:var(--white); border:1px solid var(--border); border-radius:var(--radius); text-decoration:none; transition:box-shadow .18s,border-color .18s; }
+.module-item:hover { border-color:var(--tan); box-shadow:0 4px 16px rgba(36,54,74,.08); }
+.module-num { width:36px; height:36px; border-radius:50%; background:var(--blue-primary); color:var(--white); font-family:var(--font-display); display:flex; align-items:center; justify-content:center; }
+.module-title { font-weight:800; color:var(--heading); margin-bottom:.2rem; }
+.module-desc { color:var(--body-text); font-size:.82rem; line-height:1.5; }
+.module-type { color:var(--muted-text); font-size:.68rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; white-space:nowrap; }
+.track-features,.alignment-list { list-style:none; display:grid; gap:.75rem; margin-top:1.25rem; }
+.track-features li,.alignment-list li { display:flex; gap:.75rem; color:var(--body-text); font-size:.9rem; line-height:1.6; }
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width:900px) {
+  .course-hero-inner { grid-template-columns:1fr; }
+  .course-hero-art { display:none; }
+
+  .module-item { grid-template-columns:36px 1fr; }
+  .module-type { display:none; }
+}
+@media (max-width:700px) {
+  .course-meta-row { flex-wrap:nowrap !important; gap:0; }
+  .meta-item { font-size:.62rem !important; padding:0 .38rem !important; letter-spacing:0 !important; }
+  .meta-item:first-child { padding-left:0 !important; }
+  .meta-item:last-child { padding-right:0 !important; }
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<!-- ── Hero ───────────────────────────────────────────────────────── -->
+<section class="course-hero">
+  <div class="course-hero-inner">
+    <div class="course-hero-text">
+      <div class="course-tag">Horse Safety</div>
+      <h1>Rider Safety <span>Basics</span></h1>
+      <p class="course-hero-desc">Around horses, the goal is for nothing to happen &mdash; and that takes skill. This course covers the safety habits experienced horsepeople use every time: how to read a horse, where to stand, what to wear, and how to lead and tie safely.</p>
+      <div class="course-meta-row">
+        <div class="meta-item">Evidence-Based Content</div>
+        <div class="meta-item">Interactive Learning</div>
+        <div class="meta-item">Self-Paced Education</div>
+        <div class="meta-item">Printable Activities</div>
+      </div>
+      <div class="hero-actions">
+        <a href="2-why-rider-safety.html#top" class="btn-primary">Start Course</a>
+        <a href="#curriculum" class="btn-outline">See All Courses</a>
+      </div>
+    </div>
+    <div class="course-hero-art">
+      <div class="hero-marking-single">
+        <svg viewBox="0 0 200 200" role="img" aria-label="Riding helmet illustration" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="160" rx="72" ry="10" fill="var(--blue-secondary)" opacity=".35"/>
+          <path d="M100 38c-38 0-68 29-68 66v8h136v-8c0-37-30-66-68-66z" fill="var(--blue-primary)"/>
+          <path d="M100 38c-14 0-26 33-26 74h52c0-41-12-74-26-74z" fill="var(--heading)" opacity=".25"/>
+          <rect x="28" y="112" width="144" height="16" rx="8" fill="var(--leather-dark)"/>
+          <path d="M70 128v14c0 10 13 18 30 18s30-8 30-18v-14" fill="none" stroke="var(--tan)" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="100" cy="52" r="5" fill="var(--tan)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── What You'll Learn ─────────────────────────────────────────── -->
+
+<!-- ── Curriculum ─────────────────────────────────────────────────── -->
+<section class="curriculum-section" id="curriculum">
+  <div class="curriculum-inner">
+    <p class="section-label">Course Curriculum</p>
+    <h2 class="section-title">Structured Learning Through Guided Lessons</h2>
+    <p class="section-sub">Each course is organized into focused lessons designed to build knowledge step by step through visual learning, interactive practice, review activities, and skill-building exercises.</p>
+    <div class="module-list" id="course-module-list"></div>
+  </div>
+</section>
+
+<!-- ── Track ──────────────────────────────────────────────────────── -->
+<section class="track-section">
+  <div class="track-inner">
+    <div class="fade-in">
+      <h2 class="section-title">Built on Credible Sources</h2>
+      <p class="section-sub">Every fact in this course traces to university extension horse programs, the ASTM F1163 helmet standard, and peer-reviewed research on equestrian injury &mdash; reviewed before publication.</p>
+      <ul class="track-features">
+        <li><span class="track-dot"></span>No prior horse knowledge required</li>
+        <li><span class="track-dot"></span>Safety practices from national Cooperative Extension guidance</li>
+        <li><span class="track-dot"></span>Interactive activities and spaced-review study tools</li>
+        <li><span class="track-dot"></span>Accessible across most devices</li>
+      </ul>
+    </div>
+    <div class="fade-in">
+      <h4 style="font-family:var(--font-display);color:var(--tan);font-size:1.1rem;margin-bottom:1rem;">Perfect For</h4>
+      <ul class="alignment-list">
+        <li><span class="track-dot"></span>First-time barn visitors, new lesson students, and volunteers</li>
+        <li><span class="track-dot"></span>Parents of new riders who want to understand barn rules</li>
+        <li><span class="track-dot"></span>4-H and FFA members starting horse projects</li>
+        <li><span class="track-dot"></span>Instructors and programs onboarding new students safely</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="cta-inner fade-in">
+    <p class="section-label" style="text-align:center;display:block;">Ready to Start?</p>
+    <h2 class="section-title">Build the Habits That Keep Riders Safe</h2>
+    <p class="section-sub">Ten essential concepts, practiced until they&rsquo;re automatic. Everything here is reinforced with an experienced handler nearby &mdash; supervision is itself a safety rule.</p>
+    <a href="2-why-rider-safety.html#top" class="btn-primary">Start the Course</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script>
+  window.LAYOUT = { homeUrl: '../../../../index.html', coursesUrl: '../../../index.html', navCta: { label: 'All Courses', url: '../../../index.html' } };
+</script>
+<script src="course-config.js"></script>
+<script>
+(function(){
+  const list=document.getElementById('course-module-list');
+  if(!list||!window.COURSE_CONFIG)return;
+  list.innerHTML=window.COURSE_CONFIG.modules.map(m=>`<a href="${m.file}" class="module-item fade-in"><div class="module-num">${m.num}</div><div><div class="module-title">${m.title}</div><div class="module-desc">${m.desc}</div></div><div class="module-type">${m.type}</div></a>`).join('');
+  document.querySelectorAll('.fade-in').forEach(el=>setTimeout(()=>el.classList.add('visible'),80));
+})();
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

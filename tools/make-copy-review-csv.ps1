@@ -93,10 +93,23 @@ foreach ($file in $files) {
     }
   }
 
-  foreach ($m in [regex]::Matches($content, '(prompt|answer|correct|incorrect|title|description|label)\s*:\s*["'']((?:\\.|[^"''])*)["'']', 'IgnoreCase')) {
-    $field = $m.Groups[1].Value
+  # Quiz fields (HTML and JS)
+  foreach ($m in [regex]::Matches($content, '(prompt|answer|correct|incorrect)\s*:\s*["'']((?:\\.|[^"''])*)["'']', 'IgnoreCase')) {
     $value = $m.Groups[2].Value -replace "\\'", "'" -replace '\\"', '"' -replace '\\n', ' '
-    Add-Row $rows $relative "quiz" "Quiz $field" $value
+    Add-Row $rows $relative "quiz" ("Quiz " + $m.Groups[1].Value) $value
+  }
+
+  # Course config / module bar fields (title, desc, label, type, navCta label, etc.)
+  foreach ($m in [regex]::Matches($content, '(?<!\w)(title|desc|description|label|type|heading|subheading|intro)\s*:\s*["'']((?:\\.|[^"''])*)["'']', 'IgnoreCase')) {
+    $field = $m.Groups[1].Value.ToLowerInvariant()
+    $value = $m.Groups[2].Value -replace "\\'", "'" -replace '\\"', '"' -replace '\\n', ' '
+    Add-Row $rows $relative "config" ("JS $field") $value
+  }
+
+  # navCta / navExtras labels (window.LAYOUT = { navCta: { label: '...' } })
+  foreach ($m in [regex]::Matches($content, 'label\s*:\s*["'']((?:\\.|[^"''])*)["'']', 'IgnoreCase')) {
+    $value = $m.Groups[1].Value -replace "\\'", "'" -replace '\\"', '"'
+    Add-Row $rows $relative "config" "JS nav label" $value
   }
 }
 

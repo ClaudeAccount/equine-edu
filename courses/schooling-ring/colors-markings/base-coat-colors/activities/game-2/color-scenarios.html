@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Identification Scenarios &mdash; Base Coat Colors &mdash; Equine Edu</title>
+<meta name="description" content="Read each horse description and select the correct base coat color. Five practice scenarios with instant feedback.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../assets/css/course.css">
+<style>
+.scenario-intro {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--heading);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.scenario-intro h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--heading);
+  margin-bottom: 0.4rem;
+}
+.scenario-intro p {
+  color: var(--body-text);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+}
+.scenario-grid { display: flex; flex-direction: column; gap: 0.85rem; }
+.scenario-card {
+  background: var(--white);
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  transition: border-color 0.18s;
+}
+.scenario-card:hover { border-color: rgba(200, 162, 122,0.5); }
+.scenario-num {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--tan);
+  margin-bottom: 0.45rem;
+}
+.scenario-q {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 0.75rem;
+  line-height: 1.55;
+}
+.scenario-options { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.scenario-btn {
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.opt-chestnut { background: rgba(180,70,30,0.08); color: var(--leather-dark); border-color: rgba(180,70,30,0.25); }
+.opt-chestnut:hover { background: rgba(180,70,30,0.18); }
+.opt-black { background: rgba(36, 54, 74,0.07); color: var(--heading); border-color: rgba(36, 54, 74,0.2); }
+.opt-black:hover { background: rgba(36, 54, 74,0.14); }
+.opt-bay { background: rgba(200, 162, 122,0.1); color: var(--leather-dark); border-color: rgba(200, 162, 122,0.28); }
+.opt-bay:hover { background: rgba(200, 162, 122,0.2); }
+.scenario-btn.correct-pick { background: var(--success-bg) !important; border-color: var(--success) !important; color: var(--success) !important; }
+.scenario-btn.wrong-pick   { background: var(--error-bg)  !important; border-color: var(--error) !important; color: var(--error) !important; }
+.scenario-btn[disabled] { cursor: default; opacity: 0.75; pointer-events: none; }
+/* Feedback: hidden by default, shown only via JS */
+.scenario-feedback {
+  display: none;
+  margin-top: 0.55rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+.scenario-feedback.fb-correct {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+.scenario-feedback.fb-wrong {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Training Barn</div>
+      <h1 class="lesson-hero-title">Color Identification <span>Scenarios</span></h1>
+      <p class="lesson-hero-desc">Read each horse description and select the correct base coat color.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="visual-card">
+
+      <div class="scenario-intro">
+        <h2>Apply What You Know</h2>
+        <p>Each scenario describes a real horse situation. Use the visual clues in the description &mdash; body color, mane, tail, leg color &mdash; to identify the base coat color. Select your answer to see instant feedback.</p>
+      </div>
+
+      <div class="scenario-grid">
+
+        <div class="scenario-card">
+          <div class="scenario-num">Scenario 1</div>
+          <div class="scenario-q">A horse has a deep red-brown body and a black mane and tail. The lower legs are also black. What is the base coat color?</div>
+          <div class="scenario-options">
+            <button class="scenario-btn opt-chestnut" onclick="checkScenario(this,'bay')">Chestnut</button>
+            <button class="scenario-btn opt-black" onclick="checkScenario(this,'bay')">Black</button>
+            <button class="scenario-btn opt-bay" onclick="checkScenario(this,'bay')">Bay</button>
+          </div>
+          <div class="scenario-feedback fb-correct">Correct! Black mane and tail over a red-brown body with black lower legs &mdash; those are the black points that confirm bay.</div>
+          <div class="scenario-feedback fb-wrong">Not quite. Look for the black mane, tail, and lower legs on a red body. That combination is bay.</div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-num">Scenario 2</div>
+          <div class="scenario-q">A horse has a bright copper-red body with a mane and tail that are the same warm red color. No black anywhere. What is the base coat color?</div>
+          <div class="scenario-options">
+            <button class="scenario-btn opt-chestnut" onclick="checkScenario(this,'chestnut')">Chestnut</button>
+            <button class="scenario-btn opt-black" onclick="checkScenario(this,'chestnut')">Black</button>
+            <button class="scenario-btn opt-bay" onclick="checkScenario(this,'chestnut')">Bay</button>
+          </div>
+          <div class="scenario-feedback fb-correct">Correct! Red body, matching red mane and tail, and no black points &mdash; that is a classic chestnut.</div>
+          <div class="scenario-feedback fb-wrong">Not quite. A red body with a matching red mane and no black anywhere means chestnut.</div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-num">Scenario 3</div>
+          <div class="scenario-q">A horse appears almost black all over &mdash; body, mane, tail, and legs &mdash; with no visible red or brown tones anywhere. What is the most likely base coat color?</div>
+          <div class="scenario-options">
+            <button class="scenario-btn opt-chestnut" onclick="checkScenario(this,'black')">Chestnut</button>
+            <button class="scenario-btn opt-black" onclick="checkScenario(this,'black')">Black</button>
+            <button class="scenario-btn opt-bay" onclick="checkScenario(this,'black')">Bay</button>
+          </div>
+          <div class="scenario-feedback fb-correct">Correct! No warm tones, no contrast, uniform black across the whole horse &mdash; that is true black.</div>
+          <div class="scenario-feedback fb-wrong">Not quite. Uniform black with no warm tones or contrast anywhere is true black.</div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-num">Scenario 4</div>
+          <div class="scenario-q">A horse has a very dark brown body that looks nearly black, but the mane is black and you can see faint brownish tones at the muzzle and flanks. What is the most likely base coat color?</div>
+          <div class="scenario-options">
+            <button class="scenario-btn opt-chestnut" onclick="checkScenario(this,'bay')">Chestnut</button>
+            <button class="scenario-btn opt-black" onclick="checkScenario(this,'bay')">Black</button>
+            <button class="scenario-btn opt-bay" onclick="checkScenario(this,'bay')">Bay</button>
+          </div>
+          <div class="scenario-feedback fb-correct">Correct! Warm brown tones at the flanks and muzzle, combined with a black mane, indicate dark bay &mdash; not true black.</div>
+          <div class="scenario-feedback fb-wrong">Not quite. Warm tones at the flanks and muzzle mean dark bay. True black has no warm tones anywhere.</div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-num">Scenario 5</div>
+          <div class="scenario-q">A horse has a very dark red-brown body and a mane that is the same dark brown-red. No black anywhere on the mane or lower legs. What is the base coat color?</div>
+          <div class="scenario-options">
+            <button class="scenario-btn opt-chestnut" onclick="checkScenario(this,'chestnut')">Chestnut</button>
+            <button class="scenario-btn opt-black" onclick="checkScenario(this,'chestnut')">Black</button>
+            <button class="scenario-btn opt-bay" onclick="checkScenario(this,'chestnut')">Bay</button>
+          </div>
+          <div class="scenario-feedback fb-correct">Correct! This is a liver chestnut &mdash; a dark shade of chestnut. The matching dark mane and the absence of black points confirm it.</div>
+          <div class="scenario-feedback fb-wrong">Not quite. A very dark body with a matching dark mane and no black points is liver chestnut &mdash; still a chestnut.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../../../index.html',
+    navCta:     { label: 'Back to Training Barn', url:'../../6-training-barn.html' }
+  };
+</script>
+<script src="../../course-config.js"></script>
+<script>
+  (function(){
+    if (!window.COURSE_CONFIG) return;
+    window.COURSE_CONFIG.indexUrl      = '../' + window.COURSE_CONFIG.indexUrl;
+    window.COURSE_CONFIG.allCoursesUrl = '../' + window.COURSE_CONFIG.allCoursesUrl;
+    window.COURSE_CONFIG.modules.forEach(function(m){ m.file = '../' + m.file; });
+  })();
+</script>
+<script src="../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../../assets/js/paywall.js"></script>
+<script src="../../../../../../assets/js/course-nav.js"></script>
+
+<script>
+function checkScenario(btn, correct) {
+  var card = btn.closest('.scenario-card');
+  if (card.dataset.answered) return;
+  card.dataset.answered = '1';
+  var color = btn.classList.contains('opt-chestnut') ? 'chestnut'
+            : btn.classList.contains('opt-black')    ? 'black'
+            : 'bay';
+  var isRight = color === correct;
+  card.querySelectorAll('.scenario-btn').forEach(function(b) {
+    b.setAttribute('disabled', '');
+    var c = b.classList.contains('opt-chestnut') ? 'chestnut'
+          : b.classList.contains('opt-black')    ? 'black'
+          : 'bay';
+    if (c === correct) b.classList.add('correct-pick');
+  });
+  btn.classList.add(isRight ? 'correct-pick' : 'wrong-pick');
+  var cls = isRight ? '.fb-correct' : '.fb-wrong';
+  var fb = card.querySelector('.scenario-feedback' + cls);
+  if (fb) fb.style.display = 'block';
+}
+</script>
+</body>
+</html>

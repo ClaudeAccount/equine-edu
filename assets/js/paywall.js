@@ -130,6 +130,10 @@
   }
 
   function check() {
+    // Dev bypass: skip paywall on localhost / 127.0.0.1
+    var h = window.location.hostname;
+    if (h === 'localhost' || h === '127.0.0.1' || h === '') return;
+
     if (typeof window.EEAuth === 'undefined') {
       // supabase-client.js not loaded — fail closed (show paywall)
       showPaywall(false);

@@ -7,7 +7,7 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   :root {
-    --navy: #0D1B3E;
+    --navy: var(--heading);
     --navy-dark: #071229;
     --gold: #D4AF37;
     --paper: #F5EFE2;
@@ -16,7 +16,7 @@
     --muted: #667190;
     --border: #ddd6c8;
     --radius: 8px;
-    --shadow: 0 14px 38px rgba(13,27,62,0.1);
+    --shadow: 0 14px 38px rgba(36, 54, 74,0.1);
   }
   body {
     margin: 0;
@@ -36,14 +36,14 @@
     padding: 0.75rem 1.25rem;
     background: var(--navy-dark);
     color: var(--white);
-    border-bottom: 3px solid var(--gold);
+    border-bottom: 3px solid var(--tan);
   }
   .brand {
     flex: 1;
     font-weight: 800;
     letter-spacing: 0.02em;
   }
-  .brand span { color: var(--gold); }
+  .brand span { color: var(--tan); }
   button, input, textarea, select {
     font: inherit;
   }
@@ -54,12 +54,12 @@
     font-weight: 800;
     cursor: pointer;
   }
-  .btn.gold { background: var(--gold); color: var(--navy); }
+  .btn.gold { background: var(--tan); color: var(--heading); }
   .btn.light { background: rgba(255,255,255,0.12); color: var(--white); }
-  .btn.white { background: var(--white); color: var(--navy); }
+  .btn.white { background: var(--white); color: var(--heading); }
   .btn:disabled { opacity: 0.45; cursor: not-allowed; }
   .hero {
-    background: var(--navy);
+    background: var(--heading);
     color: var(--white);
   }
   .hero-inner {
@@ -68,7 +68,7 @@
     padding: 3rem 1.5rem;
   }
   .eyebrow {
-    color: var(--gold);
+    color: var(--tan);
     font-size: 0.76rem;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -103,7 +103,7 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.1rem;
-    background: var(--navy);
+    background: var(--heading);
     color: var(--white);
   }
   .panel-head h2 {
@@ -167,7 +167,7 @@
     display: inline-flex;
     padding: 0.18rem 0.45rem;
     border-radius: 999px;
-    background: var(--navy);
+    background: var(--heading);
     color: var(--white);
     font-weight: 800;
     font-size: 0.68rem;
@@ -198,9 +198,9 @@
     right: 1rem;
     bottom: 1rem;
     z-index: 30;
-    background: var(--navy);
+    background: var(--heading);
     color: var(--white);
-    border-left: 4px solid var(--gold);
+    border-left: 4px solid var(--tan);
     border-radius: 8px;
     padding: 0.8rem 1rem;
     box-shadow: var(--shadow);

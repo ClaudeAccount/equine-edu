@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saddle &amp; Bridle Parts - Western Tack &amp; Equipment - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.builder-note {
+  background: rgba(200, 162, 122,0.09);
+  border: 1px solid rgba(200, 162, 122,0.32);
+  border-left: 4px solid var(--tan);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.is-baked .builder-note,
+.is-baked .builder-toolbar,
+.is-baked .position-output {
+  display: none;
+}
+.builder-note p {
+  color: var(--body-text);
+  line-height: 1.65;
+  margin: 0;
+}
+.builder-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.builder-toolbar button {
+  border: 0;
+  border-radius: var(--radius);
+  padding: 0.7rem 1rem;
+  font-family: var(--font-body);
+  font-weight: 800;
+  cursor: pointer;
+}
+.copy-btn { background:var(--blue-primary); color:var(--white); }
+.reset-btn { background: var(--soft-white); color: var(--heading); border: 1px solid var(--border) !important; }
+.builder-status {
+  color: var(--body-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.equipment-builder {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.25rem;
+  overflow: visible;
+  user-select: none;
+}
+.equipment-stage {
+  position: relative;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: visible;
+}
+#saddle-stage {
+  padding: 1.25rem;
+}
+#bridle-stage {
+  width: min(100%, 460px);
+}
+.equipment-stage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+.leader-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.leader-line {
+  stroke: var(--tan);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+  opacity: 0.95;
+}
+.anchor-dot {
+  position: absolute;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--blue-primary);
+  border: 2px solid var(--heading);
+  box-shadow: 0 2px 8px rgba(36, 54, 74,0.24);
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  z-index: 4;
+}
+.is-baked .anchor-dot {
+  pointer-events: none;
+}
+.part-callout {
+  position: absolute;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  cursor: grab;
+  white-space: nowrap;
+}
+.is-baked .part-callout {
+  cursor: default;
+  pointer-events: none;
+}
+.part-callout span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:var(--blue-primary);
+  color:var(--white);
+  border-radius: 5px;
+  box-shadow: 0 8px 18px rgba(36, 54, 74,0.18);
+  padding: 0.45rem 0.85rem;
+  font-size: clamp(0.58rem, 1vw, 0.72rem);
+  font-weight: 900;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+.part-callout:focus {
+  outline: none;
+}
+.part-callout:focus span {
+  box-shadow: 0 0 0 3px rgba(200, 162, 122,0.32), 0 8px 18px rgba(36, 54, 74,0.18);
+}
+.anchor-dot:focus {
+  outline: 2px solid rgba(200, 162, 122,0.65);
+  outline-offset: 3px;
+}
+.part-callout.dragging,
+.anchor-dot.dragging {
+  cursor: grabbing;
+  z-index: 8;
+}
+.position-output {
+  width: 100%;
+  min-height: 160px;
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-family: Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--heading);
+  background: var(--soft-white);
+  display: none;
+}
+.position-output.show { display: block; }
+.parts-reference {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--body-text);
+}
+.parts-reference div {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.7rem;
+}
+.parts-reference h4 {
+  font-family: var(--font-display);
+  color: var(--heading);
+  font-size: 0.95rem;
+  margin: 0 0 0.25rem;
+}
+.parts-reference p {
+  color: var(--body-text);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin: 0;
+}
+.tree-guide {
+  display: grid;
+  gap: 1rem;
+}
+.tree-summary {
+  background: rgba(200, 162, 122,0.09);
+  border-left: 4px solid var(--tan);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.25rem;
+  color: var(--body-text);
+  line-height: 1.7;
+}
+.tree-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.tree-image-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1rem;
+}
+.tree-image-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  display: block;
+}
+.tree-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.tree-card {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.tree-card h3 {
+  font-family: var(--font-display);
+  color: var(--heading);
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+.tree-card p {
+  color: var(--body-text);
+  line-height: 1.65;
+  margin: 0;
+}
+@media (max-width: 760px) {
+  .parts-reference { grid-template-columns: 1fr; }
+  .tree-image-grid { grid-template-columns: 1fr; }
+  .tree-image-card img { height: 220px; }
+  .tree-grid { grid-template-columns: 1fr; }
+  .part-callout span { font-size: 0.55rem; padding: 0.35rem 0.6rem; }
+}
+
+
+/* Hide cinch from diagram — term still appears in reference list */
+.anchor-dot[data-id="cinch"], .part-callout[data-id="cinch"], .leader-line[data-for="cinch"] { display: none !important; }
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Western Tack & Equipment</div>
+      <h1 class="lesson-hero-title">Saddle &amp; Bridle <span>Parts</span></h1>
+      <p class="lesson-hero-desc">Use the tabs to study the major parts of a western saddle and western bridle.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="tab-bar" id="equip-tabs" role="tablist" aria-label="Western equipment parts">
+  <button class="part-tab active" data-panel="saddle" type="button">Western Saddle</button>
+  <button class="part-tab" data-panel="bridle" type="button">Western Bridle</button>
+  <button class="part-tab" data-panel="tree" type="button">Saddle Trees</button>
+</div>
+
+<section class="part-panel active" id="panel-saddle">
+      <div class="lesson-intro-card">
+        <h2>Parts of the Western Saddle</h2>
+        <p>A western saddle is built to distribute weight, provide rider security, and support tasks such as trail riding, ranch work, and western performance events.</p>
+      </div>
+
+
+<div class="builder-note">
+        <p>Drag a navy label to move the label. Drag the small blue dot to move the point it labels. When the placement is ready, use Copy Positions and send me the JSON so I can bake the labels into the course.</p>
+      </div>
+      <div class="builder-toolbar">
+        <button class="copy-btn" type="button" data-copy="saddle">Copy Saddle Positions</button>
+        <button class="reset-btn" type="button" data-reset="saddle">Reset Saddle Positions</button>
+        <span class="builder-status" id="saddle-status">Builder ready.</span>
+      </div>
+      <div class="equipment-builder">
+        <div class="equipment-stage" id="saddle-stage" data-builder="saddle">
+          <img src="images/saddle-bridle-parts/western-saddle-parts.png" alt="Western saddle parts reference">
+          <svg class="leader-layer" aria-hidden="true"></svg>
+        </div>
+      </div>
+
+      <textarea class="position-output" id="saddle-output" readonly></textarea>
+      <div class="parts-reference" id="saddle-reference"></div>
+    </section>
+
+    <section class="part-panel" id="panel-bridle">
+      <div class="lesson-intro-card">
+        <h2>Parts of the Western Bridle</h2>
+        <p>A western bridle, often called a headstall, holds the bit or bitless attachment in position and connects the rider's reins to the horse.</p>
+      </div>
+
+
+<div class="builder-note">
+        <p>Drag a navy label to move the label. Drag the small blue dot to move the point it labels. When the placement is ready, use Copy Positions and send me the JSON so I can bake the labels into the course.</p>
+      </div>
+      <div class="builder-toolbar">
+        <button class="copy-btn" type="button" data-copy="bridle">Copy Bridle Positions</button>
+        <button class="reset-btn" type="button" data-reset="bridle">Reset Bridle Positions</button>
+        <span class="builder-status" id="bridle-status">Builder ready.</span>
+      </div>
+      <div class="equipment-builder">
+        <div class="equipment-stage" id="bridle-stage" data-builder="bridle">
+          <img src="images/saddle-bridle-parts/western-bridle-parts.png" alt="Western bridle parts reference">
+          <svg class="leader-layer" aria-hidden="true"></svg>
+        </div>
+      </div>
+
+      <textarea class="position-output" id="bridle-output" readonly></textarea>
+      <div class="parts-reference" id="bridle-reference"></div>
+    </section>
+
+    <section class="part-panel" id="panel-tree">
+      <div class="lesson-intro-card">
+        <h2>Saddle Trees</h2>
+        <p>The saddle tree is the inner frame that gives a western saddle its shape. It is the structure the rest of the saddle is built around, including the fork, cantle, bars, seat, skirts, rigging, and leather covering.</p>
+      </div>
+
+
+<div class="tree-guide">
+        <div class="tree-image-grid" aria-label="Western saddle tree examples">
+          <figure class="tree-image-card">
+            <img src="images/saddle-bridle-parts/saddle-tree-1.png" alt="Side view of a western saddle tree">
+          </figure>
+          <figure class="tree-image-card">
+            <img src="images/saddle-bridle-parts/saddle-tree-2.png" alt="Multiple western saddle trees showing different tree shapes">
+          </figure>
+        </div>
+        <div class="tree-summary">
+          A good tree helps the saddle sit securely and spread the rider's weight over a broader area of the horse's back. Because the tree is the hidden foundation, tree fit matters even when the outside leather looks correct.
+        </div>
+        <div class="tree-grid">
+          <article class="tree-card">
+            <h3>What the Tree Does</h3>
+            <p>The tree forms the main shape of the saddle. The bars of the tree run along either side of the horse's spine so the saddle can carry weight without placing direct pressure on the spine or withers.</p>
+          </article>
+          <article class="tree-card">
+            <h3>Why Fit Matters</h3>
+            <p>The width and angle of the tree need to match the horse's back. If the tree is too narrow, too wide, too long, or uneven, the saddle may pinch, bridge, rub, or create sore spots.</p>
+          </article>
+          <article class="tree-card">
+            <h3>Built Around the Tree</h3>
+            <p>Leather, skirts, rigging, the seat, horn, fork, and cantle are attached around the tree. That is why the tree is often described as the foundation of the western saddle.</p>
+          </article>
+          <article class="tree-card">
+            <h3>Fit Check</h3>
+            <p>A well-fitting saddle should sit level, stay centered, allow wither clearance, and make even contact through the bars. Soreness, dry pressure spots, rubbing, or uneven contact are signs the saddle fit should be checked.</p>
+          </article>
+        </div>
+      </div>
+
+    </section>
+
+<div class="tab-bar tab-bar--jump" role="tablist" aria-label="Western equipment parts">
+  <button class="part-tab active" data-panel="saddle" type="button">Western Saddle</button>
+  <button class="part-tab" data-panel="bridle" type="button">Western Bridle</button>
+  <button class="part-tab" data-panel="tree" type="button">Saddle Trees</button>
+</div>
+
+  </main>
+
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+const LABEL_BUILDER_EDIT_MODE = false;
+const BAKED_LABEL_POSITIONS = {
+  saddle: {
+    "horn.anchor": { "x": 32.43421052631579, "y": 10.945581896551724 },
+    "horn.label": { "x": 24.407894736842106, "y": 3.7042025862068964 },
+    "seat.anchor": { "x": 56.38157894736842, "y": 27.49730603448276 },
+    "seat.label": { "x": 58.35526315789473, "y": 7.669719827586206 },
+    "seat-jockey.anchor": { "x": 44.671052631578945, "y": 36.290409482758626 },
+    "seat-jockey.label": { "x": 11.381578947368421, "y": 45.25592672413793 },
+    "cantle.anchor": { "x": 68.48684210526315, "y": 19.221443965517242 },
+    "cantle.label": { "x": 72.82894736842105, "y": 6.29040948275862 },
+    "back-jockey-housing.anchor": { "x": 70.72368421052632, "y": 30.083512931034484 },
+    "back-jockey-housing.label": { "x": 86.90789473684211, "y": 15.428340517241379 },
+    "skirt.anchor": { "x": 72.17105263157895, "y": 43.53178879310345 },
+    "skirt.label": { "x": 87.17105263157895, "y": 42.669719827586206 },
+    "back-billet.anchor": { "x": 61.25000000000001, "y": 46.635237068965516 },
+    "back-billet.label": { "x": 85.46052631578948, "y": 71.80765086206897 },
+    "back-cinch.anchor": { "x": 57.96052631578947, "y": 90.08351293103448 },
+    "back-cinch.label": { "x": 73.75, "y": 94.91109913793103 },
+    "cinch.anchor": { "x": 22.5, "y": 88.5 },
+    "cinch.label": { "x": 5.5, "y": 97.0 },
+    "stirrup.anchor": { "x": 35.06578947368421, "y": 87.32489224137932 },
+    "stirrup.label": { "x": 50.46052631578948, "y": 95.42834051724138 },
+    "stirrup-hobble.anchor": { "x": 39.53947368421053, "y": 80.08351293103448 },
+    "stirrup-hobble.label": { "x": 17.17105263157895, "y": 91.46282327586206 },
+    "fender.anchor": { "x": 41.38157894736842, "y": 72.32489224137932 },
+    "fender.label": { "x": 17.30263157894737, "y": 82.32489224137932 },
+    "latigo.anchor": { "x": 34.276315789473685, "y": 53.186961206896555 },
+    "latigo.label": { "x": 14.276315789473685, "y": 72.32489224137932 },
+    "latigo-keeper.anchor": { "x": 26.513157894736842, "y": 33.87661637931034 },
+    "latigo-keeper.label": { "x": 10.06578947368421, "y": 33.359375 },
+    "fork-swell-pommel.anchor": { "x": 33.0921052631579, "y": 20.600754310344826 },
+    "fork-swell-pommel.label": { "x": 13.618421052631579, "y": 11.980064655172413 },
+    "seat-rise.anchor": { "x": 45.5921052631579, "y": 25.428340517241377 },
+    "seat-rise.label": { "x": 42.43421052631579, "y": 5.600754310344827 },
+    "rear-rigging-dee.anchor": { "x": 64.01315789473684, "y": 43.53178879310345 },
+    "rear-rigging-dee.label": { "x": 88.35526315789474, "y": 28.876616379310345 },
+    "front-rigging-dee.anchor": { "x": 30.592105263157894, "y": 48.531788793103445 },
+    "front-rigging-dee.label": { "x": 12.697368421052632, "y": 60.25592672413793 },
+    "gullet.anchor": { "x": 28.749999999999996, "y": 22.669719827586206 },
+    "gullet.label": { "x": 13.750000000000002, "y": 22.497306034482758 }
+  },
+  bridle: {
+    "headpiece-crownpiece.anchor": { "x": 44.55357142857143, "y": 4.007147551758133 },
+    "headpiece-crownpiece.label": { "x": 78.30357142857143, "y": 10.579608938547485 },
+    "browband.anchor": { "x": 22.41071428571429, "y": 17.94076569175156 },
+    "browband.label": { "x": 11.517857142857142, "y": 11.105405849490635 },
+    "throatlatch.anchor": { "x": 40.982142857142854, "y": 57.1126355570161 },
+    "throatlatch.label": { "x": 13.482142857142856, "y": 37.65814985211962 },
+    "cheek-piece.anchor": { "x": 50.26785714285714, "y": 54.48365100230036 },
+    "cheek-piece.label": { "x": 70.98214285714286, "y": 48.436986526454156 },
+    "curb-strap.anchor": { "x": 33.839285714285715, "y": 75.3840782122905 },
+    "curb-strap.label": { "x": 14.017857142857142, "y": 67.2342260926717 },
+    "bit.anchor": { "x": 37.76785714285714, "y": 71.44060138021689 },
+    "bit.label": { "x": 69.01785714285714, "y": 96.8103023332238 },
+    "reins.anchor": { "x": 59.732142857142854, "y": 81.56219191587249 },
+    "reins.label": { "x": 79.19642857142857, "y": 76.96146894511995 }
+  }
+};
+
+const builderData = {
+  saddle: [
+    ['horn', 'Horn'], ['seat', 'Seat'], ['seat-jockey', 'Seat Jockey'],
+    ['cantle', 'Cantle'], ['back-jockey-housing', 'Back Jockey/Housing'],
+    ['skirt', 'Skirt'], ['back-billet', 'Back Billet'], ['back-cinch', 'Back Cinch'],
+    ['cinch', 'Cinch'],
+    ['stirrup', 'Stirrup'], ['stirrup-hobble', 'Stirrup Hobble'], ['fender', 'Fender'],
+    ['latigo', 'Latigo'], ['latigo-keeper', 'Latigo Keeper'],
+    ['fork-swell-pommel', 'Fork/Swell/Pommel'], ['seat-rise', 'Seat Rise'],
+    ['rear-rigging-dee', 'Rear Rigging Dee'],
+    ['front-rigging-dee', 'Front Rigging Dee'], ['gullet', 'Gullet']
+  ],
+  bridle: [
+    ['headpiece-crownpiece', 'Headpiece (Crownpiece)'], ['browband', 'Browband'],
+    ['throatlatch', 'Throatlatch'], ['cheek-piece', 'Cheek Piece'],
+    ['curb-strap', 'Curb Strap/Chain'], ['bit', 'Bit'], ['reins', 'Reins']
+  ]
+};
+
+const defaultPositions = {
+  saddle: {},
+  bridle: {}
+};
+const builderVersion = {
+  saddle: 'western-saddle-labels-v3',
+  bridle: 'western-bridle-labels-v2'
+};
+
+const partDescriptions = {
+  saddle: {
+    horn: 'The upright part at the front of many western saddles. It is traditionally associated with ranch work and roping, but beginners should not use it as a handle for mounting.',
+    seat: 'The part of the saddle where the rider sits. The shape and depth of the seat help influence rider comfort and position.',
+    'seat-jockey': 'The leather piece beside and partly under the seat. It helps cover and smooth the area where the rider sits and where the saddle parts meet.',
+    cantle: 'The raised back of the saddle seat. It helps form the rear boundary of the seat and can add a feeling of security.',
+    'back-jockey-housing': 'The rear leather section behind the seat, sometimes called the back jockey or rear housing. It helps cover and protect the back part of the saddle structure.',
+    skirt: 'The larger leather panel under the saddle body. It helps spread pressure over the saddle pad and gives the saddle its lower outline.',
+    'back-billet': 'A rear strap used with some saddles to connect a back cinch. It helps keep the back cinch attached correctly.',
+    'back-cinch': 'A second cinch behind the main cinch. It helps keep the rear of the saddle more stable when used correctly, especially in some working western settings.',
+    cinch: 'The strap that wraps under the horse belly to hold the saddle in place. The cinch connects to the latigo on the near (left) side and secures on the off (right) side. Proper cinch tightness keeps the saddle from shifting or sliding during riding without being so tight it causes discomfort.',
+    stirrup: 'The foot support where the rider places the foot. Stirrups help with balance, but the rider should not push all their weight into them.',
+    'stirrup-hobble': 'A small strap that helps hold the stirrup leather or fender parts together near the stirrup. It keeps the lower stirrup area tidier and more secure.',
+    fender: 'The wide leather piece that hangs down from the saddle and holds the stirrup. Western fenders help protect the rider leg from rubbing against narrower straps.',
+    latigo: 'The long strap used to tighten and secure the front cinch on many western saddles. It is usually on the left side of the saddle.',
+    'latigo-keeper': 'A holder or keeper used to tuck away extra latigo after the cinch is tightened. It keeps loose strap ends from dangling.',
+    'fork-swell-pommel': 'The front raised part of the saddle near the horn. Terms can vary, but this area helps form the front of the seat and saddle tree.',
+    'seat-rise': 'The upward slope from the seat toward the front of the saddle. It helps shape where the rider sits and how the seat feels.',
+    'rear-rigging-dee': 'A rear ring or dee used as an attachment point for rear rigging or a back cinch setup.',
+    'front-rigging-dee': 'A front ring or dee used as part of the front cinch attachment system. This area is important for securing the saddle.',
+    gullet: 'The channel at the front underside of the saddle that provides space over the horse withers and spine area. Correct clearance is important for comfort and fit.'
+  },
+  bridle: {
+    'headpiece-crownpiece': 'The top strap of the bridle that goes over the horse poll. It helps hold the rest of the bridle in place.',
+    browband: 'The strap that crosses the horse forehead on a browband-style bridle. It helps keep the headpiece from sliding too far back.',
+    throatlatch: 'The strap that fastens under the throat area. It helps prevent the bridle from slipping off over the horse ears.',
+    'cheek-piece': 'The side strap that runs down the horse face and attaches near the bit. It helps hold the bit or attachment at the correct height.',
+    'curb-strap': 'A curb strap or chain sits under the chin groove when used with a curb bit. It is part of how that type of bit functions and should be adjusted carefully.',
+    bit: 'The mouthpiece or attachment point connected to the reins. Some western setups use a bit, while others may be bitless.',
+    reins: 'The straps held by the rider. Reins connect to the bit or bitless attachment and are one part of rider communication.'
+  }
+};
+
+function makeDefaults() {
+  defaultPositions.saddle = {};
+  builderData.saddle.forEach(([id], index) => {
+    const leftSide = index % 2 === 0;
+    const row = Math.floor(index / 2);
+    defaultPositions.saddle[id] = {
+      label: { x: leftSide ? 14 : 72, y: 8 + row * 5 },
+      anchor: { x: leftSide ? 42 + row * 2.2 : 58 + row * 1.7, y: 30 + row * 2.3 }
+    };
+  });
+  defaultPositions.bridle = {
+    'headpiece-crownpiece': { label: { x: 72, y: 14 }, anchor: { x: 50, y: 19 } },
+    browband: { label: { x: 76, y: 27 }, anchor: { x: 55, y: 35 } },
+    throatlatch: { label: { x: 76, y: 39 }, anchor: { x: 51, y: 49 } },
+    'cheek-piece': { label: { x: 78, y: 51 }, anchor: { x: 57, y: 50 } },
+    'curb-strap': { label: { x: 76, y: 66 }, anchor: { x: 58, y: 66 } },
+    bit: { label: { x: 72, y: 76 }, anchor: { x: 56, y: 71 } },
+    reins: { label: { x: 24, y: 42 }, anchor: { x: 39, y: 45 } }
+  };
+}
+makeDefaults();
+
+function storageKey(type) {
+  return 'equineEdu.westernEquipment.labelBuilder.' + type + '.' + builderVersion[type];
+}
+
+function loadPositions(type) {
+  if (BAKED_LABEL_POSITIONS[type]) {
+    return unpackBakedPositions(BAKED_LABEL_POSITIONS[type]);
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey(type)) || 'null');
+    return saved || JSON.parse(JSON.stringify(defaultPositions[type]));
+  } catch (error) {
+    return JSON.parse(JSON.stringify(defaultPositions[type]));
+  }
+}
+
+function unpackBakedPositions(payload) {
+  const unpacked = {};
+  Object.entries(payload || {}).forEach(([key, value]) => {
+    const match = key.match(/^(.+)\.(anchor|label)$/);
+    if (!match) return;
+    const id = match[1];
+    const part = match[2];
+    if (!unpacked[id]) unpacked[id] = {};
+    unpacked[id][part] = value;
+  });
+  return unpacked;
+}
+
+const positions = {
+  saddle: loadPositions('saddle'),
+  bridle: loadPositions('bridle')
+};
+
+function savePositions(type) {
+  localStorage.setItem(storageKey(type), JSON.stringify(positions[type]));
+}
+
+function pointFromEvent(event, stage) {
+  const rect = stage.getBoundingClientRect();
+  return {
+    x: Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100)),
+    y: Math.max(0, Math.min(100, ((event.clientY - rect.top) / rect.height) * 100))
+  };
+}
+
+function renderBuilder(type) {
+  const stage = document.getElementById(type + '-stage');
+  const svg = stage.querySelector('.leader-layer');
+  stage.querySelectorAll('.part-callout, .anchor-dot').forEach(el => el.remove());
+  svg.innerHTML = '';
+
+  builderData[type].forEach(([id, label], index) => {
+    if (!positions[type][id]) positions[type][id] = JSON.parse(JSON.stringify(defaultPositions[type][id]));
+    const pos = positions[type][id];
+
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.classList.add('leader-line');
+    line.dataset.for = id;
+    svg.appendChild(line);
+
+    const anchor = document.createElement('button');
+    anchor.type = 'button';
+    anchor.className = 'anchor-dot';
+    anchor.dataset.type = type;
+    anchor.dataset.id = id;
+    anchor.dataset.part = 'anchor';
+    anchor.setAttribute('aria-label', label + ' anchor');
+    stage.appendChild(anchor);
+
+    const callout = document.createElement('button');
+    callout.type = 'button';
+    callout.className = 'part-callout';
+    callout.dataset.type = type;
+    callout.dataset.id = id;
+    callout.dataset.part = 'label';
+    callout.innerHTML = '<span>' + label + '</span>';
+    stage.appendChild(callout);
+  });
+  updateBuilder(type);
+}
+
+function updateBuilder(type) {
+  const stage = document.getElementById(type + '-stage');
+  const svg = stage.querySelector('.leader-layer');
+  Object.entries(positions[type]).forEach(([id, pos]) => {
+    const anchor = stage.querySelector('.anchor-dot[data-id="' + id + '"]');
+    const callout = stage.querySelector('.part-callout[data-id="' + id + '"]');
+    const line = svg.querySelector('.leader-line[data-for="' + id + '"]');
+    if (!anchor || !callout || !line) return;
+    anchor.style.left = pos.anchor.x + '%';
+    anchor.style.top = pos.anchor.y + '%';
+    callout.style.left = pos.label.x + '%';
+    callout.style.top = pos.label.y + '%';
+    line.setAttribute('x1', pos.anchor.x + '%');
+    line.setAttribute('y1', pos.anchor.y + '%');
+    line.setAttribute('x2', pos.label.x + '%');
+    line.setAttribute('y2', pos.label.y + '%');
+  });
+}
+
+let activeDrag = null;
+document.addEventListener('pointerdown', event => {
+  if (!LABEL_BUILDER_EDIT_MODE) return;
+  const target = event.target.closest('.part-callout, .anchor-dot');
+  if (!target) return;
+  activeDrag = {
+    type: target.dataset.type,
+    id: target.dataset.id,
+    part: target.dataset.part,
+    el: target
+  };
+  target.classList.add('dragging');
+  target.setPointerCapture(event.pointerId);
+});
+document.addEventListener('pointermove', event => {
+  if (!LABEL_BUILDER_EDIT_MODE) return;
+  if (!activeDrag) return;
+  const stage = document.getElementById(activeDrag.type + '-stage');
+  const point = pointFromEvent(event, stage);
+  positions[activeDrag.type][activeDrag.id][activeDrag.part] = point;
+  updateBuilder(activeDrag.type);
+  savePositions(activeDrag.type);
+});
+document.addEventListener('pointerup', () => {
+  if (!activeDrag) return;
+  activeDrag.el.classList.remove('dragging');
+  activeDrag = null;
+});
+
+function renderReference(type) {
+  const ref = document.getElementById(type + '-reference');
+  ref.innerHTML = builderData[type].map(([id, label], index) => {
+    const description = partDescriptions[type] && partDescriptions[type][id];
+    if (!description) return '<div><h4>' + label + '</h4></div>';
+    return '<div><h4>' + label + '</h4><p>' + description + '</p></div>';
+  }).join('');
+}
+
+function exportPositions(type) {
+  const output = document.getElementById(type + '-output');
+  const status = document.getElementById(type + '-status');
+  const payload = {};
+  Object.entries(positions[type]).forEach(([id, value]) => {
+    payload[id + '.anchor'] = value.anchor;
+    payload[id + '.label'] = value.label;
+  });
+  output.value = JSON.stringify(payload, null, 2);
+  output.classList.add('show');
+  output.select();
+  navigator.clipboard.writeText(output.value).then(() => {
+    status.textContent = 'Positions copied to clipboard.';
+  }).catch(() => {
+    status.textContent = 'Positions shown below. Copy them from the box.';
+  });
+}
+
+document.querySelectorAll('[data-copy]').forEach(button => {
+  button.addEventListener('click', () => exportPositions(button.dataset.copy));
+});
+document.querySelectorAll('[data-reset]').forEach(button => {
+  button.addEventListener('click', () => {
+    const type = button.dataset.reset;
+    positions[type] = JSON.parse(JSON.stringify(defaultPositions[type]));
+    savePositions(type);
+    renderBuilder(type);
+    document.getElementById(type + '-status').textContent = 'Positions reset.';
+  });
+});
+
+if (!LABEL_BUILDER_EDIT_MODE) {
+  document.body.classList.add('is-baked');
+}
+
+function activatePanel(panelName, shouldScroll = false) {
+  document.querySelectorAll('.part-tab').forEach(button => {
+    button.classList.toggle('active', button.dataset.panel === panelName);
+  });
+  document.querySelectorAll('.part-panel').forEach(panel => {
+    panel.classList.toggle('active', panel.id === 'panel-' + panelName);
+  });
+  if (panelName === 'saddle' || panelName === 'bridle') {
+    requestAnimationFrame(() => updateBuilder(panelName));
+  }
+  if (shouldScroll) {
+    var topBar = document.getElementById('equip-tabs');
+    if (window.eeScrollTo) { window.eeScrollTo(topBar); }
+    else if (topBar) { topBar.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  }
+}
+
+document.querySelectorAll('.part-tab').forEach(btn => {
+  btn.addEventListener('click', () => activatePanel(btn.dataset.panel, btn.closest('.tab-bar--jump')));
+});
+
+['saddle', 'bridle'].forEach(type => {
+  renderBuilder(type);
+  renderReference(type);
+});
+
+window.addEventListener('resize', () => {
+  updateBuilder('saddle');
+  updateBuilder('bridle');
+});
+
+window.CURRENT_MODULE = 2;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'Back to Western Tack', url: '1-index.html' },
+  navExtras: [{ label: 'The Complete Saddle Setup', url: '4-complete-saddle-setup.html' }]
+};
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.westernEquipment.saddleBridleParts','true')}catch(e){}</script>
+</body>
+</html>

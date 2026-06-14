@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Complete Saddle Setup - Western Tack &amp; Equipment - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+/* Supporting pieces grid */
+.setup-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin-top: 1rem; }
+.setup-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(36, 54, 74,.06);
+  display: flex;
+  flex-direction: column;
+}
+.setup-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--soft-white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.setup-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.75rem;
+  display: block;
+}
+.setup-card-body { padding: 1.1rem 1.25rem 1.25rem; flex: 1; }
+.setup-card-body span { display: block; color: var(--tan); font-size: .68rem; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: .35rem; }
+.setup-card-body h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--heading); margin-bottom: .5rem; }
+.setup-card-body p { color: var(--body-text); font-size: .9rem; line-height: 1.65; margin: 0; }
+
+/* Pad vs blanket two-up comparison */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.compare-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(36, 54, 74,.06);
+}
+.compare-card-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background: var(--soft-white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.compare-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.75rem;
+  display: block;
+}
+.compare-card-body { padding: 1.1rem 1.25rem 1.25rem; }
+.compare-card-body span { display: block; color: var(--tan); font-size: .68rem; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: .35rem; }
+.compare-card-body h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--heading); margin-bottom: .5rem; }
+.compare-card-body p { color: var(--body-text); font-size: .9rem; line-height: 1.65; margin: 0; }
+
+/* Checklist */
+.check-list { display: grid; gap: .8rem; margin-top: 1rem; }
+.check-item { display: grid; grid-template-columns: 2rem 1fr; gap: .75rem; align-items: start; background: var(--soft-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; }
+.check-num { width: 2rem; height: 2rem; border-radius: 999px; background:var(--blue-primary); color:var(--white); font-family: var(--font-display); font-weight: 900; display: inline-flex; align-items: center; justify-content: center; }
+.check-item h3 { font-family: var(--font-display); font-size: 1rem; color: var(--heading); margin-bottom: .3rem; }
+.check-item p { color: var(--body-text); font-size: .9rem; line-height: 1.65; margin: 0; }
+
+.note-box { background: rgba(200, 162, 122,.11); border: 1px solid rgba(200, 162, 122,.32); border-left: 4px solid var(--tan); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 1.15rem 1.25rem; margin-top: 1rem; color: var(--body-text); line-height: 1.7; }
+
+@media (max-width: 820px) {
+  .setup-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .check-item { grid-template-columns: 1fr; }
+  .check-num { margin-bottom: .1rem; }
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Western Tack &amp; Equipment</div>
+      <h1 class="lesson-hero-title">The Complete <span>Saddle Setup</span></h1>
+      <p class="lesson-hero-desc">A western saddle does not work alone. The cinch, breast collar, and saddle pad or blanket all help the saddle stay secure, protect the horse's back, and support the type of riding being done.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="lesson-intro-card">
+      <h2>More Than the Saddle</h2>
+      <p>The saddle is the largest piece of western tack, but it depends on the rest of the setup to function correctly. A well-chosen pad or blanket helps manage pressure and moisture. A properly fitted cinch keeps the saddle stable around the horse's barrel. A breast collar can help keep the saddle from sliding back during hills, speed work, ranch tasks, or active riding.</p>
+      <p>These pieces should work with the saddle, not compensate for a poor fit. If a saddle shifts badly, pinches, bridges, or needs an extreme pad to seem usable, the setup should be checked by a knowledgeable instructor, saddle fitter, or experienced tack professional.</p>
+    </div>
+
+    <div class="visual-card">
+      <h2>The Three Supporting Pieces</h2>
+      <p class="visual-instructions">Each item has a job. Learning what it does helps riders tack up safely and talk clearly about equipment choices.</p>
+      <div class="setup-grid">
+
+        <article class="setup-card">
+          <div class="setup-card-img">
+            <img src="images/complete-saddle-set-up/cinch.png" alt="Western cinch">
+          </div>
+          <div class="setup-card-body">
+            <span>Security</span>
+            <h3>Cinches</h3>
+            <p>The cinch fastens around the horse's barrel and holds the saddle in place. On the near (left) side, the latigo — a long leather or nylon strap — threads through the cinch ring and ties or buckles to tighten the saddle. On the off (right) side, the off billet is a shorter, fixed strap that attaches directly to the cinch ring with a buckle. Together, the latigo and off billet hold the cinch evenly under the horse. The cinch should lie flat and be snug enough for security without pinching skin or pulling the saddle out of balance.</p>
+          </div>
+        </article>
+
+        <article class="setup-card">
+          <div class="setup-card-img">
+            <img src="images/complete-saddle-set-up/breast-collar.png" alt="Western breast collar">
+          </div>
+          <div class="setup-card-body">
+            <span>Stability</span>
+            <h3>Breast Collars</h3>
+            <p>A breast collar attaches to the front of the saddle and helps limit backward saddle movement. It is especially useful for trail riding, hills, ranch work, roping, speed events, and horses whose build makes the saddle more likely to shift.</p>
+          </div>
+        </article>
+
+        <article class="setup-card">
+          <div class="setup-card-img">
+            <img src="images/complete-saddle-set-up/saddle-pad.png" alt="Western saddle pad">
+          </div>
+          <div class="setup-card-body">
+            <span>Protection</span>
+            <h3>Saddle Pads &amp; Blankets</h3>
+            <p>The pad or blanket sits between the horse and saddle. It helps protect the back, absorb sweat, reduce friction, and support even pressure — but it should match the horse, saddle, and job rather than hide a bad saddle fit.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <h2>Saddle Pad vs. Saddle Blanket</h2>
+      <p class="visual-instructions">A saddle pad and a saddle blanket are not the same thing and are not used interchangeably. Each has a specific role in the western setup, and knowing the difference helps riders tack up correctly and recognize what is used at shows and events.</p>
+      <div class="compare-grid">
+
+        <article class="compare-card">
+          <div class="compare-card-img">
+            <img src="images/complete-saddle-set-up/saddle-pad.png" alt="Western saddle pad">
+          </div>
+          <div class="compare-card-body">
+            <span>Structured Protection</span>
+            <h3>Saddle Pad</h3>
+            <p>A saddle pad is a thicker, structured piece — often made with foam, felt, wool, or gel inserts — designed to absorb impact, manage pressure, and protect the horse's back during work. Pads are commonly used for trail riding, ranch work, and other active disciplines where cushioning matters most.</p>
+          </div>
+        </article>
+
+        <article class="compare-card">
+          <div class="compare-card-img">
+            <img src="images/complete-saddle-set-up/saddle-blanket.png" alt="Western saddle blanket">
+          </div>
+          <div class="compare-card-body">
+            <span>Decorative Layer</span>
+            <h3>Saddle Blanket</h3>
+            <p>A saddle blanket is a woven blanket — often featuring traditional or decorative patterns — that goes on top of the saddle pad, between the pad and the saddle. It is primarily used for dress purposes: showing, parades, and other events where a polished, traditional look matters. It adds a finished western appearance without replacing the protection a pad provides underneath.</p>
+          </div>
+        </article>
+
+      </div>
+      <div class="note-box">The saddle pad goes on first for protection and fit. The blanket goes on top of the pad when a dressed-up look is needed. A blanket alone is not used in place of a pad for a regular ride.</div>
+    </div>
+
+    <div class="visual-card">
+      <h2>What Riders Should Check</h2>
+      <div class="check-list">
+        <article class="check-item">
+          <span class="check-num">1</span>
+          <div>
+            <h3>Pad Placement</h3>
+            <p>Place the pad or blanket smoothly on the horse's back with no folds, lumps, or trapped hair. It should extend beyond the saddle edges enough to protect the back and help prevent rubs from rigging or hardware.</p>
+          </div>
+        </article>
+        <article class="check-item">
+          <span class="check-num">2</span>
+          <div>
+            <h3>Cinch Position</h3>
+            <p>The cinch should line up naturally with the saddle's rigging and the horse's girth area. After tightening, check that the saddle is centered and that the cinch is not pulled too far forward or sitting unevenly.</p>
+          </div>
+        </article>
+        <article class="check-item">
+          <span class="check-num">3</span>
+          <div>
+            <h3>Breast Collar Fit</h3>
+            <p>A breast collar should be adjusted so it helps stabilize the saddle without restricting the horse's shoulder movement or pressing into the windpipe. It should sit cleanly across the chest and attach evenly on both sides.</p>
+          </div>
+        </article>
+        <article class="check-item">
+          <span class="check-num">4</span>
+          <div>
+            <h3>Final Safety Check</h3>
+            <p>Before mounting, check the cinch again, make sure straps are lying flat, and confirm that the pad, breast collar, stirrups, reins, and bridle are all secure. Tack can settle as the horse breathes, moves, or relaxes.</p>
+          </div>
+        </article>
+      </div>
+      <div class="note-box">A good western setup should feel stable without looking forced. If the horse shows soreness, pinned ears, swelling, white hairs, girthiness, or sudden resistance, the tack setup deserves a closer look before continuing.</div>
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+window.CURRENT_MODULE=3;
+window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Western Tack',url:'1-index.html'},navExtras:[{label:'The Viewing Room',url:'5-viewing-room.html'}]};
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.westernEquipment.completeSaddleSetup','true')}catch(e){}</script>
+</body>
+</html>

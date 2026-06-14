@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Horse Colors &mdash; Equine Edu</title>
+<meta name="description" content="Learn to identify and describe common horse coat colors with confidence. Covers chestnut, bay, black, palomino, buckskin, gray, roan, pinto, appaloosa, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+.course-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 5%;
+}
+body { background: var(--cream-bg); }
+.course-hero-text .course-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(127,152,178,0.12);
+  border: 1px solid rgba(127,152,178,0.3);
+  color: var(--leather);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+.course-hero-text h1 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); color: var(--heading); line-height: 1.15; margin-bottom: 1rem; }
+.course-hero-text h1 span { color: var(--blue-primary); }
+.course-hero-desc { font-size: 1rem; color: var(--body-text); line-height: 1.75; margin-bottom: 1.75rem; max-width: 520px; }
+.course-meta-row { display: flex; flex-wrap: nowrap; gap: 0; margin-bottom: 1.75rem; }
+.meta-item { font-size: 0.74rem; font-weight: 700; color: var(--leather); padding: 0 0.75rem; border-right: 1px solid var(--blue-secondary); letter-spacing: 0.01em; white-space: nowrap; }
+.meta-item:first-child { padding-left: 0; }
+.meta-item:last-child { border-right: 0; padding-right: 0; }
+.hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+.course-hero-art { display: flex; justify-content: center; align-items: center; }
+.hero-marking-single {
+  width: min(100%, 320px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+.hero-marking-single img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transform: scale(1.18);
+  filter: none;
+}
+.module-list { margin-top: 2rem; display: grid; gap: 0.6rem; }
+.module-item { display: grid; grid-template-columns: 40px 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.25rem; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: box-shadow 0.18s, border-color 0.18s; }
+.module-item:hover { border-color: var(--blue-secondary); box-shadow: 0 4px 16px rgba(36,54,74,0.08); }
+.module-num { width: 36px; height: 36px; border-radius: 50%; background: var(--cream-bg); border: 1px solid var(--border-mid); color: var(--blue-primary); font-family: var(--font-display); font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.module-title { font-weight: 700; font-size: 0.9rem; color: var(--heading); margin-bottom: 0.2rem; }
+.module-desc { font-size: 0.8rem; color: var(--body-text); line-height: 1.5; }
+.module-type { font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted-text); white-space: nowrap; }
+.track-features, .alignment-list { list-style: none; display: grid; gap: 0.75rem; margin-top: 1.25rem; }
+.track-features li, .alignment-list li { display: flex; gap: 0.75rem; color: var(--body-text); font-size: 0.9rem; line-height: 1.6; }
+@media (max-width: 900px) { .course-hero-inner { grid-template-columns: 1fr; gap: 2rem; } .course-hero-art { display: none; }  }
+@media (max-width: 640px) { .course-meta-row { flex-wrap: wrap; row-gap: 0.6rem; } .meta-item { padding: 0 0.7rem; } .meta-item:nth-child(odd) { padding-left: 0; } }
+
+/* Keep hero badge row on one line */
+.course-meta-row { align-items: center; min-width: 0; }
+@media (max-width: 700px) {
+  .course-meta-row { flex-wrap: nowrap !important; gap: 0; }
+  .meta-item { font-size: 0.62rem !important; padding: 0 0.38rem !important; letter-spacing: 0 !important; }
+  .meta-item:first-child { padding-left: 0 !important; }
+  .meta-item:last-child { padding-right: 0 !important; }
+}
+@media (max-width: 420px) {
+  .meta-item { font-size: 0.52rem !important; padding: 0 0.22rem !important; }
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<section class="course-hero">
+  <div class="course-hero-inner">
+    <div class="course-hero-text">
+      <div class="course-tag"><span>Colors &amp; Markings</span></div>
+      <h1>Common Horse <span>Colors</span></h1>
+      <p class="course-hero-desc">Horse coat color is one of the most recognizable features of a horse. This course introduces common coat colors and their identifying characteristics, helping learners recognize, name, and describe colors such as chestnut, bay, black, palomino, gray, roan, and more through clear examples and real horses.</p>
+      <div class="course-meta-row">
+        <div class="meta-item">Interactive Learning</div>
+        <div class="meta-item">Visual Study Tools</div>
+        <div class="meta-item">Self-Paced Education</div>
+        <div class="meta-item">Printable Activities</div>
+      </div>
+      <div class="hero-actions">
+        <a href="2-why-colors-matter.html#top" class="btn-primary">Start Course</a>
+        <a href="#curriculum" class="btn-outline">See All Courses</a>
+      </div>
+    </div>
+    <div class="course-hero-art">
+      <div class="hero-marking-single">
+        <img src="images/index-hero.png" alt="Common Horse Colors hero image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="curriculum-section" id="curriculum">
+  <div class="curriculum-inner">
+    <p class="section-label">Course Curriculum</p>
+    <h2 class="section-title">Structured Learning Through Guided Lessons</h2>
+    <p class="section-sub">Each course is organized into focused lessons designed to build knowledge step by step through visual learning, interactive practice, review activities, and skill-building exercises.</p>
+    <div class="module-list" id="course-module-list"></div>
+  </div>
+</section>
+
+
+<section class="track-section">
+  <div class="track-inner">
+    <div class="fade-in">
+      <h2 class="section-title">Learn at Any Pace, From Anywhere</h2>
+      <p class="section-sub">Designed to make horse education approachable and accessible for all experience levels through flexible, self-paced learning and guided visual instruction.</p>
+      <ul class="track-features">
+        <li><span class="track-dot"></span>No prior horse knowledge required</li>
+        <li><span class="track-dot"></span>Visual learning with real horse examples</li>
+        <li><span class="track-dot"></span>Interactive activities and study tools</li>
+        <li><span class="track-dot"></span>Accessible across most devices</li>
+      </ul>
+    </div>
+    <div class="fade-in">
+      <h4 style="font-family:var(--font-display);color:var(--leather);font-size:1.1rem;margin-bottom:1rem;">Perfect For</h4>
+      <ul class="alignment-list">
+        <li><span class="track-dot"></span>Independent study, lessons, and group programs</li>
+        <li><span class="track-dot"></span>Instructors and programs expanding student knowledge</li>
+        <li><span class="track-dot"></span>Real-world horse knowledge with practical applications</li>
+        <li><span class="track-dot"></span>Horse enthusiasts who want to describe what they see with confidence</li>
+        <li><span class="track-dot"></span>Those interested in advancing their knowledge about horses</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner fade-in">
+    <p class="section-label" style="text-align:center;display:block;">Ready to Start?</p>
+    <h2 class="section-title">Begin Building Real Horse Knowledge</h2>
+    <p class="section-sub">Lessons designed to build clear, confident understanding step by step. Learn to recognize, describe, and apply key concepts with real-world relevance.</p>
+    <a href="2-why-colors-matter.html#top" class="btn-primary">Start the Course</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+  window.LAYOUT = {
+    homeUrl: '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta: { label: 'All Courses', url: '../../../index.html' }
+  };
+</script>
+<script src="course-config.js"></script>
+<script>
+  (function () {
+    const list = document.getElementById('course-module-list');
+    if (!list || !window.COURSE_CONFIG) return;
+    list.innerHTML = window.COURSE_CONFIG.modules.map(m => `
+      <a href="${m.file}" class="module-item fade-in">
+        <div class="module-num">${m.num}</div>
+        <div class="module-info">
+          <div class="module-title">${m.title}</div>
+          <div class="module-desc">${m.desc}</div>
+        </div>
+        <div class="module-type">${m.type}</div>
+      </a>`).join('');
+    document.querySelectorAll('.fade-in').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 80);
+    });
+  })();
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body></html>

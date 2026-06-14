@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Horse Behavior &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+
+<style>
+.course-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 5%;
+}
+body { background: var(--cream-bg); }
+.course-hero-text .course-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(127,152,178,0.12);
+  border: 1px solid rgba(127,152,178,0.3);
+  color: var(--leather);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+.course-hero-text h1 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); color: var(--heading); line-height: 1.15; margin-bottom: 1rem; }
+.course-hero-text h1 span { color: var(--blue-primary); }
+.course-hero-desc { font-size: 1rem; color: var(--body-text); line-height: 1.75; margin-bottom: 1.75rem; max-width: 520px; }
+.course-meta-row { display: flex; flex-wrap: nowrap; gap: 0; margin-bottom: 1.75rem; }
+.meta-item { font-size: 0.74rem; font-weight: 700; color: var(--leather); padding: 0 0.75rem; border-right: 1px solid var(--blue-secondary); letter-spacing: 0.01em; white-space: nowrap; }
+.meta-item:first-child { padding-left: 0; }
+.meta-item:last-child { border-right: 0; padding-right: 0; }
+.hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+.course-hero-art { display: flex; justify-content: center; align-items: center; }
+.hero-icon-wrap {
+  width: min(100%, 280px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-icon-wrap svg { width: 100%; height: 100%; }
+.module-list { margin-top: 2rem; display: grid; gap: 0.6rem; }
+.module-item { display: grid; grid-template-columns: 40px 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.25rem; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: box-shadow 0.18s, border-color 0.18s; }
+.module-item:hover { border-color: var(--blue-secondary); box-shadow: 0 4px 16px rgba(36,54,74,0.08); }
+.module-num { width: 36px; height: 36px; border-radius: 50%; background: var(--cream-bg); border: 1px solid var(--border-mid); color: var(--blue-primary); font-family: var(--font-display); font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.module-title { font-weight: 700; font-size: 0.9rem; color: var(--heading); margin-bottom: 0.2rem; }
+.module-desc { font-size: 0.8rem; color: var(--body-text); line-height: 1.5; }
+.module-type { font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted-text); white-space: nowrap; }
+.track-features, .alignment-list { list-style: none; display: grid; gap: 0.75rem; margin-top: 1.25rem; }
+.track-features li, .alignment-list li { display: flex; gap: 0.75rem; color: var(--body-text); font-size: 0.9rem; line-height: 1.6; }
+@media (max-width: 900px) { .course-hero-inner { grid-template-columns: 1fr; gap: 2rem; } .course-hero-art { display: none; }  }
+@media (max-width: 640px) { .course-meta-row { flex-wrap: wrap; row-gap: 0.6rem; } .meta-item { padding: 0 0.7rem; } }
+@media (max-width: 700px) {
+  .course-meta-row { flex-wrap: nowrap !important; gap: 0; }
+  .meta-item { font-size: 0.62rem !important; padding: 0 0.38rem !important; letter-spacing: 0 !important; }
+  .meta-item:first-child { padding-left: 0 !important; }
+  .meta-item:last-child { padding-right: 0 !important; }
+}
+@media (max-width: 420px) {
+  .meta-item { font-size: 0.52rem !important; padding: 0 0.22rem !important; }
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<section class="course-hero">
+  <div class="course-hero-inner">
+    <div class="course-hero-text">
+      <div class="course-tag"><span>Horse Behavior</span></div>
+      <h1>Introduction to Horse <span>Behavior</span></h1>
+      <p class="course-hero-desc">Understanding why horses behave as they do is the foundation of safe, effective horsemanship. This course explains the prey animal mindset, how horses communicate through body language, and how to apply behavioral knowledge to everyday handling.</p>
+      <div class="course-meta-row">
+        <div class="meta-item">Foundations</div>
+        <div class="meta-item">Barn &amp; Arena Ready</div>
+        <div class="meta-item">Self-Paced</div>
+        <div class="meta-item">Barn Application</div>
+      </div>
+      <div class="hero-actions">
+        <a href="2-prey-animal.html#top" class="btn-primary">Start Course</a>
+        <a href="#curriculum" class="btn-outline">View Curriculum</a>
+      </div>
+    </div>
+    <div class="course-hero-art">
+      <div class="hero-icon-wrap">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="100" cy="170" rx="65" ry="8" fill="var(--blue-secondary)" opacity=".25"/>
+  <!-- horse head profile -->
+  <path d="M80 130 Q70 110 72 85 Q74 60 95 52 Q115 45 125 58 Q138 72 132 95 Q130 115 125 130Z" fill="var(--tan)" opacity=".9"/>
+  <!-- ear -->
+  <path d="M95 52 Q92 38 98 33 Q105 38 102 52Z" fill="var(--tan)" opacity=".9"/>
+  <!-- eye -->
+  <ellipse cx="113" cy="78" rx="5" ry="5.5" fill="var(--heading)"/>
+  <ellipse cx="114" cy="77" rx="1.5" ry="1.5" fill="var(--white)"/>
+  <!-- nostril -->
+  <ellipse cx="128" cy="110" rx="4" ry="5" fill="var(--heading)" opacity=".5"/>
+  <!-- mane -->
+  <path d="M80 130 Q65 118 62 98 Q60 80 72 85" stroke="var(--blue-primary)" stroke-width="7" fill="none" stroke-linecap="round" opacity=".7"/>
+  <!-- alert ear accent -->
+  <path d="M95 52 Q93 41 98 35" stroke="var(--blue-primary)" stroke-width="2" fill="none"/>
+</svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="curriculum-section" id="curriculum">
+  <div class="curriculum-inner">
+    <p class="section-label">Course Curriculum</p>
+    <h2 class="section-title">Behavior Basics, Built from the Ground Up</h2>
+    <p class="section-sub">Each course is organized into focused lessons designed to build knowledge step by step through structured instruction, visual learning, and applied practice.</p>
+    <div class="module-list" id="course-module-list"></div>
+  </div>
+</section>
+
+<section class="track-section">
+  <div class="track-inner">
+    <div class="fade-in">
+      <h2 class="section-title">Structured, Practical, and Standards-Aligned</h2>
+      <p class="section-sub">Every lesson is built for self-paced learning with Standards alignment, Horse Bowl question integration, and real barn application throughout.</p>
+      <ul class="track-features">
+        <li><span class="track-dot"></span>No prior horse knowledge required</li>
+        <li><span class="track-dot"></span>Real barn application for every concept covered</li>
+        <li><span class="track-dot"></span>Horse Bowl aligned content and real-world application</li>
+        <li><span class="track-dot"></span>Accessible across most devices</li>
+      </ul>
+    </div>
+    <div class="fade-in">
+      <h4 style="font-family:var(--font-display);color:var(--leather);font-size:1.1rem;margin-bottom:1rem;">Perfect For</h4>
+      <ul class="alignment-list">
+        <li><span class="track-dot"></span>New handlers and beginning horse enthusiasts</li>
+        <li><span class="track-dot"></span>Riders and horse enthusiasts starting their equine education</li>
+        <li><span class="track-dot"></span>Students preparing for Horse Bowl safety or behavior questions</li>
+        <li><span class="track-dot"></span>Anyone who wants to understand horses before riding or training</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner fade-in">
+    <p class="section-label" style="text-align:center;display:block;">Start Here</p>
+    <h2 class="section-title">Start with the Prey Animal Mindset</h2>
+    <p class="section-sub">Understanding horse behavior starts with one fact: horses are prey animals. Every barn safety habit follows from there.</p>
+    <a href="2-prey-animal.html#top" class="btn-primary">Start the Course</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script>
+  window.LAYOUT = {
+    homeUrl: '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta: { label: 'All Courses', url: '../../../index.html' }
+  };
+</script>
+<script src="course-config.js"></script>
+<script>
+  (function () {
+    const list = document.getElementById('course-module-list');
+    if (!list || !window.COURSE_CONFIG) return;
+    list.innerHTML = window.COURSE_CONFIG.modules.map(m => `
+      <a href="${m.file}" class="module-item fade-in">
+        <div class="module-num">${m.num}</div>
+        <div class="module-info">
+          <div class="module-title">${m.title}</div>
+          <div class="module-desc">${m.desc}</div>
+        </div>
+        <div class="module-type">${m.type}</div>
+      </a>`).join('');
+    document.querySelectorAll('.fade-in').forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 80);
+    });
+  })();
+</script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

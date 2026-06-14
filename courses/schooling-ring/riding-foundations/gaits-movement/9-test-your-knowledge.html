@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge — Gaits & Movement — Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css"><link rel="stylesheet" href="../../../../assets/css/game.css">
+</head><body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Riding Foundations</div>
+    <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    <p class="lesson-hero-desc">Each attempt draws 12 questions from a larger bank — answers rotate so repeated attempts are never the same quiz.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 12</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/12</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QC=12;
+const bank=[
+{q:"The walk is described as a:",opts:["4-beat gait with no moment of suspension", "2-beat diagonal gait", "3-beat gait with a moment of suspension", "4-beat gait with a moment of suspension"],a:"4-beat gait with no moment of suspension",ok:"Correct. The walk is a 4-beat gait \u2014 each foot strikes the ground separately, with no moment of suspension.",no:"The walk is 4-beat with no suspension. Every stride sequence produces four separate footfalls."},
+{q:"The trot is best described as:",opts:["A 2-beat diagonal gait with a moment of suspension", "A 4-beat gait like the walk", "A 3-beat gait with a moment of suspension", "A 2-beat lateral gait"],a:"A 2-beat diagonal gait with a moment of suspension",ok:"Correct. The trot is a 2-beat gait where diagonal pairs move together, with a moment of suspension between each pair.",no:"The trot is a 2-beat diagonal gait. Left fore + right hind move together, then right fore + left hind, with suspension in between."},
+{q:"The canter is a:",opts:["3-beat gait with a moment of suspension", "4-beat gait like the trot", "2-beat gait like the walk", "4-beat gait with no suspension"],a:"3-beat gait with a moment of suspension",ok:"Correct. The canter is a 3-beat gait \u2014 outside hind, diagonal pair, inside fore \u2014 followed by a brief moment of suspension.",no:"The canter has 3 beats: outside hind (1), diagonal pair (2), leading foreleg (3), then suspension."},
+{q:"The gallop differs from the canter because:",opts:["The gallop is 4-beat \u2014 the canter's diagonal pair splits into two separate footfalls", "The gallop is 3-beat and the canter is 4-beat", "They are the same gait at different speeds", "The gallop has no moment of suspension while the canter does"],a:"The gallop is 4-beat \u2014 the canter's diagonal pair splits into two separate footfalls",ok:"Correct. In the gallop, the diagonal pair of the canter splits \u2014 making 4 distinct footfalls and a longer suspension phase.",no:"The gallop is a 4-beat gait. The canter's diagonal pair separates, creating 4 independent footfalls."},
+{q:"On a circle to the left, the correct canter lead is:",opts:["Left lead \u2014 the left foreleg reaches farthest forward", "Right lead \u2014 the right hind reaches deepest", "Either lead \u2014 it depends on the horse's preference", "No lead \u2014 cantering on the correct bend is more important"],a:"Left lead \u2014 the left foreleg reaches farthest forward",ok:"Correct. On a left circle, the left foreleg should lead. On a right circle, the right foreleg should lead.",no:"Correct lead = inside foreleg leads. Left circle = left lead; right circle = right lead."},
+{q:"The leading leg in the canter is:",opts:["The last foreleg to leave the ground before the suspension phase", "The foreleg that hits the ground first in each stride", "The hindleg that initiates each canter stride", "Whichever leg the rider feels swing forward most"],a:"The last foreleg to leave the ground before the suspension phase",ok:"Correct. The leading leg is the final foreleg to push off before the moment of suspension \u2014 it appears to extend farthest forward.",no:"The leading foreleg is the last to leave the ground before suspension, and it reaches farthest forward in the stride."},
+{q:"Posting on the correct diagonal in a circle means:",opts:["Rising as the outside fore and inside hind strike the ground", "Rising as the inside fore and outside hind strike the ground", "Posting on whichever diagonal feels most comfortable", "Rising every other beat regardless of footfall"],a:"Rising as the outside fore and inside hind strike the ground",ok:"Correct. Outside diagonal = outside fore + inside hind. Rising with this pair encourages balance through turns.",no:"Correct diagonal: rise as the outside fore and inside hind hit the ground. This supports balance through curves."},
+{q:"What is impulsion?",opts:["Energy from the hindquarters producing powerful, elastic strides forward", "Speed \u2014 how fast the horse is traveling", "The horse pulling against the bit", "A horse's natural energy level that cannot be trained"],a:"Energy from the hindquarters producing powerful, elastic strides forward",ok:"Correct. Impulsion is not speed \u2014 it is the engagement and power generated from the hindquarters, directed forward.",no:"Impulsion is hindquarter engagement creating powerful, elastic forward movement \u2014 it is not the same as speed."},
+{q:"A horse with a swinging, relaxed back is demonstrating:",opts:["Suppleness", "Stiffness", "Resistance", "Collection"],a:"Suppleness",ok:"Correct. A swinging back allows energy to flow freely from the hindquarters through the topline \u2014 the hallmark of suppleness.",no:"A swinging back is the hallmark of suppleness \u2014 energy flows from the hindquarters through a soft topline."},
+{q:"In the posting trot, 'sitting the trot' means:",opts:["Staying in the saddle rather than rising on alternate diagonals", "Slowing the trot to a near-walk", "Posting only on one diagonal", "Riding without stirrups at the trot"],a:"Staying in the saddle rather than rising on alternate diagonals",ok:"Correct. Sitting trot means absorbing the trot motion in the seat rather than rising \u2014 a key skill for connection and collection.",no:"Sitting trot means staying seated and absorbing the motion through the hip and lower back, rather than posting."},
+{q:"A horse that is behind the vertical means:",opts:["The horse's nose is carried behind the line of the forehead", "The horse is traveling with its nose out in front", "The horse's hindquarters are behind the motion", "The horse is too far behind the rider's leg"],a:"The horse's nose is carried behind the line of the forehead",ok:"Correct. Behind the vertical means the nose has come behind the plane of the forehead \u2014 the horse is over-flexed and evading the contact.",no:"Behind the vertical means the nose is tucked behind the forehead line \u2014 the horse is over-bent and not truly in front of the bit."},
+{q:"What are transitions?",opts:["Changes between gaits or within a gait", "The moment of suspension in the canter", "The rhythm of the footfalls within a gait", "The lead change performed mid-circle"],a:"Changes between gaits or within a gait",ok:"Correct. Transitions are changes between or within gaits \u2014 walk to trot, trot to canter, or working trot to extended trot.",no:"Transitions are changes between gaits (trot to canter) or within a gait (working to extended trot)."},
+{q:"Which gait has two beats with diagonal pairs moving together?",opts:["Trot", "Walk", "Canter", "Gallop"],a:"Trot",ok:"Correct. The trot is a 2-beat diagonal gait. Walk is 4-beat, canter is 3-beat, gallop is 4-beat.",no:"The trot is the 2-beat diagonal gait. Walk = 4, trot = 2, canter = 3, gallop = 4."},
+{q:"What is rhythm in the context of gaits?",opts:["The consistent, regular pattern of footfalls within a gait", "The speed of the horse's forward movement", "The energy level the horse carries", "The degree to which the horse engages its hindquarters"],a:"The consistent, regular pattern of footfalls within a gait",ok:"Correct. Rhythm is the regularity and consistency of footfall timing within a gait \u2014 one of the fundamental requirements of quality movement.",no:"Rhythm is the regular, consistent timing of footfalls. Loss of rhythm indicates tension, imbalance, or fatigue."},
+{q:"A horse moving with short, choppy strides and a tight back is demonstrating:",opts:["Stiffness \u2014 energy is blocked at the back", "Impulsion", "Correct collection", "Relaxation"],a:"Stiffness \u2014 energy is blocked at the back",ok:"Correct. Short, choppy strides with a tight back mean energy from the hindquarters is being blocked rather than flowing forward.",no:"Short, choppy strides with a tight back indicate stiffness \u2014 the energy from the hindquarters is not flowing through the topline."},
+];
+function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let qs=[],cur=0,sc=0,ans=false;
+function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
+  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
+function show(){const q=qs[cur];
+  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
+  document.getElementById('quiz-score').textContent='Score: '+sc;
+  document.getElementById('quiz-question').textContent=q.q;
+  document.getElementById('quiz-feedback').textContent='';
+  document.getElementById('quiz-next').disabled=true;ans=false;
+  const opts=sh([...q.opts]);
+  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
+  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
+    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
+    if(ok)sc++;
+    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
+      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
+      else if(x===this&&!ok)x.classList.add('incorrect');
+    });
+    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
+    document.getElementById('quiz-next').disabled=false;
+  }));}
+document.getElementById('quiz-next').addEventListener('click',function(){cur++;
+  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
+    document.getElementById('score-panel').style.display='';
+    document.getElementById('score-display').textContent=sc+'/'+QC;
+    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
+  }else show();});
+document.getElementById('btn-retake').addEventListener('click',init);init();
+})();
+</script>
+<script src="course-config.js"></script>
+<script>window.CURRENT_MODULE=8;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};</script>
+<script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+</body></html>

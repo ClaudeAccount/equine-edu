@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Viewing Room - Western Tack &amp; Equipment - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css"><link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+  .equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .equipment-grid .flip-card { min-height: 300px; }
+  .equipment-grid .flip-front {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  .equipment-grid .flip-back { padding: 1rem; text-align: center; }
+  .image-slot {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    background: linear-gradient(135deg, rgba(200, 162, 122,.14), rgba(36, 54, 74,.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .image-slot img {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+  .image-slot span {
+    display: block;
+    color: var(--tan);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .image-slot small {
+    display: block;
+    color: var(--heading);
+    font-weight: 800;
+    margin-top: 0.35rem;
+  }
+  .equipment-grid .flip-back .term-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--heading);
+    margin-bottom: 0.6rem;
+  }
+  .equipment-grid .flip-back .term-def {
+    color: var(--body-text);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    text-align: left;
+  }
+  .gallery-instructions {
+    color: var(--body-text);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 760px) {
+    .equipment-grid { grid-template-columns: 1fr; }
+  }
+  .photo-cue { position:absolute; left:1rem; bottom:1rem; background:rgba(36, 54, 74,.86); color:var(--tan); border-radius:999px; padding:.42rem .85rem; font-size:.68rem; font-weight:900; letter-spacing:1.2px; text-transform:uppercase; pointer-events:none; white-space:nowrap; }
+</style>
+</head>
+<body><div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-viewing-room" id="top"><div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text"><div class="lesson-module-tag">Western Tack & Equipment</div><h1 class="lesson-hero-title">The Viewing <span>Room</span></h1><p class="lesson-hero-desc">Review common western equipment types and where they appear in everyday riding.</p></div></div></section>
+<div class="lesson-wrap"><main class="lesson-left">
+  <div class="lesson-intro-card"><h2>Western Saddles in the Real World</h2><p>Western saddles change by discipline and rider needs. The same basic parts may appear on each saddle, but the seat, horn, tree, skirt, rigging, weight, and decoration can change depending on what the saddle is designed to do.</p><p class="gallery-instructions">Click any card to flip it and reveal the saddle type and short description.</p></div>
+  <div class="visual-card"><h2>Equipment Gallery</h2><div class="equipment-grid">
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="image-slot"><img src="images/viewing-room/barrel-saddle.png" alt="Barrel saddle in use"></div><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Barrel Saddle</div><div class="term-def">A lightweight western saddle with a secure seat, higher cantle, and features that help the rider stay balanced through quick turns and fast acceleration.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="image-slot"><img src="images/viewing-room/roping-saddle.png" alt="Roping saddle in use"></div><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Roping Saddle</div><div class="term-def">A strong, stable western saddle with a sturdy tree, substantial horn, and secure rigging for ranch work and roping events.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="image-slot"><img src="images/viewing-room/cutting-saddle.png" alt="Cutting saddle in use"></div><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Cutting Saddle</div><div class="term-def">A western saddle designed to help the rider stay balanced and out of the horse's way while the horse makes quick stops, turns, and side-to-side movements around cattle.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="image-slot"><img src="images/viewing-room/reigning-saddle.png" alt="Reining saddle in use"></div><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Reining Saddle</div><div class="term-def">A western saddle made for close communication and rider balance during reining maneuvers such as circles, spins, sliding stops, and rollbacks.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="image-slot"><img src="images/viewing-room/western-show-saddle.png" alt="Western show saddle in use"></div><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Show Saddle</div><div class="term-def">A western saddle made for the show ring, often with polished leather, tooling, silver, or decorative details. Its build may be based on pleasure, equitation, or other western styles.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="image-slot"><img src="images/viewing-room/trail-saddle.png" alt="Trail saddle in use"></div><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Trail Saddle</div><div class="term-def">A western saddle designed for comfort and practical use over longer rides, often with a padded seat, saddle strings, secure stirrups, and a build meant for steady riding.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="image-slot"><img src="images/viewing-room/all-around-saddle.png" alt="All-around western saddle in use"></div><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">All-Around Saddle</div><div class="term-def">A versatile western saddle for riders who do several activities instead of one specialized event. It balances everyday comfort with enough structure for general western work.</div></div></div></button>
+    <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><div class="image-slot"><img src="images/viewing-room/youth-saddle.png" alt="Youth western saddle in use"></div><span class="photo-cue">Tap to Reveal</span></div><div class="flip-back"><div class="term-name">Youth Saddle</div><div class="term-def">A western saddle sized for a young or smaller rider, usually with a smaller seat and shorter skirt. It still needs to fit the horse correctly.</div></div></div></button>
+  </div></div>
+</main><aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside></div>
+<div id="site-footer"></div><script>window.CURRENT_MODULE=4;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Western Tack',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'6-training-barn.html'}]};</script><script src="course-config.js"></script><script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script><script>try{localStorage.setItem('equineEduProgress.westernEquipment.viewingRoom','true')}catch(e){}</script>
+</body></html>

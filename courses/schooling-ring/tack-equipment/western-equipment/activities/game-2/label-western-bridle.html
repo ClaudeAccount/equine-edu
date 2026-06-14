@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Label the Western Bridle - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../../../assets/css/game.css">
+<style>
+.game-shell{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(36, 54, 74,.09);overflow:visible;width:100%}
+.game-intro-card{padding:1.4rem 1.6rem;background:var(--soft-white);border-bottom:1px solid var(--border);border-radius:var(--radius-lg) var(--radius-lg) 0 0;margin-bottom:.65rem}
+.game-intro-card h2{font-family:var(--font-display);color:var(--heading);font-size:1.25rem;margin-bottom:.4rem}
+.game-intro-card p{color:var(--body-text);font-size:.88rem;line-height:1.65;margin:.2rem 0 0}
+.game-progress-bar-wrap{background:var(--heading);padding:.85rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.gpbw-left{display:flex;align-items:center;gap:.75rem;color:rgba(255,255,255,.85);font-size:.88rem;font-weight:600}
+.round-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius);padding:.28rem .7rem;font-size:.67rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.btn-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.diagram-area{padding:1.4rem 1.4rem 1rem;overflow:visible}
+.equipment-stage{position:relative;width:min(100%,360px);margin:0 auto;overflow:visible}
+.equipment-stage img{width:100%;height:auto;display:block;pointer-events:none;user-select:none}
+.leader-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.leader-line{stroke:var(--tan);stroke-width:1.4;stroke-dasharray:5 4;opacity:.9}
+.anchor-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--blue-primary);border:2px solid var(--heading);transform:translate(-50%,-50%);z-index:3;pointer-events:none}
+.drop-box{position:absolute;min-width:80px;max-width:170px;min-height:30px;padding:4px 8px;border:2px dashed rgba(36, 54, 74,.3);border-radius:6px;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);z-index:5;cursor:default;transition:border-color .12s,background .12s;box-sizing:border-box;white-space:nowrap}
+.drop-box.drag-over{border-color:var(--tan);border-style:solid;background:rgba(200, 162, 122,.1)}
+.drop-box.correct{border-color:var(--success);border-style:solid;background:var(--success-bg)}
+.drop-box.incorrect{border-color:var(--error);border-style:solid;background:var(--error-bg)}
+.drop-box.has-pill{border-style:solid;border-color:rgba(36, 54, 74,.32);cursor:grab}
+.drop-placeholder{font-size:.66rem;color:var(--heading);font-weight:700;pointer-events:none;white-space:nowrap}
+.box-label{font-size:.73rem;font-weight:700;color:var(--heading);pointer-events:none;text-align:center;line-height:1.2;white-space:nowrap}
+.word-bank-wrap{padding:.85rem 1.25rem 1.1rem;border-top:1px solid var(--border);background:var(--soft-white);border-radius:0 0 var(--radius-lg) var(--radius-lg)}
+.word-bank-label{font-size:.66rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted-text);margin-bottom:.55rem}
+.word-bank{display:flex;flex-wrap:wrap;gap:.45rem;min-height:40px;align-items:center}
+.drag-tile{display:inline-flex;align-items:center;padding:.36rem .88rem;background:var(--blue-primary);color:var(--white);border-radius:5px;font-size:.78rem;font-weight:700;cursor:grab;user-select:none;touch-action:none;transition:opacity .15s,transform .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(36, 54, 74,.18);white-space:nowrap}
+.drag-tile:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(36, 54, 74,.25)}
+.drag-tile.is-dragging{opacity:.28;cursor:grabbing}
+.drag-ghost{position:fixed;padding:.36rem .88rem;background:var(--blue-primary);color:var(--white);border-radius:5px;font-size:.78rem;font-weight:700;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 6px 20px rgba(36, 54, 74,.35);white-space:nowrap}
+.score-card{display:none;text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border)}
+.score-card.show{display:block}
+.score-emoji{font-size:2.5rem;margin-bottom:.6rem}
+@media(max-width:560px){.drop-box{max-width:120px;font-size:.66rem}.drag-tile{font-size:.72rem;padding:.3rem .7rem}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Western Tack &amp; Equipment</div>
+      <h1 class="lesson-hero-title">Label the Western <span>Bridle</span></h1>
+      <p class="lesson-hero-desc">Drag each label to the correct part of the bridle.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap"><main class="lesson-left" style="padding:0 0 2rem">
+
+  <div class="game-shell">
+    <div class="game-intro-card">
+      <h2>How to Play</h2>
+      <p>Drag each label from the word bank and drop it into the box at the end of the matching line on the bridle. Hit <strong>Check</strong> to see how you did, then <strong>Reset</strong> to clear and try again.</p>
+    </div>
+
+    <div class="game-progress-bar-wrap">
+      <div class="gpbw-left">
+        <span class="round-badge">Round</span>
+        <span><strong id="complete-count">0</strong> / <span id="total-count">0</span> placed</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary"   id="check-btn" type="button">Check</button>
+        <button class="btn-secondary" id="reset-btn" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="diagram-area">
+      <div class="equipment-stage" id="label-stage">
+        <img id="eq-image" src="../../images/saddle-bridle-parts/western-bridle-parts.png" alt="Western bridle diagram">
+        <svg class="leader-svg" id="leader-svg" aria-hidden="true"></svg>
+      </div>
+    </div>
+
+    <div class="word-bank-wrap">
+      <div class="word-bank-label">Word Bank — drag labels to the diagram above</div>
+      <div class="word-bank" id="word-bank"></div>
+    </div>
+
+    <div class="score-card" id="score-card">
+      <div class="score-emoji" id="score-emoji">🏆</div>
+      <h2 id="score-title">Well done!</h2>
+      <p id="score-text"></p>
+      <div class="btn-row" style="justify-content:center;margin-top:1.25rem">
+        <button class="btn-primary" id="play-again" type="button">Play Again</button>
+        <a class="btn-secondary" href="../../6-training-barn.html">Training Barn</a>
+      </div>
+    </div>
+  </div>
+
+</main><aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside></div>
+<div id="site-footer"></div>
+<script>
+const PARTS=[
+  {id:'headpiece',  label:'Headpiece (Crownpiece)', anchor:{x:44.55,y:4.01}, callout:{x:78.30,y:10.58}},
+  {id:'browband',   label:'Browband',               anchor:{x:22.41,y:17.94},callout:{x:11.52,y:11.11}},
+  {id:'throatlatch',label:'Throatlatch',             anchor:{x:40.98,y:57.11},callout:{x:13.48,y:37.66}},
+  {id:'cheek-piece',label:'Cheek Piece',             anchor:{x:50.27,y:54.48},callout:{x:70.98,y:48.44}},
+  {id:'curb-strap', label:'Curb Strap/Chain',        anchor:{x:33.84,y:75.38},callout:{x:14.02,y:67.23}},
+  {id:'bit',        label:'Bit',                    anchor:{x:37.77,y:71.44},callout:{x:69.02,y:96.81}},
+  {id:'reins',      label:'Reins',                  anchor:{x:59.73,y:81.56},callout:{x:79.20,y:76.96}},
+];
+const ROUND_SIZE=10;
+let currentRound=[],deck=[],placed={},drag=null;
+const stage=document.getElementById('label-stage'),eqImage=document.getElementById('eq-image'),svgEl=document.getElementById('leader-svg'),wordBank=document.getElementById('word-bank'),countEl=document.getElementById('complete-count'),totalEl=document.getElementById('total-count'),scoreCard=document.getElementById('score-card');
+function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
+function pickRound(){const s=Math.min(ROUND_SIZE,PARTS.length);if(deck.length<s)deck=shuffle(PARTS);return deck.splice(0,s);}
+function imgPt(p){const sr=stage.getBoundingClientRect(),ir=eqImage.getBoundingClientRect();return{x:ir.left-sr.left+ir.width*p.x/100,y:ir.top-sr.top+ir.height*p.y/100};}
+function render(){
+  currentRound=pickRound();placed={};
+  stage.querySelectorAll('.anchor-dot,.drop-box').forEach(el=>el.remove());
+  svgEl.innerHTML='';svgEl.setAttribute('viewBox','0 0 '+stage.clientWidth+' '+stage.clientHeight);
+  totalEl.textContent=currentRound.length;countEl.textContent='0';scoreCard.classList.remove('show');
+  currentRound.forEach(part=>{
+    const a=imgPt(part.anchor),c=imgPt(part.callout);
+    const line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('class','leader-line');line.setAttribute('x1',a.x);line.setAttribute('y1',a.y);line.setAttribute('x2',c.x);line.setAttribute('y2',c.y);svgEl.appendChild(line);
+    const dot=document.createElement('span');dot.className='anchor-dot';dot.dataset.id=part.id;dot.style.left=a.x+'px';dot.style.top=a.y+'px';stage.appendChild(dot);
+    const box=document.createElement('div');box.className='drop-box';box.dataset.id=part.id;box.style.left=c.x+'px';box.style.top=c.y+'px';box.innerHTML='<span class="drop-placeholder">drop here</span>';stage.appendChild(box);
+  });
+  wordBank.innerHTML='';shuffle(currentRound).forEach(p=>addPill(p.label));
+}
+function redraw(){
+  if(!currentRound.length)return;
+  svgEl.innerHTML='';svgEl.setAttribute('viewBox','0 0 '+stage.clientWidth+' '+stage.clientHeight);
+  currentRound.forEach(part=>{
+    const a=imgPt(part.anchor),c=imgPt(part.callout);
+    const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('class','leader-line');
+    line.setAttribute('x1',a.x);line.setAttribute('y1',a.y);
+    line.setAttribute('x2',c.x);line.setAttribute('y2',c.y);
+    svgEl.appendChild(line);
+    const dot=stage.querySelector('.anchor-dot[data-id="'+part.id+'"]');
+    if(dot){dot.style.left=a.x+'px';dot.style.top=a.y+'px';}
+    const box=stage.querySelector('.drop-box[data-id="'+part.id+'"]');
+    if(box){box.style.left=c.x+'px';box.style.top=c.y+'px';}
+  });
+}
+function addPill(label){
+  const p=document.createElement('div');
+  p.className='drag-tile';p.dataset.label=label;p.textContent=label;
+  p.addEventListener('pointerdown',function(e){startDrag(e,label,'bank',p);});
+  wordBank.appendChild(p);
+}
+function fillBox(box,label){
+  placed[box.dataset.id]=label;
+  box.innerHTML='<span class="box-label">'+label+'</span>';
+  box.classList.add('has-pill');box.classList.remove('correct','incorrect','drag-over');
+  countEl.textContent=Object.keys(placed).length;
+}
+function startDrag(e,label,srcType,srcEl){
+  e.preventDefault();
+  if(drag)return;
+  const ghost=document.createElement('div');ghost.className='drag-ghost';ghost.textContent=label;
+  document.body.appendChild(ghost);
+  drag={label,srcType,srcEl,ghost};
+  if(srcType==='bank')srcEl.classList.add('is-dragging');
+  ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';
+  document.addEventListener('pointermove',onMove);
+  document.addEventListener('pointerup',onUp);
+  document.addEventListener('pointercancel',onUp);
+}
+function onMove(e){
+  if(!drag)return;
+  drag.ghost.style.left=e.clientX+'px';drag.ghost.style.top=e.clientY+'px';
+  drag.ghost.style.visibility='hidden';
+  const el=document.elementFromPoint(e.clientX,e.clientY);
+  drag.ghost.style.visibility='';
+  stage.querySelectorAll('.drop-box').forEach(b=>b.classList.remove('drag-over'));
+  const box=el&&el.closest('.drop-box');
+  if(box)box.classList.add('drag-over');
+}
+function onUp(e){
+  if(!drag)return;
+  drag.ghost.style.visibility='hidden';
+  const el=document.elementFromPoint(e.clientX,e.clientY);
+  drag.ghost.style.visibility='';
+  const targetBox=el&&el.closest('.drop-box');
+  if(targetBox){
+    if(placed[targetBox.dataset.id]){
+      const bumped=placed[targetBox.dataset.id];
+      delete placed[targetBox.dataset.id];
+      targetBox.innerHTML='<span class="drop-placeholder">drop here</span>';
+      targetBox.classList.remove('has-pill','correct','incorrect');
+      addPill(bumped);
+      countEl.textContent=Object.keys(placed).length;
+    }
+    if(drag.srcType==='box'){
+      const srcId=drag.srcEl.dataset.id;
+      delete placed[srcId];
+      drag.srcEl.innerHTML='<span class="drop-placeholder">drop here</span>';
+      drag.srcEl.classList.remove('has-pill','correct','incorrect');
+      countEl.textContent=Object.keys(placed).length;
+    }
+    fillBox(targetBox,drag.label);
+    if(drag.srcType==='bank')drag.srcEl.remove();
+  } else {
+    if(drag.srcType==='bank')drag.srcEl.classList.remove('is-dragging');
+  }
+  stage.querySelectorAll('.drop-box').forEach(b=>b.classList.remove('drag-over'));
+  drag.ghost.remove();drag=null;
+  document.removeEventListener('pointermove',onMove);
+  document.removeEventListener('pointerup',onUp);
+  document.removeEventListener('pointercancel',onUp);
+}
+function check(){
+  let correct=0;
+  currentRound.forEach(part=>{
+    const box=stage.querySelector('.drop-box[data-id="'+part.id+'"]');
+    if(!box)return;
+    if(placed[part.id]===part.label){box.classList.add('correct');box.classList.remove('incorrect');correct++;}
+    else if(placed[part.id]){box.classList.add('incorrect');box.classList.remove('correct');}
+  });
+  const total=currentRound.length;
+  document.getElementById('score-emoji').textContent=correct===total?'🏆':'⭐';
+  document.getElementById('score-title').textContent=correct===total?'Perfect!':'Nice work!';
+  document.getElementById('score-text').textContent='You got '+correct+' out of '+total+' correct.';
+  document.getElementById('score-card').classList.add('show');
+}
+function reset(){document.getElementById('score-card').classList.remove('show');render();}
+document.getElementById('check-btn').addEventListener('click',check);
+document.getElementById('reset-btn').addEventListener('click',reset);
+document.getElementById('play-again').addEventListener('click',reset);
+window.addEventListener('resize',redraw);
+document.addEventListener('DOMContentLoaded',render);
+
+</script>
+<script>window.CURRENT_MODULE=5;window.LAYOUT={homeUrl:'../../../../../index.html',coursesUrl:'../../../../index.html',navCta:{label:'Back to Western Tack',url:'../../1-index.html'},navExtras:[{label:'Training Barn',url:'../../6-training-barn.html'}]};</script>
+<script src="../../course-config.js"></script>
+<script src="../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../../assets/js/paywall.js"></script>
+<script src="../../../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

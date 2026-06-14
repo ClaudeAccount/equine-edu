@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Viewing Room &mdash; Intro to Equine Anatomy &mdash; Equine Edu</title>
+<meta name="description" content="A labeled whole-horse diagram showing all major body parts. Study how everything connects from poll to hoof.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<style>
+/* -- Diagram ---------------------------------------------------------------- */
+.diagram-outer{display:flex;justify-content:center;padding:.5rem 0;}
+.diagram-wrap{position:relative;display:inline-block;width:100%;max-width:960px;user-select:none;background:linear-gradient(160deg,#f0f2f7 0%,#e8eaf2 100%);border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:0 8px 32px rgba(36, 54, 74,0.10);}
+.diagram-wrap img{width:100%;display:block;border-radius:var(--radius-lg);}
+.diagram-wrap svg.marker-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:2;}
+
+.a-dot{position:absolute;width:10px;height:10px;background:var(--tan);border:2px solid var(--heading);border-radius:50%;transform:translate(-50%,-50%);z-index:4;box-shadow:0 1px 5px rgba(36, 54, 74,.35);pointer-events:none;}
+.a-lbl{position:absolute;transform:translate(-50%,-50%);background:var(--blue-primary);color:var(--white);font-size:.63rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:.28rem .65rem;border-radius:999px;white-space:nowrap;z-index:5;box-shadow:0 2px 8px rgba(36, 54, 74,.25);pointer-events:none;}
+
+@media(max-width:640px){
+  .a-lbl{font-size:.52rem;padding:.2rem .44rem;}
+  .a-dot{width:8px;height:8px;}
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero" id="top">
+  <div class="lesson-hero-inner">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to Equine Anatomy</div>
+      <h1 class="lesson-hero-title">The Viewing <span>Room</span></h1>
+      <p class="lesson-hero-desc">All the major parts of the horse in one place. Use this view to see how everything connects from poll to hoof.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="lesson-intro-card">
+      <h2>The Whole Horse</h2>
+      <p>Every major external body part shown together on a single diagram. Use this to see how the head, neck, body, and legs all connect. The Front and Back diagrams with individual part descriptions are on the Parts of the Horse lesson page.</p>
+    </div>
+
+    <div class="visual-card" style="padding:1.25rem;">
+      <div class="diagram-outer">
+        <div class="diagram-wrap" id="dw-whole">
+          <img src="images/parts-whole.png" alt="Whole horse — labeled body parts diagram" draggable="false">
+          <svg class="marker-svg" id="svg-whole" aria-hidden="true"></svg>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:rgba(200, 162, 122,.08);border:1px solid rgba(200, 162, 122,.3);border-left:4px solid var(--tan);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;">
+      <p style="font-size:.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--tan);margin-bottom:.5rem;">&#128161; Practice Tip</p>
+      <p style="color:var(--body-text);line-height:1.7;">Cover the labels and try to name each marked part from the dot alone. Work top to bottom, front to back &mdash; poll to hoof. That is the order horse people use when examining or describing a horse.</p>
+    </div>
+
+    <div id="course-notes"></div>
+    <script>
+      window.PAGE_NOTES = {
+        items: [
+          'Work top to bottom, front to back: poll, ears, withers, back, croup, then legs.',
+          'The withers is where horse height is measured — always in hands.',
+          'Front and hind legs share part names below the knee or hock: cannon, fetlock, pastern, and hoof.',
+          'The whole-horse view is the best way to see how all the regions connect.'
+        ],
+        highlight: 'Try to name each part from the dot before reading the label. That is the test that sticks.'
+      };
+    </script>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+const DEFAULTS = [
+  { id:"poll",        text:"Poll",        ax:16.6, ay:13,   lx:14.3, ly:0    },
+  { id:"ears",        text:"Ears",        ax:18.5, ay:11.4, lx:24.2, ly:1.8  },
+  { id:"forelock",    text:"Forelock",    ax:15.8, ay:14.6, lx:4.3,  ly:6.3  },
+  { id:"face",        text:"Face",        ax:14.3, ay:22.9, lx:6.6,  ly:20.4 },
+  { id:"nostril",     text:"Nostril",     ax:11.6, ay:32.1, lx:0,    ly:29.5 },
+  { id:"muzzle",      text:"Muzzle",      ax:14.1, ay:31.6, lx:4.1,  ly:42.3 },
+  { id:"throatlatch", text:"Throatlatch", ax:23.8, ay:23.8, lx:19.7, ly:41.6 },
+  { id:"neck",        text:"Neck",        ax:29.5, ay:20.7, lx:33,   ly:1.4  },
+  { id:"mane",        text:"Mane",        ax:35.2, ay:17.4, lx:38,   ly:10   },
+  { id:"withers",     text:"Withers",     ax:43.3, ay:29.7, lx:46.8, ly:16   },
+  { id:"back",        text:"Back",        ax:52.9, ay:33.3, lx:56.4, ly:21.5 },
+  { id:"croup",       text:"Croup",       ax:73.8, ay:30,   lx:76.9, ly:18   },
+  { id:"dock",        text:"Dock",        ax:79.2, ay:32.8, lx:89.1, ly:23.7 },
+  { id:"tail",        text:"Tail",        ax:84.4, ay:43.1, lx:93.8, ly:36.3 },
+  { id:"shoulder",    text:"Shoulder",    ax:37,   ay:43,   lx:20.2, ly:50.9 },
+  { id:"chest",       text:"Chest",       ax:32.6, ay:51.5, lx:21,   ly:62   },
+  { id:"barrel",      text:"Barrel",      ax:51.9, ay:41.4, lx:53.8, ly:64   },
+  { id:"flank",       text:"Flank",       ax:65.8, ay:44.8, lx:64.4, ly:61.9 },
+  { id:"thigh",       text:"Thigh",       ax:71.6, ay:44.4, lx:95,   ly:58.6 },
+  { id:"buttock",     text:"Buttock",     ax:80,   ay:43.9, lx:96.9, ly:49.5 },
+  { id:"hock",        text:"Hock",        ax:79.9, ay:67.2, lx:93.4, ly:69.3 },
+  { id:"knee",        text:"Knee",        ax:38.2, ay:71.5, lx:30,   ly:71.8 },
+  { id:"cannon",      text:"Cannon",      ax:38.4, ay:78.7, lx:23.5, ly:79.7 },
+  { id:"fetlock",     text:"Fetlock",     ax:37,   ay:87.1, lx:51.9, ly:79.8 },
+  { id:"pastern",     text:"Pastern",     ax:80.9, ay:86.5, lx:94.4, ly:86.1 },
+  { id:"hoof",        text:"Hoof",        ax:69.7, ay:89.6, lx:60.9, ly:88.8 }
+];
+
+function render() {
+  var wrap = document.getElementById('dw-whole');
+  var svg  = document.getElementById('svg-whole');
+  if (!wrap || !svg) return;
+  wrap.querySelectorAll('.a-dot, .a-lbl').forEach(function(el){ el.remove(); });
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  DEFAULTS.forEach(function(part) {
+    var dot = document.createElement('div');
+    dot.className = 'a-dot';
+    dot.style.left = part.ax + '%';
+    dot.style.top  = part.ay + '%';
+    dot.title = part.text;
+    wrap.appendChild(dot);
+    var lbl = document.createElement('div');
+    lbl.className = 'a-lbl';
+    lbl.style.left = part.lx + '%';
+    lbl.style.top  = part.ly + '%';
+    lbl.textContent = part.text;
+    wrap.appendChild(lbl);
+    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', part.ax + '%');
+    line.setAttribute('y1', part.ay + '%');
+    line.setAttribute('x2', part.lx + '%');
+    line.setAttribute('y2', part.ly + '%');
+    line.setAttribute('stroke', 'rgba(200, 162, 122,0.78)');
+    line.setAttribute('stroke-width', '1.5');
+    line.setAttribute('stroke-dasharray', '4 3');
+    svg.appendChild(line);
+  });
+}
+render();
+</script>
+
+<script>
+  window.CURRENT_MODULE = 3;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Course', url: '1-index.html' },
+    navExtras:  [{ label: 'Parts of the Horse', url: '3-parts-of-the-horse.html' }, { label: 'The Training Barn', url: '5-training-barn.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.partsOfTheHorse.viewingRoom','true')}catch(e){}</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge — Hoof Care & Farriery — Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css"><link rel="stylesheet" href="../../../../assets/css/game.css">
+</head><body>
+<div id="site-nav"></div><div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text">
+    <div class="lesson-module-tag">Horse Care</div>
+    <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+    <p class="lesson-hero-desc">Each attempt draws 12 questions from a larger bank — answers rotate so repeated attempts are never the same quiz.</p>
+  </div></div>
+</section>
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 12</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/12</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+<div id="site-footer"></div>
+<script>
+(function(){
+const QC=12;
+const bank=[
+{q:"What is the hoof wall?",opts:["The hard outer structure of the hoof that bears the horse's weight", "The V-shaped structure in the center of the sole", "The soft tissue layer under the sole", "The white junction between the sole and the wall"],a:"The hard outer structure of the hoof that bears the horse's weight",ok:"Correct. The hoof wall is the hard, keratinous outer structure that contacts the ground and bears weight.",no:"The hoof wall is the hard outer casing of the hoof \u2014 it bears weight and contacts the ground."},
+{q:"What is the frog?",opts:["The V-shaped structure in the center of the sole that absorbs shock", "The white line visible at the hoof's bottom edge", "The bony structure inside the hoof", "The heel bulbs at the back of the hoof"],a:"The V-shaped structure in the center of the sole that absorbs shock",ok:"Correct. The frog is the V-shaped, softer structure in the center of the sole \u2014 it acts as a shock absorber and traction aid.",no:"The frog is the V-shaped structure in the center of the sole. It absorbs concussion and provides grip."},
+{q:"What is the white line?",opts:["The junction between the hoof wall and the sole, used by farriers to place nails safely", "The visible edge of the coffin bone through the hoof wall", "The ring of pigmentation around the coronary band", "The area of the hoof wall that grows fastest"],a:"The junction between the hoof wall and the sole, used by farriers to place nails safely",ok:"Correct. The white line is the hoof wall\u2013sole junction. Farriers nail inside it to avoid the sensitive laminae.",no:"The white line marks the junction of wall and sole. Nails placed inside it avoid the sensitive inner structures."},
+{q:"Sensitive laminae are:",opts:["Interlocking tissue that bonds the hoof wall to the coffin bone", "The nerves in the sole that detect pressure", "The blood vessels in the digital cushion", "The germinal cells that produce new hoof wall"],a:"Interlocking tissue that bonds the hoof wall to the coffin bone",ok:"Correct. The sensitive laminae interlock with insensitive laminae on the inside of the hoof wall to attach it to the coffin bone (P3).",no:"The sensitive laminae bond the hoof wall to the coffin bone. Laminitis inflames these tissues and can cause coffin bone rotation."},
+{q:"How often does the average horse need a farrier visit?",opts:["Every 6\u20138 weeks", "Every 3\u20134 months", "Once a year", "Every 2\u20133 weeks"],a:"Every 6\u20138 weeks",ok:"Correct. Hoof growth averaging about 1 cm per month means most horses need trimming or reshoeing every 6\u20138 weeks.",no:"Most horses need farrier attention every 6\u20138 weeks. Growth rate, footing, and workload affect the exact schedule."},
+{q:"The primary advantage of shoeing is:",opts:["Protection of the hoof wall on hard or abrasive terrain and support for therapeutic needs", "It prevents all hoof conditions including laminitis", "Shod horses have significantly stronger hoof walls", "Shoes allow horses to be ridden without any hoof care"],a:"Protection of the hoof wall on hard or abrasive terrain and support for therapeutic needs",ok:"Correct. Shoes protect the wall from excessive wear, provide traction on hard surfaces, and support therapeutic corrections.",no:"Shoes protect against wear on hard footing, improve traction, and can be modified therapeutically for hoof and limb conditions."},
+{q:"Thrush is caused by:",opts:["Anaerobic bacteria thriving in wet, packed manure and dirt", "Fungal spores in dusty hay", "A nutritional deficiency in biotin", "A viral infection spread by flies"],a:"Anaerobic bacteria thriving in wet, packed manure and dirt",ok:"Correct. Thrush is a bacterial infection of the frog caused by anaerobic bacteria in wet, dirty conditions.",no:"Thrush is caused by anaerobic bacteria in wet, dirty environments. Daily hoof picking and clean stabling prevent it."},
+{q:"How often should hooves be picked out?",opts:["At minimum before and after every ride; daily for stabled horses", "Once a week before the farrier visit", "Only when visible debris is present", "Monthly, combined with farrier visits"],a:"At minimum before and after every ride; daily for stabled horses",ok:"Correct. Daily hoof picking removes debris that causes thrush and pressure, and allows inspection of the hoof's condition.",no:"Hooves should be picked out daily for stabled horses and before and after every ride \u2014 this is basic, essential hoof care."},
+{q:"A horse with sudden, severe non-weight-bearing lameness in one foot most likely has:",opts:["A hoof abscess", "Laminitis in all four feet", "A fractured coffin bone", "A bruised sole on all feet"],a:"A hoof abscess",ok:"Correct. Acute non-weight-bearing lameness in a single foot is the classic presentation of a hoof abscess \u2014 a pocket of infection seeking to drain.",no:"Sudden acute lameness in a single foot, especially with increased digital pulse and heat, is the hallmark of a hoof abscess."},
+{q:"The coffin bone (P3) is:",opts:["The bone inside the hoof capsule that can rotate during laminitis", "The bone above the fetlock", "The sesamoid bone at the back of the fetlock", "The growth plate at the top of the hoof wall"],a:"The bone inside the hoof capsule that can rotate during laminitis",ok:"Correct. P3 (pedal bone/coffin bone) sits inside the hoof capsule. Laminitis can cause it to rotate and penetrate the sole.",no:"The coffin bone is the bone within the hoof capsule. Severe laminitis can cause it to rotate, piercing the sole."},
+{q:"A digital pulse is detected:",opts:["At the back of the pastern or fetlock area", "At the coronary band", "Just above the knee", "On the underside of the frog"],a:"At the back of the pastern or fetlock area",ok:"Correct. The digital pulse can be felt at the pastern or fetlock region. A bounding (strong) digital pulse indicates inflammation in the hoof.",no:"The digital pulse is felt at the pastern or fetlock. A strong, bounding pulse indicates hoof inflammation \u2014 laminitis or abscess."},
+{q:"The coronary band is:",opts:["The junction between the hoof wall and the skin, where the hoof wall grows from", "The back of the heel", "The underside of the pastern", "The white line on the bottom of the hoof"],a:"The junction between the hoof wall and the skin, where the hoof wall grows from",ok:"Correct. The coronary band is the growth center at the top of the hoof wall. Damage to it can cause permanent hoof wall defects.",no:"The coronary band is where hoof wall growth originates. Injuries here can cause permanent changes to the hoof wall structure."},
+{q:"Which of the following best describes barefoot management?",opts:["Relying on the natural hoof wall for protection without metal shoes", "Removing shoes only when the horse is not in work", "A temporary state before applying corrective shoes", "A practice suitable only for horses in heavy work on hard terrain"],a:"Relying on the natural hoof wall for protection without metal shoes",ok:"Correct. Barefoot management allows the natural hoof to bear concussion and wear without metal shoes \u2014 appropriate for many horses on suitable terrain.",no:"Barefoot horses rely on the natural hoof wall. It is appropriate for many horses and footing types, not just horses out of work."},
+{q:"Hoof wall growth averages approximately:",opts:["1 centimeter per month", "1 inch per week", "5 centimeters per month", "1 millimeter per month"],a:"1 centimeter per month",ok:"Correct. Hoof wall grows approximately 1 cm per month \u2014 meaning a full hoof replacement from coronary band to ground takes about a year.",no:"Hoof wall grows about 1 cm per month. This growth rate is why farrier visits are typically needed every 6\u20138 weeks."},
+{q:"What is white line disease?",opts:["A bacterial and fungal infection at the white line, causing separation of wall from sole", "Inflammation of the sensitive laminae causing coffin bone rotation", "Bruising of the sole visible through a white-hoofed horse's wall", "A genetic condition causing soft, chalky hoof walls"],a:"A bacterial and fungal infection at the white line, causing separation of wall from sole",ok:"Correct. White line disease is an infection at the hoof wall\u2013sole junction, causing separation and crumbling of the hoof wall.",no:"White line disease is a bacterial/fungal infection at the white line that causes progressive separation between the hoof wall and sole."},
+];
+function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+let qs=[],cur=0,sc=0,ans=false;
+function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
+  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
+function show(){const q=qs[cur];
+  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
+  document.getElementById('quiz-score').textContent='Score: '+sc;
+  document.getElementById('quiz-question').textContent=q.q;
+  document.getElementById('quiz-feedback').textContent='';
+  document.getElementById('quiz-next').disabled=true;ans=false;
+  const opts=sh([...q.opts]);
+  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
+  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
+    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
+    if(ok)sc++;
+    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
+      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
+      else if(x===this&&!ok)x.classList.add('incorrect');
+    });
+    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
+    document.getElementById('quiz-next').disabled=false;
+  }));}
+document.getElementById('quiz-next').addEventListener('click',function(){cur++;
+  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
+    document.getElementById('score-panel').style.display='';
+    document.getElementById('score-display').textContent=sc+'/'+QC;
+    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
+  }else show();});
+document.getElementById('btn-retake').addEventListener('click',init);init();
+})();
+</script>
+<script src="course-config.js"></script>
+<script>window.CURRENT_MODULE=8;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};</script>
+<script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
+</body></html>

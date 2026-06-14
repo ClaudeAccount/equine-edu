@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Leg Markings &mdash; Equine Edu</title>
+<meta name="description" content="Course wrap-up for the Leg Markings course. Check your understanding of common leg markings, height, location, partial markings, and ermine marks.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Leg Markings</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">This quiz covers everything from the Leg Markings course: marking names, height on the leg, exact location, partial markings, ermine marks, and identification from images. Each attempt gives you 15 questions from a larger bank.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/15</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+(function(){
+const QUESTION_COUNT=15;
+const questionBank=[
+    { type: 'mc', prompt: 'What is the main clue used to name most leg markings?', options: ['How high the white extends up the leg', 'The color of the mane', 'The horse height in hands', 'The shape of the ears'], answer: 'How high the white extends up the leg', correct: 'Correct. Most leg marking names are based on the highest point reached by the white marking.', incorrect: 'Not quite. For leg markings, start by looking at how high the white reaches from the hoof.' },
+    { type: 'mc', prompt: 'Which marking is a narrow band or area of white at the top of the hoof?', options: ['Coronet', 'Sock', 'Stocking', 'Ermine mark'], answer: 'Coronet', correct: 'Correct. A coronet marking sits at or just above the coronet band at the top of the hoof.', incorrect: 'Look at the lowest white marking. A coronet marking is a narrow area at the top of the hoof.' },
+    { prompt: 'Which marking extends over the pastern but does not reach as high as a sock?', options: ['Pastern', 'Stocking', 'Bald face', 'Star'], answer: 'Pastern', correct: 'Correct. A pastern marking extends up over the pastern area.', incorrect: 'The marking named for the pastern is the one that extends up over the pastern area.' },
+    { prompt: 'White that reaches to or around the fetlock joint is commonly called a:', options: ['Fetlock marking', 'Snip', 'Blaze', 'Withers mark'], answer: 'Fetlock marking', correct: 'Correct. A fetlock marking reaches the fetlock joint area.', incorrect: 'Not quite. White that reaches the fetlock is described as a fetlock marking or ankle marking in many references.' },
+    { prompt: 'A sock usually describes white that:', options: ['Covers the fetlock and continues partway up the cannon', 'Only touches one heel', 'Stays only on the forehead', 'Runs down the nose'], answer: 'Covers the fetlock and continues partway up the cannon', correct: 'Correct. A sock rises above the fetlock but does not extend all the way to the knee or hock.', incorrect: 'A sock is a leg marking that covers the fetlock and rises partway up the cannon.' },
+    { prompt: 'A stocking usually describes white that:', options: ['Extends high up the leg toward the knee or hock', 'Only circles the top of the hoof', 'Appears only on the muzzle', 'Is a dark spot inside white'], answer: 'Extends high up the leg toward the knee or hock', correct: 'Correct. A stocking is a high white leg marking extending toward the knee or hock.', incorrect: 'The highest common white leg marking in this set is the stocking.' },
+    { prompt: 'Which part of the horse is used as the upper joint reference on a front leg?', options: ['Knee', 'Hock', 'Muzzle', 'Poll'], answer: 'Knee', correct: 'Correct. The knee is the upper joint reference for the front leg.', incorrect: 'Front legs use the knee as the upper joint reference.' },
+    { prompt: 'Which part of the horse is used as the upper joint reference on a hind leg?', options: ['Hock', 'Knee', 'Forelock', 'Withers'], answer: 'Hock', correct: 'Correct. The hock is the upper joint reference for the hind leg.', incorrect: 'Hind legs use the hock as the upper joint reference.' },
+    { prompt: 'Why does exact leg location matter when describing markings?', options: ['Because the same white height can appear on different legs', 'Because it changes the horse into a different breed', 'Because it determines the horse’s age', 'Because it replaces coat color'], answer: 'Because the same white height can appear on different legs', correct: 'Correct. Naming the exact leg makes the identification description clearer.', incorrect: 'Exact location matters because a horse may have different markings on each leg.' },
+    { prompt: 'A clear identification description should include:', options: ['Which leg the marking is on', 'Only the horse’s barn name', 'The saddle color', 'Only the horse’s height'], answer: 'Which leg the marking is on', correct: 'Correct. Include the leg: left front, right front, left hind, or right hind.', incorrect: 'For identification, say which specific leg carries the marking.' },
+    { type: 'tf', prompt: 'True or false: Partial markings should be described as partial when the white does not wrap evenly around the whole leg.', options: ['True', 'False'], answer: 'True', correct: 'Correct. Partial tells the reader the white is incomplete or uneven around the leg.', incorrect: 'Not quite. Partial is used when the white does not fully or evenly wrap around the leg.' },
+    { prompt: 'If white reaches the fetlock on only one part of the leg, the clearest description is:', options: ['Partial fetlock', 'Full stocking', 'Bald face', 'Plain leg'], answer: 'Partial fetlock', correct: 'Correct. Partial fetlock describes white that reaches the fetlock in an incomplete or uneven way.', incorrect: 'Use partial when the white reaches that height on only part of the leg.' },
+    { prompt: 'Dark spots inside a white leg marking are called:', options: ['Ermine marks', 'Snips', 'Blazes', 'Stripes'], answer: 'Ermine marks', correct: 'Correct. Ermine marks are dark spots or patches within a white leg marking, often near the hoof.', incorrect: 'The dark spots inside white on the leg are called ermine marks.' },
+    { prompt: 'Where are ermine marks most often noticed?', options: ['Within white leg markings near the hoof or coronet', 'Only on the forehead', 'Only along the mane', 'Inside the nostrils'], answer: 'Within white leg markings near the hoof or coronet', correct: 'Correct. Ermine marks are usually seen in white leg markings close to the hoof.', incorrect: 'Ermine marks belong inside white leg markings, usually near the hoof or coronet.' },
+    { prompt: 'Which term means there is no visible white leg marking?', options: ['No marking', 'High stocking', 'Snip', 'Blaze'], answer: 'No marking', correct: 'Correct. No marking means no visible white marking on that leg.', incorrect: 'If there is no visible white on the leg, describe it as no marking.' },
+    { type: 'tf', prompt: 'True or false: A horse can have different markings on each leg.', options: ['True', 'False'], answer: 'True', correct: 'Correct. Each leg should be described individually.', incorrect: 'Not quite. Horses commonly have different markings on different legs.' },
+    { prompt: 'Which description is most useful for a horse with one sock?', options: ['Left hind sock', 'Sock somewhere', 'Pretty white leg', 'Brown horse only'], answer: 'Left hind sock', correct: 'Correct. Naming the exact leg and marking is the clearest description.', incorrect: 'A useful description includes both the specific leg and the marking name.' },
+    { prompt: 'Which phrase best describes a high stocking?', options: ['White extending very high up the leg', 'A tiny white dot on the muzzle', 'A dark spot within a white marking', 'A narrow forehead mark'], answer: 'White extending very high up the leg', correct: 'Correct. A high stocking reaches higher than a regular stocking.', incorrect: 'High stocking refers to a tall white marking on the leg.' },
+    { prompt: 'Which term is not a leg marking?', options: ['Blaze', 'Coronet', 'Sock', 'Stocking'], answer: 'Blaze', correct: 'Correct. A blaze is a face marking, not a leg marking.', incorrect: 'Coronet, sock, and stocking are leg markings. Blaze belongs to face markings.' },
+    { prompt: 'Which term is a part of the horse rather than a marking name?', options: ['Cannon', 'Sock', 'Stocking', 'Ermine mark'], answer: 'Cannon', correct: 'Correct. The cannon is a part of the leg used as a location reference.', incorrect: 'Cannon is the leg area between the fetlock and knee or hock, not the marking itself.' },
+    { prompt: 'Why should partial markings be described carefully?', options: ['They can change how the marking is identified from different sides', 'They prove the horse is a foal', 'They only appear in winter', 'They are always face markings'], answer: 'They can change how the marking is identified from different sides', correct: 'Correct. Partial markings may look different depending on the side of the leg being viewed.', incorrect: 'Partial markings do not wrap evenly, so side and shape details matter.' },
+    { prompt: 'What is the best first step when naming a leg marking?', options: ['Find the highest point of white', 'Check the mane length', 'Count the horse’s teeth', 'Look only at the tail'], answer: 'Find the highest point of white', correct: 'Correct. The highest point of white gives the strongest clue.', incorrect: 'Start by finding how far up the leg the white reaches.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/coronet.png', options: ['Coronet', 'Sock', 'Stocking', 'No marking'], answer: 'Coronet', correct: 'Correct. The white is concentrated around the coronet area at the top of the hoof.', incorrect: 'Look at how low the white stays. This is a coronet marking.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/pastern.png', options: ['Pastern', 'Bald face', 'High stocking', 'No marking'], answer: 'Pastern', correct: 'Correct. The white extends over the pastern area.', incorrect: 'This white reaches the pastern, so pastern is the best match.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/fetluck.png', options: ['Fetlock', 'Snip', 'Star', 'No marking'], answer: 'Fetlock', correct: 'Correct. The white reaches the fetlock area.', incorrect: 'Look at the joint just above the pastern. This marking reaches the fetlock.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/sock.png', options: ['Sock', 'Coronet', 'Ermine mark', 'No marking'], answer: 'Sock', correct: 'Correct. The white covers the lower leg and rises above the fetlock.', incorrect: 'This is more than a pastern or fetlock marking. It is a sock.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/stocking.png', options: ['Stocking', 'Pastern', 'Partial coronet', 'Chin spot'], answer: 'Stocking', correct: 'Correct. The white extends high up the leg.', incorrect: 'The white reaches high up the leg, making stocking the best match.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/high-stocking.png', options: ['High stocking', 'Coronet', 'No marking', 'Star'], answer: 'High stocking', correct: 'Correct. The white extends very high up the leg.', incorrect: 'This marking rises higher than a regular stocking.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/no-marking.png', options: ['No marking', 'Sock', 'Pastern', 'Ermine mark'], answer: 'No marking', correct: 'Correct. There is no visible white leg marking.', incorrect: 'No visible white on the leg means no marking.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/partial-coronet.png', options: ['Partial coronet', 'Full stocking', 'Bald face', 'Sock'], answer: 'Partial coronet', correct: 'Correct. The white is low and incomplete around the coronet area.', incorrect: 'The key clue is that the low white does not wrap fully around the leg.' },
+    { type: 'photo', prompt: 'Name the marking in the image.', image: 'leg-marking-images/partial-fetlock.png', options: ['Partial fetlock', 'Stocking', 'Snip', 'No marking'], answer: 'Partial fetlock', correct: 'Correct. The white reaches the fetlock on only part of the leg.', incorrect: 'This is a partial marking because the white reaches the fetlock unevenly.' },
+    { type: 'photo', prompt: 'Name the detail shown in the image.', image: 'leg-marking-images/ermine marks.png', options: ['Ermine marks', 'Blaze', 'Star and strip', 'Sock only'], answer: 'Ermine marks', correct: 'Correct. The dark spots inside the white are ermine marks.', incorrect: 'Look for the dark spots within the white leg marking. Those are ermine marks.' },
+    { type: 'photo', prompt: 'What does this guide image help you compare?', image: 'leg-marking-images/height-of-marking-front-leg.png', options: ['How high white reaches on a front leg', 'Face marking width', 'Mane color', 'Back shape'], answer: 'How high white reaches on a front leg', correct: 'Correct. The front-leg guide shows height changes from lower markings to higher markings.', incorrect: 'This is a front-leg height guide for leg markings.' },
+    { type: 'photo', prompt: 'What does this guide image help you compare?', image: 'leg-marking-images/height-of-marking-on-leg.png', options: ['How high white reaches on a hind leg', 'The horse’s facial stripe', 'Ear shape', 'Tail length'], answer: 'How high white reaches on a hind leg', correct: 'Correct. The hind-leg guide shows where marking names change as white rises.', incorrect: 'This guide is for height on the hind leg.' },
+    { prompt: 'Which description is clearest for a marking that is uneven around the pastern?', options: ['Partial pastern on the right front', 'White leg', 'Marking somewhere low', 'Cute sock'], answer: 'Partial pastern on the right front', correct: 'Correct. It names the marking height, the partial quality, and the exact leg.', incorrect: 'The clearest descriptions include partial/full, height, and exact leg.' },
+    { type: 'tf', prompt: 'True or false: When white extends to the knee or hock, it is generally described as a stocking rather than a sock.', options: ['True', 'False'], answer: 'True', correct: 'Correct. Stocking is the higher marking; sock stays lower.', incorrect: 'Not quite. White extending to the knee or hock is generally called a stocking.' }
+  ];
+function esc(t){return String(t||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(i=>i.v)}
+const cardEl=document.getElementById('quiz-card'),countEl=document.getElementById('quiz-count'),scoreEl=document.getElementById('quiz-score'),qEl=document.getElementById('quiz-question'),optEl=document.getElementById('quiz-options'),fbEl=document.getElementById('quiz-feedback'),nextBtn=document.getElementById('quiz-next'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message'),retake=document.getElementById('btn-retake');
+let active=[],idx=0,score=0,answered=false;
+function start(){active=shuffle(questionBank).slice(0,Math.min(QUESTION_COUNT,questionBank.length)).map(q=>({...q,options:shuffle(q.options)}));idx=0;score=0;scorePanel.classList.remove('show');cardEl.style.display='';showQuestion()}
+function showQuestion(){answered=false;const q=active[idx];countEl.textContent='Question '+(idx+1)+' of '+active.length;scoreEl.textContent='Score: '+score;qEl.textContent=q.prompt;fbEl.className='quiz-feedback';fbEl.textContent='';nextBtn.disabled=true;nextBtn.textContent='Next Question';optEl.innerHTML=q.options.map(o=>`<button type="button" class="quiz-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');optEl.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(btn,q)))}
+function selectAnswer(btn,q){if(answered)return;answered=true;const correct=q.answer;optEl.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.val===correct)b.classList.add('correct-ans')});const ok=btn.dataset.val===correct;if(ok)score++;else btn.classList.add('wrong-ans');fbEl.textContent=ok?q.correct:q.incorrect;fbEl.classList.add('show',ok?'correct':'incorrect');scoreEl.textContent='Score: '+score;nextBtn.textContent=idx+1<active.length?'Next Question':'See Results';nextBtn.disabled=false}
+nextBtn.addEventListener('click',()=>{idx++;if(idx>=active.length){finish();return}showQuestion()});
+function finish(){cardEl.style.display='none';const pct=score/active.length;scoreDisplay.textContent=score+'/'+active.length;scoreMessage.textContent=pct>=.9?'Excellent work. You have a strong command of this material.':pct>=.75?'Good work. Review the questions you missed and try another round.':pct>=.6?'You are getting there. Revisit the lesson and Training Barn, then try again.':'Keep practicing. These terms will get easier with review.';scorePanel.classList.add('show');if(pct>=.8){try{localStorage.setItem('equineEduProgress.legMarkings.testYourKnowledge','true')}catch(e){}}}
+retake.addEventListener('click',()=>{start();cardEl.scrollIntoView({behavior:'smooth',block:'start'})});
+start()
+})();
+</script><script>
+  window.CURRENT_MODULE = 6;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Leg Markings', url: '1-index.html' },
+    navExtras: [{ label: 'The Training Barn', url: '6-training-barn.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

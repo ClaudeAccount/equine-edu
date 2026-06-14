@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Comparisons &mdash; Base Coat Colors &mdash; Equine Edu</title>
+<meta name="description" content="Drag the divider to compare the most easily confused base coat color pairs side by side: bay vs. black, bay vs. chestnut, black vs. chestnut, and chestnut vs. flaxen chestnut.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../assets/css/course.css">
+<style>
+.compare-intro {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--heading);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.compare-intro h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--heading);
+  margin-bottom: 0.4rem;
+}
+.compare-intro p {
+  color: var(--body-text);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 580px) { .compare-grid { grid-template-columns: 1fr; } }
+
+.compare-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(36, 54, 74,0.06);
+}
+.slider-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  background: var(--soft-white);
+}
+.slider-img-right {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  background: var(--white);
+}
+.slider-img-left-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  width: 100%;
+  clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
+}
+.slider-img-left {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  background: var(--white);
+}
+.slider-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--heading);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 10;
+}
+.slider-handle::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--heading);
+  border: 3px solid var(--tan);
+}
+.slider-handle-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background:var(--blue-primary);
+  border: 3px solid var(--tan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 11;
+  color:var(--white);
+}
+.slider-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.slider-label {
+  position: absolute;
+  bottom: 0.6rem;
+  background: rgba(36, 54, 74,0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(200, 162, 122,0.35);
+  border-radius: 999px;
+  padding: 0.22rem 0.65rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--tan);
+  white-space: nowrap;
+}
+.slider-label-left  { left: 0.6rem; }
+.slider-label-right { right: 0.6rem; }
+.compare-card-footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.compare-vs {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--tan);
+  background: rgba(200, 162, 122,0.1);
+  border: 1px solid rgba(200, 162, 122,0.3);
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  margin-top: 0.15rem;
+}
+.compare-card-names {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--heading);
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+.compare-card-tip {
+  font-size: 0.78rem;
+  color: var(--body-text);
+  line-height: 1.6;
+  margin: 0;
+}
+.drag-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--body-text);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Training Barn</div>
+      <h1 class="lesson-hero-title">Color Comparison <span>Sliders</span></h1>
+      <p class="lesson-hero-desc">Drag the divider left and right to compare easily confused base coat color pairs side by side.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="visual-card">
+
+      <div class="compare-intro">
+        <h2>The Trickiest Pairs</h2>
+        <p>These are the base coat color combinations that cause the most confusion. The key differences become much clearer when you can slide between them directly.</p>
+      </div>
+
+      <p class="drag-hint">&larr; Drag the handle to compare &rarr;</p>
+
+      <div class="compare-grid" id="slider-grid"></div>
+
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../../../index.html',
+    navCta:     { label: 'Back to Training Barn', url:'../../6-training-barn.html' }
+  };
+</script>
+<script src="../../course-config.js"></script>
+<script>
+  (function(){
+    if (!window.COURSE_CONFIG) return;
+    window.COURSE_CONFIG.indexUrl      = '../' + window.COURSE_CONFIG.indexUrl;
+    window.COURSE_CONFIG.allCoursesUrl = '../' + window.COURSE_CONFIG.allCoursesUrl;
+    window.COURSE_CONFIG.modules.forEach(function(m){ m.file = '../' + m.file; });
+  })();
+</script>
+<script src="../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../../assets/js/paywall.js"></script>
+<script src="../../../../../../assets/js/course-nav.js"></script>
+
+<script>
+/* ==============================================================
+   COLOR COMPARISONS
+   ============================================================== */
+
+var BASE = '../images/sliders/';
+
+var COMPARISONS = [
+  {
+    left:  { name: 'Bay',      img: BASE + 'black-bay-bay.png' },
+    right: { name: 'Black',    img: BASE + 'black-bay-black.png' },
+    tip:   'Both can appear very dark. Bay has a warm red-brown body &mdash; black has no warm tones anywhere. Check the flanks and muzzle: any warmth there means bay.'
+  },
+  {
+    left:  { name: 'Bay',      img: BASE + 'bay-chestnut-bay.png' },
+    right: { name: 'Chestnut', img: BASE + 'bay-chestnut-chestnut.png' },
+    tip:   'Both have red-brown bodies. The mane reveals the answer: black mane = bay, matching red-brown mane = chestnut. No other clue needed.'
+  },
+  {
+    left:  { name: 'Black',    img: BASE + 'black-chestnut-black.png' },
+    right: { name: 'Chestnut', img: BASE + 'black-chestnut-chestnut.png' },
+    tip:   'Opposite pigments. Black has only eumelanin &mdash; uniformly dark with no warm tones. Chestnut has only phaeomelanin &mdash; warm red body with a matching mane, never black.'
+  },
+  {
+    left:  { name: 'Chestnut',        img: BASE + 'flaxen-chestnut-chestnut.png' },
+    right: { name: 'Flaxen Chestnut', img: BASE + 'flaxen-chestnut-flaxen.png' },
+    tip:   'Same base color, same red body &mdash; the only difference is the mane and tail. Flaxen chestnut has a distinctly pale cream or blonde mane. Neither has black points.'
+  }
+];
+
+function buildSlider(pair) {
+  var card = document.createElement('div');
+  card.className = 'compare-card';
+
+  var vp = document.createElement('div');
+  vp.className = 'slider-viewport';
+
+  var imgRight = document.createElement('img');
+  imgRight.className = 'slider-img-right';
+  imgRight.src = pair.right.img;
+  imgRight.alt = pair.right.name;
+  imgRight.draggable = false;
+
+  var leftWrap = document.createElement('div');
+  leftWrap.className = 'slider-img-left-wrap';
+
+  var imgLeft = document.createElement('img');
+  imgLeft.className = 'slider-img-left';
+  imgLeft.src = pair.left.img;
+  imgLeft.alt = pair.left.name;
+  imgLeft.draggable = false;
+
+  leftWrap.appendChild(imgLeft);
+
+  var handle = document.createElement('div');
+  handle.className = 'slider-handle';
+
+  var handleIcon = document.createElement('div');
+  handleIcon.className = 'slider-handle-icon';
+  handleIcon.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 4l-3 4 3 4M11 4l3 4-3 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  var labels = document.createElement('div');
+  labels.className = 'slider-labels';
+
+  var lblLeft = document.createElement('div');
+  lblLeft.className = 'slider-label slider-label-left';
+  lblLeft.textContent = pair.left.name;
+
+  var lblRight = document.createElement('div');
+  lblRight.className = 'slider-label slider-label-right';
+  lblRight.textContent = pair.right.name;
+
+  labels.appendChild(lblLeft);
+  labels.appendChild(lblRight);
+
+  vp.appendChild(imgRight);
+  vp.appendChild(leftWrap);
+  vp.appendChild(handle);
+  vp.appendChild(handleIcon);
+  vp.appendChild(labels);
+
+  var footer = document.createElement('div');
+  footer.className = 'compare-card-footer';
+
+  var vs = document.createElement('span');
+  vs.className = 'compare-vs';
+  vs.textContent = 'vs';
+
+  var text = document.createElement('div');
+
+  var names = document.createElement('div');
+  names.className = 'compare-card-names';
+  names.textContent = pair.left.name + '  <->  ' + pair.right.name;
+
+  var tip = document.createElement('p');
+  tip.className = 'compare-card-tip';
+  tip.innerHTML = pair.tip;
+
+  text.appendChild(names);
+  text.appendChild(tip);
+  footer.appendChild(vs);
+  footer.appendChild(text);
+
+  card.appendChild(vp);
+  card.appendChild(footer);
+
+  function setPosition(x) {
+    var rect = vp.getBoundingClientRect();
+    var pct  = Math.max(4, Math.min(96, ((x - rect.left) / rect.width) * 100));
+    leftWrap.style.setProperty('--split', pct + '%');
+    handle.style.left     = pct + '%';
+    handleIcon.style.left = pct + '%';
+  }
+  function init() {
+    leftWrap.style.setProperty('--split', '50%');
+    handle.style.left     = '50%';
+    handleIcon.style.left = '50%';
+  }
+  window.addEventListener('resize', init);
+  imgRight.onload = init;
+  setTimeout(init, 100);
+
+  var dragging = false;
+  vp.addEventListener('mousedown', function(e) { dragging = true; setPosition(e.clientX); e.preventDefault(); });
+  window.addEventListener('mousemove', function(e) { if (dragging) setPosition(e.clientX); });
+  window.addEventListener('mouseup',   function()  { dragging = false; });
+  vp.addEventListener('touchstart', function(e) { dragging = true; setPosition(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
+  window.addEventListener('touchmove', function(e) { if (dragging) setPosition(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('touchend', function() { dragging = false; });
+
+  return card;
+}
+
+var grid = document.getElementById('slider-grid');
+COMPARISONS.forEach(function(pair) { grid.appendChild(buildSlider(pair)); });
+</script>
+</body>
+</html>

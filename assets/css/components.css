@@ -1,164 +1,150 @@
 /* =============================================================================
    Equine Edu — components.css
-   Reusable UI: buttons, cards, hero blocks, modules, diagrams, flip cards,
-   chips, quiz components, video, etc.
-   Depends on tokens defined in core.css.
+   Reusable UI built on the tokens in core.css.
+   ----------------------------------------------------------------------------
+   ONE system, applied everywhere:
+   - One card treatment (3 variants: solid / quiet / glass) — §3
+   - One button system (primary / secondary / tertiary)     — §1
+   - One hero language (organic layered, room-tinted)        — §2
+   - One sidebar (soft-glass journey rail)                   — §8
+   Do not add one-off component styles to pages. Extend here.
    ============================================================================= */
 
 
 /* -- 1. Buttons -------------------------------------------------------------- */
-.btn, .btn-primary, .btn-secondary, .btn-outline, .btn-next-full,
-.nav-btn, .quiz-retry, .lab-action, .game-action, .answer-btn {
-  min-height: 44px; border-radius: var(--radius);
+/* Base = secondary treatment; variants override below. Pill silhouette. */
+.btn, .btn-primary, .btn-secondary, .btn-outline,
+.nav-btn, .answer-btn {
+  min-height: 44px; border-radius: 999px;
   font-family: var(--font-body); font-size: 0.92rem; font-weight: 700;
   text-decoration: none; display: inline-flex; align-items: center;
-  justify-content: center; gap: 8px; padding: 11px 18px;
-  border: 1.5px solid var(--border-mid);
-  background: var(--white); color: var(--navy); cursor: pointer;
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
+  justify-content: center; gap: 8px; padding: 11px 22px;
+  border: 1.5px solid var(--blue-secondary);
+  background: var(--soft-white); color: var(--blue-primary); cursor: pointer;
+  box-shadow: var(--shadow-rest);
   transition: background var(--motion-quick) var(--ease),
               border-color var(--motion-quick) var(--ease),
               color var(--motion-quick) var(--ease),
-              transform var(--motion-quick) var(--ease);
+              transform var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease);
 }
 .btn:hover, .btn-secondary:hover, .btn-outline:hover, .nav-btn:hover,
-.quiz-retry:hover, .answer-btn:hover {
-  border-color: rgba(201,168,76,0.65); background: rgba(201,168,76,0.08);
+.answer-btn:hover {
+  border-color: var(--blue-primary); background: var(--blue-light);
+  color: var(--heading);
 }
-.btn-primary, .btn-next-full, .lab-action, .game-action,
-.btn.next, .nav-btn.next, .lesson-nav a:last-child {
-  background: var(--navy); color: var(--gold);
-  border-color: var(--navy); padding: 11px 20px;
+
+/* Primary — warm tan, the main call-to-action on a page */
+.btn-primary, .btn.next, .nav-btn.next, .lesson-nav a:last-child {
+  background: var(--tan); color: var(--white);
+  border-color: var(--tan); padding: 11px 26px;
 }
-.btn-primary:hover, .btn-next-full:hover, .lab-action:hover, .game-action:hover,
-.btn.next:hover, .nav-btn.next:hover, .lesson-nav a:last-child:hover {
-  background: var(--navy-mid); border-color: var(--navy-mid);
-  color: var(--gold); transform: translateY(-1px);
+.btn-primary:hover, .btn.next:hover, .nav-btn.next:hover,
+.lesson-nav a:last-child:hover {
+  background: var(--leather); border-color: var(--leather);
+  color: var(--white); transform: translateY(-1px);
+  box-shadow: var(--shadow-raised);
 }
-.course-hero .btn-primary, .lesson-hero .btn-primary {
-  background: var(--gold); color: var(--navy); border-color: var(--gold);
+
+/* Secondary — soft white, dusty blue border + text */
+.btn-secondary {
+  background: var(--soft-white); color: var(--blue-primary);
+  border-color: var(--blue-primary);
 }
-.course-hero .btn-primary:hover, .lesson-hero .btn-primary:hover {
-  background: var(--gold-bright); border-color: var(--gold-bright); color: var(--navy);
+.btn-secondary:hover {
+  background: var(--blue-light); color: var(--heading);
+  border-color: var(--blue-primary);
 }
+
+/* Tertiary — text-only, underline on hover */
 .btn-outline {
-  background: var(--white); color: var(--navy);
-  border-color: var(--white);
+  background: transparent; color: var(--blue-primary);
+  border-color: transparent; box-shadow: none;
 }
 .btn-outline:hover {
-  border-color: var(--gold-bright); color: var(--navy); background: var(--gold-pale);
+  border-color: transparent; color: var(--leather);
+  background: transparent; text-decoration: underline;
 }
-.btn-next-full { width: 100%; text-align: center; }
 
 
-/* -- 2. Hero blocks ---------------------------------------------------------- */
+/* -- 2. Hero blocks ----------------------------------------------------------
+   Organic layered editorial heroes. The atmosphere does the heavy lifting;
+   heroes add a room-tinted wash and a soft terrain edge — no hard borders. */
 .course-hero, .lesson-hero {
-  background: var(--navy); border-bottom: 3px solid var(--gold);
-  padding: calc(var(--nav-height) + 20px) var(--page-pad) 40px;
+  background:
+    radial-gradient(ellipse 760px 420px at 92% -12%, var(--room-wash) 0%, transparent 62%),
+    radial-gradient(ellipse 640px 380px at -12% 108%, rgba(231, 220, 203, 0.8) 0%, transparent 65%),
+    transparent;
+  padding: calc(var(--nav-height) + 20px) var(--page-pad) 56px;
   position: relative; overflow: hidden;
 }
-.course-hero {
-  background: #071229;
-}
-.course-hero::before {
-  content: ''; position: absolute; right: -8%; top: -35%;
-  width: 520px; height: 520px; border-radius: 50%;
-  border: 60px solid rgba(201,168,76,0.06); pointer-events: none;
-}
-.lesson-hero:not(.hero-bg)::before {
-  content: '';
-  position: absolute;
-  right: -8%;
-  top: -35%;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  border: 60px solid rgba(201,168,76,0.06);
-  pointer-events: none;
-}
+/* Heroes end softly — their radial washes already fade to transparent,
+   so no extra edge treatment is needed (no hard lines anywhere). */
 .course-hero-inner, .lesson-hero-inner {
-  max-width: 1400px; margin: 0 auto; display: grid;
+  max-width: var(--shell-w); margin: 0 auto; display: grid;
   grid-template-columns: minmax(0,1fr) minmax(260px,380px);
   gap: 3rem; align-items: center; position: relative; z-index: 1;
 }
 .lesson-hero-inner { grid-template-columns: minmax(0,1fr) 320px; }
 .course-hero-text { position: relative; z-index: 1; }
+
+/* Eyebrow voice — course/lesson tags share the editorial eyebrow treatment */
 .course-tag, .lesson-module-tag {
-  display: inline-block; background: rgba(201,168,76,0.12);
-  border: 1px solid rgba(201,168,76,0.35); color: var(--gold);
-  font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; padding: 6px 14px;
-  border-radius: 2px; margin-bottom: 0.9rem;
-  max-width: 100%;
-  overflow-wrap: anywhere;
+  display: inline-block; background: none; border: none;
+  color: var(--room-accent);
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; padding: 0;
+  margin-bottom: 0.65rem;
+  max-width: 100%; overflow-wrap: anywhere;
 }
 .course-hero h1, .lesson-hero-title {
-  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.15rem);
-  color: var(--white); line-height: 1.15; margin-bottom: 1rem;
+  font-family: var(--font-display); font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  color: var(--heading); line-height: 1.12; margin-bottom: 1rem;
 }
-.lesson-hero-title { font-size: clamp(1.8rem, 3.5vw, 2.75rem); }
-.course-hero h1 span, .lesson-hero-title span { color: var(--gold); }
+.lesson-hero-title { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
+.course-hero h1 span, .lesson-hero-title span { color: var(--blue-primary); }
 .course-hero p, .course-hero-desc, .lesson-hero-desc {
-  color: rgba(255,255,255,0.7); font-size: 1rem;
-  line-height: 1.75; max-width: 680px; margin-bottom: 2rem;
+  color: var(--body-text); font-size: var(--text-md);
+  line-height: 1.7; max-width: 680px; margin-bottom: 2rem;
 }
 
+/* Page-type washes — Viewing Room / Training Barn / Quiz / Lesson heroes.
+   One treatment per page type, identical across every course. (The previous
+   photo-overlay version pointed at images that don't exist in the repo.) */
 .hero-bg {
-  background-image:
-    linear-gradient(rgba(13,27,62,0.32), rgba(13,27,62,0.48)),
-    var(--hero-bg-desktop);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 360px;
-}
-.hero-bg::before {
-  display: none;
-}
-.hero-bg .course-hero-inner,
-.hero-bg .lesson-hero-inner,
-.hero-bg .course-hero-inner.local-hero-with-art,
-.hero-bg .lesson-hero-inner.local-hero-with-art {
-  grid-template-columns: minmax(0, 920px);
-  justify-content: center;
-  text-align: center;
-  gap: 0;
-}
-.hero-bg .course-hero-text,
-.hero-bg .lesson-hero-text {
-  max-width: 920px;
-  margin: 0 auto;
-}
-.hero-bg .course-hero-desc,
-.hero-bg .lesson-hero-desc,
-.hero-bg .course-hero p {
-  margin-left: auto;
-  margin-right: auto;
-}
-.hero-bg .course-meta-row,
-.hero-bg .hero-actions {
-  justify-content: center;
-}
-.hero-bg .course-hero-art,
-.hero-bg .lesson-hero-art-slot,
-.hero-bg .page-hero-art-slot {
-  display: none;
+  min-height: 340px;
 }
 .hero-bg-viewing-room {
-  --hero-bg-desktop: url("../../images/course-heroes/viewing-room-hero-desktop.png");
-  --hero-bg-mobile: url("../../images/course-heroes/viewing-room-hero-mobile.png");
+  background:
+    radial-gradient(ellipse 900px 460px at 80% -20%, rgba(127, 152, 178, 0.20), transparent 64%),
+    radial-gradient(ellipse 700px 400px at -10% 110%, rgba(217, 227, 236, 0.5), transparent 65%),
+    transparent;
 }
 .hero-bg-training-barn {
-  --hero-bg-desktop: url("../../images/course-heroes/training-barn-hero-desktop.png");
-  --hero-bg-mobile: url("../../images/course-heroes/training-barn-hero-mobile.png");
+  background:
+    radial-gradient(ellipse 900px 460px at 80% -20%, rgba(200, 162, 122, 0.20), transparent 64%),
+    radial-gradient(ellipse 700px 400px at -10% 110%, rgba(231, 220, 203, 0.85), transparent 65%),
+    transparent;
 }
 .hero-bg-quiz {
-  --hero-bg-desktop: url("../../images/course-heroes/quiz-hero-desktop.png");
-  --hero-bg-mobile: url("../../images/course-heroes/quiz-hero-mobile.png");
+  background:
+    radial-gradient(ellipse 900px 460px at 80% -20%, rgba(92, 138, 110, 0.14), transparent 64%),
+    radial-gradient(ellipse 700px 400px at -10% 110%, rgba(217, 227, 236, 0.4), transparent 65%),
+    transparent;
+}
+.hero-bg-lesson {
+  background:
+    radial-gradient(ellipse 900px 460px at 80% -20%, var(--room-wash), transparent 64%),
+    radial-gradient(ellipse 700px 400px at -10% 110%, rgba(231, 220, 203, 0.8), transparent 65%),
+    transparent;
 }
 
+.hero-bg .course-hero-inner,
+.hero-bg .lesson-hero-inner,
 .hero-centered .course-hero-inner,
 .hero-centered .lesson-hero-inner,
+.hero-bg .course-hero-inner.local-hero-with-art,
+.hero-bg .lesson-hero-inner.local-hero-with-art,
 .hero-centered .course-hero-inner.local-hero-with-art,
 .hero-centered .lesson-hero-inner.local-hero-with-art {
   grid-template-columns: minmax(0, 920px);
@@ -169,34 +155,30 @@
 }
 .course-hero.hero-centered,
 .lesson-hero.hero-centered {
-  min-height: 360px;
+  min-height: 340px;
   display: grid;
   place-items: center;
-  padding-top: 24px;
-  padding-bottom: 40px;
+  padding-top: calc(var(--nav-height) - 20px);
+  padding-bottom: 48px;
 }
-.hero-centered .course-hero-text,
-.hero-centered .lesson-hero-text {
+.hero-bg .course-hero-text, .hero-bg .lesson-hero-text,
+.hero-centered .course-hero-text, .hero-centered .lesson-hero-text {
   max-width: 920px;
   margin: 0 auto;
 }
-.hero-centered .course-hero-desc,
-.hero-centered .lesson-hero-desc,
+.hero-bg .course-hero-desc, .hero-bg .lesson-hero-desc, .hero-bg .course-hero p,
+.hero-centered .course-hero-desc, .hero-centered .lesson-hero-desc,
 .hero-centered .course-hero p {
   margin-left: auto;
   margin-right: auto;
 }
-.lesson-hero.hero-centered .lesson-hero-desc {
-  margin-bottom: 0;
-}
-.hero-centered .course-meta-row,
-.hero-centered .hero-actions {
+.hero-bg .course-meta-row, .hero-bg .hero-actions,
+.hero-centered .course-meta-row, .hero-centered .hero-actions {
   justify-content: center;
 }
-.hero-centered .lesson-hero-art-slot,
-.hero-centered .page-hero-art-slot {
-  display: none;
-}
+.lesson-hero.hero-centered .lesson-hero-desc { margin-bottom: 0; }
+
+/* Hero with side art (course landing pages) */
 .course-hero.has-hero-art.hero-centered .course-hero-inner {
   grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
   text-align: left;
@@ -215,30 +197,23 @@
 .course-hero.has-hero-art.hero-centered .hero-actions {
   justify-content: flex-start;
 }
-.course-hero-art,
-.color-hero-art {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
+.course-hero-art {
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 1;
 }
-.course-hero-art img,
-.color-hero-art img {
-  width: 100%;
-  max-width: 340px;
-  max-height: 320px;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.32));
+.course-hero-art img {
+  width: 100%; max-width: 340px; max-height: 320px;
+  object-fit: contain; display: block;
+  filter: drop-shadow(0 16px 36px rgba(36, 54, 74, 0.22));
 }
+
+/* Plain lesson heroes (no .hero-bg) center themselves */
 .lesson-hero:not(.hero-bg) {
-  background: #071229;
-  min-height: 360px;
+  min-height: 340px;
   display: grid;
   place-items: center;
-  padding-top: 24px;
-  padding-bottom: 40px;
+  padding-top: calc(var(--nav-height) - 20px);
+  padding-bottom: 48px;
 }
 .lesson-hero:not(.hero-bg) .lesson-hero-inner,
 .lesson-hero:not(.hero-bg) .lesson-hero-inner.local-hero-with-art {
@@ -254,520 +229,15 @@
   margin: 0 auto;
 }
 .lesson-hero:not(.hero-bg) .lesson-hero-desc {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0;
-}
-.lesson-hero:not(.hero-bg) .lesson-hero-art-slot {
-  display: none;
+  margin-left: auto; margin-right: auto; margin-bottom: 0;
 }
 
-@media (max-width: 760px) {
-  .course-meta-row {
-    flex-wrap: wrap;
-  }
-  .course-hero.has-hero-art.hero-centered .course-hero-inner {
-    grid-template-columns: minmax(0, 920px);
-    text-align: center;
-    gap: 1.5rem;
-  }
-  .course-hero.has-hero-art.hero-centered .course-hero-text {
-    max-width: 920px;
-    margin: 0 auto;
-  }
-  .course-hero.has-hero-art.hero-centered .course-hero-desc,
-  .course-hero.has-hero-art.hero-centered .course-hero p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .course-hero.has-hero-art.hero-centered .course-meta-row,
-  .course-hero.has-hero-art.hero-centered .hero-actions {
-    justify-content: center;
-  }
-  .course-hero.has-hero-art .course-hero-art {
-    display: none;
-  }
-  .hero-bg {
-    background-image:
-      linear-gradient(rgba(13,27,62,0.34), rgba(13,27,62,0.5)),
-      var(--hero-bg-mobile);
-  }
-  .course-hero.hero-centered.hero-bg,
-  .lesson-hero.hero-centered.hero-bg {
-    min-height: 420px;
-  }
-  .course-hero.hero-centered,
-  .lesson-hero.hero-centered,
-  .lesson-hero:not(.hero-bg) {
-    min-height: 320px;
-    padding: 40px var(--page-pad);
-  }
-  .course-hero::before,
-  .lesson-hero:not(.hero-bg)::before {
-    right: -110px;
-    top: -110px;
-    width: 340px;
-    height: 340px;
-    border-width: 40px;
-  }
-  .course-tag,
-  .lesson-module-tag {
-    font-size: 0.68rem;
-    letter-spacing: 1.1px;
-    padding: 5px 10px;
-  }
-  .course-hero h1,
-  .lesson-hero-title {
-    max-width: 100%;
-  }
-  .course-hero p,
-  .course-hero-desc,
-  .lesson-hero-desc {
-    font-size: 0.95rem;
-    line-height: 1.65;
-  }
+/* Retired art-slot guards — older pages still contain these wrappers */
+.lesson-hero-art-slot,
+.page-hero-art-slot {
+  display: none !important;
 }
-.course-meta-row {
-  display: flex; flex-wrap: nowrap; column-gap: 0; row-gap: 0.5rem; margin: 1.5rem 0 2rem;
-}
-.meta-item {
-  display: inline-flex; align-items: center;
-  background: transparent;
-  border-right: 1px solid rgba(201,168,76,0.78);
-  padding: 0 0.75rem;
-  font-size: 0.76rem; color: var(--gold);
-  white-space: nowrap;
-}
-.meta-item:first-child { padding-left: 0; }
-.meta-item:last-child { border-right: 0; padding-right: 0; }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-@media (max-width: 760px) {
-  .course-meta-row {
-    flex-wrap: wrap;
-  }
-}
-
-.back-to-course {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  color: var(--navy); text-decoration: none;
-  font-size: 0.85rem; font-weight: 600; margin-bottom: 0.6rem;
-}
-.back-to-course:hover { color: var(--gold); }
-
-
-/* -- 3. Enrollment / hero cards --------------------------------------------- */
-.hero-card, .enroll-card {
-  background: var(--white); border-radius: var(--radius-lg);
-  overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.28);
-  border: 1px solid rgba(201,168,76,0.28); position: relative; z-index: 2;
-}
-.hero-card-image, .enroll-card-image {
-  min-height: 180px; background: var(--off-white);
-  border-bottom: 1px solid rgba(201,168,76,0.25);
-  display: flex; align-items: center; justify-content: center; padding: 1rem;
-}
-.hero-card-image img, .enroll-card-image img {
-  width: 100%; max-width: 260px; height: auto;
-  filter: drop-shadow(0 12px 26px rgba(13,27,62,0.18));
-}
-.hero-card-top, .enroll-card-top {
-  background: var(--navy-mid); border-bottom: 2px solid var(--gold);
-  padding: 1.35rem; text-align: center;
-}
-.hero-card-title, .enroll-price {
-  font-family: var(--font-display); font-size: 2.1rem;
-  color: var(--gold); line-height: 1;
-}
-.hero-card-sub, .enroll-price-sub {
-  font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.35rem;
-}
-.hero-card-body, .enroll-card-body { padding: 1.35rem; }
-.hero-card-body ul, .enroll-includes {
-  list-style: none; display: grid; gap: 0.75rem;
-}
-.hero-card-body li, .enroll-includes li {
-  font-size: 0.84rem; color: var(--text-mid); line-height: 1.5;
-}
-.hero-card-body li::before {
-  content: '✓'; color: var(--gold); font-weight: 800; margin-right: 0.45rem;
-}
-.enroll-check {
-  color: var(--gold); font-weight: 800; margin-right: 0.45rem; flex-shrink: 0;
-}
-.enroll-btn {
-  display: flex; align-items: center; justify-content: center;
-  width: 100%; min-height: 44px; background: var(--gold);
-  color: var(--navy); text-decoration: none; font-weight: 800;
-  border-radius: var(--radius); margin-bottom: 1rem;
-}
-.enroll-btn:hover { background: var(--gold-bright); }
-.enroll-guarantee {
-  text-align: center; color: var(--text-light);
-  font-size: 0.78rem; margin-top: 1rem;
-}
-
-
-/* -- 4. Card baselines ------------------------------------------------------- */
-:where(.module-card, .info-card, .term-card, .lab-card,
-       .lesson-intro-card, .visual-card, .key-terms, .lesson-notes,
-       .module-sidebar, .whats-next, .game-panel, .quiz-panel,
-       .result-panel, .mini-quiz, .outcome-item, .concept-card) {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
-}
-
-
-/* -- 5. Module cards (grid) -------------------------------------------------- */
-.module-grid {
-  display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem;
-}
-.module-card {
-  min-height: 210px; padding: 1.1rem; text-decoration: none;
-  color: inherit; display: flex; flex-direction: column;
-  justify-content: space-between;
-  transition: transform var(--motion-quick) var(--ease),
-              box-shadow var(--motion-quick) var(--ease),
-              border-color var(--motion-quick) var(--ease);
-}
-.module-card:hover {
-  transform: translateY(-2px); box-shadow: 0 10px 28px rgba(13,27,62,0.11);
-  border-color: rgba(201,168,76,0.48);
-}
-.module-icon {
-  width: 42px; height: 42px; border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--navy-light), var(--navy));
-  color: var(--gold); display: flex; align-items: center;
-  justify-content: center; font-weight: 800; margin-bottom: 0.85rem;
-}
-.module-card h3 {
-  font-family: var(--font-display); font-size: 1.1rem;
-  line-height: 1.2; margin-bottom: 0.45rem;
-}
-.module-card p {
-  color: var(--text-mid); line-height: 1.55; font-size: 0.84rem;
-}
-.module-footer {
-  display: flex; justify-content: space-between;
-  color: var(--text-light); font-size: 0.72rem; margin-top: 1rem;
-}
-
-
-/* -- 6. Module list (rows) --------------------------------------------------- */
-.module-list {
-  display: flex; flex-direction: column; gap: 0.75rem;
-}
-.course-module {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 1rem 1.25rem;
-  display: grid; grid-template-columns: 44px 1fr auto 24px;
-  gap: 1rem; align-items: center; text-decoration: none;
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
-  transition: transform var(--motion-quick) var(--ease),
-              box-shadow var(--motion-quick) var(--ease),
-              border-color var(--motion-quick) var(--ease);
-}
-.course-module:hover {
-  transform: translateY(-2px); box-shadow: 0 10px 28px rgba(13,27,62,0.09);
-  border-color: rgba(201,168,76,0.48);
-}
-/* Alt-style module list */
-.module-item {
-  background: var(--off-white); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1rem 1.25rem;
-  display: flex; align-items: center; gap: 1rem;
-  text-decoration: none; cursor: pointer; color: inherit;
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
-  transition: border-color var(--motion-quick) var(--ease),
-              box-shadow var(--motion-quick) var(--ease);
-}
-.module-item:hover {
-  border-color: var(--gold); box-shadow: 0 4px 16px rgba(201,168,76,0.12);
-}
-.module-info { flex: 1; min-width: 0; }
-.module-num, .sidebar-num {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: var(--off-white); border: 1.5px solid rgba(13,27,62,0.14);
-  color: var(--text-light); font-family: var(--font-display);
-  font-weight: 800; display: flex; align-items: center;
-  justify-content: center; font-size: 0.85rem; flex-shrink: 0;
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
-}
-.module-item .module-num {
-  background: var(--navy); color: var(--gold);
-  border-color: var(--navy); width: 32px; height: 32px; font-size: 0.8rem;
-}
-.course-module:first-child .module-num {
-  background: var(--gold); border-color: var(--gold); color: var(--navy);
-}
-.module-title {
-  font-size: 1rem; font-weight: 700;
-  color: var(--text-dark); margin-bottom: 0.2rem;
-}
-.module-desc {
-  font-size: 0.86rem; color: var(--text-mid); line-height: 1.55;
-}
-.module-type, .module-duration {
-  font-size: 0.78rem; color: var(--text-light);
-  white-space: nowrap; flex-shrink: 0;
-}
-.module-arrow {
-  color: var(--gold); font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
-}
-
-
-/* -- 7. Section header ------------------------------------------------------- */
-.section-header {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  gap: 1rem; margin-bottom: 1.2rem; padding-bottom: 1rem;
-  border-bottom: 2px solid var(--border);
-}
-.section-label {
-  font-size: 0.7rem; font-weight: 800; letter-spacing: 2px;
-  color: var(--gold); text-transform: uppercase; margin-bottom: 0.35rem;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.45rem, 2.5vw, 2rem); color: var(--text-dark);
-  margin-bottom: 0.75rem;
-}
-.section-desc, .section-sub {
-  color: var(--text-mid); line-height: 1.6;
-  max-width: 580px; font-size: 0.92rem; margin-bottom: 2rem;
-}
-
-
-/* -- 8. Outcomes & concept grids -------------------------------------------- */
-.outcomes-grid, .term-grid, .concept-grid {
-  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem;
-}
-.outcome-item {
-  display: flex; align-items: flex-start; gap: 8px; padding: 0.75rem;
-  color: var(--text-mid); line-height: 1.5; font-size: 0.85rem;
-}
-.outcome-check {
-  color: var(--gold); font-weight: 800; flex-shrink: 0; margin-top: 1px;
-}
-.concept-card { padding: 1rem; }
-.concept-card span {
-  display: block; color: var(--gold); font-size: 0.7rem;
-  font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase;
-  margin-bottom: 0.45rem;
-}
-.concept-card h3, .term-card h4 {
-  font-family: var(--font-display); font-size: 1.05rem;
-  color: var(--navy); line-height: 1.25; margin-bottom: 0.35rem;
-}
-.concept-card p, .term-card p {
-  color: var(--text-mid); font-size: 0.9rem; line-height: 1.55;
-}
-
-
-/* -- 9. Lesson content cards ------------------------------------------------ */
-.lesson-intro-card, .visual-card, .key-terms, .lesson-notes,
-.game-panel, .quiz-panel, .result-panel { padding: 1.75rem; }
-.lesson-intro-card h2, .visual-card h2, .key-terms h3, .lesson-notes h3,
-.game-panel h2, .quiz-panel h2, .result-panel h2 {
-  font-family: var(--font-display); font-size: 1.25rem;
-  color: var(--text-dark); margin-bottom: 1rem;
-  padding-bottom: 0.8rem; border-bottom: 1px solid var(--border);
-}
-.lesson-intro-card p {
-  color: var(--text-mid); line-height: 1.75; margin-bottom: 0.85rem;
-}
-.key-term-grid {
-  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.9rem;
-}
-.term-card { padding: 1rem; }
-.term-card h4 { color: var(--navy); font-size: 0.95rem; margin-bottom: 0.35rem; }
-.term-card p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.55; }
-.notes-list {
-  list-style: none; display: flex; flex-direction: column; gap: 0.85rem;
-}
-.notes-list li {
-  position: relative; padding-left: 1.35rem;
-  color: var(--text-mid); line-height: 1.65; font-size: 0.94rem;
-}
-.notes-list li::before {
-  content: ''; position: absolute; left: 0; top: 0.65em;
-  width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
-}
-.notes-list li strong, .notes-body strong {
-  color: var(--text-dark); font-weight: 700;
-}
-.notes-body { color: var(--text-mid); line-height: 1.7; }
-.notes-highlight {
-  background: var(--gold-pale); border-left: 3px solid var(--gold);
-  padding: 0.85rem 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  margin-top: 1rem; color: var(--text-dark);
-  line-height: 1.6; font-size: 0.88rem;
-}
-
-
-/* -- 10. Term lists --------------------------------------------------------- */
-.term-list { display: flex; flex-direction: column; gap: 1rem; }
-.term-name {
-  font-family: var(--font-display); color: var(--navy);
-  font-size: 1.05rem; margin-bottom: 0.25rem;
-}
-.term-def {
-  color: var(--text-mid); line-height: 1.6; font-size: 0.92rem;
-}
-
-
-/* -- 11. Sidebar ------------------------------------------------------------ */
-.module-sidebar { overflow: hidden; }
-.module-sidebar-header {
-  background: var(--navy); padding: 1rem 1.25rem; display: flex;
-  align-items: center; justify-content: space-between; gap: 1rem;
-}
-.module-sidebar-header h3 {
-  font-size: 0.95rem; font-weight: 700; color: var(--white);
-}
-.module-sidebar-header a {
-  font-size: 0.82rem; color: var(--gold);
-  text-decoration: none; white-space: nowrap;
-}
-.module-sidebar-list { list-style: none; max-height: 430px; overflow-y: auto; }
-.sidebar-module {
-  display: flex; align-items: center; gap: 0.75rem;
-  padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid rgba(13,27,62,0.06);
-  text-decoration: none;
-}
-.sidebar-module:hover { background: var(--off-white); }
-.sidebar-module.active {
-  background: rgba(201,168,76,0.08); border-left: 3px solid var(--gold);
-}
-.sidebar-num { width: 26px; height: 26px; font-size: 0.72rem; }
-.sidebar-module.active .sidebar-num {
-  background: var(--gold); border-color: var(--gold); color: var(--navy);
-}
-.sidebar-module-info { flex: 1; min-width: 0; }
-.sidebar-module-title {
-  font-size: 0.9rem; font-weight: 600; color: var(--text-dark);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.sidebar-module-type {
-  font-size: 0.78rem; color: var(--text-light); margin-top: 2px;
-}
-
-
-/* -- 12. Whats-next --------------------------------------------------------- */
-.whats-next {
-  background: var(--navy); padding: 1.25rem;
-  border: 1px solid rgba(201,168,76,0.2);
-}
-.whats-next h3 {
-  font-size: 0.88rem; font-weight: 700;
-  color: rgba(255,255,255,0.6); text-transform: uppercase;
-  letter-spacing: 1px; margin-bottom: 0.75rem;
-}
-.next-lesson-title {
-  font-family: var(--font-display); font-size: 1.15rem;
-  color: var(--white); margin-bottom: 0.5rem;
-}
-.next-lesson-desc {
-  font-size: 0.88rem; color: rgba(255,255,255,0.58);
-  line-height: 1.6; margin-bottom: 1rem;
-}
-
-
-/* -- 13. Diagrams ----------------------------------------------------------- */
-.diagram-shell {
-  display: grid; grid-template-columns: minmax(0,1fr) 260px;
-  gap: 1rem; align-items: stretch;
-}
-.diagram-stage {
-  min-height: 360px;
-  background: linear-gradient(180deg, #fff, #f7f1e4);
-  border: 1px solid var(--border); border-radius: var(--radius-lg);
-  position: relative; overflow: hidden; padding: 1rem;
-}
-.hero-visual, .diagram-stage.small {
-  background: var(--white); border: 1px solid rgba(201,168,76,0.28);
-  border-radius: var(--radius-lg); padding: 1rem;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-  min-height: 230px; display: flex; align-items: center; justify-content: center;
-}
-.hero-visual .diagram-stage { width: 100%; min-height: 220px; }
-.visual-instructions { color: var(--text-mid); line-height: 1.65; margin-bottom: 1rem; }
-.diagram-point {
-  position: absolute; z-index: 3; min-width: 34px; min-height: 34px;
-  border-radius: 999px; border: 2px solid var(--gold);
-  background: var(--navy); color: var(--gold); font-weight: 800;
-  cursor: pointer; box-shadow: 0 4px 16px rgba(13,27,62,0.2);
-}
-.diagram-point:hover, .diagram-point.active {
-  transform: translateY(-2px); background: var(--navy-mid);
-}
-.diagram-point .point-label {
-  display: none; position: absolute; left: 50%; top: calc(100% + 8px);
-  transform: translateX(-50%); background: var(--white);
-  color: var(--navy); border: 1px solid rgba(201,168,76,0.35);
-  border-radius: var(--radius); padding: 0.35rem 0.55rem;
-  white-space: nowrap; box-shadow: 0 8px 20px rgba(13,27,62,0.12);
-  font-size: 0.78rem;
-}
-.diagram-point.active .point-label { display: none; }
-.reveal-panel {
-  background: var(--navy); color: var(--white);
-  border-radius: var(--radius-lg); padding: 1rem;
-  min-height: 220px; display: flex; flex-direction: column; justify-content: center;
-}
-.reveal-panel span {
-  color: var(--gold); font-size: 0.75rem; font-weight: 800;
-  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.5rem;
-}
-.reveal-panel h3 {
-  font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.6rem;
-}
-.reveal-panel p {
-  color: rgba(255,255,255,0.72); line-height: 1.65; font-size: 0.92rem;
-}
-.anatomy-dot-stage {
-  position: relative; background: var(--white);
-  border: 1px solid var(--border); border-radius: var(--radius-lg);
-  overflow: visible; padding: 0;
-  display: flex; align-items: flex-start; justify-content: center;
-  isolation: isolate;
-}
-.anatomy-dot-stage img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
-.anatomy-dot-stage .diagram-point {
-  width: 18px; height: 18px; min-width: unset; min-height: unset;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--gold);
-  border: 2.5px solid var(--navy);
-  color: transparent;
-  box-shadow: 0 2px 8px rgba(13,27,62,0.35);
-  transition: transform 0.15s, background 0.15s, border-color 0.15s;
-}
-.anatomy-dot-stage .diagram-point:hover,
-.anatomy-dot-stage .diagram-point.active {
-  background: var(--navy);
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201,168,76,0.35), 0 2px 10px rgba(13,27,62,0.35);
-  transform: translate(-50%, -50%) scale(1.25);
-  outline: none;
-}
-/* Point label — shown beside the dot on active */
-.anatomy-dot-stage .diagram-point .point-label {
-  display: none; position: absolute;
-  left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
-  background: var(--navy); color: var(--gold);
-  font-size: 0.72rem; font-weight: 700;
-  padding: 3px 9px; border-radius: 4px;
-  white-space: nowrap; pointer-events: none;
-  box-shadow: 0 2px 8px rgba(13,27,62,0.25);
-}
-.anatomy-dot-stage .diagram-point.active .point-label { display: none; }
-
-/* Legacy lesson hero artwork slots are intentionally retired.
-   Keep these guards so older lesson pages cannot recreate split headers. */
 .page-hero.local-hero-with-art,
-.lesson-hero-inner.local-hero-with-art,
 .page-hero-inner.local-hero-with-art,
 .quiz-hero-inner.local-hero-with-art,
 .game-hero-inner.local-hero-with-art {
@@ -776,48 +246,557 @@
   text-align: center;
   gap: 0;
 }
-.lesson-hero-art-slot,
-.page-hero-art-slot {
-  display: none !important;
+
+/* Hero meta — quiet editorial meta line */
+.course-meta-row {
+  display: flex; flex-wrap: nowrap; column-gap: 0; row-gap: 0.5rem;
+  margin: 1.5rem 0 2rem;
 }
-.local-enroll-hero-image {
-  height: 190px; min-height: 190px; background: var(--off-white);
-  border-bottom: 1px solid rgba(201,168,76,0.25);
-  padding: 1rem; display: flex; align-items: center; justify-content: center;
+.meta-item {
+  display: inline-flex; align-items: center;
+  background: transparent;
+  border-right: 1px solid var(--blue-secondary);
+  padding: 0 0.75rem;
+  font-size: var(--text-xs); color: var(--leather-dark);
+  white-space: nowrap;
 }
-@media (max-width: 1024px) {
-  .lesson-hero-inner.local-hero-with-art,
-  .page-hero-inner.local-hero-with-art,
-  .quiz-hero-inner.local-hero-with-art,
-  .game-hero-inner.local-hero-with-art { grid-template-columns: 1fr; }
+.meta-item:first-child { padding-left: 0; }
+.meta-item:last-child { border-right: 0; padding-right: 0; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .course-meta-row { flex-wrap: wrap; }
+  .course-hero.has-hero-art.hero-centered .course-hero-inner {
+    grid-template-columns: minmax(0, 920px);
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .course-hero.has-hero-art.hero-centered .course-hero-text {
+    max-width: 920px; margin: 0 auto;
+  }
+  .course-hero.has-hero-art.hero-centered .course-hero-desc,
+  .course-hero.has-hero-art.hero-centered .course-hero p {
+    margin-left: auto; margin-right: auto;
+  }
+  .course-hero.has-hero-art.hero-centered .course-meta-row,
+  .course-hero.has-hero-art.hero-centered .hero-actions {
+    justify-content: center;
+  }
+  .course-hero.has-hero-art .course-hero-art { display: none; }
+  .course-hero.hero-centered, .lesson-hero.hero-centered,
+  .lesson-hero:not(.hero-bg) {
+    min-height: 300px;
+    padding: 40px var(--page-pad);
+    padding-top: calc(var(--nav-height) + 16px);
+  }
+  .course-hero h1, .lesson-hero-title { max-width: 100%; }
+  .course-hero p, .course-hero-desc, .lesson-hero-desc {
+    font-size: 0.97rem; line-height: 1.65;
+  }
 }
 
 
-/* -- 14. Horse silhouette CSS art ------------------------------------------ */
-.horse-card-visual { position: relative; width: 100%; height: 100%; min-height: 300px; }
-.horse-outline { position: absolute; left: 8%; right: 8%; top: 10%; bottom: 8%; }
-.horse-silhouette { position: absolute; inset: 24px 34px; opacity: 0.96; }
-.horse-body { position: absolute; left: 24%; top: 34%; width: 52%; height: 28%; background: #8d542f; border-radius: 48% 42% 42% 50%; }
-.horse-neck { position: absolute; left: 62%; top: 22%; width: 15%; height: 30%; background: #7a4526; border-radius: 45% 45% 30% 30%; transform: rotate(-22deg); transform-origin: bottom; }
-.horse-head { position: absolute; left: 72%; top: 15%; width: 13%; height: 18%; background: #8d542f; border-radius: 50% 45% 58% 45%; transform: rotate(-12deg); }
-.horse-ear { position: absolute; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 24px solid #6e3f24; top: -16px; }
-.horse-ear.one { left: 20%; transform: rotate(-14deg); }
-.horse-ear.two { right: 22%; transform: rotate(16deg); }
-.horse-leg { position: absolute; width: 6%; height: 34%; background: #6e3f24; border-radius: 12px; top: 58%; }
-.horse-leg.front-a { left: 64%; }
-.horse-leg.front-b { left: 70%; background: #7a4526; }
-.horse-leg.hind-a { left: 31%; }
-.horse-leg.hind-b { left: 39%; background: #7a4526; }
-.horse-tail { position: absolute; left: 17%; top: 36%; width: 11%; height: 22%; background: #3b271f; border-radius: 80% 10% 80% 20%; transform: rotate(16deg); }
-.horse-hoof { position: absolute; width: 8%; height: 4%; background: #2e2220; border-radius: 40%; top: 89%; }
-.horse-hoof.f1 { left: 63%; }
-.horse-hoof.f2 { left: 69%; }
-.horse-hoof.h1 { left: 30%; }
-.horse-hoof.h2 { left: 38%; }
+/* -- 3. The card system -------------------------------------------------------
+   ONE baseline, three variants:
+   solid (default)  — interactive objects: games, quizzes, flip cards, visuals
+   quiet            — reading content: de-boxed, editorial (no shadow, no fill)
+   glass            — rails & panels that float over the atmosphere
+   Legacy class names below are mapped onto these variants — do not invent
+   new card classes; reuse one of these. */
+:where(.module-card, .term-card, .visual-card, .game-panel,
+       .quiz-panel, .result-panel, .outcome-item, .concept-card,
+       .hero-card, .track-card) {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-rest);
+}
+
+/* quiet — editorial reading blocks (de-boxed) */
+:where(.lesson-intro-card) {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* glass — floating panels over the atmosphere */
+:where(.module-sidebar, .key-terms, .lesson-notes, .whats-next) {
+  background: rgba(252, 250, 247, 0.78);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-rest);
+}
+
+/* Shared interactive hover — identical on every hoverable card */
+:where(.module-card, .course-module, .module-item):hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-raised);
+  border-color: rgba(127, 152, 178, 0.48);
+}
+
+/* Nested surfaces — white cards/buttons sitting INSIDE a large white panel
+   get the ambient halo (--shadow-nested) so they read as their own layer
+   instead of blending into the parent. ONE rule, applied platform-wide:
+   - parents: every white container panel (lesson visuals, games, quizzes)
+   - children: any *-card class, plus the recurring white option/choice
+     buttons used across course games. Course pages must NOT redefine
+     box-shadow on these inline — this rule is the single source of truth.
+   Note: both [class$="-card"] AND [class*="-card "] are required — the
+   attribute selector tests the full class string, so a card that also
+   carries another class (e.g. "pattern-card motion-reveal") only matches
+   the [class*="-card "] form. */
+:where(.visual-card, .game-panel, .quiz-panel, .game-shell, .game-card,
+       .game-play-area, .quiz-card, .key-terms)
+  :where([class$="-card"], [class*="-card "]):not(.visual-card):not(.lesson-intro-card):not(.flip-card):not(.game-intro-card),
+.visual-card .flip-front,
+.visual-card .flip-back,
+:where(.visual-card, .game-panel, .quiz-panel, .game-shell, .game-card,
+       .game-play-area, .quiz-card)
+  :where(.game-option, .choice-btn, .opt-btn, .ans-btn, .region-btn,
+         .bucket-btn, .step-tile, .choice, .prompt, .word-bank-wrap,
+         .mem-card-front, .mem-front, .mem-back) {
+  border: 1px solid var(--border-mid);
+  box-shadow: var(--shadow-nested);
+}
+.quiz-panel .answer-btn {
+  border: 1px solid var(--border-mid);
+  box-shadow: var(--shadow-nested);
+}
+.answer-btn {
+  border: 1px solid var(--border-mid);
+  box-shadow: var(--shadow-nested);
+}
+
+/* White intro/instruction cards that sit directly on the cream page
+   (Training Barn intros, game intros) lift with the standard rest shadow —
+   identical treatment to every other top-level card. */
+.barn-intro,
+.game-intro-card {
+  box-shadow: var(--shadow-rest);
+}
+
+/* Legacy surface registry — older course pages defined these one-off
+   classes in page-level <style> blocks before the shared elevation system
+   existed. They are registered here so every one of them receives the
+   standard treatment without per-page CSS. Do NOT add to these lists for
+   new pages — new pages must use the standard card classes above. */
+
+/* a) top-level white surfaces sitting on the cream page → rest shadow */
+.game-header,
+.term-queue,
+.crossword-shell,
+.view-art,
+.study-note,
+.tree-card,
+.region-btn,
+.reference-term,
+.no-results {
+  box-shadow: var(--shadow-rest);
+}
+
+/* b) white surfaces nested inside a white panel → ambient halo */
+.timeline-step,
+.callout-item,
+.game-box,
+.compare-panel,
+.discipline-visual,
+.compare-intro,
+.scenario-intro,
+.ws-word-panel,
+.ws-reset,
+.correct-order-reveal,
+.check-item {
+  box-shadow: var(--shadow-nested);
+}
 
 
-/* -- 15. Flip cards --------------------------------------------------------- */
-.flip-grid, .lab-grid {
+/* -- 4. Module cards (grid) -------------------------------------------------- */
+.module-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem;
+}
+.module-card {
+  min-height: 210px; padding: 1.2rem; text-decoration: none;
+  color: inherit; display: flex; flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease);
+}
+.module-icon {
+  width: 42px; height: 42px; border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--blue-secondary), var(--blue-primary));
+  color: var(--white); display: flex; align-items: center;
+  justify-content: center; font-weight: 800; margin-bottom: 0.85rem;
+}
+.module-card h3 {
+  font-family: var(--font-display); font-size: 1.1rem;
+  line-height: 1.2; margin-bottom: 0.45rem;
+}
+.module-card p {
+  color: var(--body-text); line-height: 1.55; font-size: 0.88rem;
+}
+.module-footer {
+  display: flex; justify-content: space-between;
+  color: var(--muted-text); font-size: var(--text-xs); margin-top: 1rem;
+}
+
+
+/* -- 5. Module list (rows) --------------------------------------------------- */
+.module-list {
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.course-module {
+  background: var(--soft-white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1rem 1.25rem;
+  display: grid; grid-template-columns: 44px 1fr auto 24px;
+  gap: 1rem; align-items: center; text-decoration: none;
+  box-shadow: var(--shadow-rest);
+  transition: transform var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease);
+}
+.module-item {
+  background: var(--soft-white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.25rem;
+  display: flex; align-items: center; gap: 1rem;
+  text-decoration: none; cursor: pointer; color: inherit;
+  box-shadow: var(--shadow-rest);
+  transition: transform var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease);
+}
+.module-info { flex: 1; min-width: 0; }
+.module-num, .sidebar-num {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--soft-white); border: 1.5px solid var(--border-mid);
+  color: var(--muted-text); font-family: var(--font-display);
+  font-weight: 800; display: flex; align-items: center;
+  justify-content: center; font-size: 0.85rem; flex-shrink: 0;
+}
+.module-item .module-num {
+  background: var(--blue-primary); color: var(--white);
+  border-color: var(--blue-primary); width: 32px; height: 32px; font-size: 0.8rem;
+}
+.course-module:first-child .module-num {
+  background: var(--tan); border-color: var(--tan); color: var(--white);
+}
+.module-title {
+  font-size: 1rem; font-weight: 700;
+  color: var(--heading); margin-bottom: 0.2rem;
+}
+.module-desc {
+  font-size: 0.88rem; color: var(--body-text); line-height: 1.55;
+}
+.module-type, .module-duration {
+  font-size: var(--text-xs); color: var(--muted-text);
+  white-space: nowrap; flex-shrink: 0;
+}
+.module-arrow {
+  color: var(--room-accent); font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
+}
+
+
+/* -- 6. Section header — editorial opener ------------------------------------ */
+.section-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 1rem; margin-bottom: 1.4rem;
+}
+.section-label {
+  font-size: var(--text-xs); font-weight: 700; letter-spacing: 2px;
+  color: var(--room-accent); text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl); color: var(--heading);
+  margin-bottom: 0.75rem;
+}
+.section-desc, .section-sub {
+  color: var(--body-text); line-height: 1.65;
+  max-width: var(--measure); font-size: 0.95rem; margin-bottom: 2rem;
+}
+
+
+/* -- 7. Outcomes, concepts, terms, lesson content ----------------------------- */
+.outcomes-grid, .term-grid, .concept-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.85rem;
+}
+.outcome-item {
+  display: flex; align-items: flex-start; gap: 8px; padding: 0.85rem 1rem;
+  color: var(--body-text); line-height: 1.55; font-size: 0.9rem;
+}
+.outcome-check {
+  color: var(--room-accent); font-weight: 800; flex-shrink: 0; margin-top: 1px;
+}
+.concept-card { padding: 1.1rem; }
+.concept-card span {
+  display: block; color: var(--room-accent); font-size: var(--text-xs);
+  font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+.concept-card h3, .term-card h4 {
+  font-family: var(--font-display); font-size: 1.05rem;
+  color: var(--heading); line-height: 1.25; margin-bottom: 0.35rem;
+}
+.concept-card p, .term-card p {
+  color: var(--body-text); font-size: 0.92rem; line-height: 1.6;
+}
+
+/* Reading blocks — lesson-intro is editorial prose, not a box */
+.lesson-intro-card { padding: 0.5rem 0 0; max-width: var(--measure); }
+.lesson-intro-card h2 {
+  font-family: var(--font-display); font-size: var(--text-xl);
+  color: var(--heading); margin-bottom: 1rem;
+}
+.lesson-intro-card p {
+  color: var(--body-text); font-size: var(--text-md);
+  line-height: 1.75; margin-bottom: 0.9rem;
+}
+
+/* Interactive / visual blocks stay carded */
+.visual-card, .game-panel, .quiz-panel, .result-panel { padding: 1.75rem; }
+.visual-card h2, .game-panel h2, .quiz-panel h2, .result-panel h2,
+.key-terms h3, .lesson-notes h3 {
+  font-family: var(--font-display); font-size: 1.25rem;
+  color: var(--heading); margin-bottom: 1rem;
+  padding-bottom: 0.8rem; border-bottom: 1px solid var(--border);
+}
+.visual-card p, .game-panel p, .quiz-panel p {
+  color: var(--body-text); line-height: 1.75; margin-bottom: 0.9rem;
+}
+.visual-card p:last-child, .game-panel p:last-child, .quiz-panel p:last-child {
+  margin-bottom: 0;
+}
+.key-terms, .lesson-notes { padding: 1.5rem; }
+
+.key-term-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.9rem;
+}
+.term-card { padding: 1rem; }
+.term-card h4 { color: var(--heading); font-size: 0.95rem; margin-bottom: 0.35rem; }
+.term-card p { color: var(--body-text); font-size: 0.9rem; line-height: 1.6; }
+.term-name {
+  font-family: var(--font-display); color: var(--heading);
+  font-size: 1.05rem; margin-bottom: 0.25rem;
+}
+.term-def {
+  color: var(--body-text); line-height: 1.6; font-size: 0.92rem;
+}
+
+/* Part-grid — labeled body-region cards (e.g. "Front Leg / Knee") used on
+   anatomy overview pages. Standardized here so every instance shares one
+   gap and breakpoint. */
+.part-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.part-item {
+  background: var(--soft-white); border: 1px solid var(--border-mid);
+  border-left: 3px solid var(--tan); border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0.85rem 1rem;
+  box-shadow: var(--shadow-rest);
+}
+.part-item h3 {
+  font-family: var(--font-display); color: var(--heading);
+  font-size: 1rem; margin-bottom: 0.2rem;
+}
+.part-item p {
+  color: var(--body-text); font-size: 0.84rem; line-height: 1.55; margin: 0;
+}
+.part-region {
+  display: block; font-size: 0.62rem; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--tan); margin-bottom: 0.18rem;
+}
+@media (max-width: 640px) {
+  .part-grid { grid-template-columns: 1fr; }
+}
+
+/* Vocab-grid — simple term/definition cards (no category tag), used on
+   anatomy region tabs. */
+.vocab-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+.vocab-card {
+  background: var(--soft-white); border: 1px solid var(--border-mid);
+  border-radius: var(--radius); padding: 0.85rem 1rem;
+  box-shadow: var(--shadow-rest);
+}
+.vocab-term {
+  font-family: var(--font-display); font-size: 0.95rem; color: var(--heading);
+  font-weight: 700; margin-bottom: 0.35rem;
+}
+.vocab-def {
+  font-size: 0.83rem; color: var(--body-text); line-height: 1.6;
+}
+@media (max-width: 620px) {
+  .vocab-grid { grid-template-columns: 1fr; }
+}
+
+.notes-list {
+  list-style: none; display: flex; flex-direction: column; gap: 0.85rem;
+}
+.notes-list li {
+  position: relative; padding-left: 1.35rem;
+  color: var(--body-text); line-height: 1.65; font-size: 0.94rem;
+}
+.notes-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.65em;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--room-accent);
+}
+.notes-list li strong, .notes-body strong {
+  color: var(--heading); font-weight: 700;
+}
+.notes-body { color: var(--body-text); line-height: 1.7; }
+.notes-highlight {
+  background: var(--room-wash); border-left: 3px solid var(--room-accent);
+  padding: 0.9rem 1.1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-top: 1rem; color: var(--heading);
+  line-height: 1.6; font-size: 0.9rem;
+}
+
+
+/* -- 8. Sidebar — soft-glass journey rail ------------------------------------ */
+.module-sidebar { overflow: hidden; }
+.module-sidebar-header {
+  background: transparent; padding: 1rem 1.25rem; display: flex;
+  align-items: center; justify-content: space-between; gap: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.module-sidebar-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.02rem; font-weight: 700; color: var(--heading);
+}
+.module-sidebar-header a {
+  font-size: 0.82rem; color: var(--blue-primary);
+  text-decoration: none; white-space: nowrap;
+}
+.module-sidebar-header a:hover { color: var(--leather); }
+
+/* Progress — the trail fill */
+.sidebar-progress {
+  padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border);
+}
+.sidebar-progress-track {
+  height: 6px; background: rgba(36, 54, 74, 0.07); border-radius: 999px; overflow: hidden;
+}
+.sidebar-progress-fill {
+  height: 100%; background: var(--room-accent); border-radius: 999px;
+  transition: width var(--motion-soft) var(--ease);
+}
+.sidebar-progress-label {
+  margin-top: 0.5rem; font-size: var(--text-xs); color: var(--muted-text);
+  font-weight: 600; letter-spacing: 0.2px;
+}
+
+/* The journey trail — stops connected by a path */
+.module-sidebar-list {
+  list-style: none; max-height: 430px; overflow-y: auto;
+  position: relative;
+}
+.module-sidebar-list::before {
+  content: ''; position: absolute;
+  left: calc(1.25rem + 12px); top: 22px; bottom: 22px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    180deg, var(--border-mid) 0 6px, transparent 6px 11px);
+  pointer-events: none;
+}
+.sidebar-module {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.8rem 1.25rem;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  position: relative;
+  transition: background var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease);
+}
+.sidebar-module:hover { background: rgba(36, 54, 74, 0.04); }
+.sidebar-module.active {
+  background: var(--room-wash); border-left: 3px solid var(--room-accent);
+}
+.sidebar-num {
+  width: 26px; height: 26px; font-size: 0.72rem;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 999px; flex-shrink: 0;
+  background: var(--soft-white); border: 1.5px solid var(--border-mid);
+  color: var(--muted-text); font-weight: 700;
+  position: relative; z-index: 1;
+}
+.sidebar-module.active .sidebar-num {
+  background: var(--room-accent); border-color: var(--room-accent); color: var(--white);
+}
+.sidebar-module.is-complete .sidebar-num {
+  background: var(--success); border-color: var(--success); color: var(--white);
+}
+.sidebar-module-info { flex: 1; min-width: 0; }
+.sidebar-module-title {
+  font-size: 0.9rem; font-weight: 600; color: var(--heading);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sidebar-module-type {
+  font-size: var(--text-xs); color: var(--muted-text); margin-top: 2px;
+}
+
+
+/* -- 9. Whats-next ------------------------------------------------------------ */
+.whats-next { padding: 1.25rem; }
+.whats-next h3 {
+  font-size: var(--text-xs); font-weight: 700;
+  color: var(--muted-text); text-transform: uppercase;
+  letter-spacing: 1.4px; margin-bottom: 0.75rem;
+}
+.next-lesson-title {
+  font-family: var(--font-display); font-size: 1.15rem;
+  color: var(--heading); margin-bottom: 0.5rem;
+}
+.next-lesson-desc {
+  font-size: 0.9rem; color: var(--body-text);
+  line-height: 1.6; margin-bottom: 1rem;
+}
+
+
+/* -- 10. Hero card (course landing side panel) -------------------------------- */
+.hero-card {
+  overflow: hidden; box-shadow: var(--shadow-float);
+  position: relative; z-index: 2;
+}
+.hero-card-image {
+  min-height: 180px; background: var(--cream-secondary);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; padding: 1rem;
+}
+.hero-card-image img {
+  width: 100%; max-width: 260px; height: auto;
+  filter: drop-shadow(0 12px 26px rgba(36, 54, 74, 0.14));
+}
+.hero-card-top {
+  background: var(--blue-primary); border-bottom: 2px solid var(--tan);
+  padding: 1.35rem; text-align: center;
+}
+.hero-card-title {
+  font-family: var(--font-display); font-size: 2.1rem;
+  color: var(--white); line-height: 1;
+}
+.hero-card-sub {
+  font-size: var(--text-xs); color: rgba(255,255,255,0.78); margin-top: 0.35rem;
+}
+.hero-card-body { padding: 1.35rem; }
+.hero-card-body ul {
+  list-style: none; display: grid; gap: 0.75rem;
+}
+.hero-card-body li {
+  font-size: 0.86rem; color: var(--body-text); line-height: 1.5;
+}
+.hero-card-body li::before {
+  content: '✓'; color: var(--success); font-weight: 800; margin-right: 0.45rem;
+}
+
+
+/* -- 11. Flip cards ----------------------------------------------------------- */
+.flip-grid {
   display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem;
 }
 .flip-card {
@@ -833,114 +812,139 @@
 .flip-front, .flip-back {
   position: absolute; inset: 0; backface-visibility: hidden;
   border-radius: var(--radius-lg); border: 1px solid var(--border);
-  background: var(--white); padding: 1rem;
+  background: var(--soft-white); padding: 1rem;
   display: flex; flex-direction: column; justify-content: center;
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
+  box-shadow: var(--shadow-rest);
 }
 .flip-front h3, .flip-back h3 {
   font-family: var(--font-display); margin-bottom: 0.5rem;
 }
 .flip-front p, .flip-back p {
-  color: var(--text-mid); line-height: 1.55; font-size: 0.9rem;
+  color: var(--body-text); line-height: 1.55; font-size: 0.9rem;
 }
 .flip-back {
-  transform: rotateY(180deg); background: var(--gold-pale);
-  border-color: rgba(201,168,76,0.4);
-}
-.lab-card { padding: 1.2rem; }
-.lab-card h3 { font-family: var(--font-display); margin-bottom: 0.55rem; }
-.lab-card p {
-  color: var(--text-mid); line-height: 1.6; font-size: 0.9rem; margin-bottom: 1rem;
+  transform: rotateY(180deg); background: var(--blue-light);
+  border-color: rgba(127, 152, 178, 0.4);
 }
 
 
-/* -- 16. Chips -------------------------------------------------------------- */
-.term-chip-grid, .match-grid {
-  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem;
+/* -- 11b. Lesson tab system ------------------------------------------------------
+   THE canonical tab pattern (modeled on the Face Markings lesson):
+     <div class="lesson-intro-card"> intro </div>          ← above, never inside
+     <div class="tab-system" id="...">
+       <div class="tab-bar" role="tablist"> .tab-btn[aria-controls] … </div>
+       <div class="tab-panel active" id="...">
+         <div class="tab-intro"> short description </div>
+         <div class="visual-card"> tab content </div>
+       </div> …
+     </div>
+     <div class="tab-bar tab-bar--jump"> .tab-btn[data-jump-target] … </div>
+   Switching + jump-scroll behavior is wired globally by layout.js
+   (window.switchTab / window.jumpToTab). Do not add per-page tab CSS or JS. */
+.tab-system {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-.term-chip {
-  border: 1px solid rgba(13,27,62,0.12);
-  background: var(--off-white); border-radius: var(--radius-lg);
-  padding: 0.8rem; text-align: left;
-  font: inherit; color: var(--text-dark); cursor: pointer;
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
+.tab-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 0.5rem;
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.4rem;
+  box-shadow: var(--shadow-rest);
 }
-.term-chip strong { display: block; color: var(--navy); margin-bottom: 0.25rem; }
-.term-chip span {
-  display: block; color: var(--text-mid);
-  font-size: 0.86rem; line-height: 1.45;
+.tab-btn,
+.part-tab,
+.saddle-view-tab {
+  min-height: 48px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--cream-bg);
+  color: var(--body-text);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  padding: 0.85rem 1rem;
+  transition: background var(--motion-quick) var(--ease),
+              color var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease);
 }
-.term-chip:hover, .term-chip.active {
-  border-color: rgba(201,168,76,0.55); background: rgba(201,168,76,0.1);
+.tab-btn.active,
+.part-tab.active,
+.saddle-view-tab.active {
+  background: var(--blue-primary);
+  color: var(--white);
+  box-shadow: none;
 }
-.part-list {
-  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+.tab-btn:not(.active):hover,
+.part-tab:not(.active):hover,
+.saddle-view-tab:not(.active):hover {
+  background: rgba(36, 54, 74, 0.06);
+  color: var(--heading);
 }
-.part-chip {
-  border: 1px solid rgba(13,27,62,0.12); background: var(--white);
-  color: var(--navy); border-radius: 999px;
-  padding: 0.45rem 0.7rem; cursor: pointer;
-  font: inherit; font-size: 0.82rem; font-weight: 600;
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
+.tab-panel,
+.part-panel {
+  display: none;
 }
-.part-chip:hover, .part-chip.active {
-  background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.55);
+.tab-panel.active,
+.part-panel.active {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.tab-intro {
+  padding: 1.25rem 1.5rem;
+  background: rgba(252, 250, 247, 0.7);
+  border-left: 3px solid var(--room-accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--body-text);
+  line-height: 1.7;
+}
+.tab-bar--jump {
+  margin-bottom: 1.5rem;
+}
+.lesson-intro-card + .tab-system {
+  margin-top: 0.5rem;
+}
+/* Tabs always stay on ONE line — buttons compress on smaller screens */
+@media (max-width: 900px) {
+  .tab-btn, .part-tab, .saddle-view-tab {
+    font-size: 0.74rem;
+    padding: 0.6rem 0.4rem;
+    min-height: 42px;
+  }
+}
+@media (max-width: 560px) {
+  .tab-btn, .part-tab, .saddle-view-tab {
+    font-size: 0.62rem;
+    letter-spacing: 0;
+    padding: 0.5rem 0.25rem;
+    min-height: 38px;
+  }
+  .tab-bar {
+    gap: 0.3rem;
+    padding: 0.3rem;
+  }
 }
 
 
-/* -- 17. Quiz --------------------------------------------------------------- */
+/* -- 12. Quiz ------------------------------------------------------------------ */
+
+/* Legacy .quiz-panel / .answer-btn system (game pages) — kept for compat */
 .quiz-panel, .result-panel { margin-bottom: 1.5rem; }
-.quiz-panel-header {
-  display: flex; justify-content: space-between; gap: 1rem;
-  align-items: center; border-bottom: 1px solid var(--border);
-  padding-bottom: 1rem; margin-bottom: 1rem;
-}
-.quiz-meta { color: var(--text-light); font-size: 0.85rem; }
-.quiz-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
-.quiz-item h3 { font-size: 1rem; margin-bottom: 0.75rem; }
-.quiz-option {
-  display: block; margin: 0.45rem 0;
-  color: var(--text-mid); line-height: 1.5;
-}
 .quiz-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.25rem; }
 .result-panel { display: none; text-align: center; }
 .result-panel.visible { display: block; }
-.result-score { font-family: var(--font-display); font-size: 2.4rem; color: var(--gold); }
-.answer-feedback {
-  margin-top: 0.5rem; padding: 0.65rem 0.8rem;
-  border-radius: var(--radius); font-size: 0.86rem; display: none;
-}
-.answer-feedback.correct {
-  display: block; background: var(--success-bg);
-  color: var(--success); border: 1px solid var(--success-bd);
-}
-.answer-feedback.wrong {
-  display: block; background: var(--error-bg);
-  color: var(--error); border: 1px solid var(--error-bd);
-}
-.mini-quiz { padding: 1.5rem; }
-.mini-quiz-header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding-bottom: 0.75rem; margin-bottom: 1rem;
-  border-bottom: 1px solid var(--border); gap: 0.75rem;
-}
-.mini-quiz-header h3 {
-  font-family: var(--font-display); font-size: 1.15rem; color: var(--text-dark);
-}
-.quiz-badge {
-  background: rgba(201,168,76,0.12); color: var(--gold);
-  border: 1px solid rgba(201,168,76,0.35);
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; padding: 4px 10px; border-radius: 2px;
-}
-.quiz-question { margin-bottom: 0.75rem; }
-.question-num {
-  color: var(--gold); font-weight: 700; letter-spacing: 1px;
-  font-size: 0.78rem; margin-right: 0.5rem; text-transform: uppercase;
-}
+.result-score { font-family: var(--font-display); font-size: 2.4rem; color: var(--room-accent); }
 .answer-btn {
   width: 100%; margin: 0.4rem 0;
   justify-content: flex-start; text-align: left;
+  border-radius: var(--radius);
   padding: 0.7rem 1rem; font-weight: 500;
 }
 .answer-btn.correct {
@@ -952,78 +956,522 @@
 .answer-btn.disabled { pointer-events: none; opacity: 0.7; }
 .quiz-score {
   display: none; margin-top: 1rem; padding: 1rem;
-  background: var(--off-white); border-radius: var(--radius); text-align: center;
+  background: var(--soft-white); border: 1px solid var(--border);
+  border-radius: var(--radius); text-align: center;
 }
 .quiz-score.visible { display: block; }
-.quiz-score-num { font-family: var(--font-display); font-size: 2rem; color: var(--gold); }
-.quiz-score-msg { color: var(--text-mid); font-size: 0.9rem; margin-top: 0.25rem; }
+.quiz-score-num { font-family: var(--font-display); font-size: 2rem; color: var(--room-accent); }
+.quiz-score-msg { color: var(--body-text); font-size: 0.9rem; margin-top: 0.25rem; }
 
+/* Quiz card system — .quiz-card pages (test-your-knowledge)
+   The card elevation, header chrome, option cards, feedback strip, and
+   results panel are defined here once and applied to every quiz page.
+   Individual quiz HTML files must NOT carry inline <style> blocks for
+   these classes — components.css is the single source of truth. */
 
-/* -- 18. Game panel --------------------------------------------------------- */
-.game-board { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.game-card {
-  background: var(--off-white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 1rem;
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
-}
-.game-card h3 { font-family: var(--font-display); margin-bottom: 0.5rem; }
-.game-card p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.55; }
-
-
-/* -- 19. Video ------------------------------------------------------------- */
-.video-container {
-  position: relative; width: 100%; padding-bottom: 56.25%;
-  border-radius: var(--radius-lg); overflow: hidden;
-  background: var(--navy); border: 1px solid var(--border);
-}
-.video-container iframe, .video-container video {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; border: 0;
+/* Container */
+.quiz-card {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--room-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  overflow: hidden;
 }
 
-
-/* -- 20. Landing-page extras ----------------------------------------------- */
-.track-features {
-  list-style: none; display: flex; flex-direction: column; gap: 1rem;
-}
-.track-features li, .alignment-list li {
-  display: flex; align-items: flex-start; gap: 0.75rem;
-  color: rgba(255,255,255,0.75); line-height: 1.5;
-}
-.track-visual {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: var(--radius-lg); padding: 2rem;
-}
-.track-visual h4 {
-  font-family: var(--font-display); color: var(--gold);
-  font-size: 1.1rem; margin-bottom: 1.25rem;
-}
-.alignment-list {
-  list-style: none; display: flex; flex-direction: column; gap: 0.75rem;
-}
-.alignment-list li {
-  font-size: 0.82rem; color: rgba(255,255,255,0.65);
-  padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.alignment-list li:last-child { border-bottom: none; padding-bottom: 0; }
-.mobile-enroll { display: none; }
-@media (max-width: 768px) {
-  .mobile-enroll {
-    display: block; position: fixed; bottom: 0; left: 0; right: 0;
-    background: var(--navy); border-top: 2px solid var(--gold);
-    padding: 1rem var(--page-pad); z-index: 99;
-  }
+/* Header row — question counter + live score */
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.75rem;
+  background: var(--soft-white);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--room-accent);
 }
 
-
-/* -- 21. Motion alias (fade-in <-> motion-reveal) -------------------------- */
-.fade-in {
-  opacity: 0; transform: translateY(20px);
-  transition: opacity var(--motion-soft) var(--ease),
-              transform var(--motion-soft) var(--ease);
+/* Question text */
+.quiz-question {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--heading);
+  line-height: 1.45;
+  padding: 1.75rem 1.75rem 0;
+  margin-bottom: 1.4rem;
 }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  .fade-in { opacity: 1; transform: none; }
+
+/* Options grid */
+.quiz-options {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0 1.75rem;
+}
+
+/* Individual answer option — mini card with ambient halo */
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.95rem 1.2rem;
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.93rem;
+  color: var(--heading);
+  background: var(--white);
+  text-align: left;
+  width: 100%;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  box-shadow: var(--shadow-nested);
+  transition: background var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease),
+              transform var(--motion-quick) var(--ease);
+}
+.quiz-option::before {
+  content: '';
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--border-mid);
+  flex-shrink: 0;
+  transition: background var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease);
+}
+.quiz-option:hover:not(:disabled) {
+  background: var(--cream-secondary);
+  border-color: var(--tan);
+  box-shadow: var(--shadow-rest);
+  transform: translateY(-1px);
+}
+.quiz-option:hover:not(:disabled)::before {
+  background: var(--tan);
+  border-color: var(--tan);
+}
+.quiz-option.correct-ans {
+  background: var(--success-bg);
+  border-color: var(--success-bd);
+  color: var(--success);
+}
+.quiz-option.correct-ans::before {
+  background: var(--success);
+  border-color: var(--success);
+}
+.quiz-option.wrong-ans {
+  background: var(--error-bg);
+  border-color: var(--error-bd);
+  color: var(--error);
+}
+.quiz-option.wrong-ans::before {
+  background: var(--error);
+  border-color: var(--error);
+}
+.quiz-option:disabled { cursor: default; }
+
+/* Feedback strip — shown after answering */
+.quiz-feedback {
+  display: none;
+  margin: 1rem 1.75rem 0;
+  font-size: 0.87rem;
+  line-height: 1.65;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius);
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct {
+  background: var(--success-bg);
+  color: var(--success);
+  border-left: 3px solid var(--success);
+}
+.quiz-feedback.incorrect {
+  background: var(--error-bg);
+  color: var(--error);
+  border-left: 3px solid var(--error);
+}
+
+/* Next Question button row — uses .actions from game.css; padding wrapper */
+.quiz-card .actions {
+  padding: 1.25rem 1.75rem 1.75rem;
+  margin: 0;
+  max-width: none;
+}
+.quiz-card .actions button.primary {
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  padding: 0.85rem 1.5rem;
+}
+
+/* Results panel */
+.quiz-score-panel {
+  background: var(--heading);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: none;
+  margin-top: 1.5rem;
+  box-shadow: var(--shadow-raised);
+}
+.quiz-score-panel.show { display: block; }
+.score-number {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  color: var(--tan);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.score-label {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 1.1rem;
+}
+.score-message {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto 1.75rem;
+}
+.btn-retake {
+  background: var(--tan);
+  color: var(--white);
+  border: none;
+  padding: 0.85rem 2.2rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background var(--motion-quick) var(--ease),
+              transform var(--motion-quick) var(--ease);
+}
+.btn-retake:hover {
+  background: var(--leather);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 760px) {
+  .quiz-question { font-size: 1.1rem; padding: 1.25rem 1.25rem 0; }
+  .quiz-top { padding: 0.75rem 1.25rem; }
+  .quiz-options { padding: 0 1.25rem; }
+  .quiz-feedback { margin: 0.85rem 1.25rem 0; }
+  .quiz-card .actions { padding: 1rem 1.25rem 1.25rem; }
+}
+
+/* Show-your-knowledge format — all questions visible, submit at end.
+   Shares the score panel treatment above; unique layout/block styles live here. */
+.quiz-layout {
+  max-width: var(--shell-w);
+  margin: 0 auto;
+  padding: 2.5rem var(--page-pad) 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 5rem;
+  align-items: start;
+}
+.quiz-main { min-width: 0; }
+.quiz-header { margin-bottom: 2rem; }
+.quiz-header h2 {
+  font-family: var(--font-display); font-size: 1.6rem;
+  color: var(--heading); margin-bottom: 0.5rem;
+}
+.quiz-header p { color: var(--body-text); font-size: 0.9rem; line-height: 1.7; }
+
+/* Individual question block — same elevated card feel as .quiz-card */
+.q-block {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--room-accent);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-rest);
+  transition: border-color var(--motion-quick) var(--ease),
+              box-shadow var(--motion-quick) var(--ease);
+}
+.q-number {
+  font-size: var(--text-xs); font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--room-accent); margin-bottom: 0.6rem;
+}
+.q-text {
+  font-size: 0.97rem; font-weight: 600;
+  color: var(--heading); line-height: 1.5; margin-bottom: 1rem;
+}
+.q-options { display: grid; gap: 0.5rem; }
+
+/* Answer option — consistent with .quiz-option */
+.q-option {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid var(--border-mid);
+  border-radius: var(--radius);
+  cursor: pointer; font-size: 0.9rem; color: var(--heading);
+  background: var(--white); text-align: left; width: 100%;
+  font-family: var(--font-body); font-weight: 600; line-height: 1.5;
+  box-shadow: var(--shadow-nested);
+  transition: background var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease),
+              transform var(--motion-quick) var(--ease);
+}
+.q-option::before {
+  content: ''; width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid var(--border-mid); flex-shrink: 0;
+  transition: background var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease);
+}
+.q-option:hover:not(:disabled) {
+  background: var(--cream-secondary); border-color: var(--tan);
+  transform: translateY(-1px);
+}
+.q-option:hover:not(:disabled)::before { background: var(--tan); border-color: var(--tan); }
+.q-option.selected {
+  border-color: var(--heading); background: var(--heading); color: var(--white);
+}
+.q-option.selected::before { background: var(--white); border-color: var(--white); }
+.q-option.correct-ans { border-color: var(--success-bd); background: var(--success-bg); color: var(--success); }
+.q-option.correct-ans::before { background: var(--success); border-color: var(--success); }
+.q-option.wrong-ans { border-color: var(--error-bd); background: var(--error-bg); color: var(--error); }
+.q-option.wrong-ans::before { background: var(--error); border-color: var(--error); }
+.q-option:disabled { cursor: default; }
+
+.q-feedback {
+  display: none; margin-top: 0.85rem; font-size: 0.85rem;
+  line-height: 1.65; padding: 0.75rem 1rem; border-radius: var(--radius);
+}
+.q-feedback.show { display: block; }
+.q-feedback.correct { background: var(--success-bg); color: var(--success); border-left: 3px solid var(--success); }
+.q-feedback.incorrect { background: var(--error-bg); color: var(--error); border-left: 3px solid var(--error); }
+
+/* Submit row */
+.quiz-submit-row { margin-top: 1.5rem; }
+.btn-submit {
+  background: var(--heading); color: var(--white); border: none;
+  padding: 0.85rem 2rem; border-radius: var(--radius);
+  font-family: var(--font-body); font-weight: 700; font-size: 0.9rem;
+  cursor: pointer; transition: opacity var(--motion-quick) var(--ease);
+}
+.btn-submit:hover { opacity: 0.88; }
+
+@media (max-width: 1050px) {
+  .quiz-layout { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+
+/* -- 13. Diagram stage (interactive lesson visuals) ---------------------------- */
+.diagram-stage {
+  min-height: 360px;
+  background: var(--white);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  position: relative; overflow: hidden; padding: 1rem;
+}
+.visual-instructions {
+  color: var(--body-text); line-height: 1.65; margin-bottom: 1rem;
+}
+
+
+/* -- 14. Card imagery — lifted off the card, pops on hover ---------------------
+   Course cards (All Courses page) and activity tiles (Training Barn pages).
+   The artwork carries its own warm shadow so it reads as a layer above the
+   card; hovering the card scales the image toward the viewer and deepens
+   the tile's action button. */
+.lesson-card .lesson-card-thumb,
+.activity-card .activity-card-image {
+  box-shadow: 0 8px 22px rgba(94, 71, 52, 0.26), 0 2px 8px rgba(94, 71, 52, 0.15);
+  overflow: hidden;
+}
+.lesson-card-thumb img,
+.lesson-card-thumb svg,
+.activity-card-image img,
+.activity-card-image svg {
+  transition: transform var(--motion-soft) var(--ease);
+  will-change: transform;
+}
+.lesson-card:not(.coming-soon):hover .lesson-card-thumb img,
+.lesson-card:not(.coming-soon):hover .lesson-card-thumb svg,
+.activity-card:hover .activity-card-image img,
+.activity-card:hover .activity-card-image svg {
+  transform: scale(1.05);
+}
+
+/* Activity tile footer ("Play Now") — same tan button treatment as the
+   course-card
+
+/* -- 15. Lesson inline components ---------------------------------------------
+   Reusable prose-level components for lesson pages (catalog, study, etc.)
+   Use these instead of per-page <style> blocks.
+   --------------------------------------------------------------------------- */
+
+/* Callout bar — "Don't confuse" distinction notes and rule callouts */
+.callout-bar {
+  background: var(--soft-white);
+  border-left: 4px solid var(--tan);
+  padding: 1rem 1.25rem;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  margin: 1.25rem 0;
+}
+.callout-bar p {
+  color: var(--body-text);
+  font-size: .91rem;
+  line-height: 1.65;
+  margin: 0;
+}
+.callout-bar strong {
+  color: var(--heading);
+}
+
+/* Quick-check — inline details/summary reveal toggle */
+.quick-check {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 1rem 0;
+  background: var(--white);
+  overflow: hidden;
+}
+.quick-check summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--heading);
+  padding: .75rem 1rem;
+  font-size: .9rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.quick-check summary::before {
+  content: '\25B8';
+  font-size: .75rem;
+  color: var(--tan);
+  flex-shrink: 0;
+}
+.quick-check[open] summary::before {
+  content: '\25BE';
+}
+.quick-check p {
+  padding: .1rem 1rem .85rem;
+  color: var(--body-text);
+  font-size: .9rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Barn note — closing "in the barn" context panel */
+.barn-note {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--heading);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.2rem 1.4rem;
+  margin: 1.75rem 0;
+}
+.barn-note h3 {
+  font-family: var(--font-display);
+  color: var(--heading);
+  font-size: 1.05rem;
+  margin-bottom: .4rem;
+}
+.barn-note p {
+  color: var(--body-text);
+  font-size: .91rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── Study Guide components ──────────────────────────────────────────────── */
+
+/* How-to-use instruction strip at top of study guide */
+.study-rule {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--heading);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+}
+.study-rule p {
+  color: var(--body-text);
+  font-size: .93rem;
+  line-height: 1.65;
+  margin: 0;
+}
+.study-rule strong {
+  color: var(--heading);
+}
+
+/* Section divider within the visual-card on study guide pages */
+.study-section {
+  margin: 2rem 0 .75rem;
+}
+.study-section h2 {
+  font-family: var(--font-display);
+  color: var(--heading);
+  font-size: 1.2rem;
+  margin-bottom: .6rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: .35rem;
+}
+
+/* Reveal (prompt → answer) accordion used in study guides */
+.reveal {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: .6rem 0;
+  background: var(--white);
+  overflow: hidden;
+}
+.reveal summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--heading);
+  padding: .75rem 1rem;
+  font-size: .92rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.reveal summary::before {
+  content: '\25B8';
+  font-size: .75rem;
+  color: var(--tan);
+  flex-shrink: 0;
+}
+.reveal[open] summary::before {
+  content: '\25BE';
+}
+.reveal p {
+  padding: .1rem 1rem .85rem;
+  color: var(--body-text);
+  font-size: .91rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Ready panel — bottom CTA linking to test */
+.ready-panel {
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.5rem;
+  margin: 2rem 0;
+}
+.ready-panel h3 {
+  font-family: var(--font-display);
+  color: var(--heading);
+  font-size: 1.1rem;
+  margin-bottom: .5rem;
+}
+.ready-panel p {
+  color: var(--body-text);
+  font-size: .91rem;
+  line-height: 1.7;
+  margin: 0;
 }

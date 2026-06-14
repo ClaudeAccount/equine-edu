@@ -7,7 +7,7 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   :root {
-    --navy: #0D1B3E;
+    --navy: var(--heading);
     --gold: #D4AF37;
     --paper: #F5EFE2;
     --white: #fff;
@@ -24,9 +24,9 @@
     background: var(--paper);
   }
   .hero {
-    background: var(--navy);
+    background: var(--heading);
     color: var(--white);
-    border-bottom: 3px solid var(--gold);
+    border-bottom: 3px solid var(--tan);
   }
   .hero-inner {
     max-width: 1180px;
@@ -34,7 +34,7 @@
     padding: 4rem 1.5rem 3.4rem;
   }
   .eyebrow {
-    color: var(--gold);
+    color: var(--tan);
     font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.18em;
@@ -71,12 +71,12 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--white);
-    box-shadow: 0 12px 36px rgba(13,27,62,0.08);
+    box-shadow: 0 12px 36px rgba(36, 54, 74,0.08);
     text-decoration: none;
     color: var(--ink);
   }
   .builder-card span {
-    color: var(--gold);
+    color: var(--tan);
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.14em;
@@ -109,8 +109,8 @@
     justify-content: center;
     padding: 0.75rem 1rem;
     border-radius: 6px;
-    background: var(--gold);
-    color: var(--navy);
+    background: var(--tan);
+    color: var(--heading);
     font-weight: 800;
   }
   @media (max-width: 900px) {

@@ -3,19 +3,14 @@
    Page layout containers for course and lesson pages, plus responsive overrides.
    Loaded after core.css and components.css.
    ----------------------------------------------------------------------------
-   New course/lesson page archetypes should reuse the wrappers defined here.
+   Sections are translucent washes over the site atmosphere — content areas
+   flow into one another instead of stacking as hard bands.
    ============================================================================= */
 
 
 /* -----------------------------------------------------------------------------
-   1. Course landing page wrapper
+   1. Course landing page section
    ----------------------------------------------------------------------------- */
-.course-wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2.5rem var(--page-pad) 5rem;
-}
-
 .course-section {
   margin-bottom: 2.75rem;
 }
@@ -25,7 +20,7 @@
    2. Lesson page two-column wrapper (main + sidebar)
    ----------------------------------------------------------------------------- */
 .lesson-wrap {
-  max-width: 1400px;
+  max-width: var(--shell-w);
   margin: 0 auto;
   padding: 2.5rem var(--page-pad) 5rem;
   display: grid;
@@ -39,19 +34,6 @@
   flex-direction: column;
   gap: 2rem;
   min-width: 0;
-}
-
-.loft-game-page .lesson-wrap {
-  width: min(100%, 1500px);
-  max-width: none;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-  justify-content: stretch;
-}
-
-.loft-game-page .lesson-left {
-  width: 100%;
-  max-width: none;
 }
 
 .lesson-right {
@@ -74,38 +56,59 @@
 }
 .sidebar-nav-btn {
   display: block;
-  padding: 0.6rem 0.9rem;
-  background: var(--gold);
-  border: 1px solid var(--gold);
+  padding: 0.7rem 1.1rem;
+  background: var(--soft-white);
+  border: 1.5px solid var(--blue-secondary);
   border-radius: var(--radius);
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--blue-primary);
   text-decoration: none;
   line-height: 1.4;
-  transition: opacity var(--motion-quick) var(--ease);
-  box-shadow: 0 4px 18px rgba(120, 90, 40, 0.22), 0 1px 4px rgba(13, 27, 62, 0.11);
+  transition: background var(--motion-quick) var(--ease),
+              border-color var(--motion-quick) var(--ease),
+              color var(--motion-quick) var(--ease),
+              transform var(--motion-quick) var(--ease);
+  box-shadow: var(--shadow-rest);
 }
-.sidebar-nav-btn:hover { opacity: 0.88; }
+.sidebar-nav-btn:hover {
+  background: var(--blue-light);
+  border-color: var(--blue-primary);
+  color: var(--heading);
+  transform: translateY(-1px);
+}
 .sidebar-nav-btn.next {
-  background: var(--navy);
-  border-color: var(--navy);
-  color: var(--gold);
+  background: var(--tan);
+  border-color: var(--tan);
+  color: var(--white);
   text-align: right;
+}
+.sidebar-nav-btn.next:hover {
+  background: var(--leather);
+  border-color: var(--leather);
+  color: var(--white);
 }
 .sidebar-module-nav-return {
   gap: 0;
 }
 .sidebar-nav-btn-return,
 .sidebar-nav-btn-return.next {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--navy);
+  background: var(--tan);
+  border-color: var(--tan);
+  color: var(--white);
   text-align: left;
 }
+.sidebar-nav-btn-return:hover,
+.sidebar-nav-btn-return.next:hover {
+  background: var(--leather);
+  border-color: var(--leather);
+  color: var(--white);
+}
+
 
 /* -----------------------------------------------------------------------------
-   3. Prev / next lesson navigation
+   3. Prev / next lesson navigation (in-content, hidden by default;
+      course-nav.js drives the sidebar version)
    ----------------------------------------------------------------------------- */
 .lesson-nav {
   display: none;
@@ -120,25 +123,20 @@
 
 
 /* -----------------------------------------------------------------------------
-   4. Quiz page wrapper (single column)
-   ----------------------------------------------------------------------------- */
-.quiz-wrap {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2.5rem var(--page-pad) 5rem;
-}
-
-
-/* -----------------------------------------------------------------------------
-   5. Track / curriculum block (used on course landing pages)
+   4. Track / curriculum block (used on course landing pages)
    ----------------------------------------------------------------------------- */
 .track-section {
-  background: var(--navy);
+  /* Soft-edged band — fades in and out of the atmosphere, no hard lines */
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(231, 220, 203, 0.55) 14%,
+    rgba(231, 220, 203, 0.55) 86%,
+    transparent 100%);
   padding: 72px var(--page-pad);
 }
 
 .track-inner {
-  max-width: 1100px;
+  max-width: var(--content-w);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -147,15 +145,15 @@
 }
 
 .track-section .section-title {
-  color: var(--white);
+  color: var(--heading);
 }
 
 .track-section .section-sub {
-  color: var(--gold);
+  color: var(--leather-dark);
 }
 
 .track-section .section-desc {
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--body-text);
 }
 
 .track-list {
@@ -168,7 +166,7 @@
 .track-list li {
   display: flex;
   gap: 0.75rem;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--body-text);
   font-size: 0.92rem;
   line-height: 1.6;
 }
@@ -177,34 +175,35 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--room-accent);
   margin-top: 0.55rem;
   flex-shrink: 0;
 }
 
 .track-card {
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(201, 168, 76, 0.24);
-  border-radius: var(--radius-lg);
   padding: 1.6rem;
 }
 
 .track-card h3 {
   font-family: var(--font-display);
-  color: var(--gold);
+  color: var(--heading);
   font-size: 1.3rem;
   margin-bottom: 1rem;
 }
 
 
 /* -----------------------------------------------------------------------------
-   6. Closing CTA section
+   5. Closing CTA section — quiet editorial close, no hard band
    ----------------------------------------------------------------------------- */
 .cta-section {
   padding: 72px var(--page-pad);
-  background: var(--white);
+  /* Bright wash — alternates against the warm track band above it */
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.62) 18%,
+    rgba(255, 255, 255, 0.62) 82%,
+    transparent 100%);
   text-align: center;
-  border-top: 3px solid var(--gold);
 }
 
 .cta-inner {
@@ -224,23 +223,70 @@
 
 
 /* -----------------------------------------------------------------------------
+   6. Landing-page sections (course-landing index.html pages)
+   Translucent washes, not solid bands.
+   ----------------------------------------------------------------------------- */
+.learn-section {
+  padding: 80px var(--page-pad);
+  /* Warm cream — matches the track band so the bright middle stands out */
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(231, 220, 203, 0.55) 14%,
+    rgba(231, 220, 203, 0.55) 86%,
+    transparent 100%);
+}
+
+.learn-inner {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.curriculum-section {
+  padding: 80px var(--page-pad);
+  /* A touch lighter than the bands around it so the three sections
+     read as distinct layers (still soft-edged — no hard lines) */
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.62) 16%,
+    rgba(255, 255, 255, 0.62) 84%,
+    transparent 100%);
+}
+
+.curriculum-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.curriculum-inner .section-title,
+.curriculum-inner .section-label,
+.curriculum-inner .section-sub {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* -----------------------------------------------------------------------------
    7. Responsive breakpoints
-   Larger tablets / small laptops: collapse 2-col layouts.
-   Phones: collapse multi-col grids and stack the lesson nav.
+   Tablet landscape (≤1050): collapse 2-col layouts, sidebar flows below content.
+   Phones (≤760): collapse multi-col grids, stack navigation.
    ----------------------------------------------------------------------------- */
 @media (max-width: 1050px) {
   .course-hero-inner,
   .lesson-hero-inner,
   .lesson-wrap,
-  .diagram-shell,
   .track-inner {
     grid-template-columns: 1fr;
   }
+  .lesson-wrap {
+    gap: 2.5rem;
+  }
   .lesson-right {
     position: static;
-  }
-  .hero-visual {
-    min-height: 220px;
   }
 }
 
@@ -250,11 +296,9 @@
   .term-grid,
   .concept-grid,
   .key-term-grid,
-  .term-chip-grid,
-  .match-grid,
-  .game-board,
   .flip-grid,
-  .lab-grid {
+  .learn-inner,
+  .track-inner {
     grid-template-columns: 1fr;
   }
   .section-header {
@@ -278,65 +322,5 @@
   }
   .diagram-stage {
     min-height: 310px;
-  }
-  .reveal-panel {
-    min-height: auto;
-  }
-}
-
-
-/* -----------------------------------------------------------------------------
-   8. Landing-page sections (used on course-landing index.html pages)
-   ----------------------------------------------------------------------------- */
-
-/* "What you'll learn" outcomes block — 2-col on desktop */
-.learn-section {
-  padding: 80px var(--page-pad);
-  background: var(--off-white);
-}
-
-.learn-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: start;
-}
-
-/* Curriculum block — narrow centered column listing modules */
-.curriculum-section {
-  padding: 80px var(--page-pad);
-  background: var(--white);
-}
-
-.curriculum-inner {
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-.curriculum-inner .section-title,
-.curriculum-inner .section-label,
-.curriculum-inner .section-sub {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-/* -----------------------------------------------------------------------------
-   9. Landing-page responsive overrides
-   ----------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .learn-inner,
-  .track-inner,
-  .course-hero-inner {
-    grid-template-columns: 1fr;
-  }
-  .outcomes-grid {
-    grid-template-columns: 1fr;
-  }
-  .enroll-card {
-    display: none;
   }
 }

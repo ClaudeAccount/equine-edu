@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Face Markings &mdash; Equine Edu</title>
+<meta name="description" content="Course wrap-up for the Face Markings course. Check your understanding of common facial markings, naming patterns, and horse identification.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body>
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Face Markings</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">This quiz covers everything from the Face Markings course - marking names, definitions, identification from photos, and combination markings. Each attempt gives you 15 questions from a larger bank.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+<main class="lesson-left">
+<section class="quiz-card" id="quiz-card">
+  <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+  <div class="quiz-question" id="quiz-question"></div>
+  <div class="quiz-options" id="quiz-options"></div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+</section>
+<div class="quiz-score-panel" id="score-panel">
+  <div class="score-number" id="score-display">0/15</div>
+  <div class="score-label">Your Score</div>
+  <div class="score-message" id="score-message"></div>
+  <button class="btn-retake" id="btn-retake">Try Again</button>
+</div>
+</main>
+<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+(function(){
+const QUESTION_COUNT=15;
+const questionBank=[
+    { type: 'mc', prompt: 'What is the defining characteristic of a blaze compared to a strip?', options: ['It runs from the forehead to the chin only', 'It is wide enough to cover the nasal bones from side to side', 'It always includes a snip on the muzzle', 'It only appears on gray or white horses'], answer: 'It is wide enough to cover the nasal bones from side to side', correct: 'Correct. A blaze spans the full width of the nasal bones. A strip is narrower and does not reach the edges.', incorrect: 'Not quite. The key difference is width: a blaze covers the nasal bones edge to edge, while a strip does not reach the sides.' },
+    { type: 'mc', prompt: 'A horse has a white patch on its forehead and a small white area on its muzzle, with no white connecting them. How is this described?', options: ['Blaze', 'Strip and blaze', 'Star and snip', 'Extended blaze'], answer: 'Star and snip', correct: 'Correct. When the two white areas are separated by dark hair, they are named individually: star and snip.', incorrect: 'Not quite. A forehead marking is a star, and a muzzle marking is a snip. If they do not connect, name both separately.' },
+    { prompt: 'Where on the face is a snip located?', options: ['Between or around the nostrils on the muzzle', 'Between the eyes on the forehead', 'On the cheek below the eye', 'Running down the center of the nose'], answer: 'Between or around the nostrils on the muzzle', correct: 'Correct. A snip is a white patch found between or around the nostrils on the lower muzzle.', incorrect: 'Not quite. A snip sits on the muzzle, usually between or around the nostrils.' },
+    { prompt: 'Why are face markings recorded on registration papers and health certificates?', options: ['They indicate breeding potential', 'They are a permanent, visible feature used to identify individual horses', 'They are required by insurance companies only', 'They show which bloodline a horse belongs to'], answer: 'They are a permanent, visible feature used to identify individual horses', correct: 'Correct. Face markings are useful because they are visible, lasting, and individual to the horse.', incorrect: 'Face markings are recorded for identification. They help people describe and confirm an individual horse.' },
+    { prompt: 'A bald face is best described as:', options: ['A horse with no markings at all', 'A wide strip running to the muzzle', 'An extremely wide blaze that covers most of the face including around the eyes', 'A star combined with a strip'], answer: 'An extremely wide white marking that covers most of the face including around the eyes', correct: 'Correct. A bald face is the most extensive facial marking and often covers the eyes and cheeks.', incorrect: 'A bald face is not the absence of markings. It is a very wide white marking covering much of the face.' },
+    { prompt: 'A narrow white line down the center of the face is usually called a:', options: ['Strip', 'Bald face', 'Snip', 'Chin spot'], answer: 'Strip', correct: 'Correct. A strip is a narrow white marking running down the face.', incorrect: 'Look for the long, narrow shape down the nose. That is a strip.' },
+    { prompt: 'A white marking between the eyes on the forehead is usually called a:', options: ['Star', 'Snip', 'Bald face', 'Apron face'], answer: 'Star', correct: 'Correct. A star is located on the forehead between the eyes.', incorrect: 'The forehead area between the eyes is where a star is found.' },
+    { prompt: 'When a star, strip, and snip are all present, what should the description include?', options: ['Only the largest marking', 'Only the marking closest to the muzzle', 'All visible parts of the marking', 'Only the color of the horse'], answer: 'All visible parts of the marking', correct: 'Correct. Naming all visible parts gives the clearest description.', incorrect: 'Use all the visible marking terms so the description is complete.' },
+    { prompt: 'Which marking is most likely to involve pink skin around the eyes and muzzle?', options: ['Bald face', 'Tiny star', 'Faint snip', 'Narrow strip'], answer: 'Bald face', correct: 'Correct. A bald face has a large amount of white and often includes pink skin around broad areas of the face.', incorrect: 'The most extensive white marking is the bald face, so it is most likely to include pink skin around the eyes and muzzle.' },
+    { type: 'tf', prompt: 'True or false: A chin spot is found on or under the chin area.', options: ['True', 'False'], answer: 'True', correct: 'Correct. A chin spot is a small white mark on or under the chin area.', incorrect: 'Not quite. A chin spot sits on or under the chin area.' },
+    { prompt: 'If white hair connects a star to a strip, how should you think about the marking?', options: ['As two different face markings that are listed as connected.', 'As a leg marking', 'As no marking', 'As a coat color'], answer: 'As two different face markings that are listed as connected.', correct: 'Correct. Both are identified separately, but described as connected.', incorrect: 'If the white connects, describe the connected parts together, but both are still listed separately. Star with a connected Strip.' },
+    { prompt: 'What makes a strip different from a blaze?', options: ['A strip is more narrow', 'A strip is always on the muzzle only', 'A strip covers both eyes', 'A strip only appears on foals'], answer: 'A strip is more narrow', correct: 'Correct. A strip is the narrower marking; a blaze is wider.', incorrect: 'The difference is width. Strip is narrow, blaze is wider.' },
+    { prompt: 'Which description best fits a star and strip?', options: ['A forehead mark connected to a narrow line down the face', 'A muzzle patch only', 'A face with no white', 'A wide marking around both eyes'], answer: 'A forehead mark connected to a narrow line down the face', correct: 'Correct. Star and strip means a forehead star with a connected narrow line.', incorrect: 'Star and strip combines a forehead marking with a narrow line down the face.' },
+    { prompt: 'Which marking is most centered on the muzzle?', options: ['Snip', 'Star', 'Strip', 'Bald face'], answer: 'Snip', correct: 'Correct. A snip is a muzzle marking near the nostrils.', incorrect: 'The muzzle marking near the nostrils is the snip.' },
+    { prompt: 'Which phrase describes an irregular marking?', options: ['A marking with uneven or unusual edges', 'A marking only found on the legs', 'A marking that disappears in winter', 'A marking caused by tack'], answer: 'A marking with uneven or unusual edges', correct: 'Correct. Irregular markings have uneven shapes or edges that do not fit a tidy pattern.', incorrect: 'Irregular refers to the shape or edges of the marking.' },
+    { prompt: 'What should you look at first when identifying a face marking?', options: ['Where the white is located and how wide it is', 'The saddle color', 'The horse height', 'The mane length'], answer: 'Where the white is located and how wide it is', correct: 'Correct. Location and width are the biggest clues for face marking identification.', incorrect: 'Start with where the white sits and how wide it is.' },
+    { type: 'tf', prompt: 'True or false: If a horse has no visible white on the face, the clearest description is no face markings.', options: ['True', 'False'], answer: 'True', correct: 'Correct. No visible white on the face means there are no face markings to name.', incorrect: 'Not quite. If there is no visible white on the face, describe the horse as having no face markings.' },
+    { type: 'mc', prompt: 'Which marking covers more area?', options: ['Bald face', 'Tiny star', 'Small snip', 'Narrow strip'], answer: 'Bald face', correct: 'Correct. A bald face covers the largest area of these choices.', incorrect: 'The bald face is the broadest and most extensive option listed.' },
+    { type: 'tf', prompt: 'True or false: A blaze usually runs down the front of the horse\'s face.', options: ['True', 'False'], answer: 'True', correct: 'Correct. A blaze runs down the front of the face.', incorrect: 'Not quite. A blaze is a face marking that runs down the front of the face.' },
+    { prompt: 'Which term describes a white patch on the forehead, not connected to another marking?', options: ['Star', 'Snip', 'Bald face', 'Sock'], answer: 'Star', correct: 'Correct. A separate white patch on the forehead is a star.', incorrect: 'A forehead patch is called a star.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/star-2.png', options: ['Strip', 'Snip', 'Blaze', 'Star'], answer: 'Star', correct: 'Correct. The white patch is on the forehead between the eyes.', incorrect: 'Look at where the white sits. A forehead patch between the eyes is a star.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/blaze-2.png', options: ['Blaze', 'Strip', 'Star and strip', 'Bald face'], answer: 'Blaze', correct: 'Correct. The white is wide enough to cover the nasal bones.', incorrect: 'Notice the width down the face. That is a blaze.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/star-strip-1.png', options: ['Blaze', 'Star and snip', 'Star and strip', 'Strip only'], answer: 'Star and strip', correct: 'Correct. The forehead marking connects to a narrow strip.', incorrect: 'Look for the forehead star connected to a narrow line.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/snip-2.png', options: ['Snip', 'Star', 'Strip', 'Bald face'], answer: 'Snip', correct: 'Correct. The white sits on the muzzle near the nostrils.', incorrect: 'A white patch on the muzzle near the nostrils is a snip.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/bald-face-1.png', options: ['Bald face', 'Strip', 'Small star', 'Snip'], answer: 'Bald face', correct: 'Correct. The white covers a large portion of the face.', incorrect: 'The wide white area covering most of the face is a bald face.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/star-snip-1.png', options: ['Star and snip', 'Blaze', 'Strip only', 'No markings'], answer: 'Star and snip', correct: 'Correct. There is a forehead star and a separate muzzle snip.', incorrect: 'Look for two separate white areas: one on the forehead and one on the muzzle.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/star-strip-snip-1.png', options: ['Star, strip, and snip', 'Bald face', 'Snip only', 'No markings'], answer: 'Star, strip, and snip', correct: 'Correct. You can identify all three parts in the same face marking.', incorrect: 'Look for the forehead star, the narrow strip, and the muzzle snip.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/no-markings.png', options: ['No face markings', 'Snip', 'Star', 'Blaze'], answer: 'No face markings', correct: 'Correct. There is no visible white marking on the face.', incorrect: 'No visible white on the face means no face markings.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'markings/strip-2.png', options: ['Strip', 'Bald face', 'Snip', 'Star'], answer: 'Strip', correct: 'Correct. The white is a narrow line down the face.', incorrect: 'Look for the narrow white line running down the face.' },
+    { type: 'photo', prompt: 'Name the marking in the photo.', image: 'real-horses/blaze-snip.png', options: ['Blaze and snip', 'Star only', 'No markings', 'Chin spot'], answer: 'Blaze and snip', correct: 'Correct. The horse has a blaze with white continuing or appearing at the muzzle.', incorrect: 'Look for the wide face marking paired with white near the muzzle.' },
+    { prompt: 'What is the best way to describe two separate white areas on the face?', options: ['Name each visible marking', 'Call both areas a blaze', 'Ignore the smaller one', 'Use only the coat color'], answer: 'Name each visible marking', correct: 'Correct. Separate white areas should be named individually.', incorrect: 'Separate markings are named separately so the description is clear.' },
+    { prompt: 'Why can the same marking look slightly different from horse to horse?', options: ['Markings vary in shape, size, and edges', 'All markings are identical', 'The name changes every season', 'Markings only show in bright sun'], answer: 'Markings vary in shape, size, and edges', correct: 'Correct. The same marking type can vary quite a bit in shape and size.', incorrect: 'Markings are named by location and general shape, but individual horses vary.' },
+    { type: 'mc', prompt: 'Which term is not a face marking?', options: ['Sock', 'Star', 'Snip', 'Blaze'], answer: 'Sock', correct: 'Correct. A sock is a leg marking, not a face marking.', incorrect: 'Star, snip, and blaze are face markings. Sock belongs to leg markings.' },
+    { type: 'mc', prompt: 'What does combination marking mean in this course?', options: ['More than one marking term is used to describe what is seen', 'A horse has two coat colors', 'The horse has both front socks', 'The marking changes each month'], answer: 'More than one marking term is used to describe what is seen', correct: 'Correct. Combination markings use multiple terms, such as star and snip.', incorrect: 'Combination means more than one face marking term is needed.' },
+    { type: 'mc', prompt: 'Which clue helps separate a blaze from a bald face?', options: ['Whether the white expands around the eyes and cheeks', 'Whether the horse has a black mane', 'Whether the marking is on a hind leg', 'Whether the horse is tall'], answer: 'Whether the white expands around the eyes and cheeks', correct: 'Correct. A bald face is much wider and often reaches around the eyes and cheeks.', incorrect: 'Compare how far the white spreads. A bald face covers much more of the face than a blaze.' }
+  ];
+function esc(t){return String(t||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(i=>i.v)}
+const cardEl=document.getElementById('quiz-card'),countEl=document.getElementById('quiz-count'),scoreEl=document.getElementById('quiz-score'),qEl=document.getElementById('quiz-question'),optEl=document.getElementById('quiz-options'),fbEl=document.getElementById('quiz-feedback'),nextBtn=document.getElementById('quiz-next'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message'),retake=document.getElementById('btn-retake');
+let active=[],idx=0,score=0,answered=false;
+function start(){active=shuffle(questionBank).slice(0,Math.min(QUESTION_COUNT,questionBank.length)).map(q=>({...q,options:shuffle(q.options)}));idx=0;score=0;scorePanel.classList.remove('show');cardEl.style.display='';showQuestion()}
+function showQuestion(){answered=false;const q=active[idx];countEl.textContent='Question '+(idx+1)+' of '+active.length;scoreEl.textContent='Score: '+score;qEl.textContent=q.prompt;fbEl.className='quiz-feedback';fbEl.textContent='';nextBtn.disabled=true;nextBtn.textContent='Next Question';optEl.innerHTML=q.options.map(o=>`<button type="button" class="quiz-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');optEl.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(btn,q)))}
+function selectAnswer(btn,q){if(answered)return;answered=true;const correct=q.answer;optEl.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.val===correct)b.classList.add('correct-ans')});const ok=btn.dataset.val===correct;if(ok)score++;else btn.classList.add('wrong-ans');fbEl.textContent=ok?q.correct:q.incorrect;fbEl.classList.add('show',ok?'correct':'incorrect');scoreEl.textContent='Score: '+score;nextBtn.textContent=idx+1<active.length?'Next Question':'See Results';nextBtn.disabled=false}
+nextBtn.addEventListener('click',()=>{idx++;if(idx>=active.length){finish();return}showQuestion()});
+function finish(){cardEl.style.display='none';const pct=score/active.length;scoreDisplay.textContent=score+'/'+active.length;scoreMessage.textContent=pct>=.9?'Excellent work. You have a strong command of this material.':pct>=.75?'Good work. Review the questions you missed and try another round.':pct>=.6?'You are getting there. Revisit the lesson and Training Barn, then try again.':'Keep practicing. These terms will get easier with review.';scorePanel.classList.add('show');if(pct>=.8){try{localStorage.setItem('equineEduProgress.faceMarkings.testYourKnowledge','true')}catch(e){}}}
+retake.addEventListener('click',()=>{start();cardEl.scrollIntoView({behavior:'smooth',block:'start'})});
+start()
+})();
+</script><script>
+  window.CURRENT_MODULE=7;
+  window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Face Markings', url: '1-index.html' },
+    navExtras: [{ label: 'The Training Barn', url: '6-training-barn.html' }]
+  };
+</script>
+<script src="course-config.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>
