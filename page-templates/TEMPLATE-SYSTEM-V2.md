@@ -55,7 +55,7 @@
 | T16 | Study Guide | Present in all current courses; required at Loft + Horse Bowl feeders |
 | T07 | Test Your Knowledge *(+ Virtual Horse block at Phase 2 — T22)* | Always — always titled **"Test Your Knowledge"** |
 
-*File slots computed per Canon Resolution §3 (Canon §6 erratum, item 7; Amendment 2). T04 Core Catalog/Content is present one or more times (single catalog page for visual/ID courses; several content pages for multi-topic courses). T26 Study & Review serves the multi-topic archetype. T16 sits between T06 and T07; T07 is always last and always named `test-your-knowledge` (never `show-your-knowledge`); 5–10 pages total. **Two production archetypes** — catalog/visual-ID and multi-topic/content (Canon C3 Amendment 2).*
+*File slots computed per Canon Resolution §3 (Canon §6 erratum, item 7; Amendment 2). T04 Core Catalog/Content is present one or more times (single catalog page for visual/ID courses; several content pages for multi-topic courses). T26 Study & Review serves the multi-topic archetype. T16 sits between T06 and T07; T07 is always last and always named `test-your-knowledge` (never `show-your-knowledge`); every T07 attempt presents exactly 15 questions drawn from a verified 40-question bank for that course; 5–10 pages total. **Two production archetypes** — catalog/visual-ID and multi-topic/content (Canon C3 Amendment 2).*
 
 **Interactive activities** (Training Barn ladder)
 

@@ -13,7 +13,7 @@
 Pages are *presented* to learners in the order in Section 1, but they are *written* in backward-design order [Wiggins & McTighe]:
 
 1. Write the course learning outcomes first (Section 3).
-2. Write the final quiz and each course's Test Your Knowledge second — every question must map to an outcome.
+2. Write the final quiz and each course's Test Your Knowledge second — every course must have a verified 40-question bank, every question must map to an outcome, and each learner attempt presents exactly 15 questions.
 3. Write content pages last, including only what learners need to pass the assessments and meet the outcomes. Content that doesn't serve an outcome gets cut or moved to an optional "Further Exploration" block [Wiggins & McTighe; Mayer, coherence principle].
 
 This order is the single highest-leverage practice in the research base: it guarantees alignment between objectives, activities, and assessments — the core requirement of the Quality Matters rubric (Standards 2–5) [QM].
@@ -116,7 +116,7 @@ Content rules: every image needs alt text that describes the distinguishing feat
 ### 2.6 Test Your Knowledge page
 
 1. **Intro line** — number of questions, what's covered, that retakes are allowed. (Allowing retakes converts the quiz itself into a learning event [Roediger & Karpicke].)
-2. **Questions** — 8–15 per course. Every question maps to a stated outcome; no trivia that wasn't taught [QM alignment].
+2. **Questions** — exactly 15 delivered questions per learner attempt, drawn from a verified 40-question bank for that course. Every bank question maps to a stated outcome; no trivia that wasn't taught [QM alignment].
 3. **Feedback on completion** — per-question explanation plus a pointer back to the page section that covers it.
 4. **Wrap-up block** — 50–100 word course summary and a one-line bridge to the next course in the path [Gagné event 9].
 
@@ -155,6 +155,7 @@ This vertical movement up Bloom's taxonomy mirrors how USPC scaffolds D→A cert
 - **Within Core Content:** ungraded retrieval check every 2–3 concept chunks. Retrieval during reading beats re-exposure [Roediger & Karpicke; Dunlosky rate retrieval practice and spacing as the two highest-utility techniques of ten reviewed].
 - **Training Barn:** after all content pages, before the quiz. Practice with feedback precedes assessment [Gagné].
 - **Test Your Knowledge:** ends every course; low-stakes; retakes allowed.
+- **Quiz bank:** every course has a verified 40-question bank; each attempt presents exactly 15 questions from that bank.
 - **Spacing:** every quiz from the 2nd course in a subject path onward includes 20–30% prior-course items; the final course's quiz is cumulative. Spaced retrieval outperforms massed retrieval in classroom-scale studies [spaced retrieval meta-analysis; Dunlosky]. (T07 spec is canonical for this rule.)
 
 ### 4.2 Stakes

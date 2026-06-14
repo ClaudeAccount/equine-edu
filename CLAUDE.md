@@ -72,6 +72,16 @@ File numbering must match the `num` field in `course-config.js`. Files not refer
 
 ---
 
+## Quiz / Test Your Knowledge Rules
+
+- Every course quiz must present exactly **15 questions** per attempt
+- Those 15 questions must be selected from a verified **40-question bank for that course**
+- Every bank question must map to a stated course outcome and taught course content
+- Do not pad the bank with trivia, rare edge cases, unsupported facts, or out-of-scope material
+- Course 2+ quizzes must still preserve the required prior-course review mix; final courses in a subject path must preserve the cumulative review mix
+
+---
+
 ## course-config.js Rules
 
 - `window.COURSE_CONFIG.modules[]` is the only thing that drives the sidebar — edit only this file to add or reorder modules
