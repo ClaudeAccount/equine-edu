@@ -13691,3 +13691,41 @@ font-size:.72rem;padding:.3rem .7rem
 }
 
 }
+
+/* Unified landing-page hero art layout.
+   Keeps course-title copy and the course image together instead of stretching
+   them to the far edges on wide screens. */
+body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) {
+  max-width: 1120px;
+  grid-template-columns: minmax(0, 680px) minmax(220px, 320px);
+  justify-content: center;
+  gap: clamp(1.75rem, 3vw, 2.75rem);
+  padding-left: clamp(1.5rem, 3.5vw, 3rem);
+  padding-right: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) .course-hero-text {
+  max-width: 680px;
+}
+
+body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) .course-hero-desc {
+  max-width: 620px;
+}
+
+body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) .course-hero-art {
+  justify-self: center;
+}
+
+body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) .course-hero-art img {
+  max-width: 320px;
+}
+
+@media (max-width: 900px) {
+  body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) {
+    grid-template-columns: 1fr;
+  }
+
+  body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) .course-hero-art {
+    display: none;
+  }
+}
