@@ -88,6 +88,13 @@
 .lesson-hero-inner { grid-template-columns: minmax(0,1fr) 320px; }
 .course-hero-text { position: relative; z-index: 1; }
 
+.course-hero-inner:has(.course-hero-art) {
+  max-width: 1120px;
+  grid-template-columns: minmax(0, 720px) minmax(240px, 340px);
+  justify-content: center;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
 /* Eyebrow voice — course/lesson tags share the editorial eyebrow treatment */
 .course-tag, .lesson-module-tag {
   display: inline-block; background: none; border: none;
