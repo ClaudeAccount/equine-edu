@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equine Edu — Equestrian Science. Made Fun.</title>
+<meta name="description" content="Explore engaging, science-backed equine education that puts you in control of your learning journey — whether you're just starting or advancing your skills.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/course.css">
+<style>
+  /* ── Page-specific composition only — all colors/type/motion from tokens ── */
+
+  /* Cover — editorial masthead over the atmosphere */
+  .cover {
+    min-height: 86vh;
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-height) + 40px) var(--page-pad) 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--space-8);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-display);
+    color: var(--heading);
+    line-height: 1.06;
+    margin-bottom: var(--space-5);
+    letter-spacing: -0.5px;
+  }
+  .cover h1 em {
+    font-style: normal;
+    color: var(--blue-primary);
+  }
+  .cover .standfirst {
+    margin-bottom: var(--space-6);
+    max-width: 480px;
+  }
+  .cover-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .cover-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cover-art svg {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    opacity: 0.9;
+  }
+
+  /* Hallmarks — quiet editorial line, replaces the old stats bar */
+  .hallmarks {
+    padding: 0 var(--page-pad) 72px;
+  }
+  .hallmarks-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    border-top: 1px solid var(--border-mid);
+    padding-top: var(--space-6);
+  }
+  .hallmark h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--heading);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .hallmark p {
+    font-size: var(--text-sm);
+    color: var(--body-text);
+    line-height: 1.55;
+  }
+
+  /* Shared section rhythm */
+  .home-section {
+    padding: 88px var(--page-pad);
+  }
+  .section-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+  }
+
+  /* Library — editorial split */
+  .library-section {
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(252, 250, 247, 0.55) 14%,
+      rgba(252, 250, 247, 0.55) 86%,
+      transparent 100%);
+  }
+  .library-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+  .library-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .library-art svg {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+  }
+  .library-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: var(--space-5);
+  }
+
+  /* How it works — a trail, not a grid of boxes */
+  .steps-trail {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    position: relative;
+    margin-top: var(--space-7);
+  }
+  .steps-trail::before {
+    content: '';
+    position: absolute;
+    top: 27px;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--border-mid) 0 7px, transparent 7px 13px);
+  }
+  .step {
+    text-align: center;
+    position: relative;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--soft-white);
+    border: 2px solid var(--tan);
+    color: var(--leather-dark);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--shadow-rest);
+  }
+  .step h4 {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 0.5rem;
+  }
+  .step p {
+    font-size: 0.86rem;
+    color: var(--body-text);
+    line-height: 1.6;
+  }
+
+  /* Beyond the saddle */
+  .beyond-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: center;
+    max-width: var(--content-w);
+    margin: 0 auto;
+  }
+  .beyond-card {
+    background: var(--soft-white);
+    border-left: 4px solid var(--tan);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 1.5rem 1.75rem;
+    box-shadow: var(--shadow-raised);
+    max-width: 520px;
+  }
+  .beyond-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--heading);
+    margin-bottom: 0.75rem;
+  }
+  .beyond-card p {
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: var(--body-text);
+    margin-bottom: 1.25rem;
+  }
+  .beyond-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .beyond-art svg {
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+  }
+
+  /* About */
+  .about-section {
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(231, 220, 203, 0.5) 14%,
+      rgba(231, 220, 203, 0.5) 86%,
+      transparent 100%);
+  }
+  .about-inner {
+    max-width: var(--content-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .about-body {
+    font-size: var(--text-md);
+    color: var(--body-text);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: var(--measure);
+  }
+  .about-visual {
+    background: rgba(252, 250, 247, 0.78);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-rest);
+  }
+  .about-visual h3 {
+    font-family: var(--font-display);
+    color: var(--leather-dark);
+    font-size: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+  .aligned-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .aligned-list li {
+    display: grid;
+    grid-template-columns: 8px 1fr;
+    column-gap: 0.85rem;
+    align-items: start;
+    font-size: 0.9rem;
+    color: var(--body-text);
+    line-height: 1.65;
+  }
+  .aligned-list li strong {
+    display: block;
+    color: var(--heading);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .aligned-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tan);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: grid;
+    gap: 0.85rem;
+    max-width: 860px;
+  }
+  .faq-item {
+    background: var(--soft-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-rest);
+    overflow: hidden;
+  }
+  .faq-question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 1.25rem 1.5rem;
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--heading);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .faq-arrow {
+    color: var(--tan);
+    transition: transform var(--motion-quick) var(--ease);
+    flex-shrink: 0;
+  }
+  .faq-item.active .faq-arrow {
+    transform: rotate(180deg);
+  }
+  .faq-answer {
+    display: none;
+    padding: 0 1.5rem 1.25rem;
+  }
+  .faq-item.active .faq-answer {
+    display: block;
+  }
+  .faq-answer p {
+    font-size: 0.95rem;
+    color: var(--body-text);
+    line-height: 1.75;
+    max-width: var(--measure);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .cover {
+      min-height: auto;
+      padding-bottom: 48px;
+    }
+    .cover-inner,
+    .library-layout,
+    .beyond-layout,
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .cover-art {
+      order: -1;
+    }
+    .cover-art svg {
+      max-width: 280px;
+    }
+    .hallmarks-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .steps-trail {
+      grid-template-columns: 1fr 1fr;
+    }
+    .steps-trail::before {
+      display: none;
+    }
+    .library-actions {
+      flex-direction: column;
+    }
+    .library-actions .btn-primary,
+    .library-actions .btn-secondary {
+      width: 100%;
+    }
+  }
+  @media (max-width: 560px) {
+    .home-section {
+      padding: 64px var(--page-pad);
+    }
+    .cover-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hallmarks-inner,
+    .steps-trail {
+      grid-template-columns: 1fr;
+    }
+    .faq-question {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="site-nav"></div>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-inner">
+    <div class="cover-text">
+      <span class="eyebrow">Interactive, Self-Paced Learning</span>
+      <h1>Equine Science.<br><em>Modernized</em> &amp; Fun.</h1>
+      <p class="standfirst">Explore engaging, science-backed equine education that puts you in control of your learning journey&mdash;whether you're just starting or advancing your skills.</p>
+      <div class="cover-actions">
+        <a href="courses/index.html" class="btn-primary">Explore Our Courses</a>
+        <a href="#how" class="btn-secondary">Join Equine Edu</a>
+      </div>
+    </div>
+    <div class="cover-art" aria-hidden="true">
+      <!-- Horse head — continuous line art -->
+      <svg viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M118 372 C 110 318, 120 268, 148 230 C 170 200, 196 180, 214 150 C 226 130, 230 106, 244 88 C 252 78, 264 72, 272 64 C 278 58, 280 48, 288 44 C 294 41, 300 46, 304 52 C 310 44, 318 38, 326 42 C 332 45, 333 54, 338 60 C 352 76, 362 96, 366 118 C 370 140, 366 162, 354 180 C 342 198, 322 208, 304 220 C 282 235, 268 258, 262 284 C 256 310, 258 342, 252 372"
+              stroke="var(--heading)" stroke-width="3.5" stroke-linecap="round" opacity="0.75"/>
+        <path d="M304 52 C 300 64, 296 74, 296 86 M326 42 C 324 54, 322 64, 324 74"
+              stroke="var(--heading)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+        <path d="M338 96 C 342 100, 344 106, 343 112" stroke="var(--heading)" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+        <path d="M288 44 C 270 30, 248 26, 230 34 C 212 42, 200 60, 196 80 C 192 100, 196 122, 188 140"
+              stroke="var(--tan)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+        <path d="M196 80 C 184 92, 176 110, 174 128 M230 34 C 222 48, 216 62, 214 78"
+              stroke="var(--tan)" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+        <ellipse cx="330" cy="140" rx="5" ry="7" fill="var(--heading)" opacity="0.75"/>
+        <path d="M60 372 L 380 372" stroke="var(--blue-secondary)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <path d="M88 384 L 200 384 M260 384 L 352 384" stroke="var(--blue-secondary)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- HALLMARKS -->
+<div class="hallmarks">
+  <div class="hallmarks-inner">
+    <div class="hallmark">
+      <h3>Learn Anytime, Anywhere</h3>
+      <p>Access courses on your schedule, from any device.</p>
+    </div>
+    <div class="hallmark">
+      <h3>Self-Paced Learning</h3>
+      <p>Progress at your own speed.</p>
+    </div>
+    <div class="hallmark">
+      <h3>For All Horse Lovers</h3>
+      <p>With or without a horse.</p>
+    </div>
+    <div class="hallmark">
+      <h3>Always Expanding</h3>
+      <p>New courses, games, and resources every month.</p>
+    </div>
+  </div>
+</div>
+
+<div class="flow-divider" aria-hidden="true"></div>
+
+<!-- LIBRARY -->
+<section class="home-section library-section" id="courses">
+  <div class="section-inner library-layout">
+    <div class="library-art" aria-hidden="true">
+      <!-- Open book with horse silhouette — line art -->
+      <svg viewBox="0 0 380 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 80 C 90 60, 140 60, 190 80 C 240 60, 290 60, 340 80 L 340 240 C 290 220, 240 220, 190 240 C 140 220, 90 220, 40 240 Z"
+              stroke="var(--heading)" stroke-width="3" stroke-linejoin="round" opacity="0.7"/>
+        <path d="M190 80 L 190 240" stroke="var(--heading)" stroke-width="2.5" opacity="0.45"/>
+        <path d="M70 110 C 100 98, 130 98, 160 108 M70 140 C 100 128, 130 128, 160 138 M70 170 C 96 160, 118 160, 140 166"
+              stroke="var(--blue-primary)" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+        <path d="M225 175 C 230 160, 240 152, 252 150 C 258 142, 262 132, 272 128 C 278 126, 284 128, 287 132 C 292 128, 298 128, 301 132 C 306 140, 304 150, 298 156 C 304 166, 304 178, 298 186 L 288 186 L 285 176 C 278 180, 268 180, 261 176 L 258 186 L 248 186 C 244 182, 240 178, 238 172 Z"
+              fill="var(--tan)" opacity="0.65"/>
+        <path d="M218 205 L 312 205" stroke="var(--tan)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="library-content">
+      <p class="section-label">Our Curriculum</p>
+      <h2 class="section-title">A Growing Library<br>of Horse Knowledge.</h2>
+      <p class="section-sub">Our library of equine education is continuously expanding. Each course, game, and resource is designed to stand alone or build upon others&mdash;giving learners the flexibility to choose their starting point and grow at their own pace.</p>
+
+      <div class="library-actions">
+        <a href="courses/index.html" class="btn-primary">Explore Our Library</a>
+        <a href="courses/index.html" class="btn-secondary">Sample Courses</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="home-section" id="how">
+  <div class="section-inner">
+    <p class="section-label">Simple Process</p>
+    <h2 class="section-title">How Equine Edu Works</h2>
+    <p class="section-sub">No complicated setup. No confusing dashboards. Just horses and learning.</p>
+
+    <div class="steps-trail">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Pick a Topic</h4>
+        <p>Select from a wide range of equine subjects &mdash; pick what interests you most.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Choose Your Course</h4>
+        <p>Each course is designed to meet you where you are and guide you to the next level.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Learn at Your Own Pace</h4>
+        <p>Watch lessons designed for real-world application.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Reinforce &amp; Test Your Knowledge</h4>
+        <p>Games, quizzes, and exercises designed to grow your skills and understanding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flow-divider" aria-hidden="true"></div>
+
+<!-- LEARNING BEYOND THE SADDLE -->
+<section class="home-section">
+  <div class="beyond-layout">
+    <div class="beyond-left">
+      <p class="section-label">Learning Beyond the Saddle</p>
+      <h2 class="section-title">Equine Education, Beyond the Saddle</h2>
+      <p class="section-sub">
+        At Equine Edu, we believe learning about horses goes far beyond being
+        in the saddle. Whether you ride every week, belong to a youth group
+        or riding club, or simply want to understand horses better, our
+        courses help build real horse knowledge at your own pace.
+      </p>
+      <div class="beyond-card">
+        <h3>No Horse? No Problem.</h3>
+        <p>Equine Edu is for curious learners at any stage. Build confidence with horse terms, markings, care basics, and more &mdash; no horse or barn access needed.</p>
+        <a href="courses/index.html" class="btn-primary">Start Exploring</a>
+      </div>
+    </div>
+
+    <div class="beyond-art" aria-hidden="true">
+      <!-- Grazing horse in pasture — line art -->
+      <svg viewBox="0 0 460 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M120 220 C 130 196, 150 184, 176 182 L 280 182 C 304 182, 322 192, 330 210 C 336 224, 334 240, 326 252 M150 252 C 142 244, 136 232, 136 220"
+              stroke="var(--heading)" stroke-width="3.5" stroke-linecap="round" opacity="0.75"/>
+        <path d="M176 182 C 166 170, 160 154, 162 138 C 150 134, 140 124, 136 112 C 133 102, 136 92, 144 86 C 140 78, 142 70, 148 66 C 158 60, 168 66, 174 74 C 186 70, 198 74, 204 84 C 212 98, 208 116, 198 128 C 192 136, 186 142, 184 152 C 182 162, 184 172, 188 182"
+              stroke="var(--heading)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+        <path d="M148 66 C 146 58, 148 50, 154 46 M174 74 C 174 64, 176 56, 182 50"
+              stroke="var(--heading)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <path d="M330 210 C 344 204, 354 192, 356 178 C 358 166, 354 156, 346 150"
+              stroke="var(--tan)" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
+        <path d="M160 252 L 160 296 M192 252 L 192 296 M280 252 L 280 296 M312 252 L 312 296"
+              stroke="var(--heading)" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
+        <path d="M40 298 L 420 298" stroke="var(--blue-secondary)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <path d="M60 286 C 64 280, 68 280, 72 286 M88 290 C 92 284, 96 284, 100 290 M376 288 C 380 282, 384 282, 388 288 M398 292 C 402 286, 406 286, 410 292"
+              stroke="var(--success)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="home-section about-section" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <p class="section-label">About Equine Edu</p>
+      <h2 class="section-title">Real Equine Education, Brought to You by Experts.</h2>
+
+      <p class="about-body">
+        Equine Edu was created by real professionals who work, or have worked, in the equine world. These passionate individuals helped design a program that
+        brings you closer to understanding horses&mdash;focusing on everything from horse anatomy and behavior
+        to breed identification and more.
+      </p>
+
+      <p class="about-body">
+        This platform is not about how to ride or train horses. Instead, Equine Edu is all about learning
+        general knowledge about horses. Any references to riding focus on the history or theory behind it,
+        helping you gain a deeper understanding of the ideas behind them.
+      </p>
+
+      <a href="courses/index.html" class="btn-primary">See Our Courses</a>
+    </div>
+
+    <div class="about-visual">
+      <h3>Curriculum Built by Horse Experts</h3>
+      <ul class="aligned-list">
+        <li>
+          <span class="aligned-dot"></span>
+          <span>
+            <strong>Crafted by Equine Experts:</strong>
+            Lessons created by professionals with real-world experience.
+          </span>
+        </li>
+        <li>
+          <span class="aligned-dot"></span>
+          <span>
+            <strong>Focused on Horse Knowledge:</strong>
+            Dive deep into horse care, behavior, anatomy, and identification&mdash;everything you need to truly understand horses.
+          </span>
+        </li>
+        <li>
+          <span class="aligned-dot"></span>
+          <span>
+            <strong>Facts-Based:</strong>
+            Each lesson is based on reliable, fact-driven information, ensuring you learn the most accurate and trusted knowledge about horses.
+          </span>
+        </li>
+        <li>
+          <span class="aligned-dot"></span>
+          <span>
+            <strong>Easy to Follow:</strong>
+            The content is made to be accessible for learners of all ages, with clear explanations and engaging activities that make learning about horses fun.
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="home-section" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Questions About Equine Edu</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Do I need to own a horse to use Equine Edu?
+          <span class="faq-arrow">&#8964;</span>
+        </button>
+        <div class="faq-answer">
+          <p>No, you don&rsquo;t need to own a horse to use Equine Edu. Our courses are designed for anyone passionate about horses, whether you own one or not. You&rsquo;ll gain valuable knowledge about horse care, behavior, health, and more&mdash;even without direct access to a horse.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Are the lessons beginner-friendly?
+          <span class="faq-arrow">&#8964;</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely! Our lessons are designed to be accessible for learners at all levels. Whether you're just starting out or have some experience, we are building courses for everyone!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Can this be used alongside riding lessons?
+          <span class="faq-arrow">&#8964;</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes, Equine Edu complements riding lessons perfectly! While we don&rsquo;t focus on teaching riding skills, our courses cover essential knowledge like horse behavior, anatomy, and care, which can enhance your understanding and skills both in and out of the saddle.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          What will be added next?
+          <span class="faq-arrow">&#8964;</span>
+        </button>
+        <div class="faq-answer">
+          <p>We&rsquo;re continuously updating Equine Edu with new content! Every month, we add new courses, interactive resources, quizzes, and games to further expand our library of equine knowledge. Keep an eye on our updates to stay ahead in your learning journey!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          What is the Knowledge Lab?
+          <span class="faq-arrow">&#8964;</span>
+        </button>
+        <div class="faq-answer">
+          <p>The Knowledge Lab is your interactive learning space. It includes games, quizzes, worksheets, downloadable resources, and extra learning materials to help you reinforce what you&rsquo;ve learned.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach((button) => {
+    button.addEventListener('click', () => {
+      const currentItem = button.closest('.faq-item');
+      document.querySelectorAll('.faq-item').forEach((item) => {
+        if (item !== currentItem) {
+          item.classList.remove('active');
+        }
+      });
+      currentItem.classList.toggle('active');
+    });
+  });
+</script>
+
+<script src="assets/js/layout.js"></script>
+</body>
+</html>

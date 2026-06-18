@@ -156,6 +156,10 @@
 
     const drawerAuth = `<li><a href="${root}auth/login.html" id="nav-drawer-auth-btn">Log In</a></li>`;
 
+    // Dashboard (learning hub) link — hidden by default, revealed for signed-in users (see updateAuthNav)
+    const dashLink   = `<li id="nav-dash-li" style="display:none"><a href="${root}dashboard/index.html" class="nav-dash-link">Dashboard</a></li>`;
+    const drawerDash = `<li id="nav-drawer-dash-li" style="display:none"><a href="${root}dashboard/index.html">Dashboard</a></li>`;
+
     const roomLabel = roomName ? `<span class="nav-room">${roomName}</span>` : '';
 
     return `
@@ -166,6 +170,7 @@
   </span>
   <ul class="nav-links">
     ${extraLinks}
+    ${dashLink}
     ${pricingLink}
     ${authLink}
   </ul>
@@ -178,6 +183,7 @@
       <li><a href="${coursesUrl}">All Courses</a></li>
       <li><a href="${root}pricing.html">Pricing</a></li>
       ${drawerExtras}
+      ${drawerDash}
       ${drawerAuth}
     </ul>
   </div>
@@ -393,6 +399,11 @@
         drawer.textContent = 'My Account';
         drawer.href = accountUrl;
       }
+      // Reveal the Dashboard (hub) link now that we know the user is signed in
+      var dashLi = document.getElementById('nav-dash-li');
+      var dashDrawerLi = document.getElementById('nav-drawer-dash-li');
+      if (dashLi) dashLi.style.display = '';
+      if (dashDrawerLi) dashDrawerLi.style.display = '';
     });
   }
 
