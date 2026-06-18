@@ -192,7 +192,7 @@
   // If already logged in, redirect to account
   EEAuth.init(function (session) {
     if (session) {
-      window.location.replace('../account/index.html');
+      window.location.replace('../dashboard/index.html');
     }
   });
 
@@ -234,7 +234,7 @@
 
     // Redirect — go to account or the page they came from
     var next = new URLSearchParams(window.location.search).get('next');
-    window.location.replace(next || '../account/index.html');
+    window.location.replace(next || '../dashboard/index.html');
   });
 })();
 </script>
