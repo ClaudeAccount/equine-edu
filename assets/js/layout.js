@@ -157,8 +157,8 @@
     const drawerAuth = `<li><a href="${root}auth/login.html" id="nav-drawer-auth-btn">Log In</a></li>`;
 
     // Dashboard (learning hub) link — hidden by default, revealed for signed-in users (see updateAuthNav)
-    const dashLink   = `<li id="nav-dash-li" style="display:none"><a href="${root}dashboard/index.html" class="nav-dash-link">Dashboard</a></li>`;
-    const drawerDash = `<li id="nav-drawer-dash-li" style="display:none"><a href="${root}dashboard/index.html">Dashboard</a></li>`;
+    const dashLink   = `<li id="nav-dash-li" style="display:none"><a href="${root}hub/index.html" class="nav-dash-link">Dashboard</a></li>`;
+    const drawerDash = `<li id="nav-drawer-dash-li" style="display:none"><a href="${root}hub/index.html">Dashboard</a></li>`;
 
     const roomLabel = roomName ? `<span class="nav-room">${roomName}</span>` : '';
 

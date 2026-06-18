@@ -99,7 +99,7 @@
       <div class="icon-success">✅</div>
       <p class="status-heading">You're confirmed!</p>
       <p class="status-msg">Your account is active. You're being redirected to your account.</p>
-      <a href="../dashboard/index.html" class="auth-btn">Go to your dashboard</a>
+      <a href="../hub/index.html" class="auth-btn">Go to your dashboard</a>
     </div>
 
     <!-- Password reset state -->
@@ -157,7 +157,7 @@ async function submitNewPassword() {
     err.textContent = result.error.message || 'Update failed. Please try again.';
     err.style.display = 'block';
   } else {
-    window.location.replace('../dashboard/index.html');
+    window.location.replace('../hub/index.html');
   }
 }
 
@@ -177,7 +177,7 @@ EEAuth.init(function (session) {
     // Email confirmation succeeded
     show('state-success');
     setTimeout(function () {
-      window.location.replace('../dashboard/index.html');
+      window.location.replace('../hub/index.html');
     }, 2000);
     return;
   }
