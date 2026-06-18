@@ -413,17 +413,12 @@
 </footer>
 
 <!-- ============ SUPABASE ============ -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="../assets/js/supabase-client.js"></script>
 <script>
-/* ---- Equine Edu project (matches assets/js/supabase-client.js) ---- */
-const SUPABASE_URL = 'https://yrnvowujqsniletkhqba.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_mFGTWaxPvtaEZlVErTPlSQ_uCt5BBMP';
-
-const supabase = (window.supabase && window.supabase.createClient)
-  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-      auth: { autoRefreshToken:true, persistSession:true, detectSessionInUrl:true }
-    })
-  : null;
+/* Use the site-wide EEAuth client (assets/js/supabase-client.js) so this page
+   shares the SAME session storage as /auth/login.html and every other page.
+   `supabase` is assigned from EEAuth.client() inside init(), after the SDK loads. */
+let supabase = null;
 
 /* ---------- icons ---------- */
 const I = {
@@ -465,14 +460,14 @@ function fmtDate(ts){
 /* ---------- auth ---------- */
 async function init(){
   let user = null;
-  if(supabase){
+  if(window.EEAuth){
     try {
-      // getSession() reads the persisted session from storage (set by /auth/login.html)
-      const { data } = await supabase.auth.getSession();
-      user = data.session ? data.session.user : null;
+      const session = await EEAuth.getSession();   // reads the session login.html stored
+      supabase = EEAuth.client();                   // same client the whole site uses
+      user = session ? session.user : null;
     } catch(e){ console.error('[dashboard] auth check failed', e); }
   } else {
-    console.error('[dashboard] Supabase SDK failed to load');
+    console.error('[dashboard] EEAuth (supabase-client.js) failed to load');
   }
   if(!user){
     $('dash').hidden = true;
@@ -701,13 +696,13 @@ async function loadHorseBowl(uid){
 const signOutEl = $('signOutBtn');
 if(signOutEl){
   signOutEl.addEventListener('click', async () => {
-    try { if(supabase){ await supabase.auth.signOut(); } } catch(e){ /* ignore */ }
+    try { if(window.EEAuth){ await EEAuth.signOut(); } } catch(e){ /* ignore */ }
     window.location.href = '../auth/login.html';
   });
 }
 
 /* react to auth changes (e.g. session restored) — re-render without reload */
-if(supabase){ supabase.auth.onAuthStateChange(() => init()); }
+if(window.EEAuth){ EEAuth.onAuthChange(() => init()); }
 
 init();
 </script>
