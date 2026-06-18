@@ -283,6 +283,7 @@
     <a class="btn full" href="../auth/login.html">Sign In</a>
     <a class="btn blue full" href="../auth/signup.html" style="margin-top:10px">Create an account</a>
     <p class="auth-foot"><a href="../auth/forgot-password.html">Forgot your password?</a></p>
+    <p id="authDebug" style="font-size:11px;color:var(--muted);margin-top:12px;word-break:break-word;opacity:.8"></p>
   </div>
 </main>
 
@@ -460,15 +461,22 @@ function fmtDate(ts){
 /* ---------- auth ---------- */
 async function init(){
   let user = null;
+  let dbg = 'host=' + location.hostname + ' · ';
   if(window.EEAuth){
     try {
       const session = await EEAuth.getSession();   // reads the session login.html stored
       supabase = EEAuth.client();                   // same client the whole site uses
       user = session ? session.user : null;
-    } catch(e){ console.error('[dashboard] auth check failed', e); }
+      dbg += 'EEAuth=yes · session=' + (session ? 'YES' : 'none');
+    } catch(e){
+      dbg += 'EEAuth=yes · error=' + (e && e.message ? e.message : e);
+      console.error('[dashboard] auth check failed', e);
+    }
   } else {
+    dbg += 'EEAuth=NOT LOADED';
     console.error('[dashboard] EEAuth (supabase-client.js) failed to load');
   }
+  var dbgEl = $('authDebug'); if(dbgEl) dbgEl.textContent = dbg;
   if(!user){
     $('dash').hidden = true;
     $('gate').hidden = false;
