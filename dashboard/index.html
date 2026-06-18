@@ -467,8 +467,9 @@ async function init(){
   let user = null;
   if(supabase){
     try {
-      const { data } = await supabase.auth.getUser();
-      user = data.user;
+      // getSession() reads the persisted session from storage (set by /auth/login.html)
+      const { data } = await supabase.auth.getSession();
+      user = data.session ? data.session.user : null;
     } catch(e){ console.error('[dashboard] auth check failed', e); }
   } else {
     console.error('[dashboard] Supabase SDK failed to load');
