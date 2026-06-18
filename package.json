@@ -4,5 +4,10 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.0.0",
     "stripe": "^14.0.0"
+  },
+  "scripts": {
+    "build:bank": "node tools/build-question-bank.js .",
+    "sync:db": "node tools/sync-supabase.js",
+    "build": "node tools/build-question-bank.js . && node tools/sync-supabase.js"
   }
 }

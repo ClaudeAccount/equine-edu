@@ -9,7 +9,7 @@ window.COURSE_CONFIG = {
     { num: 2, title: 'Harness & Bridle Parts', type: 'Lesson', file: '3-saddle-bridle-parts.html', desc: 'Study the main parts of a driving harness and driving bridle in clear tabs.' },
     { num: 3, title: 'The Viewing Room', type: 'Practice', file: '4-viewing-room.html', desc: 'Review common types of driving and where they appear in real horse settings.' },
     { num: 4, title: 'The Training Barn', type: 'Learning Lab', file: '5-training-barn.html', desc: 'Practice labeling driving harness and bridle parts.' },
-    { num: 5, title: 'Study Guide', type: 'Review', file: '6-study-guide.html', desc: 'Self-test with reveal prompts on harness parts, bridle parts, and driving equipment functions.' },
-    { num: 6, title: 'Test Your Knowledge', type: 'Quiz', file: '7-show-your-knowledge.html', desc: 'Answer randomized questions about driving harness, bridles, and equipment purpose.' }
+    { num: 5, title: 'Study Guide', type: 'Review', file: '6-study-guide.html', desc: 'Self-test with reveal prompts on harness parts, bridle parts, and equipment functions.' },
+    { num: 6, title: 'Test Your Knowledge', type: 'Quiz', file: '7-test-your-knowledge.html', desc: 'Answer randomized questions about driving harness, bridles, and equipment purpose.' }
   ]
 };

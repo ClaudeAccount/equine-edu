@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Intro to Parts of the Horse &mdash; Equine Edu</title>
+<meta name="description" content="Final quiz for the Intro to Parts of the Horse course. 15 questions drawn from a larger bank covering every region of the horse's body.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body class="ee-page-courses-schooling-ring-equine-anatomy-parts-of-the-horse-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to Parts of the Horse</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 5;
+window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Course', url: '1-index.html' },
+    navExtras: [{ label: 'The Training Barn', url: '5-training-barn.html' }]
+  };
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.partsOfTheHorse.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is the very top of the horse's head, between the ears, called?",
+    "opts": [
+      "Poll",
+      "Crest",
+      "Forelock",
+      "Withers"
+    ],
+    "a": "Poll",
+    "ok": "Correct. The poll is the top of the head, sitting between the ears.",
+    "no": "The top of the head between the ears is the poll."
+  },
+  {
+    "q": "The forelock is best described as:",
+    "opts": [
+      "The tuft of mane hair that falls between the ears onto the forehead",
+      "The mane along the neck",
+      "The top ridge of the neck",
+      "The hair at the base of the tail"
+    ],
+    "a": "The tuft of mane hair that falls between the ears onto the forehead",
+    "ok": "Correct. The forelock is the forward extension of the mane that falls between the ears.",
+    "no": "The forelock is the tuft of hair growing from the poll and falling between the ears."
+  },
+  {
+    "q": "Which part of the horse's face is the standard location for a star face marking?",
+    "opts": [
+      "Forehead",
+      "Muzzle",
+      "Nasal bone",
+      "Poll"
+    ],
+    "a": "Forehead",
+    "ok": "Correct. The forehead is the broad, flat area between the eyes where star markings are found.",
+    "no": "Star markings appear on the forehead — the flat area between the eyes."
+  },
+  {
+    "q": "The muzzle is best described as:",
+    "opts": [
+      "The soft lower face including the nostrils and lips",
+      "The area between the eyes",
+      "The lower jaw only",
+      "The bony ridge of the nose"
+    ],
+    "a": "The soft lower face including the nostrils and lips",
+    "ok": "Correct. The muzzle is the soft lower portion of the face — nostrils, upper lip, and lower lip.",
+    "no": "The muzzle is the soft lower face, including the nostrils and lips."
+  },
+  {
+    "q": "What is the area where the underside of the jaw meets the top of the neck called?",
+    "opts": [
+      "Throatlatch",
+      "Crest",
+      "Poll",
+      "Cheek"
+    ],
+    "a": "Throatlatch",
+    "ok": "Correct. The throatlatch is where the jaw meets the neck. A bridle strap of the same name passes through this region.",
+    "no": "Where the jaw meets the neck is the throatlatch."
+  },
+  {
+    "q": "True or false: Horses breathe primarily through their nostrils, not their mouths.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. Horses are obligate nasal breathers and breathe through their nostrils.",
+    "no": "Horses do breathe through their nostrils. They are obligate nasal breathers."
+  },
+  {
+    "q": "What do ear positions on a horse typically communicate?",
+    "opts": [
+      "How the horse is feeling in that moment",
+      "The horse's age",
+      "The horse's breed",
+      "The horse's coat color"
+    ],
+    "a": "How the horse is feeling in that moment",
+    "ok": "Correct. Ear position is one of the main ways horses communicate their current emotional state.",
+    "no": "A horse's ear position reflects how it is feeling — alert, relaxed, irritated, and so on."
+  },
+  {
+    "q": "Where is a horse's height measured from?",
+    "opts": [
+      "The withers",
+      "The poll",
+      "The croup",
+      "The point of shoulder"
+    ],
+    "a": "The withers",
+    "ok": "Correct. Horse height is always measured at the withers — the highest point of the back between the shoulder blades.",
+    "no": "Height is measured at the withers, not the head or any other point."
+  },
+  {
+    "q": "What is the upper ridge of the neck, from the poll to the withers, called?",
+    "opts": [
+      "Crest",
+      "Back",
+      "Mane",
+      "Topline"
+    ],
+    "a": "Crest",
+    "ok": "Correct. The crest is the upper ridge of the neck. The mane grows from the crest.",
+    "no": "The upper neck ridge where the mane grows from is the crest."
+  },
+  {
+    "q": "The bony protrusion at the front of the shoulder, where the humerus meets the scapula, is called the:",
+    "opts": [
+      "Point of shoulder",
+      "Elbow",
+      "Withers",
+      "Chest"
+    ],
+    "a": "Point of shoulder",
+    "ok": "Correct. The point of shoulder is the bony front of the shoulder — a key reference point.",
+    "no": "The front protrusion of the shoulder is the point of shoulder."
+  },
+  {
+    "q": "What does a well-laid-back shoulder angle typically affect?",
+    "opts": [
+      "Stride length and smoothness of movement",
+      "Hoof growth rate",
+      "Mane thickness",
+      "Coat color"
+    ],
+    "a": "Stride length and smoothness of movement",
+    "ok": "Correct. A laid-back shoulder angle is associated with a longer, more fluid stride.",
+    "no": "Shoulder angle affects stride length and how smoothly the horse moves."
+  },
+  {
+    "q": "True or false: Saddle fit is evaluated in relation to the withers.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. The withers is a primary reference point in saddle fitting. A saddle that sits on the withers can cause pain and injury.",
+    "no": "Saddle fit is directly related to the withers — a saddle that pinches or sits on the withers causes problems."
+  },
+  {
+    "q": "Which body region sits between the back and the croup and is important for engaging the hindquarters?",
+    "opts": [
+      "Loin",
+      "Flank",
+      "Barrel",
+      "Belly"
+    ],
+    "a": "Loin",
+    "ok": "Correct. The loin is the short muscular region between the back and croup. Loin strength supports collection and hindquarter engagement.",
+    "no": "The loin sits between the back and croup and is important for engaged, collected movement."
+  },
+  {
+    "q": "The barrel is best described as:",
+    "opts": [
+      "The rounded ribcage area between the forelegs and flank",
+      "The area behind the barrel",
+      "The underside of the horse",
+      "The top of the hindquarters"
+    ],
+    "a": "The rounded ribcage area between the forelegs and flank",
+    "ok": "Correct. The barrel is the ribcage area. A rider's leg rests against the barrel.",
+    "no": "The barrel is the rounded ribcage section a rider's leg contacts."
+  },
+  {
+    "q": "What is the top of the hindquarters, from the highest point of the pelvis toward the tail, called?",
+    "opts": [
+      "Croup",
+      "Loin",
+      "Back",
+      "Rump"
+    ],
+    "a": "Croup",
+    "ok": "Correct. The croup is the top of the hindquarters. Its slope varies between breeds and affects stride reach.",
+    "no": "The top of the hindquarters running toward the tail is the croup."
+  },
+  {
+    "q": "What is the soft area behind the barrel and in front of the hindquarters called?",
+    "opts": [
+      "Flank",
+      "Belly",
+      "Loin",
+      "Dock"
+    ],
+    "a": "Flank",
+    "ok": "Correct. The flank is the sensitive area behind the barrel. Horses kicking at the flank may be experiencing digestive discomfort.",
+    "no": "The soft area behind the barrel is the flank."
+  },
+  {
+    "q": "Where does tail bandaging typically begin?",
+    "opts": [
+      "At the dock",
+      "At the croup",
+      "At the loin",
+      "At the hindquarters"
+    ],
+    "a": "At the dock",
+    "ok": "Correct. Tail bandaging always starts at the dock — the bony upper root of the tail.",
+    "no": "Bandaging begins at the dock, the bony root of the tail."
+  },
+  {
+    "q": "What is the girth area on a horse?",
+    "opts": [
+      "The section just behind the elbows where the girth strap sits",
+      "The area between the ears",
+      "The top of the back",
+      "The lower leg below the knee"
+    ],
+    "a": "The section just behind the elbows where the girth strap sits",
+    "ok": "Correct. The girth area is directly behind the elbows. Proper girth fit here is critical for the horse's comfort.",
+    "no": "The girth area is behind the elbows — where the saddle's girth or cinch rests."
+  },
+  {
+    "q": "True or false: A bloated or tucked-up belly can indicate digestive problems in a horse.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. Changes in belly appearance are an important health indicator, particularly for conditions like colic.",
+    "no": "Changes in the belly are a useful health signal — a bloated or tucked appearance may indicate digestive issues."
+  },
+  {
+    "q": "What generates much of the horse's power and forward impulsion?",
+    "opts": [
+      "The hindquarters",
+      "The neck",
+      "The front legs",
+      "The shoulder"
+    ],
+    "a": "The hindquarters",
+    "ok": "Correct. The hindquarters — including the large muscle groups of the hip and thigh — provide the horse's primary driving power.",
+    "no": "The hindquarters are the engine — they generate forward impulsion and power."
+  },
+  {
+    "q": "Despite sharing a name with a human joint, the horse's knee is actually equivalent to the human:",
+    "opts": [
+      "Wrist",
+      "Knee",
+      "Ankle",
+      "Elbow"
+    ],
+    "a": "Wrist",
+    "ok": "Correct. The horse's knee is the carpus — equivalent to the human wrist, not the human knee.",
+    "no": "The horse's knee (carpus) is anatomically equivalent to the human wrist."
+  },
+  {
+    "q": "What is the large bone that runs between the knee (or hock) and the fetlock?",
+    "opts": [
+      "Cannon bone",
+      "Pastern",
+      "Forearm",
+      "Gaskin"
+    ],
+    "a": "Cannon bone",
+    "ok": "Correct. The cannon bone runs between the knee or hock and the fetlock. Splint bones run along either side.",
+    "no": "The large bone of the lower leg between the knee or hock and the fetlock is the cannon bone."
+  },
+  {
+    "q": "The forearm is located:",
+    "opts": [
+      "Between the elbow and the knee on the front leg",
+      "Between the fetlock and the coronet",
+      "Between the hock and the fetlock",
+      "Below the knee on the hind leg"
+    ],
+    "a": "Between the elbow and the knee on the front leg",
+    "ok": "Correct. The forearm is the muscular section of the front leg between the elbow and the knee.",
+    "no": "The forearm is the front leg section between the elbow and the knee."
+  },
+  {
+    "q": "What is the small callous-like growth found on the inside of the front leg above the knee?",
+    "opts": [
+      "Chestnut",
+      "Ergot",
+      "Splint",
+      "Coronet"
+    ],
+    "a": "Chestnut",
+    "ok": "Correct. The chestnut is a small, callous-like growth on the inside of the front leg. It is unique to each horse.",
+    "no": "The small growth on the inside of the front leg above the knee is called a chestnut."
+  },
+  {
+    "q": "Why is the pastern's angle considered important?",
+    "opts": [
+      "It affects how the horse absorbs concussion from the ground",
+      "It determines coat color",
+      "It affects mane length",
+      "It indicates age"
+    ],
+    "a": "It affects how the horse absorbs concussion from the ground",
+    "ok": "Correct. Pastern angle directly affects shock absorption. Too upright increases concussion; too sloped strains tendons.",
+    "no": "Pastern angle is important because it determines how well the horse absorbs the impact of each stride."
+  },
+  {
+    "q": "The fetlock joint is located:",
+    "opts": [
+      "Between the cannon bone and the pastern",
+      "Between the knee and cannon bone",
+      "Between the forearm and the elbow",
+      "Between the pastern and the hoof"
+    ],
+    "a": "Between the cannon bone and the pastern",
+    "ok": "Correct. The fetlock is the prominent joint between the cannon bone above and the pastern below.",
+    "no": "The fetlock sits between the cannon bone and the pastern."
+  },
+  {
+    "q": "The structure that grows the hoof wall downward at roughly one centimeter per month is the:",
+    "opts": [
+      "Coronary band",
+      "Fetlock",
+      "Pastern",
+      "Sole"
+    ],
+    "a": "Coronary band",
+    "ok": "Correct. The coronary band is the tissue at the top of the hoof that generates the hoof wall growth.",
+    "no": "The coronary band, at the top of the hoof, is responsible for growing the hoof wall."
+  },
+  {
+    "q": "How often does a horse's hoof typically need farrier attention?",
+    "opts": [
+      "Every six to eight weeks",
+      "Every six months",
+      "Once a year",
+      "Every two weeks"
+    ],
+    "a": "Every six to eight weeks",
+    "ok": "Correct. Hooves need regular trimming and, for working horses, shoeing every six to eight weeks on average.",
+    "no": "Most horses need farrier care every six to eight weeks."
+  },
+  {
+    "q": "The hock in the horse's hind leg is equivalent to which human joint?",
+    "opts": [
+      "The ankle",
+      "The knee",
+      "The hip",
+      "The wrist"
+    ],
+    "a": "The ankle",
+    "ok": "Correct. The hock is the large, angled hind leg joint equivalent to the human ankle.",
+    "no": "The hock is the hind leg joint equivalent to the human ankle."
+  },
+  {
+    "q": "What is the stifle?",
+    "opts": [
+      "The large hind leg joint equivalent to the human knee",
+      "The upper front leg joint",
+      "The joint between the pastern and fetlock",
+      "The joint at the base of the neck"
+    ],
+    "a": "The large hind leg joint equivalent to the human knee",
+    "ok": "Correct. The stifle is the large joint on the front of the hind leg that contains a patella, equivalent to the human knee.",
+    "no": "The stifle is the hind leg joint equivalent to the human knee, complete with a kneecap."
+  },
+  {
+    "q": "The gaskin is the muscular region:",
+    "opts": [
+      "Between the stifle and the hock",
+      "Between the hock and the fetlock",
+      "Between the elbow and the forearm",
+      "Between the poll and the withers"
+    ],
+    "a": "Between the stifle and the hock",
+    "ok": "Correct. The gaskin is the muscular hind leg region between the stifle and the hock — equivalent to the human calf.",
+    "no": "The gaskin is the muscle between the stifle and the hock."
+  },
+  {
+    "q": "True or false: The front and hind legs share several part names below the knee or hock.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. Both front and hind legs share the cannon bone, fetlock, pastern, coronary band, and hoof.",
+    "no": "The lower legs (front and hind) do share anatomy below the knee or hock — cannon bone, fetlock, pastern, coronary band, and hoof."
+  },
+  {
+    "q": "What is the point of buttock?",
+    "opts": [
+      "The most rearward bony prominence on the hindquarters",
+      "The top of the croup",
+      "The back of the hock",
+      "The base of the tail"
+    ],
+    "a": "The most rearward bony prominence on the hindquarters",
+    "ok": "Correct. The point of buttock is the rearmost bony point of the hindquarters, formed by the end of the ischium.",
+    "no": "The point of buttock is the most rearward bony point on the hindquarters."
+  },
+  {
+    "q": "Which term refers to the overall shape and structure of a horse's body?",
+    "opts": [
+      "Conformation",
+      "Marking",
+      "Gait",
+      "Breed"
+    ],
+    "a": "Conformation",
+    "ok": "Correct. Conformation describes the overall physical structure and proportions of a horse.",
+    "no": "Conformation is the term for a horse's overall body structure and proportions."
+  },
+  {
+    "q": "A horse's topline runs from the poll to the tail. Which set of parts describes the topline from front to back?",
+    "opts": [
+      "Poll, withers, back, loin, croup, dock",
+      "Muzzle, chest, barrel, flank, hock",
+      "Forelock, shoulder, barrel, gaskin",
+      "Throatlatch, mane, back, stifle"
+    ],
+    "a": "Poll, withers, back, loin, croup, dock",
+    "ok": "Correct. The topline runs: poll → withers → back → loin → croup → dock.",
+    "no": "The topline from front to back runs: poll, withers, back, loin, croup, dock."
+  },
+  {
+    "q": "Why are tendons and ligaments on the back of the cannon bone closely monitored in athletic horses?",
+    "opts": [
+      "Injuries here are common and can be serious",
+      "They determine the horse's color",
+      "They affect how the mane grows",
+      "They control ear movement"
+    ],
+    "a": "Injuries here are common and can be serious",
+    "ok": "Correct. Tendon and ligament injuries are among the most common and serious issues in working horses.",
+    "no": "The tendons and ligaments in the lower leg are closely watched because injuries here are common and often serious."
+  },
+  {
+    "q": "Which of the following is not a part of the horse's head?",
+    "opts": [
+      "Croup",
+      "Poll",
+      "Forehead",
+      "Muzzle"
+    ],
+    "a": "Croup",
+    "ok": "Correct. The croup is the top of the hindquarters — not a part of the head.",
+    "no": "The croup is on the hindquarters, not the head. Poll, forehead, and muzzle are all head parts."
+  },
+  {
+    "q": "A horse's hoof requires trimming roughly every:",
+    "opts": [
+      "Six to eight weeks",
+      "Six months",
+      "One year",
+      "Three to four months"
+    ],
+    "a": "Six to eight weeks",
+    "ok": "Correct. Hooves grow continuously and most horses need farrier attention every six to eight weeks.",
+    "no": "Most horses need hoof care every six to eight weeks, depending on growth rate and workload."
+  },
+  {
+    "q": "Which part of the leg is primarily responsible for the horse's shock absorption with each stride?",
+    "opts": [
+      "Pastern",
+      "Cannon bone",
+      "Gaskin",
+      "Forearm"
+    ],
+    "a": "Pastern",
+    "ok": "Correct. The pastern's angle and flexibility play a significant role in absorbing concussion with each stride.",
+    "no": "The pastern is the key shock-absorbing structure of the lower leg."
+  },
+  {
+    "q": "True or false: The withers is the standard measuring point used to determine a horse's height in hands.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. Horse height is always measured at the withers.",
+    "no": "Height is measured at the withers. This is the universal standard for horse measurement."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

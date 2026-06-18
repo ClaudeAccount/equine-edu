@@ -3584,6 +3584,17 @@ max-width: min(100%, 300px);
     object-fit: contain;
     filter: drop-shadow(0 12px 24px rgba(36, 54, 74, 0.18));
 }
+body.ee-page-courses-round-pen-common-terms-index .page-art-icon {
+width: min(100%, 300px);
+    min-height: 210px;
+    border: 1px solid rgba(127, 152, 178, 0.24);
+    border-radius: 18px;
+    background:
+      linear-gradient(90deg, transparent 49%, rgba(127, 152, 178, 0.32) 50%, transparent 51%),
+      repeating-linear-gradient(0deg, transparent 0 24px, rgba(36, 54, 74, 0.16) 25px 26px),
+      linear-gradient(135deg, rgba(255,255,255,0.92), rgba(231,220,203,0.72));
+    box-shadow: 0 14px 28px rgba(36, 54, 74, 0.12);
+}
 body.ee-page-courses-round-pen-common-terms-index .page-summary {
 background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(200, 162, 122, 0.28);
@@ -4118,6 +4129,10 @@ body.ee-page-courses-round-pen-common-terms-index .page-art img {
 max-width: min(100%, 340px);
     max-height: 270px;
 }
+body.ee-page-courses-round-pen-common-terms-index .page-art-icon {
+width: min(100%, 340px);
+    min-height: 240px;
+}
 body.ee-page-courses-round-pen-common-terms-index .journal-controls {
 display: none;
 }
@@ -4576,6 +4591,46 @@ body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-t
 max-width:200px;margin:0 auto
 }
 
+}
+/* Labeled-photo placement mechanism (dots, leader lines, label pills over a placed image) */
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure {
+position:relative;display:block;max-width:420px;margin:0 auto 1.25rem;user-select:none
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure .hoof-img {
+width:100%;display:block;border-radius:var(--radius-lg)
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure .leader-layer {
+position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:2
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure .leader {
+stroke:var(--tan);stroke-width:1.5;stroke-dasharray:4 3
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure .hoof-anchor {
+position:absolute;width:10px;height:10px;background:#05a9d6;border:2px solid var(--heading);border-radius:50%;transform:translate(-50%,-50%);z-index:3;box-shadow:0 1px 5px rgba(36,54,74,0.35)
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure .hoof-label {
+position:absolute;transform:translate(-50%,-50%);background:var(--blue-primary);color:var(--white);font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:0.28rem 0.6rem;border-radius:5px;white-space:nowrap;z-index:4;box-shadow:0 2px 8px rgba(36,54,74,0.25)
+}
+/* Markers are inert for learners; dragging turns on only in edit mode (#edit in the URL) */
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure .hoof-anchor,
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure .hoof-label {
+pointer-events:none
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure.editing {
+outline:2px dashed var(--blue-secondary);outline-offset:6px
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure.editing .hoof-anchor,
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure.editing .hoof-label {
+pointer-events:auto;cursor:grab;touch-action:none
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-figure .dragging {
+cursor:grabbing;box-shadow:0 0 0 3px rgba(5,169,214,0.45)
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-edit-bar {
+max-width:420px;margin:-0.25rem auto 1.25rem;display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap;font-size:.82rem;color:var(--body-text)
+}
+body.ee-page-courses-round-pen-equine-anatomy-intro-to-hoof-anatomy-3-parts-of-the-hoof .hoof-edit-bar button {
+font:inherit;font-weight:700;color:var(--white);background:var(--blue-primary);border:none;border-radius:6px;padding:.4rem .8rem;cursor:pointer
 }
 
 /* Extracted from courses/round-pen/equine-anatomy/intro-to-hoof-anatomy/4-training-barn.html */
@@ -5382,6 +5437,12 @@ body.ee-page-courses-round-pen-horse-and-pony-breeds-index {
   --text-mid:    #5C5248;
   --text-light:  #8C857D;
   --white:       #FFFFFF;
+  --heading:        #24364A;
+  --blue-primary:   #7F98B2;
+  --blue-secondary: #A9BACB;
+  --body-text:      #4F5B66;
+  --muted-text:     #7D858D;
+  --leather:        #A9825A;
   --font-display:'Playfair Display', Georgia, serif;
   --font-body:   'DM Sans', system-ui, sans-serif;
   --radius:      14px;
@@ -6455,478 +6516,483 @@ grid-template-columns:1fr
 
 }
 
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/1-index.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index {
+/* Extracted from courses/round-pen/riding-disciplines/common-riding-disciplines/1-index.html */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index {
 background: var(--cream-bg);
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-hero {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-hero {
 
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-hero-inner {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-hero-inner {
 display:grid; grid-template-columns:1fr 380px; gap:4rem; align-items:center; max-width:1100px; margin:0 auto; padding:72px 5%;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-tag {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-tag {
 display:inline-block;color:var(--room-accent);font-size:var(--text-xs);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.65rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-hero h1 {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-hero h1 {
 font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3.25rem); color:var(--heading); line-height:1.12; margin-bottom:1rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-hero h1 span {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-hero h1 span {
 color:var(--blue-primary);
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-hero-desc {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-hero-desc {
 color:var(--body-text); font-size:1rem; line-height:1.75; max-width:540px; margin-bottom:1.75rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-meta-row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-meta-row {
 display:flex; flex-wrap:nowrap; gap:0; margin-bottom:1.75rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .meta-item {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .meta-item {
 color:var(--leather-dark); font-weight:800; font-size:.74rem; border-right:1px solid var(--blue-secondary); padding:0 .75rem; white-space:nowrap;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .meta-item:first-child {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .meta-item:first-child {
 padding-left:0;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .meta-item:last-child {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .meta-item:last-child {
 border-right:0;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .hero-actions {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .hero-actions {
 display:flex; gap:.85rem; flex-wrap:wrap;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-hero-art {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-hero-art {
 display:flex; justify-content:center; align-items:center;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .hero-marking-single {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .hero-marking-single {
 width:min(100%,320px); aspect-ratio:1 / 1; display:flex; align-items:center; justify-content:center; overflow:visible;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .hero-marking-single img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .hero-marking-single img {
 width:100%; height:100%; object-fit:contain; display:block; transform:scale(1.18); filter:none;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-list {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-list {
 margin-top:2rem; display:grid; gap:.6rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-item {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-item {
 display:grid; grid-template-columns:40px 1fr auto; gap:1rem; align-items:center; padding:1rem 1.25rem; background:var(--white); border:1px solid var(--border); border-radius:var(--radius); text-decoration:none; transition:box-shadow .18s,border-color .18s;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-item:hover {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-item:hover {
 border-color:var(--tan); box-shadow:0 4px 16px rgba(36, 54, 74,.08);
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-num {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-num {
 width:36px; height:36px; border-radius:50%; background:var(--blue-primary); color:var(--white); font-family:var(--font-display); display:flex; align-items:center; justify-content:center;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-title {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-title {
 font-weight:800; color:var(--heading); margin-bottom:.2rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-desc {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-desc {
 color:var(--body-text); font-size:.82rem; line-height:1.5;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-type {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-type {
 color:var(--muted-text); font-size:.68rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; white-space:nowrap;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .track-features, body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .alignment-list {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .track-features, body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .alignment-list {
 list-style:none; display:grid; gap:.75rem; margin-top:1.25rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .track-features li, body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .alignment-list li {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .track-features li, body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .alignment-list li {
 display:flex; gap:.75rem; color:var(--body-text); font-size:.9rem; line-height:1.6;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .cta-section {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .cta-section {
 border-top:0;
 }
 @media (max-width:900px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-hero-inner {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-hero-inner {
 grid-template-columns:1fr
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-hero-art {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-hero-art {
 display:none
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-item {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-item {
 grid-template-columns:36px 1fr
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .module-type {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .module-type {
 display:none
 }
 
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-meta-row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-meta-row {
 align-items: center; min-width: 0;
 }
 @media (max-width: 700px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .course-meta-row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .course-meta-row {
 flex-wrap: nowrap !important; gap: 0;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .meta-item {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .meta-item {
 font-size: 0.62rem !important; padding: 0 0.38rem !important; letter-spacing: 0 !important;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .meta-item:first-child {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .meta-item:first-child {
 padding-left: 0 !important;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .meta-item:last-child {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .meta-item:last-child {
 padding-right: 0 !important;
 }
 
 }
 @media (max-width: 420px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-1-index .meta-item {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-1-index .meta-item {
 font-size: 0.52rem !important; padding: 0 0.22rem !important;
 }
 
 }
 
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/2-why-styles-developed.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .concept-grid {
+/* Extracted from courses/round-pen/riding-disciplines/common-riding-disciplines/2-why-disciplines-developed.html */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .concept-grid {
 display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:1rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .concept-card {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .concept-card {
 background:var(--white); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.35rem; box-shadow:0 4px 16px rgba(36, 54, 74,.07);
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .concept-card .eyebrow {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .concept-card .eyebrow {
 color:var(--tan); font-weight:800; letter-spacing:1.5px; text-transform:uppercase; font-size:.68rem; margin-bottom:.45rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .concept-card h3 {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .concept-card h3 {
 font-family:var(--font-display); color:var(--heading); font-size:1.15rem; margin-bottom:.45rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .concept-card p {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .concept-card p {
 color:var(--body-text); line-height:1.65; font-size:.92rem; margin:0;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .compare-row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .compare-row {
 display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .compare-panel {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .compare-panel {
 background:var(--soft-white); border-left:4px solid var(--tan); padding:1.2rem; border-radius:0 var(--radius-lg) var(--radius-lg) 0;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .compare-panel h3 {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .compare-panel h3 {
 font-family:var(--font-display); color:var(--heading); margin-bottom:.45rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .compare-panel p {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .compare-panel p {
 color:var(--body-text); line-height:1.65; font-size:.92rem; margin:0;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .style-mini-row {
 display:flex; justify-content:center; align-items:center; gap:.7rem; margin:-.2rem 0 1.4rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .style-mini-row img {
 width:100px; height:75px; object-fit:cover; object-position:center; display:block; border-radius:var(--radius); flex-shrink:0;
 }
 @media(max-width:760px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .concept-grid, body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .compare-row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .concept-grid, body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .compare-row {
 grid-template-columns:1fr
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .style-mini-row {
 gap:.4rem;overflow-x:auto;justify-content:flex-start;padding-bottom:.3rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .style-mini-row img {
 flex:0 0 72px;width:72px;height:54px
 }
 }
 @media(max-width:400px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-2-why-styles-developed .style-mini-row img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-2-why-disciplines-developed .style-mini-row img {
 flex:0 0 56px;width:56px;height:42px
 }
 
 }
 
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/4-viewing-room.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .style-flip-grid {
+/* Keep Common Riding Disciplines card artwork visible inside shared concept cards. */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-3-popular-riding-disciplines .concept-card img {
+width:100%; height:200px; object-fit:contain; object-position:center; display:block; padding:.45rem; box-sizing:border-box; background:var(--soft-white);
+}
+
+/* Extracted from courses/round-pen/riding-disciplines/common-riding-disciplines/4-viewing-room.html */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .style-flip-grid {
 display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:1rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .style-flip-grid .flip-card {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .style-flip-grid .flip-card {
 min-height:330px;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .flip-front, body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .flip-back {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .flip-front, body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .flip-back {
 padding:1.35rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .flip-front.photo-front {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .flip-front.photo-front {
 padding:0; overflow:hidden; background:var(--soft-white);
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .photo-front img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .photo-front img {
 width:100%; height:100%; object-fit:cover; object-position:center; display:block;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .photo-front img.saddle-seat-photo {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .photo-front img.saddle-seat-photo {
 object-position:62% center;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .photo-cue {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .photo-cue {
 position:absolute; left:1rem; bottom:1rem; background:rgba(36, 54, 74,.86); color:var(--tan); border-radius:999px; padding:.42rem .85rem; font-size:.68rem; font-weight:900; letter-spacing:1.2px; text-transform:uppercase; box-shadow:0 10px 24px rgba(36, 54, 74,.18);
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .style-badge {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .style-badge {
 display:inline-flex; background:var(--blue-primary); color:var(--white); border-radius:999px; padding:.25rem .7rem; font-size:.66rem; font-weight:900; letter-spacing:1.2px; text-transform:uppercase; margin-bottom:1rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .style-title {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .style-title {
 font-family:var(--font-display); color:var(--heading); font-size:1.35rem; margin-bottom:.65rem;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .style-clues {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .style-clues {
 color:var(--body-text); line-height:1.65; font-size:.92rem; margin:0 0 .65rem; text-align:left;
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .style-clues:last-child {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .style-clues:last-child {
 margin-bottom:0;
 }
 @media(max-width:760px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .style-flip-grid {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .style-flip-grid {
 grid-template-columns:1fr
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-4-viewing-room .style-flip-grid .flip-card {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-4-viewing-room .style-flip-grid .flip-card {
 min-height:300px
 }
 
 }
 
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/5-training-barn.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-grid {
+/* Extracted from courses/round-pen/riding-disciplines/common-riding-disciplines/5-training-barn.html */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-grid {
 display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card {
 display:flex;flex-direction:column;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;text-decoration:none;transition:box-shadow .18s,transform .18s
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card:hover {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card:hover {
 box-shadow:0 10px 32px rgba(36, 54, 74,.12);transform:translateY(-3px)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card-image {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card-image {
 position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--heading),#405171)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card-tag {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card-tag {
 position:absolute;bottom:.75rem;left:.75rem;background:rgba(36, 54, 74,.72);border:1px solid rgba(200, 162, 122,.35);border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:var(--tan)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card-body {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card-body {
 padding:.9rem 1rem .75rem;flex:1
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card-name {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card-name {
 font-family:var(--font-display);font-size:.98rem;color:var(--heading);line-height:1.3
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card-body p {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card-body p {
 display:none
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card-footer {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card-footer {
 padding:.7rem 1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-card-footer span {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-card-footer span {
 font-size:.78rem;font-weight:800;color:var(--tan);letter-spacing:.04em
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .barn-intro {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .barn-intro {
 background:var(--soft-white);border:1px solid var(--border);border-left:4px solid var(--heading);border-radius:0 var(--radius-lg) var(--radius-lg) 0;padding:1.4rem 1.5rem;margin-bottom:2rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .barn-intro h2 {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .barn-intro h2 {
 font-family:var(--font-display);font-size:1.2rem;color:var(--heading);margin-bottom:.5rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .barn-intro p {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .barn-intro p {
 color:var(--body-text);font-size:.9rem;line-height:1.7;margin:0
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .style-illustration {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .style-illustration {
 width:74%;max-width:260px
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .style-illustration text {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .style-illustration text {
 font-family:Arial,sans-serif;font-weight:800;letter-spacing:2px
 }
 @media(max-width:640px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-5-training-barn .activity-grid {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-5-training-barn .activity-grid {
 grid-template-columns:1fr
 }
 
 }
 
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/activities/downloads/index.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .lesson-wrap {
+/* Extracted from courses/round-pen/riding-disciplines/common-riding-disciplines/activities/downloads/index.html */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .lesson-wrap {
 grid-template-columns:minmax(0,1040px);justify-content:center
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .lesson-left {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .lesson-left {
 max-width:none
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .barn-intro {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .barn-intro {
 background:var(--soft-white);border:1px solid var(--border);border-left:4px solid var(--heading);border-radius:0 var(--radius-lg) var(--radius-lg) 0;padding:1.4rem 1.5rem;margin-bottom:2rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .barn-intro h2 {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .barn-intro h2 {
 font-family:var(--font-display);font-size:1.2rem;color:var(--heading);margin-bottom:.5rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .barn-intro p {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .barn-intro p {
 color:var(--body-text);font-size:.9rem;line-height:1.7;margin:0
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-grid {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-grid {
 display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:1.5rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-card-preview {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-card-preview {
 position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;flex-shrink:0;background:var(--cream-secondary);border-bottom:1px solid var(--border)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-card-preview img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-card-preview img {
 width:100%;height:100%;object-fit:cover;object-position:top center;display:block
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-card-badge {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-card-badge {
 position:absolute;bottom:.75rem;left:.75rem;background:rgba(36, 54, 74,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(200, 162, 122,.35);border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--tan)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-card-body {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-card-body {
 padding:1.1rem 1.25rem .75rem;flex:1;display:flex;flex-direction:column;gap:.4rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-card-name {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-card-name {
 font-family:var(--font-display);font-size:1rem;color:var(--heading);line-height:1.3
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-card-body p {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-card-body p {
 font-size:.85rem;color:var(--body-text);line-height:1.65;margin:0
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-card-footer {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-card-footer {
 padding:.9rem 1.25rem;border-top:1px solid var(--border);display:flex;gap:.6rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .btn-download {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .btn-download {
 display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .9rem;border-radius:var(--radius-md);font-size:.78rem;font-weight:700;letter-spacing:.03em;text-decoration:none;transition:background var(--motion-quick) var(--ease),transform var(--motion-quick) var(--ease)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .btn-download.pdf {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .btn-download.pdf {
 background:var(--blue-primary);color:var(--white)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .btn-download.pdf:hover {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .btn-download.pdf:hover {
 background:var(--heading);transform:translateY(-1px)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .btn-download.img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .btn-download.img {
 background:var(--soft-white);color:var(--heading);border:1px solid var(--border)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .btn-download.img:hover {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .btn-download.img:hover {
 background:var(--cream-secondary);transform:translateY(-1px)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .page-return {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .page-return {
 display:flex;justify-content:center;margin-top:2rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .page-return a {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .page-return a {
 display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;border-radius:var(--radius-md);background:var(--tan);color:var(--heading);font-weight:800;font-size:.9rem;text-decoration:none;box-shadow:0 10px 26px rgba(36, 54, 74,.14);transition:transform var(--motion-quick) var(--ease),box-shadow var(--motion-quick) var(--ease)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .page-return a:hover {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .page-return a:hover {
 transform:translateY(-2px);box-shadow:0 14px 32px rgba(36, 54, 74,.18)
 }
 @media(max-width:760px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-grid {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-grid {
 grid-template-columns:1fr
 }
 
 }
 @media(min-width:560px) and (max-width:760px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-downloads-index .download-grid {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-downloads-index .download-grid {
 grid-template-columns:repeat(2,1fr)
 }
 
 }
 
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/activities/game-1/discipline-match.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-1-discipline-match .game-wrap {
+/* Extracted from courses/round-pen/riding-disciplines/common-riding-disciplines/activities/game-1/discipline-match.html */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-1-discipline-match .game-wrap {
 width:100%;padding:0 0 1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-1-discipline-match .game-top {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-1-discipline-match .game-top {
 display:flex;justify-content:space-between;color:var(--tan);font-weight:900;margin-bottom:1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-1-discipline-match .row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-1-discipline-match .row {
 display:grid;grid-template-columns:120px 1fr 220px;gap:1rem;align-items:center;border-bottom:1px solid var(--border);padding:1rem 0
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-1-discipline-match .row:last-child {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-1-discipline-match .row:last-child {
 border-bottom:0
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-1-discipline-match .def {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-1-discipline-match .def {
 color:var(--body-text);line-height:1.55
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-1-discipline-match .result {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-1-discipline-match .result {
 font-weight:900;color:var(--heading);margin-top:1rem;text-align:center
 }
 @media(max-width:760px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-1-discipline-match .row {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-1-discipline-match .row {
 grid-template-columns:1fr
 }
 
 }
 
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/activities/game-2/job-match.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .game-wrap {
+/* Extracted from courses/round-pen/riding-disciplines/common-riding-disciplines/activities/game-2/job-match.html */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .game-wrap {
 width:100%;padding:0 0 1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .top {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .top {
 display:flex;justify-content:space-between;color:var(--tan);font-weight:900;margin-bottom:1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .prompt {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .prompt {
 background:var(--soft-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem;color:var(--heading);font-weight:800;line-height:1.6;text-align:center
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .prompt img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .prompt img {
 width:min(100%,420px);aspect-ratio:16/10;object-fit:contain;object-position:center;display:block;margin:0 auto 1rem;border-radius:var(--radius);background:var(--white);border:1px solid rgba(36, 54, 74,.08)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .prompt-text {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .prompt-text {
 max-width:680px;margin:0 auto
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .options {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .options {
 display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .option:hover {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .option:hover {
 border-color:var(--tan)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .option.correct {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .option.correct {
 border-color:#1a8c4e;background:rgba(26,140,78,.08)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .option.incorrect {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .option.incorrect {
 border-color:#c0392b;background:rgba(192,57,43,.08)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .feedback {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .feedback {
 min-height:2rem;text-align:center;font-weight:800;margin-top:1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .feedback-correct {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .feedback-correct {
 color:#1a8c4e
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .feedback-incorrect {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .feedback-incorrect {
 color:var(--error)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .feedback-summary {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .feedback-summary {
 color:var(--heading)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .end-score {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .end-score {
 font-family:var(--font-display);font-size:2.5rem;padding:1rem 0;color:var(--heading)
 }
 @media(max-width:640px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .options {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .options {
 grid-template-columns:1fr
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-2-job-match .prompt img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-2-job-match .prompt img {
 width:100%
 }
 
 }
 
-/* Extracted from courses/round-pen/riding-styles/common-riding-styles/activities/game-3/style-sort.html */
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .game-wrap {
+/* Extracted from courses/round-pen/riding-disciplines/common-riding-disciplines/activities/game-3/discipline-sort.html */
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .game-wrap {
 width:100%;padding:0 0 1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .game-top {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .game-top {
 display:flex;justify-content:space-between;color:var(--tan);font-weight:900;margin-bottom:1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .prompt {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .prompt {
 background:var(--soft-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem;text-align:center;margin-bottom:1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .prompt img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .prompt img {
 width:min(100%,420px);aspect-ratio:16/10;object-fit:contain;object-position:center;display:block;margin:0 auto 1rem;border-radius:var(--radius);background:var(--white);border:1px solid rgba(36, 54, 74,.08)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .prompt-name {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .prompt-name {
 font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);color:var(--heading);line-height:1.1
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .choices {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .choices {
 display:grid;grid-template-columns:1fr 1fr;gap:.75rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .choice {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .choice {
 border:1.5px solid var(--border);border-radius:var(--radius);background:var(--white);padding:.95rem 1rem;font-weight:900;color:var(--heading);cursor:pointer
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .choice:hover {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .choice:hover {
 border-color:var(--tan)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .choice.correct {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .choice.correct {
 border-color:#1a8c4e;background:rgba(26,140,78,.08)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .choice.incorrect {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .choice.incorrect {
 border-color:#c0392b;background:rgba(192,57,43,.08)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .feedback {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .feedback {
 min-height:2rem;text-align:center;font-weight:800;margin-top:1rem
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .feedback-correct {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .feedback-correct {
 color:#1a8c4e
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .feedback-incorrect {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .feedback-incorrect {
 color:var(--error)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .feedback-summary {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .feedback-summary {
 color:var(--heading)
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .prompt-name.end-score {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .prompt-name.end-score {
 padding:1rem 0
 }
 @media(max-width:640px) {
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .choices {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .choices {
 grid-template-columns:1fr
 }
-body.ee-page-courses-round-pen-riding-styles-common-riding-styles-activities-game-3-style-sort .prompt img {
+body.ee-page-courses-round-pen-riding-disciplines-common-riding-disciplines-activities-game-3-discipline-sort .prompt img {
 width:100%
 }
 
@@ -7422,6 +7488,36 @@ width: 100%;
   display: block;
   transform: scale(1.18);
   filter: none;
+}
+
+/* ============================================================================
+   Standardized course-index hero art.
+   Every course landing page (body class ends in "-1-index") gets the same
+   hero-art box size as the Base Coat Colors course: a 320px square. Applies
+   whether the art uses .hero-marking-single, .hero-icon-wrap, or a bare
+   <img>/<svg>. Selectors are scoped to .course-hero and use the -1-index
+   attribute so they outrank the per-course rules above regardless of order.
+   ========================================================================== */
+body[class$="-1-index"] .course-hero .course-hero-art {
+  display: flex; align-items: center; justify-content: center;
+}
+body[class$="-1-index"] .course-hero .course-hero-art .hero-marking-single,
+body[class$="-1-index"] .course-hero .course-hero-art .hero-icon-wrap {
+  width: min(100%, 320px); aspect-ratio: 1 / 1;
+  display: flex; align-items: center; justify-content: center;
+  overflow: visible;
+}
+body[class$="-1-index"] .course-hero .course-hero-art .hero-marking-single img,
+body[class$="-1-index"] .course-hero .course-hero-art .hero-marking-single svg,
+body[class$="-1-index"] .course-hero .course-hero-art .hero-icon-wrap img,
+body[class$="-1-index"] .course-hero .course-hero-art .hero-icon-wrap svg {
+  width: 100%; height: 100%; object-fit: contain; display: block;
+}
+body[class$="-1-index"] .course-hero .course-hero-art > img,
+body[class$="-1-index"] .course-hero .course-hero-art > svg {
+  width: min(100%, 320px); aspect-ratio: 1 / 1;
+  max-width: 320px; max-height: 320px;
+  object-fit: contain; display: block; margin: 0 auto;
 }
 body.ee-page-courses-schooling-ring-colors-markings-base-coat-colors-1-index .module-list {
 margin-top: 2rem; display: grid; gap: 0.6rem;
@@ -13686,4 +13782,21 @@ body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) .course
   body[class*="ee-page-courses-"] .course-hero-inner:has(.course-hero-art) .course-hero-art {
     display: none;
   }
+}
+
+/* Rider Safety Catalog: 10 tabs in one row — tighten buttons so labels fit */
+body.ee-page-courses-round-pen-horse-safety-rider-safety-basics-3-rider-safety .tab-bar {
+  gap: 0.3rem;
+}
+body.ee-page-courses-round-pen-horse-safety-rider-safety-basics-3-rider-safety .tab-btn {
+  font-size: 0.72rem;
+  padding: 0.6rem 0.35rem;
+  letter-spacing: 0;
+  hyphens: none;
+}
+
+/* Platform paragraph rhythm for course prose. */
+body[class*="ee-page-courses-"] .lesson-left p + p,
+body[class*="ee-page-courses-"] .lesson-left :is(.lesson-intro-card, .visual-card, .concept-card, .term-card, .callout-bar, .barn-note, .lesson-notes, .study-section, .reveal, .ready-panel, .game-panel, .quiz-panel, .activity-card) p + p {
+  margin-top: 0.75rem;
 }

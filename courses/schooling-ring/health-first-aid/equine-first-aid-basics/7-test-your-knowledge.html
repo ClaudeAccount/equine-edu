@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Equine First Aid Basics &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-health-first-aid-equine-first-aid-basics-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Equine First Aid Basics</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+      <a href="6-study-guide.html" class="btn-secondary">Back to Study Guide</a>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'All Courses', url: '../../../index.html' }
+};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.equineFirstAidBasics.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is the handler's primary role during an equine first aid situation?",
+    "opts": [
+      "To diagnose and treat the horse's condition",
+      "To stabilize the situation and keep the horse calm until the veterinarian arrives",
+      "To administer the medications in the first aid kit",
+      "To move the horse to a clean stall immediately"
+    ],
+    "a": "To stabilize the situation and keep the horse calm until the veterinarian arrives",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is To stabilize the situation and keep the horse calm until the veterinarian arrives."
+  },
+  {
+    "q": "Which of the following best describes the purpose of equine first aid knowledge?",
+    "opts": [
+      "To replace veterinary care in non-urgent situations",
+      "To allow handlers to treat horses independently",
+      "To enable effective response between the incident and veterinary arrival",
+      "To reduce the need for veterinary visits over time"
+    ],
+    "a": "To enable effective response between the incident and veterinary arrival",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is To enable effective response between the incident and veterinary arrival."
+  },
+  {
+    "q": "What are the four elements of equine first aid readiness?",
+    "opts": [
+      "A stocked kit, normal vital sign knowledge, emergency recognition, and vet contact information",
+      "A stocked kit, a horse trailer, emergency experience, and an equine hospital nearby",
+      "Knowledge of medication types, a stocked kit, a helper, and bandaging skill",
+      "Emergency recognition, a working phone, protective equipment, and first aid training"
+    ],
+    "a": "A stocked kit, normal vital sign knowledge, emergency recognition, and vet contact information",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A stocked kit, normal vital sign knowledge, emergency recognition, and vet contact information."
+  },
+  {
+    "q": "Where should the veterinarian's phone number and emergency contact information be posted?",
+    "opts": [
+      "Saved only in the barn manager's phone",
+      "Posted visibly in the barn and saved in the handler's phone before an emergency",
+      "Only on the barn's website",
+      "Inside the first aid kit where it is protected"
+    ],
+    "a": "Posted visibly in the barn and saved in the handler's phone before an emergency",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Posted visibly in the barn and saved in the handler's phone before an emergency."
+  },
+  {
+    "q": "Why is the handler's first response to an emergency so important to outcomes?",
+    "opts": [
+      "Handlers have more medical training than most people realize",
+      "The veterinarian cannot be present before a call is made — how the handler responds in that window directly affects outcomes",
+      "Handler response is less important than equipment quality",
+      "The handler can often treat the horse fully without the veterinarian if prepared"
+    ],
+    "a": "The veterinarian cannot be present before a call is made — how the handler responds in that window directly affects outcomes",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The veterinarian cannot be present before a call is made — how the handler responds in that window directly affects outcomes."
+  },
+  {
+    "q": "Which of the following describes the most effective way to prepare for an equine emergency?",
+    "opts": [
+      "Learn first aid skills and stock the kit only after the first emergency occurs",
+      "Practice responding to emergencies on other horses before your own",
+      "Prepare the kit, learn normal vital signs, know emergency signs, and have vet contact information ready before any emergency arises",
+      "Keep a veterinarian available at all times in the barn"
+    ],
+    "a": "Prepare the kit, learn normal vital signs, know emergency signs, and have vet contact information ready before any emergency arises",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Prepare the kit, learn normal vital signs, know emergency signs, and have vet contact information ready before any emergency arises."
+  },
+  {
+    "q": "Why should a handler know what NOT to do in a first aid situation?",
+    "opts": [
+      "First aid knowledge is primarily about recognizing limits",
+      "Doing too much without proper training can worsen outcomes",
+      "Horses respond negatively to unfamiliar handlers taking vital signs",
+      "Veterinarians prefer handlers not to do anything until they arrive"
+    ],
+    "a": "Doing too much without proper training can worsen outcomes",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Doing too much without proper training can worsen outcomes."
+  },
+  {
+    "q": "A horse has been injured. The handler has no equine first aid kit. What is the single most important first step?",
+    "opts": [
+      "Apply pressure to the wound with any available cloth and call the veterinarian",
+      "Give the horse water and wait to see if it improves",
+      "Move the horse to the arena for better lighting",
+      "Apply antiseptic found in the human medicine cabinet"
+    ],
+    "a": "Apply pressure to the wound with any available cloth and call the veterinarian",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Apply pressure to the wound with any available cloth and call the veterinarian."
+  },
+  {
+    "q": "Which tool is used to measure a horse's body temperature in a first aid assessment?",
+    "opts": [
+      "A pulse oximeter",
+      "A digital rectal thermometer",
+      "An oral thermometer",
+      "A forehead temperature strip"
+    ],
+    "a": "A digital rectal thermometer",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A digital rectal thermometer."
+  },
+  {
+    "q": "What is a stethoscope used for in equine first aid?",
+    "opts": [
+      "Measuring blood pressure",
+      "Listening to heart rate and gut sounds",
+      "Taking respiratory rate only",
+      "Checking capillary refill time"
+    ],
+    "a": "Listening to heart rate and gut sounds",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Listening to heart rate and gut sounds."
+  },
+  {
+    "q": "What is the preferred wound cleansing solution for most equine wounds?",
+    "opts": [
+      "Hydrogen peroxide",
+      "Isopropyl alcohol",
+      "Sterile saline or diluted chlorhexidine solution",
+      "Iodine at full concentration"
+    ],
+    "a": "Sterile saline or diluted chlorhexidine solution",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Sterile saline or diluted chlorhexidine solution."
+  },
+  {
+    "q": "Why should hydrogen peroxide NOT be used as a routine wound wash for horses?",
+    "opts": [
+      "It causes horses significant pain and distress",
+      "It damages healthy tissue and impairs wound healing",
+      "It is toxic if the horse licks the wound area",
+      "It causes excessive bleeding when applied to open wounds"
+    ],
+    "a": "It damages healthy tissue and impairs wound healing",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It damages healthy tissue and impairs wound healing."
+  },
+  {
+    "q": "What is the role of sterile gauze pads in an equine first aid kit?",
+    "opts": [
+      "To clean wounds by scrubbing",
+      "To serve as primary wound dressings placed directly on the wound",
+      "To wrap the entire leg for support",
+      "To pad the inside of bandage boots"
+    ],
+    "a": "To serve as primary wound dressings placed directly on the wound",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is To serve as primary wound dressings placed directly on the wound."
+  },
+  {
+    "q": "What does cohesive bandage (VetWrap) do that makes it useful for horse first aid?",
+    "opts": [
+      "It provides rigid support for fractures",
+      "It adheres to itself without adhesive, securing dressings without tape",
+      "It is antiseptic and prevents infection under the bandage",
+      "It can be applied without padding"
+    ],
+    "a": "It adheres to itself without adhesive, securing dressings without tape",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It adheres to itself without adhesive, securing dressings without tape."
+  },
+  {
+    "q": "Which item in an equine first aid kit is used to flush eyes or clean wounds?",
+    "opts": [
+      "Hydrogen peroxide",
+      "Isopropyl alcohol",
+      "Sterile saline solution",
+      "Antibiotic ointment"
+    ],
+    "a": "Sterile saline solution",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Sterile saline solution."
+  },
+  {
+    "q": "Why are blunt-tipped scissors important in an equine first aid kit?",
+    "opts": [
+      "They are safer to use when cutting bandage material near the horse's skin",
+      "They are required for suturing wounds",
+      "They reduce the risk of the horse stepping on sharp scissors",
+      "Blunt scissors are required for wound debridement"
+    ],
+    "a": "They are safer to use when cutting bandage material near the horse's skin",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is They are safer to use when cutting bandage material near the horse's skin."
+  },
+  {
+    "q": "How often should a first aid kit be inspected and restocked?",
+    "opts": [
+      "Only after it has been used",
+      "Every three to six months, checking expiration dates and restocking depleted items",
+      "Once per year",
+      "Before every riding season only"
+    ],
+    "a": "Every three to six months, checking expiration dates and restocking depleted items",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Every three to six months, checking expiration dates and restocking depleted items."
+  },
+  {
+    "q": "A first aid kit should be stored in:",
+    "opts": [
+      "A vehicle for easy transport",
+      "A hot, dry tack room",
+      "A cool, dry location accessible to all barn workers",
+      "A sealed outdoor shed away from the horses"
+    ],
+    "a": "A cool, dry location accessible to all barn workers",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A cool, dry location accessible to all barn workers."
+  },
+  {
+    "q": "What is the normal resting heart rate for an adult horse?",
+    "opts": [
+      "14 to 22 beats per minute",
+      "28 to 44 beats per minute",
+      "50 to 65 beats per minute",
+      "70 to 90 beats per minute"
+    ],
+    "a": "28 to 44 beats per minute",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 28 to 44 beats per minute."
+  },
+  {
+    "q": "A horse at rest has a heart rate of 68 beats per minute. What does this indicate?",
+    "opts": [
+      "A completely normal resting heart rate",
+      "The horse has recently been exercised",
+      "Significant pain or cardiovascular distress — this is an emergency indicator",
+      "The stethoscope is being used incorrectly"
+    ],
+    "a": "Significant pain or cardiovascular distress — this is an emergency indicator",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Significant pain or cardiovascular distress — this is an emergency indicator."
+  },
+  {
+    "q": "What is the normal respiratory rate for an adult horse at rest?",
+    "opts": [
+      "4 to 6 breaths per minute",
+      "8 to 16 breaths per minute",
+      "20 to 28 breaths per minute",
+      "30 to 40 breaths per minute"
+    ],
+    "a": "8 to 16 breaths per minute",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 8 to 16 breaths per minute."
+  },
+  {
+    "q": "What is the normal body temperature range for an adult horse?",
+    "opts": [
+      "97.0°F to 98.5°F",
+      "99.5°F to 101.5°F",
+      "102.0°F to 103.5°F",
+      "104.0°F to 106.0°F"
+    ],
+    "a": "99.5°F to 101.5°F",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 99.5°F to 101.5°F."
+  },
+  {
+    "q": "A horse has a rectal temperature of 104.2°F. What is the correct response?",
+    "opts": [
+      "This is within the normal range for a horse in summer",
+      "Monitor the horse for 24 hours before calling the veterinarian",
+      "Apply cold water and monitor — no call needed unless temperature continues to rise",
+      "Contact the veterinarian immediately — this is above the emergency threshold"
+    ],
+    "a": "Contact the veterinarian immediately — this is above the emergency threshold",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Contact the veterinarian immediately — this is above the emergency threshold."
+  },
+  {
+    "q": "How is capillary refill time (CRT) measured in a horse?",
+    "opts": [
+      "By watching the horse's breathing and counting chest rises",
+      "By pressing a thumb against the gum above the upper teeth for 2 seconds and timing color return",
+      "By palpating the fetlock for a digital pulse",
+      "By listening to gut sounds on both sides of the abdomen"
+    ],
+    "a": "By pressing a thumb against the gum above the upper teeth for 2 seconds and timing color return",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is By pressing a thumb against the gum above the upper teeth for 2 seconds and timing color return."
+  },
+  {
+    "q": "What is normal capillary refill time for a horse?",
+    "opts": [
+      "Less than 0.5 seconds",
+      "1 to 2 seconds",
+      "3 to 4 seconds",
+      "5 or more seconds"
+    ],
+    "a": "1 to 2 seconds",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 1 to 2 seconds."
+  },
+  {
+    "q": "What does a capillary refill time longer than 2 seconds indicate?",
+    "opts": [
+      "The horse is dehydrated from inadequate water intake",
+      "Compromised peripheral circulation — a serious emergency sign",
+      "The horse has been recently exercised",
+      "Normal variation not associated with any health concern"
+    ],
+    "a": "Compromised peripheral circulation — a serious emergency sign",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Compromised peripheral circulation — a serious emergency sign."
+  },
+  {
+    "q": "Where is the stethoscope placed to listen to a horse's heart?",
+    "opts": [
+      "Over the left shoulder blade",
+      "Behind the left elbow on the left side of the chest",
+      "At the base of the neck",
+      "Directly over the point of the shoulder"
+    ],
+    "a": "Behind the left elbow on the left side of the chest",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Behind the left elbow on the left side of the chest."
+  },
+  {
+    "q": "How is the digital pulse assessed in a horse?",
+    "opts": [
+      "By pressing on the gum and timing color return",
+      "By palpating the artery on the inside of the fetlock at the back of the leg",
+      "By listening with a stethoscope placed on the hoof",
+      "By pressing on the coronet band"
+    ],
+    "a": "By palpating the artery on the inside of the fetlock at the back of the leg",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is By palpating the artery on the inside of the fetlock at the back of the leg."
+  },
+  {
+    "q": "What does a bounding digital pulse indicate in a horse showing foot discomfort?",
+    "opts": [
+      "Normal variation in a horse that has been recently exercised",
+      "Increased blood flow to the foot — a sign of possible laminitis or foot abscess",
+      "Poor circulation in the lower limb",
+      "The horse is being assessed incorrectly"
+    ],
+    "a": "Increased blood flow to the foot — a sign of possible laminitis or foot abscess",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Increased blood flow to the foot — a sign of possible laminitis or foot abscess."
+  },
+  {
+    "q": "What is the most useful information a handler can provide when calling a veterinarian during an emergency?",
+    "opts": [
+      "A description of the horse's breed and registration number",
+      "The horse's age and vaccination history",
+      "Measured vital signs — heart rate, respiratory rate, temperature, and CRT — along with a description of the horse's behavior",
+      "The horse's feeding schedule and hay type"
+    ],
+    "a": "Measured vital signs — heart rate, respiratory rate, temperature, and CRT — along with a description of the horse's behavior",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Measured vital signs — heart rate, respiratory rate, temperature, and CRT — along with a description of the horse's behavior."
+  },
+  {
+    "q": "A horse is found repeatedly pawing, looking at its flank, and sweating without having exercised. What is the most likely explanation?",
+    "opts": [
+      "The horse has a skin irritation causing discomfort",
+      "The horse is displaying signs of colic and requires prompt veterinary evaluation",
+      "Normal behavior — horses paw when anticipating grain",
+      "The horse is showing heat stress and needs cooling"
+    ],
+    "a": "The horse is displaying signs of colic and requires prompt veterinary evaluation",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The horse is displaying signs of colic and requires prompt veterinary evaluation."
+  },
+  {
+    "q": "Which of the following wound presentations requires IMMEDIATE veterinary contact?",
+    "opts": [
+      "A small abrasion on the horse's shoulder",
+      "A superficial cut on the nose that is not bleeding heavily",
+      "A wound located directly over the knee joint",
+      "A small nick from wire that has stopped bleeding"
+    ],
+    "a": "A wound located directly over the knee joint",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A wound located directly over the knee joint."
+  },
+  {
+    "q": "Why are wounds near joints considered emergency-level injuries?",
+    "opts": [
+      "Joint wounds always require surgery",
+      "A joint infection (septic arthritis) can develop within hours and is life-threatening",
+      "Joint wounds bleed more than wounds elsewhere",
+      "Bandaging near joints requires specialized technique"
+    ],
+    "a": "A joint infection (septic arthritis) can develop within hours and is life-threatening",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A joint infection (septic arthritis) can develop within hours and is life-threatening."
+  },
+  {
+    "q": "What distinguishes arterial bleeding from venous bleeding in a wound?",
+    "opts": [
+      "Arterial bleeding is darker red and steady; venous bleeding is bright red and pulsing",
+      "Arterial bleeding is bright red and pulses rhythmically with the heartbeat; venous bleeding is darker and flows steadily",
+      "Venous bleeding requires pressure; arterial bleeding stops on its own",
+      "Arterial bleeding only occurs on the lower limbs"
+    ],
+    "a": "Arterial bleeding is bright red and pulses rhythmically with the heartbeat; venous bleeding is darker and flows steadily",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Arterial bleeding is bright red and pulses rhythmically with the heartbeat; venous bleeding is darker and flows steadily."
+  },
+  {
+    "q": "A horse is found with a nail embedded in the sole of its foot. What is the correct first action?",
+    "opts": [
+      "Remove the nail immediately to reduce infection risk",
+      "Leave the nail in place, protect it from further movement, and contact the veterinarian",
+      "Apply antiseptic spray to the nail entry point and bandage the foot",
+      "Remove the nail and pack the hole with wound powder"
+    ],
+    "a": "Leave the nail in place, protect it from further movement, and contact the veterinarian",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Leave the nail in place, protect it from further movement, and contact the veterinarian."
+  },
+  {
+    "q": "What is the primary danger of a puncture wound to the bottom of a horse's foot?",
+    "opts": [
+      "The nail or object may cause a fracture to the coffin bone",
+      "Structures including the coffin joint, navicular bursa, and flexor tendon sheath are close to the surface and can be penetrated",
+      "Puncture wounds to the foot always result in lameness",
+      "The hoof wall will crack at the puncture site"
+    ],
+    "a": "Structures including the coffin joint, navicular bursa, and flexor tendon sheath are close to the surface and can be penetrated",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Structures including the coffin joint, navicular bursa, and flexor tendon sheath are close to the surface and can be penetrated."
+  },
+  {
+    "q": "A horse is found with feed material and frothy saliva draining from one nostril and is repeatedly stretching its neck. What condition is most likely?",
+    "opts": [
+      "Colic",
+      "Choke (esophageal obstruction)",
+      "An upper respiratory infection",
+      "Allergic reaction to feed"
+    ],
+    "a": "Choke (esophageal obstruction)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Choke (esophageal obstruction)."
+  },
+  {
+    "q": "A horse develops acute laminitis. What physical signs would a handler likely observe?",
+    "opts": [
+      "Soft manure and increased gut sounds",
+      "Reluctance to bear weight, heat in the hooves, and a bounding digital pulse",
+      "Elevated respiratory rate with nasal discharge",
+      "Pawing and flank-watching without elevated heart rate"
+    ],
+    "a": "Reluctance to bear weight, heat in the hooves, and a bounding digital pulse",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Reluctance to bear weight, heat in the hooves, and a bounding digital pulse."
+  },
+  {
+    "q": "Which of the following is a neurological sign requiring immediate veterinary contact?",
+    "opts": [
+      "Mild stiffness after a long stall rest",
+      "Incoordination, stumbling, or circling without obvious musculoskeletal cause",
+      "A horse that is reluctant to pick up one canter lead",
+      "Reduced appetite for one feeding"
+    ],
+    "a": "Incoordination, stumbling, or circling without obvious musculoskeletal cause",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Incoordination, stumbling, or circling without obvious musculoskeletal cause."
+  },
+  {
+    "q": "A handler finds a horse in a stall with a severely swollen lower leg, standing with only the toe of that foot touching the ground. What is the appropriate response?",
+    "opts": [
+      "Apply a cold hose and monitor for 24 hours",
+      "Walk the horse to evaluate the grade of lameness",
+      "Do not force the horse to walk — assess for signs of distress, take vital signs, and call the veterinarian",
+      "Wrap the leg tightly in a pressure bandage to reduce swelling"
+    ],
+    "a": "Do not force the horse to walk — assess for signs of distress, take vital signs, and call the veterinarian",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Do not force the horse to walk — assess for signs of distress, take vital signs, and call the veterinarian."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discipline Definition Match &mdash; Common Riding Disciplines</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../../../assets/css/game.css">
+
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-riding-disciplines-common-riding-disciplines-activities-game-1-discipline-match">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Common Riding Disciplines</div>
+      <h1 class="lesson-hero-title">Definition <span>Match</span></h1>
+      <p class="lesson-hero-desc">Match each discipline description to the correct name.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <div class="game-intro-card">
+      <h2>How to Play</h2>
+      <p>Each set shows six riding disciplines with a description and an image. Use the dropdown next to each one to select the correct discipline name. Hit Check Answers to see how you did, then New Set to practice with a different selection.</p>
+    </div>
+    <div class="game-wrap">
+      <div class="game-card">
+        <div class="game-top"><span id="round">Set of 6</span><span id="score">0 / 0</span></div>
+        <div id="rows"></div>
+        <div class="actions"><button class="primary" id="check">Check Answers</button><button id="reset">New Set</button></div>
+        <div class="result" id="result"></div>
+      </div>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+const imageBase = 'images/';
+const bank=[
+  {name:'Dressage', img:'dressage.png', def:'Precise arena work that shows balance, rhythm, and communication between horse and rider.'},
+  {name:'Reining', img:'reigning.png', def:'Western pattern work featuring spins, circles, rollbacks, and sliding stops.'},
+  {name:'Barrel Racing', img:'barrel-racing.png', def:'A timed cloverleaf pattern around three barrels, balancing speed and control.'},
+  {name:'Pole Bending', img:'pole-bending.png', def:'A timed Western event weaving through a straight line of poles.'},
+  {name:'Western Horsemanship', img:'horsemanship.png', def:'A judged Western class focused on rider position, control, and pattern accuracy.'},
+  {name:'Hunters', img:'hunters.png', def:'A judged jumping round emphasizing smooth rhythm, steady pace, and correct form.'},
+  {name:'Jumpers', img:'jumpers.png', def:'A jumping class scored by speed and faults — clear and fast wins.'},
+  {name:'Ranch Riding', img:'ranch-riding.png', def:'Western work that should look practical, balanced, and useful for ranch tasks.'},
+  {name:'Western Pleasure', img:'western-pleasure.png', def:'A quiet rail class focused on a relaxed, consistent way of going at the walk, jog, and lope.'},
+  {name:'Cow Work', img:'cow-work.png', def:'Western events involving cutting, roping, or penning where horse and rider work together with cattle.'},
+  {name:'Trail Riding', img:'trail-riding.png', def:'Riding over natural or prepared terrain obstacles with a steady, confident horse.'},
+  {name:'Equitation', img:'equitation.png', def:'A judged discipline focused on the rider\'s position, balance, and effectiveness.'},
+  {name:'Eventing', img:'evnting.png', def:'A three-phase discipline combining dressage, cross-country, and stadium jumping.'},
+  {name:'Saddle Seat', img:'saddle-seat.png', def:'An English show style emphasizing animated movement, presence, and high-stepping breeds.'},
+  {name:'Polo', img:'polo.png', def:'A fast team sport where riders use mallets to move a ball toward goal.'},
+  {name:'Horse Racing', img:'racing.png', def:'A speed sport where horse and rider gallop over a set distance as quickly as possible.'}
+];
+const allNames = bank.map(function(b){return b.name;}).sort();
+
+function shuffle(a){return a.map(function(v){return{v:v,s:Math.random()}}).sort(function(x,y){return x.s-y.s}).map(function(i){return i.v})}
+
+var active=[];
+
+function render(){
+  active = shuffle(bank).slice(0,6);
+  document.getElementById('round').textContent='Set of 6';
+  document.getElementById('score').textContent='0 / 0';
+  document.getElementById('result').textContent='';
+  var html='';
+  active.forEach(function(item,i){
+    var opts='<option value="">— choose —</option>';
+    allNames.forEach(function(n){
+      opts+='<option value="'+n+'">'+n+'</option>';
+    });
+    html+='<div class="row" id="row-'+i+'">'
+      +'<img src="'+imageBase+item.img+'" alt="'+item.name+'">'
+      +'<div class="def">'+item.def+'</div>'
+      +'<select class="select" data-index="'+i+'">'+opts+'</select>'
+      +'</div>';
+  });
+  document.getElementById('rows').innerHTML=html;
+}
+
+document.getElementById('check').addEventListener('click',function(){
+  var correct=0;
+  active.forEach(function(item,i){
+    var sel=document.querySelector('[data-index="'+i+'"]');
+    var row=document.getElementById('row-'+i);
+    if(sel.value===item.name){
+      correct++;
+      row.style.background='rgba(26,140,78,.06)';
+      sel.style.borderColor='#1a8c4e';
+    } else {
+      row.style.background='rgba(192,57,43,.06)';
+      sel.style.borderColor='#c0392b';
+    }
+  });
+  document.getElementById('score').textContent=correct+' / 6';
+  var msg = correct===6 ? 'Perfect! All 6 correct.' : correct>=4 ? 'Nice work — '+correct+' of 6 correct.' : correct+' of 6 correct. Try a new set!';
+  document.getElementById('result').textContent=msg;
+});
+
+document.getElementById('reset').addEventListener('click',render);
+render();
+</script>
+<script src="../../course-config.js"></script>
+<script>
+window.CURRENT_MODULE=4;
+window.LAYOUT={homeUrl:'../../../../../index.html',coursesUrl:'../../../../index.html',navCta:{label:'Back to Training Barn',url:'../../5-training-barn.html'}};
+</script>
+<script src="../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../../assets/js/paywall.js"></script>
+<script src="../../../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

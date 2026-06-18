@@ -8,45 +8,36 @@
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
 <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
 </head>
 <body class="ee-page-courses-schooling-ring-horse-care-grooming-horses-7-test-your-knowledge">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
-
-<section class="lesson-hero hero-centered hero-bg hero-bg-lesson" id="top">
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
   <div class="lesson-hero-inner hero-centered">
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Grooming Horses</div>
       <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
-      <p class="lesson-hero-desc">15 questions drawn from the full question bank. Submit when complete to see your score.</p>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
     </div>
   </div>
 </section>
-
 <div class="lesson-wrap">
   <main class="lesson-left">
-    <div id="quiz-container">
-      <div id="quiz-start" class="visual-card">
-        <h2>Ready to Begin?</h2>
-        <p>This quiz presents 15 questions selected from a 40-question bank. Each attempt may draw different questions. Review the study guide before beginning if needed.</p>
-        <button class="btn-primary" id="start-btn">Start Quiz</button>
-      </div>
-      <form id="quiz-form" style="display:none;">
-        <div id="questions-container"></div>
-        <div class="quiz-submit-row">
-          <button type="submit" class="btn-primary">Submit Quiz</button>
-        </div>
-      </form>
-      <div id="quiz-results" style="display:none;" class="visual-card">
-        <h2>Quiz Complete</h2>
-        <p class="quiz-score-display">Score: <strong id="score-value">0/15</strong></p>
-        <div id="results-breakdown"></div>
-        <div class="quiz-actions">
-          <button class="btn-primary" id="retake-btn">Retake Quiz</button>
-          <a href="6-study-guide.html" class="btn-secondary">Back to Study Guide</a>
-        </div>
-      </div>
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+      <a href="6-study-guide.html" class="btn-secondary">Back to Study Guide</a>
     </div>
   </main>
   <aside class="lesson-right">
@@ -54,7 +45,6 @@
     <div id="course-sidebar-nav"></div>
   </aside>
 </div>
-
 <div id="site-footer"></div>
 <script src="course-config.js"></script>
 <script>
@@ -64,120 +54,491 @@ window.LAYOUT = {
   coursesUrl: '../../../index.html',
   navCta: { label: 'All Courses', url: '../../../index.html' }
 };
-try { localStorage.setItem('equineEduProgress.groomingHorses.testYourKnowledge', 'true'); } catch(e) {}
-
-const QUESTION_BANK = [
-  // Why grooming matters (8 questions)
-  {q:"Why is routine grooming considered essential daily horse care?",options:["It improves the horse's appearance for shows","It maintains skin health, supports circulation, and provides a daily opportunity to inspect the horse","It replaces the need for veterinary check-ups","It is required by all equestrian organizations"],answer:1},
-  {q:"What is the primary reason a horse should be groomed before riding?",options:["To make the horse look presentable","To remove debris under the saddle and girth that would cause rubs and sores during work","To calm the horse before training","To check the horse's weight"],answer:1},
-  {q:"How does grooming support a horse's circulation?",options:["By warming the coat with friction","The mechanical action of currying stimulates blood flow to the skin surface","By lowering the horse's heart rate","Grooming does not affect circulation"],answer:1},
-  {q:"What health problem is most commonly discovered during grooming?",options:["Lameness caused by bone fractures","New swellings, wounds, skin conditions, and hoof problems",  "Digestive issues","Respiratory conditions"],answer:1},
-  {q:"Why do domestic horses need regular grooming when wild horses do not?",options:["Domestic horses have weaker immune systems","Domestication has changed the horse's coat type","Domestic horses lose access to mutual grooming, rolling, and natural weather exposure that wild horses use for coat care","Domestic horses are kept in warmer environments"],answer:2},
-  {q:"A horse pulls away and pins its ears whenever a specific spot on its back is brushed. What does this most likely indicate?",options:["The horse dislikes grooming in general","The horse is poorly trained","The horse may have pain or sensitivity at that location","The brush being used is the wrong type"],answer:2},
-  {q:"Why should grooming tools be cleaned regularly?",options:["To prevent rust on metal tools","A dirty brush redistributes the debris it is meant to remove back onto the horse","Clean tools last longer","Regulations require it"],answer:1},
-  {q:"Why should each horse have its own grooming kit where possible?",options:["It is easier to organize the barn","Sharing grooming tools between horses can spread skin conditions","Horses prefer the smell of their own tools","It prevents theft"],answer:1},
-  // Grooming tools (12 questions)
-  {q:"What motion is used with the rubber curry comb?",options:["Long sweeping strokes in the direction of hair growth","Short flicking strokes against the hair","Circular motions on large muscle groups","Light tapping on sensitive areas"],answer:2},
-  {q:"Which areas should the rubber curry comb NOT be used on?",options:["The barrel and hindquarters","The neck and shoulders","The legs, face, and bony prominences","The back and topline"],answer:2},
-  {q:"What is the purpose of the dandy brush?",options:["To remove fine dust and add shine to the coat","To remove the dirt and debris loosened by the curry comb","To detangle the mane and tail","To clean around the horse's eyes"],answer:1},
-  {q:"Which brush is appropriate for use on the horse's face?",options:["The rubber curry comb","The dandy brush","The soft body brush","The sweat scraper"],answer:2},
-  {q:"How should the body brush be used during grooming?",options:["In circular motions on large muscle groups","In short flicking strokes against the hair","In long sweeping strokes following the direction of hair growth","In rapid back-and-forth strokes against the coat"],answer:2},
-  {q:"What is the purpose of the sweat scraper?",options:["To loosen caked-on dirt and debris","To remove water or sweat from the coat after bathing or heavy work","To smooth the mane and tail","To clean the hoof grooves"],answer:1},
-  {q:"A body brush is cleaned during use by:",options:["Rinsing it in a bucket of water","Knocking it against the stall door","Drawing it against a metal curry comb","Rubbing it against the horse's mane"],answer:2},
-  {q:"What tool is used to remove packed debris from the horse's hooves?",options:["Dandy brush","Sweat scraper","Hoof pick","Metal curry comb"],answer:2},
-  {q:"Which part of the hoof pick tool is used for cleaning the grooves of the hoof?",options:["The brush end","The pointed pick end","The handle","Either end works equally well"],answer:1},
-  {q:"What should a handler look for when the body brush leaves fine residue on the horse's coat after brushing?",options:["The coat needs conditioning","The brush may need to be cleaned — it is loaded with debris from previous strokes","The horse has a skin condition","The body brush is the wrong type for this horse"],answer:1},
-  {q:"Why is a dedicated face brush or soft sponge used around the horse's eyes and nostrils?",options:["These areas require more pressure than a standard brush provides","The skin and structures in these areas are delicate and sensitive to stiff bristles","Brushes with bristles cannot reach into these areas","Horses prefer the texture of sponges in these zones"],answer:1},
-  {q:"What additional tool is sometimes included on a hoof pick?",options:["A measuring ruler","A small brush for finishing the hoof surface","A thermometer","A hook for removing shoes"],answer:1},
-  // Grooming technique (12 questions)
-  {q:"What is the correct order for the grooming sequence?",options:["Body brush → curry → dandy → face → hooves → mane and tail","Curry → dandy brush → body brush → face → mane and tail → hooves","Hooves → face → curry → dandy → body brush → mane and tail","Mane and tail → curry → face → body brush → hooves → dandy"],answer:1},
-  {q:"Why should the tail be worked from the bottom upward when detangling?",options:["The bottom of the tail accumulates the most debris","Working upward prevents the handler from standing behind the horse","Working from the top down forces the comb through knots, breaking and pulling out significant amounts of hair","Horses prefer the sensation of bottom-up detangling"],answer:2},
-  {q:"In which direction is a horse's hoof picked?",options:["From toe to heel","From side to side","From heel to toe","In a circular motion"],answer:2},
-  {q:"Why is hoof picking done at every grooming session, not only when hooves look dirty?",options:["It is a regulation in competitive settings","Packed debris creates conditions for thrush, and hidden objects cause bruising and lameness that may not be visible before work","Daily picking strengthens the hoof wall","It is necessary to allow the horse's circulation to reach the foot"],answer:1},
-  {q:"Where should a handler stand when picking up a horse's hind leg?",options:["Directly behind the hindquarters at arm's length","Extended out to the side at arm's length","Close to the horse's hindquarter, facing toward the horse's tail","In front of the horse's flank, facing forward"],answer:2},
-  {q:"How should a handler move from one side of the horse to the other during grooming?",options:["Duck under the horse's neck","Walk behind the hindquarters quickly","Walk around the horse's head","Step over the lead rope"],answer:2},
-  {q:"What is the safety principle for staying close to a horse during grooming rather than at arm's length?",options:["A close handler applies more pressure with the brush","Staying close keeps the handler in contact with the horse's movements and reduces impact if the horse shifts","Horses groom each other at close range so it feels natural","Arm's-length grooming does not clean the coat thoroughly"],answer:1},
-  {q:"When grooming the horse's face, what is used around the eyes, nostrils, and dock?",options:["The dandy brush with light pressure","A rubber curry comb used gently","A damp sponge or cloth","The sweat scraper with water"],answer:2},
-  {q:"What should a handler do before moving around the horse during grooming?",options:["Tell the horse verbally where they are going","Establish contact by touching the horse's neck or shoulder to communicate position","Remove the lead rope so the horse can move freely","Ensure the horse is facing away"],answer:1},
-  {q:"What is thrush, and which grooming practice prevents it?",options:["A coat condition prevented by daily brushing","A bacterial hoof infection prevented by daily hoof picking and clean, dry footing","A skin condition prevented by using separate grooming kits","A mane condition prevented by regular detangling"],answer:1},
-  {q:"What does a foul smell from a horse's hoof grooves most likely indicate?",options:["The horse has been in wet grass","Thrush — a bacterial infection of the frog","The horse's feed has changed","The hoof needs trimming"],answer:1},
-  {q:"Why is it important to groom a horse consistently using the same sequence?",options:["Sequence affects which areas get the most cleaning","A consistent routine becomes predictable to the horse, reducing anxiety and making grooming easier over time","Different sequences are required for different coat types","The sequence affects how the tools are cleaned between uses"],answer:1},
-  // Health and observation (8 questions)
-  {q:"What health condition is caused by prolonged moisture on the horse's skin, appearing as matted hair tufts with crusty lesions?",options:["Thrush","Rain rot (rain scald)","Ringworm","Scratches"],answer:1},
-  {q:"Rain rot is contagious between horses. What grooming practice spreads it most commonly in a barn?",options:["Using the same water bucket","Shared grooming tools and equipment","Horses being turned out together","Using the same stall bedding"],answer:1},
-  {q:"What structure on the underside of the horse's hoof is most commonly affected by thrush?",options:["The hoof wall","The white line","The frog","The sole"],answer:2},
-  {q:"Which of the following is the clearest sign that a horse has developed thrush?",options:["The hoof wall is cracked","The sole is discolored","There is a dark, foul-smelling discharge from the grooves alongside the frog","The horse is lame in one front leg"],answer:2},
-  {q:"A handler notices a new swelling on a horse's lower leg during grooming. What is the correct response?",options:["Continue grooming and monitor it over the next week","Note the location, check for heat, and contact a veterinarian if swelling is significant or the horse shows signs of lameness","Apply a cold pack and begin the ride as planned","Bandage the leg before riding"],answer:1},
-  {q:"What is the term for the V-shaped rubbery structure on the underside of the horse's hoof?",options:["The sole","The white line","The frog","The heel bulb"],answer:2},
-  {q:"A horse that is gently and consistently handled during grooming becomes more comfortable with which other activities?",options:["Jumping and cross-country work","Veterinary examinations and farrier visits","Feed changes and turnout adjustments","Competitive trail riding"],answer:1},
-  {q:"Why does grooming before work — rather than only after — matter for the horse's welfare?",options:["A sweaty coat is harder to groom effectively","Pre-work grooming removes debris before it is pressed under tack, and allows detection of injury before the horse is asked to perform","Post-work grooming is less important for hygiene","Horses are calmer when groomed after work"],answer:1}
-];
-
-const QC = 15;
-let selectedQuestions = [];
-
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.groomingHorses.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "Why is routine grooming considered essential daily horse care?",
+    "opts": [
+      "It improves the horse's appearance for shows",
+      "It maintains skin health, supports circulation, and provides a daily opportunity to inspect the horse",
+      "It replaces the need for veterinary check-ups",
+      "It is required by all equestrian organizations"
+    ],
+    "a": "It maintains skin health, supports circulation, and provides a daily opportunity to inspect the horse",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It maintains skin health, supports circulation, and provides a daily opportunity to inspect the horse."
+  },
+  {
+    "q": "What is the primary reason a horse should be groomed before riding?",
+    "opts": [
+      "To make the horse look presentable",
+      "To remove debris under the saddle and girth that would cause rubs and sores during work",
+      "To calm the horse before training",
+      "To check the horse's weight"
+    ],
+    "a": "To remove debris under the saddle and girth that would cause rubs and sores during work",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is To remove debris under the saddle and girth that would cause rubs and sores during work."
+  },
+  {
+    "q": "How does grooming help a horse's blood flow?",
+    "opts": [
+      "By warming the coat with friction",
+      "Currying helps increase blood flow near the skin",
+      "By lowering the horse's heart rate",
+      "Grooming does not affect blood flow"
+    ],
+    "a": "Currying helps increase blood flow near the skin",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Currying helps increase blood flow near the skin."
+  },
+  {
+    "q": "What health problem is most commonly discovered during grooming?",
+    "opts": [
+      "Lameness caused by bone fractures",
+      "New swellings, wounds, skin conditions, and hoof problems",
+      "Digestive issues",
+      "Respiratory conditions"
+    ],
+    "a": "New swellings, wounds, skin conditions, and hoof problems",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is New swellings, wounds, skin conditions, and hoof problems."
+  },
+  {
+    "q": "Why do domestic horses need regular grooming when wild horses do not?",
+    "opts": [
+      "Domestic horses have weaker immune systems",
+      "Domestication has changed the horse's coat type",
+      "Domestic horses lose access to mutual grooming, rolling, and natural weather exposure that wild horses use for coat care",
+      "Domestic horses are kept in warmer environments"
+    ],
+    "a": "Domestic horses lose access to mutual grooming, rolling, and natural weather exposure that wild horses use for coat care",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Domestic horses lose access to mutual grooming, rolling, and natural weather exposure that wild horses use for coat care."
+  },
+  {
+    "q": "A horse pulls away and pins its ears whenever a specific spot on its back is brushed. What does this most likely indicate?",
+    "opts": [
+      "The horse dislikes grooming in general",
+      "The horse is poorly trained",
+      "The horse may have pain or sensitivity at that location",
+      "The brush being used is the wrong type"
+    ],
+    "a": "The horse may have pain or sensitivity at that location",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The horse may have pain or sensitivity at that location."
+  },
+  {
+    "q": "Why should grooming tools be cleaned regularly?",
+    "opts": [
+      "To prevent rust on metal tools",
+      "A dirty brush redistributes the debris it is meant to remove back onto the horse",
+      "Clean tools last longer",
+      "Regulations require it"
+    ],
+    "a": "A dirty brush redistributes the debris it is meant to remove back onto the horse",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A dirty brush redistributes the debris it is meant to remove back onto the horse."
+  },
+  {
+    "q": "Why should each horse have its own grooming kit where possible?",
+    "opts": [
+      "It is easier to organize the barn",
+      "Sharing grooming tools between horses can spread skin conditions",
+      "Horses prefer the smell of their own tools",
+      "It prevents theft"
+    ],
+    "a": "Sharing grooming tools between horses can spread skin conditions",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Sharing grooming tools between horses can spread skin conditions."
+  },
+  {
+    "q": "What motion is used with the rubber curry comb?",
+    "opts": [
+      "Long sweeping strokes in the direction of hair growth",
+      "Short flicking strokes against the hair",
+      "Circular motions on large muscle groups",
+      "Light tapping on sensitive areas"
+    ],
+    "a": "Circular motions on large muscle groups",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Circular motions on large muscle groups."
+  },
+  {
+    "q": "Which areas should the rubber curry comb NOT be used on?",
+    "opts": [
+      "The barrel and hindquarters",
+      "The neck and shoulders",
+      "The legs, face, and bones",
+      "The back and body"
+    ],
+    "a": "The legs, face, and bones",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The legs, face, and bones."
+  },
+  {
+    "q": "What is the purpose of the dandy brush?",
+    "opts": [
+      "To remove fine dust and add shine to the coat",
+      "To remove the dirt and debris loosened by the curry comb",
+      "To detangle the mane and tail",
+      "To clean around the horse's eyes"
+    ],
+    "a": "To remove the dirt and debris loosened by the curry comb",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is To remove the dirt and debris loosened by the curry comb."
+  },
+  {
+    "q": "Which brush is appropriate for use on the horse's face?",
+    "opts": [
+      "The rubber curry comb",
+      "The dandy brush",
+      "The soft body brush",
+      "The sweat scraper"
+    ],
+    "a": "The soft body brush",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The soft body brush."
+  },
+  {
+    "q": "How should the body brush be used during grooming?",
+    "opts": [
+      "In circular motions on large muscle groups",
+      "In short flicking strokes against the hair",
+      "In long sweeping strokes following the direction of hair growth",
+      "In rapid back-and-forth strokes against the coat"
+    ],
+    "a": "In long sweeping strokes following the direction of hair growth",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is In long sweeping strokes following the direction of hair growth."
+  },
+  {
+    "q": "What is the purpose of the sweat scraper?",
+    "opts": [
+      "To loosen caked-on dirt and debris",
+      "To remove water or sweat from the coat after bathing or heavy work",
+      "To smooth the mane and tail",
+      "To clean the hoof grooves"
+    ],
+    "a": "To remove water or sweat from the coat after bathing or heavy work",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is To remove water or sweat from the coat after bathing or heavy work."
+  },
+  {
+    "q": "How should a brush be kept clean during grooming?",
+    "opts": [
+      "Rinse it in the water trough",
+      "Knock the dirt out of it as you go",
+      "Leave it dirty until the end",
+      "Wipe it on the horse's mane"
+    ],
+    "a": "Knock the dirt out of it as you go",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Knock the dirt out of it as you go."
+  },
+  {
+    "q": "What tool is used to remove packed dirt from the horse's hooves?",
+    "opts": [
+      "Dandy brush",
+      "Sweat scraper",
+      "Hoof pick",
+      "Rubber curry comb"
+    ],
+    "a": "Hoof pick",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Hoof pick."
+  },
+  {
+    "q": "Which part of the hoof pick is used to clean out the hoof?",
+    "opts": [
+      "The pointed pick end",
+      "The handle",
+      "The flat back",
+      "The strap"
+    ],
+    "a": "The pointed pick end",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The pointed pick end."
+  },
+  {
+    "q": "What should a handler look for when the body brush leaves fine residue on the horse's coat after brushing?",
+    "opts": [
+      "The coat needs conditioning",
+      "The brush may need to be cleaned — it is loaded with debris from previous strokes",
+      "The horse has a skin condition",
+      "The body brush is the wrong type for this horse"
+    ],
+    "a": "The brush may need to be cleaned — it is loaded with debris from previous strokes",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The brush may need to be cleaned — it is loaded with debris from previous strokes."
+  },
+  {
+    "q": "Why is a dedicated face brush or soft sponge used around the horse's eyes and nostrils?",
+    "opts": [
+      "These areas require more pressure than a standard brush provides",
+      "The skin and structures in these areas are delicate and sensitive to stiff bristles",
+      "Brushes with bristles cannot reach into these areas",
+      "Horses prefer the texture of sponges in these zones"
+    ],
+    "a": "The skin and structures in these areas are delicate and sensitive to stiff bristles",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The skin and structures in these areas are delicate and sensitive to stiff bristles."
+  },
+  {
+    "q": "How often should a horse's hooves be picked?",
+    "opts": [
+      "Only when they look dirty",
+      "At every grooming session, before and after riding",
+      "Once a week",
+      "Only by a farrier"
+    ],
+    "a": "At every grooming session, before and after riding",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is At every grooming session, before and after riding."
+  },
+  {
+    "q": "What is the correct order for the grooming sequence?",
+    "opts": [
+      "Body brush → curry → dandy → face → hooves → mane and tail",
+      "Curry → dandy brush → body brush → face → mane and tail → hooves",
+      "Hooves → face → curry → dandy → body brush → mane and tail",
+      "Mane and tail → curry → face → body brush → hooves → dandy"
+    ],
+    "a": "Curry → dandy brush → body brush → face → mane and tail → hooves",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Curry → dandy brush → body brush → face → mane and tail → hooves."
+  },
+  {
+    "q": "Why should the tail be worked from the bottom upward when detangling?",
+    "opts": [
+      "The bottom of the tail accumulates the most debris",
+      "Working upward prevents the handler from standing behind the horse",
+      "Working from the top down forces the comb through knots, breaking and pulling out significant amounts of hair",
+      "Horses prefer the sensation of bottom-up detangling"
+    ],
+    "a": "Working from the top down forces the comb through knots, breaking and pulling out significant amounts of hair",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Working from the top down forces the comb through knots, breaking and pulling out significant amounts of hair."
+  },
+  {
+    "q": "In which direction is a horse's hoof picked?",
+    "opts": [
+      "From toe to heel",
+      "From side to side",
+      "From heel to toe",
+      "In a circular motion"
+    ],
+    "a": "From heel to toe",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is From heel to toe."
+  },
+  {
+    "q": "Why is hoof picking done at every grooming session, not only when hooves look dirty?",
+    "opts": [
+      "It is a regulation in competitive settings",
+      "Packed debris creates conditions for thrush, and hidden objects cause bruising and lameness that may not be visible before work",
+      "Daily picking strengthens the hoof wall",
+      "It is necessary to allow the horse's circulation to reach the foot"
+    ],
+    "a": "Packed debris creates conditions for thrush, and hidden objects cause bruising and lameness that may not be visible before work",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Packed debris creates conditions for thrush, and hidden objects cause bruising and lameness that may not be visible before work."
+  },
+  {
+    "q": "Where should a handler stand when picking up a horse's hind leg?",
+    "opts": [
+      "Directly behind the hindquarters at arm's length",
+      "Extended out to the side at arm's length",
+      "Close to the horse's hindquarter, facing toward the horse's tail",
+      "In front of the horse's flank, facing forward"
+    ],
+    "a": "Close to the horse's hindquarter, facing toward the horse's tail",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Close to the horse's hindquarter, facing toward the horse's tail."
+  },
+  {
+    "q": "How should a handler move from one side of the horse to the other during grooming?",
+    "opts": [
+      "Duck under the horse's neck",
+      "Walk behind the hindquarters quickly",
+      "Walk around the horse's head",
+      "Step over the lead rope"
+    ],
+    "a": "Walk around the horse's head",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Walk around the horse's head."
+  },
+  {
+    "q": "What is the safety principle for staying close to a horse during grooming rather than at arm's length?",
+    "opts": [
+      "A close handler applies more pressure with the brush",
+      "Staying close keeps the handler in contact with the horse's movements and reduces impact if the horse shifts",
+      "Horses groom each other at close range so it feels natural",
+      "Arm's-length grooming does not clean the coat thoroughly"
+    ],
+    "a": "Staying close keeps the handler in contact with the horse's movements and reduces impact if the horse shifts",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Staying close keeps the handler in contact with the horse's movements and reduces impact if the horse shifts."
+  },
+  {
+    "q": "When grooming the horse's face, what is used around the eyes and nostrils?",
+    "opts": [
+      "The dandy brush with light pressure",
+      "A rubber curry comb used gently",
+      "A damp sponge or cloth",
+      "The sweat scraper with water"
+    ],
+    "a": "A damp sponge or cloth",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A damp sponge or cloth."
+  },
+  {
+    "q": "What should a handler do before moving around the horse during grooming?",
+    "opts": [
+      "Tell the horse verbally where they are going",
+      "Establish contact by touching the horse's neck or shoulder to communicate position",
+      "Remove the lead rope so the horse can move freely",
+      "Ensure the horse is facing away"
+    ],
+    "a": "Establish contact by touching the horse's neck or shoulder to communicate position",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Establish contact by touching the horse's neck or shoulder to communicate position."
+  },
+  {
+    "q": "What is thrush, and which grooming practice prevents it?",
+    "opts": [
+      "A coat condition prevented by daily brushing",
+      "A bacterial hoof infection prevented by daily hoof picking and clean, dry footing",
+      "A skin condition prevented by using separate grooming kits",
+      "A mane condition prevented by regular detangling"
+    ],
+    "a": "A bacterial hoof infection prevented by daily hoof picking and clean, dry footing",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A bacterial hoof infection prevented by daily hoof picking and clean, dry footing."
+  },
+  {
+    "q": "What does a foul smell from a horse's hoof grooves most likely indicate?",
+    "opts": [
+      "The horse has been in wet grass",
+      "Thrush — a bacterial infection of the frog",
+      "The horse's feed has changed",
+      "The hoof needs trimming"
+    ],
+    "a": "Thrush — a bacterial infection of the frog",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Thrush — a bacterial infection of the frog."
+  },
+  {
+    "q": "Why is it important to groom a horse consistently using the same sequence?",
+    "opts": [
+      "Sequence affects which areas get the most cleaning",
+      "A consistent routine becomes predictable to the horse, reducing anxiety and making grooming easier over time",
+      "Different sequences are required for different coat types",
+      "The sequence affects how the tools are cleaned between uses"
+    ],
+    "a": "A consistent routine becomes predictable to the horse, reducing anxiety and making grooming easier over time",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A consistent routine becomes predictable to the horse, reducing anxiety and making grooming easier over time."
+  },
+  {
+    "q": "What skin condition is caused by too much moisture, showing as scabby, matted patches in the coat?",
+    "opts": [
+      "Thrush",
+      "Rain rot (rain scald)",
+      "Ringworm",
+      "Scratches"
+    ],
+    "a": "Rain rot (rain scald)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Rain rot (rain scald)."
+  },
+  {
+    "q": "Rain rot is contagious between horses. What grooming practice spreads it most commonly in a barn?",
+    "opts": [
+      "Using the same water bucket",
+      "Shared grooming tools and equipment",
+      "Horses being turned out together",
+      "Using the same stall bedding"
+    ],
+    "a": "Shared grooming tools and equipment",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Shared grooming tools and equipment."
+  },
+  {
+    "q": "What structure on the underside of the horse's hoof is most commonly affected by thrush?",
+    "opts": [
+      "The hoof wall",
+      "The white line",
+      "The frog",
+      "The sole"
+    ],
+    "a": "The frog",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The frog."
+  },
+  {
+    "q": "Which of the following is the clearest sign that a horse has developed thrush?",
+    "opts": [
+      "The hoof wall is cracked",
+      "The sole is discolored",
+      "There is a dark, foul-smelling discharge from the grooves alongside the frog",
+      "The horse is lame in one front leg"
+    ],
+    "a": "There is a dark, foul-smelling discharge from the grooves alongside the frog",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is There is a dark, foul-smelling discharge from the grooves alongside the frog."
+  },
+  {
+    "q": "A handler notices a new swelling on a horse's lower leg during grooming. What is the correct response?",
+    "opts": [
+      "Continue grooming and monitor it over the next week",
+      "Note the location, check for heat, and contact a veterinarian if swelling is significant or the horse shows signs of lameness",
+      "Apply a cold pack and begin the ride as planned",
+      "Bandage the leg before riding"
+    ],
+    "a": "Note the location, check for heat, and contact a veterinarian if swelling is significant or the horse shows signs of lameness",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Note the location, check for heat, and contact a veterinarian if swelling is significant or the horse shows signs of lameness."
+  },
+  {
+    "q": "What is the term for the V-shaped rubbery structure on the underside of the horse's hoof?",
+    "opts": [
+      "The sole",
+      "The white line",
+      "The frog",
+      "The heel bulb"
+    ],
+    "a": "The frog",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The frog."
+  },
+  {
+    "q": "A horse that is gently and consistently handled during grooming becomes more comfortable with which other activities?",
+    "opts": [
+      "Jumping and cross-country work",
+      "Veterinary examinations and farrier visits",
+      "Feed changes and turnout adjustments",
+      "Competitive trail riding"
+    ],
+    "a": "Veterinary examinations and farrier visits",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Veterinary examinations and farrier visits."
+  },
+  {
+    "q": "Why does grooming before work — rather than only after — matter for the horse's welfare?",
+    "opts": [
+      "A sweaty coat is harder to groom effectively",
+      "Pre-work grooming removes debris before it is pressed under tack, and allows detection of injury before the horse is asked to perform",
+      "Post-work grooming is less important for hygiene",
+      "Horses are calmer when groomed after work"
+    ],
+    "a": "Pre-work grooming removes debris before it is pressed under tack, and allows detection of injury before the horse is asked to perform",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Pre-work grooming removes debris before it is pressed under tack, and allows detection of injury before the horse is asked to perform."
   }
-  return a;
-}
-
-function startQuiz() {
-  selectedQuestions = shuffle(QUESTION_BANK).slice(0, QC);
-  const container = document.getElementById('questions-container');
-  container.innerHTML = '';
-  selectedQuestions.forEach((q, i) => {
-    const shuffledOptions = shuffle(q.options.map((o, idx) => ({ text: o, origIdx: idx })));
-    const correctShuffledIdx = shuffledOptions.findIndex(o => o.origIdx === q.answer);
-    const div = document.createElement('div');
-    div.className = 'quiz-question';
-    div.dataset.correct = correctShuffledIdx;
-    div.innerHTML = `<p class="q-text"><strong>${i + 1}.</strong> ${q.q}</p>
-      <div class="q-options">${shuffledOptions.map((o, oi) => `
-          <label class="q-option"><input type="radio" name="q${i}" value="${oi}" required><span>${o.text}</span></label>`).join('')}
-      </div>`;
-    container.appendChild(div);
-  });
-  document.getElementById('quiz-start').style.display = 'none';
-  document.getElementById('quiz-form').style.display = 'block';
-  window.scrollTo(0, 0);
-}
-
-function scoreQuiz(e) {
-  e.preventDefault();
-  const questions = document.querySelectorAll('.quiz-question');
-  let score = 0;
-  let breakdown = '';
-  questions.forEach((qDiv, i) => {
-    const selected = qDiv.querySelector(`input[name="q${i}"]:checked`);
-    const correct = parseInt(qDiv.dataset.correct);
-    const selectedVal = selected ? parseInt(selected.value) : -1;
-    const isCorrect = selectedVal === correct;
-    if (isCorrect) score++;
-    const optionLabels = qDiv.querySelectorAll('.q-option span');
-    const correctText = optionLabels[correct] ? optionLabels[correct].textContent : '';
-    breakdown += `<div class="result-item ${isCorrect ? 'correct' : 'incorrect'}">
-      <p><strong>${i + 1}.</strong> ${selectedQuestions[i].q}</p>
-      <p class="result-verdict">${isCorrect ? '&#10003; Correct' : `&#10007; Incorrect &mdash; Correct answer: ${correctText}`}</p>
-    </div>`;
-  });
-  document.getElementById('score-value').textContent = `${score}/15`;
-  document.getElementById('results-breakdown').innerHTML = breakdown;
-  document.getElementById('quiz-form').style.display = 'none';
-  document.getElementById('quiz-results').style.display = 'block';
-  window.scrollTo(0, 0);
-}
-
-document.getElementById('start-btn').addEventListener('click', startQuiz);
-document.getElementById('quiz-form').addEventListener('submit', scoreQuiz);
-document.getElementById('retake-btn').addEventListener('click', () => {
-  document.getElementById('quiz-results').style.display = 'none';
-  startQuiz();
-});
+];
 </script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/supabase-client.js"></script>
 <script src="../../../../assets/js/paywall.js"></script>

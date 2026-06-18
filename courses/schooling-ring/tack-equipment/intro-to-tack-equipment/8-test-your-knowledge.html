@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge — Introduction to Tack &amp; Equipment — Equine EDU</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+</head>
+<body class="ee-page-courses-schooling-ring-tack-equipment-intro-to-tack-equipment-8-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Introduction to Tack &amp; Equipment</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 7;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'All Courses', url: '../../../index.html' }
+};
+window.EE_QUIZ_CONFIG = { questionCount: 15 };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is tack?",
+    "opts": [
+      "Any equipment placed on a horse to enable riding, driving, or safe handling",
+      "Only the saddle and bridle used for mounted riding",
+      "Feed and grooming supplies kept in the tack room",
+      "Equipment used exclusively for competition horses"
+    ],
+    "a": "Any equipment placed on a horse to enable riding, driving, or safe handling",
+    "ok": "Correct. Tack includes the saddle, bridle, halter, lead rope, and all related accessories — anything placed on the horse for riding, driving, or handling.",
+    "no": "Tack is any equipment placed on a horse to enable riding, driving, or safe handling. This includes halters, lead ropes, and protective equipment, not only saddles and bridles."
+  },
+  {
+    "q": "What is the difference between riding tack and handling tack?",
+    "opts": [
+      "Riding tack (saddle, bridle) is for mounted work; handling tack (halter, lead rope) is for ground control",
+      "Riding tack is leather; handling tack is always nylon",
+      "Riding tack is used only in competition; handling tack is used only in the barn",
+      "There is no meaningful distinction — both terms refer to the same equipment"
+    ],
+    "a": "Riding tack (saddle, bridle) is for mounted work; handling tack (halter, lead rope) is for ground control",
+    "ok": "Correct. Riding tack enables mounted communication; handling tack enables safe ground control. Both categories are essential to daily horse management.",
+    "no": "Riding tack (saddle, bridle) is for mounted work. Handling tack (halter, lead rope) is for ground control. Protective equipment — boots, blankets — is a third category."
+  },
+  {
+    "q": "Why does a halter fit matter, and what is correct halter fit?",
+    "opts": [
+      "Two fingers under the noseband and four fingers under the crownpiece — too loose catches on objects, too tight causes abrasion",
+      "Only the noseband fit matters; the crownpiece can be any tightness",
+      "A halter should fit loosely to allow free head movement at all times",
+      "Halter fit only matters for horses in active work, not those in turnout"
+    ],
+    "a": "Two fingers under the noseband and four fingers under the crownpiece — too loose catches on objects, too tight causes abrasion",
+    "ok": "Correct. A halter too loose can catch on fence boards, gates, or other objects during turnout, causing panic and injury. Too tight causes skin abrasion and chronic discomfort.",
+    "no": "Correct halter fit: two fingers under noseband, four fingers under crownpiece. Too loose risks catching on objects; too tight causes abrasion."
+  },
+  {
+    "q": "What is a cinch, and how does it relate to a girth?",
+    "opts": [
+      "A cinch is the Western term for what English riders call a girth — both hold the saddle on the horse",
+      "A cinch is placed around the horse's neck for driving; a girth is placed around the barrel for riding",
+      "A cinch attaches to the front of the saddle; a girth attaches to the back",
+      "A cinch is leather only; a girth can be leather or synthetic"
+    ],
+    "a": "A cinch is the Western term for what English riders call a girth — both hold the saddle on the horse",
+    "ok": "Correct. Both terms describe the strap that encircles the barrel behind the elbow to hold the saddle in place. The function is identical; the terminology differs by discipline.",
+    "no": "Cinch (Western) and girth (English) both refer to the strap that holds the saddle on the horse by encircling the barrel behind the elbow."
+  },
+  {
+    "q": "What is the primary purpose of the saddle?",
+    "opts": [
+      "To distribute the rider's weight evenly across a broad area of the horse's back, protecting the spine while providing a stable seat",
+      "To amplify the rider's leg aids and transmit them to the horse",
+      "To prevent the rider from being thrown during sudden movements",
+      "To elevate the rider above the horse's center of gravity for better control"
+    ],
+    "a": "To distribute the rider's weight evenly across a broad area of the horse's back, protecting the spine while providing a stable seat",
+    "ok": "Correct. The saddle's central purpose is weight distribution — spreading the rider's weight across a broad surface area rather than concentrating it at a single point.",
+    "no": "The saddle's primary purpose is to distribute the rider's weight evenly across the horse's back, protecting the spine from concentrated loading."
+  },
+  {
+    "q": "Why does the bridle work as a communication device rather than a control device?",
+    "opts": [
+      "A horse cannot be physically forced into movement through rein pressure — the bridle works because the horse has been trained to yield to specific pressures and seek their release",
+      "A bridle physically prevents the horse from turning the wrong direction through mechanical restriction",
+      "The bit causes enough discomfort to override the horse's natural inclinations",
+      "A horse learns to read the rider's intentions before rein pressure is applied"
+    ],
+    "a": "A horse cannot be physically forced into movement through rein pressure — the bridle works because the horse has been trained to yield to specific pressures and seek their release",
+    "ok": "Correct. The bridle is a communication device. It works because the horse has learned to move away from specific pressures and to seek release. Force through a bridle produces resistance, not trained movement.",
+    "no": "The bridle is a communication device, not a control device. It works because the horse is trained to yield to pressure and seek its release — not because rein pressure physically forces the horse to move."
+  },
+  {
+    "q": "What are the two main pieces of riding tack?",
+    "opts": [
+      "The saddle and the bridle",
+      "The halter and the lead rope",
+      "Boots and blankets",
+      "The harness and long driving lines"
+    ],
+    "a": "The saddle and the bridle",
+    "ok": "Correct. Riding tack is made up of the saddle and the bridle. The saddle spreads the rider's weight; the bridle helps the rider communicate cues.",
+    "no": "The two main pieces of riding tack are the saddle and the bridle. The halter and lead rope are handling equipment."
+  },
+  {
+    "q": "What makes driving tack different from riding tack?",
+    "opts": [
+      "Driving tack uses a harness instead of a saddle and bridle — it helps the horse pull weight while the driver guides it",
+      "Driving tack is lighter and uses smaller bits than riding tack",
+      "Driving harness includes a saddle but no bridle, as drivers use voice commands only",
+      "Driving tack is identical to riding tack with the addition of long reins"
+    ],
+    "a": "Driving tack uses a harness instead of a saddle and bridle — it helps the horse pull weight while the driver guides it",
+    "ok": "Correct. Horses that pull carts or carriages wear a harness instead of a saddle. Driving tack helps the horse pull weight comfortably while the driver guides it.",
+    "no": "Driving tack uses a harness in place of a saddle and bridle. It helps the horse pull weight comfortably while the driver guides the horse."
+  },
+  {
+    "q": "What is the tree of a saddle?",
+    "opts": [
+      "The internal rigid frame that determines the saddle's shape and how weight is distributed",
+      "The leather covering over the seat",
+      "The girth attachment point on the underside of the saddle",
+      "The strap connecting the saddle to the stirrups"
+    ],
+    "a": "The internal rigid frame that determines the saddle's shape and how weight is distributed",
+    "ok": "Correct. The tree is the internal frame — made of wood, fiberglass, or synthetic material — that gives the saddle its shape and governs weight distribution across the horse's back.",
+    "no": "The tree is the saddle's internal frame. It determines shape, size, and how weight is distributed. Everything else attaches to or covers the tree."
+  },
+  {
+    "q": "What are the two most critical dimensions in saddle fit?",
+    "opts": [
+      "Tree width (matching the horse's shoulder and back) and tree angle (matching the angle of the horse's shoulder)",
+      "Seat size and stirrup length",
+      "Girth length and panel density",
+      "Saddle weight and seat depth"
+    ],
+    "a": "Tree width (matching the horse's shoulder and back) and tree angle (matching the angle of the horse's shoulder)",
+    "ok": "Correct. Tree width and tree angle are the foundational fit dimensions. If either is wrong, no amount of padding or adjustment produces correct fit — the saddle must be changed.",
+    "no": "The two critical saddle fit dimensions are tree width and tree angle. Both must match the individual horse's shoulder and back. These cannot be corrected by padding."
+  },
+  {
+    "q": "What is bridging in saddle fit?",
+    "opts": [
+      "The saddle contacts only the front and back of the horse's back, with a gap in the middle where the panels do not touch",
+      "The saddle's panels extend too far under the horse's ribcage",
+      "The pommel sits too close to the withers, creating constant pressure",
+      "The cantle is angled forward rather than level"
+    ],
+    "a": "The saddle contacts only the front and back of the horse's back, with a gap in the middle where the panels do not touch",
+    "ok": "Correct. Bridging concentrates pressure at two small areas instead of distributing it evenly. Dry spots in the middle of the sweat pattern after riding indicate bridging.",
+    "no": "Bridging means the saddle contacts only the front and rear of the horse's back, skipping the middle. Pressure concentrates at two points rather than distributing evenly — it cannot be corrected by adding padding."
+  },
+  {
+    "q": "After a ride, what does an uneven sweat pattern under the saddle area indicate?",
+    "opts": [
+      "Uneven pressure distribution — dry spots show either concentrated pressure or no contact",
+      "Normal variation in coat thickness across the horse's back",
+      "A reaction to the saddle's cleaning products",
+      "Good fit — an even coat of sweat indicates the saddle is working well"
+    ],
+    "a": "Uneven pressure distribution — dry spots show either concentrated pressure or no contact",
+    "ok": "Correct. Dry spots in the sweat pattern show where the saddle applied so much pressure that sweat was squeezed out, or where the panel didn't contact the back at all. An even sweat pattern indicates even pressure distribution.",
+    "no": "An uneven sweat pattern indicates uneven saddle pressure. Dry spots = either concentrated pressure that squeezed out sweat, or a gap in panel contact. Even sweat = even pressure distribution."
+  },
+  {
+    "q": "What do white hairs under a saddle area indicate?",
+    "opts": [
+      "Long-term pressure on the same spot — white hairs are permanent and show a history of poor fit",
+      "Normal coat variation that appears on most horses after regular work",
+      "The horse has sensitive skin in that area requiring extra padding",
+      "Recent abrasion from a new saddle that has not yet broken in"
+    ],
+    "a": "Long-term pressure on the same spot — white hairs are permanent and show a history of poor fit",
+    "ok": "Correct. White hairs can appear when a saddle repeatedly presses too hard on the same area. They are permanent and should always be taken seriously.",
+    "no": "White hairs under the saddle area are a sign of long-term pressure. They are permanent and signal a history of poor saddle fit."
+  },
+  {
+    "q": "Which of these is a sign of good saddle fit?",
+    "opts": [
+      "The saddle sits level and leaves space between the withers and the pommel",
+      "The saddle presses firmly along the spine",
+      "The back is dry on only one side after riding",
+      "The saddle tilts down toward the tail"
+    ],
+    "a": "The saddle sits level and leaves space between the withers and the pommel",
+    "ok": "Correct. A well-fitted saddle sits level, leaves space between the withers and the pommel, avoids pressing on the spine, and makes even contact along the back.",
+    "no": "A well-fitted saddle sits level, leaves space between the withers and the pommel, avoids the spine, and contacts the back evenly."
+  },
+  {
+    "q": "Why does adding more padding NOT fix a saddle that bridges?",
+    "opts": [
+      "Over-padding raises the saddle higher, potentially creating more concentrated pressure at the front and back contact points — the tree itself must fit",
+      "Padding is always effective for minor fit issues — bridging requires professional evaluation only for severe cases",
+      "Adding more padding increases overall pressure, which can help the horse adapt to the saddle",
+      "Padding reduces the effectiveness of the tree and makes all fit issues worse"
+    ],
+    "a": "Over-padding raises the saddle higher, potentially creating more concentrated pressure at the front and back contact points — the tree itself must fit",
+    "ok": "Correct. Adding padding under a bridging saddle raises it and can actually worsen the problem by increasing contact pressure at the two bridging points. The tree must fit the horse's back curvature.",
+    "no": "Over-padding does not fix bridging — it raises the saddle and can increase pressure at the bridging contact points. The tree itself must match the horse's back curve."
+  },
+  {
+    "q": "What is the pommel of a saddle?",
+    "opts": [
+      "The front raised arch of the saddle",
+      "The rear raised arch of the saddle",
+      "The padded underside that contacts the horse's back",
+      "The internal rigid frame"
+    ],
+    "a": "The front raised arch of the saddle",
+    "ok": "Correct. The pommel is the front raised arch. In Western saddles, the pommel includes a horn. The cantle is the rear raised arch.",
+    "no": "The pommel is the front raised arch of the saddle. The cantle is the rear raised arch."
+  },
+  {
+    "q": "What does the cantle of a saddle do?",
+    "opts": [
+      "Forms the rear raised arch of the seat, supporting the rider's position",
+      "Holds the stirrup bars on either side of the saddle",
+      "Distributes weight across the panels under the seat",
+      "Connects the front arch to the girth straps"
+    ],
+    "a": "Forms the rear raised arch of the seat, supporting the rider's position",
+    "ok": "Correct. The cantle is the raised rear portion of the saddle seat. It helps keep the rider's weight centered and back secure.",
+    "no": "The cantle is the rear raised arch of the saddle seat. The pommel is the front raised arch."
+  },
+  {
+    "q": "What does a Western saddle have that an English saddle does not?",
+    "opts": [
+      "A horn on the pommel, designed for roping work and providing a grip point",
+      "A deeper, cushioned seat for long hours of riding",
+      "Integrated stirrups that cannot be removed",
+      "A wider gullet channel to protect the spine"
+    ],
+    "a": "A horn on the pommel, designed for roping work and providing a grip point",
+    "ok": "Correct. The horn is the defining structural difference between Western and English saddles. It originated as a working tool for dallying rope during cattle work.",
+    "no": "The horn on the pommel is the defining feature of a Western saddle. English saddles have no horn."
+  },
+  {
+    "q": "What is the Western term for the strap that holds the saddle on the horse?",
+    "opts": [
+      "Cinch",
+      "Girth",
+      "Surcingle",
+      "Crupper"
+    ],
+    "a": "Cinch",
+    "ok": "Correct. In Western tack, the strap that encircles the barrel to hold the saddle is called the cinch. English riders use the term girth for the same piece of equipment.",
+    "no": "The Western term is cinch. English riders call it a girth. Both encircle the barrel behind the elbow to hold the saddle in place."
+  },
+  {
+    "q": "What does the crownpiece of a bridle do?",
+    "opts": [
+      "It rests over the poll and anchors the entire headstall",
+      "It crosses the horse's forehead and prevents the bridle from sliding back",
+      "It buckles under the jaw to keep the headstall from coming forward",
+      "It connects the bit to the rein"
+    ],
+    "a": "It rests over the poll and anchors the entire headstall",
+    "ok": "Correct. The crownpiece rests over the poll — the highest point of the horse's head — and is the primary anchor for all other headstall components.",
+    "no": "The crownpiece rests over the poll and anchors the headstall. The browband crosses the forehead. The throatlatch buckles under the jaw."
+  },
+  {
+    "q": "What does the browband do?",
+    "opts": [
+      "It crosses the horse's forehead and prevents the crownpiece from sliding backward off the poll",
+      "It buckles under the jaw and keeps the headstall from coming forward",
+      "It connects the cheekpieces to the noseband",
+      "It holds the bit at the correct height in the mouth"
+    ],
+    "a": "It crosses the horse's forehead and prevents the crownpiece from sliding backward off the poll",
+    "ok": "Correct. The browband sits across the forehead just below the ears. Without it, the crownpiece and entire headstall would slide backward off the poll.",
+    "no": "The browband crosses the forehead and prevents the crownpiece from sliding backward. The throatlatch (not the browband) prevents it from coming forward."
+  },
+  {
+    "q": "What does the throatlatch do, and how should it fit?",
+    "opts": [
+      "It fastens under the throat to keep the bridle from slipping off; it should be loose enough to fit several fingers",
+      "It holds the bit at the correct height; correct fit creates one to two wrinkles at the lip corner",
+      "It encircles the nose to stabilize the head and jaw; it should allow two fingers under it",
+      "It connects the reins to the bit rings and should be adjusted for rein length"
+    ],
+    "a": "It fastens under the throat to keep the bridle from slipping off; it should be loose enough to fit several fingers",
+    "ok": "Correct. The throatlatch fastens under the throat and keeps the bridle from slipping off. It should be loose enough to fit several fingers between the strap and the throat.",
+    "no": "The throatlatch fastens under the throat to keep the bridle from slipping off. It should be loose enough for several fingers to fit between the strap and the horse's throat."
+  },
+  {
+    "q": "What is the correct bit height for a snaffle, and how is it adjusted?",
+    "opts": [
+      "One to two wrinkles at the corner of the mouth; adjusted at the cheekpiece buckles",
+      "Three to four wrinkles at the lip corner; adjusted by shortening the reins",
+      "The bit should rest on the bars with no lip wrinkles at all; adjusted by lengthening the cheekpieces",
+      "The bit should just clear the teeth with no contact at rest; adjusted by raising the crownpiece"
+    ],
+    "a": "One to two wrinkles at the corner of the mouth; adjusted at the cheekpiece buckles",
+    "ok": "Correct. One to two wrinkles indicates correct bit height. Too low: bit contacts teeth or hangs inactive. Too high: constant upward pressure and discomfort. Adjusted at the cheekpiece buckles.",
+    "no": "Snaffle bit height: one to two wrinkles at the corner of the mouth. Adjusted at the cheekpiece buckles. Too low = teeth contact; too high = constant pressure."
+  },
+  {
+    "q": "How does a snaffle bit work?",
+    "opts": [
+      "It applies direct rein pressure in the direction of the rein — left rein taken, pressure on left side of the mouth",
+      "It amplifies rein pressure through leverage shanks and applies simultaneous poll and chin groove pressure",
+      "It applies pressure only when both reins are taken simultaneously",
+      "It redirects rein pressure upward through rings to apply poll pressure"
+    ],
+    "a": "It applies direct rein pressure in the direction of the rein — left rein taken, pressure on left side of the mouth",
+    "ok": "Correct. A snaffle is a direct-pressure bit. Rein movement translates directly to pressure on the same side of the mouth. No leverage is involved.",
+    "no": "A snaffle applies direct pressure in the direction of the rein. Left rein = left mouth pressure. No leverage involved. Curb bits use shanks to create leverage."
+  },
+  {
+    "q": "How does a curb bit differ from a snaffle?",
+    "opts": [
+      "A curb bit uses leverage — a small rein movement creates more pressure through the shanks and curb chain",
+      "A curb bit is simply a heavier, stronger snaffle for more control",
+      "A curb bit applies only upward pressure with no effect on the chin",
+      "A curb bit is used on the horse's nose rather than in its mouth"
+    ],
+    "a": "A curb bit uses leverage — a small rein movement creates more pressure through the shanks and curb chain",
+    "ok": "Correct. A curb bit works through leverage. The shanks and curb chain turn a small rein movement into more pressure. Curbs are used on more advanced horses; snaffles use direct pressure.",
+    "no": "A curb bit uses leverage through its shanks and curb chain, so a small rein movement creates more pressure. A snaffle uses direct pressure only."
+  },
+  {
+    "q": "What are the bars of the mouth?",
+    "opts": [
+      "The toothless gap between the incisors and cheek teeth where the bit rests",
+      "The side bars of the headstall that connect the crownpiece to the bit",
+      "The metal bars inside the bit that create the mouthpiece shape",
+      "The bony ridges along the roof of the horse's mouth"
+    ],
+    "a": "The toothless gap between the incisors and cheek teeth where the bit rests",
+    "ok": "Correct. The bars are the toothless area of the lower jaw between the incisors at the front and the cheek teeth at the back. This is where the bit sits — which is why bit height matters.",
+    "no": "The bars are the toothless gap in the lower jaw between the incisors and molars. The bit rests on this area. A bit too low can contact the teeth rather than the bars."
+  },
+  {
+    "q": "What does a noseband do?",
+    "opts": [
+      "It helps stabilize the horse's head and jaw, and should not be so tight that the jaw cannot relax",
+      "It holds the bit at the correct height in the mouth",
+      "It connects the reins to the bit when no separate rein rings are present",
+      "It prevents the horse from lowering its head below the bit line"
+    ],
+    "a": "It helps stabilize the horse's head and jaw, and should not be so tight that the jaw cannot relax",
+    "ok": "Correct. The noseband helps stabilize the head and jaw. If used, it should not be too tight — the horse should still be able to relax its jaw comfortably.",
+    "no": "The noseband helps stabilize the head and jaw. It should not be too tight; the horse should still be able to relax its jaw."
+  },
+  {
+    "q": "How do the reins help a horse learn the correct response?",
+    "opts": [
+      "The rider applies rein pressure, and when the horse responds correctly the rider softens or releases it, showing the horse it did the right thing",
+      "The rider keeps steady rein pressure on at all times so the horse stays focused",
+      "The reins force the horse into the correct movement",
+      "The horse responds to the reins before any pressure is applied"
+    ],
+    "a": "The rider applies rein pressure, and when the horse responds correctly the rider softens or releases it, showing the horse it did the right thing",
+    "ok": "Correct. When a rider applies rein pressure and the horse responds correctly, the rider softens or releases the pressure. This release helps the horse understand it made the correct response.",
+    "no": "The reins work through pressure and release. When the horse responds correctly, the rider releases the pressure, which tells the horse it made the right choice."
+  },
+  {
+    "q": "What is the first step when a horse begins pinning its ears during saddling or showing reluctance under saddle?",
+    "opts": [
+      "Evaluate saddle fit before assuming a training or behavioral cause",
+      "Increase warm-up time to see if the behavior resolves",
+      "Use a different saddle pad to cushion any pressure points",
+      "Consult a trainer about the horse's resistance to the saddling routine"
+    ],
+    "a": "Evaluate saddle fit before assuming a training or behavioral cause",
+    "ok": "Correct. Behavioral signs of tack discomfort — ear pinning, flinching, bucking, hollowing — warrant a tack fit evaluation first. Training responses applied on top of physical discomfort produce incomplete or no improvement.",
+    "no": "Behavioral resistance during saddling or under saddle should trigger a tack fit evaluation before any behavioral intervention. The cause is frequently physical."
+  },
+  {
+    "q": "Why should the girth or cinch be tightened gradually rather than all at once?",
+    "opts": [
+      "To avoid discomfort and the resistance that can develop when the girth is tightened too quickly",
+      "To allow the leather to warm gradually to prevent cracking",
+      "Gradual tightening is a trainer preference, not a comfort concern",
+      "To give the horse time to shift its weight before the saddle is secured"
+    ],
+    "a": "To avoid discomfort and the resistance that can develop when the girth is tightened too quickly",
+    "ok": "Correct. Tightening the girth too quickly can cause discomfort and lead to resistance. Tightening it gradually keeps the horse comfortable.",
+    "no": "Girths should be tightened gradually. Tightening too quickly can cause discomfort and lead to resistance."
+  },
+  {
+    "q": "Why is tack inspection part of every pre-ride routine?",
+    "opts": [
+      "Cracked leather, fraying stitching, bent buckles, and worn billets are all failure risks — equipment failure during a ride creates a control emergency",
+      "Tack inspection is primarily a regulatory requirement, not a practical safety measure",
+      "Tack that has been recently purchased requires no inspection — only old equipment fails",
+      "Inspection before each ride trains the horse to stand still for tacking up"
+    ],
+    "a": "Cracked leather, fraying stitching, bent buckles, and worn billets are all failure risks — equipment failure during a ride creates a control emergency",
+    "ok": "Correct. A broken billet, cracked rein, or failed girth buckle during a ride removes the rider's ability to communicate or control. Pre-ride inspection takes under two minutes and prevents the majority of equipment failures.",
+    "no": "Pre-ride tack inspection prevents equipment failure during riding. A broken rein or girth buckle creates a control emergency. Cracked leather, fraying stitching, and worn billets are all failure risks."
+  },
+  {
+    "q": "A horse that swishes its tail and resists going forward under saddle may be showing:",
+    "opts": [
+      "Discomfort that could be caused by poor saddle fit",
+      "Excitement about beginning work",
+      "A trained lateral movement cued by mounting",
+      "Normal posture that always resolves within a few strides"
+    ],
+    "a": "Discomfort that could be caused by poor saddle fit",
+    "ok": "Correct. Tail swishing and reluctance to move forward are common signs of discomfort. Saddle fit should always be considered as a possible cause.",
+    "no": "Tail swishing and reluctance to go forward are behavior signs that can point to discomfort. Saddle fit should be checked as a possible cause."
+  },
+  {
+    "q": "What does it mean for tack fit to be evaluated for the horse separately from the rider?",
+    "opts": [
+      "A saddle can fit a rider correctly while bridging, pinching, or sitting off-center on the horse — both assessments must be done independently",
+      "Saddle fit for the rider and horse are determined by the same measurements and can be assessed together",
+      "If the rider is comfortable, the horse is also correctly fitted",
+      "Saddle fit for the horse only applies to horses with known back problems"
+    ],
+    "a": "A saddle can fit a rider correctly while bridging, pinching, or sitting off-center on the horse — both assessments must be done independently",
+    "ok": "Correct. A saddle can match a rider's seat size and leg position perfectly while still bridging on the horse's back or pinching the shoulders. The two evaluations are independent and both are required.",
+    "no": "Saddle fit for rider and horse are separate evaluations. A well-fitting rider seat does not guarantee correct horse fit. Both must be assessed — the horse's sweat pattern, wither clearance, and panel contact are the horse-side checks."
+  },
+  {
+    "q": "Where should the girth or cinch sit?",
+    "opts": [
+      "A few inches behind the horse's elbow",
+      "Directly behind the elbow, touching the elbow fold",
+      "Far back toward the belly",
+      "Position does not matter as long as it is tight"
+    ],
+    "a": "A few inches behind the horse's elbow",
+    "ok": "Correct. The girth or cinch should sit a few inches behind the elbow — close enough to hold the saddle, far enough to avoid rubbing the elbow.",
+    "no": "The girth or cinch should sit a few inches behind the elbow. Check the area regularly for rubbed spots or skin irritation."
+  },
+  {
+    "q": "Which statement about choosing a bit is correct?",
+    "opts": [
+      "The best bit is not always the strongest — training and clear communication matter more",
+      "A stronger bit is always the safest choice",
+      "The bit should rest on the front teeth",
+      "Every horse needs a curb bit"
+    ],
+    "a": "The best bit is not always the strongest — training and clear communication matter more",
+    "ok": "Correct. The best bit is not always the strongest. Proper training and clear communication are much more important than stronger equipment.",
+    "no": "The best bit is not always the strongest. Clear training and communication matter far more than using a stronger bit."
+  },
+  {
+    "q": "How snug should the girth or cinch be?",
+    "opts": [
+      "Snug enough to hold the saddle without restricting movement or breathing",
+      "As tight as possible so the saddle cannot shift at all",
+      "Loose enough that a hand fits easily all the way around",
+      "Tight at the top and loose at the bottom"
+    ],
+    "a": "Snug enough to hold the saddle without restricting movement or breathing",
+    "ok": "Correct. The girth or cinch should be snug enough to keep the saddle secure but never so tight that it restricts the horse's movement or breathing.",
+    "no": "A girth or cinch should be snug enough to hold the saddle without restricting the horse's movement or breathing."
+  },
+  {
+    "q": "Cracked leather on tack is a safety concern because:",
+    "opts": [
+      "It loses structural strength and can break under load, creating a control emergency during riding",
+      "It makes the equipment look worn and should be replaced before competitions",
+      "Cracked leather changes the way the bit sits in the horse's mouth",
+      "Cracked leather increases friction and causes galls along the girth line"
+    ],
+    "a": "It loses structural strength and can break under load, creating a control emergency during riding",
+    "ok": "Correct. Leather that is cracked or dry has lost structural integrity. A billet, rein, or girth that breaks under load during riding removes the rider's ability to steer or control the horse.",
+    "no": "Cracked leather is structurally weakened and can snap under the load of normal riding — breaking a rein, billet, or stirrup leather mid-ride creates a control emergency."
+  },
+  {
+    "q": "A horse with uneven muscle development on either side of the topline likely has:",
+    "opts": [
+      "A history of uneven loading from saddle fit or work patterns — one side is bearing more weight than the other",
+      "Naturally asymmetric conformation that cannot be modified through management",
+      "A neurological condition affecting muscle function on one side",
+      "Been trained for one-sided disciplines that intentionally develop asymmetric muscle patterns"
+    ],
+    "a": "A history of uneven loading from saddle fit or work patterns — one side is bearing more weight than the other",
+    "ok": "Correct. Uneven topline muscle development indicates that one side has been loaded more heavily than the other over time. Saddle fit that pinches one side, or consistent work patterns that favor one direction, are common causes.",
+    "no": "Uneven topline muscle development = uneven loading over time. A saddle that doesn't sit level, or consistent one-sided work, causes one side to develop more than the other. This is a fit and training signal."
+  },
+  {
+    "q": "Which of these is protective equipment?",
+    "opts": [
+      "Boots, leg wraps, bandages, and blankets",
+      "The saddle and the bridle",
+      "The halter and the lead rope",
+      "The harness and long driving lines"
+    ],
+    "a": "Boots, leg wraps, bandages, and blankets",
+    "ok": "Correct. Protective equipment — boots, leg wraps, bandages, and blankets — helps protect the horse during work, turnout, travel, or cold weather.",
+    "no": "Protective equipment includes boots, leg wraps, bandages, and blankets. The saddle and bridle are riding tack."
+  },
+  {
+    "q": "Which is typical of an English bridle?",
+    "opts": [
+      "A noseband, a snaffle bit, and two separate reins",
+      "No noseband, a curb bit, and split reins",
+      "A horn and a deep seat",
+      "A harness with long driving lines"
+    ],
+    "a": "A noseband, a snaffle bit, and two separate reins",
+    "ok": "Correct. English bridles usually include a noseband, commonly use a snaffle bit, and often have two separate reins. Western bridles may have no noseband and often use a curb bit with split or single reins.",
+    "no": "English bridles usually include a noseband, a snaffle bit, and two reins. Western bridles may have no noseband and often use a curb bit with split reins."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

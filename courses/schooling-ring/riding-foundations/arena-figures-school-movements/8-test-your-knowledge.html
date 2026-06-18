@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Introduction to Arena Figures &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+</head>
+<body class="ee-page-courses-schooling-ring-riding-foundations-arena-figures-school-movements-8-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Introduction to Arena Figures</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 7;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Introduction to Arena Figures',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'6-training-barn.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.arenaFiguresSchoolMovements.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What are the dimensions of the small standard arena?",
+    "opts": [
+      "20 meters wide by 40 meters long",
+      "20 meters wide by 60 meters long",
+      "30 meters wide by 60 meters long",
+      "15 meters wide by 40 meters long"
+    ],
+    "a": "20 meters wide by 40 meters long",
+    "ok": "Correct. The small arena is 20 by 40 meters, the most common training size.",
+    "no": "The small standard arena is 20 meters wide by 40 meters long."
+  },
+  {
+    "q": "What are the dimensions of the large standard arena?",
+    "opts": [
+      "20 meters wide by 60 meters long",
+      "20 meters wide by 40 meters long",
+      "25 meters wide by 60 meters long",
+      "20 meters wide by 80 meters long"
+    ],
+    "a": "20 meters wide by 60 meters long",
+    "ok": "Correct. The large arena is 20 by 60 meters. It gives more room for longer work.",
+    "no": "The large standard arena is 20 meters wide by 60 meters long."
+  },
+  {
+    "q": "Where is letter A located in a standard arena?",
+    "opts": [
+      "At the entry short end",
+      "At the far short end",
+      "At the midpoint of the left long side",
+      "At the center of the arena"
+    ],
+    "a": "At the entry short end",
+    "ok": "Correct. A is at the entry short end, where riders usually enter the arena.",
+    "no": "A is at the entry short end of the arena."
+  },
+  {
+    "q": "Where is letter C located?",
+    "opts": [
+      "At the far short end, opposite A",
+      "At the midpoint of the right long side",
+      "At the center of the arena",
+      "Next to A at the entry end"
+    ],
+    "a": "At the far short end, opposite A",
+    "ok": "Correct. C is at the short end opposite A.",
+    "no": "C is at the far short end, directly opposite A."
+  },
+  {
+    "q": "Where are letters E and B located?",
+    "opts": [
+      "At the midpoints of each long side",
+      "At the short ends",
+      "At the corners",
+      "At the quarter line"
+    ],
+    "a": "At the midpoints of each long side",
+    "ok": "Correct. E and B are at the midpoints of the two long sides.",
+    "no": "E and B mark the midpoints of the long sides."
+  },
+  {
+    "q": "What is X in a standard arena?",
+    "opts": [
+      "The center point of the arena",
+      "A physical letter on the long-side wall",
+      "The entry point at C",
+      "The corner between a long side and a short end"
+    ],
+    "a": "The center point of the arena",
+    "ok": "Correct. X is the center point of the arena. It is not a physical letter on a wall.",
+    "no": "X is the center point of the arena. It is not a physical wall letter."
+  },
+  {
+    "q": "What is the \"track\" in an arena?",
+    "opts": [
+      "The path along the inside edge of the arena fence",
+      "The center line from A to C",
+      "The diagonal from one corner to another",
+      "The quarter line"
+    ],
+    "a": "The path along the inside edge of the arena fence",
+    "ok": "Correct. The track is the path along the inside edge of the fence or wall.",
+    "no": "The track is the path along the inside edge of the arena fence."
+  },
+  {
+    "q": "What is the quarter line?",
+    "opts": [
+      "A line parallel to the long side, about 5 meters in from the rail",
+      "The diagonal from one corner to the other",
+      "The path from A to C",
+      "The midpoint of the short end"
+    ],
+    "a": "A line parallel to the long side, about 5 meters in from the rail",
+    "ok": "Correct. The quarter line runs parallel to the long side, about 5 meters in from the rail.",
+    "no": "The quarter line runs parallel to the long side, about 5 meters in from the rail."
+  },
+  {
+    "q": "What does \"tracking left\" mean?",
+    "opts": [
+      "Moving counterclockwise, with the left side toward the inside",
+      "Moving clockwise, with the right side toward the inside",
+      "Riding a diagonal from the left long side",
+      "Turning left at letter A"
+    ],
+    "a": "Moving counterclockwise, with the left side toward the inside",
+    "ok": "Correct. Tracking left means going counterclockwise, with the horse's left side toward the inside.",
+    "no": "Tracking left means moving counterclockwise, with the horse's left side toward the inside."
+  },
+  {
+    "q": "What does \"changing rein\" mean?",
+    "opts": [
+      "Changing the direction the horse travels around the arena",
+      "Switching which hand holds the reins",
+      "Moving from trot to canter",
+      "Changing from inside to outside rein contact"
+    ],
+    "a": "Changing the direction the horse travels around the arena",
+    "ok": "Correct. A change of rein means switching the direction of travel, from tracking left to tracking right or the other way.",
+    "no": "Changing rein means changing the direction the horse travels around the arena."
+  },
+  {
+    "q": "What does riding the \"full arena\" mean?",
+    "opts": [
+      "Using the whole arena space, all the way around the outside track",
+      "Using only one half of the arena",
+      "Riding only on the center line",
+      "Riding only small circles"
+    ],
+    "a": "Using the whole arena space, all the way around the outside track",
+    "ok": "Correct. The full arena uses the whole space, with plenty of room for large figures.",
+    "no": "Riding the full arena means using the whole space, all the way around the outside track."
+  },
+  {
+    "q": "What does riding the \"half arena\" mean?",
+    "opts": [
+      "Using only one half of the arena, split across the middle",
+      "Using the whole arena at once",
+      "Riding at half speed",
+      "Riding only on the diagonal"
+    ],
+    "a": "Using only one half of the arena, split across the middle",
+    "ok": "Correct. The half arena uses one half of the space. It helps when riders share the arena or want a smaller area.",
+    "no": "Riding the half arena means using only one half of the space, split across the middle."
+  },
+  {
+    "q": "What happens at the center line when riding a serpentine?",
+    "opts": [
+      "The horse straightens for one step, then bends the other way",
+      "The horse halts at each crossing",
+      "The horse speeds up through the change",
+      "The horse steps backward"
+    ],
+    "a": "The horse straightens for one step, then bends the other way",
+    "ok": "Correct. A serpentine changes bend at the center line: straight for one step, then bend the other way.",
+    "no": "At the center line of a serpentine, the horse straightens for one step and then bends the other way."
+  },
+  {
+    "q": "What does \"riding along the length\" of the arena mean?",
+    "opts": [
+      "Riding straight down a long side of the arena",
+      "Riding a small circle at C",
+      "Riding a diagonal across the arena",
+      "Riding two loops across the center line"
+    ],
+    "a": "Riding straight down a long side of the arena",
+    "ok": "Correct. Riding the length means traveling straight down a long side. A straight line takes balance and steady aids.",
+    "no": "Riding along the length means going straight down a long side of the arena."
+  },
+  {
+    "q": "What is a circle as an arena figure?",
+    "opts": [
+      "A round figure of even size, ridden with a gentle bend",
+      "A straight line down the center of the arena",
+      "A backward stepping movement",
+      "A square path around the rail"
+    ],
+    "a": "A round figure of even size, ridden with a gentle bend",
+    "ok": "Correct. A circle is a round figure of even size, ridden with a steady rhythm and gentle bend.",
+    "no": "A circle is a round figure of even size, ridden with a gentle bend and steady rhythm."
+  },
+  {
+    "q": "Which circle is larger and usually easier for the horse?",
+    "opts": [
+      "The 20-meter circle",
+      "The 10-meter circle",
+      "The 6-meter volte",
+      "They are all the same size"
+    ],
+    "a": "The 20-meter circle",
+    "ok": "Correct. The 20-meter circle is large and easier. The 10-meter circle is smaller and harder.",
+    "no": "The 20-meter circle is the large, easier circle. The 10-meter circle is smaller and more demanding."
+  },
+  {
+    "q": "What is a volte?",
+    "opts": [
+      "A small circle, usually about 6 meters across",
+      "A large 20-meter circle",
+      "A straight line across the arena",
+      "A series of loops in an S shape"
+    ],
+    "a": "A small circle, usually about 6 meters across",
+    "ok": "Correct. A volte is a small circle, about 6 meters across. Its small size asks for more bend and balance.",
+    "no": "A volte is a small circle, usually about 6 meters across."
+  },
+  {
+    "q": "What is a figure eight?",
+    "opts": [
+      "Two circles of the same size joined in the middle, with a change of bend in the center",
+      "A single large circle ridden twice",
+      "A straight diagonal through X",
+      "A shallow loop along the long side"
+    ],
+    "a": "Two circles of the same size joined in the middle, with a change of bend in the center",
+    "ok": "Correct. A figure eight is two equal circles joined in the middle. The horse changes bend in the center where they meet.",
+    "no": "A figure eight is two equal circles joined in the middle, with a change of bend in the center."
+  },
+  {
+    "q": "How is a simple serpentine different from a full serpentine?",
+    "opts": [
+      "It uses gentle, shallow loops along one long side, with smaller bend changes",
+      "It uses larger loops across the whole arena",
+      "It is ridden only at the halt",
+      "It has no change of bend at all"
+    ],
+    "a": "It uses gentle, shallow loops along one long side, with smaller bend changes",
+    "ok": "Correct. A simple serpentine uses shallow loops with smaller bend changes, making it an easy first step.",
+    "no": "A simple serpentine uses gentle, shallow loops along one long side, with smaller bend changes than a full serpentine."
+  },
+  {
+    "q": "In a figure eight, where does the horse change its bend?",
+    "opts": [
+      "In the center, where the two circles meet",
+      "At the corners of the arena",
+      "Only at letter A",
+      "It never changes bend"
+    ],
+    "a": "In the center, where the two circles meet",
+    "ok": "Correct. The horse changes bend in the center of the figure eight, where the two circles join.",
+    "no": "In a figure eight, the horse changes bend in the center, where the two circles meet."
+  },
+  {
+    "q": "What is a diagonal in a standard arena?",
+    "opts": [
+      "A straight line across the arena from one long side to the other, through the center",
+      "The path from A to C",
+      "A curved path around the rail",
+      "The short end from corner to corner"
+    ],
+    "a": "A straight line across the arena from one long side to the other, through the center",
+    "ok": "Correct. A diagonal is a straight line across the arena from one long side to the other, usually through the center (X).",
+    "no": "A diagonal is a straight line across the arena from one long side to the other, passing through the center."
+  },
+  {
+    "q": "What should a well-ridden circle keep the same the whole way around?",
+    "opts": [
+      "Its size, shape, and rhythm",
+      "Its letters",
+      "Its diagonal",
+      "Its halt"
+    ],
+    "a": "Its size, shape, and rhythm",
+    "ok": "Correct. A good circle keeps the same size, shape, and rhythm all the way around.",
+    "no": "A good circle keeps the same size, shape, and rhythm the whole way around."
+  },
+  {
+    "q": "True or false: X is a physical letter mounted on a wall in a standard arena.",
+    "opts": [
+      "False",
+      "True"
+    ],
+    "a": "False",
+    "ok": "Correct. X is a reference point at the center of the arena, not a physical wall letter.",
+    "no": "False. X is a reference point at the center of the arena, not a physical letter on the wall."
+  },
+  {
+    "q": "What is a change of rein across the whole arena?",
+    "opts": [
+      "A long diagonal all the way across the arena, passing through the center (X)",
+      "A small circle at one end",
+      "A straight line down the long side",
+      "A shallow loop along the rail"
+    ],
+    "a": "A long diagonal all the way across the arena, passing through the center (X)",
+    "ok": "Correct. A change across the whole arena rides a long diagonal across the space, through the center point X.",
+    "no": "A change of rein across the whole arena is a long diagonal across the arena, passing through the center (X)."
+  },
+  {
+    "q": "A rider is asked to change rein on the diagonal from H. In a 20x40 arena, where does this diagonal finish?",
+    "opts": [
+      "At F",
+      "At M",
+      "At K",
+      "At E"
+    ],
+    "a": "At F",
+    "ok": "Correct. The diagonal from H crosses through X and finishes at F.",
+    "no": "The diagonal from H crosses through X and finishes at F, a common change of rein across the whole arena."
+  },
+  {
+    "q": "How is a change of rein across the half arena different from one across the whole arena?",
+    "opts": [
+      "It uses a shorter diagonal that crosses only half the space",
+      "It uses a longer diagonal through two centers",
+      "It does not change direction at all",
+      "It is ridden only at the canter"
+    ],
+    "a": "It uses a shorter diagonal that crosses only half the space",
+    "ok": "Correct. A change across the half arena uses a shorter diagonal that crosses only half the space.",
+    "no": "A change across the half arena uses a shorter diagonal, crossing only half the space instead of the whole arena."
+  },
+  {
+    "q": "What is a three-loop serpentine in a 20x40 arena?",
+    "opts": [
+      "Three equal loops ridden across the arena, crossing the center line twice",
+      "Three full circles ridden from A to C",
+      "Three squares alternating left and right",
+      "Three diagonal lines from H to F"
+    ],
+    "a": "Three equal loops ridden across the arena, crossing the center line twice",
+    "ok": "Correct. A three-loop serpentine is three equal loops connected across the arena, crossing the center line twice.",
+    "no": "A three-loop serpentine is three equal loops across the arena, crossing the center line twice."
+  },
+  {
+    "q": "What does \"tracking right\" mean?",
+    "opts": [
+      "Moving clockwise, with the right side toward the inside",
+      "Moving counterclockwise, with the left side toward the inside",
+      "Turning right at the next letter",
+      "Moving along the right long side only"
+    ],
+    "a": "Moving clockwise, with the right side toward the inside",
+    "ok": "Correct. Tracking right means moving clockwise, with the horse's right side toward the inside.",
+    "no": "Tracking right means moving clockwise, with the horse's right side toward the inside."
+  },
+  {
+    "q": "What is a change of rein \"from the circle\"?",
+    "opts": [
+      "Leaving the circle on a new line going the other way",
+      "Halting in the middle of the circle",
+      "Riding the circle twice in the same direction",
+      "Stepping backward off the circle"
+    ],
+    "a": "Leaving the circle on a new line going the other way",
+    "ok": "Correct. A change from the circle leaves the circle on a new line, going the other way.",
+    "no": "A change from the circle leaves the circle on a new line going the other way."
+  },
+  {
+    "q": "What is a change of rein \"through the circle\"?",
+    "opts": [
+      "Riding two half-circles in an S shape inside the circle to end up going the other way",
+      "Riding straight across the diagonal",
+      "Halting and turning around",
+      "Making the circle smaller and smaller"
+    ],
+    "a": "Riding two half-circles in an S shape inside the circle to end up going the other way",
+    "ok": "Correct. A change through the circle rides two half-circles (an S shape) inside the circle, so the horse ends up going the opposite way.",
+    "no": "A change through the circle rides two half-circles in an S shape inside the circle, ending up going the other way."
+  },
+  {
+    "q": "Why do riders change the rein often?",
+    "opts": [
+      "So the horse works evenly on both sides",
+      "To make the horse faster",
+      "To avoid using the center line",
+      "Because one direction is not allowed"
+    ],
+    "a": "So the horse works evenly on both sides",
+    "ok": "Correct. Horses are often stronger on one side, so changing the rein often helps both sides develop evenly.",
+    "no": "Riders change the rein often so the horse works evenly on both sides."
+  },
+  {
+    "q": "What shape does a serpentine make in the arena?",
+    "opts": [
+      "A series of even loops, like an S",
+      "A single straight line",
+      "A square",
+      "A spiral that gets smaller"
+    ],
+    "a": "A series of even loops, like an S",
+    "ok": "Correct. A serpentine is a row of even loops that makes an S-shaped path across the arena.",
+    "no": "A serpentine makes a series of even loops, like an S, across the arena."
+  },
+  {
+    "q": "A rider changes direction by riding straight across the arena through X. Which figure is this?",
+    "opts": [
+      "A change of rein across the whole arena",
+      "A change through the circle",
+      "A volte",
+      "A figure eight"
+    ],
+    "a": "A change of rein across the whole arena",
+    "ok": "Correct. Riding a long diagonal through X to change direction is a change of rein across the whole arena.",
+    "no": "Riding straight across the arena through X to change direction is a change of rein across the whole arena."
+  },
+  {
+    "q": "A rider rides a small circle about 6 meters across. What figure is this?",
+    "opts": [
+      "A volte",
+      "A 20-meter circle",
+      "A serpentine",
+      "A figure eight"
+    ],
+    "a": "A volte",
+    "ok": "Correct. A small circle about 6 meters across is a volte.",
+    "no": "A small circle about 6 meters across is a volte."
+  },
+  {
+    "q": "A rider rides two circles of equal size joined in the middle, changing bend in the center. What figure is this?",
+    "opts": [
+      "A figure eight",
+      "A serpentine",
+      "A volte",
+      "A change across the half arena"
+    ],
+    "a": "A figure eight",
+    "ok": "Correct. Two equal circles joined in the middle, with a change of bend in the center, make a figure eight.",
+    "no": "Two equal circles joined in the middle make a figure eight, with a change of bend in the center."
+  },
+  {
+    "q": "A rider rides even loops across the arena, changing bend each time the horse crosses the center line. What figure is this?",
+    "opts": [
+      "A serpentine",
+      "A figure eight",
+      "A volte",
+      "A change from the circle"
+    ],
+    "a": "A serpentine",
+    "ok": "Correct. Even loops across the arena, with a bend change at each center-line crossing, make a serpentine.",
+    "no": "Even loops across the arena, changing bend at the center line each time, make a serpentine."
+  },
+  {
+    "q": "A rider leaves a circle on a new line to go the other way. What is this called?",
+    "opts": [
+      "A change of rein from the circle",
+      "A change of rein through the circle",
+      "A volte",
+      "A simple serpentine"
+    ],
+    "a": "A change of rein from the circle",
+    "ok": "Correct. Leaving the circle on a new line to go the other way is a change of rein from the circle.",
+    "no": "Leaving the circle on a new line to go the other way is a change of rein from the circle."
+  },
+  {
+    "q": "Two riders share the arena, so one works in only one half, split across the middle. What is this called?",
+    "opts": [
+      "Riding the half arena",
+      "Riding the full arena",
+      "Riding a volte",
+      "Riding a figure eight"
+    ],
+    "a": "Riding the half arena",
+    "ok": "Correct. Working in only one half of the space, split across the middle, is riding the half arena.",
+    "no": "Working in only one half of the arena, split across the middle, is riding the half arena."
+  },
+  {
+    "q": "Which is the smallest circle figure?",
+    "opts": [
+      "The volte (about 6 meters)",
+      "The 20-meter circle",
+      "The 10-meter circle",
+      "The full arena"
+    ],
+    "a": "The volte (about 6 meters)",
+    "ok": "Correct. The volte, about 6 meters across, is the smallest circle figure.",
+    "no": "The volte, about 6 meters across, is the smallest circle figure."
+  },
+  {
+    "q": "A rider rides two half-circles in an S shape inside a circle to end up going the other way. What is this?",
+    "opts": [
+      "A change of rein through the circle",
+      "A change of rein from the circle",
+      "A figure eight",
+      "A volte"
+    ],
+    "a": "A change of rein through the circle",
+    "ok": "Correct. Two half-circles in an S shape inside the circle, ending up going the other way, is a change through the circle.",
+    "no": "Riding two half-circles in an S shape inside the circle is a change of rein through the circle."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

@@ -18,49 +18,522 @@
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Quiz</div>
       <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
-      <p class="lesson-hero-desc">This quiz pulls from a larger question bank, so each round gives you a fresh mix of terms and clues.</p>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
     </div>
   </div>
 </section>
 <div class="lesson-wrap">
-<main class="lesson-left">
-<section class="quiz-card" id="quiz-card">
-  <div class="quiz-top"><span id="quiz-count">Question 1 of 10</span><span id="quiz-score">Score: 0</span></div>
-  <div class="quiz-question" id="quiz-question"></div>
-  <div class="quiz-options" id="quiz-options"></div>
-  <div class="quiz-feedback" id="quiz-feedback"></div>
-  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
-</section>
-<div class="quiz-score-panel" id="score-panel">
-  <div class="score-number" id="score-display">0/10</div>
-  <div class="score-label">Your Score</div>
-  <div class="score-message" id="score-message"></div>
-  <button class="btn-retake" id="btn-retake">Try Again</button>
-</div>
-</main>
-<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
 </div>
 <div id="site-footer"></div>
 <script src="course-config.js"></script>
 <script>
-window.CURRENT_MODULE=5;
-window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Appaloosa Patterns',url:'1-index.html'},navExtras:[{label:'Training Barn',url:'5-training-barn.html'}]};
-(function(){
-const QUESTION_COUNT=10;
-const questionBank=[{"prompt": "Which pattern describes a white or light area over the hips?", "options": ["Leopard", "Blanket", "Tobiano", "Splash White"], "answer": "Blanket", "correct": "Correct.", "incorrect": "Not quite. The answer is Blanket."}, {"prompt": "Which pattern is mostly white with dark spots over much of the body?", "options": ["Leopard", "Snowflake", "Roan Blanket", "Solid"], "answer": "Leopard", "correct": "Correct.", "incorrect": "Not quite. The answer is Leopard."}, {"prompt": "Which term describes white flecks on a darker body?", "options": ["Snowflake", "Few-Spot Leopard", "Blanket", "Overo"], "answer": "Snowflake", "correct": "Correct.", "incorrect": "Not quite. The answer is Snowflake."}, {"prompt": "Which Appaloosa pattern may lighten as the horse ages while darker marks remain over bony areas?", "options": ["Varnish Roan", "Tobiano", "Frame Overo", "Bay"], "answer": "Varnish Roan", "correct": "Correct.", "incorrect": "Not quite. The answer is Varnish Roan."}, {"prompt": "A blanket with dark spots inside the white area is called what?", "options": ["Spotted Blanket", "Solid", "Few-Spot Leopard", "Splash White"], "answer": "Spotted Blanket", "correct": "Correct.", "incorrect": "Not quite. The answer is Spotted Blanket."}, {"prompt": "A mostly white Appaloosa with very few dark spots is often called what?", "options": ["Few-Spot Leopard", "Roan Blanket", "Snowflake", "Sabino"], "answer": "Few-Spot Leopard", "correct": "Correct.", "incorrect": "Not quite. The answer is Few-Spot Leopard."}, {"prompt": "Which clue is commonly associated with Appaloosa characteristics?", "options": ["Mottled skin", "A two-color tail only", "A dorsal stripe only", "Feathered legs"], "answer": "Mottled skin", "correct": "Correct.", "incorrect": "Not quite. The answer is Mottled skin."}, {"prompt": "Why are Appaloosa pattern names useful?", "options": ["They make descriptions clearer", "They replace all health records", "They prove every pedigree", "They predict height"], "answer": "They make descriptions clearer", "correct": "Correct.", "incorrect": "Not quite. The answer is They make descriptions clearer."}, {"prompt": "Which pattern group usually centers around the rump or hip area?", "options": ["Blanket patterns", "Pinto patterns", "Gray stages", "Dun markings"], "answer": "Blanket patterns", "correct": "Correct.", "incorrect": "Not quite. The answer is Blanket patterns."}, {"prompt": "What is the best approach when a real horse shows mixed Appaloosa clues?", "options": ["Use the closest terms and describe the visible clues", "Ignore all subtle markings", "Call every spotted horse leopard", "Use only the base color"], "answer": "Use the closest terms and describe the visible clues", "correct": "Correct.", "incorrect": "Not quite. The answer is Use the closest terms and describe the visible clues."}, {"prompt": "Which word fits a subtle lightened or lacy area over the hip?", "options": ["Frosted", "Tobiano", "Chestnut", "Medicine hat"], "answer": "Frosted", "correct": "Correct.", "incorrect": "Not quite. The answer is Frosted."}, {"prompt": "What does near leopard usually mean?", "options": ["A leopard-like pattern with more base color remaining", "A plain solid horse", "A white marking only on the face", "A gray horse with dapples"], "answer": "A leopard-like pattern with more base color remaining", "correct": "Correct.", "incorrect": "Not quite. The answer is A leopard-like pattern with more base color remaining."}];
-function esc(t){return String(t||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
-function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(i=>i.v)}
-const cardEl=document.getElementById('quiz-card'),countEl=document.getElementById('quiz-count'),scoreEl=document.getElementById('quiz-score'),qEl=document.getElementById('quiz-question'),optEl=document.getElementById('quiz-options'),fbEl=document.getElementById('quiz-feedback'),nextBtn=document.getElementById('quiz-next'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message'),retake=document.getElementById('btn-retake');
-let active=[],idx=0,score=0,answered=false;
-function start(){active=shuffle(questionBank).slice(0,Math.min(QUESTION_COUNT,questionBank.length)).map(q=>({...q,options:shuffle(q.options)}));idx=0;score=0;scorePanel.classList.remove('show');cardEl.style.display='';showQuestion()}
-function showQuestion(){answered=false;const q=active[idx];countEl.textContent='Question '+(idx+1)+' of '+active.length;scoreEl.textContent='Score: '+score;qEl.textContent=q.prompt;fbEl.className='quiz-feedback';fbEl.textContent='';nextBtn.disabled=true;nextBtn.textContent='Next Question';optEl.innerHTML=q.options.map(o=>`<button type="button" class="quiz-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');optEl.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(btn,q)))}
-function selectAnswer(btn,q){if(answered)return;answered=true;const correct=q.answer;optEl.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.val===correct)b.classList.add('correct-ans')});const ok=btn.dataset.val===correct;if(ok)score++;else btn.classList.add('wrong-ans');fbEl.textContent=ok?q.correct:q.incorrect;fbEl.classList.add('show',ok?'correct':'incorrect');scoreEl.textContent='Score: '+score;nextBtn.textContent=idx+1<active.length?'Next Question':'See Results';nextBtn.disabled=false}
-nextBtn.addEventListener('click',()=>{idx++;if(idx>=active.length){finish();return}showQuestion()});
-function finish(){cardEl.style.display='none';const pct=score/active.length;scoreDisplay.textContent=score+'/'+active.length;scoreMessage.textContent=pct>=.9?'Excellent work. You have a strong command of this material.':pct>=.75?'Good work. Review the questions you missed and try another round.':pct>=.6?'You are getting there. Revisit the lesson and Training Barn, then try again.':'Keep practicing. These terms will get easier with review.';scorePanel.classList.add('show');if(pct>=.8){try{localStorage.setItem('equineEduProgress.appaloosaPatterns.testYourKnowledge','true')}catch(e){}}}
-retake.addEventListener('click',()=>{start();cardEl.scrollIntoView({behavior:'smooth',block:'start'})});
-start()
-})();
+window.CURRENT_MODULE = 5;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Appaloosa Patterns',url:'1-index.html'},navExtras:[{label:'Training Barn',url:'5-training-barn.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.appaloosaPatterns.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "Which pattern describes a white or light area over the hips?",
+    "opts": [
+      "Leopard",
+      "Blanket",
+      "Tobiano",
+      "Splash White"
+    ],
+    "a": "Blanket",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Blanket."
+  },
+  {
+    "q": "Which pattern is mostly white with dark spots over much of the body?",
+    "opts": [
+      "Leopard",
+      "Snowflake",
+      "Roan Blanket",
+      "Solid"
+    ],
+    "a": "Leopard",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Leopard."
+  },
+  {
+    "q": "Which term describes white flecks on a darker body?",
+    "opts": [
+      "Snowflake",
+      "Few-Spot Leopard",
+      "Blanket",
+      "Overo"
+    ],
+    "a": "Snowflake",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Snowflake."
+  },
+  {
+    "q": "Which Appaloosa pattern may lighten as the horse ages while darker marks remain over bony areas?",
+    "opts": [
+      "Varnish Roan",
+      "Tobiano",
+      "Frame Overo",
+      "Bay"
+    ],
+    "a": "Varnish Roan",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Varnish Roan."
+  },
+  {
+    "q": "A blanket with dark spots inside the white area is called what?",
+    "opts": [
+      "Spotted Blanket",
+      "Solid",
+      "Few-Spot Leopard",
+      "Splash White"
+    ],
+    "a": "Spotted Blanket",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Spotted Blanket."
+  },
+  {
+    "q": "A mostly white Appaloosa with very few dark spots is often called what?",
+    "opts": [
+      "Few-Spot Leopard",
+      "Roan Blanket",
+      "Snowflake",
+      "Sabino"
+    ],
+    "a": "Few-Spot Leopard",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Few-Spot Leopard."
+  },
+  {
+    "q": "Which clue is commonly associated with Appaloosa characteristics?",
+    "opts": [
+      "Mottled skin",
+      "A two-color tail only",
+      "A dorsal stripe only",
+      "Feathered legs"
+    ],
+    "a": "Mottled skin",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Mottled skin."
+  },
+  {
+    "q": "Why are Appaloosa pattern names useful?",
+    "opts": [
+      "They make descriptions clearer",
+      "They replace all health records",
+      "They prove every pedigree",
+      "They predict height"
+    ],
+    "a": "They make descriptions clearer",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is They make descriptions clearer."
+  },
+  {
+    "q": "Which pattern group usually centers around the rump or hip area?",
+    "opts": [
+      "Blanket patterns",
+      "Pinto patterns",
+      "Gray stages",
+      "Dun markings"
+    ],
+    "a": "Blanket patterns",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Blanket patterns."
+  },
+  {
+    "q": "What is the best approach when a real horse shows mixed Appaloosa clues?",
+    "opts": [
+      "Use the closest terms and describe the visible clues",
+      "Ignore all subtle markings",
+      "Call every spotted horse leopard",
+      "Use only the base color"
+    ],
+    "a": "Use the closest terms and describe the visible clues",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Use the closest terms and describe the visible clues."
+  },
+  {
+    "q": "Which word fits a subtle lightened or lacy area over the hip?",
+    "opts": [
+      "Frosted",
+      "Tobiano",
+      "Chestnut",
+      "Medicine hat"
+    ],
+    "a": "Frosted",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Frosted."
+  },
+  {
+    "q": "What does near leopard usually mean?",
+    "opts": [
+      "A leopard-like pattern with more base color remaining",
+      "A plain solid horse",
+      "A white marking only on the face",
+      "A gray horse with dapples"
+    ],
+    "a": "A leopard-like pattern with more base color remaining",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is A leopard-like pattern with more base color remaining."
+  },
+  {
+    "q": "Which pattern describes a white or light area over the hips?",
+    "opts": [
+      "Leopard",
+      "Blanket",
+      "Tobiano",
+      "Splash White"
+    ],
+    "a": "Blanket",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Blanket."
+  },
+  {
+    "q": "Which pattern is mostly white with dark spots over much of the body?",
+    "opts": [
+      "Leopard",
+      "Snowflake",
+      "Roan Blanket",
+      "Solid"
+    ],
+    "a": "Leopard",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Leopard."
+  },
+  {
+    "q": "Which term describes white flecks on a darker body?",
+    "opts": [
+      "Snowflake",
+      "Few-Spot Leopard",
+      "Blanket",
+      "Overo"
+    ],
+    "a": "Snowflake",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Snowflake."
+  },
+  {
+    "q": "Which Appaloosa pattern may lighten as the horse ages while darker marks remain over bony areas?",
+    "opts": [
+      "Varnish Roan",
+      "Tobiano",
+      "Frame Overo",
+      "Bay"
+    ],
+    "a": "Varnish Roan",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Varnish Roan."
+  },
+  {
+    "q": "A blanket with dark spots inside the white area is called what?",
+    "opts": [
+      "Spotted Blanket",
+      "Solid",
+      "Few-Spot Leopard",
+      "Splash White"
+    ],
+    "a": "Spotted Blanket",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Spotted Blanket."
+  },
+  {
+    "q": "A mostly white Appaloosa with very few dark spots is often called what?",
+    "opts": [
+      "Few-Spot Leopard",
+      "Roan Blanket",
+      "Snowflake",
+      "Sabino"
+    ],
+    "a": "Few-Spot Leopard",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Few-Spot Leopard."
+  },
+  {
+    "q": "Which clue is commonly associated with Appaloosa characteristics?",
+    "opts": [
+      "Mottled skin",
+      "A two-color tail only",
+      "A dorsal stripe only",
+      "Feathered legs"
+    ],
+    "a": "Mottled skin",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Mottled skin."
+  },
+  {
+    "q": "Why are Appaloosa pattern names useful?",
+    "opts": [
+      "They make descriptions clearer",
+      "They replace all health records",
+      "They prove every pedigree",
+      "They predict height"
+    ],
+    "a": "They make descriptions clearer",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is They make descriptions clearer."
+  },
+  {
+    "q": "Which pattern group usually centers around the rump or hip area?",
+    "opts": [
+      "Blanket patterns",
+      "Pinto patterns",
+      "Gray stages",
+      "Dun markings"
+    ],
+    "a": "Blanket patterns",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Blanket patterns."
+  },
+  {
+    "q": "What is the best approach when a real horse shows mixed Appaloosa clues?",
+    "opts": [
+      "Use the closest terms and describe the visible clues",
+      "Ignore all subtle markings",
+      "Call every spotted horse leopard",
+      "Use only the base color"
+    ],
+    "a": "Use the closest terms and describe the visible clues",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Use the closest terms and describe the visible clues."
+  },
+  {
+    "q": "Which word fits a subtle lightened or lacy area over the hip?",
+    "opts": [
+      "Frosted",
+      "Tobiano",
+      "Chestnut",
+      "Medicine hat"
+    ],
+    "a": "Frosted",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Frosted."
+  },
+  {
+    "q": "What does near leopard usually mean?",
+    "opts": [
+      "A leopard-like pattern with more base color remaining",
+      "A plain solid horse",
+      "A white marking only on the face",
+      "A gray horse with dapples"
+    ],
+    "a": "A leopard-like pattern with more base color remaining",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is A leopard-like pattern with more base color remaining."
+  },
+  {
+    "q": "Which pattern describes a white or light area over the hips?",
+    "opts": [
+      "Leopard",
+      "Blanket",
+      "Tobiano",
+      "Splash White"
+    ],
+    "a": "Blanket",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Blanket."
+  },
+  {
+    "q": "Which pattern is mostly white with dark spots over much of the body?",
+    "opts": [
+      "Leopard",
+      "Snowflake",
+      "Roan Blanket",
+      "Solid"
+    ],
+    "a": "Leopard",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Leopard."
+  },
+  {
+    "q": "Which term describes white flecks on a darker body?",
+    "opts": [
+      "Snowflake",
+      "Few-Spot Leopard",
+      "Blanket",
+      "Overo"
+    ],
+    "a": "Snowflake",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Snowflake."
+  },
+  {
+    "q": "Which Appaloosa pattern may lighten as the horse ages while darker marks remain over bony areas?",
+    "opts": [
+      "Varnish Roan",
+      "Tobiano",
+      "Frame Overo",
+      "Bay"
+    ],
+    "a": "Varnish Roan",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Varnish Roan."
+  },
+  {
+    "q": "A blanket with dark spots inside the white area is called what?",
+    "opts": [
+      "Spotted Blanket",
+      "Solid",
+      "Few-Spot Leopard",
+      "Splash White"
+    ],
+    "a": "Spotted Blanket",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Spotted Blanket."
+  },
+  {
+    "q": "A mostly white Appaloosa with very few dark spots is often called what?",
+    "opts": [
+      "Few-Spot Leopard",
+      "Roan Blanket",
+      "Snowflake",
+      "Sabino"
+    ],
+    "a": "Few-Spot Leopard",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Few-Spot Leopard."
+  },
+  {
+    "q": "Which clue is commonly associated with Appaloosa characteristics?",
+    "opts": [
+      "Mottled skin",
+      "A two-color tail only",
+      "A dorsal stripe only",
+      "Feathered legs"
+    ],
+    "a": "Mottled skin",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Mottled skin."
+  },
+  {
+    "q": "Why are Appaloosa pattern names useful?",
+    "opts": [
+      "They make descriptions clearer",
+      "They replace all health records",
+      "They prove every pedigree",
+      "They predict height"
+    ],
+    "a": "They make descriptions clearer",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is They make descriptions clearer."
+  },
+  {
+    "q": "Which pattern group usually centers around the rump or hip area?",
+    "opts": [
+      "Blanket patterns",
+      "Pinto patterns",
+      "Gray stages",
+      "Dun markings"
+    ],
+    "a": "Blanket patterns",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Blanket patterns."
+  },
+  {
+    "q": "What is the best approach when a real horse shows mixed Appaloosa clues?",
+    "opts": [
+      "Use the closest terms and describe the visible clues",
+      "Ignore all subtle markings",
+      "Call every spotted horse leopard",
+      "Use only the base color"
+    ],
+    "a": "Use the closest terms and describe the visible clues",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Use the closest terms and describe the visible clues."
+  },
+  {
+    "q": "Which word fits a subtle lightened or lacy area over the hip?",
+    "opts": [
+      "Frosted",
+      "Tobiano",
+      "Chestnut",
+      "Medicine hat"
+    ],
+    "a": "Frosted",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Frosted."
+  },
+  {
+    "q": "What does near leopard usually mean?",
+    "opts": [
+      "A leopard-like pattern with more base color remaining",
+      "A plain solid horse",
+      "A white marking only on the face",
+      "A gray horse with dapples"
+    ],
+    "a": "A leopard-like pattern with more base color remaining",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is A leopard-like pattern with more base color remaining."
+  },
+  {
+    "q": "Which pattern describes a white or light area over the hips?",
+    "opts": [
+      "Leopard",
+      "Blanket",
+      "Tobiano",
+      "Splash White"
+    ],
+    "a": "Blanket",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Blanket."
+  },
+  {
+    "q": "Which pattern is mostly white with dark spots over much of the body?",
+    "opts": [
+      "Leopard",
+      "Snowflake",
+      "Roan Blanket",
+      "Solid"
+    ],
+    "a": "Leopard",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Leopard."
+  },
+  {
+    "q": "Which term describes white flecks on a darker body?",
+    "opts": [
+      "Snowflake",
+      "Few-Spot Leopard",
+      "Blanket",
+      "Overo"
+    ],
+    "a": "Snowflake",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Snowflake."
+  },
+  {
+    "q": "Which Appaloosa pattern may lighten as the horse ages while darker marks remain over bony areas?",
+    "opts": [
+      "Varnish Roan",
+      "Tobiano",
+      "Frame Overo",
+      "Bay"
+    ],
+    "a": "Varnish Roan",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Varnish Roan."
+  }
+];
 </script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/supabase-client.js"></script>
 <script src="../../../../assets/js/paywall.js"></script>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pin the Marking on the Pony &mdash; Face Markings &mdash; Equine Edu</title>
+<meta name="description" content="Drag the correct face marking onto the pony illustration &mdash; ten rounds of visual identification practice.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../../../assets/css/game.css">
+
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-colors-markings-face-markings-activities-game-2-pin-the-marking">
+
+<!-- Floating drag clone -->
+<div id="drag-clone">
+  <img id="drag-clone-img" src="" alt="">
+  <span id="drag-clone-label"></span>
+</div>
+
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Face Markings</div>
+      <h1 class="lesson-hero-title">Pin the <span>Marking</span></h1>
+      <p class="lesson-hero-desc">Drag the correct marking onto the pony and watch it appear.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="game-intro-card">
+      <h2>How to Play</h2>
+      <p>A marking name appears at the top. Drag the correct marking from the four options below and drop it onto the pony. Get it right and the marking appears on the pony. Ten rounds total.</p>
+    </div>
+
+    <div class="game-shell">
+
+      <div class="game-play-area" id="game-play">
+
+        <div class="game-progress-bar-wrap">
+          <span class="game-progress-label" id="progress-label">Round 1 of 10</span>
+          <div class="game-progress-track">
+            <div class="game-progress-fill ee-u-3b30d038" id="progress-fill"></div>
+          </div>
+          <span class="game-score-label" id="score-label">0 / 0</span>
+        </div>
+
+        <div class="pin-prompt-wrap">
+          <div class="pin-prompt-label">Drag this marking onto the pony</div>
+          <div class="pin-prompt-name" id="marking-name">&mdash;</div>
+        </div>
+
+        <div class="pony-drop-area">
+          <div class="pony-drop-wrap" id="pony-drop">
+            <img id="pony-img" src="images/pony-base.png" alt="Pony face &mdash; drop the marking here">
+          </div>
+        </div>
+
+        <p class="drag-hint">Choose one of the four markings below and drag it onto the pony</p>
+        <div class="options-grid" id="options-grid"></div>
+
+        <div class="feedback-banner" id="feedback-banner"></div>
+
+        <div class="game-next-wrap" id="next-wrap">
+          <button class="game-next-btn" id="next-btn"></button>
+        </div>
+
+      </div><!-- /game-play -->
+
+      <div class="score-screen" id="score-screen">
+        <div class="score-ring">
+          <div class="score-num" id="final-score">&mdash;</div>
+          <div class="score-denom">/ 10</div>
+        </div>
+        <div class="score-title" id="score-title">Well done!</div>
+        <p class="score-msg" id="score-msg"></p>
+        <div class="score-actions">
+          <button class="score-btn primary" onclick="initGame()">Play Again</button>
+          <a class="score-btn secondary" href="../../6-training-barn.html">Back to Training Barn</a>
+        </div>
+      </div>
+
+    </div><!-- /game-shell -->
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+var IMG = 'images/';
+
+var MARKINGS = [
+  { id: 'star',            label: 'Star',               loc: 'Forehead',                    img: 'star.png',            pony: 'pony-star.png' },
+  { id: 'strip',           label: 'Strip',              loc: 'Thin Marking on Face',        img: 'strip.png',           pony: 'pony-strip.png' },
+  { id: 'blaze',           label: 'Blaze',              loc: 'Wide Marking on Face',        img: 'blaze.png',           pony: 'pony-blaze.png' },
+  { id: 'snip',            label: 'Snip',               loc: 'Muzzle',                      img: 'snip.png',            pony: 'pony-snip.png' },
+  { id: 'bald-face',       label: 'Bald Face',          loc: 'Widest White Marking a Horse Can Have', img: 'bald-face.png', pony: 'pony-bald-face.png' },
+  { id: 'irregular-blaze', label: 'Irregular Blaze',    loc: 'Full Face (Varying Edges)',        img: 'irregular-blaze.png', pony: 'pony-irregular-blaze.png' },
+  { id: 'star-strip',      label: 'Star & Strip',       loc: 'Forehead & Face',             img: 'star-strip.png',      pony: 'pony-star-strip.png' },
+  { id: 'star-snip',       label: 'Star & Snip',        loc: 'Forehead + Muzzle',           img: 'star-snip.png',       pony: 'pony-star-snip.png' },
+  { id: 'strip-snip',      label: 'Strip & Snip',       loc: 'Face + Muzzle',              img: 'strip-snip.png',      pony: 'pony-strip-snip.png' },
+  { id: 'star-strip-snip', label: 'Star, Strip & Snip', loc: 'Forehead, Face & Muzzle',     img: 'star-strip-snip.png', pony: 'pony-star-strip-snip.png' }
+];
+
+var rounds = [];
+var currentRound = 0;
+var score = 0;
+var answered = false;
+
+/* -- drag state -- */
+var dragItem     = null;
+var dragOriginEl = null;
+var isDragging   = false;
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
+}
+
+function initGame() {
+  rounds = shuffle(MARKINGS.slice());
+  currentRound = 0;
+  score = 0;
+  answered = false;
+  document.getElementById('score-screen').classList.remove('show');
+  document.getElementById('game-play').classList.remove('hidden');
+  document.getElementById('pony-img').src = IMG + 'pony-base.png';
+  renderRound();
+}
+
+function buildOptions(correct) {
+  var others = shuffle(MARKINGS.filter(function(m) { return m.id !== correct.id; })).slice(0, 3);
+  return shuffle([correct].concat(others));
+}
+
+function renderRound() {
+  answered = false;
+  var m   = rounds[currentRound];
+  var num = currentRound + 1;
+
+  document.getElementById('progress-label').textContent   = 'Round ' + num + ' of 10';
+  document.getElementById('progress-fill').style.width    = (num * 10) + '%';
+  document.getElementById('score-label').textContent      = score + ' / ' + currentRound;
+  document.getElementById('marking-name').textContent     = m.label;
+
+  document.getElementById('pony-img').src = IMG + 'pony-base.png';
+  var drop = document.getElementById('pony-drop');
+  drop.className = 'pony-drop-wrap';
+
+  var fb = document.getElementById('feedback-banner');
+  fb.className  = 'feedback-banner';
+  fb.textContent = '';
+  document.getElementById('next-wrap').classList.remove('show');
+
+  /* build option cards */
+  var options = buildOptions(m);
+  var grid    = document.getElementById('options-grid');
+  grid.innerHTML = '';
+  options.forEach(function(opt) {
+    var card = document.createElement('div');
+    card.className   = 'option-card';
+    card.dataset.id  = opt.id;
+    card.innerHTML   =
+      '<img src="' + IMG + opt.img + '" alt="' + opt.label + '">' +
+      '<div class="option-card-label">' + opt.loc + '</div>';
+    attachDrag(card, opt);
+    grid.appendChild(card);
+  });
+}
+
+/* -- Clone helpers -- */
+var cloneEl    = document.getElementById('drag-clone');
+var cloneImg   = document.getElementById('drag-clone-img');
+var cloneLabel = document.getElementById('drag-clone-label');
+
+function showClone(x, y, opt) {
+  cloneImg.src       = IMG + opt.img;
+  cloneImg.alt       = opt.label;
+  cloneLabel.textContent = opt.loc;
+  cloneEl.style.display  = 'flex';
+  moveClone(x, y);
+}
+function moveClone(x, y) {
+  cloneEl.style.left = x + 'px';
+  cloneEl.style.top  = y + 'px';
+}
+function hideClone() {
+  cloneEl.style.display = 'none';
+}
+
+/* -- Drop detection -- */
+function isOverDrop(x, y) {
+  var r = document.getElementById('pony-drop').getBoundingClientRect();
+  return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+}
+
+/* -- Drag attachment -- */
+function attachDrag(card, opt) {
+  card.addEventListener('mousedown', function(e) {
+    if (answered) return;
+    e.preventDefault();
+    startDrag(e.clientX, e.clientY, card, opt);
+  });
+  card.addEventListener('touchstart', function(e) {
+    if (answered) return;
+    e.preventDefault();
+    var t = e.touches[0];
+    startDrag(t.clientX, t.clientY, card, opt);
+  }, { passive: false });
+}
+
+function startDrag(x, y, card, opt) {
+  dragItem     = opt;
+  dragOriginEl = card;
+  isDragging   = true;
+  card.classList.add('dragging');
+  showClone(x, y, opt);
+
+  var dropEl = document.getElementById('pony-drop');
+
+  function onMove(e) {
+    var cx = e.clientX !== undefined ? e.clientX : e.touches[0].clientX;
+    var cy = e.clientY !== undefined ? e.clientY : e.touches[0].clientY;
+    moveClone(cx, cy);
+    dropEl.classList.toggle('drag-over', isOverDrop(cx, cy));
+  }
+  function onUp(e) {
+    var cx = e.clientX !== undefined ? e.clientX
+           : (e.changedTouches ? e.changedTouches[0].clientX : 0);
+    var cy = e.clientY !== undefined ? e.clientY
+           : (e.changedTouches ? e.changedTouches[0].clientY : 0);
+    endDrag(cx, cy);
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup',   onUp);
+    document.removeEventListener('touchmove', onMove);
+    document.removeEventListener('touchend',  onUp);
+  }
+
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup',   onUp);
+  document.addEventListener('touchmove', onMove, { passive: false });
+  document.addEventListener('touchend',  onUp);
+}
+
+function endDrag(x, y) {
+  hideClone();
+  document.getElementById('pony-drop').classList.remove('drag-over');
+  if (dragOriginEl) dragOriginEl.classList.remove('dragging');
+  if (!isDragging || !dragItem) return;
+  isDragging = false;
+  if (isOverDrop(x, y)) handleDrop(dragItem);
+  dragItem     = null;
+  dragOriginEl = null;
+}
+
+/* -- Drop result -- */
+function handleDrop(opt) {
+  var correct   = rounds[currentRound];
+  var isCorrect = opt.id === correct.id;
+  var drop      = document.getElementById('pony-drop');
+  var fb        = document.getElementById('feedback-banner');
+
+  if (isCorrect) {
+    if (!answered) {
+      score++;
+      document.getElementById('score-label').textContent = score + ' / ' + (currentRound + 1);
+    }
+    answered = true;
+
+    /* reveal pony */
+    document.getElementById('pony-img').src = IMG + correct.pony;
+    drop.classList.add('correct-flash');
+    setTimeout(function() { drop.classList.remove('correct-flash'); }, 650);
+
+    /* dim all options */
+    document.querySelectorAll('.option-card').forEach(function(c) { c.classList.add('used'); });
+
+    fb.className = 'feedback-banner show correct-fb';
+    fb.innerHTML = '<strong>Correct!</strong> That\'s a <strong>' + correct.label + '</strong>.';
+
+    var nextWrap = document.getElementById('next-wrap');
+    var nextBtn  = document.getElementById('next-btn');
+    nextWrap.classList.add('show');
+    var isLast = currentRound >= 9;
+    nextBtn.textContent = isLast ? 'See My Score' : 'Next Round ->';
+    nextBtn.onclick = isLast ? showScore : function() { currentRound++; renderRound(); };
+
+  } else {
+    /* wrong - shake and tell them what it was */
+    drop.classList.add('wrong-shake');
+    setTimeout(function() { drop.classList.remove('wrong-shake'); }, 420);
+
+    fb.className = 'feedback-banner show wrong-fb';
+    fb.innerHTML = '<strong>Not quite</strong> - that\'s a <strong>' + opt.label
+                 + '</strong>. Find the <strong>' + correct.label + '</strong> and drop it onto the pony.';
+  }
+}
+
+/* -- End screen -- */
+function showScore() {
+  document.getElementById('game-play').classList.add('hidden');
+  document.getElementById('score-screen').classList.add('show');
+  document.getElementById('final-score').textContent = score;
+
+  var title, msg;
+  if      (score === 10) { title = 'Perfect!';        msg = 'You matched every marking on the first try. That\'s sharp visual identification.'; }
+  else if (score >= 8)   { title = 'Excellent Work';  msg = score + ' out of 10 - strong visual recognition. Review any misses in the Face Markings lesson.'; }
+  else if (score >= 6)   { title = 'Good Effort';     msg = score + ' out of 10. Focus on the combination markings - those are usually where points slip.'; }
+  else                   { title = 'Keep Practising'; msg = score + ' out of 10. Head back to the Horse Face Markings lesson to study the illustrations, then try again.'; }
+
+  document.getElementById('score-title').textContent = title;
+  document.getElementById('score-msg').textContent   = msg;
+}
+
+initGame();
+</script>
+
+<script>
+  window.CURRENT_MODULE = 5;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../../index.html',
+    coursesUrl: '../../../../../index.html',
+    navCta:     { label: 'Back to Training Barn', url: '../../6-training-barn.html' },
+    navExtras: [{ label: 'Face Marking Challenge', url: '../game-1/face-marking-match.html' }, { label: 'Memory Game', url: '../game-3/marking-memory-game.html' }]
+  };
+</script>
+<script src="../../course-config.js"></script>
+<script>
+  // Game pages live in activities/game-2/ -- prefix all config URLs by two levels
+  document.addEventListener('DOMContentLoaded', function() {});
+  (function() {
+    var cfg = window.COURSE_CONFIG;
+    if (!cfg) return;
+    cfg.homeUrl       = '../../' + cfg.homeUrl;
+    cfg.allCoursesUrl = '../../' + cfg.allCoursesUrl;
+  })();
+</script>
+<script src="../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../../../assets/js/paywall.js"></script>
+<script src="../../../../../../assets/js/course-nav.js"></script>
+<script>try{localStorage.setItem('equineEduProgress.faceMarkings.pinTheMarking','true')}catch(e){}</script>
+</body>
+</html>

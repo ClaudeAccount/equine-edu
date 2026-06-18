@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Intro to Bits &amp; Bridles &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-tack-equipment-intro-to-bits-bridles-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to Bits &amp;amp; Bridles</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+      <a href="6-study-guide.html" class="btn-secondary">Back to Study Guide</a>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'Back to Course', url: '1-index.html' },
+  navExtras: [{ label: 'Study Guide', url: '6-study-guide.html' }]
+};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.introBitsBridles.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What defines a snaffle bit?",
+    "opts": [
+      "The rein connects directly to the bit ring with no shank, creating direct one-to-one pressure",
+      "The bit has a jointed mouthpiece",
+      "The bit has no mouthpiece",
+      "The bit is always mild and appropriate for all horses"
+    ],
+    "a": "The rein connects directly to the bit ring with no shank, creating direct one-to-one pressure",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The rein connects directly to the bit ring with no shank, creating direct one-to-one pressure."
+  },
+  {
+    "q": "How does a snaffle bit apply pressure when the rein is used?",
+    "opts": [
+      "Directly — the rein pulls the bit ring at a one-to-one ratio with no mechanical amplification",
+      "Through leverage using a shank below the mouthpiece",
+      "By rotating a shank to engage a curb chain",
+      "By tightening the noseband against the nose"
+    ],
+    "a": "Directly — the rein pulls the bit ring at a one-to-one ratio with no mechanical amplification",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Directly — the rein pulls the bit ring at a one-to-one ratio with no mechanical amplification."
+  },
+  {
+    "q": "A bit is described as a snaffle because:",
+    "opts": [
+      "The rein connects directly to a ring on the mouthpiece with no shank between rein and mouthpiece",
+      "The mouthpiece is jointed",
+      "The bit is made of stainless steel",
+      "The bit has no curb chain"
+    ],
+    "a": "The rein connects directly to a ring on the mouthpiece with no shank between rein and mouthpiece",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The rein connects directly to a ring on the mouthpiece with no shank between rein and mouthpiece."
+  },
+  {
+    "q": "What makes a curb bit different from a snaffle bit?",
+    "opts": [
+      "A curb bit uses shanks to create leverage, amplifying rein pressure and acting on the bars, chin groove, and poll simultaneously",
+      "A curb bit has a jointed mouthpiece",
+      "A curb bit attaches the rein directly to the mouthpiece",
+      "A curb bit can only be used in western riding"
+    ],
+    "a": "A curb bit uses shanks to create leverage, amplifying rein pressure and acting on the bars, chin groove, and poll simultaneously",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A curb bit uses shanks to create leverage, amplifying rein pressure and acting on the bars, chin groove, and poll simultaneously."
+  },
+  {
+    "q": "The shank on a curb bit is:",
+    "opts": [
+      "A metal arm extending below the mouthpiece to which the rein attaches, creating leverage",
+      "Another name for the mouthpiece",
+      "The ring through which the cheekpiece connects",
+      "A safety feature that prevents over-rotation"
+    ],
+    "a": "A metal arm extending below the mouthpiece to which the rein attaches, creating leverage",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A metal arm extending below the mouthpiece to which the rein attaches, creating leverage."
+  },
+  {
+    "q": "Why does a curb bit require careful hands?",
+    "opts": [
+      "The leverage makes rein pressure stronger than the hand pressure alone would be",
+      "Curb bits are heavier and harder to hold",
+      "Curb bits are only approved for upper-level competitions",
+      "The bit requires two hands at all times"
+    ],
+    "a": "The leverage makes rein pressure stronger than the hand pressure alone would be",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The leverage makes rein pressure stronger than the hand pressure alone would be."
+  },
+  {
+    "q": "A curb strap (western style) serves the same function as:",
+    "opts": [
+      "A curb chain",
+      "A noseband",
+      "A browband",
+      "A throatlatch"
+    ],
+    "a": "A curb chain",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A curb chain."
+  },
+  {
+    "q": "What is the crownpiece of a bridle?",
+    "opts": [
+      "The main strap that runs over the poll just behind the ears and supports all other bridle parts",
+      "The strap that runs across the forehead",
+      "The strap that runs under the throat",
+      "The strap that holds the noseband"
+    ],
+    "a": "The main strap that runs over the poll just behind the ears and supports all other bridle parts",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The main strap that runs over the poll just behind the ears and supports all other bridle parts."
+  },
+  {
+    "q": "What is the function of the browband?",
+    "opts": [
+      "It prevents the crownpiece from sliding backward toward the horse's neck during movement",
+      "It holds the bit at the correct height in the mouth",
+      "It prevents the horse from opening its mouth",
+      "It connects the reins to the bit"
+    ],
+    "a": "It prevents the crownpiece from sliding backward toward the horse's neck during movement",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It prevents the crownpiece from sliding backward toward the horse's neck during movement."
+  },
+  {
+    "q": "The cheekpieces of a bridle:",
+    "opts": [
+      "Run vertically down each side of the face, connecting the crownpiece to the bit rings",
+      "Run horizontally across the forehead",
+      "Run under the horse's throat",
+      "Run around the horse's nose"
+    ],
+    "a": "Run vertically down each side of the face, connecting the crownpiece to the bit rings",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Run vertically down each side of the face, connecting the crownpiece to the bit rings."
+  },
+  {
+    "q": "How is the height of the bit in the mouth adjusted?",
+    "opts": [
+      "By lengthening or shortening the cheekpieces — shorter cheekpieces raise the bit, longer ones lower it",
+      "By adjusting the throatlatch",
+      "By adjusting the noseband",
+      "By changing the browband length"
+    ],
+    "a": "By lengthening or shortening the cheekpieces — shorter cheekpieces raise the bit, longer ones lower it",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is By lengthening or shortening the cheekpieces — shorter cheekpieces raise the bit, longer ones lower it."
+  },
+  {
+    "q": "What is the correct fit for the throatlatch?",
+    "opts": [
+      "A fist's width of space between the strap and the horse's throat",
+      "Two fingers between the strap and the throat",
+      "The strap should lie snugly against the throat",
+      "No space — the strap should be taut for security"
+    ],
+    "a": "A fist's width of space between the strap and the horse's throat",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A fist's width of space between the strap and the horse's throat."
+  },
+  {
+    "q": "The noseband (cavesson) should be fitted so that:",
+    "opts": [
+      "Two fingers fit comfortably underneath it, approximately two finger-widths below the cheekbone",
+      "It lies snugly with no gap, preventing the mouth from opening",
+      "It sits above the cheekbone",
+      "It allows a fist's width of space"
+    ],
+    "a": "Two fingers fit comfortably underneath it, approximately two finger-widths below the cheekbone",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Two fingers fit comfortably underneath it, approximately two finger-widths below the cheekbone."
+  },
+  {
+    "q": "What characterizes a traditional western bridle compared to an English snaffle bridle?",
+    "opts": [
+      "It uses a one-ear or split-ear headstall instead of a browband and typically lacks a noseband",
+      "It always includes a double bit",
+      "It requires a browband and noseband",
+      "It uses a single rein attached to both bit rings"
+    ],
+    "a": "It uses a one-ear or split-ear headstall instead of a browband and typically lacks a noseband",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It uses a one-ear or split-ear headstall instead of a browband and typically lacks a noseband."
+  },
+  {
+    "q": "What are split reins?",
+    "opts": [
+      "Two separate reins not joined at the ends, commonly used with western bridles",
+      "Reins that split into two at the bit end",
+      "Reins made from split leather for flexibility",
+      "A rein with a separate training aid attached"
+    ],
+    "a": "Two separate reins not joined at the ends, commonly used with western bridles",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Two separate reins not joined at the ends, commonly used with western bridles."
+  },
+  {
+    "q": "A double bridle is used in upper-level English riding and includes:",
+    "opts": [
+      "Two bits — a bradoon (small snaffle) and a curb bit — with two sets of reins",
+      "A snaffle bit with a noseband that creates a second point of contact",
+      "Two nosebands of different types",
+      "A snaffle bit and a mechanical hackamore used at the same time"
+    ],
+    "a": "Two bits — a bradoon (small snaffle) and a curb bit — with two sets of reins",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Two bits — a bradoon (small snaffle) and a curb bit — with two sets of reins."
+  },
+  {
+    "q": "The reins of a bridle attach to:",
+    "opts": [
+      "The bit rings (snaffle) or the bottom of the shanks (curb)",
+      "The crownpiece",
+      "The noseband",
+      "The cheekpieces"
+    ],
+    "a": "The bit rings (snaffle) or the bottom of the shanks (curb)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The bit rings (snaffle) or the bottom of the shanks (curb)."
+  },
+  {
+    "q": "A sidepull is best described as:",
+    "opts": [
+      "A bitless headstall with rings on each side of the nosepiece to which reins attach directly, creating direct pressure on the nose",
+      "A bitless headstall that uses shanks and leverage",
+      "A western bit that works without a curb chain",
+      "A noseband used in lieu of a bit"
+    ],
+    "a": "A bitless headstall with rings on each side of the nosepiece to which reins attach directly, creating direct pressure on the nose",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A bitless headstall with rings on each side of the nosepiece to which reins attach directly, creating direct pressure on the nose."
+  },
+  {
+    "q": "How does a mechanical hackamore create pressure?",
+    "opts": [
+      "Through shanks that create leverage, acting on the nose, chin groove, and poll simultaneously",
+      "Through direct pressure on the sides of the nose only",
+      "Through bit pressure on the bars",
+      "Through pressure on the browband and crownpiece only"
+    ],
+    "a": "Through shanks that create leverage, acting on the nose, chin groove, and poll simultaneously",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Through shanks that create leverage, acting on the nose, chin groove, and poll simultaneously."
+  },
+  {
+    "q": "A bosal hackamore is:",
+    "opts": [
+      "A traditional western training tool using a rawhide nosepiece with reins (mecate) tied at the back of the jaw",
+      "Another name for a mechanical hackamore",
+      "A sidepull with a single rein",
+      "A curb bit set up without a curb chain"
+    ],
+    "a": "A traditional western training tool using a rawhide nosepiece with reins (mecate) tied at the back of the jaw",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A traditional western training tool using a rawhide nosepiece with reins (mecate) tied at the back of the jaw."
+  },
+  {
+    "q": "Which statement about bitless bridles is correct?",
+    "opts": [
+      "Bitless does not automatically mean milder — a mechanical hackamore with long shanks can be stronger than many bitted options",
+      "All bitless bridles are milder than any bitted bridle",
+      "Bitless bridles are not allowed in any recognized competition",
+      "Only sidepulls can be used safely by new riders"
+    ],
+    "a": "Bitless does not automatically mean milder — a mechanical hackamore with long shanks can be stronger than many bitted options",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Bitless does not automatically mean milder — a mechanical hackamore with long shanks can be stronger than many bitted options."
+  },
+  {
+    "q": "What is the correct bit width for most horses?",
+    "opts": [
+      "Approximately a quarter inch of clearance on each side beyond the lips — enough not to pinch, not so wide the bit slides sideways",
+      "The bit should be as wide as possible for maximum comfort",
+      "The bit should fit tightly against the lips for stability",
+      "No standard exists — any width is acceptable"
+    ],
+    "a": "Approximately a quarter inch of clearance on each side beyond the lips — enough not to pinch, not so wide the bit slides sideways",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Approximately a quarter inch of clearance on each side beyond the lips — enough not to pinch, not so wide the bit slides sideways."
+  },
+  {
+    "q": "What does \"pressure and release\" mean in bit communication?",
+    "opts": [
+      "The rider applies rein pressure; the horse responds by moving to reduce it; the rider releases as the reward — the release teaches the horse",
+      "The rider constantly maintains firm rein pressure",
+      "The bit alternates between pressure and no pressure automatically",
+      "Pressure is applied only when the horse misbehaves"
+    ],
+    "a": "The rider applies rein pressure; the horse responds by moving to reduce it; the rider releases as the reward — the release teaches the horse",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The rider applies rein pressure; the horse responds by moving to reduce it; the rider releases as the reward — the release teaches the horse."
+  },
+  {
+    "q": "A horse showing bit resistance — head tossing, jaw tension, reluctance to accept contact — should be evaluated for:",
+    "opts": [
+      "Dental issues, bit fit, bit type appropriateness, and rider hand quality before concluding the problem is purely behavioral",
+      "Training problems only",
+      "A stronger bit to reinforce the aids",
+      "Immediate retirement from ridden work"
+    ],
+    "a": "Dental issues, bit fit, bit type appropriateness, and rider hand quality before concluding the problem is purely behavioral",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Dental issues, bit fit, bit type appropriateness, and rider hand quality before concluding the problem is purely behavioral."
+  },
+  {
+    "q": "What defines a snaffle bit?",
+    "opts": [
+      "The rein connects directly to the bit ring with no shank, creating direct one-to-one pressure",
+      "The bit has a jointed mouthpiece",
+      "The bit has no mouthpiece",
+      "The bit is always mild and appropriate for all horses"
+    ],
+    "a": "The rein connects directly to the bit ring with no shank, creating direct one-to-one pressure",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The rein connects directly to the bit ring with no shank, creating direct one-to-one pressure."
+  },
+  {
+    "q": "How does a snaffle bit apply pressure when the rein is used?",
+    "opts": [
+      "Directly — the rein pulls the bit ring at a one-to-one ratio with no mechanical amplification",
+      "Through leverage using a shank below the mouthpiece",
+      "By rotating a shank to engage a curb chain",
+      "By tightening the noseband against the nose"
+    ],
+    "a": "Directly — the rein pulls the bit ring at a one-to-one ratio with no mechanical amplification",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Directly — the rein pulls the bit ring at a one-to-one ratio with no mechanical amplification."
+  },
+  {
+    "q": "A bit is described as a snaffle because:",
+    "opts": [
+      "The rein connects directly to a ring on the mouthpiece with no shank between rein and mouthpiece",
+      "The mouthpiece is jointed",
+      "The bit is made of stainless steel",
+      "The bit has no curb chain"
+    ],
+    "a": "The rein connects directly to a ring on the mouthpiece with no shank between rein and mouthpiece",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The rein connects directly to a ring on the mouthpiece with no shank between rein and mouthpiece."
+  },
+  {
+    "q": "What makes a curb bit different from a snaffle bit?",
+    "opts": [
+      "A curb bit uses shanks to create leverage, amplifying rein pressure and acting on the bars, chin groove, and poll simultaneously",
+      "A curb bit has a jointed mouthpiece",
+      "A curb bit attaches the rein directly to the mouthpiece",
+      "A curb bit can only be used in western riding"
+    ],
+    "a": "A curb bit uses shanks to create leverage, amplifying rein pressure and acting on the bars, chin groove, and poll simultaneously",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A curb bit uses shanks to create leverage, amplifying rein pressure and acting on the bars, chin groove, and poll simultaneously."
+  },
+  {
+    "q": "The shank on a curb bit is:",
+    "opts": [
+      "A metal arm extending below the mouthpiece to which the rein attaches, creating leverage",
+      "Another name for the mouthpiece",
+      "The ring through which the cheekpiece connects",
+      "A safety feature that prevents over-rotation"
+    ],
+    "a": "A metal arm extending below the mouthpiece to which the rein attaches, creating leverage",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A metal arm extending below the mouthpiece to which the rein attaches, creating leverage."
+  },
+  {
+    "q": "Why does a curb bit require careful hands?",
+    "opts": [
+      "The leverage makes rein pressure stronger than the hand pressure alone would be",
+      "Curb bits are heavier and harder to hold",
+      "Curb bits are only approved for upper-level competitions",
+      "The bit requires two hands at all times"
+    ],
+    "a": "The leverage makes rein pressure stronger than the hand pressure alone would be",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The leverage makes rein pressure stronger than the hand pressure alone would be."
+  },
+  {
+    "q": "A curb strap (western style) serves the same function as:",
+    "opts": [
+      "A curb chain",
+      "A noseband",
+      "A browband",
+      "A throatlatch"
+    ],
+    "a": "A curb chain",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A curb chain."
+  },
+  {
+    "q": "What is the crownpiece of a bridle?",
+    "opts": [
+      "The main strap that runs over the poll just behind the ears and supports all other bridle parts",
+      "The strap that runs across the forehead",
+      "The strap that runs under the throat",
+      "The strap that holds the noseband"
+    ],
+    "a": "The main strap that runs over the poll just behind the ears and supports all other bridle parts",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The main strap that runs over the poll just behind the ears and supports all other bridle parts."
+  },
+  {
+    "q": "What is the function of the browband?",
+    "opts": [
+      "It prevents the crownpiece from sliding backward toward the horse's neck during movement",
+      "It holds the bit at the correct height in the mouth",
+      "It prevents the horse from opening its mouth",
+      "It connects the reins to the bit"
+    ],
+    "a": "It prevents the crownpiece from sliding backward toward the horse's neck during movement",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It prevents the crownpiece from sliding backward toward the horse's neck during movement."
+  },
+  {
+    "q": "The cheekpieces of a bridle:",
+    "opts": [
+      "Run vertically down each side of the face, connecting the crownpiece to the bit rings",
+      "Run horizontally across the forehead",
+      "Run under the horse's throat",
+      "Run around the horse's nose"
+    ],
+    "a": "Run vertically down each side of the face, connecting the crownpiece to the bit rings",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Run vertically down each side of the face, connecting the crownpiece to the bit rings."
+  },
+  {
+    "q": "How is the height of the bit in the mouth adjusted?",
+    "opts": [
+      "By lengthening or shortening the cheekpieces — shorter cheekpieces raise the bit, longer ones lower it",
+      "By adjusting the throatlatch",
+      "By adjusting the noseband",
+      "By changing the browband length"
+    ],
+    "a": "By lengthening or shortening the cheekpieces — shorter cheekpieces raise the bit, longer ones lower it",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is By lengthening or shortening the cheekpieces — shorter cheekpieces raise the bit, longer ones lower it."
+  },
+  {
+    "q": "What is the correct fit for the throatlatch?",
+    "opts": [
+      "A fist's width of space between the strap and the horse's throat",
+      "Two fingers between the strap and the throat",
+      "The strap should lie snugly against the throat",
+      "No space — the strap should be taut for security"
+    ],
+    "a": "A fist's width of space between the strap and the horse's throat",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A fist's width of space between the strap and the horse's throat."
+  },
+  {
+    "q": "The noseband (cavesson) should be fitted so that:",
+    "opts": [
+      "Two fingers fit comfortably underneath it, approximately two finger-widths below the cheekbone",
+      "It lies snugly with no gap, preventing the mouth from opening",
+      "It sits above the cheekbone",
+      "It allows a fist's width of space"
+    ],
+    "a": "Two fingers fit comfortably underneath it, approximately two finger-widths below the cheekbone",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Two fingers fit comfortably underneath it, approximately two finger-widths below the cheekbone."
+  },
+  {
+    "q": "What characterizes a traditional western bridle compared to an English snaffle bridle?",
+    "opts": [
+      "It uses a one-ear or split-ear headstall instead of a browband and typically lacks a noseband",
+      "It always includes a double bit",
+      "It requires a browband and noseband",
+      "It uses a single rein attached to both bit rings"
+    ],
+    "a": "It uses a one-ear or split-ear headstall instead of a browband and typically lacks a noseband",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It uses a one-ear or split-ear headstall instead of a browband and typically lacks a noseband."
+  },
+  {
+    "q": "What are split reins?",
+    "opts": [
+      "Two separate reins not joined at the ends, commonly used with western bridles",
+      "Reins that split into two at the bit end",
+      "Reins made from split leather for flexibility",
+      "A rein with a separate training aid attached"
+    ],
+    "a": "Two separate reins not joined at the ends, commonly used with western bridles",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Two separate reins not joined at the ends, commonly used with western bridles."
+  },
+  {
+    "q": "A double bridle is used in upper-level English riding and includes:",
+    "opts": [
+      "Two bits — a bradoon (small snaffle) and a curb bit — with two sets of reins",
+      "A snaffle bit with a noseband that creates a second point of contact",
+      "Two nosebands of different types",
+      "A snaffle bit and a mechanical hackamore used at the same time"
+    ],
+    "a": "Two bits — a bradoon (small snaffle) and a curb bit — with two sets of reins",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Two bits — a bradoon (small snaffle) and a curb bit — with two sets of reins."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

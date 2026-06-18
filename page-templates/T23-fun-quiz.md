@@ -18,7 +18,7 @@
    - *Format A:* situational preference questions, 3–4 answer options, each mapped to a result profile. No option is mocked or clearly "wrong."
    - *Format B:* same construction rules as course practice — near-miss distractors, interleaved order, images from the shared pools where applicable.
 4. **Result page** — the conversion moment:
-   - *Format A:* result profile (e.g., "Western trail riding") with a 60–100 word friendly description, an honest "also consider…" secondary match, and a CTA to the matching course ("Learn what makes Western riding unique → Common Riding Styles").
+   - *Format A:* result profile (e.g., "Western trail riding") with a 60–100 word friendly description, an honest "also consider…" secondary match, and a CTA to the matching course ("Learn what makes Western riding unique → Common Riding Disciplines").
    - *Format B:* score with an encouraging band label (no failing framing — "4/12: Every horseperson started here"), the answers revealed with one-line identifiers, and a CTA to the course that teaches the missed content.
 5. **Share affordance** — result/score is shareable (image card or link). The share asset shows the quiz title and result, never a learner's identity beyond what they choose to share.
 6. **More-quizzes strip** — 2–3 other Corral quizzes, then the Corral hub link.

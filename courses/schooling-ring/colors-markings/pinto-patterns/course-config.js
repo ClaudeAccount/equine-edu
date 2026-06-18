@@ -10,14 +10,14 @@ window.COURSE_CONFIG = {
       title: 'Why Patterns Matter',
       type: 'Lesson',
       file: '2-why-patterns-matter.html',
-      desc: 'Learn why pinto pattern language matters for identification, records, breeding conversations, and clear description.'
+      desc: 'How pinto pattern language supports identification, records, and breeding conversations.'
     },
     {
       num: 2,
       title: 'Pinto Pattern Types',
       type: 'Lesson',
       file: '3-pinto-pattern-types.html',
-      desc: 'Study common pinto pattern families including tobiano, overo, tovero, splash white, sabino, and frame overo.'
+      desc: 'Common pinto patterns: tobiano, overo, tovero, splash white, sabino, and frame overo.'
     },
     {
       num: 3,

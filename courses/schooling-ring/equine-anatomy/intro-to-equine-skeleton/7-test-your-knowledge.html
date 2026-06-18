@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Intro to the Equine Skeleton &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-equine-anatomy-intro-to-equine-skeleton-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to the Equine Skeleton</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+      <a href="6-study-guide.html" class="btn-secondary">Back to Study Guide</a>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'Back to Course', url: '1-index.html' },
+  navExtras: [{ label: 'Study Guide', url: '6-study-guide.html' }]
+};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.introToEquineSkeleton.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What two parts make up the equine skeleton?",
+    "opts": [
+      "Axial skeleton (core) and appendicular skeleton (limbs)",
+      "Forelimb and hindlimb skeletons",
+      "Upper and lower skeleton",
+      "Active bones and passive bones"
+    ],
+    "a": "Axial skeleton (core) and appendicular skeleton (limbs)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Axial skeleton (core) and appendicular skeleton (limbs)."
+  },
+  {
+    "q": "Which bones make up the axial skeleton?",
+    "opts": [
+      "Skull, vertebral column, ribs, and sternum",
+      "All four limbs and the pelvis",
+      "Scapula, humerus, femur, and tibia",
+      "Cannon bones and splint bones"
+    ],
+    "a": "Skull, vertebral column, ribs, and sternum",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Skull, vertebral column, ribs, and sternum."
+  },
+  {
+    "q": "Each thoracic vertebra connects to what other bone?",
+    "opts": [
+      "A rib (the thoracic vertebrae form the top of the ribcage)",
+      "A vertebra in the neck",
+      "The pelvis",
+      "A splint bone"
+    ],
+    "a": "A rib (the thoracic vertebrae form the top of the ribcage)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A rib (the thoracic vertebrae form the top of the ribcage)."
+  },
+  {
+    "q": "How many pairs of ribs does the horse have?",
+    "opts": [
+      "18",
+      "12",
+      "14",
+      "16"
+    ],
+    "a": "18",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 18."
+  },
+  {
+    "q": "How many pairs of ribs attach directly to the sternum?",
+    "opts": [
+      "8 (the first 8 pairs)",
+      "10",
+      "18",
+      "6"
+    ],
+    "a": "8 (the first 8 pairs)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 8 (the first 8 pairs)."
+  },
+  {
+    "q": "The horse does not have a collarbone. What holds the forelimb attached to the trunk?",
+    "opts": [
+      "Muscles, tendons, and ligaments",
+      "The scapula fuses directly to the rib cage",
+      "A cartilaginous joint at the chest",
+      "The humerus attaches to the sternum"
+    ],
+    "a": "Muscles, tendons, and ligaments",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Muscles, tendons, and ligaments."
+  },
+  {
+    "q": "How many cervical vertebrae does the horse have?",
+    "opts": [
+      "7",
+      "5",
+      "9",
+      "12"
+    ],
+    "a": "7",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 7."
+  },
+  {
+    "q": "What forms the withers in the horse?",
+    "opts": [
+      "The tall spines of the thoracic vertebrae",
+      "The fused lumbar vertebrae",
+      "The top of the scapula",
+      "The first cervical vertebra"
+    ],
+    "a": "The tall spines of the thoracic vertebrae",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The tall spines of the thoracic vertebrae."
+  },
+  {
+    "q": "From which point is a horse's height measured?",
+    "opts": [
+      "The highest point of the withers",
+      "The top of the head",
+      "The top of the poll",
+      "The base of the neck"
+    ],
+    "a": "The highest point of the withers",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The highest point of the withers."
+  },
+  {
+    "q": "Approximately how many bones does the adult horse skeleton contain?",
+    "opts": [
+      "205",
+      "206",
+      "180",
+      "220"
+    ],
+    "a": "205",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 205."
+  },
+  {
+    "q": "What is the scapula?",
+    "opts": [
+      "The shoulder blade — a large flat bone held in place by muscles",
+      "The upper arm bone",
+      "The bone forming the point of the shoulder",
+      "The bone at the point of the elbow"
+    ],
+    "a": "The shoulder blade — a large flat bone held in place by muscles",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The shoulder blade — a large flat bone held in place by muscles."
+  },
+  {
+    "q": "What is the horse's \"knee\" anatomically equivalent to in humans?",
+    "opts": [
+      "The wrist (carpus)",
+      "The knee",
+      "The ankle",
+      "The elbow"
+    ],
+    "a": "The wrist (carpus)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The wrist (carpus)."
+  },
+  {
+    "q": "What is the cannon bone?",
+    "opts": [
+      "The large central bone of the lower limb (third metacarpal or metatarsal)",
+      "The shinbone of the horse",
+      "The bone equivalent to the human kneecap",
+      "The lowest bone in the hoof"
+    ],
+    "a": "The large central bone of the lower limb (third metacarpal or metatarsal)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The large central bone of the lower limb (third metacarpal or metatarsal)."
+  },
+  {
+    "q": "Splint bones are:",
+    "opts": [
+      "The small second and fourth metacarpals flanking the cannon bone",
+      "The same as the cannon bone",
+      "Bones inside the hoof",
+      "The bones of the fetlock joint"
+    ],
+    "a": "The small second and fourth metacarpals flanking the cannon bone",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The small second and fourth metacarpals flanking the cannon bone."
+  },
+  {
+    "q": "What is P3 in the equine lower limb?",
+    "opts": [
+      "The coffin bone (third phalanx) inside the hoof",
+      "The long pastern bone",
+      "The short pastern bone",
+      "The navicular bone"
+    ],
+    "a": "The coffin bone (third phalanx) inside the hoof",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The coffin bone (third phalanx) inside the hoof."
+  },
+  {
+    "q": "What is P1 in the equine lower limb?",
+    "opts": [
+      "The long pastern bone (first phalanx)",
+      "The coffin bone",
+      "The short pastern bone",
+      "The cannon bone"
+    ],
+    "a": "The long pastern bone (first phalanx)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The long pastern bone (first phalanx)."
+  },
+  {
+    "q": "Where is the navicular bone located?",
+    "opts": [
+      "Behind the coffin joint, between P2 and P3, inside the hoof capsule",
+      "At the fetlock joint",
+      "In the carpus",
+      "Behind the pastern joint"
+    ],
+    "a": "Behind the coffin joint, between P2 and P3, inside the hoof capsule",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Behind the coffin joint, between P2 and P3, inside the hoof capsule."
+  },
+  {
+    "q": "The forelimb sequence from knee to hoof is:",
+    "opts": [
+      "Carpus → cannon → P1 (long pastern) → P2 (short pastern) → P3 (coffin bone)",
+      "Carpus → femur → tibia → P1 → P2",
+      "Humerus → radius → cannon → fetlock",
+      "Scapula → humerus → cannon → P1 → P2 → P3"
+    ],
+    "a": "Carpus → cannon → P1 (long pastern) → P2 (short pastern) → P3 (coffin bone)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Carpus → cannon → P1 (long pastern) → P2 (short pastern) → P3 (coffin bone)."
+  },
+  {
+    "q": "What bone forms the point of the elbow?",
+    "opts": [
+      "The ulna",
+      "The humerus",
+      "The radius",
+      "The carpus"
+    ],
+    "a": "The ulna",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The ulna."
+  },
+  {
+    "q": "The forearm of the horse (between the elbow and the knee) is made up of:",
+    "opts": [
+      "The radius and the fused ulna",
+      "The humerus and radius",
+      "The carpus and cannon bone",
+      "The radius and splint bones"
+    ],
+    "a": "The radius and the fused ulna",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The radius and the fused ulna."
+  },
+  {
+    "q": "What is the anatomical term for the horse's hock?",
+    "opts": [
+      "Tarsus",
+      "Carpus",
+      "Fetlock",
+      "Stifle"
+    ],
+    "a": "Tarsus",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Tarsus."
+  },
+  {
+    "q": "The hock is equivalent to which human joint?",
+    "opts": [
+      "Ankle",
+      "Knee",
+      "Wrist",
+      "Elbow"
+    ],
+    "a": "Ankle",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Ankle."
+  },
+  {
+    "q": "What is the stifle?",
+    "opts": [
+      "The large joint between the femur and tibia, equivalent to the human knee",
+      "The joint between the tibia and tarsus",
+      "The hindlimb fetlock joint",
+      "The joint at the point of the hip"
+    ],
+    "a": "The large joint between the femur and tibia, equivalent to the human knee",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The large joint between the femur and tibia, equivalent to the human knee."
+  },
+  {
+    "q": "What is the patella?",
+    "opts": [
+      "The kneecap, located at the front of the stifle joint",
+      "A small bone in the hock",
+      "The calcaneus at the back of the hock",
+      "The equivalent of the human shoulder blade"
+    ],
+    "a": "The kneecap, located at the front of the stifle joint",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The kneecap, located at the front of the stifle joint."
+  },
+  {
+    "q": "What bone forms the point of the hock?",
+    "opts": [
+      "The calcaneus",
+      "The tibia",
+      "The femur",
+      "The navicular bone"
+    ],
+    "a": "The calcaneus",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The calcaneus."
+  },
+  {
+    "q": "The femur is:",
+    "opts": [
+      "The thigh bone connecting the hip to the stifle",
+      "The shinbone above the hock",
+      "The bone equivalent to the human ankle",
+      "The hindlimb cannon bone"
+    ],
+    "a": "The thigh bone connecting the hip to the stifle",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The thigh bone connecting the hip to the stifle."
+  },
+  {
+    "q": "Which structure connects the forelimb and hindlimb to the axial skeleton?",
+    "opts": [
+      "Forelimb: muscular attachment at the scapula; Hindlimb: the pelvis joins the sacrum",
+      "Both connect through the lumbar vertebrae",
+      "Both connect through a bony joint at the sternum",
+      "The ribs connect all four limbs"
+    ],
+    "a": "Forelimb: muscular attachment at the scapula; Hindlimb: the pelvis joins the sacrum",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Forelimb: muscular attachment at the scapula; Hindlimb: the pelvis joins the sacrum."
+  },
+  {
+    "q": "What forms the hip socket that receives the head of the femur?",
+    "opts": [
+      "The acetabulum of the pelvis",
+      "The sacrum",
+      "The ilium alone",
+      "The pubis"
+    ],
+    "a": "The acetabulum of the pelvis",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The acetabulum of the pelvis."
+  },
+  {
+    "q": "The tibia in the hindlimb is located:",
+    "opts": [
+      "Between the stifle and the hock",
+      "Between the hip and the stifle",
+      "Between the hock and the fetlock",
+      "In the lower hind foot"
+    ],
+    "a": "Between the stifle and the hock",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Between the stifle and the hock."
+  },
+  {
+    "q": "The bones below the hock in the hindlimb correspond to which forelimb bones?",
+    "opts": [
+      "The same as the forelimb below the knee: cannon, P1, P2, P3, and navicular",
+      "Completely different bones specific to the hindlimb",
+      "Only the cannon bone is the same",
+      "The fetlock and pastern bones are different in the hindlimb"
+    ],
+    "a": "The same as the forelimb below the knee: cannon, P1, P2, P3, and navicular",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The same as the forelimb below the knee: cannon, P1, P2, P3, and navicular."
+  },
+  {
+    "q": "What is joint effusion?",
+    "opts": [
+      "Fluid accumulation in or around a joint, indicating inflammation",
+      "A bony growth beside a joint",
+      "A calcification inside a joint",
+      "A crack in the joint cartilage"
+    ],
+    "a": "Fluid accumulation in or around a joint, indicating inflammation",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Fluid accumulation in or around a joint, indicating inflammation."
+  },
+  {
+    "q": "The fetlock joint connects:",
+    "opts": [
+      "The cannon bone to the long pastern (P1)",
+      "P1 to P2",
+      "P2 to P3",
+      "The carpus to the cannon bone"
+    ],
+    "a": "The cannon bone to the long pastern (P1)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The cannon bone to the long pastern (P1)."
+  },
+  {
+    "q": "What is the stay apparatus?",
+    "opts": [
+      "A system of muscles, tendons, and ligaments that allows horses to lock their limbs while standing",
+      "A veterinary support device for injured legs",
+      "The muscles that hold the scapula to the rib cage",
+      "The ligaments of the fetlock joint"
+    ],
+    "a": "A system of muscles, tendons, and ligaments that allows horses to lock their limbs while standing",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A system of muscles, tendons, and ligaments that allows horses to lock their limbs while standing."
+  },
+  {
+    "q": "Wind puffs are:",
+    "opts": [
+      "Fluid swellings around the fetlock joints",
+      "Bony growths on the cannon bone",
+      "Swelling of the hock joint",
+      "Bruising around the knee"
+    ],
+    "a": "Fluid swellings around the fetlock joints",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Fluid swellings around the fetlock joints."
+  },
+  {
+    "q": "Bone spavin is a common cause of lameness. What is it?",
+    "opts": [
+      "Arthritis of the lower hock joints",
+      "A bony growth on the cannon bone",
+      "A fracture of the pastern bone",
+      "Inflammation of the fetlock joint"
+    ],
+    "a": "Arthritis of the lower hock joints",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Arthritis of the lower hock joints."
+  },
+  {
+    "q": "What does swelling in the carpus (knee) often indicate?",
+    "opts": [
+      "A possible sign of injury or stress",
+      "Normal growth in young horses",
+      "That the horse is well hydrated",
+      "A sign the horse needs more exercise"
+    ],
+    "a": "A possible sign of injury or stress",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A possible sign of injury or stress."
+  },
+  {
+    "q": "About how much of the horse's body weight does the forelimb carry at rest?",
+    "opts": [
+      "About 60%",
+      "About 25%",
+      "About 40%",
+      "About 90%"
+    ],
+    "a": "About 60%",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is About 60%."
+  },
+  {
+    "q": "What is arthritis (osteoarthritis) in a joint?",
+    "opts": [
+      "The gradual breakdown of cartilage inside the joint",
+      "A buildup of extra fluid in the joint",
+      "A small extra bone beside the joint",
+      "A torn tendon near the joint"
+    ],
+    "a": "The gradual breakdown of cartilage inside the joint",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The gradual breakdown of cartilage inside the joint."
+  },
+  {
+    "q": "Which statement best describes a handler's goal in learning equine skeletal anatomy?",
+    "opts": [
+      "To know major bone and joint names, locate them on a living horse, and follow veterinary conversations",
+      "To be able to diagnose lameness without veterinary help",
+      "To assess bone quality for purchase without radiographs",
+      "To perform joint injections independently"
+    ],
+    "a": "To know major bone and joint names, locate them on a living horse, and follow veterinary conversations",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is To know major bone and joint names, locate them on a living horse, and follow veterinary conversations."
+  },
+  {
+    "q": "A horse has swelling on the outside of the left carpus after a workout. What should a handler do?",
+    "opts": [
+      "Note and monitor the swelling, and contact a veterinarian if the horse shows any change in soundness",
+      "Continue normal work and see if it resolves",
+      "Apply a tight bandage to reduce swelling immediately",
+      "Assume it is a wind puff and ignore it"
+    ],
+    "a": "Note and monitor the swelling, and contact a veterinarian if the horse shows any change in soundness",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Note and monitor the swelling, and contact a veterinarian if the horse shows any change in soundness."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

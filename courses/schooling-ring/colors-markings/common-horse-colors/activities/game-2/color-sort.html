@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horse Color Sort &mdash; Common Horse Colors &mdash; Equine Edu</title>
+<meta name="description" content="Drag horse photo cards into the correct color category. A quick sorting game that reinforces color recognition.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../../../assets/css/game.css">
+
+  <link rel="stylesheet" href="../../../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-colors-markings-common-horse-colors-activities-game-2-color-sort">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+
+<section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Training Barn</div>
+      <h1 class="lesson-hero-title">Horse Color <span>Sort</span></h1>
+      <p class="lesson-hero-desc">Sort a smaller batch of horse color cards each round. Play again for a new mix from the full color set.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lesson-wrap">
+  <main class="lesson-left">
+
+    <div class="visual-card">
+
+      <div id="game-main">
+        <div class="sort-intro">
+          <div class="sort-stat">Cards remaining: <strong id="remaining-count">10</strong></div>
+          <div class="sort-stat">Correct: <strong id="correct-count">0</strong></div>
+          <div class="sort-stat">Misplaced: <strong id="wrong-count">0</strong></div>
+        </div>
+
+        <p class="touch-note" id="touch-note">Drag a card into a bucket, or tap a card and then tap the bucket where it belongs.</p>
+
+        <div class="hand-section">
+          <div class="hand-label">Cards to Sort</div>
+          <div class="hand-pile" id="hand-pile"></div>
+        </div>
+
+        <div class="hand-label ee-u-90634e1f">Drop into the correct group</div>
+        <div class="buckets-grid" id="buckets-grid"></div>
+
+        <div class="sort-actions">
+          <button class="btn-primary" onclick="resetGame()">New Batch</button>
+        </div>
+      </div>
+
+      <div class="completion-banner" id="completion-banner">
+        <div class="completion-emoji">🎉</div>
+        <div class="completion-title">All Sorted!</div>
+        <p class="completion-sub" id="completion-sub"></p>
+        <div class="score-pill" id="completion-score"></div>
+        <br><br>
+        <div class="sort-actions">
+          <button class="btn-primary" onclick="resetGame()">Play Again</button>
+          <a href="../../5-training-barn.html" class="btn-secondary">Back to Training Barn</a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script>
+  window.CURRENT_MODULE = 4;
+  window.LAYOUT = {
+    homeUrl:    '../../../../../index.html',
+    coursesUrl: '../../../../index.html',
+    navCta:     { label: 'Back to Training Barn', url: '../../5-training-barn.html' }
+  };
+</script>
+<script src="../../course-config.js"></script>
+<script>
+  (function(){
+    if(!window.COURSE_CONFIG) return;
+    window.COURSE_CONFIG.homeUrl       = '../' + window.COURSE_CONFIG.homeUrl;
+    window.COURSE_CONFIG.allCoursesUrl = '../' + window.COURSE_CONFIG.allCoursesUrl;
+  })();
+</script>
+<script src="../../../../../../assets/js/layout.js"></script>
+<script src="../../../../../../assets/js/course-nav.js"></script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   HORSE COLOR SORT — Game Logic
+   ═══════════════════════════════════════════════════════════════ */
+
+var COLORS = [
+  { name: 'Chestnut',         img: '../../images/common-horse-colors/chestnut.png',         group: 'Base Coat Colors', hint: 'Hint: reddish body, no black points' },
+  { name: 'Sorrel',           img: '../../images/common-horse-colors/sorrel.png',           group: 'Base Coat Colors', hint: 'Hint: bright copper-red coat' },
+  { name: 'Liver Chestnut',   img: '../../images/common-horse-colors/liver-chestnut.png',   group: 'Base Coat Colors', hint: 'Hint: very dark red-brown coat' },
+  { name: 'Flaxen Chestnut',  img: '../../images/common-horse-colors/flaxen-chestnut.png',  group: 'Base Coat Colors', hint: 'Hint: red body with pale mane' },
+  { name: 'Black',            img: '../../images/common-horse-colors/black.png',            group: 'Base Coat Colors', hint: 'Hint: dark coat from nose to tail' },
+  { name: 'Bay',              img: '../../images/common-horse-colors/bay.png',              group: 'Base Coat Colors', hint: 'Hint: brown body, black points' },
+  { name: 'Palomino',         img: '../../images/common-horse-colors/palomino.png',         group: 'Golden & Lightened', hint: 'Hint: gold body, pale mane' },
+  { name: 'Buckskin',         img: '../../images/common-horse-colors/buckskin.png',         group: 'Golden & Lightened', hint: 'Hint: tan body, black points' },
+  { name: 'Gray',             img: '../../images/common-horse-colors/gray.png',             group: 'Gray', hint: 'Hint: coat lightens with age' },
+  { name: 'Dapple Gray',      img: '../../images/common-horse-colors/dapple-gray.png',      group: 'Gray', hint: 'Hint: gray coat with ring patterns' },
+  { name: 'Flea-Bitten Gray', img: '../../images/common-horse-colors/flea-bitten-gray.png', group: 'Gray', hint: 'Hint: pale coat with tiny specks' },
+  { name: 'Rose Gray',        img: '../../images/common-horse-colors/rose-gray.png',        group: 'Gray', hint: 'Hint: warm pinkish-gray tone' },
+  { name: 'Strawberry Roan',  img: '../../images/common-horse-colors/strawberry-roan.png',  group: 'Roan', hint: 'Hint: red coat mixed with white hairs' },
+  { name: 'Blue Roan',        img: '../../images/common-horse-colors/blue-roan.png',        group: 'Roan', hint: 'Hint: black coat mixed with white hairs' },
+  { name: 'Bay Roan',         img: '../../images/common-horse-colors/bay-roan.png',         group: 'Roan', hint: 'Hint: reddish body with roan mixing' },
+  { name: 'Tobiano',          img: '../../images/common-horse-colors/tobiano.png',          group: 'Patterned', hint: 'Hint: white often crosses the back' },
+  { name: 'Overo',            img: '../../images/common-horse-colors/overo.png',            group: 'Patterned', hint: 'Hint: irregular white from the belly up' },
+  { name: 'Leopard Appaloosa',          img: '../../images/common-horse-colors/leopard-appaloosa.png',group: 'Patterned', hint: 'Hint: spots over much of the body' },
+  { name: 'Blanket Appaloosa',          img: '../../images/common-horse-colors/blanket-appaloosa.png',group: 'Patterned', hint: 'Hint: white patch over the hindquarters' }
+];
+
+var GROUPS = ['Base Coat Colors', 'Golden & Lightened', 'Gray', 'Roan', 'Patterned'];
+var ROUND_SIZE = 10;
+
+var state = { correct: 0, wrong: 0, placed: 0, selectedCard: null, isTouch: false, roundCards: [] };
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+function buildCard(color) {
+  var card = document.createElement('div');
+  card.className   = 'sort-card';
+  card.draggable   = true;
+  card.dataset.name  = color.name;
+  card.dataset.group = color.group;
+
+  var img = document.createElement('img');
+  img.src = color.img;
+  img.alt = 'Horse color card';
+  img.onerror = function(){ this.style.display='none'; };
+
+  var label = document.createElement('div');
+  label.className   = 'sort-card-label';
+  label.textContent = color.hint;
+
+  card.appendChild(img);
+  card.appendChild(label);
+
+  /* Drag events */
+  card.addEventListener('dragstart', function(e) {
+    e.dataTransfer.setData('text/plain', color.name);
+    setTimeout(function(){ card.classList.add('dragging'); }, 0);
+  });
+  card.addEventListener('dragend', function() {
+    card.classList.remove('dragging');
+  });
+
+  /* Touch / click selection */
+  card.addEventListener('click', function() {
+    document.querySelectorAll('#hand-pile .sort-card.touch-selected').forEach(function(c){ c.classList.remove('touch-selected'); });
+    if (state.selectedCard === card) { state.selectedCard = null; return; }
+    card.classList.add('touch-selected');
+    state.selectedCard = card;
+  });
+
+  return card;
+}
+
+function setupBuckets() {
+  var grid = document.getElementById('buckets-grid');
+  grid.innerHTML = '';
+  GROUPS.forEach(function(groupName) {
+    var bucket = document.createElement('div');
+    bucket.className       = 'bucket';
+    bucket.dataset.group   = groupName;
+
+    var header = document.createElement('div');
+    header.className   = 'bucket-header';
+    header.textContent = groupName;
+
+    var cardsDiv = document.createElement('div');
+    cardsDiv.className = 'bucket-cards';
+
+    bucket.appendChild(header);
+    bucket.appendChild(cardsDiv);
+
+    /* Drag-over / drop */
+    bucket.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      bucket.classList.add('drag-over');
+    });
+    bucket.addEventListener('dragleave', function() {
+      bucket.classList.remove('drag-over');
+    });
+    bucket.addEventListener('drop', function(e) {
+      e.preventDefault();
+      bucket.classList.remove('drag-over');
+      var name = e.dataTransfer.getData('text/plain');
+      placeCard(name, groupName, cardsDiv);
+    });
+
+    /* Touch tap to place */
+    bucket.addEventListener('click', function() {
+      if (!state.selectedCard) return;
+      var name      = state.selectedCard.dataset.name;
+      if (!document.getElementById('hand-pile').contains(state.selectedCard)) return;
+      state.selectedCard.classList.remove('touch-selected');
+      placeCard(name, groupName, cardsDiv);
+      state.selectedCard = null;
+    });
+
+    grid.appendChild(bucket);
+  });
+}
+
+function placeCard(colorName, targetGroup, cardsDiv) {
+  var color = state.roundCards.find(function(c){ return c.name === colorName; }) || COLORS.find(function(c){ return c.name === colorName; });
+  if (!color) return;
+
+  /* Find the card in hand pile */
+  var handCard = Array.prototype.find.call(document.querySelectorAll('#hand-pile .sort-card'), function(card) {
+    return card.dataset.name === colorName;
+  });
+  if (!handCard) return;
+
+  var isCorrect = color.group === targetGroup;
+
+  if (isCorrect) {
+    /* Move to bucket */
+    handCard.classList.add('correct-placed');
+    handCard.draggable = false;
+    var clone = handCard.cloneNode(true);
+    clone.style.outline = '';
+    handCard.remove();
+    cardsDiv.appendChild(clone);
+    state.correct++;
+    state.placed++;
+    updateStats();
+    if (state.placed === state.roundCards.length) showCompletion();
+  } else {
+    /* Shake and stay */
+    handCard.classList.add('wrong-placed');
+    state.wrong++;
+    updateStats();
+    setTimeout(function(){ handCard.classList.remove('wrong-placed'); }, 400);
+  }
+}
+
+function updateStats() {
+  document.getElementById('remaining-count').textContent = state.roundCards.length - state.placed;
+  document.getElementById('correct-count').textContent   = state.correct;
+  document.getElementById('wrong-count').textContent     = state.wrong;
+}
+
+function showCompletion() {
+  document.getElementById('game-main').style.display        = 'none';
+  document.getElementById('completion-banner').classList.add('visible');
+
+  var total    = state.correct + state.wrong;
+  var accuracy = Math.round((state.correct / total) * 100);
+  document.getElementById('completion-score').textContent   = state.correct + ' correct, ' + state.wrong + ' misplacements';
+
+  var sub;
+  if (state.wrong === 0)      sub = 'A perfect sort — every horse in the right group on the first try. Outstanding!';
+  else if (state.wrong <= 3)  sub = 'Very clean sort. A small number of misplacements — you have a strong grasp of these color groups.';
+  else if (state.wrong <= 7)  sub = 'Good effort! A few groups gave you trouble. Review those and try sorting again.';
+  else                        sub = 'Keep at it! Going back to review the color groups will help these click into place.';
+  document.getElementById('completion-sub').textContent = sub;
+}
+
+function resetGame() {
+  state = {
+    correct: 0,
+    wrong: 0,
+    placed: 0,
+    selectedCard: null,
+    isTouch: state.isTouch,
+    roundCards: shuffle(COLORS).slice(0, ROUND_SIZE)
+  };
+  document.getElementById('completion-banner').classList.remove('visible');
+  document.getElementById('game-main').style.display = '';
+  updateStats();
+  setupBuckets();
+
+  var pile = document.getElementById('hand-pile');
+  pile.innerHTML = '';
+  state.roundCards.forEach(function(color) {
+    pile.appendChild(buildCard(color));
+  });
+}
+
+/* Boot */
+resetGame();
+</script>
+</body>
+</html>

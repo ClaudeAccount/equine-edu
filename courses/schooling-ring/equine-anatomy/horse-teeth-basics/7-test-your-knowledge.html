@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Horse Teeth Basics &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-equine-anatomy-horse-teeth-basics-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Horse Teeth Basics</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+      <a href="6-study-guide.html" class="btn-secondary">Back to Study Guide</a>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'Back to Course', url: '1-index.html' },
+  navExtras: [{ label: 'Study Guide', url: '6-study-guide.html' }]
+};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.horseTeethBasics.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "How many incisors does an adult horse have in total?",
+    "opts": [
+      "12",
+      "6",
+      "8",
+      "16"
+    ],
+    "a": "12",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 12."
+  },
+  {
+    "q": "What are the front teeth of a horse called?",
+    "opts": [
+      "Incisors",
+      "Molars",
+      "Premolars",
+      "Canines"
+    ],
+    "a": "Incisors",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Incisors."
+  },
+  {
+    "q": "Which teeth are responsible for grinding hay and grain?",
+    "opts": [
+      "Cheek teeth (premolars and molars)",
+      "Incisors",
+      "Canine teeth",
+      "Wolf teeth"
+    ],
+    "a": "Cheek teeth (premolars and molars)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Cheek teeth (premolars and molars)."
+  },
+  {
+    "q": "What is the interdental space?",
+    "opts": [
+      "The gap between the incisors and cheek teeth where the bit rests",
+      "The space between upper and lower incisors",
+      "The gap between individual molars",
+      "The space behind the last molar"
+    ],
+    "a": "The gap between the incisors and cheek teeth where the bit rests",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The gap between the incisors and cheek teeth where the bit rests."
+  },
+  {
+    "q": "Wolf teeth are best described as:",
+    "opts": [
+      "Small vestigial premolars near the bit contact area",
+      "The same as canine teeth",
+      "The first molars",
+      "Sharp incisors in young horses"
+    ],
+    "a": "Small vestigial premolars near the bit contact area",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Small vestigial premolars near the bit contact area."
+  },
+  {
+    "q": "Why are wolf teeth commonly removed in ridden horses?",
+    "opts": [
+      "Bit pressure on wolf teeth can cause pain and bit resistance",
+      "They prevent proper chewing",
+      "They interfere with other teeth erupting",
+      "They are present only in older horses"
+    ],
+    "a": "Bit pressure on wolf teeth can cause pain and bit resistance",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Bit pressure on wolf teeth can cause pain and bit resistance."
+  },
+  {
+    "q": "In which horses are canine teeth (tushes) most commonly found?",
+    "opts": [
+      "Male horses (stallions and geldings)",
+      "Female horses (mares)",
+      "Young horses under five years",
+      "All horses equally"
+    ],
+    "a": "Male horses (stallions and geldings)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Male horses (stallions and geldings)."
+  },
+  {
+    "q": "What do the incisors do?",
+    "opts": [
+      "Grasp and cut forage",
+      "Grind hay and grain",
+      "Crack grain into pieces",
+      "Support the bit"
+    ],
+    "a": "Grasp and cut forage",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Grasp and cut forage."
+  },
+  {
+    "q": "How many cheek teeth does an adult horse have in total?",
+    "opts": [
+      "24",
+      "12",
+      "16",
+      "8"
+    ],
+    "a": "24",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 24."
+  },
+  {
+    "q": "The three pairs of incisors from center outward are called:",
+    "opts": [
+      "Centrals, middle incisors, and corners",
+      "Fronts, middles, and backs",
+      "Medials, laterals, and margins",
+      "Primaries, secondaries, and tertiaries"
+    ],
+    "a": "Centrals, middle incisors, and corners",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Centrals, middle incisors, and corners."
+  },
+  {
+    "q": "Which teeth are called cheek teeth?",
+    "opts": [
+      "Premolars and molars",
+      "Incisors and canines",
+      "Wolf teeth and tushes",
+      "Temporary and permanent teeth together"
+    ],
+    "a": "Premolars and molars",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Premolars and molars."
+  },
+  {
+    "q": "A horse's premolars are located:",
+    "opts": [
+      "Just behind the interdental space, before the molars",
+      "Between the incisors",
+      "Behind all the molars",
+      "In the interdental space"
+    ],
+    "a": "Just behind the interdental space, before the molars",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Just behind the interdental space, before the molars."
+  },
+  {
+    "q": "What is the infundibulum?",
+    "opts": [
+      "A depression (cup) in the biting surface of each incisor",
+      "The root of the incisor",
+      "A groove on the upper corner incisor",
+      "The gumline around each tooth"
+    ],
+    "a": "A depression (cup) in the biting surface of each incisor",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A depression (cup) in the biting surface of each incisor."
+  },
+  {
+    "q": "The cup in each incisor is used in age estimation because:",
+    "opts": [
+      "It wears away progressively over the horse's lifetime",
+      "It appears only in horses over age ten",
+      "It is present only in permanent teeth",
+      "It grows larger as the horse ages"
+    ],
+    "a": "It wears away progressively over the horse's lifetime",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It wears away progressively over the horse's lifetime."
+  },
+  {
+    "q": "What is a dental star?",
+    "opts": [
+      "A yellowish mark representing the exposed pulp cavity as the cup wears away",
+      "A white mark from the cup filling in",
+      "The gap between upper and lower incisors",
+      "A dark stain on old teeth"
+    ],
+    "a": "A yellowish mark representing the exposed pulp cavity as the cup wears away",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A yellowish mark representing the exposed pulp cavity as the cup wears away."
+  },
+  {
+    "q": "What is Galvayne's groove?",
+    "opts": [
+      "A longitudinal groove on the outer surface of the upper corner incisor used in age estimation",
+      "A groove worn into the biting surface of the cheek teeth",
+      "A crack that appears in the lower incisors",
+      "The groove between the cup and the dental star"
+    ],
+    "a": "A longitudinal groove on the outer surface of the upper corner incisor used in age estimation",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A longitudinal groove on the outer surface of the upper corner incisor used in age estimation."
+  },
+  {
+    "q": "Galvayne's groove first appears at approximately what age?",
+    "opts": [
+      "10 years",
+      "5 years",
+      "15 years",
+      "20 years"
+    ],
+    "a": "10 years",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 10 years."
+  },
+  {
+    "q": "At about what age does Galvayne's groove reach the full length of the upper corner incisor?",
+    "opts": [
+      "20 years",
+      "10 years",
+      "15 years",
+      "25 years"
+    ],
+    "a": "20 years",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 20 years."
+  },
+  {
+    "q": "What is floating?",
+    "opts": [
+      "Filing sharp enamel points on the cheek teeth with a rasp",
+      "Removing wolf teeth surgically",
+      "Extracting a damaged incisor",
+      "Cleaning tartar from the canine teeth"
+    ],
+    "a": "Filing sharp enamel points on the cheek teeth with a rasp",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Filing sharp enamel points on the cheek teeth with a rasp."
+  },
+  {
+    "q": "Why do sharp enamel points develop on the cheek teeth?",
+    "opts": [
+      "Horses chew with a side-to-side motion, wearing outer and inner edges unevenly",
+      "Teeth grow too fast in adult horses",
+      "Young horses use only one side of the mouth",
+      "Diet causes the enamel to overgrow"
+    ],
+    "a": "Horses chew with a side-to-side motion, wearing outer and inner edges unevenly",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Horses chew with a side-to-side motion, wearing outer and inner edges unevenly."
+  },
+  {
+    "q": "What is quidding?",
+    "opts": [
+      "Dropping partially chewed feed from the mouth",
+      "Grinding teeth loudly while eating",
+      "Refusing to eat hard feed",
+      "Excessive drooling at feeding time"
+    ],
+    "a": "Dropping partially chewed feed from the mouth",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Dropping partially chewed feed from the mouth."
+  },
+  {
+    "q": "Equine teeth are described as hypsodont, meaning:",
+    "opts": [
+      "High-crowned teeth that erupt gradually over the horse's lifetime",
+      "Short teeth that stop growing after erupting",
+      "Teeth without roots",
+      "Teeth that are replaced repeatedly throughout life"
+    ],
+    "a": "High-crowned teeth that erupt gradually over the horse's lifetime",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is High-crowned teeth that erupt gradually over the horse's lifetime."
+  },
+  {
+    "q": "What are deciduous teeth?",
+    "opts": [
+      "Temporary (milk) teeth present from birth that are replaced by permanent teeth",
+      "Teeth that are never replaced",
+      "The permanent molars",
+      "The large cheek teeth"
+    ],
+    "a": "Temporary (milk) teeth present from birth that are replaced by permanent teeth",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Temporary (milk) teeth present from birth that are replaced by permanent teeth."
+  },
+  {
+    "q": "At about what age do the permanent central incisors erupt?",
+    "opts": [
+      "2½ years",
+      "1 year",
+      "3½ years",
+      "5 years"
+    ],
+    "a": "2½ years",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 2½ years."
+  },
+  {
+    "q": "At about what age do the permanent middle incisors come in?",
+    "opts": [
+      "3½ years",
+      "2½ years",
+      "4½ years",
+      "5 years"
+    ],
+    "a": "3½ years",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 3½ years."
+  },
+  {
+    "q": "At about what age do the permanent corner incisors erupt?",
+    "opts": [
+      "4½ years",
+      "3½ years",
+      "5 years",
+      "6 years"
+    ],
+    "a": "4½ years",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 4½ years."
+  },
+  {
+    "q": "A horse is said to have its \"full mouth\" of permanent incisors at about:",
+    "opts": [
+      "5 years",
+      "3 years",
+      "4 years",
+      "6 years"
+    ],
+    "a": "5 years",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 5 years."
+  },
+  {
+    "q": "What are caps in equine dentistry?",
+    "opts": [
+      "Retained shells of temporary teeth sitting over erupting permanent teeth",
+      "Protective coverings placed by dentists",
+      "The enamel layer of permanent teeth",
+      "Another name for wolf teeth"
+    ],
+    "a": "Retained shells of temporary teeth sitting over erupting permanent teeth",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Retained shells of temporary teeth sitting over erupting permanent teeth."
+  },
+  {
+    "q": "How can a buyer tell that a horse has temporary (deciduous) incisors rather than permanent ones?",
+    "opts": [
+      "Temporary incisors are smaller, whiter, and have a more constricted neck than permanent teeth",
+      "Temporary teeth are sharper and darker in color",
+      "Temporary teeth have no cups",
+      "Temporary teeth are larger and more yellow"
+    ],
+    "a": "Temporary incisors are smaller, whiter, and have a more constricted neck than permanent teeth",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Temporary incisors are smaller, whiter, and have a more constricted neck than permanent teeth."
+  },
+  {
+    "q": "After a horse has its full permanent mouth (about age 5), age estimation relies on:",
+    "opts": [
+      "Wear patterns and structural changes such as cup wear and Galvayne's groove",
+      "The number of teeth remaining",
+      "The color of the gumline",
+      "The size of the cheek teeth"
+    ],
+    "a": "Wear patterns and structural changes such as cup wear and Galvayne's groove",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Wear patterns and structural changes such as cup wear and Galvayne's groove."
+  },
+  {
+    "q": "The angle of occlusion refers to:",
+    "opts": [
+      "The angle at which the upper and lower incisors meet, which changes with age",
+      "The angle of the cheek teeth grinding surface",
+      "The tilt of the jaw",
+      "The gap between the incisors at rest"
+    ],
+    "a": "The angle at which the upper and lower incisors meet, which changes with age",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The angle at which the upper and lower incisors meet, which changes with age."
+  },
+  {
+    "q": "Dental age estimation in horses is considered:",
+    "opts": [
+      "An estimate with a margin of error, not a precise measurement",
+      "Accurate to within one month",
+      "Only reliable in horses under age three",
+      "Fully reliable in all ages"
+    ],
+    "a": "An estimate with a margin of error, not a precise measurement",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is An estimate with a margin of error, not a precise measurement."
+  },
+  {
+    "q": "Who should perform an equine dental exam and floating?",
+    "opts": [
+      "A veterinarian or qualified equine dental provider",
+      "Any experienced horse handler",
+      "The horse's regular farrier",
+      "Only a board-certified equine surgeon"
+    ],
+    "a": "A veterinarian or qualified equine dental provider",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A veterinarian or qualified equine dental provider."
+  },
+  {
+    "q": "How often is routine equine dental care typically recommended for adult horses?",
+    "opts": [
+      "Annually or biannually (every 6–12 months)",
+      "Every 5 years",
+      "Only when problems appear",
+      "Monthly"
+    ],
+    "a": "Annually or biannually (every 6–12 months)",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Annually or biannually (every 6–12 months)."
+  },
+  {
+    "q": "Which of the following is a behavioral sign of possible dental discomfort?",
+    "opts": [
+      "Head tossing or bit resistance during riding",
+      "Decreased water consumption",
+      "Consistent weight gain",
+      "Reluctance to trot on soft ground"
+    ],
+    "a": "Head tossing or bit resistance during riding",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Head tossing or bit resistance during riding."
+  },
+  {
+    "q": "A horse that forms balls of hay and drops them from its mouth without swallowing is showing a sign called:",
+    "opts": [
+      "Quidding",
+      "Cribbing",
+      "Windsucking",
+      "Pawing"
+    ],
+    "a": "Quidding",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Quidding."
+  },
+  {
+    "q": "Why is a dental exam necessary to evaluate cheek tooth problems?",
+    "opts": [
+      "Cheek teeth cannot be seen or properly assessed from outside the mouth without a speculum",
+      "Cheek teeth are visible when the lip is lifted",
+      "Cheek teeth problems always cause obvious swelling",
+      "Only cheek teeth in old horses need evaluation"
+    ],
+    "a": "Cheek teeth cannot be seen or properly assessed from outside the mouth without a speculum",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Cheek teeth cannot be seen or properly assessed from outside the mouth without a speculum."
+  },
+  {
+    "q": "The term \"full mouth\" in equine dentistry means:",
+    "opts": [
+      "A horse has all of its permanent incisors, which occurs at about age 5",
+      "The horse's mouth is completely healthy",
+      "The horse has a large number of teeth for its breed",
+      "All temporary teeth have been removed"
+    ],
+    "a": "A horse has all of its permanent incisors, which occurs at about age 5",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A horse has all of its permanent incisors, which occurs at about age 5."
+  },
+  {
+    "q": "A speculum is used during equine dental exams to:",
+    "opts": [
+      "Hold the mouth open so the cheek teeth can be examined and treated",
+      "Numb the gums before treatment",
+      "Measure the height of the teeth",
+      "Retract the lips to see the incisors"
+    ],
+    "a": "Hold the mouth open so the cheek teeth can be examined and treated",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Hold the mouth open so the cheek teeth can be examined and treated."
+  },
+  {
+    "q": "Which dental feature disappears from the top of the tooth at about age 25 and is completely gone by about age 30?",
+    "opts": [
+      "Galvayne's groove",
+      "The cup (infundibulum)",
+      "The dental star",
+      "The temporary incisor"
+    ],
+    "a": "Galvayne's groove",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Galvayne's groove."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

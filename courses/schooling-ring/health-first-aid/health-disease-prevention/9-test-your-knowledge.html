@@ -14,157 +14,38 @@
 <body class="ee-page-courses-schooling-ring-health-first-aid-health-disease-prevention-9-test-your-knowledge">
 <div id="site-nav"></div>
 <div id="course-breadcrumb"></div>
-<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
   <div class="lesson-hero-inner hero-centered">
     <div class="lesson-hero-text">
-      <div class="lesson-module-tag">Equine Health &amp; Disease Prevention</div>
+      <div class="lesson-module-tag">Equine Health &amp;amp; Disease Prevention</div>
       <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
-      <p class="lesson-hero-desc">Each attempt draws 15 questions from a larger bank — answer choices rotate so repeated attempts are never the same quiz.</p>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
     </div>
   </div>
 </section>
 <div class="lesson-wrap">
-<main class="lesson-left">
-<section class="quiz-card" id="quiz-card">
-  <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
-  <div class="quiz-question" id="quiz-question"></div>
-  <div class="quiz-options" id="quiz-options"></div>
-  <div class="quiz-feedback" id="quiz-feedback"></div>
-  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
-</section>
-<div class="quiz-score-panel" id="score-panel">
-  <div class="score-number" id="score-display">0/15</div>
-  <div class="score-label">Your Score</div>
-  <div class="score-message" id="score-message"></div>
-  <button class="btn-retake" id="btn-retake">Try Again</button>
-</div>
-</main>
-<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
 </div>
 <div id="site-footer"></div>
-<script>
-(function(){
-const QC=15;
-const bank=[
-
-/* ── PREVENTIVE CARE & VITAL SIGNS (10) ── */
-{q:"What is the normal temperature range for an adult horse at rest?",opts:["99–101°F (37.2–38.3°C)","95–98°F (35–37°C)","102–104°F (38.9–40°C)","97–100°F (36.1–37.8°C)"],a:"99–101°F (37.2–38.3°C)",ok:"Correct. Normal equine temperature is 99–101°F. Above 101°F may indicate fever; above 102°F is a veterinary concern.",no:"Normal equine temperature is 99–101°F (37.2–38.3°C). Temperature should be taken rectally with the horse at rest."},
-
-{q:"What is the normal resting heart rate for an adult horse?",opts:["28–44 beats per minute","60–80 beats per minute","15–25 beats per minute","50–70 beats per minute"],a:"28–44 beats per minute",ok:"Correct. A resting heart rate of 28–44 bpm is normal for adult horses. An elevated rate at rest is a pain or distress signal.",no:"Normal resting heart rate is 28–44 bpm. Rates above 50–60 bpm at rest suggest significant pain, illness, or distress."},
-
-{q:"Normal capillary refill time in a horse is:",opts:["Under 2 seconds","3–5 seconds","Under 5 seconds","Under 10 seconds"],a:"Under 2 seconds",ok:"Correct. Press the gums firmly, release, and count. Pink color should return within 2 seconds. Longer times suggest circulatory compromise.",no:"Capillary refill time should be under 2 seconds. Press the gum, release, and watch color return. Over 2 seconds is abnormal."},
-
-{q:"Normal gut sounds in a healthy horse should be present in:",opts:["All four quadrants of the abdomen","The right side only","The upper left quadrant only","Gut sounds are not normally present in horses"],a:"All four quadrants of the abdomen",ok:"Correct. Normal gut sounds — borborygmi — should be audible in all four quadrants with a stethoscope. Absent or reduced sounds indicate reduced gut motility.",no:"Gut sounds should be present in all four quadrants. Absent or very reduced sounds indicate reduced gut motility, which is a sign of colic."},
-
-{q:"What is the primary distinction between preventive care and reactive care?",opts:["Preventive care addresses health before problems develop; reactive care responds to problems after they appear","Preventive care costs more than reactive care","Preventive care is used only for horses in competition","Reactive care uses natural remedies; preventive care uses medications"],a:"Preventive care addresses health before problems develop; reactive care responds to problems after they appear",ok:"Correct. Preventive care — vaccination, deworming, dental care, wellness exams — intercepts problems before they become costly or life-threatening. Reactive care responds to established disease.",no:"Preventive care intercepts problems before they develop. Reactive care responds to problems that have already appeared. Preventive care is almost always less expensive and more effective."},
-
-{q:"What is biosecurity in an equine facility?",opts:["Practices that prevent the introduction and spread of infectious disease within a horse population","The process of testing horses for infectious diseases before sale","The vaccination schedule required for horses entering competition","Documentation required when horses cross state lines"],a:"Practices that prevent the introduction and spread of infectious disease within a horse population",ok:"Correct. Biosecurity encompasses isolation of new arrivals, not sharing equipment between horses, monitoring for disease signs, and protocols for managing suspected cases.",no:"Biosecurity is the set of practices that prevent disease from entering or spreading in a horse facility: isolation, dedicated equipment, monitoring, and movement restrictions."},
-
-{q:"Why is documenting a horse's health records important beyond regulatory requirements?",opts:["Complete records enable pattern recognition, support veterinary decisions, and allow emergency care providers to understand the horse's history","Health records are only required for horses in competition","Records are primarily for insurance purposes, not health management","The only required record is the annual Coggins test result"],a:"Complete records enable pattern recognition, support veterinary decisions, and allow emergency care providers to understand the horse's history",ok:"Correct. Health records reveal trends — changes in weight, vaccination gaps, deworming intervals — that a veterinarian can use to guide preventive care decisions and diagnose recurring problems.",no:"Health records serve active management functions: they reveal patterns, support veterinary decision-making, and allow anyone caring for the horse in an emergency to understand its history."},
-
-{q:"The annual wellness exam is most valuable because it:",opts:["Establishes healthy baselines that make future deviations recognizable","Replaces the need for emergency veterinary calls","Provides documentation required by all boarding facilities","Is the only time vaccines can be administered safely"],a:"Establishes healthy baselines that make future deviations recognizable",ok:"Correct. A heart rate of 38 bpm or a temperature of 100°F means something different when the examiner knows a horse's normal is 32 bpm and 99.5°F. Baselines make deviations meaningful.",no:"The wellness exam establishes baselines for that individual horse — weight, heart rate, temperature, dental status — so future deviations can be recognized quickly and interpreted accurately."},
-
-{q:"What minimum isolation period is recommended for a new horse arriving at a facility?",opts:["14–21 days","3–5 days","48–72 hours","One week exactly"],a:"14–21 days",ok:"Correct. A 14–21 day isolation period covers the incubation period of most common equine infectious diseases, allowing any illness the horse is incubating to become apparent before contact with resident horses.",no:"Minimum 14–21 days of isolation from resident horses. This covers the incubation period of most common equine infectious diseases and allows incubating illness to become apparent before herd contact."},
-
-{q:"Which member of the equine health team sets the deworming protocol and interprets fecal egg counts?",opts:["The veterinarian","The farrier","The equine dentist","The barn manager"],a:"The veterinarian",ok:"Correct. The veterinarian interprets diagnostic tests (fecal egg counts, blood work) and designs the deworming protocol. Other team members — farrier, dentist, barn manager — address their respective areas of expertise.",no:"The veterinarian designs and oversees the deworming program, interprets fecal egg counts, and makes treatment decisions. The farrier maintains hoof health; the dentist addresses dental care."},
-
-/* ── VACCINATION (8) ── */
-{q:"Which vaccines are classified as AAEP core vaccines, recommended for all horses in North America?",opts:["Tetanus, EEE/WEE, West Nile Virus, and Rabies","Strangles, Influenza, Herpesvirus, and Botulism","Potomac Horse Fever, Rotavirus, and Anthrax","All vaccines listed are core vaccines"],a:"Tetanus, EEE/WEE, West Nile Virus, and Rabies",ok:"Correct. Tetanus, EEE/WEE, West Nile, and Rabies are the four AAEP core vaccines recommended annually for every horse in North America.",no:"AAEP core vaccines: Tetanus, Eastern/Western Equine Encephalomyelitis, West Nile Virus, and Rabies. All four are recommended annually regardless of geography or use level."},
-
-{q:"EEE (Eastern Equine Encephalomyelitis) is notable for which statistic?",opts:["A fatality rate of approximately 75–90% in affected horses","Being treatable with a single course of antibiotics","Causing only mild respiratory signs in most horses","Being transmitted by ticks, not mosquitoes"],a:"A fatality rate of approximately 75–90% in affected horses",ok:"Correct. EEE is one of the most lethal vaccine-preventable diseases in horses. Most horses that develop clinical neurological signs do not survive, which is why annual vaccination before mosquito season is essential.",no:"EEE carries a case fatality rate of approximately 75–90% in affected horses. It is a core vaccine because vaccination is essentially the only effective prevention — treatment after clinical signs are established has poor results."},
-
-{q:"West Nile Virus arrived in North America in which year?",opts:["1999","1987","2005","2012"],a:"1999",ok:"Correct. West Nile Virus was introduced to North America through New York in 1999 and spread across the continent within four years, causing thousands of equine deaths before vaccination became widespread.",no:"West Nile Virus arrived in North America in 1999 through New York City and spread rapidly across the continent within four years, causing significant equine mortality before vaccination was widely adopted."},
-
-{q:"Tetanus in horses is caused by:",opts:["Clostridium tetani bacteria found in soil and manure","A viral infection transmitted by mosquitoes","A fungal infection from contaminated hay","A nutritional deficiency in selenium or calcium"],a:"Clostridium tetani bacteria found in soil and manure",ok:"Correct. Clostridium tetani is an anaerobic soil bacterium. It enters through wounds and produces a neurotoxin (tetanospasmin) that cannot be neutralized once it binds to neural tissue. Annual vaccination is essential.",no:"Tetanus is caused by Clostridium tetani, an anaerobic bacterium ubiquitous in soil and manure. It enters through any wound. Horses are more susceptible than most domestic species."},
-
-{q:"When should an additional tetanus booster be administered beyond the annual vaccination?",opts:["Within 24 hours of any significant wound, surgery, or foaling","Only if the horse has not been vaccinated in over 18 months","Tetanus does not require additional boosters beyond the annual schedule","Only after exposure to an infected horse"],a:"Within 24 hours of any significant wound, surgery, or foaling",ok:"Correct. Any puncture, laceration, surgical incision, or foaling event creates a potential entry point for Clostridium tetani and triggers a booster recommendation within 24 hours, regardless of the annual vaccination schedule.",no:"Tetanus requires a booster within 24 hours of significant wounds, surgical procedures, and foaling. The anaerobic environment of deep wounds is an ideal growth environment for Clostridium tetani."},
-
-{q:"Influenza and herpesvirus vaccines are classified as risk-based rather than core because:",opts:["They provide shorter-lived immunity and are most valuable for horses with frequent exposure to other horses","They are not effective enough to be recommended for all horses","They are too expensive for routine use","They are only available by prescription and require veterinary administration"],a:"They provide shorter-lived immunity and are most valuable for horses with frequent exposure to other horses","ok":"Correct. Risk-based vaccines address diseases where the risk varies significantly based on the horse's use and exposure level. Horses that stay home with a closed herd have very different exposure risk than horses that travel to shows monthly.",no:"Influenza and herpesvirus vaccines are risk-based because they provide shorter-lived immunity and their value depends heavily on exposure frequency. Every-6-month boosters are recommended for horses that travel or compete."},
-
-{q:"What does a Coggins test detect, and what is the consequence of a positive result?",opts:["Antibodies to Equine Infectious Anemia (EIA) — positive horses must be quarantined or euthanized","Intestinal parasite eggs — high counts require treatment","Equine influenza antibodies — positive horses must rest for 30 days","Blood glucose levels — elevated levels indicate metabolic disease"],a:"Antibodies to Equine Infectious Anemia (EIA) — positive horses must be quarantined or euthanized",ok:"Correct. EIA is a reportable disease with no vaccine or cure. A negative Coggins test is required for interstate transport and most events. Positive horses face permanent quarantine or euthanasia under federal regulations.",no:"The Coggins test detects antibodies to EIA (Equine Infectious Anemia). EIA has no vaccine or treatment — positive horses must be permanently quarantined or humanely euthanized per federal regulations."},
-
-{q:"West Nile Virus is transmitted to horses by:",opts:["Mosquitoes that have fed on infected birds","Direct horse-to-horse contact","Contaminated water sources","Ticks in tall grass"],a:"Mosquitoes that have fed on infected birds",ok:"Correct. West Nile Virus is an arbovirus — mosquitoes acquire it by feeding on infected wild birds and then transmit it to horses and humans. Horses are dead-end hosts and cannot spread the virus to other horses.",no:"West Nile Virus is transmitted by mosquitoes that have fed on infected birds. Horses are dead-end hosts — they cannot spread the virus to other horses or to humans directly."},
-
-/* ── PARASITE CONTROL (7) ── */
-{q:"What is the purpose of a fecal egg count (FEC) in a strategic deworming program?",opts:["To identify which horses carry significant parasite burdens and need treatment","To determine the correct brand of dewormer for all horses","To detect tapeworm infections specifically","To replace annual vaccination with parasite testing"],a:"To identify which horses carry significant parasite burdens and need treatment",ok:"Correct. FECs classify horses as low, moderate, or high shedders. Treating only high shedders concentrates drug use where it provides the most benefit and slows resistance development in the parasite population.",no:"Fecal egg counting identifies horses with significant parasite burdens so treatment can be targeted to those animals — not applied indiscriminately to all horses on a fixed schedule."},
-
-{q:"Anthelmintic resistance develops in parasite populations because:",opts:["Blanket calendar deworming selects for resistant worms that survive treatment","Horses develop immunity to dewormers after repeated use","Wild horses introduce resistant strains into domestic herds","Dewormers lose potency after storage"],a:"Blanket calendar deworming selects for resistant worms that survive treatment",ok:"Correct. When all horses are treated repeatedly regardless of actual need, worm populations that can survive the drug are selected to reproduce — rapidly increasing the proportion of resistant worms in the population.",no:"Resistance develops through natural selection: treating all horses repeatedly selects for worms that can survive deworming, passing resistance to their offspring and eventually dominating the local parasite population."},
-
-{q:"A fecal egg count reduction test (FECRT) is used to:",opts:["Determine whether a specific dewormer is effective on a specific farm's parasite population","Measure how many parasites are present before starting any deworming program","Identify which species of parasites are most common on a pasture","Test whether a horse has developed immunity to parasite infection"],a:"Determine whether a specific dewormer is effective on a specific farm's parasite population",ok:"Correct. The FECRT compares egg counts before and 14 days after treatment. A reduction below 95% indicates the parasites on that farm are resistant to the drug class used.",no:"The FECRT tests whether a chosen anthelmintic is actually working on the parasite population of a specific farm. It is the only reliable method for detecting drug resistance in a particular horse population."},
-
-{q:"Which drug is the most reliable treatment for tapeworms in horses?",opts:["Praziquantel","Ivermectin","Fenbendazole","Pyrantel at standard dose"],a:"Praziquantel",ok:"Correct. Praziquantel is the most reliable tapeworm treatment. Double-dose pyrantel is an alternative. Standard-dose ivermectin and benzimidazoles are not reliably effective against tapeworms.",no:"Praziquantel is the most reliable tapeworm treatment. Double-dose pyrantel is an alternative. Standard ivermectin dose does not cover tapeworms."},
-
-{q:"Environmental management of parasite burden includes:",opts:["Removing manure from pastures at least twice weekly to reduce infective larvae","Applying lime to all pastures monthly","Keeping horses in stalls full-time to eliminate pasture exposure","Rotating to a new pasture daily"],a:"Removing manure from pastures at least twice weekly to reduce infective larvae",ok:"Correct. Infective strongyle larvae develop from eggs on pasture. Removing manure twice weekly significantly reduces the larval burden that horses ingest while grazing. Pasture rotation and avoiding overcrowding are also important.",no:"Removing manure from pastures at least twice weekly interrupts the larval lifecycle. Composting kills most larvae. Overcrowding increases exposure — ideally at least 2 acres per horse is the standard."},
-
-{q:"What percentage of a typical herd is responsible for the majority of parasite eggs shed on pasture?",opts:["Approximately 20% of horses shed approximately 80% of the eggs","All horses shed equally","High shedders make up approximately 50% of any herd","Only horses with clinical signs shed significant parasite eggs"],a:"Approximately 20% of horses shed approximately 80% of the eggs",ok:"Correct. Research consistently shows that a minority of horses carry and shed the majority of parasites. Strategic deworming focuses on these high shedders, reducing total drug use while addressing the major source of environmental contamination.",no:"Approximately 20% of horses produce 80% of the egg burden in a herd. Treating only these high shedders reduces drug use significantly without compromising parasite control."},
-
-{q:"A high shedder on fecal egg count testing has a result of:",opts:["Greater than 500 eggs per gram","Less than 200 eggs per gram","200–500 eggs per gram","Any positive result is classified as high shedder"],a:"Greater than 500 eggs per gram",ok:"Correct. High shedders: >500 eggs per gram (epg). Moderate: 200–500 epg. Low: <200 epg. High shedders are the priority for treatment and contribute the most to environmental contamination.",no:"High shedder classification = >500 eggs per gram. Moderate = 200–500 epg. Low = <200 epg. High shedders require prompt treatment; low shedders require only periodic monitoring."},
-
-/* ── COMMON DISEASES (8) ── */
-{q:"Early signs of colic include:",opts:["Pawing, looking at the flank, elevated heart rate, and lack of gut sounds","Increased appetite, high energy level, and bright eye","Nasal discharge, elevated respiratory rate, and coughing","Swelling in all four limbs and digital pulse"],a:"Pawing, looking at the flank, elevated heart rate, and lack of gut sounds",ok:"Correct. Pawing, flank-watching, elevated heart rate, and reduced or absent gut sounds are hallmark early colic signs. Rolling and repeated attempts to lie down and rise indicate more severe pain.",no:"Early colic signs: pawing, looking at the flank, elevated heart rate, reduced or absent gut sounds, and reluctance to move. More severe colic produces persistent rolling, sweating, and elevated heart rate above 60 bpm."},
-
-{q:"Strangles is caused by:",opts:["Streptococcus equi subsp. equi","Equine influenza virus","Clostridium tetani","Equine herpesvirus type 1"],a:"Streptococcus equi subsp. equi",ok:"Correct. Strangles is a highly contagious bacterial infection caused by Streptococcus equi subsp. equi. It affects the upper respiratory tract and lymph nodes under the jaw and in the throatlatch area.",no:"Strangles is caused by Streptococcus equi subsp. equi, a bacterium spread through direct contact and contaminated equipment, water sources, and surfaces."},
-
-{q:"What is required before a strangles outbreak is declared resolved and horses can move off the property?",opts:["Two consecutive negative culture results (typically guttural pouch lavage, 14 days apart)","A single negative nasal swab","14 days after all visible abscesses have ruptured and drained","Clearance from a veterinarian after physical exam only"],a:"Two consecutive negative culture results (typically guttural pouch lavage, 14 days apart)",ok:"Correct. Strangles carriers — horses that appear recovered but continue to shed bacteria from their guttural pouches — are a common source of re-infection and facility-wide spread. Two negative cultures at a 14-day interval confirm resolution.",no:"Strangles requires two consecutive negative culture results (typically guttural pouch lavage, PCR or culture, 14 days apart) before the outbreak is declared resolved and horse movement can resume."},
-
-{q:"What is the primary reason why horses with equine influenza must be given extended rest after the fever resolves?",opts:["The damaged respiratory epithelium is vulnerable to secondary bacterial infection, which can cause permanent lung damage","Influenza spreads most rapidly in the first 2 weeks after fever resolution","Horses returned to work early develop permanent exercise intolerance","The virus remains active in the lungs for up to 4 weeks after clinical signs resolve"],a:"The damaged respiratory epithelium is vulnerable to secondary bacterial infection, which can cause permanent lung damage",ok:"Correct. Influenza virus damages the ciliated respiratory epithelium, removing the natural defense against bacterial colonization. Secondary bronchopneumonia during this vulnerable period can cause permanent airway damage and chronic respiratory problems.",no:"The respiratory epithelium damaged by influenza is vulnerable to secondary bacterial bronchopneumonia during recovery. Returning to work before full healing creates conditions for serious secondary infection. Rest for at least 5–7 days after the last sign of fever is the standard guideline."},
-
-{q:"Equine Herpesvirus Myeloencephalopathy (EHM) most commonly occurs as a complication of:",opts:["EHV-1 infection","EHV-4 infection","Equine influenza","Strangles infection"],a:"EHV-1 infection",ok:"Correct. EHM is specifically associated with EHV-1 (not EHV-4). It results from EHV-1 replication within blood vessels supplying the spinal cord and brain, causing vasculitis and subsequent neurological signs.",no:"EHM is a complication of EHV-1 infection. EHV-4 primarily causes respiratory disease. EHM involves EHV-1 replication in blood vessels supplying the nervous system, causing vasculitis and neurological signs."},
-
-{q:"Early signs of laminitis include:",opts:["Heat in the hooves, bounding digital pulse, and weight-shifted stance (leaning back to take weight off toes)","Nasal discharge, coughing, and elevated rectal temperature","Quidding, head tossing under saddle, and one-sided nasal discharge","Ataxia, hindlimb weakness, and urinary incontinence"],a:"Heat in the hooves, bounding digital pulse, and weight-shifted stance (leaning back to take weight off toes)",ok:"Correct. These three signs — hoof heat, bounding digital pulse, and the characteristic backward-leaning stance — are the hallmarks of early laminitis. Veterinary and farriery intervention at this stage can prevent coffin bone rotation.",no:"Early laminitis: heat in the hooves, bounding digital pulse at the back of the pastern, and the characteristic stance where the horse leans back on the hindlimbs to take weight off the toe area."},
-
-{q:"What is dental floating?",opts:["Filing down the sharp enamel points on a horse's cheek teeth to restore even grinding surfaces","Removing wolf teeth to improve bit contact","Polishing the incisors to assess wear patterns","A diagnostic procedure using dental radiographs"],a:"Filing down the sharp enamel points on a horse's cheek teeth to restore even grinding surfaces",ok:"Correct. Floating removes the sharp points that form on the outer edges of upper cheek teeth and inner edges of lower cheek teeth from uneven wear, preventing pain and restoring efficient grinding surfaces.",no:"Dental floating files the sharp enamel points that develop on cheek teeth from normal wear, allowing comfortable and efficient chewing. It is recommended annually for horses over three years old."},
-
-{q:"Quidding is defined as:",opts:["Dropping partially chewed feed from the mouth — a primary sign of dental pain","Refusing to eat for more than 12 hours","Grinding the teeth audibly (bruxism)","Dribbling water during drinking"],a:"Dropping partially chewed feed from the mouth — a primary sign of dental pain",ok:"Correct. Quidding occurs when a horse forms a feed bolus but cannot chew it without pain, dropping it before swallowing. It indicates sharp enamel points or other dental pathology causing pain during mastication.",no:"Quidding = dropping partially chewed feed from the mouth. It is the most visible and specific sign of active dental pain. Horses that quid are at risk for weight loss and choke (esophageal obstruction)."},
-
-/* ── DENTAL CARE (7) ── */
-{q:"Why do horses require periodic dental floating throughout their lives?",opts:["Uneven wear from normal chewing produces sharp enamel points on the cheek teeth that cause pain and reduce feed efficiency","Horses' teeth are naturally smooth and become sharp only from eating hard feeds","Wolf teeth cause all major dental problems and their removal prevents future issues","Horse teeth do not naturally wear evenly because they are composed of soft dentine"],a:"Uneven wear from normal chewing produces sharp enamel points on the cheek teeth that cause pain and reduce feed efficiency",ok:"Correct. The lateral chewing motion creates differential wear — sharp points form on the outer edges of upper cheek teeth and inner edges of lower cheek teeth. These points lacerate the cheeks and tongue, causing pain.",no:"Normal chewing creates uneven wear, producing sharp enamel points on cheek tooth edges. These points lacerate soft tissue and cause pain during chewing — hence the need for annual filing (floating)."},
-
-{q:"What are wolf teeth in horses?",opts:["Small first premolars (vestigial teeth) that can interfere with bit contact and are routinely removed","The canine teeth present in male horses","The deciduous teeth that must be removed at age 2","The molars at the very back of the dental arcade"],a:"Small first premolars (vestigial teeth) that can interfere with bit contact and are routinely removed",ok:"Correct. Wolf teeth are small vestigial first premolars that sit just in front of the first cheek teeth. They can interfere with bit contact and cause pain — they are routinely removed when young horses begin training.",no:"Wolf teeth are small vestigial first premolars. They can interfere with bit placement and cause discomfort during riding. Routine removal when the horse begins training is the standard management approach."},
-
-{q:"Horses have hypsodont teeth, which means:",opts:["Their teeth have an extended crown that erupts continuously throughout life as grinding surfaces wear down","Their teeth stop erupting at maturity, as in most mammals","Their incisors are shorter than their molars","Their teeth cannot be filed without causing permanent damage"],a:"Their teeth have an extended crown that erupts continuously throughout life as grinding surfaces wear down",ok:"Correct. Hypsodont teeth erupt continuously — this is what enables horses to grind forage efficiently across a long lifespan. However, the supply is finite, which is why very old horses eventually run out of usable tooth.",no:"Hypsodont = high-crowned teeth that erupt continuously as the grinding surfaces wear down. This makes dental management a lifelong requirement, and explains why teeth eventually wear out in very old horses."},
-
-{q:"Annual dental examination is recommended to begin at age:",opts:["Three years and older","Eight years and older","Dental exams are only needed when problems arise","Every five years for horses under fifteen"],a:"Three years and older",ok:"Correct. Annual dental exams are recommended for all horses over three. Horses under three should be examined as deciduous teeth are replaced by permanent teeth — a period of significant dental change.",no:"Annual dental exams are recommended starting at age three. Horses under three should be examined during the period of deciduous tooth shedding and permanent tooth eruption, which is an active and potentially uncomfortable phase."},
-
-{q:"What indicates that a senior horse may need to transition away from standard hay?",opts:["Significant tooth loss or severely worn teeth that prevent adequate chewing of long-stemmed forage","Any horse over twenty regardless of dental status","The horse preferring grain over hay as it ages","Weight gain from feed that is too calorie-dense"],a:"Significant tooth loss or severely worn teeth that prevent adequate chewing of long-stemmed forage",ok:"Correct. As hypsodont teeth wear to the root, grinding efficiency declines. When a senior horse can no longer adequately process long-stemmed hay, alternatives such as soaked hay cubes, chopped forage, or complete feeds are needed to maintain body condition.",no:"Senior horses with severely worn or missing teeth cannot adequately process long-stemmed hay. Soaked hay cubes, chopped forage, or complete senior feeds provide nutrition without requiring intact cheek teeth for grinding."},
-
-{q:"A horse that consistently tilts its head to one side while chewing is most likely experiencing:",opts:["Pain on the opposite side of the mouth, causing the horse to favor the less painful side","A training habit from early handling","Normal asymmetry in jaw muscle development","A neurological problem affecting the head and neck"],a:"Pain on the opposite side of the mouth, causing the horse to favor the less painful side",ok:"Correct. Head tilting while chewing indicates the horse is avoiding pain — it chews on the comfortable side, which causes uneven dental wear over time and compounds the problem. This behavior warrants a dental examination.",no:"Head tilting during chewing indicates the horse is avoiding the painful side — chewing exclusively on the more comfortable side. This behavioral compensation worsens over time as the avoided side develops increasingly uneven wear."},
-
-{q:"Dental work in horses requires sedation and a full-mouth speculum because:",opts:["Without sedation and a speculum, the caudal (back) cheek teeth cannot be visualized or adequately treated","Horses object to any instrument near the face without sedation","Speculums replace the need for motorized floats","Sedation prevents the horse from swallowing dental instruments"],a:"Without sedation and a speculum, the caudal (back) cheek teeth cannot be visualized or adequately treated",ok:"Correct. The back of the equine dental arcade is deep within the mouth and cannot be adequately visualized or worked on without both a full-mouth speculum to open the mouth and sedation to allow complete examination of all surfaces.",no:"A full-mouth speculum and sedation are required for a complete equine dental exam. Without them, the caudal cheek teeth — where hooks, waves, and other pathology frequently develop — cannot be seen or treated."}
-
-];
-
-function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-let qs=[],cur=0,sc=0,ans=false;
-function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
-  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
-function show(){const q=qs[cur];
-  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
-  document.getElementById('quiz-score').textContent='Score: '+sc;
-  document.getElementById('quiz-question').textContent=q.q;
-  document.getElementById('quiz-feedback').textContent='';
-  document.getElementById('quiz-next').disabled=true;ans=false;
-  const opts=sh([...q.opts]);
-  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
-  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
-    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
-    if(ok)sc++;
-    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
-      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
-      else if(x===this&&!ok)x.classList.add('incorrect');
-    });
-    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
-    document.getElementById('quiz-next').disabled=false;
-  }));}
-document.getElementById('quiz-next').addEventListener('click',function(){cur++;
-  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
-    document.getElementById('score-panel').style.display='';
-    document.getElementById('score-display').textContent=sc+'/'+QC;
-    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
-  }else show();});
-document.getElementById('btn-retake').addEventListener('click',init);init();
-})();
-</script>
 <script src="course-config.js"></script>
 <script>
 window.CURRENT_MODULE = 8;
@@ -173,7 +54,491 @@ window.LAYOUT = {
   coursesUrl: '../../../index.html',
   navCta: { label: 'All Courses', url: '../../../index.html' }
 };
+window.EE_QUIZ_CONFIG = { questionCount: 15 };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is the normal temperature range for an adult horse at rest?",
+    "opts": [
+      "99–101°F (37.2–38.3°C)",
+      "95–98°F (35–37°C)",
+      "102–104°F (38.9–40°C)",
+      "97–100°F (36.1–37.8°C)"
+    ],
+    "a": "99–101°F (37.2–38.3°C)",
+    "ok": "Correct. Normal equine temperature is 99–101°F. Above 101°F may indicate fever; above 102°F is a veterinary concern.",
+    "no": "Normal equine temperature is 99–101°F (37.2–38.3°C). Temperature should be taken rectally with the horse at rest."
+  },
+  {
+    "q": "What is the normal resting heart rate for an adult horse?",
+    "opts": [
+      "28–44 beats per minute",
+      "60–80 beats per minute",
+      "15–25 beats per minute",
+      "50–70 beats per minute"
+    ],
+    "a": "28–44 beats per minute",
+    "ok": "Correct. A resting heart rate of 28–44 bpm is normal for adult horses. An elevated rate at rest is a pain or distress signal.",
+    "no": "Normal resting heart rate is 28–44 bpm. Rates above 50–60 bpm at rest suggest significant pain, illness, or distress."
+  },
+  {
+    "q": "Normal capillary refill time in a horse is:",
+    "opts": [
+      "Under 2 seconds",
+      "3–5 seconds",
+      "Under 5 seconds",
+      "Under 10 seconds"
+    ],
+    "a": "Under 2 seconds",
+    "ok": "Correct. Press the gums firmly, release, and count. Pink color should return within 2 seconds. Longer times suggest circulatory compromise.",
+    "no": "Capillary refill time should be under 2 seconds. Press the gum, release, and watch color return. Over 2 seconds is abnormal."
+  },
+  {
+    "q": "Normal gut sounds in a healthy horse should be present in:",
+    "opts": [
+      "All four quadrants of the abdomen",
+      "The right side only",
+      "The upper left quadrant only",
+      "Gut sounds are not normally present in horses"
+    ],
+    "a": "All four quadrants of the abdomen",
+    "ok": "Correct. Normal gut sounds — borborygmi — should be audible in all four quadrants with a stethoscope. Absent or reduced sounds indicate reduced gut motility.",
+    "no": "Gut sounds should be present in all four quadrants. Absent or very reduced sounds indicate reduced gut motility, which is a sign of colic."
+  },
+  {
+    "q": "What is the primary distinction between preventive care and reactive care?",
+    "opts": [
+      "Preventive care addresses health before problems develop; reactive care responds to problems after they appear",
+      "Preventive care costs more than reactive care",
+      "Preventive care is used only for horses in competition",
+      "Reactive care uses natural remedies; preventive care uses medications"
+    ],
+    "a": "Preventive care addresses health before problems develop; reactive care responds to problems after they appear",
+    "ok": "Correct. Preventive care — vaccination, deworming, dental care, wellness exams — intercepts problems before they become costly or life-threatening. Reactive care responds to established disease.",
+    "no": "Preventive care intercepts problems before they develop. Reactive care responds to problems that have already appeared. Preventive care is almost always less expensive and more effective."
+  },
+  {
+    "q": "What is biosecurity in an equine facility?",
+    "opts": [
+      "Practices that prevent the introduction and spread of infectious disease within a horse population",
+      "The process of testing horses for infectious diseases before sale",
+      "The vaccination schedule required for horses entering competition",
+      "Documentation required when horses cross state lines"
+    ],
+    "a": "Practices that prevent the introduction and spread of infectious disease within a horse population",
+    "ok": "Correct. Biosecurity encompasses isolation of new arrivals, not sharing equipment between horses, monitoring for disease signs, and protocols for managing suspected cases.",
+    "no": "Biosecurity is the set of practices that prevent disease from entering or spreading in a horse facility: isolation, dedicated equipment, monitoring, and movement restrictions."
+  },
+  {
+    "q": "Why is documenting a horse's health records important beyond regulatory requirements?",
+    "opts": [
+      "Complete records enable pattern recognition, support veterinary decisions, and allow emergency care providers to understand the horse's history",
+      "Health records are only required for horses in competition",
+      "Records are primarily for insurance purposes, not health management",
+      "The only required record is the annual Coggins test result"
+    ],
+    "a": "Complete records enable pattern recognition, support veterinary decisions, and allow emergency care providers to understand the horse's history",
+    "ok": "Correct. Health records reveal trends — changes in weight, vaccination gaps, deworming intervals — that a veterinarian can use to guide preventive care decisions and diagnose recurring problems.",
+    "no": "Health records serve active management functions: they reveal patterns, support veterinary decision-making, and allow anyone caring for the horse in an emergency to understand its history."
+  },
+  {
+    "q": "The annual wellness exam is most valuable because it:",
+    "opts": [
+      "Establishes healthy baselines that make future deviations recognizable",
+      "Replaces the need for emergency veterinary calls",
+      "Provides documentation required by all boarding facilities",
+      "Is the only time vaccines can be administered safely"
+    ],
+    "a": "Establishes healthy baselines that make future deviations recognizable",
+    "ok": "Correct. A heart rate of 38 bpm or a temperature of 100°F means something different when the examiner knows a horse's normal is 32 bpm and 99.5°F. Baselines make deviations meaningful.",
+    "no": "The wellness exam establishes baselines for that individual horse — weight, heart rate, temperature, dental status — so future deviations can be recognized quickly and interpreted accurately."
+  },
+  {
+    "q": "What minimum isolation period is recommended for a new horse arriving at a facility?",
+    "opts": [
+      "14–21 days",
+      "3–5 days",
+      "48–72 hours",
+      "One week exactly"
+    ],
+    "a": "14–21 days",
+    "ok": "Correct. A 14–21 day isolation period covers the incubation period of most common equine infectious diseases, allowing any illness the horse is incubating to become apparent before contact with resident horses.",
+    "no": "Minimum 14–21 days of isolation from resident horses. This covers the incubation period of most common equine infectious diseases and allows incubating illness to become apparent before herd contact."
+  },
+  {
+    "q": "Which member of the equine health team sets the deworming protocol and interprets fecal egg counts?",
+    "opts": [
+      "The veterinarian",
+      "The farrier",
+      "The equine dentist",
+      "The barn manager"
+    ],
+    "a": "The veterinarian",
+    "ok": "Correct. The veterinarian interprets diagnostic tests (fecal egg counts, blood work) and designs the deworming protocol. Other team members — farrier, dentist, barn manager — address their respective areas of expertise.",
+    "no": "The veterinarian designs and oversees the deworming program, interprets fecal egg counts, and makes treatment decisions. The farrier maintains hoof health; the dentist addresses dental care."
+  },
+  {
+    "q": "Which vaccines are classified as AAEP core vaccines, recommended for all horses in North America?",
+    "opts": [
+      "Tetanus, EEE/WEE, West Nile Virus, and Rabies",
+      "Strangles, Influenza, Herpesvirus, and Botulism",
+      "Potomac Horse Fever, Rotavirus, and Anthrax",
+      "All vaccines listed are core vaccines"
+    ],
+    "a": "Tetanus, EEE/WEE, West Nile Virus, and Rabies",
+    "ok": "Correct. Tetanus, EEE/WEE, West Nile, and Rabies are the four AAEP core vaccines recommended annually for every horse in North America.",
+    "no": "AAEP core vaccines: Tetanus, Eastern/Western Equine Encephalomyelitis, West Nile Virus, and Rabies. All four are recommended annually regardless of geography or use level."
+  },
+  {
+    "q": "EEE (Eastern Equine Encephalomyelitis) is notable for which statistic?",
+    "opts": [
+      "A fatality rate of approximately 75–90% in affected horses",
+      "Being treatable with a single course of antibiotics",
+      "Causing only mild respiratory signs in most horses",
+      "Being transmitted by ticks, not mosquitoes"
+    ],
+    "a": "A fatality rate of approximately 75–90% in affected horses",
+    "ok": "Correct. EEE is one of the most lethal vaccine-preventable diseases in horses. Most horses that develop clinical neurological signs do not survive, which is why annual vaccination before mosquito season is essential.",
+    "no": "EEE carries a case fatality rate of approximately 75–90% in affected horses. It is a core vaccine because vaccination is essentially the only effective prevention — treatment after clinical signs are established has poor results."
+  },
+  {
+    "q": "West Nile Virus arrived in North America in which year?",
+    "opts": [
+      "1999",
+      "1987",
+      "2005",
+      "2012"
+    ],
+    "a": "1999",
+    "ok": "Correct. West Nile Virus was introduced to North America through New York in 1999 and spread across the continent within four years, causing thousands of equine deaths before vaccination became widespread.",
+    "no": "West Nile Virus arrived in North America in 1999 through New York City and spread rapidly across the continent within four years, causing significant equine mortality before vaccination was widely adopted."
+  },
+  {
+    "q": "Tetanus in horses is caused by:",
+    "opts": [
+      "Clostridium tetani bacteria found in soil and manure",
+      "A viral infection transmitted by mosquitoes",
+      "A fungal infection from contaminated hay",
+      "A nutritional deficiency in selenium or calcium"
+    ],
+    "a": "Clostridium tetani bacteria found in soil and manure",
+    "ok": "Correct. Clostridium tetani is an anaerobic soil bacterium. It enters through wounds and produces a neurotoxin (tetanospasmin) that cannot be neutralized once it binds to neural tissue. Annual vaccination is essential.",
+    "no": "Tetanus is caused by Clostridium tetani, an anaerobic bacterium ubiquitous in soil and manure. It enters through any wound. Horses are more susceptible than most domestic species."
+  },
+  {
+    "q": "When should an additional tetanus booster be administered beyond the annual vaccination?",
+    "opts": [
+      "Within 24 hours of any significant wound, surgery, or foaling",
+      "Only if the horse has not been vaccinated in over 18 months",
+      "Tetanus does not require additional boosters beyond the annual schedule",
+      "Only after exposure to an infected horse"
+    ],
+    "a": "Within 24 hours of any significant wound, surgery, or foaling",
+    "ok": "Correct. Any puncture, laceration, surgical incision, or foaling event creates a potential entry point for Clostridium tetani and triggers a booster recommendation within 24 hours, regardless of the annual vaccination schedule.",
+    "no": "Tetanus requires a booster within 24 hours of significant wounds, surgical procedures, and foaling. The anaerobic environment of deep wounds is an ideal growth environment for Clostridium tetani."
+  },
+  {
+    "q": "Influenza and herpesvirus vaccines are classified as risk-based rather than core because:",
+    "opts": [
+      "They provide shorter-lived immunity and are most valuable for horses with frequent exposure to other horses",
+      "They are not effective enough to be recommended for all horses",
+      "They are too expensive for routine use",
+      "They are only available by prescription and require veterinary administration"
+    ],
+    "a": "They provide shorter-lived immunity and are most valuable for horses with frequent exposure to other horses",
+    "ok": "Correct. Risk-based vaccines address diseases where the risk varies significantly based on the horse's use and exposure level. Horses that stay home with a closed herd have very different exposure risk than horses that travel to shows monthly.",
+    "no": "Influenza and herpesvirus vaccines are risk-based because they provide shorter-lived immunity and their value depends heavily on exposure frequency. Every-6-month boosters are recommended for horses that travel or compete."
+  },
+  {
+    "q": "What does a Coggins test detect, and what is the consequence of a positive result?",
+    "opts": [
+      "Antibodies to Equine Infectious Anemia (EIA) — positive horses must be quarantined or euthanized",
+      "Intestinal parasite eggs — high counts require treatment",
+      "Equine influenza antibodies — positive horses must rest for 30 days",
+      "Blood glucose levels — elevated levels indicate metabolic disease"
+    ],
+    "a": "Antibodies to Equine Infectious Anemia (EIA) — positive horses must be quarantined or euthanized",
+    "ok": "Correct. EIA is a reportable disease with no vaccine or cure. A negative Coggins test is required for interstate transport and most events. Positive horses face permanent quarantine or euthanasia under federal regulations.",
+    "no": "The Coggins test detects antibodies to EIA (Equine Infectious Anemia). EIA has no vaccine or treatment — positive horses must be permanently quarantined or humanely euthanized per federal regulations."
+  },
+  {
+    "q": "West Nile Virus is transmitted to horses by:",
+    "opts": [
+      "Mosquitoes that have fed on infected birds",
+      "Direct horse-to-horse contact",
+      "Contaminated water sources",
+      "Ticks in tall grass"
+    ],
+    "a": "Mosquitoes that have fed on infected birds",
+    "ok": "Correct. West Nile Virus is an arbovirus — mosquitoes acquire it by feeding on infected wild birds and then transmit it to horses and humans. Horses are dead-end hosts and cannot spread the virus to other horses.",
+    "no": "West Nile Virus is transmitted by mosquitoes that have fed on infected birds. Horses are dead-end hosts — they cannot spread the virus to other horses or to humans directly."
+  },
+  {
+    "q": "What is the purpose of a fecal egg count (FEC) in a strategic deworming program?",
+    "opts": [
+      "To identify which horses carry significant parasite burdens and need treatment",
+      "To determine the correct brand of dewormer for all horses",
+      "To detect tapeworm infections specifically",
+      "To replace annual vaccination with parasite testing"
+    ],
+    "a": "To identify which horses carry significant parasite burdens and need treatment",
+    "ok": "Correct. FECs classify horses as low, moderate, or high shedders. Treating only high shedders concentrates drug use where it provides the most benefit and slows resistance development in the parasite population.",
+    "no": "Fecal egg counting identifies horses with significant parasite burdens so treatment can be targeted to those animals — not applied indiscriminately to all horses on a fixed schedule."
+  },
+  {
+    "q": "Anthelmintic resistance develops in parasite populations because:",
+    "opts": [
+      "Blanket calendar deworming selects for resistant worms that survive treatment",
+      "Horses develop immunity to dewormers after repeated use",
+      "Wild horses introduce resistant strains into domestic herds",
+      "Dewormers lose potency after storage"
+    ],
+    "a": "Blanket calendar deworming selects for resistant worms that survive treatment",
+    "ok": "Correct. When all horses are treated repeatedly regardless of actual need, worm populations that can survive the drug are selected to reproduce — rapidly increasing the proportion of resistant worms in the population.",
+    "no": "Resistance develops through natural selection: treating all horses repeatedly selects for worms that can survive deworming, passing resistance to their offspring and eventually dominating the local parasite population."
+  },
+  {
+    "q": "A fecal egg count reduction test (FECRT) is used to:",
+    "opts": [
+      "Determine whether a specific dewormer is effective on a specific farm's parasite population",
+      "Measure how many parasites are present before starting any deworming program",
+      "Identify which species of parasites are most common on a pasture",
+      "Test whether a horse has developed immunity to parasite infection"
+    ],
+    "a": "Determine whether a specific dewormer is effective on a specific farm's parasite population",
+    "ok": "Correct. The FECRT compares egg counts before and 14 days after treatment. A reduction below 95% indicates the parasites on that farm are resistant to the drug class used.",
+    "no": "The FECRT tests whether a chosen anthelmintic is actually working on the parasite population of a specific farm. It is the only reliable method for detecting drug resistance in a particular horse population."
+  },
+  {
+    "q": "Which drug is the most reliable treatment for tapeworms in horses?",
+    "opts": [
+      "Praziquantel",
+      "Ivermectin",
+      "Fenbendazole",
+      "Pyrantel at standard dose"
+    ],
+    "a": "Praziquantel",
+    "ok": "Correct. Praziquantel is the most reliable tapeworm treatment. Double-dose pyrantel is an alternative. Standard-dose ivermectin and benzimidazoles are not reliably effective against tapeworms.",
+    "no": "Praziquantel is the most reliable tapeworm treatment. Double-dose pyrantel is an alternative. Standard ivermectin dose does not cover tapeworms."
+  },
+  {
+    "q": "Environmental management of parasite burden includes:",
+    "opts": [
+      "Removing manure from pastures at least twice weekly to reduce infective larvae",
+      "Applying lime to all pastures monthly",
+      "Keeping horses in stalls full-time to eliminate pasture exposure",
+      "Rotating to a new pasture daily"
+    ],
+    "a": "Removing manure from pastures at least twice weekly to reduce infective larvae",
+    "ok": "Correct. Infective strongyle larvae develop from eggs on pasture. Removing manure twice weekly significantly reduces the larval burden that horses ingest while grazing. Pasture rotation and avoiding overcrowding are also important.",
+    "no": "Removing manure from pastures at least twice weekly interrupts the larval lifecycle. Composting kills most larvae. Overcrowding increases exposure — ideally at least 2 acres per horse is the standard."
+  },
+  {
+    "q": "What percentage of a typical herd is responsible for the majority of parasite eggs shed on pasture?",
+    "opts": [
+      "Approximately 20% of horses shed approximately 80% of the eggs",
+      "All horses shed equally",
+      "High shedders make up approximately 50% of any herd",
+      "Only horses with clinical signs shed significant parasite eggs"
+    ],
+    "a": "Approximately 20% of horses shed approximately 80% of the eggs",
+    "ok": "Correct. Research consistently shows that a minority of horses carry and shed the majority of parasites. Strategic deworming focuses on these high shedders, reducing total drug use while addressing the major source of environmental contamination.",
+    "no": "Approximately 20% of horses produce 80% of the egg burden in a herd. Treating only these high shedders reduces drug use significantly without compromising parasite control."
+  },
+  {
+    "q": "A high shedder on fecal egg count testing has a result of:",
+    "opts": [
+      "Greater than 500 eggs per gram",
+      "Less than 200 eggs per gram",
+      "200–500 eggs per gram",
+      "Any positive result is classified as high shedder"
+    ],
+    "a": "Greater than 500 eggs per gram",
+    "ok": "Correct. High shedders: >500 eggs per gram (epg). Moderate: 200–500 epg. Low: <200 epg. High shedders are the priority for treatment and contribute the most to environmental contamination.",
+    "no": "High shedder classification = >500 eggs per gram. Moderate = 200–500 epg. Low = <200 epg. High shedders require prompt treatment; low shedders require only periodic monitoring."
+  },
+  {
+    "q": "Early signs of colic include:",
+    "opts": [
+      "Pawing, looking at the flank, elevated heart rate, and lack of gut sounds",
+      "Increased appetite, high energy level, and bright eye",
+      "Nasal discharge, elevated respiratory rate, and coughing",
+      "Swelling in all four limbs and digital pulse"
+    ],
+    "a": "Pawing, looking at the flank, elevated heart rate, and lack of gut sounds",
+    "ok": "Correct. Pawing, flank-watching, elevated heart rate, and reduced or absent gut sounds are hallmark early colic signs. Rolling and repeated attempts to lie down and rise indicate more severe pain.",
+    "no": "Early colic signs: pawing, looking at the flank, elevated heart rate, reduced or absent gut sounds, and reluctance to move. More severe colic produces persistent rolling, sweating, and elevated heart rate above 60 bpm."
+  },
+  {
+    "q": "Strangles is caused by:",
+    "opts": [
+      "Streptococcus equi subsp. equi",
+      "Equine influenza virus",
+      "Clostridium tetani",
+      "Equine herpesvirus type 1"
+    ],
+    "a": "Streptococcus equi subsp. equi",
+    "ok": "Correct. Strangles is a highly contagious bacterial infection caused by Streptococcus equi subsp. equi. It affects the upper respiratory tract and lymph nodes under the jaw and in the throatlatch area.",
+    "no": "Strangles is caused by Streptococcus equi subsp. equi, a bacterium spread through direct contact and contaminated equipment, water sources, and surfaces."
+  },
+  {
+    "q": "What is required before a strangles outbreak is declared resolved and horses can move off the property?",
+    "opts": [
+      "Two consecutive negative culture results (typically guttural pouch lavage, 14 days apart)",
+      "A single negative nasal swab",
+      "14 days after all visible abscesses have ruptured and drained",
+      "Clearance from a veterinarian after physical exam only"
+    ],
+    "a": "Two consecutive negative culture results (typically guttural pouch lavage, 14 days apart)",
+    "ok": "Correct. Strangles carriers — horses that appear recovered but continue to shed bacteria from their guttural pouches — are a common source of re-infection and facility-wide spread. Two negative cultures at a 14-day interval confirm resolution.",
+    "no": "Strangles requires two consecutive negative culture results (typically guttural pouch lavage, PCR or culture, 14 days apart) before the outbreak is declared resolved and horse movement can resume."
+  },
+  {
+    "q": "What is the primary reason why horses with equine influenza must be given extended rest after the fever resolves?",
+    "opts": [
+      "The damaged respiratory epithelium is vulnerable to secondary bacterial infection, which can cause permanent lung damage",
+      "Influenza spreads most rapidly in the first 2 weeks after fever resolution",
+      "Horses returned to work early develop permanent exercise intolerance",
+      "The virus remains active in the lungs for up to 4 weeks after clinical signs resolve"
+    ],
+    "a": "The damaged respiratory epithelium is vulnerable to secondary bacterial infection, which can cause permanent lung damage",
+    "ok": "Correct. Influenza virus damages the ciliated respiratory epithelium, removing the natural defense against bacterial colonization. Secondary bronchopneumonia during this vulnerable period can cause permanent airway damage and chronic respiratory problems.",
+    "no": "The respiratory epithelium damaged by influenza is vulnerable to secondary bacterial bronchopneumonia during recovery. Returning to work before full healing creates conditions for serious secondary infection. Rest for at least 5–7 days after the last sign of fever is the standard guideline."
+  },
+  {
+    "q": "Equine Herpesvirus Myeloencephalopathy (EHM) most commonly occurs as a complication of:",
+    "opts": [
+      "EHV-1 infection",
+      "EHV-4 infection",
+      "Equine influenza",
+      "Strangles infection"
+    ],
+    "a": "EHV-1 infection",
+    "ok": "Correct. EHM is specifically associated with EHV-1 (not EHV-4). It results from EHV-1 replication within blood vessels supplying the spinal cord and brain, causing vasculitis and subsequent neurological signs.",
+    "no": "EHM is a complication of EHV-1 infection. EHV-4 primarily causes respiratory disease. EHM involves EHV-1 replication in blood vessels supplying the nervous system, causing vasculitis and neurological signs."
+  },
+  {
+    "q": "Early signs of laminitis include:",
+    "opts": [
+      "Heat in the hooves, bounding digital pulse, and weight-shifted stance (leaning back to take weight off toes)",
+      "Nasal discharge, coughing, and elevated rectal temperature",
+      "Quidding, head tossing under saddle, and one-sided nasal discharge",
+      "Ataxia, hindlimb weakness, and urinary incontinence"
+    ],
+    "a": "Heat in the hooves, bounding digital pulse, and weight-shifted stance (leaning back to take weight off toes)",
+    "ok": "Correct. These three signs — hoof heat, bounding digital pulse, and the characteristic backward-leaning stance — are the hallmarks of early laminitis. Veterinary and farriery intervention at this stage can prevent coffin bone rotation.",
+    "no": "Early laminitis: heat in the hooves, bounding digital pulse at the back of the pastern, and the characteristic stance where the horse leans back on the hindlimbs to take weight off the toe area."
+  },
+  {
+    "q": "What is dental floating?",
+    "opts": [
+      "Filing down the sharp enamel points on a horse's cheek teeth to restore even grinding surfaces",
+      "Removing wolf teeth to improve bit contact",
+      "Polishing the incisors to assess wear patterns",
+      "A diagnostic procedure using dental radiographs"
+    ],
+    "a": "Filing down the sharp enamel points on a horse's cheek teeth to restore even grinding surfaces",
+    "ok": "Correct. Floating removes the sharp points that form on the outer edges of upper cheek teeth and inner edges of lower cheek teeth from uneven wear, preventing pain and restoring efficient grinding surfaces.",
+    "no": "Dental floating files the sharp enamel points that develop on cheek teeth from normal wear, allowing comfortable and efficient chewing. It is recommended annually for horses over three years old."
+  },
+  {
+    "q": "Quidding is defined as:",
+    "opts": [
+      "Dropping partially chewed feed from the mouth — a primary sign of dental pain",
+      "Refusing to eat for more than 12 hours",
+      "Grinding the teeth audibly (bruxism)",
+      "Dribbling water during drinking"
+    ],
+    "a": "Dropping partially chewed feed from the mouth — a primary sign of dental pain",
+    "ok": "Correct. Quidding occurs when a horse forms a feed bolus but cannot chew it without pain, dropping it before swallowing. It indicates sharp enamel points or other dental pathology causing pain during mastication.",
+    "no": "Quidding = dropping partially chewed feed from the mouth. It is the most visible and specific sign of active dental pain. Horses that quid are at risk for weight loss and choke (esophageal obstruction)."
+  },
+  {
+    "q": "Why do horses require periodic dental floating throughout their lives?",
+    "opts": [
+      "Uneven wear from normal chewing produces sharp enamel points on the cheek teeth that cause pain and reduce feed efficiency",
+      "Horses' teeth are naturally smooth and become sharp only from eating hard feeds",
+      "Wolf teeth cause all major dental problems and their removal prevents future issues",
+      "Horse teeth do not naturally wear evenly because they are composed of soft dentine"
+    ],
+    "a": "Uneven wear from normal chewing produces sharp enamel points on the cheek teeth that cause pain and reduce feed efficiency",
+    "ok": "Correct. The lateral chewing motion creates differential wear — sharp points form on the outer edges of upper cheek teeth and inner edges of lower cheek teeth. These points lacerate the cheeks and tongue, causing pain.",
+    "no": "Normal chewing creates uneven wear, producing sharp enamel points on cheek tooth edges. These points lacerate soft tissue and cause pain during chewing — hence the need for annual filing (floating)."
+  },
+  {
+    "q": "What are wolf teeth in horses?",
+    "opts": [
+      "Small first premolars (vestigial teeth) that can interfere with bit contact and are routinely removed",
+      "The canine teeth present in male horses",
+      "The deciduous teeth that must be removed at age 2",
+      "The molars at the very back of the dental arcade"
+    ],
+    "a": "Small first premolars (vestigial teeth) that can interfere with bit contact and are routinely removed",
+    "ok": "Correct. Wolf teeth are small vestigial first premolars that sit just in front of the first cheek teeth. They can interfere with bit contact and cause pain — they are routinely removed when young horses begin training.",
+    "no": "Wolf teeth are small vestigial first premolars. They can interfere with bit placement and cause discomfort during riding. Routine removal when the horse begins training is the standard management approach."
+  },
+  {
+    "q": "Horses have hypsodont teeth, which means:",
+    "opts": [
+      "Their teeth have an extended crown that erupts continuously throughout life as grinding surfaces wear down",
+      "Their teeth stop erupting at maturity, as in most mammals",
+      "Their incisors are shorter than their molars",
+      "Their teeth cannot be filed without causing permanent damage"
+    ],
+    "a": "Their teeth have an extended crown that erupts continuously throughout life as grinding surfaces wear down",
+    "ok": "Correct. Hypsodont teeth erupt continuously — this is what enables horses to grind forage efficiently across a long lifespan. However, the supply is finite, which is why very old horses eventually run out of usable tooth.",
+    "no": "Hypsodont = high-crowned teeth that erupt continuously as the grinding surfaces wear down. This makes dental management a lifelong requirement, and explains why teeth eventually wear out in very old horses."
+  },
+  {
+    "q": "Annual dental examination is recommended to begin at age:",
+    "opts": [
+      "Three years and older",
+      "Eight years and older",
+      "Dental exams are only needed when problems arise",
+      "Every five years for horses under fifteen"
+    ],
+    "a": "Three years and older",
+    "ok": "Correct. Annual dental exams are recommended for all horses over three. Horses under three should be examined as deciduous teeth are replaced by permanent teeth — a period of significant dental change.",
+    "no": "Annual dental exams are recommended starting at age three. Horses under three should be examined during the period of deciduous tooth shedding and permanent tooth eruption, which is an active and potentially uncomfortable phase."
+  },
+  {
+    "q": "What indicates that a senior horse may need to transition away from standard hay?",
+    "opts": [
+      "Significant tooth loss or severely worn teeth that prevent adequate chewing of long-stemmed forage",
+      "Any horse over twenty regardless of dental status",
+      "The horse preferring grain over hay as it ages",
+      "Weight gain from feed that is too calorie-dense"
+    ],
+    "a": "Significant tooth loss or severely worn teeth that prevent adequate chewing of long-stemmed forage",
+    "ok": "Correct. As hypsodont teeth wear to the root, grinding efficiency declines. When a senior horse can no longer adequately process long-stemmed hay, alternatives such as soaked hay cubes, chopped forage, or complete feeds are needed to maintain body condition.",
+    "no": "Senior horses with severely worn or missing teeth cannot adequately process long-stemmed hay. Soaked hay cubes, chopped forage, or complete senior feeds provide nutrition without requiring intact cheek teeth for grinding."
+  },
+  {
+    "q": "A horse that consistently tilts its head to one side while chewing is most likely experiencing:",
+    "opts": [
+      "Pain on the opposite side of the mouth, causing the horse to favor the less painful side",
+      "A training habit from early handling",
+      "Normal asymmetry in jaw muscle development",
+      "A neurological problem affecting the head and neck"
+    ],
+    "a": "Pain on the opposite side of the mouth, causing the horse to favor the less painful side",
+    "ok": "Correct. Head tilting while chewing indicates the horse is avoiding pain — it chews on the comfortable side, which causes uneven dental wear over time and compounds the problem. This behavior warrants a dental examination.",
+    "no": "Head tilting during chewing indicates the horse is avoiding the painful side — chewing exclusively on the more comfortable side. This behavioral compensation worsens over time as the avoided side develops increasingly uneven wear."
+  },
+  {
+    "q": "Dental work in horses requires sedation and a full-mouth speculum because:",
+    "opts": [
+      "Without sedation and a speculum, the caudal (back) cheek teeth cannot be visualized or adequately treated",
+      "Horses object to any instrument near the face without sedation",
+      "Speculums replace the need for motorized floats",
+      "Sedation prevents the horse from swallowing dental instruments"
+    ],
+    "a": "Without sedation and a speculum, the caudal (back) cheek teeth cannot be visualized or adequately treated",
+    "ok": "Correct. The back of the equine dental arcade is deep within the mouth and cannot be adequately visualized or worked on without both a full-mouth speculum to open the mouth and sedation to allow complete examination of all surfaces.",
+    "no": "A full-mouth speculum and sedation are required for a complete equine dental exam. Without them, the caudal cheek teeth — where hooks, waves, and other pathology frequently develop — cannot be seen or treated."
+  }
+];
 </script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/supabase-client.js"></script>
 <script src="../../../../assets/js/paywall.js"></script>

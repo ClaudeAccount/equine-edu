@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Common Horse Colors &mdash; Equine Edu</title>
+<meta name="description" content="Course quiz for Common Horse Colors. Test your ability to identify and describe chestnut, bay, black, palomino, buckskin, gray, roan, pinto, and appaloosa.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body class="ee-page-courses-schooling-ring-colors-markings-common-horse-colors-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Common Horse Colors</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {
+    homeUrl:    '../../../../index.html',
+    coursesUrl: '../../../index.html',
+    navCta:     { label: 'Back to Common Horse Colors', url: '1-index.html' },
+    navExtras: [{ label: 'The Training Barn', url: '5-training-barn.html' }]
+  };
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.commonHorseColors.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is the defining characteristic of a bay horse?",
+    "opts": [
+      "A golden body with a white mane",
+      "A reddish-brown body with black mane, tail, and lower legs",
+      "A completely black coat with no brown tones",
+      "A chestnut body with a flaxen mane"
+    ],
+    "a": "A reddish-brown body with black mane, tail, and lower legs",
+    "ok": "Correct. Bay horses have a reddish-brown body with black points — the mane, tail, and lower legs are always black.",
+    "no": "The defining feature of bay is the black points. Look for a reddish-brown body paired with a black mane, tail, and lower legs."
+  },
+  {
+    "q": "What separates a black horse from a very dark bay?",
+    "opts": [
+      "Black horses have no brown or reddish tones anywhere on the body",
+      "Black horses always have a white mane",
+      "Black horses are larger than bay horses",
+      "Black horses only appear in thoroughbreds"
+    ],
+    "a": "Black horses have no brown or reddish tones anywhere on the body",
+    "ok": "Correct. A true black horse shows no brown or reddish coloring anywhere — body, mane, tail, and legs are all solid black.",
+    "no": "Check the body for any brown or reddish tones. If they are present, the horse is bay, not black."
+  },
+  {
+    "q": "A chestnut horse differs from a bay horse because:",
+    "opts": [
+      "Chestnut horses never have black in the mane or tail",
+      "Chestnut horses always have white legs",
+      "Chestnut horses are always darker than bay",
+      "Chestnut horses have blue eyes"
+    ],
+    "a": "Chestnut horses never have black in the mane or tail",
+    "ok": "Correct. Chestnut horses have a red or reddish-brown coat with a mane and tail in the same color family — never black.",
+    "no": "The key difference is the mane and tail. Chestnut horses have no black in their mane or tail. Bay horses do."
+  },
+  {
+    "q": "Sorrel is best described as:",
+    "opts": [
+      "A lighter, brighter copper-red chestnut",
+      "A very dark reddish-brown horse",
+      "A golden horse with a white mane",
+      "A gray horse with red tones"
+    ],
+    "a": "A lighter, brighter copper-red chestnut",
+    "ok": "Correct. Sorrel refers to a lighter, more copper or golden-red tone — a variation of chestnut common in stock breeds.",
+    "no": "Sorrel is the lighter, more copper-toned end of the chestnut spectrum."
+  },
+  {
+    "q": "Liver chestnut is best described as:",
+    "opts": [
+      "A very dark, deep reddish-brown coat with no black",
+      "A chestnut horse with black legs only",
+      "A gray horse with reddish tones",
+      "A palomino with a dark mane"
+    ],
+    "a": "A very dark, deep reddish-brown coat with no black",
+    "ok": "Correct. Liver chestnut is the darkest variation of chestnut — deeply reddish-brown, sometimes appearing nearly chocolate. No black anywhere.",
+    "no": "Liver chestnut is chestnut at its darkest — the coat appears very deep reddish-brown or chocolate, still without any black."
+  },
+  {
+    "q": "Which color group contains red pigment only — with no black anywhere?",
+    "opts": [
+      "Chestnut, sorrel, and liver chestnut",
+      "Bay and black",
+      "Palomino and buckskin",
+      "Gray and roan"
+    ],
+    "a": "Chestnut, sorrel, and liver chestnut",
+    "ok": "Correct. Chestnut, sorrel, and liver chestnut are all red-pigment based with no black in the mane, tail, or body.",
+    "no": "The red-based colors — chestnut, sorrel, and liver chestnut — never have black hairs."
+  },
+  {
+    "q": "What gene produces the palomino coat color?",
+    "opts": [
+      "One copy of the cream gene on a chestnut base",
+      "Two copies of the dun gene",
+      "One copy of the gray gene",
+      "The roan gene on a bay base"
+    ],
+    "a": "One copy of the cream gene on a chestnut base",
+    "ok": "Correct. Palomino results from one copy of the cream gene acting on a chestnut base, lightening the red pigment to gold.",
+    "no": "Palomino is produced by the cream gene — specifically one copy of it — working on a chestnut base."
+  },
+  {
+    "q": "What is the single clearest difference between palomino and buckskin?",
+    "opts": [
+      "Palomino has a white mane; buckskin has a black mane",
+      "Palomino is taller",
+      "Buckskin has white markings; palomino does not",
+      "Palomino horses are always darker"
+    ],
+    "a": "Palomino has a white mane; buckskin has a black mane",
+    "ok": "Correct. Both are golden-bodied horses, but palomino has a white or cream mane and tail, while buckskin has black points.",
+    "no": "The mane and tail tell the story. White or cream = palomino. Black = buckskin."
+  },
+  {
+    "q": "A dun horse is most reliably identified by:",
+    "opts": [
+      "A dorsal stripe running along the spine",
+      "A very light body with a dark mane only",
+      "White patches on the hindquarters",
+      "A mane that is always white"
+    ],
+    "a": "A dorsal stripe running along the spine",
+    "ok": "Correct. The dorsal stripe — a dark line running from mane to tail along the spine — is the defining feature of dun.",
+    "no": "Look for the dorsal stripe. A dark line along the spine is the clearest sign of dun."
+  },
+  {
+    "q": "Flaxen describes:",
+    "opts": [
+      "A chestnut horse with a noticeably lighter or cream mane and tail",
+      "A palomino horse with a dark body",
+      "A buckskin without black points",
+      "A gray horse with golden tones"
+    ],
+    "a": "A chestnut horse with a noticeably lighter or cream mane and tail",
+    "ok": "Correct. Flaxen is a modifier that lightens only the mane and tail of a chestnut horse — the body stays chestnut.",
+    "no": "Flaxen applies to chestnut horses where the mane and tail are noticeably lighter than the body."
+  },
+  {
+    "q": "How does dun differ from palomino or buckskin?",
+    "opts": [
+      "Dun horses show a dorsal stripe; palomino and buckskin do not",
+      "Dun horses are always gray",
+      "Palomino horses have a dorsal stripe",
+      "Dun horses have blue eyes"
+    ],
+    "a": "Dun horses show a dorsal stripe; palomino and buckskin do not",
+    "ok": "Correct. If you see a golden horse with a dark line along the spine, it is dun. Palomino and buckskin lack this stripe.",
+    "no": "The dorsal stripe is the giveaway. Palomino and buckskin are golden but have no stripe down the back."
+  },
+  {
+    "q": "What color is a gray horse born with?",
+    "opts": [
+      "A base color such as bay, black, or chestnut — gray horses lighten over time",
+      "Gray or white from birth",
+      "Pure white with pink skin",
+      "Silver with blue eyes"
+    ],
+    "a": "A base color such as bay, black, or chestnut — gray horses lighten over time",
+    "ok": "Correct. Gray horses are born with a base color and progressively lighten as the gray gene causes pigment loss in the hair follicles.",
+    "no": "Gray horses are not born gray. They are born with a base color and lighten progressively with age."
+  },
+  {
+    "q": "How is a gray horse different from a white horse?",
+    "opts": [
+      "Gray horses have dark skin and lighten over time; white horses are born white with pink skin",
+      "White horses are older grays",
+      "Gray horses have blue eyes; white horses do not",
+      "There is no difference"
+    ],
+    "a": "Gray horses have dark skin and lighten over time; white horses are born white with pink skin",
+    "ok": "Correct. The easiest distinction: gray horses are born with color, have dark skin, and lighten with age. True white horses are born white and have pink skin.",
+    "no": "Skin color is a reliable clue. Gray horses have dark skin; white horses have pink skin. Also, gray horses lighten with age while white horses stay white."
+  },
+  {
+    "q": "Dapple gray refers to:",
+    "opts": [
+      "A gray horse showing circular patterns of lighter and darker grey across the body",
+      "A gray horse with colored spots on the face",
+      "A roan horse with gray tones",
+      "A white horse with gray flecks"
+    ],
+    "a": "A gray horse showing circular patterns of lighter and darker grey across the body",
+    "ok": "Correct. Dapple gray is a middle stage of graying. It shows ring-like light areas with darker gray around them, often on the hindquarters and back.",
+    "no": "Dapples are circular patterns that can appear on gray horses during the middle stage of graying."
+  },
+  {
+    "q": "Flea-bitten gray describes:",
+    "opts": [
+      "A light or nearly white coat speckled with small pigmented flecks",
+      "A dark gray with solid black patches",
+      "A roan pattern on a gray horse",
+      "A young gray horse before it dapples"
+    ],
+    "a": "A light or nearly white coat speckled with small pigmented flecks",
+    "ok": "Correct. Flea-bitten gray occurs in older gray horses — the coat has mostly lightened but shows small specks or clusters of pigmented hairs throughout.",
+    "no": "Flea-bitten gray is the later stage — a nearly white coat dotted with small dark specks of remaining pigment."
+  },
+  {
+    "q": "What makes a roan coat different from a gray coat?",
+    "opts": [
+      "Roan horses do not progressively lighten with age and keep a solid-colored head",
+      "Roan horses are always lighter than gray",
+      "Roan horses have pink skin",
+      "Roan horses are born white"
+    ],
+    "a": "Roan horses do not progressively lighten with age and keep a solid-colored head",
+    "ok": "Correct. Roan coats are stable throughout the horse's life and the head stays solid-colored. Gray horses progressively lighten and white hairs spread across the whole body including the head.",
+    "no": "The two key roan identifiers: the coat stays relatively stable (no progressive lightening) and the head remains the base color."
+  },
+  {
+    "q": "Strawberry roan is produced by:",
+    "opts": [
+      "White hairs evenly mixed into a chestnut base coat",
+      "A black base with reddish tones",
+      "A bay base with cream dilution",
+      "A gray base with white hairs"
+    ],
+    "a": "White hairs evenly mixed into a chestnut base coat",
+    "ok": "Correct. Strawberry roan is a chestnut base with white hairs evenly mixed through the body, giving a pinkish-red appearance.",
+    "no": "Strawberry roan starts from a chestnut or sorrel base — the roan pattern mixes white hairs evenly through the red body coat."
+  },
+  {
+    "q": "Blue roan gets its blue-grey appearance from:",
+    "opts": [
+      "White hairs mixed into a black base coat",
+      "A dilute gene on a gray horse",
+      "White patches on a dark body",
+      "A cream gene on a bay horse"
+    ],
+    "a": "White hairs mixed into a black base coat",
+    "ok": "Correct. Blue roan is a black base coat with white hairs evenly mixed through the body, creating a cool blue-grey appearance.",
+    "no": "Blue roan = black base + roan gene. The mix of black and white hairs produces the characteristic blue-grey effect."
+  },
+  {
+    "q": "A roan horse typically has a solid-colored head. Why is this important for identification?",
+    "opts": [
+      "It distinguishes roan from gray, where white spreads to the head",
+      "It shows the horse is young",
+      "It means the horse has no base color",
+      "It indicates the horse has two roan parents"
+    ],
+    "a": "It distinguishes roan from gray, where white spreads to the head",
+    "ok": "Correct. The solid-colored head is the fastest visual check to separate roan from gray — gray horses lighten across the entire body including the face.",
+    "no": "If the head is still solid-colored but the body looks mixed, it is roan. If white has spread to the face and body both, it is gray."
+  },
+  {
+    "q": "What defines a pinto coat pattern?",
+    "opts": [
+      "Large white patches over a base-colored coat",
+      "Small spots distributed across the body",
+      "A single-colored body with a white mane",
+      "A striped pattern on the legs and back"
+    ],
+    "a": "Large white patches over a base-colored coat",
+    "ok": "Correct. Pinto is a pattern of large, irregular white patches over a base-colored coat.",
+    "no": "Pinto horses show large white patches — not small spots — over their base color."
+  },
+  {
+    "q": "Tobiano pinto is most easily identified by:",
+    "opts": [
+      "White patches crossing the topline from back to hindquarters",
+      "White patches only on the belly and sides",
+      "A completely white body with colored patches",
+      "Colored spots on a white background"
+    ],
+    "a": "White patches crossing the topline from back to hindquarters",
+    "ok": "Correct. If white crosses the horse's back, it is most likely tobiano. The legs are often white and patch edges are rounded.",
+    "no": "Tobiano's key feature: white crosses the topline (the back and hindquarters). That is the fastest way to identify it."
+  },
+  {
+    "q": "What distinguishes overo pinto from tobiano?",
+    "opts": [
+      "White rarely crosses the topline in overo; it spreads from the belly upward",
+      "Overo horses always have four white legs",
+      "Tobiano has irregular patch edges; overo has smooth edges",
+      "There is no difference — the terms are interchangeable"
+    ],
+    "a": "White rarely crosses the topline in overo; it spreads from the belly upward",
+    "ok": "Correct. Overo white patches spread horizontally from the belly upward and rarely cross the spine, giving a different overall look from tobiano.",
+    "no": "Tobiano white crosses the back. Overo white stays on the sides and belly — rarely crossing the topline."
+  },
+  {
+    "q": "Which identifying feature appears on all Appaloosa horses regardless of coat pattern?",
+    "opts": [
+      "Mottled skin, visible white sclera, and striped hooves",
+      "A dorsal stripe along the spine",
+      "A white blanket on the hindquarters only",
+      "Blue eyes and a white mane"
+    ],
+    "a": "Mottled skin, visible white sclera, and striped hooves",
+    "ok": "Correct. These three characteristics — mottled skin around the muzzle and eyes, visible white sclera (the part around the iris), and striped hooves — are present in all Appaloosa horses.",
+    "no": "Look beyond the coat: mottled skin, a visible white ring around the eye, and striped hooves all identify Appaloosa regardless of the specific pattern."
+  },
+  {
+    "q": "What does a Blanket Appaloosa pattern mean?",
+    "opts": [
+      "A white patch over the hindquarters, sometimes with dark spots within it",
+      "White patches on the chest and forehead only",
+      "A completely white horse with colored legs",
+      "Spots scattered evenly across the entire body"
+    ],
+    "a": "A white patch over the hindquarters, sometimes with dark spots within it",
+    "ok": "Correct. A Blanket Appaloosa pattern has a distinct white area over the hindquarters. It may be solid white or have dark spots inside it.",
+    "no": "The Blanket Appaloosa pattern has a white area that covers the hindquarters. It may or may not have spots within it."
+  },
+  {
+    "q": "What is a Leopard Appaloosa?",
+    "opts": [
+      "A mostly white body covered in dark spots across the coat",
+      "A bay horse with a white blanket",
+      "A pinto horse with irregular patches",
+      "A gray horse with dark speckling"
+    ],
+    "a": "A mostly white body covered in dark spots across the coat",
+    "ok": "Correct. Leopard Appaloosa is the most striking Appaloosa pattern - a predominantly white body with dark spots distributed across the coat, similar to a leopard.",
+    "no": "Leopard Appaloosa is the boldest Appaloosa pattern: a white base covered in dark, rounded spots across the body."
+  },
+  {
+    "q": "A horse has a golden body, a white mane, and no dark points. What color is it?",
+    "opts": [
+      "Palomino",
+      "Buckskin",
+      "Dun",
+      "Gray"
+    ],
+    "a": "Palomino",
+    "ok": "Correct. Golden body + white or cream mane and tail = palomino. No black points present.",
+    "no": "If the body is golden and the mane is white or cream — not black — the horse is palomino."
+  },
+  {
+    "q": "A horse has a golden body, a black mane, and black lower legs. What color is it?",
+    "opts": [
+      "Buckskin",
+      "Palomino",
+      "Dun",
+      "Sorrel"
+    ],
+    "a": "Buckskin",
+    "ok": "Correct. Golden body + black mane, tail, and legs = buckskin. The black points are the key.",
+    "no": "If the body is golden but the mane and legs are black, it is buckskin — not palomino."
+  },
+  {
+    "q": "A horse has a tan body, a dark dorsal stripe, and light leg barring. What color is it?",
+    "opts": [
+      "Dun",
+      "Buckskin",
+      "Palomino",
+      "Gray"
+    ],
+    "a": "Dun",
+    "ok": "Correct. A tan or sandy body with a dorsal stripe and possible leg barring = dun. These primitive markings are the defining feature.",
+    "no": "The dorsal stripe is the key clue. A golden or tan horse with a stripe down the spine is dun, not buckskin or palomino."
+  },
+  {
+    "q": "Why is coat color important to record in breed registration documents?",
+    "opts": [
+      "It is a permanent, visible feature used to identify an individual horse",
+      "It determines the horse's sale price",
+      "It shows the horse's training level",
+      "It predicts performance ability"
+    ],
+    "a": "It is a permanent, visible feature used to identify an individual horse",
+    "ok": "Correct. Coat color is recorded because it is a stable, visible characteristic that helps identify and distinguish one horse from another.",
+    "no": "Color is recorded for identification purposes — it is a permanent feature that helps confirm which horse a document belongs to."
+  },
+  {
+    "q": "What two base pigments produce all horse coat colors?",
+    "opts": [
+      "Red (phaeomelanin) and black (eumelanin)",
+      "Yellow and brown",
+      "White and grey",
+      "Gold and silver"
+    ],
+    "a": "Red (phaeomelanin) and black (eumelanin)",
+    "ok": "Correct. All horse coat colors are produced by combinations, dilutions, and modifications of just two pigments: red and black.",
+    "no": "Every horse coat color comes from red pigment, black pigment, or a combination of both."
+  },
+  {
+    "q": "Which of these colors has NO black pigment anywhere?",
+    "opts": [
+      "Chestnut",
+      "Bay",
+      "Blue roan",
+      "Buckskin"
+    ],
+    "a": "Chestnut",
+    "ok": "Correct. Chestnut horses carry only red pigment — there is no black anywhere in the coat, mane, or tail.",
+    "no": "Chestnut is the red-only color. Bay, blue roan, and buckskin all involve some black pigment."
+  },
+  {
+    "q": "A horse has white patches with jagged, irregular edges that spread from the belly up and do not cross the back. What pinto pattern is this?",
+    "opts": [
+      "Overo",
+      "Tobiano",
+      "Blanket Appaloosa",
+      "Leopard Appaloosa"
+    ],
+    "a": "Overo",
+    "ok": "Correct. Jagged patch edges, spreading from the belly upward without crossing the topline = overo.",
+    "no": "When white stays on the sides and belly without crossing the back, and the patches have irregular edges, it is overo."
+  },
+  {
+    "q": "A horse's coat is a mix of white and chestnut hairs throughout the body, but the head and lower legs are solid chestnut. What color is it?",
+    "opts": [
+      "Strawberry Roan",
+      "Dapple Gray",
+      "Flea-Bitten Gray",
+      "Palomino"
+    ],
+    "a": "Strawberry Roan",
+    "ok": "Correct. White hairs mixed evenly through a chestnut body, with a solid chestnut head = strawberry roan.",
+    "no": "Even white hair mixing through a chestnut body — with the head staying solid chestnut — is strawberry roan."
+  },
+  {
+    "q": "Identify the coat color in the photo.",
+    "opts": [
+      "Bay",
+      "Chestnut",
+      "Black",
+      "Buckskin"
+    ],
+    "a": "Bay",
+    "ok": "Correct. Bay: reddish-brown body with a black mane, tail, and lower legs.",
+    "no": "Look at the mane and legs. If they are black on a reddish-brown body, it is bay.",
+    "img": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/bay.png"
+  },
+  {
+    "q": "Identify the coat color in the photo.",
+    "opts": [
+      "Palomino",
+      "Buckskin",
+      "Dun",
+      "Chestnut"
+    ],
+    "a": "Palomino",
+    "ok": "Correct. Golden body with a white or cream mane and tail = palomino.",
+    "no": "If the mane and tail are white or cream on a golden body, it is palomino.",
+    "img": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/palomino.png"
+  },
+  {
+    "q": "Identify the coat color in the photo.",
+    "opts": [
+      "Dapple Gray",
+      "Roan",
+      "Flea-Bitten Gray",
+      "Appaloosa"
+    ],
+    "a": "Dapple Gray",
+    "ok": "Correct. The circular dapple patterns — rings of lighter and darker grey — identify this as dapple gray.",
+    "no": "Look for the distinctive ring-shaped lighter patches over a grey body. That is dapple gray.",
+    "img": "/courses/schooling-ring/colors-markings/common-horse-colors/images/common-horse-colors/dapple-gray.png"
+  },
+  {
+    "q": "What is the defining characteristic of a bay horse?",
+    "opts": [
+      "A golden body with a white mane",
+      "A reddish-brown body with black mane, tail, and lower legs",
+      "A completely black coat with no brown tones",
+      "A chestnut body with a flaxen mane"
+    ],
+    "a": "A reddish-brown body with black mane, tail, and lower legs",
+    "ok": "Correct. Bay horses have a reddish-brown body with black points — the mane, tail, and lower legs are always black.",
+    "no": "The defining feature of bay is the black points. Look for a reddish-brown body paired with a black mane, tail, and lower legs."
+  },
+  {
+    "q": "What separates a black horse from a very dark bay?",
+    "opts": [
+      "Black horses have no brown or reddish tones anywhere on the body",
+      "Black horses always have a white mane",
+      "Black horses are larger than bay horses",
+      "Black horses only appear in thoroughbreds"
+    ],
+    "a": "Black horses have no brown or reddish tones anywhere on the body",
+    "ok": "Correct. A true black horse shows no brown or reddish coloring anywhere — body, mane, tail, and legs are all solid black.",
+    "no": "Check the body for any brown or reddish tones. If they are present, the horse is bay, not black."
+  },
+  {
+    "q": "A chestnut horse differs from a bay horse because:",
+    "opts": [
+      "Chestnut horses never have black in the mane or tail",
+      "Chestnut horses always have white legs",
+      "Chestnut horses are always darker than bay",
+      "Chestnut horses have blue eyes"
+    ],
+    "a": "Chestnut horses never have black in the mane or tail",
+    "ok": "Correct. Chestnut horses have a red or reddish-brown coat with a mane and tail in the same color family — never black.",
+    "no": "The key difference is the mane and tail. Chestnut horses have no black in their mane or tail. Bay horses do."
+  },
+  {
+    "q": "Sorrel is best described as:",
+    "opts": [
+      "A lighter, brighter copper-red chestnut",
+      "A very dark reddish-brown horse",
+      "A golden horse with a white mane",
+      "A gray horse with red tones"
+    ],
+    "a": "A lighter, brighter copper-red chestnut",
+    "ok": "Correct. Sorrel refers to a lighter, more copper or golden-red tone — a variation of chestnut common in stock breeds.",
+    "no": "Sorrel is the lighter, more copper-toned end of the chestnut spectrum."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

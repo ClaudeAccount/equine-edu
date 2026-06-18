@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Rider Safety Basics &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-horse-safety-rider-safety-basics-6-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Rider Safety Basics</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+      <a href="5-study-guide.html" class="btn-secondary">Back to Study Guide</a>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 5;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Rider Safety Basics',url:'1-index.html'},navExtras:[{label:'Study Guide',url:'5-study-guide.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.riderSafetyBasics.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is the flight response?",
+    "opts": [
+      "The horse's instinct to flee suddenly from anything it perceives as danger",
+      "The horse's habit of following the herd to food",
+      "A trained behavior for leaving the arena calmly",
+      "The way a horse lies down when frightened"
+    ],
+    "a": "The horse's instinct to flee suddenly from anything it perceives as danger",
+    "ok": "Correct. Run first, decide later &mdash; the flight response is the horse's survival instinct.",
+    "no": "Not quite. The flight response is the horse's instinct to flee suddenly from perceived danger."
+  },
+  {
+    "q": "A horse flattens its ears hard back against its neck. What is it signaling?",
+    "opts": [
+      "It may kick or bite",
+      "It is listening to something behind it",
+      "It is relaxed and resting",
+      "It wants its forehead rubbed"
+    ],
+    "a": "It may kick or bite",
+    "ok": "Correct. Pinned ears are the warning that a kick or bite may follow.",
+    "no": "Loosely turned-back ears mean listening or resting. Ears pinned hard against the neck warn of a kick or bite."
+  },
+  {
+    "q": "What kind of movement keeps horses calmest?",
+    "opts": [
+      "Calm, deliberate movements with a quiet voice",
+      "Quick, energetic movements to show confidence",
+      "Absolute silence so the horse is not disturbed",
+      "Keeping completely still at all times"
+    ],
+    "a": "Calm, deliberate movements with a quiet voice",
+    "ok": "Correct. A nervous handler makes a nervous horse.",
+    "no": "Calm, deliberate movement and a quiet voice are the primary safety tool &mdash; silence alone lets a horse be surprised."
+  },
+  {
+    "q": "Where are a horse's blind spots?",
+    "opts": [
+      "Directly behind its body and directly in front of its face",
+      "Directly to its left and right sides",
+      "Above its head and below its chin",
+      "Behind its shoulders on both sides"
+    ],
+    "a": "Directly behind its body and directly in front of its face",
+    "ok": "Correct. Two gaps: directly behind the body and directly in front of the face.",
+    "no": "The two blind spots are directly behind the body and directly in front of the face (closer than about four feet)."
+  },
+  {
+    "q": "What is the safe way to approach a horse?",
+    "opts": [
+      "At an angle toward its left shoulder, speaking calmly",
+      "Straight toward its head so it sees you coming",
+      "Quietly from directly behind so it is not startled",
+      "Quickly from the side before it can move away"
+    ],
+    "a": "At an angle toward its left shoulder, speaking calmly",
+    "ok": "Correct. Walk at an angle to the left shoulder, speaking calmly so the horse both sees and hears who is coming.",
+    "no": "Always approach at an angle toward the left shoulder, speaking calmly the whole way."
+  },
+  {
+    "q": "Which is a safe way to pass behind a horse?",
+    "opts": [
+      "Close against it with a hand on the horse, or far beyond kicking range",
+      "About three feet behind, walking quickly",
+      "Directly behind at any distance, as long as you are quiet",
+      "There is no safe way to be behind a horse"
+    ],
+    "a": "Close against it with a hand on the horse, or far beyond kicking range",
+    "ok": "Correct. Close with a hand on the horse, a kick cannot build force. Far enough away, it cannot connect.",
+    "no": "Stay close with a hand on the horse, or swing wide fully beyond kicking range. The middle distance is most dangerous."
+  },
+  {
+    "q": "Which headgear counts as a riding helmet?",
+    "opts": [
+      "One certified to ASTM F1163 &mdash; look for the SEI label inside",
+      "Any bicycle helmet that fits snugly",
+      "A hard hat rated for construction sites",
+      "Any helmet less than five years old"
+    ],
+    "a": "One certified to ASTM F1163 &mdash; look for the SEI label inside",
+    "ok": "Correct. Riding headgear must meet ASTM F1163 and carry SEI certification.",
+    "no": "Only a helmet certified to ASTM F1163 (SEI label inside) counts as riding headgear. A bike helmet meets a different standard."
+  },
+  {
+    "q": "In a matched-pairs study of equestrian head injuries, what did researchers find about unhelmeted riders?",
+    "opts": [
+      "About five times the risk of bleeding inside the skull",
+      "Exactly the same injuries as helmeted riders",
+      "Slightly fewer neck injuries than helmeted riders",
+      "No measurable difference in any head injury"
+    ],
+    "a": "About five times the risk of bleeding inside the skull",
+    "ok": "Correct. Unhelmeted riders had roughly five-fold the risk of intracranial bleeding.",
+    "no": "Unhelmeted riders had about five times the risk of bleeding inside the skull."
+  },
+  {
+    "q": "Which footwear is right for working around and riding horses?",
+    "opts": [
+      "Sturdy hard-toed boots with a definite heel",
+      "Lugged hiking boots with maximum grip",
+      "Running shoes with good ankle support",
+      "Open-toed sandals in hot weather"
+    ],
+    "a": "Sturdy hard-toed boots with a definite heel",
+    "ok": "Correct. The hard toe protects against a hoof. The heel stops the foot from sliding through the stirrup.",
+    "no": "Sturdy hard-toed boots with a definite heel. Heavy lug tread that clings can trap a foot in a fall."
+  },
+  {
+    "q": "How is the extra length of lead rope carried while leading?",
+    "opts": [
+      "Folded flat in the free hand, never wrapped around hand, wrist, or body",
+      "Coiled snugly around the wrist so it cannot drop",
+      "Looped once around the palm for grip",
+      "Tucked into a belt to keep both hands free"
+    ],
+    "a": "Folded flat in the free hand, never wrapped around hand, wrist, or body",
+    "ok": "Correct. Folded, never wrapped. A spooking horse can snap loops tight in an instant.",
+    "no": "The extra rope is folded flat &mdash; never wrapped around hand, wrist, or body."
+  },
+  {
+    "q": "How is a horse tied correctly?",
+    "opts": [
+      "Quick-release knot, at wither height or higher, short enough that no foot gets over the rope",
+      "Any strong double knot, at chest height, with generous slack",
+      "Quick-release knot, at knee height, with room to graze",
+      "Bowline knot, above the head, as tight as possible"
+    ],
+    "a": "Quick-release knot, at wither height or higher, short enough that no foot gets over the rope",
+    "ok": "Correct. One pull frees a panicking horse. Wither height or higher, and short enough to keep feet clear.",
+    "no": "Quick-release knot at wither height or higher, short enough that the horse cannot get a foot over the rope."
+  },
+  {
+    "q": "Which of these is a safe place to tie a horse?",
+    "opts": [
+      "A solid, secure post",
+      "A board on the fence line",
+      "A wire-fence gate",
+      "A parked trailer door handle"
+    ],
+    "a": "A solid, secure post",
+    "ok": "Correct. Only something safe, secure, and solid.",
+    "no": "Only a solid, secure post. Fence boards, wire fences, gates, and vehicles can all be pulled loose by a panicking horse."
+  },
+  {
+    "q": "After a hard impact, what should happen to a riding helmet?",
+    "opts": [
+      "Retire it &mdash; even if it looks undamaged",
+      "Use it if the outer shell is not cracked",
+      "Have it re-fitted by a professional",
+      "Nothing; helmets are designed for repeated impacts"
+    ],
+    "a": "Retire it &mdash; even if it looks undamaged",
+    "ok": "Correct. Helmet foam compresses permanently on impact. Retire it after any hard hit.",
+    "no": "A helmet should be retired after any hard impact. The protective foam compresses and cannot be inspected for internal damage."
+  },
+  {
+    "q": "True or false: a bicycle helmet is acceptable for riding if it fits snugly.",
+    "opts": [
+      "False",
+      "True"
+    ],
+    "a": "False",
+    "ok": "Correct. A bicycle helmet meets a different standard for different falls. ASTM F1163 / SEI certification is required.",
+    "no": "False. A bicycle helmet meets a different standard. Riding headgear must be certified to ASTM F1163."
+  },
+  {
+    "q": "True or false: turning a horse to the right while leading keeps the handler safe.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. Turning the horse to the right moves its feet away from the handler.",
+    "no": "True. Always turn the horse away from the handler so its feet move away from yours."
+  },
+  {
+    "q": "What is it about heavy lug-tread boots that makes them unsafe in the stirrup?",
+    "opts": [
+      "The tread grips the stirrup and can trap a foot in a fall",
+      "The extra weight pulls the foot forward",
+      "Lug boots are too narrow for stirrups",
+      "Lug boots have no toe protection"
+    ],
+    "a": "The tread grips the stirrup and can trap a foot in a fall",
+    "ok": "Correct. Tread that clings is exactly what traps a foot &mdash; a smooth or light-tread sole lets it slide free in a fall.",
+    "no": "Heavy tread is the hazard: it grips the stirrup and can trap a foot. A smooth or light-tread sole lets the foot slide free."
+  },
+  {
+    "q": "What is the flight response?",
+    "opts": [
+      "The horse's instinct to flee suddenly from anything it perceives as danger",
+      "The horse's habit of following the herd to food",
+      "A trained behavior for leaving the arena calmly",
+      "The way a horse lies down when frightened"
+    ],
+    "a": "The horse's instinct to flee suddenly from anything it perceives as danger",
+    "ok": "Correct. Run first, decide later &mdash; the flight response is the horse's survival instinct.",
+    "no": "Not quite. The flight response is the horse's instinct to flee suddenly from perceived danger."
+  },
+  {
+    "q": "A horse flattens its ears hard back against its neck. What is it signaling?",
+    "opts": [
+      "It may kick or bite",
+      "It is listening to something behind it",
+      "It is relaxed and resting",
+      "It wants its forehead rubbed"
+    ],
+    "a": "It may kick or bite",
+    "ok": "Correct. Pinned ears are the warning that a kick or bite may follow.",
+    "no": "Loosely turned-back ears mean listening or resting. Ears pinned hard against the neck warn of a kick or bite."
+  },
+  {
+    "q": "What kind of movement keeps horses calmest?",
+    "opts": [
+      "Calm, deliberate movements with a quiet voice",
+      "Quick, energetic movements to show confidence",
+      "Absolute silence so the horse is not disturbed",
+      "Keeping completely still at all times"
+    ],
+    "a": "Calm, deliberate movements with a quiet voice",
+    "ok": "Correct. A nervous handler makes a nervous horse.",
+    "no": "Calm, deliberate movement and a quiet voice are the primary safety tool &mdash; silence alone lets a horse be surprised."
+  },
+  {
+    "q": "Where are a horse's blind spots?",
+    "opts": [
+      "Directly behind its body and directly in front of its face",
+      "Directly to its left and right sides",
+      "Above its head and below its chin",
+      "Behind its shoulders on both sides"
+    ],
+    "a": "Directly behind its body and directly in front of its face",
+    "ok": "Correct. Two gaps: directly behind the body and directly in front of the face.",
+    "no": "The two blind spots are directly behind the body and directly in front of the face (closer than about four feet)."
+  },
+  {
+    "q": "What is the safe way to approach a horse?",
+    "opts": [
+      "At an angle toward its left shoulder, speaking calmly",
+      "Straight toward its head so it sees you coming",
+      "Quietly from directly behind so it is not startled",
+      "Quickly from the side before it can move away"
+    ],
+    "a": "At an angle toward its left shoulder, speaking calmly",
+    "ok": "Correct. Walk at an angle to the left shoulder, speaking calmly so the horse both sees and hears who is coming.",
+    "no": "Always approach at an angle toward the left shoulder, speaking calmly the whole way."
+  },
+  {
+    "q": "Which is a safe way to pass behind a horse?",
+    "opts": [
+      "Close against it with a hand on the horse, or far beyond kicking range",
+      "About three feet behind, walking quickly",
+      "Directly behind at any distance, as long as you are quiet",
+      "There is no safe way to be behind a horse"
+    ],
+    "a": "Close against it with a hand on the horse, or far beyond kicking range",
+    "ok": "Correct. Close with a hand on the horse, a kick cannot build force. Far enough away, it cannot connect.",
+    "no": "Stay close with a hand on the horse, or swing wide fully beyond kicking range. The middle distance is most dangerous."
+  },
+  {
+    "q": "Which headgear counts as a riding helmet?",
+    "opts": [
+      "One certified to ASTM F1163 &mdash; look for the SEI label inside",
+      "Any bicycle helmet that fits snugly",
+      "A hard hat rated for construction sites",
+      "Any helmet less than five years old"
+    ],
+    "a": "One certified to ASTM F1163 &mdash; look for the SEI label inside",
+    "ok": "Correct. Riding headgear must meet ASTM F1163 and carry SEI certification.",
+    "no": "Only a helmet certified to ASTM F1163 (SEI label inside) counts as riding headgear. A bike helmet meets a different standard."
+  },
+  {
+    "q": "In a matched-pairs study of equestrian head injuries, what did researchers find about unhelmeted riders?",
+    "opts": [
+      "About five times the risk of bleeding inside the skull",
+      "Exactly the same injuries as helmeted riders",
+      "Slightly fewer neck injuries than helmeted riders",
+      "No measurable difference in any head injury"
+    ],
+    "a": "About five times the risk of bleeding inside the skull",
+    "ok": "Correct. Unhelmeted riders had roughly five-fold the risk of intracranial bleeding.",
+    "no": "Unhelmeted riders had about five times the risk of bleeding inside the skull."
+  },
+  {
+    "q": "Which footwear is right for working around and riding horses?",
+    "opts": [
+      "Sturdy hard-toed boots with a definite heel",
+      "Lugged hiking boots with maximum grip",
+      "Running shoes with good ankle support",
+      "Open-toed sandals in hot weather"
+    ],
+    "a": "Sturdy hard-toed boots with a definite heel",
+    "ok": "Correct. The hard toe protects against a hoof. The heel stops the foot from sliding through the stirrup.",
+    "no": "Sturdy hard-toed boots with a definite heel. Heavy lug tread that clings can trap a foot in a fall."
+  },
+  {
+    "q": "How is the extra length of lead rope carried while leading?",
+    "opts": [
+      "Folded flat in the free hand, never wrapped around hand, wrist, or body",
+      "Coiled snugly around the wrist so it cannot drop",
+      "Looped once around the palm for grip",
+      "Tucked into a belt to keep both hands free"
+    ],
+    "a": "Folded flat in the free hand, never wrapped around hand, wrist, or body",
+    "ok": "Correct. Folded, never wrapped. A spooking horse can snap loops tight in an instant.",
+    "no": "The extra rope is folded flat &mdash; never wrapped around hand, wrist, or body."
+  },
+  {
+    "q": "How is a horse tied correctly?",
+    "opts": [
+      "Quick-release knot, at wither height or higher, short enough that no foot gets over the rope",
+      "Any strong double knot, at chest height, with generous slack",
+      "Quick-release knot, at knee height, with room to graze",
+      "Bowline knot, above the head, as tight as possible"
+    ],
+    "a": "Quick-release knot, at wither height or higher, short enough that no foot gets over the rope",
+    "ok": "Correct. One pull frees a panicking horse. Wither height or higher, and short enough to keep feet clear.",
+    "no": "Quick-release knot at wither height or higher, short enough that the horse cannot get a foot over the rope."
+  },
+  {
+    "q": "Which of these is a safe place to tie a horse?",
+    "opts": [
+      "A solid, secure post",
+      "A board on the fence line",
+      "A wire-fence gate",
+      "A parked trailer door handle"
+    ],
+    "a": "A solid, secure post",
+    "ok": "Correct. Only something safe, secure, and solid.",
+    "no": "Only a solid, secure post. Fence boards, wire fences, gates, and vehicles can all be pulled loose by a panicking horse."
+  },
+  {
+    "q": "After a hard impact, what should happen to a riding helmet?",
+    "opts": [
+      "Retire it &mdash; even if it looks undamaged",
+      "Use it if the outer shell is not cracked",
+      "Have it re-fitted by a professional",
+      "Nothing; helmets are designed for repeated impacts"
+    ],
+    "a": "Retire it &mdash; even if it looks undamaged",
+    "ok": "Correct. Helmet foam compresses permanently on impact. Retire it after any hard hit.",
+    "no": "A helmet should be retired after any hard impact. The protective foam compresses and cannot be inspected for internal damage."
+  },
+  {
+    "q": "True or false: a bicycle helmet is acceptable for riding if it fits snugly.",
+    "opts": [
+      "False",
+      "True"
+    ],
+    "a": "False",
+    "ok": "Correct. A bicycle helmet meets a different standard for different falls. ASTM F1163 / SEI certification is required.",
+    "no": "False. A bicycle helmet meets a different standard. Riding headgear must be certified to ASTM F1163."
+  },
+  {
+    "q": "True or false: turning a horse to the right while leading keeps the handler safe.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. Turning the horse to the right moves its feet away from the handler.",
+    "no": "True. Always turn the horse away from the handler so its feet move away from yours."
+  },
+  {
+    "q": "What is it about heavy lug-tread boots that makes them unsafe in the stirrup?",
+    "opts": [
+      "The tread grips the stirrup and can trap a foot in a fall",
+      "The extra weight pulls the foot forward",
+      "Lug boots are too narrow for stirrups",
+      "Lug boots have no toe protection"
+    ],
+    "a": "The tread grips the stirrup and can trap a foot in a fall",
+    "ok": "Correct. Tread that clings is exactly what traps a foot &mdash; a smooth or light-tread sole lets it slide free in a fall.",
+    "no": "Heavy tread is the hazard: it grips the stirrup and can trap a foot. A smooth or light-tread sole lets the foot slide free."
+  },
+  {
+    "q": "What is the flight response?",
+    "opts": [
+      "The horse's instinct to flee suddenly from anything it perceives as danger",
+      "The horse's habit of following the herd to food",
+      "A trained behavior for leaving the arena calmly",
+      "The way a horse lies down when frightened"
+    ],
+    "a": "The horse's instinct to flee suddenly from anything it perceives as danger",
+    "ok": "Correct. Run first, decide later &mdash; the flight response is the horse's survival instinct.",
+    "no": "Not quite. The flight response is the horse's instinct to flee suddenly from perceived danger."
+  },
+  {
+    "q": "A horse flattens its ears hard back against its neck. What is it signaling?",
+    "opts": [
+      "It may kick or bite",
+      "It is listening to something behind it",
+      "It is relaxed and resting",
+      "It wants its forehead rubbed"
+    ],
+    "a": "It may kick or bite",
+    "ok": "Correct. Pinned ears are the warning that a kick or bite may follow.",
+    "no": "Loosely turned-back ears mean listening or resting. Ears pinned hard against the neck warn of a kick or bite."
+  },
+  {
+    "q": "What kind of movement keeps horses calmest?",
+    "opts": [
+      "Calm, deliberate movements with a quiet voice",
+      "Quick, energetic movements to show confidence",
+      "Absolute silence so the horse is not disturbed",
+      "Keeping completely still at all times"
+    ],
+    "a": "Calm, deliberate movements with a quiet voice",
+    "ok": "Correct. A nervous handler makes a nervous horse.",
+    "no": "Calm, deliberate movement and a quiet voice are the primary safety tool &mdash; silence alone lets a horse be surprised."
+  },
+  {
+    "q": "Where are a horse's blind spots?",
+    "opts": [
+      "Directly behind its body and directly in front of its face",
+      "Directly to its left and right sides",
+      "Above its head and below its chin",
+      "Behind its shoulders on both sides"
+    ],
+    "a": "Directly behind its body and directly in front of its face",
+    "ok": "Correct. Two gaps: directly behind the body and directly in front of the face.",
+    "no": "The two blind spots are directly behind the body and directly in front of the face (closer than about four feet)."
+  },
+  {
+    "q": "What is the safe way to approach a horse?",
+    "opts": [
+      "At an angle toward its left shoulder, speaking calmly",
+      "Straight toward its head so it sees you coming",
+      "Quietly from directly behind so it is not startled",
+      "Quickly from the side before it can move away"
+    ],
+    "a": "At an angle toward its left shoulder, speaking calmly",
+    "ok": "Correct. Walk at an angle to the left shoulder, speaking calmly so the horse both sees and hears who is coming.",
+    "no": "Always approach at an angle toward the left shoulder, speaking calmly the whole way."
+  },
+  {
+    "q": "Which is a safe way to pass behind a horse?",
+    "opts": [
+      "Close against it with a hand on the horse, or far beyond kicking range",
+      "About three feet behind, walking quickly",
+      "Directly behind at any distance, as long as you are quiet",
+      "There is no safe way to be behind a horse"
+    ],
+    "a": "Close against it with a hand on the horse, or far beyond kicking range",
+    "ok": "Correct. Close with a hand on the horse, a kick cannot build force. Far enough away, it cannot connect.",
+    "no": "Stay close with a hand on the horse, or swing wide fully beyond kicking range. The middle distance is most dangerous."
+  },
+  {
+    "q": "Which headgear counts as a riding helmet?",
+    "opts": [
+      "One certified to ASTM F1163 &mdash; look for the SEI label inside",
+      "Any bicycle helmet that fits snugly",
+      "A hard hat rated for construction sites",
+      "Any helmet less than five years old"
+    ],
+    "a": "One certified to ASTM F1163 &mdash; look for the SEI label inside",
+    "ok": "Correct. Riding headgear must meet ASTM F1163 and carry SEI certification.",
+    "no": "Only a helmet certified to ASTM F1163 (SEI label inside) counts as riding headgear. A bike helmet meets a different standard."
+  },
+  {
+    "q": "In a matched-pairs study of equestrian head injuries, what did researchers find about unhelmeted riders?",
+    "opts": [
+      "About five times the risk of bleeding inside the skull",
+      "Exactly the same injuries as helmeted riders",
+      "Slightly fewer neck injuries than helmeted riders",
+      "No measurable difference in any head injury"
+    ],
+    "a": "About five times the risk of bleeding inside the skull",
+    "ok": "Correct. Unhelmeted riders had roughly five-fold the risk of intracranial bleeding.",
+    "no": "Unhelmeted riders had about five times the risk of bleeding inside the skull."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

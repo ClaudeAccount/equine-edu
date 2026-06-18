@@ -7,75 +7,533 @@
   <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
 <link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css"><link rel="stylesheet" href="../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../assets/css/game.css"></head>
-<body class="ee-page-courses-schooling-ring-tack-equipment-western-equipment-7-test-your-knowledge"><div id="site-nav"></div><div id="course-breadcrumb"></div>
-<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top"><div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text"><div class="lesson-module-tag">Western Tack & Equipment</div><h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
-      <p class="lesson-hero-desc">This quiz covers western tack and equipment, including saddle parts, bridle parts, cinches, breast collars, saddle pads, western riding purpose, and safe equipment use. Each attempt draws 15 questions from a larger bank, so every attempt is a little different.</p></div></div></section>
-<div class="lesson-wrap">
-<main class="lesson-left">
-<section class="quiz-card" id="quiz-card">
-  <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
-  <div class="quiz-question" id="quiz-question"></div>
-  <div class="quiz-options" id="quiz-options"></div>
-  <div class="quiz-feedback" id="quiz-feedback"></div>
-  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+<body class="ee-page-courses-schooling-ring-tack-equipment-western-equipment-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Western Tack &amp; Equipment</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
 </section>
-<div class="quiz-score-panel" id="score-panel">
-  <div class="score-number" id="score-display">0/15</div>
-  <div class="score-label">Your Score</div>
-  <div class="score-message" id="score-message"></div>
-  <button class="btn-retake" id="btn-retake">Try Again</button>
-</div>
-</main>
-<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
 </div>
 <div id="site-footer"></div>
+<script src="course-config.js"></script>
 <script>
-(function(){
-const QUESTION_COUNT=15;
-const questionBank=[
-{prompt:'What is tack?',options:['Equipment used for riding, handling, or working with a horse','A horse coat color','A type of feed','A stable cleaning tool only'],answer:'Equipment used for riding, handling, or working with a horse',correct:'Correct. Tack includes equipment such as saddles, bridles, reins, and cinches.',incorrect:'Tack is the equipment used with horses for riding, handling, or work.'},
-{prompt:'Which part is a defining feature of many western saddles?',options:['Horn','Noseband only','Browband','Curb chain'],answer:'Horn',correct:'Correct. The horn is one of the most recognizable western saddle features.',incorrect:'The horn is the upright part at the front of many western saddles.'},
-{prompt:'Where does the rider sit on a western saddle?',options:['Seat','Cinch','Fender','Bit'],answer:'Seat',correct:'Correct. The rider sits in the seat.',incorrect:'The seat is the part designed for the rider.'},
-{prompt:'What is the cantle?',options:['The raised back of the saddle','The strap under the horse belly','The rider foot support','The mouthpiece of the bridle'],answer:'The raised back of the saddle',correct:'Correct. The cantle forms the back of the saddle seat.',incorrect:'The cantle is the raised back of the saddle.'},
-{prompt:'What does the cinch help do?',options:['Hold the saddle in place','Steer the horse by itself','Decorate the browband','Replace the reins'],answer:'Hold the saddle in place',correct:'Correct. The cinch passes under the belly and helps secure the saddle.',incorrect:'The cinch helps hold the saddle in place.'},
-{prompt:'What is the main job of a saddle pad?',options:['Protect the horse back and support even pressure under the saddle','Replace a correctly fitted saddle','Hold the bit in the mouth','Keep the bridle from slipping off'],answer:'Protect the horse back and support even pressure under the saddle',correct:'Correct. A saddle pad helps protect the horse back, manage sweat, reduce friction, and support the saddle-horse interface.',incorrect:'A saddle pad helps protect the horse back and support even pressure under the saddle.'},
-{prompt:'What does a breast collar help prevent?',options:['The saddle sliding backward','The bit becoming too short','The reins changing color','The stirrups becoming leather'],answer:'The saddle sliding backward',correct:'Correct. A breast collar helps limit backward saddle movement, especially during hills, ranch work, speed events, or active riding.',incorrect:'A breast collar helps keep the saddle from sliding backward.'},
-{prompt:'Which setup is the best reason to recheck tack fit before continuing?',options:['The horse shows soreness, swelling, girthiness, or sudden resistance','The rider knows every saddle part name','The pad matches the barn colors','The breast collar has decorative tooling'],answer:'The horse shows soreness, swelling, girthiness, or sudden resistance',correct:'Correct. Soreness, swelling, girthiness, or sudden resistance can indicate the tack setup needs closer attention.',incorrect:'Signs of soreness, swelling, girthiness, or sudden resistance mean the tack setup should be checked.'},
-{prompt:'How should a breast collar fit?',options:['Stable without restricting shoulder movement or pressing into the windpipe','As tight as possible across the throat','Loose enough to hang below the knees','Attached only to the reins'],answer:'Stable without restricting shoulder movement or pressing into the windpipe',correct:'Correct. A breast collar should help stabilize the saddle while allowing normal shoulder movement and comfortable breathing.',incorrect:'A breast collar should stabilize the saddle without restricting movement or pressing into the windpipe.'},
-{prompt:'What should riders check about the saddle pad before riding?',options:['That it lies smooth with no folds, lumps, or trapped hair','That it replaces the cinch','That it is hidden entirely under the saddle','That it attaches to the bit'],answer:'That it lies smooth with no folds, lumps, or trapped hair',correct:'Correct. A smooth pad placement helps prevent rubs, pressure points, and uneven contact.',incorrect:'The saddle pad should lie smoothly with no folds, lumps, or trapped hair.'},
-{prompt:'Which part supports the rider foot?',options:['Stirrup','Horn','Skirt','Throatlatch'],answer:'Stirrup',correct:'Correct. The stirrup supports the rider foot.',incorrect:'The stirrup is where the rider places the foot.'},
-{prompt:'What is the fender on a western saddle?',options:['The wide leather piece that hangs below the saddle','The top strap over the horse poll','The mouthpiece of the bridle','The raised back of the seat'],answer:'The wide leather piece that hangs below the saddle',correct:'Correct. The fender hangs below the saddle and connects with the stirrup area.',incorrect:'The fender is the wide leather piece below the saddle.'},
-{prompt:'What is the skirt of a western saddle?',options:['The leather area under the seat and rigging','The metal mouthpiece','The forehead strap','The reins'],answer:'The leather area under the seat and rigging',correct:'Correct. The skirt helps spread contact over the saddle pad area.',incorrect:'The skirt is the leather area below the saddle body.'},
-{prompt:'What is a western bridle often called?',options:['Headstall','Fender','Cantle','Saddle pad'],answer:'Headstall',correct:'Correct. Western bridles are often referred to as headstalls.',incorrect:'A western bridle is often called a headstall.'},
-{prompt:'Which bridle part passes over the horse poll?',options:['Crownpiece','Bit','Reins','Stirrup'],answer:'Crownpiece',correct:'Correct. The crownpiece goes over the poll.',incorrect:'The crownpiece is the top strap over the poll.'},
-{prompt:'What does a browband do?',options:['Crosses the forehead on browband-style bridles','Holds the rider foot','Secures the saddle under the belly','Forms the back of the saddle'],answer:'Crosses the forehead on browband-style bridles',correct:'Correct. A browband crosses the forehead.',incorrect:'A browband is the forehead strap on browband-style bridles.'},
-{prompt:'What is the function of cheekpieces?',options:['Help hold the bit or attachment at the correct height','Support the rider seat','Tighten the cinch','Protect the saddle skirt'],answer:'Help hold the bit or attachment at the correct height',correct:'Correct. Cheekpieces help position the bit or bitless attachment.',incorrect:'Cheekpieces are side straps that help position the bit or attachment.'},
-{prompt:'What does the throatlatch help prevent?',options:['The bridle slipping off','The saddle pad sliding backward','The stirrup leather twisting','The horn moving'],answer:'The bridle slipping off',correct:'Correct. The throatlatch helps keep the bridle in place.',incorrect:'The throatlatch helps prevent the bridle from slipping off.'},
-{prompt:'What do reins connect to?',options:['The bit or bitless attachment','Only the saddle horn','The cantle','The saddle skirt'],answer:'The bit or bitless attachment',correct:'Correct. Reins connect to the bit or bitless attachment.',incorrect:'Reins connect to the bit or bitless attachment and are held by the rider.'},
-{prompt:'Why is knowing equipment parts useful?',options:['It supports clear instruction, safer tack checks, and better communication','It replaces lessons with a trainer','It means tack always fits','It changes the horse color'],answer:'It supports clear instruction, safer tack checks, and better communication',correct:'Correct. Equipment vocabulary helps with instruction, safety checks, and care.',incorrect:'Knowing part names improves communication and tack checks.'},
-{prompt:'Which item is part of a western bridle?',options:['Bit','Fender','Cantle','Skirt'],answer:'Bit',correct:'Correct. The bit may be part of a western bridle setup.',incorrect:'The bit belongs with bridle equipment, though some setups are bitless.'},
-{prompt:'Which item is part of a western saddle?',options:['Pommel / Swell','Browband','Crownpiece','Cheekpiece'],answer:'Pommel / Swell',correct:'Correct. The pommel or swell is at the front of the saddle.',incorrect:'Pommel or swell is a western saddle part.'},
-{prompt:'What kind of saddle is often built for comfort over longer rides?',options:['Trail saddle','Driving harness','Halter','Browband headstall'],answer:'Trail saddle',correct:'Correct. Trail saddles are often designed with comfort and practicality in mind.',incorrect:'Trail saddles are commonly used for longer recreational rides.'},
-{prompt:'Which saddle type is often sturdy and associated with ranch or roping work?',options:['Roping saddle','Browband saddle','Bit saddle','Throatlatch saddle'],answer:'Roping saddle',correct:'Correct. Roping saddles are generally sturdy and built for that work.',incorrect:'Roping saddles are associated with ranch and roping use.'},
-{prompt:'Which bridle style may use an ear loop instead of a full browband?',options:['One-ear headstall','Trail saddle','Cinch strap','Fender'],answer:'One-ear headstall',correct:'Correct. A one-ear headstall uses an ear loop.',incorrect:'A one-ear headstall uses an ear loop rather than a full browband.'},
-{prompt:'Why should riders check the cinch before mounting?',options:['A loose or incorrect cinch can affect saddle security','It changes the bridle size','It sharpens the bit','It replaces reins'],answer:'A loose or incorrect cinch can affect saddle security',correct:'Correct. The cinch is part of saddle security.',incorrect:'The cinch is important because it helps secure the saddle.'},
-{prompt:'Which part should not be used as a mounting handle?',options:['Horn','Seat','Stirrup','Reins'],answer:'Horn',correct:'Correct. The horn is not meant to be used as a mounting handle.',incorrect:'Do not use the horn as a mounting handle.'}
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Western Tack',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'6-training-barn.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.westernEquipment.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is tack?",
+    "opts": [
+      "Equipment used for riding, handling, or working with a horse",
+      "A horse coat color",
+      "A type of feed",
+      "A stable cleaning tool only"
+    ],
+    "a": "Equipment used for riding, handling, or working with a horse",
+    "ok": "Correct. Tack includes equipment such as saddles, bridles, reins, and cinches.",
+    "no": "Tack is the equipment used with horses for riding, handling, or work."
+  },
+  {
+    "q": "Which part is a defining feature of many western saddles?",
+    "opts": [
+      "Horn",
+      "Noseband only",
+      "Browband",
+      "Curb chain"
+    ],
+    "a": "Horn",
+    "ok": "Correct. The horn is one of the most recognizable western saddle features.",
+    "no": "The horn is the upright part at the front of many western saddles."
+  },
+  {
+    "q": "Where does the rider sit on a western saddle?",
+    "opts": [
+      "Seat",
+      "Cinch",
+      "Fender",
+      "Bit"
+    ],
+    "a": "Seat",
+    "ok": "Correct. The rider sits in the seat.",
+    "no": "The seat is the part designed for the rider."
+  },
+  {
+    "q": "What is the cantle?",
+    "opts": [
+      "The raised back of the saddle",
+      "The strap under the horse belly",
+      "The rider foot support",
+      "The mouthpiece of the bridle"
+    ],
+    "a": "The raised back of the saddle",
+    "ok": "Correct. The cantle forms the back of the saddle seat.",
+    "no": "The cantle is the raised back of the saddle."
+  },
+  {
+    "q": "What does the cinch help do?",
+    "opts": [
+      "Hold the saddle in place",
+      "Steer the horse by itself",
+      "Decorate the browband",
+      "Replace the reins"
+    ],
+    "a": "Hold the saddle in place",
+    "ok": "Correct. The cinch passes under the belly and helps secure the saddle.",
+    "no": "The cinch helps hold the saddle in place."
+  },
+  {
+    "q": "What is the main job of a saddle pad?",
+    "opts": [
+      "Protect the horse back and support even pressure under the saddle",
+      "Replace a correctly fitted saddle",
+      "Hold the bit in the mouth",
+      "Keep the bridle from slipping off"
+    ],
+    "a": "Protect the horse back and support even pressure under the saddle",
+    "ok": "Correct. A saddle pad helps protect the horse back, manage sweat, reduce friction, and support the saddle-horse interface.",
+    "no": "A saddle pad helps protect the horse back and support even pressure under the saddle."
+  },
+  {
+    "q": "What does a breast collar help prevent?",
+    "opts": [
+      "The saddle sliding backward",
+      "The bit becoming too short",
+      "The reins changing color",
+      "The stirrups becoming leather"
+    ],
+    "a": "The saddle sliding backward",
+    "ok": "Correct. A breast collar helps limit backward saddle movement, especially during hills, ranch work, speed events, or active riding.",
+    "no": "A breast collar helps keep the saddle from sliding backward."
+  },
+  {
+    "q": "Which setup is the best reason to recheck tack fit before continuing?",
+    "opts": [
+      "The horse shows soreness, swelling, girthiness, or sudden resistance",
+      "The rider knows every saddle part name",
+      "The pad matches the barn colors",
+      "The breast collar has decorative tooling"
+    ],
+    "a": "The horse shows soreness, swelling, girthiness, or sudden resistance",
+    "ok": "Correct. Soreness, swelling, girthiness, or sudden resistance can indicate the tack setup needs closer attention.",
+    "no": "Signs of soreness, swelling, girthiness, or sudden resistance mean the tack setup should be checked."
+  },
+  {
+    "q": "How should a breast collar fit?",
+    "opts": [
+      "Stable without restricting shoulder movement or pressing into the windpipe",
+      "As tight as possible across the throat",
+      "Loose enough to hang below the knees",
+      "Attached only to the reins"
+    ],
+    "a": "Stable without restricting shoulder movement or pressing into the windpipe",
+    "ok": "Correct. A breast collar should help stabilize the saddle while allowing normal shoulder movement and comfortable breathing.",
+    "no": "A breast collar should stabilize the saddle without restricting movement or pressing into the windpipe."
+  },
+  {
+    "q": "What should riders check about the saddle pad before riding?",
+    "opts": [
+      "That it lies smooth with no folds, lumps, or trapped hair",
+      "That it replaces the cinch",
+      "That it is hidden entirely under the saddle",
+      "That it attaches to the bit"
+    ],
+    "a": "That it lies smooth with no folds, lumps, or trapped hair",
+    "ok": "Correct. A smooth pad placement helps prevent rubs, pressure points, and uneven contact.",
+    "no": "The saddle pad should lie smoothly with no folds, lumps, or trapped hair."
+  },
+  {
+    "q": "Which part supports the rider foot?",
+    "opts": [
+      "Stirrup",
+      "Horn",
+      "Skirt",
+      "Throatlatch"
+    ],
+    "a": "Stirrup",
+    "ok": "Correct. The stirrup supports the rider foot.",
+    "no": "The stirrup is where the rider places the foot."
+  },
+  {
+    "q": "What is the fender on a western saddle?",
+    "opts": [
+      "The wide leather piece that hangs below the saddle",
+      "The top strap over the horse poll",
+      "The mouthpiece of the bridle",
+      "The raised back of the seat"
+    ],
+    "a": "The wide leather piece that hangs below the saddle",
+    "ok": "Correct. The fender hangs below the saddle and connects with the stirrup area.",
+    "no": "The fender is the wide leather piece below the saddle."
+  },
+  {
+    "q": "What is the skirt of a western saddle?",
+    "opts": [
+      "The leather area under the seat and rigging",
+      "The metal mouthpiece",
+      "The forehead strap",
+      "The reins"
+    ],
+    "a": "The leather area under the seat and rigging",
+    "ok": "Correct. The skirt helps spread contact over the saddle pad area.",
+    "no": "The skirt is the leather area below the saddle body."
+  },
+  {
+    "q": "What is a western bridle often called?",
+    "opts": [
+      "Headstall",
+      "Fender",
+      "Cantle",
+      "Saddle pad"
+    ],
+    "a": "Headstall",
+    "ok": "Correct. Western bridles are often referred to as headstalls.",
+    "no": "A western bridle is often called a headstall."
+  },
+  {
+    "q": "Which bridle part passes over the horse poll?",
+    "opts": [
+      "Crownpiece",
+      "Bit",
+      "Reins",
+      "Stirrup"
+    ],
+    "a": "Crownpiece",
+    "ok": "Correct. The crownpiece goes over the poll.",
+    "no": "The crownpiece is the top strap over the poll."
+  },
+  {
+    "q": "What does a browband do?",
+    "opts": [
+      "Crosses the forehead on browband-style bridles",
+      "Holds the rider foot",
+      "Secures the saddle under the belly",
+      "Forms the back of the saddle"
+    ],
+    "a": "Crosses the forehead on browband-style bridles",
+    "ok": "Correct. A browband crosses the forehead.",
+    "no": "A browband is the forehead strap on browband-style bridles."
+  },
+  {
+    "q": "What is the function of cheekpieces?",
+    "opts": [
+      "Help hold the bit or attachment at the correct height",
+      "Support the rider seat",
+      "Tighten the cinch",
+      "Protect the saddle skirt"
+    ],
+    "a": "Help hold the bit or attachment at the correct height",
+    "ok": "Correct. Cheekpieces help position the bit or bitless attachment.",
+    "no": "Cheekpieces are side straps that help position the bit or attachment."
+  },
+  {
+    "q": "What does the throatlatch help prevent?",
+    "opts": [
+      "The bridle slipping off",
+      "The saddle pad sliding backward",
+      "The stirrup leather twisting",
+      "The horn moving"
+    ],
+    "a": "The bridle slipping off",
+    "ok": "Correct. The throatlatch helps keep the bridle in place.",
+    "no": "The throatlatch helps prevent the bridle from slipping off."
+  },
+  {
+    "q": "What do reins connect to?",
+    "opts": [
+      "The bit or bitless attachment",
+      "Only the saddle horn",
+      "The cantle",
+      "The saddle skirt"
+    ],
+    "a": "The bit or bitless attachment",
+    "ok": "Correct. Reins connect to the bit or bitless attachment.",
+    "no": "Reins connect to the bit or bitless attachment and are held by the rider."
+  },
+  {
+    "q": "Why is knowing equipment parts useful?",
+    "opts": [
+      "It supports clear instruction, safer tack checks, and better communication",
+      "It replaces lessons with a trainer",
+      "It means tack always fits",
+      "It changes the horse color"
+    ],
+    "a": "It supports clear instruction, safer tack checks, and better communication",
+    "ok": "Correct. Equipment vocabulary helps with instruction, safety checks, and care.",
+    "no": "Knowing part names improves communication and tack checks."
+  },
+  {
+    "q": "Which item is part of a western bridle?",
+    "opts": [
+      "Bit",
+      "Fender",
+      "Cantle",
+      "Skirt"
+    ],
+    "a": "Bit",
+    "ok": "Correct. The bit may be part of a western bridle setup.",
+    "no": "The bit belongs with bridle equipment, though some setups are bitless."
+  },
+  {
+    "q": "Which item is part of a western saddle?",
+    "opts": [
+      "Pommel / Swell",
+      "Browband",
+      "Crownpiece",
+      "Cheekpiece"
+    ],
+    "a": "Pommel / Swell",
+    "ok": "Correct. The pommel or swell is at the front of the saddle.",
+    "no": "Pommel or swell is a western saddle part."
+  },
+  {
+    "q": "What kind of saddle is often built for comfort over longer rides?",
+    "opts": [
+      "Trail saddle",
+      "Driving harness",
+      "Halter",
+      "Browband headstall"
+    ],
+    "a": "Trail saddle",
+    "ok": "Correct. Trail saddles are often designed with comfort and practicality in mind.",
+    "no": "Trail saddles are commonly used for longer recreational rides."
+  },
+  {
+    "q": "Which saddle type is often sturdy and associated with ranch or roping work?",
+    "opts": [
+      "Roping saddle",
+      "Browband saddle",
+      "Bit saddle",
+      "Throatlatch saddle"
+    ],
+    "a": "Roping saddle",
+    "ok": "Correct. Roping saddles are generally sturdy and built for that work.",
+    "no": "Roping saddles are associated with ranch and roping use."
+  },
+  {
+    "q": "Which bridle style may use an ear loop instead of a full browband?",
+    "opts": [
+      "One-ear headstall",
+      "Trail saddle",
+      "Cinch strap",
+      "Fender"
+    ],
+    "a": "One-ear headstall",
+    "ok": "Correct. A one-ear headstall uses an ear loop.",
+    "no": "A one-ear headstall uses an ear loop rather than a full browband."
+  },
+  {
+    "q": "Why should riders check the cinch before mounting?",
+    "opts": [
+      "A loose or incorrect cinch can affect saddle security",
+      "It changes the bridle size",
+      "It sharpens the bit",
+      "It replaces reins"
+    ],
+    "a": "A loose or incorrect cinch can affect saddle security",
+    "ok": "Correct. The cinch is part of saddle security.",
+    "no": "The cinch is important because it helps secure the saddle."
+  },
+  {
+    "q": "Which part should not be used as a mounting handle?",
+    "opts": [
+      "Horn",
+      "Seat",
+      "Stirrup",
+      "Reins"
+    ],
+    "a": "Horn",
+    "ok": "Correct. The horn is not meant to be used as a mounting handle.",
+    "no": "Do not use the horn as a mounting handle."
+  },
+  {
+    "q": "What is tack?",
+    "opts": [
+      "Equipment used for riding, handling, or working with a horse",
+      "A horse coat color",
+      "A type of feed",
+      "A stable cleaning tool only"
+    ],
+    "a": "Equipment used for riding, handling, or working with a horse",
+    "ok": "Correct. Tack includes equipment such as saddles, bridles, reins, and cinches.",
+    "no": "Tack is the equipment used with horses for riding, handling, or work."
+  },
+  {
+    "q": "Which part is a defining feature of many western saddles?",
+    "opts": [
+      "Horn",
+      "Noseband only",
+      "Browband",
+      "Curb chain"
+    ],
+    "a": "Horn",
+    "ok": "Correct. The horn is one of the most recognizable western saddle features.",
+    "no": "The horn is the upright part at the front of many western saddles."
+  },
+  {
+    "q": "Where does the rider sit on a western saddle?",
+    "opts": [
+      "Seat",
+      "Cinch",
+      "Fender",
+      "Bit"
+    ],
+    "a": "Seat",
+    "ok": "Correct. The rider sits in the seat.",
+    "no": "The seat is the part designed for the rider."
+  },
+  {
+    "q": "What is the cantle?",
+    "opts": [
+      "The raised back of the saddle",
+      "The strap under the horse belly",
+      "The rider foot support",
+      "The mouthpiece of the bridle"
+    ],
+    "a": "The raised back of the saddle",
+    "ok": "Correct. The cantle forms the back of the saddle seat.",
+    "no": "The cantle is the raised back of the saddle."
+  },
+  {
+    "q": "What does the cinch help do?",
+    "opts": [
+      "Hold the saddle in place",
+      "Steer the horse by itself",
+      "Decorate the browband",
+      "Replace the reins"
+    ],
+    "a": "Hold the saddle in place",
+    "ok": "Correct. The cinch passes under the belly and helps secure the saddle.",
+    "no": "The cinch helps hold the saddle in place."
+  },
+  {
+    "q": "What is the main job of a saddle pad?",
+    "opts": [
+      "Protect the horse back and support even pressure under the saddle",
+      "Replace a correctly fitted saddle",
+      "Hold the bit in the mouth",
+      "Keep the bridle from slipping off"
+    ],
+    "a": "Protect the horse back and support even pressure under the saddle",
+    "ok": "Correct. A saddle pad helps protect the horse back, manage sweat, reduce friction, and support the saddle-horse interface.",
+    "no": "A saddle pad helps protect the horse back and support even pressure under the saddle."
+  },
+  {
+    "q": "What does a breast collar help prevent?",
+    "opts": [
+      "The saddle sliding backward",
+      "The bit becoming too short",
+      "The reins changing color",
+      "The stirrups becoming leather"
+    ],
+    "a": "The saddle sliding backward",
+    "ok": "Correct. A breast collar helps limit backward saddle movement, especially during hills, ranch work, speed events, or active riding.",
+    "no": "A breast collar helps keep the saddle from sliding backward."
+  },
+  {
+    "q": "Which setup is the best reason to recheck tack fit before continuing?",
+    "opts": [
+      "The horse shows soreness, swelling, girthiness, or sudden resistance",
+      "The rider knows every saddle part name",
+      "The pad matches the barn colors",
+      "The breast collar has decorative tooling"
+    ],
+    "a": "The horse shows soreness, swelling, girthiness, or sudden resistance",
+    "ok": "Correct. Soreness, swelling, girthiness, or sudden resistance can indicate the tack setup needs closer attention.",
+    "no": "Signs of soreness, swelling, girthiness, or sudden resistance mean the tack setup should be checked."
+  },
+  {
+    "q": "How should a breast collar fit?",
+    "opts": [
+      "Stable without restricting shoulder movement or pressing into the windpipe",
+      "As tight as possible across the throat",
+      "Loose enough to hang below the knees",
+      "Attached only to the reins"
+    ],
+    "a": "Stable without restricting shoulder movement or pressing into the windpipe",
+    "ok": "Correct. A breast collar should help stabilize the saddle while allowing normal shoulder movement and comfortable breathing.",
+    "no": "A breast collar should stabilize the saddle without restricting movement or pressing into the windpipe."
+  },
+  {
+    "q": "What should riders check about the saddle pad before riding?",
+    "opts": [
+      "That it lies smooth with no folds, lumps, or trapped hair",
+      "That it replaces the cinch",
+      "That it is hidden entirely under the saddle",
+      "That it attaches to the bit"
+    ],
+    "a": "That it lies smooth with no folds, lumps, or trapped hair",
+    "ok": "Correct. A smooth pad placement helps prevent rubs, pressure points, and uneven contact.",
+    "no": "The saddle pad should lie smoothly with no folds, lumps, or trapped hair."
+  },
+  {
+    "q": "Which part supports the rider foot?",
+    "opts": [
+      "Stirrup",
+      "Horn",
+      "Skirt",
+      "Throatlatch"
+    ],
+    "a": "Stirrup",
+    "ok": "Correct. The stirrup supports the rider foot.",
+    "no": "The stirrup is where the rider places the foot."
+  },
+  {
+    "q": "What is the fender on a western saddle?",
+    "opts": [
+      "The wide leather piece that hangs below the saddle",
+      "The top strap over the horse poll",
+      "The mouthpiece of the bridle",
+      "The raised back of the seat"
+    ],
+    "a": "The wide leather piece that hangs below the saddle",
+    "ok": "Correct. The fender hangs below the saddle and connects with the stirrup area.",
+    "no": "The fender is the wide leather piece below the saddle."
+  },
+  {
+    "q": "What is the skirt of a western saddle?",
+    "opts": [
+      "The leather area under the seat and rigging",
+      "The metal mouthpiece",
+      "The forehead strap",
+      "The reins"
+    ],
+    "a": "The leather area under the seat and rigging",
+    "ok": "Correct. The skirt helps spread contact over the saddle pad area.",
+    "no": "The skirt is the leather area below the saddle body."
+  }
 ];
-function esc(t){return String(t||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
-function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(i=>i.v)}
-const cardEl=document.getElementById('quiz-card'),countEl=document.getElementById('quiz-count'),scoreEl=document.getElementById('quiz-score'),qEl=document.getElementById('quiz-question'),optEl=document.getElementById('quiz-options'),fbEl=document.getElementById('quiz-feedback'),nextBtn=document.getElementById('quiz-next'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message'),retake=document.getElementById('btn-retake');
-let active=[],idx=0,score=0,answered=false;
-function start(){active=shuffle(questionBank).slice(0,Math.min(QUESTION_COUNT,questionBank.length)).map(q=>({...q,options:shuffle(q.options)}));idx=0;score=0;scorePanel.classList.remove('show');cardEl.style.display='';showQuestion()}
-function showQuestion(){answered=false;const q=active[idx];countEl.textContent='Question '+(idx+1)+' of '+active.length;scoreEl.textContent='Score: '+score;qEl.textContent=q.prompt;fbEl.className='quiz-feedback';fbEl.textContent='';nextBtn.disabled=true;nextBtn.textContent='Next Question';optEl.innerHTML=q.options.map(o=>`<button type="button" class="quiz-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');optEl.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(btn,q)))}
-function selectAnswer(btn,q){if(answered)return;answered=true;const correct=q.answer;optEl.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.val===correct)b.classList.add('correct-ans')});const ok=btn.dataset.val===correct;if(ok)score++;else btn.classList.add('wrong-ans');fbEl.textContent=ok?q.correct:q.incorrect;fbEl.classList.add('show',ok?'correct':'incorrect');scoreEl.textContent='Score: '+score;nextBtn.textContent=idx+1<active.length?'Next Question':'See Results';nextBtn.disabled=false}
-nextBtn.addEventListener('click',()=>{idx++;if(idx>=active.length){finish();return}showQuestion()});
-function finish(){cardEl.style.display='none';const pct=score/active.length;scoreDisplay.textContent=score+'/'+active.length;scoreMessage.textContent=pct>=.9?'Excellent work. You have a strong command of this material.':pct>=.75?'Good work. Review the questions you missed and try another round.':pct>=.6?'You are getting there. Revisit the lesson and Training Barn, then try again.':'Keep practicing. These terms will get easier with review.';scorePanel.classList.add('show');if(pct>=.8){try{localStorage.setItem('equineEduProgress.westernEquipment.testYourKnowledge','true')}catch(e){}}}
-retake.addEventListener('click',()=>{start();cardEl.scrollIntoView({behavior:'smooth',block:'start'})});
-start()
-})();
 </script>
-<script>window.CURRENT_MODULE=6;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Western Tack',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'6-training-barn.html'}]};</script>
-<script src="course-config.js"></script><script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/supabase-client.js"></script>
-<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
-</body></html>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

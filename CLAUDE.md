@@ -12,9 +12,12 @@ This file is the single source of truth for how every page in the Equine EDU cod
 2. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Research-Governance-Master.md` — gatekeeper for all course research
 3. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Course-Creation-Master.md` — course creation standards
 4. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Voice-and-Content-Standards.md` — voice, tone, and content rules
-5. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\Equine Edu\equine-edu-main\equine-edu-main\page-templates\TEMPLATE-SYSTEM-V2.md` — page template system overview
-6. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU â€” GOVERNED BUILD SYSTEM\governance\Visual-Standards-Manual.md` â€” visual identity, image generation, and educational asset standards
-7. The relevant T-spec file(s) from `page-templates/` for the page type(s) being built:
+5. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Reading-Level-Standard.md` — learner-facing reading level, plain-language, and vocabulary rules
+6. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\Equine Edu\equine-edu-main\equine-edu-main\page-templates\TEMPLATE-SYSTEM-V2.md` — page template system overview
+7. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU â€” GOVERNED BUILD SYSTEM\governance\Visual-Standards-Manual.md` â€” visual identity, image generation, and educational asset standards
+8. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\architecture\EDUCATIONAL-ACCURACY-KNOWLEDGE-VALIDATION-ENGINE-v1.0.md` — EAKVE accuracy, safety, evidence, hallucination, age-level, and assessment validation gate
+9. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\architecture\CURRICULUM-ARCHITECTURE-INTEGRITY-SYSTEM-v1.0.md` — CAIS curriculum architecture, Concept Registry, curriculum consistency, prerequisites, pathways, and assessment-bank governance gate
+10. The relevant T-spec file(s) from `page-templates/` for the page type(s) being built:
    - `T01-course-index.md` — course landing page
    - `T02-why-it-matters.md` — first lesson / orientation
    - `T03-concept-foundation.md` — prerequisite concept page
@@ -29,6 +32,12 @@ This file is the single source of truth for how every page in the Equine EDU cod
 These files define what information may be included in courses, how it must be sourced, how it must be classified, what standards all learner-facing content must meet, and exactly how each page type must be structured. No course work begins until this reading is complete.
 
 For any image, diagram, hero art, viewing-room asset, quiz image, worksheet image, or generated visual media, `Visual-Standards-Manual.md` is mandatory authority. Educational accuracy, subject recognition, and brand consistency override decorative appeal.
+
+Before any course, lesson, quiz, study guide, activity, game, worksheet, explanation, or assessment is considered publishable, apply the Educational Accuracy and Knowledge Validation Engine (EAKVE). EAKVE is the independent pre-publication gate for factual correctness, equine safety, evidence support, hallucination detection, age-level fit, objective alignment, and assessment quality. Any EAKVE `FAIL` blocks publication. Any EAKVE `REVISION_REQUIRED` must be corrected before publication.
+
+Before learner-facing instructional content is considered publishable, apply `Reading-Level-Standard.md`. Course text, quiz feedback, study guide prompts, activity instructions, captions, and explanations must be written at approximately Grade 5-6 regardless of course tier. Advanced courses become more rigorous through deeper concepts and stronger thinking tasks, not harder language. Correct equine terminology is retained when needed and explained in plain language.
+
+Before any course enters course creation, apply the Curriculum Architecture and Curriculum Integrity System (CAIS). CAIS is the independent curriculum structure gate for approved Concept IDs, prerequisite order, pathway placement, course dependencies, cross-library consistency, and the 40-question assessment bank / 15-question attempt model. Any CAIS `BLOCKED` or high-severity CCE finding blocks course creation or release. Any CAIS `REVISION_REQUIRED` must be corrected before course creation continues.
 
 **The governed build system is located at:**
 `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\`
@@ -52,7 +61,7 @@ The three shared stylesheets are:
 - Do not add `<style>` blocks to lesson or study guide HTML files
 - Do not add inline `style="..."` attributes to lesson or study guide elements
 - If a design need cannot be met by an existing class, the fix goes into the shared CSS file — not the individual page
-- The only permitted exception is `1-index.html` (course landing pages), which may carry a `<style>` block for the hero layout — that block already exists, should not grow, and is the sole remaining exception to this rule
+- The only permitted exception is `1-index.html` (course landing pages). Existing landing pages may keep a `<style>` block for hero layout only. New or revised landing-page styling should move into shared CSS unless the user explicitly asks for page-local styling.
 - If the user says "add this style to this page," do it. If they don't ask, don't add it
 
 ---
@@ -84,6 +93,18 @@ File numbering must match the `num` field in `course-config.js`. Files not refer
 - Course 2+ quizzes must still preserve the required prior-course review mix; final courses in a subject path must preserve the cumulative review mix
 
 ---
+
+## Quiz Naming & Progress Key (PERMANENT)
+
+- Every quiz/assessment page is named **"Test Your Knowledge"** everywhere it appears: the page `<title>`, the hero `<h1>`, the `course-config.js` module `title`, the module `type` (`Quiz`), and the file name (`N-test-your-knowledge.html`). The legacy label "Show Your Knowledge" is retired and must not be reintroduced.
+- Every quiz page must set its progress key to exactly:
+
+  ```js
+  window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.<courseIdCamel>.testYourKnowledge" };
+  ```
+
+  where `<courseIdCamel>` is the course id in camelCase. The key suffix is always `testYourKnowledge` so it matches the filename-derived key that `course-nav.js` checks for completion. Any other suffix (e.g. `showYourKnowledge`) silently breaks the course progress bar and the Horse Bowl "completed courses" filter.
+- This rule is enforced in every course build going forward. When creating or editing a quiz, verify the title, file name, and progress key all use the `test`/`testYourKnowledge` form before publishing.
 
 ## course-config.js Rules
 
@@ -130,7 +151,7 @@ Lessons without a tab system still require:
 
 ## Did You Know Callouts
 
-Lesson pages (both "Why It Matters" pages and core content pages) should include at least one "Did You Know" callout box where a naturally interesting, surprising, or contextualizing fact fits. These are optional on pages where no suitable fact exists, but should be added wherever possible.
+Lesson pages (both "Why It Matters" pages and core content pages) should include a "Did You Know" callout only where a naturally interesting, surprising, or contextualizing fact fits. These are optional when no suitable fact exists, but should be added wherever they support the lesson without distracting from the core teaching.
 
 The Did You Know box uses these obfuscated classes from `assets/css/course-standardization.css`:
 
@@ -151,7 +172,7 @@ Rules:
 
 ## First Lesson Page Image Strip
 
-Every "Why It Matters" page (`2-*.html`) must include a decorative 5-element image strip after the `.lesson-intro-card` and before the first `.visual-card`. If course-specific images exist, use `<img>` tags inside a named strip div (e.g. `.marking-mini-row`). If images do not yet exist, use a CSS placeholder strip:
+Every "Why It Matters" page (`2-*.html`) must include a course-relevant 5-element visual strip after the `.lesson-intro-card` and before the first `.visual-card`. If course-specific images exist, use `<img>` tags inside a named strip div (e.g. `.marking-mini-row`). If images do not yet exist, use a CSS placeholder strip:
 
 ```html
 <div class="lesson-mini-strip" aria-hidden="true">
@@ -163,7 +184,7 @@ Every "Why It Matters" page (`2-*.html`) must include a decorative 5-element ima
 </div>
 ```
 
-The `.lesson-mini-strip` and `.strip-placeholder` classes are defined in `assets/css/components.css`. Do not add inline styles. Replace placeholders with real images when course imagery is available.
+The `.lesson-mini-strip` and `.strip-placeholder` classes are defined in `assets/css/components.css`. Do not add inline styles. Placeholders are visual layout placeholders only; replace them with real course-relevant educational images when approved course imagery is available.
 
 ---
 
@@ -201,7 +222,7 @@ All study guide classes (`.study-rule`, `.study-section`, `.reveal`, `.ready-pan
 
 - Must load `course-config.js` and render the module list dynamically from `window.COURSE_CONFIG.modules`
 - No Learning Outcomes section (`.learn-section`, `.outcomes-grid`, `.outcome-item`)
-- The `<style>` block in the `<head>` is permitted and should only contain hero layout styles
+- If a `<style>` block already exists in the `<head>`, it is permitted only for hero layout styles. New landing-page styling should use shared CSS unless the user explicitly asks otherwise.
 - Must include the standard `window.LAYOUT` block pointing to the correct nav CTA
 
 ---
@@ -210,6 +231,9 @@ All study guide classes (`.study-rule`, `.study-section`, `.reveal`, `.ready-pan
 
 - Third-person instructional voice only in lesson body text — never "you" or direct address
 - Imperative voice is allowed only in activity and navigation instructions
+- Learner-facing instructional content must be written at approximately Grade 5-6 regardless of course tier
+- Advanced courses become more rigorous through deeper concepts and stronger thinking tasks, not harder language
+- Technical equine terms may be used when accurate and necessary, but must be defined immediately in plain language
 - No number words in config descriptions
 - No program names in learner-facing content (no FFA, 4-H, Pony Club, USPC)
 - No difficulty labels in learner-facing content (no "beginner", "intermediate", "advanced")

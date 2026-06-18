@@ -22,7 +22,7 @@ Fourteen templates covering every page kind on the site. Every new page must be 
 
 A course is **5–10 pages**, in one of **two production archetypes** (matches the 24 built courses; Canon C3 Amendment 2):
 
-- **Catalog / visual-ID:** T01 → T02 → [T03] → T04 (one catalog page) → T05 → T06 → [T16] → T07 — colors, markings, patterns, parts-of-the-horse, vital signs, riding styles, tack equipment.
+- **Catalog / visual-ID:** T01 → T02 → [T03] → T04 (one catalog page) → T05 → T06 → [T16] → T07 — colors, markings, patterns, parts-of-the-horse, vital signs, riding disciplines, tack equipment.
 - **Multi-topic / content:** T01 → T02 → [T03] → T04 (several content pages) → [T26 Study & Review] → T06 → [T16] → T07 — horse behavior, health & disease prevention, nutrition, hoof care & farriery, gaits & movement, intro to tack.
 
 > **Canon C3 Amendment 2 (2026-06-13).** The Core Catalog slot is generalized to "Core Catalog / Content," present **one or more times**; **T26 Study & Review** is added for the multi-topic archetype; course size widens to **5–10 pages**; the final page is always named **`test-your-knowledge`**. These changes record structure already in production across the built courses.

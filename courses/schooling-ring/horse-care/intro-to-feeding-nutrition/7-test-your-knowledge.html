@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Intro to Feeding &amp; Nutrition &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-horse-care-intro-to-feeding-nutrition-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Intro to Feeding &amp;amp; Nutrition</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+      <a href="6-study-guide.html" class="btn-secondary">Back to Study Guide</a>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'All Courses', url: '../../../index.html' }
+};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.introToFeedingNutrition.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "How many hours per day do horses graze in a natural setting?",
+    "opts": [
+      "4 to 6 hours",
+      "8 to 10 hours",
+      "16 to 18 hours",
+      "20 to 22 hours"
+    ],
+    "a": "16 to 18 hours",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 16 to 18 hours."
+  },
+  {
+    "q": "Why does the horse's stomach produce acid continuously, even when empty?",
+    "opts": [
+      "To prepare for the next grain meal",
+      "Because of the horse's evolutionary design as a continuous grazer — the system assumes near-constant forage intake",
+      "To neutralize bacteria in the water supply",
+      "Acid production only occurs during active digestion"
+    ],
+    "a": "Because of the horse's evolutionary design as a continuous grazer — the system assumes near-constant forage intake",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Because of the horse's evolutionary design as a continuous grazer — the system assumes near-constant forage intake."
+  },
+  {
+    "q": "What is the minimum percentage of body weight a horse should consume in forage daily?",
+    "opts": [
+      "0.5 percent",
+      "1 to 1.5 percent",
+      "2.5 percent",
+      "3 percent"
+    ],
+    "a": "1 to 1.5 percent",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 1 to 1.5 percent."
+  },
+  {
+    "q": "Why are sudden feed changes dangerous for horses?",
+    "opts": [
+      "The horse may develop a preference for the new feed and refuse the old one",
+      "The hindgut microbial population adapts to specific feeds and is disrupted by sudden changes, causing colic and laminitis risk",
+      "Horses are allergic to most new feedstuffs",
+      "New feeds contain more NSC, which is always dangerous"
+    ],
+    "a": "The hindgut microbial population adapts to specific feeds and is disrupted by sudden changes, causing colic and laminitis risk",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The hindgut microbial population adapts to specific feeds and is disrupted by sudden changes, causing colic and laminitis risk."
+  },
+  {
+    "q": "How long should a feed change take to implement safely?",
+    "opts": [
+      "1 to 2 days",
+      "3 to 5 days",
+      "7 to 10 days minimum",
+      "One month minimum"
+    ],
+    "a": "7 to 10 days minimum",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 7 to 10 days minimum."
+  },
+  {
+    "q": "What is the risk of feeding a single large grain meal?",
+    "opts": [
+      "The horse will eat too slowly and miss its feeding window",
+      "Undigested starch reaches the hindgut, disrupting microbial balance and triggering colic or laminitis",
+      "Grain fed in large amounts causes the horse's coat to become dull",
+      "Large grain meals are only dangerous for ponies"
+    ],
+    "a": "Undigested starch reaches the hindgut, disrupting microbial balance and triggering colic or laminitis",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Undigested starch reaches the hindgut, disrupting microbial balance and triggering colic or laminitis."
+  },
+  {
+    "q": "What happens when a horse goes more than three to four hours without forage?",
+    "opts": [
+      "The horse enters a fasting state that improves digestion",
+      "The hindgut slows to preserve energy",
+      "Stomach acid accumulates without buffering food material, increasing ulcer risk",
+      "Nothing significant — horses can go 12 hours without forage safely"
+    ],
+    "a": "Stomach acid accumulates without buffering food material, increasing ulcer risk",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Stomach acid accumulates without buffering food material, increasing ulcer risk."
+  },
+  {
+    "q": "What natural substance in saliva buffers equine stomach acid?",
+    "opts": [
+      "Hydrochloric acid",
+      "Bicarbonate",
+      "Pepsin",
+      "Mucin"
+    ],
+    "a": "Bicarbonate",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Bicarbonate."
+  },
+  {
+    "q": "How does consistent chewing of forage help prevent gastric ulcers?",
+    "opts": [
+      "Hay coats the stomach lining directly",
+      "Chewing produces saliva containing bicarbonate, which neutralizes gastric acid",
+      "Forage physically scrubs the stomach lining",
+      "Consistent chewing reduces overall acid production"
+    ],
+    "a": "Chewing produces saliva containing bicarbonate, which neutralizes gastric acid",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Chewing produces saliva containing bicarbonate, which neutralizes gastric acid."
+  },
+  {
+    "q": "Which of the following describes the correct approach to preventing feeding-related digestive emergencies?",
+    "opts": [
+      "Feed large amounts twice daily with water removed between meals",
+      "Offer grain first before hay to stimulate appetite",
+      "Maintain consistent schedules, keep forage available, make changes gradually, and avoid large grain meals",
+      "Limit forage to one feeding per day to reduce total caloric intake"
+    ],
+    "a": "Maintain consistent schedules, keep forage available, make changes gradually, and avoid large grain meals",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Maintain consistent schedules, keep forage available, make changes gradually, and avoid large grain meals."
+  },
+  {
+    "q": "What is the primary role of forage in the equine diet?",
+    "opts": [
+      "To provide concentrated energy for performance",
+      "To provide the structural fiber the hindgut ferments for energy and to satisfy the behavioral drive to chew",
+      "To supply the protein horses need for muscle development",
+      "To provide vitamins and minerals lacking in grain"
+    ],
+    "a": "To provide the structural fiber the hindgut ferments for energy and to satisfy the behavioral drive to chew",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is To provide the structural fiber the hindgut ferments for energy and to satisfy the behavioral drive to chew."
+  },
+  {
+    "q": "Which of the following is a grass hay?",
+    "opts": [
+      "Alfalfa",
+      "Clover",
+      "Timothy",
+      "Red clover"
+    ],
+    "a": "Timothy",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Timothy."
+  },
+  {
+    "q": "What makes alfalfa different from grass hay nutritionally?",
+    "opts": [
+      "Alfalfa is lower in calcium than grass hay",
+      "Alfalfa contains more moisture than grass hay",
+      "Alfalfa is higher in protein, calcium, and digestible energy than grass hay",
+      "Alfalfa and grass hay have identical nutritional profiles"
+    ],
+    "a": "Alfalfa is higher in protein, calcium, and digestible energy than grass hay",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Alfalfa is higher in protein, calcium, and digestible energy than grass hay."
+  },
+  {
+    "q": "For which type of horse is alfalfa most nutritionally appropriate?",
+    "opts": [
+      "Easy keepers and horses in light work",
+      "Metabolically sensitive horses prone to laminitis",
+      "Growing horses, lactating mares, and horses in hard work",
+      "Any horse, in any amount"
+    ],
+    "a": "Growing horses, lactating mares, and horses in hard work",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Growing horses, lactating mares, and horses in hard work."
+  },
+  {
+    "q": "Why is spring and fall pasture grass considered a laminitis risk?",
+    "opts": [
+      "Spring grass contains too much fiber for the hindgut to process",
+      "Spring and fall grass is high in non-structural carbohydrates that can trigger laminitis in metabolically sensitive horses",
+      "Pasture grass always causes laminitis regardless of season",
+      "Spring grass is toxic to horses for the first two weeks"
+    ],
+    "a": "Spring and fall grass is high in non-structural carbohydrates that can trigger laminitis in metabolically sensitive horses",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Spring and fall grass is high in non-structural carbohydrates that can trigger laminitis in metabolically sensitive horses."
+  },
+  {
+    "q": "What are the key signs of good-quality hay?",
+    "opts": [
+      "Brown color, dusty texture, and strong sweet smell",
+      "Green to golden color, free of mold and dust, clean or slightly sweet smell, and leafy texture",
+      "Bright green color with visible moisture",
+      "Any color, as long as the bale is not hot to the touch"
+    ],
+    "a": "Green to golden color, free of mold and dust, clean or slightly sweet smell, and leafy texture",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Green to golden color, free of mold and dust, clean or slightly sweet smell, and leafy texture."
+  },
+  {
+    "q": "Why should a bale that feels hot inside not be fed immediately?",
+    "opts": [
+      "Hot hay indicates it has been over-dried and is nutritionally depleted",
+      "The heat indicates the bale is still curing and may develop dangerous mold",
+      "Hot hay is only a concern in summer",
+      "Hot bales are normal and safe after 24 hours"
+    ],
+    "a": "The heat indicates the bale is still curing and may develop dangerous mold",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The heat indicates the bale is still curing and may develop dangerous mold."
+  },
+  {
+    "q": "What does 'early-cut hay' mean, and why does it matter?",
+    "opts": [
+      "Hay harvested in the early morning — dew content affects quality",
+      "Hay cut before seed heads fully develop, which retains more leaves and higher nutritional value than late-cut hay",
+      "Hay harvested in early spring, which is higher in NSC",
+      "Hay baled within 24 hours of cutting, which is considered premium quality"
+    ],
+    "a": "Hay cut before seed heads fully develop, which retains more leaves and higher nutritional value than late-cut hay",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Hay cut before seed heads fully develop, which retains more leaves and higher nutritional value than late-cut hay."
+  },
+  {
+    "q": "What does the smell of hay indicate about its quality?",
+    "opts": [
+      "Smell has no bearing on hay quality",
+      "A musty or fermented smell indicates mold or improper curing — the hay should not be fed",
+      "A strong smell indicates the hay was harvested at peak maturity",
+      "Good hay should smell like fresh cut grass, not like dried hay"
+    ],
+    "a": "A musty or fermented smell indicates mold or improper curing — the hay should not be fed",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A musty or fermented smell indicates mold or improper curing — the hay should not be fed."
+  },
+  {
+    "q": "Mixed hay typically contains a blend of:",
+    "opts": [
+      "Grain and hay fibers",
+      "Multiple grass species only",
+      "Grass and legume species",
+      "Straw and legume hay"
+    ],
+    "a": "Grass and legume species",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Grass and legume species."
+  },
+  {
+    "q": "How many gallons of water does an average adult horse require daily under normal conditions?",
+    "opts": [
+      "1 to 3 gallons",
+      "5 to 10 gallons",
+      "12 to 18 gallons",
+      "20 or more gallons"
+    ],
+    "a": "5 to 10 gallons",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 5 to 10 gallons."
+  },
+  {
+    "q": "When does a horse's water requirement increase most significantly?",
+    "opts": [
+      "During cold weather and rest",
+      "During hot weather and exercise",
+      "When eating legume hay instead of grass hay",
+      "When grain is removed from the diet"
+    ],
+    "a": "During hot weather and exercise",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is During hot weather and exercise."
+  },
+  {
+    "q": "Why might a horse reduce water intake in cold weather?",
+    "opts": [
+      "Horses require less water when inactive",
+      "Cold water may be refused by horses when temperatures drop significantly below normal",
+      "Horses drink only in warm conditions",
+      "Cold weather reduces the horse's ability to smell water"
+    ],
+    "a": "Cold water may be refused by horses when temperatures drop significantly below normal",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Cold water may be refused by horses when temperatures drop significantly below normal."
+  },
+  {
+    "q": "What is the correct standard for water access in horse management?",
+    "opts": [
+      "Water should be offered at morning and evening feedings only",
+      "Water should be available at all times — constant access is required",
+      "Water should be limited to 5 gallons per day to prevent overdrinking",
+      "Water is optional when horses have access to pasture"
+    ],
+    "a": "Water should be available at all times — constant access is required",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Water should be available at all times — constant access is required."
+  },
+  {
+    "q": "What is a key early warning sign of illness that is detectable during the feeding routine?",
+    "opts": [
+      "The horse is slower to finish its hay than usual",
+      "The horse eats hay before grain",
+      "Reduced water intake or failure to drink",
+      "The horse moves to a different area of the stall to eat"
+    ],
+    "a": "Reduced water intake or failure to drink",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Reduced water intake or failure to drink."
+  },
+  {
+    "q": "Why is it a management error to feed grain on a completely empty stomach?",
+    "opts": [
+      "Grain contains substances that are only safe when diluted by hay",
+      "The stomach has been accumulating acid with no buffering material — adding concentrated starch intensifies ulcer risk and hindgut disruption",
+      "An empty stomach cannot produce the digestive enzymes needed for grain",
+      "Grain fed without hay causes the horse to eat too quickly"
+    ],
+    "a": "The stomach has been accumulating acid with no buffering material — adding concentrated starch intensifies ulcer risk and hindgut disruption",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The stomach has been accumulating acid with no buffering material — adding concentrated starch intensifies ulcer risk and hindgut disruption."
+  },
+  {
+    "q": "A horse returning from heavy exercise in summer heat should have water access:",
+    "opts": [
+      "Withheld for at least one hour until fully cooled",
+      "Offered immediately in large unlimited amounts",
+      "Available immediately, offered in small amounts if the horse is very hot",
+      "Offered only after grain and hay have been consumed"
+    ],
+    "a": "Available immediately, offered in small amounts if the horse is very hot",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Available immediately, offered in small amounts if the horse is very hot."
+  },
+  {
+    "q": "Which of the following is the correct daily feeding routine for a horse in light work?",
+    "opts": [
+      "One large grain meal in the morning, water offered at meals only",
+      "Hay available throughout the day, grain (if needed) divided into multiple small meals, water always accessible",
+      "Grain in the morning and evening, hay only when grain is finished",
+      "Large hay delivery once per day with water removed overnight"
+    ],
+    "a": "Hay available throughout the day, grain (if needed) divided into multiple small meals, water always accessible",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Hay available throughout the day, grain (if needed) divided into multiple small meals, water always accessible."
+  },
+  {
+    "q": "What does a horse's manure output indicate during the daily feeding check?",
+    "opts": [
+      "Only the horse's grain intake",
+      "Digestive health — reduced output, loose manure, or absence of manure signals a potential digestive problem",
+      "The horse's activity level",
+      "Nothing clinically significant"
+    ],
+    "a": "Digestive health — reduced output, loose manure, or absence of manure signals a potential digestive problem",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Digestive health — reduced output, loose manure, or absence of manure signals a potential digestive problem."
+  },
+  {
+    "q": "Why does a horse on dry hay need to drink more water than a horse on fresh pasture?",
+    "opts": [
+      "Dry hay contains salt that increases thirst",
+      "Fresh pasture contains up to 80 percent moisture that contributes to daily fluid intake — dry hay provides almost none",
+      "Dry hay horses are always more active and sweat more",
+      "Horses prefer the taste of water when eating hay"
+    ],
+    "a": "Fresh pasture contains up to 80 percent moisture that contributes to daily fluid intake — dry hay provides almost none",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Fresh pasture contains up to 80 percent moisture that contributes to daily fluid intake — dry hay provides almost none."
+  },
+  {
+    "q": "A barn switches to a new hay supplier whose product is a different type of grass hay. What is the correct approach?",
+    "opts": [
+      "Feed the new hay immediately — both are grass hay, so no adjustment is needed",
+      "Introduce the new hay gradually over seven to ten days alongside the current hay",
+      "Mix new and old hay 50/50 from the first day",
+      "Withhold hay for 24 hours before introducing the new supply to reset the hindgut"
+    ],
+    "a": "Introduce the new hay gradually over seven to ten days alongside the current hay",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Introduce the new hay gradually over seven to ten days alongside the current hay."
+  },
+  {
+    "q": "A horse is on a diet of grass hay only. What is the most important factor to monitor?",
+    "opts": [
+      "That the horse finishes all hay within one hour",
+      "That forage is available for most of the day and that the horse is maintaining condition",
+      "That hay is withheld for at least two hours before and after exercise",
+      "That hay is weighed precisely and never exceeds 10 pounds per day"
+    ],
+    "a": "That forage is available for most of the day and that the horse is maintaining condition",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is That forage is available for most of the day and that the horse is maintaining condition."
+  },
+  {
+    "q": "A metabolically sensitive horse has access to lush spring pasture. What is the primary risk?",
+    "opts": [
+      "The horse will prefer grass to hay and stop drinking water",
+      "The high NSC content of spring grass can trigger laminitis in metabolically sensitive horses",
+      "Spring grass contains parasites that cause colic",
+      "There is no risk — fresh grass is always safer than dry hay"
+    ],
+    "a": "The high NSC content of spring grass can trigger laminitis in metabolically sensitive horses",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The high NSC content of spring grass can trigger laminitis in metabolically sensitive horses."
+  },
+  {
+    "q": "A horse in a stall has not touched its hay and is standing quietly with its head low. What is the correct response?",
+    "opts": [
+      "Leave the horse alone — not finishing hay is normal behavior",
+      "Check the horse for signs of discomfort, observe posture and manure, and contact a veterinarian if signs of distress are present",
+      "Offer grain to stimulate appetite",
+      "Remove the hay and replace it with a new bale"
+    ],
+    "a": "Check the horse for signs of discomfort, observe posture and manure, and contact a veterinarian if signs of distress are present",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Check the horse for signs of discomfort, observe posture and manure, and contact a veterinarian if signs of distress are present."
+  },
+  {
+    "q": "A handler notices the water bucket is full but the horse has not been observed drinking all morning. What should the handler do?",
+    "opts": [
+      "Replace the bucket as the horse may not like the taste of this water",
+      "Monitor water intake and check for other signs of illness — reduced drinking is an early warning sign",
+      "Nothing; horses drink on their own schedule and this is normal",
+      "Add electrolytes to the water to encourage drinking"
+    ],
+    "a": "Monitor water intake and check for other signs of illness — reduced drinking is an early warning sign",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Monitor water intake and check for other signs of illness — reduced drinking is an early warning sign."
+  },
+  {
+    "q": "Which of the following feeding routines best reflects the principles taught in this course?",
+    "opts": [
+      "One hay feeding per day, two grain meals, water at mealtimes only",
+      "Hay available throughout the day, no grain, water always accessible",
+      "Hay available throughout the day with slow-feed net, grain divided into small meals offered after hay, constant water access",
+      "Large hay feeding twice daily, grain on an empty stomach in the morning, water at feedings"
+    ],
+    "a": "Hay available throughout the day with slow-feed net, grain divided into small meals offered after hay, constant water access",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Hay available throughout the day with slow-feed net, grain divided into small meals offered after hay, constant water access."
+  },
+  {
+    "q": "Why should moldy hay never be fed, even in small amounts?",
+    "opts": [
+      "Mold reduces the palatability of hay, causing horses to undereat",
+      "Mold contains fungal toxins that can cause respiratory problems, colic, and other health issues — there is no safe threshold",
+      "Mold only affects horses under two years of age",
+      "Mold in hay is only dangerous if the horse has a compromised immune system"
+    ],
+    "a": "Mold contains fungal toxins that can cause respiratory problems, colic, and other health issues — there is no safe threshold",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Mold contains fungal toxins that can cause respiratory problems, colic, and other health issues — there is no safe threshold."
+  },
+  {
+    "q": "A horse is fed a large grain meal at 6 a.m. before hay is placed in the feeder. What risk does this create?",
+    "opts": [
+      "No risk — grain is digested before hay arrives",
+      "Concentrated starch enters the stomach with no buffering forage, increasing gastric ulcer risk and hindgut disruption potential",
+      "The horse will eat too slowly and leave grain behind",
+      "The grain will ferment in the stomach before hay arrives"
+    ],
+    "a": "Concentrated starch enters the stomach with no buffering forage, increasing gastric ulcer risk and hindgut disruption potential",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Concentrated starch enters the stomach with no buffering forage, increasing gastric ulcer risk and hindgut disruption potential."
+  },
+  {
+    "q": "A horse that ate lush pasture all summer is moved to a dry hay diet in fall. What is the correct management approach?",
+    "opts": [
+      "Feed only dry hay from the first day — the transition is nutritionally safe",
+      "Transition gradually over seven to ten days, increasing hay while reducing pasture access, and monitor water intake as dry hay requires more water",
+      "Supplement with extra grain to replace the calories lost from pasture",
+      "No special management is needed for this type of feed transition"
+    ],
+    "a": "Transition gradually over seven to ten days, increasing hay while reducing pasture access, and monitor water intake as dry hay requires more water",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Transition gradually over seven to ten days, increasing hay while reducing pasture access, and monitor water intake as dry hay requires more water."
+  },
+  {
+    "q": "A handler wants to provide the best forage program for a horse in moderate work. Which approach is most appropriate?",
+    "opts": [
+      "Free-choice grass hay plus a small amount of alfalfa mixed in, with constant water access and gradual changes to any new hay supply",
+      "One large hay feeding at night only, supplemented with grain at all other meals",
+      "Alfalfa hay exclusively, as it is the most nutritious forage type",
+      "Pasture access only, no dry hay, to maximize natural grazing"
+    ],
+    "a": "Free-choice grass hay plus a small amount of alfalfa mixed in, with constant water access and gradual changes to any new hay supply",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Free-choice grass hay plus a small amount of alfalfa mixed in, with constant water access and gradual changes to any new hay supply."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

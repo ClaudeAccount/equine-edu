@@ -18,49 +18,522 @@
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Quiz</div>
       <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
-      <p class="lesson-hero-desc">This quiz pulls from a larger question bank, so each round gives you a fresh mix of pattern terms and clues.</p>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
     </div>
   </div>
 </section>
 <div class="lesson-wrap">
-<main class="lesson-left">
-<section class="quiz-card" id="quiz-card">
-  <div class="quiz-top"><span id="quiz-count">Question 1 of 10</span><span id="quiz-score">Score: 0</span></div>
-  <div class="quiz-question" id="quiz-question"></div>
-  <div class="quiz-options" id="quiz-options"></div>
-  <div class="quiz-feedback" id="quiz-feedback"></div>
-  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
-</section>
-<div class="quiz-score-panel" id="score-panel">
-  <div class="score-number" id="score-display">0/10</div>
-  <div class="score-label">Your Score</div>
-  <div class="score-message" id="score-message"></div>
-  <button class="btn-retake" id="btn-retake">Try Again</button>
-</div>
-</main>
-<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
 </div>
 <div id="site-footer"></div>
 <script src="course-config.js"></script>
 <script>
-window.CURRENT_MODULE=5;
-window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Pinto Patterns',url:'1-index.html'},navExtras:[{label:'Training Barn',url:'5-training-barn.html'}]};
-(function(){
-const QUESTION_COUNT=10;
-const questionBank=[{"prompt": "Which pinto pattern often has white crossing the topline?", "options": ["Tobiano", "Frame overo", "Splash white", "Leopard"], "answer": "Tobiano", "correct": "Correct.", "incorrect": "Not quite. The answer is Tobiano."}, {"prompt": "Which term describes a horse with tobiano plus overo-type traits?", "options": ["Tovero", "Bay", "Blanket", "Snowflake"], "answer": "Tovero", "correct": "Correct.", "incorrect": "Not quite. The answer is Tovero."}, {"prompt": "Which pinto pattern often looks dipped in white and may include blue eyes?", "options": ["Splash white", "Chestnut", "Dun", "Varnish roan"], "answer": "Splash white", "correct": "Correct.", "incorrect": "Not quite. The answer is Splash white."}, {"prompt": "Which pattern can show leg white, face white, ticking, roaning, or lace-like edges?", "options": ["Sabino", "Tobiano only", "Gray", "Few-spot leopard"], "answer": "Sabino", "correct": "Correct.", "incorrect": "Not quite. The answer is Sabino."}, {"prompt": "Which pattern is important in breeding because two copies can result in lethal white overo?", "options": ["Frame overo", "Tobiano", "Medicine hat", "Roan"], "answer": "Frame overo", "correct": "Correct.", "incorrect": "Not quite. The answer is Frame overo."}, {"prompt": "Which term is a broad grouping that can include frame, splash white, sabino, and other white spotting patterns?", "options": ["Overo", "Tobiano", "Appaloosa", "Palomino"], "answer": "Overo", "correct": "Correct.", "incorrect": "Not quite. The answer is Overo."}, {"prompt": "What clue is common in many tobiano horses?", "options": ["Rounded white patches crossing the topline", "White flecks only on the rump", "A dorsal stripe", "No white markings"], "answer": "Rounded white patches crossing the topline", "correct": "Correct.", "incorrect": "Not quite. The answer is Rounded white patches crossing the topline."}, {"prompt": "A mostly white horse with dark color mainly over the ears and poll may be described as what?", "options": ["Medicine hat", "Blanket", "Bay", "Dapple gray"], "answer": "Medicine hat", "correct": "Correct.", "incorrect": "Not quite. The answer is Medicine hat."}, {"prompt": "What is the best beginner approach to a horse with mixed pattern clues?", "options": ["Describe the visible clues and use more than one term if needed", "Call every pinto tobiano", "Ignore face markings", "Use only the base coat color"], "answer": "Describe the visible clues and use more than one term if needed", "correct": "Correct.", "incorrect": "Not quite. The answer is Describe the visible clues and use more than one term if needed."}, {"prompt": "Which clue can help compare pinto pattern families?", "options": ["Where the white appears", "Only the horse height", "Only the mane length", "Only the hoof size"], "answer": "Where the white appears", "correct": "Correct.", "incorrect": "Not quite. The answer is Where the white appears."}, {"prompt": "What does pinto pattern vocabulary help with?", "options": ["Clear descriptions and records", "Changing a horse color", "Measuring stride length", "Replacing veterinary care"], "answer": "Clear descriptions and records", "correct": "Correct.", "incorrect": "Not quite. The answer is Clear descriptions and records."}, {"prompt": "Small dark spots inside white areas are often called what?", "options": ["Ink spots or paw prints", "Snowflakes", "Dapples", "Stockings"], "answer": "Ink spots or paw prints", "correct": "Correct.", "incorrect": "Not quite. The answer is Ink spots or paw prints."}];
-function esc(t){return String(t||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
-function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(i=>i.v)}
-const cardEl=document.getElementById('quiz-card'),countEl=document.getElementById('quiz-count'),scoreEl=document.getElementById('quiz-score'),qEl=document.getElementById('quiz-question'),optEl=document.getElementById('quiz-options'),fbEl=document.getElementById('quiz-feedback'),nextBtn=document.getElementById('quiz-next'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message'),retake=document.getElementById('btn-retake');
-let active=[],idx=0,score=0,answered=false;
-function start(){active=shuffle(questionBank).slice(0,Math.min(QUESTION_COUNT,questionBank.length)).map(q=>({...q,options:shuffle(q.options)}));idx=0;score=0;scorePanel.classList.remove('show');cardEl.style.display='';showQuestion()}
-function showQuestion(){answered=false;const q=active[idx];countEl.textContent='Question '+(idx+1)+' of '+active.length;scoreEl.textContent='Score: '+score;qEl.textContent=q.prompt;fbEl.className='quiz-feedback';fbEl.textContent='';nextBtn.disabled=true;nextBtn.textContent='Next Question';optEl.innerHTML=q.options.map(o=>`<button type="button" class="quiz-option" data-val="${esc(o)}">${esc(o)}</button>`).join('');optEl.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>selectAnswer(btn,q)))}
-function selectAnswer(btn,q){if(answered)return;answered=true;const correct=q.answer;optEl.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;if(b.dataset.val===correct)b.classList.add('correct-ans')});const ok=btn.dataset.val===correct;if(ok)score++;else btn.classList.add('wrong-ans');fbEl.textContent=ok?q.correct:q.incorrect;fbEl.classList.add('show',ok?'correct':'incorrect');scoreEl.textContent='Score: '+score;nextBtn.textContent=idx+1<active.length?'Next Question':'See Results';nextBtn.disabled=false}
-nextBtn.addEventListener('click',()=>{idx++;if(idx>=active.length){finish();return}showQuestion()});
-function finish(){cardEl.style.display='none';const pct=score/active.length;scoreDisplay.textContent=score+'/'+active.length;scoreMessage.textContent=pct>=.9?'Excellent work. You have a strong command of this material.':pct>=.75?'Good work. Review the questions you missed and try another round.':pct>=.6?'You are getting there. Revisit the lesson and Training Barn, then try again.':'Keep practicing. These terms will get easier with review.';scorePanel.classList.add('show');if(pct>=.8){try{localStorage.setItem('equineEduProgress.pintoPatterns.testYourKnowledge','true')}catch(e){}}}
-retake.addEventListener('click',()=>{start();cardEl.scrollIntoView({behavior:'smooth',block:'start'})});
-start()
-})();
+window.CURRENT_MODULE = 5;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Pinto Patterns',url:'1-index.html'},navExtras:[{label:'Training Barn',url:'5-training-barn.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.pintoPatterns.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "Which pinto pattern often has white crossing the topline?",
+    "opts": [
+      "Tobiano",
+      "Frame overo",
+      "Splash white",
+      "Leopard"
+    ],
+    "a": "Tobiano",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Tobiano."
+  },
+  {
+    "q": "Which term describes a horse with tobiano plus overo-type traits?",
+    "opts": [
+      "Tovero",
+      "Bay",
+      "Blanket",
+      "Snowflake"
+    ],
+    "a": "Tovero",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Tovero."
+  },
+  {
+    "q": "Which pinto pattern often looks dipped in white and may include blue eyes?",
+    "opts": [
+      "Splash white",
+      "Chestnut",
+      "Dun",
+      "Varnish roan"
+    ],
+    "a": "Splash white",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Splash white."
+  },
+  {
+    "q": "Which pattern can show leg white, face white, ticking, roaning, or lace-like edges?",
+    "opts": [
+      "Sabino",
+      "Tobiano only",
+      "Gray",
+      "Few-spot leopard"
+    ],
+    "a": "Sabino",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Sabino."
+  },
+  {
+    "q": "Which pattern is important in breeding because two copies can result in lethal white overo?",
+    "opts": [
+      "Frame overo",
+      "Tobiano",
+      "Medicine hat",
+      "Roan"
+    ],
+    "a": "Frame overo",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Frame overo."
+  },
+  {
+    "q": "Which term is a broad grouping that can include frame, splash white, sabino, and other white spotting patterns?",
+    "opts": [
+      "Overo",
+      "Tobiano",
+      "Appaloosa",
+      "Palomino"
+    ],
+    "a": "Overo",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Overo."
+  },
+  {
+    "q": "What clue is common in many tobiano horses?",
+    "opts": [
+      "Rounded white patches crossing the topline",
+      "White flecks only on the rump",
+      "A dorsal stripe",
+      "No white markings"
+    ],
+    "a": "Rounded white patches crossing the topline",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Rounded white patches crossing the topline."
+  },
+  {
+    "q": "A mostly white horse with dark color mainly over the ears and poll may be described as what?",
+    "opts": [
+      "Medicine hat",
+      "Blanket",
+      "Bay",
+      "Dapple gray"
+    ],
+    "a": "Medicine hat",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Medicine hat."
+  },
+  {
+    "q": "What is the clearest approach to a horse with mixed pattern clues?",
+    "opts": [
+      "Describe the visible clues and use more than one term if needed",
+      "Call every pinto tobiano",
+      "Ignore face markings",
+      "Use only the base coat color"
+    ],
+    "a": "Describe the visible clues and use more than one term if needed",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Describe the visible clues and use more than one term if needed."
+  },
+  {
+    "q": "Which clue can help compare pinto pattern families?",
+    "opts": [
+      "Where the white appears",
+      "Only the horse height",
+      "Only the mane length",
+      "Only the hoof size"
+    ],
+    "a": "Where the white appears",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Where the white appears."
+  },
+  {
+    "q": "What does pinto pattern vocabulary help with?",
+    "opts": [
+      "Clear descriptions and records",
+      "Changing a horse color",
+      "Measuring stride length",
+      "Replacing veterinary care"
+    ],
+    "a": "Clear descriptions and records",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Clear descriptions and records."
+  },
+  {
+    "q": "Small dark spots inside white areas are often called what?",
+    "opts": [
+      "Ink spots or paw prints",
+      "Snowflakes",
+      "Dapples",
+      "Stockings"
+    ],
+    "a": "Ink spots or paw prints",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Ink spots or paw prints."
+  },
+  {
+    "q": "Which pinto pattern often has white crossing the topline?",
+    "opts": [
+      "Tobiano",
+      "Frame overo",
+      "Splash white",
+      "Leopard"
+    ],
+    "a": "Tobiano",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Tobiano."
+  },
+  {
+    "q": "Which term describes a horse with tobiano plus overo-type traits?",
+    "opts": [
+      "Tovero",
+      "Bay",
+      "Blanket",
+      "Snowflake"
+    ],
+    "a": "Tovero",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Tovero."
+  },
+  {
+    "q": "Which pinto pattern often looks dipped in white and may include blue eyes?",
+    "opts": [
+      "Splash white",
+      "Chestnut",
+      "Dun",
+      "Varnish roan"
+    ],
+    "a": "Splash white",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Splash white."
+  },
+  {
+    "q": "Which pattern can show leg white, face white, ticking, roaning, or lace-like edges?",
+    "opts": [
+      "Sabino",
+      "Tobiano only",
+      "Gray",
+      "Few-spot leopard"
+    ],
+    "a": "Sabino",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Sabino."
+  },
+  {
+    "q": "Which pattern is important in breeding because two copies can result in lethal white overo?",
+    "opts": [
+      "Frame overo",
+      "Tobiano",
+      "Medicine hat",
+      "Roan"
+    ],
+    "a": "Frame overo",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Frame overo."
+  },
+  {
+    "q": "Which term is a broad grouping that can include frame, splash white, sabino, and other white spotting patterns?",
+    "opts": [
+      "Overo",
+      "Tobiano",
+      "Appaloosa",
+      "Palomino"
+    ],
+    "a": "Overo",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Overo."
+  },
+  {
+    "q": "What clue is common in many tobiano horses?",
+    "opts": [
+      "Rounded white patches crossing the topline",
+      "White flecks only on the rump",
+      "A dorsal stripe",
+      "No white markings"
+    ],
+    "a": "Rounded white patches crossing the topline",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Rounded white patches crossing the topline."
+  },
+  {
+    "q": "A mostly white horse with dark color mainly over the ears and poll may be described as what?",
+    "opts": [
+      "Medicine hat",
+      "Blanket",
+      "Bay",
+      "Dapple gray"
+    ],
+    "a": "Medicine hat",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Medicine hat."
+  },
+  {
+    "q": "What is the clearest approach to a horse with mixed pattern clues?",
+    "opts": [
+      "Describe the visible clues and use more than one term if needed",
+      "Call every pinto tobiano",
+      "Ignore face markings",
+      "Use only the base coat color"
+    ],
+    "a": "Describe the visible clues and use more than one term if needed",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Describe the visible clues and use more than one term if needed."
+  },
+  {
+    "q": "Which clue can help compare pinto pattern families?",
+    "opts": [
+      "Where the white appears",
+      "Only the horse height",
+      "Only the mane length",
+      "Only the hoof size"
+    ],
+    "a": "Where the white appears",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Where the white appears."
+  },
+  {
+    "q": "What does pinto pattern vocabulary help with?",
+    "opts": [
+      "Clear descriptions and records",
+      "Changing a horse color",
+      "Measuring stride length",
+      "Replacing veterinary care"
+    ],
+    "a": "Clear descriptions and records",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Clear descriptions and records."
+  },
+  {
+    "q": "Small dark spots inside white areas are often called what?",
+    "opts": [
+      "Ink spots or paw prints",
+      "Snowflakes",
+      "Dapples",
+      "Stockings"
+    ],
+    "a": "Ink spots or paw prints",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Ink spots or paw prints."
+  },
+  {
+    "q": "Which pinto pattern often has white crossing the topline?",
+    "opts": [
+      "Tobiano",
+      "Frame overo",
+      "Splash white",
+      "Leopard"
+    ],
+    "a": "Tobiano",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Tobiano."
+  },
+  {
+    "q": "Which term describes a horse with tobiano plus overo-type traits?",
+    "opts": [
+      "Tovero",
+      "Bay",
+      "Blanket",
+      "Snowflake"
+    ],
+    "a": "Tovero",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Tovero."
+  },
+  {
+    "q": "Which pinto pattern often looks dipped in white and may include blue eyes?",
+    "opts": [
+      "Splash white",
+      "Chestnut",
+      "Dun",
+      "Varnish roan"
+    ],
+    "a": "Splash white",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Splash white."
+  },
+  {
+    "q": "Which pattern can show leg white, face white, ticking, roaning, or lace-like edges?",
+    "opts": [
+      "Sabino",
+      "Tobiano only",
+      "Gray",
+      "Few-spot leopard"
+    ],
+    "a": "Sabino",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Sabino."
+  },
+  {
+    "q": "Which pattern is important in breeding because two copies can result in lethal white overo?",
+    "opts": [
+      "Frame overo",
+      "Tobiano",
+      "Medicine hat",
+      "Roan"
+    ],
+    "a": "Frame overo",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Frame overo."
+  },
+  {
+    "q": "Which term is a broad grouping that can include frame, splash white, sabino, and other white spotting patterns?",
+    "opts": [
+      "Overo",
+      "Tobiano",
+      "Appaloosa",
+      "Palomino"
+    ],
+    "a": "Overo",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Overo."
+  },
+  {
+    "q": "What clue is common in many tobiano horses?",
+    "opts": [
+      "Rounded white patches crossing the topline",
+      "White flecks only on the rump",
+      "A dorsal stripe",
+      "No white markings"
+    ],
+    "a": "Rounded white patches crossing the topline",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Rounded white patches crossing the topline."
+  },
+  {
+    "q": "A mostly white horse with dark color mainly over the ears and poll may be described as what?",
+    "opts": [
+      "Medicine hat",
+      "Blanket",
+      "Bay",
+      "Dapple gray"
+    ],
+    "a": "Medicine hat",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Medicine hat."
+  },
+  {
+    "q": "What is the clearest approach to a horse with mixed pattern clues?",
+    "opts": [
+      "Describe the visible clues and use more than one term if needed",
+      "Call every pinto tobiano",
+      "Ignore face markings",
+      "Use only the base coat color"
+    ],
+    "a": "Describe the visible clues and use more than one term if needed",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Describe the visible clues and use more than one term if needed."
+  },
+  {
+    "q": "Which clue can help compare pinto pattern families?",
+    "opts": [
+      "Where the white appears",
+      "Only the horse height",
+      "Only the mane length",
+      "Only the hoof size"
+    ],
+    "a": "Where the white appears",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Where the white appears."
+  },
+  {
+    "q": "What does pinto pattern vocabulary help with?",
+    "opts": [
+      "Clear descriptions and records",
+      "Changing a horse color",
+      "Measuring stride length",
+      "Replacing veterinary care"
+    ],
+    "a": "Clear descriptions and records",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Clear descriptions and records."
+  },
+  {
+    "q": "Small dark spots inside white areas are often called what?",
+    "opts": [
+      "Ink spots or paw prints",
+      "Snowflakes",
+      "Dapples",
+      "Stockings"
+    ],
+    "a": "Ink spots or paw prints",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Ink spots or paw prints."
+  },
+  {
+    "q": "Which pinto pattern often has white crossing the topline?",
+    "opts": [
+      "Tobiano",
+      "Frame overo",
+      "Splash white",
+      "Leopard"
+    ],
+    "a": "Tobiano",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Tobiano."
+  },
+  {
+    "q": "Which term describes a horse with tobiano plus overo-type traits?",
+    "opts": [
+      "Tovero",
+      "Bay",
+      "Blanket",
+      "Snowflake"
+    ],
+    "a": "Tovero",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Tovero."
+  },
+  {
+    "q": "Which pinto pattern often looks dipped in white and may include blue eyes?",
+    "opts": [
+      "Splash white",
+      "Chestnut",
+      "Dun",
+      "Varnish roan"
+    ],
+    "a": "Splash white",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Splash white."
+  },
+  {
+    "q": "Which pattern can show leg white, face white, ticking, roaning, or lace-like edges?",
+    "opts": [
+      "Sabino",
+      "Tobiano only",
+      "Gray",
+      "Few-spot leopard"
+    ],
+    "a": "Sabino",
+    "ok": "Correct.",
+    "no": "Not quite. The answer is Sabino."
+  }
+];
 </script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
 <script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/supabase-client.js"></script>
 <script src="../../../../assets/js/paywall.js"></script>

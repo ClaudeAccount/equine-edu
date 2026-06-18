@@ -170,6 +170,22 @@ body::before {
   background-color: transparent;
 }
 
+/* Corner horse accents — fixed decorative art behind every page.
+   One in the top-right, one in the lower-left; both stay put on scroll.
+   Sits above the atmosphere (::before) but behind all content. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url('../images/bg-horse-top-right.png') right 0 top 110px no-repeat,
+    url('../images/bg-horse-bottom-left.png') bottom left no-repeat;
+  background-size: clamp(160px, 24vw, 340px), clamp(160px, 24vw, 340px);
+  mix-blend-mode: multiply;
+}
+
 a {
   color: inherit;
 }

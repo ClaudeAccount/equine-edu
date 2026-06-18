@@ -5,45 +5,535 @@
 <title>Test Your Knowledge - Driving Harness &amp; Equipment - Equine Edu</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
-<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css"><link rel="stylesheet" href="../../../../assets/css/course.css"></head>
-<body class="ee-page-courses-schooling-ring-tack-equipment-driving-equipment-6-test-your-knowledge"><div id="site-nav"></div><div id="course-breadcrumb"></div>
-<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top"><div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text"><div class="lesson-module-tag">Driving Harness & Equipment</div><h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1></div></div></section>
-<div class="quiz-layout"><div class="quiz-main"><div class="quiz-header"><h2>Driving Equipment Quiz</h2><p>This quiz covers driving harness and equipment, including harness parts, bridle parts, driving purpose, and safe equipment use. Each attempt draws 15 questions from a larger bank, so every attempt is a little different.</p></div><form id="quiz-form"><div id="quiz-questions"></div><div class="quiz-submit-row"><button class="btn-submit" id="quiz-submit" type="button">Submit Quiz</button></div></form><div class="quiz-score-panel" id="score-panel"><div class="score-number" id="score-display">0 / 15</div><div class="score-label">Your Score</div><div class="score-message" id="score-message"></div><button class="btn-retake" id="btn-retake" type="button">Try Again</button></div></div><aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside></div>
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css"><link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body class="ee-page-courses-schooling-ring-tack-equipment-driving-equipment-6-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Driving Harness &amp; Equipment</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
 <div id="site-footer"></div>
+<script src="course-config.js"></script>
 <script>
-const QUESTION_COUNT=15;
-const questionBank=[
-{prompt:'What is horse driving?',options:['Guiding a horse from behind while the horse pulls a vehicle','Riding without a saddle','Leading a horse in hand only','Teaching a horse to jump'],answer:'Guiding a horse from behind while the horse pulls a vehicle',correct:'Correct. Driving uses reins or lines from behind while the horse pulls a vehicle.',incorrect:'Horse driving means guiding a horse from behind while the horse pulls a cart, carriage, wagon, or similar vehicle.'},
-{prompt:'What is the main job of a driving harness?',options:['Connect the horse to the vehicle and manage pulling and braking forces','Decorate the horse only','Replace all training','Hold a rider on the horse back'],answer:'Connect the horse to the vehicle and manage pulling and braking forces',correct:'Correct. The harness connects the horse and vehicle as a working system.',incorrect:'The harness connects the horse to the vehicle and helps manage pull, stopping, and stability.'},
-{prompt:'Which part does the horse push into to pull many light vehicles?',options:['Breastcollar','Browband','Cantle','Hoof pick'],answer:'Breastcollar',correct:'Correct. The breastcollar spreads pulling pressure across the chest.',incorrect:'The breastcollar is the chest strap used for pulling in many light harnesses.'},
-{prompt:'What are traces?',options:['Long straps that connect the harness to the vehicle','Small rings on the bridle crownpiece','The wheels of a cart','A grooming tool'],answer:'Long straps that connect the harness to the vehicle',correct:'Correct. Traces carry the pull from the horse to the vehicle.',incorrect:'Traces are the long straps or lines that connect the pulling part of the harness to the vehicle.'},
-{prompt:'What does breeching help the horse do?',options:['Slow or hold back the vehicle','Chew the bit','Lift the front feet higher','Replace the reins'],answer:'Slow or hold back the vehicle',correct:'Correct. Breeching helps manage braking and holding back.',incorrect:'Breeching sits around the hindquarters and helps the horse slow or hold back the vehicle.'},
-{prompt:'What is the crupper used for?',options:['Helping keep the harness saddle from sliding forward','Holding the bit in place','Pulling the cart by itself','Crossing the forehead'],answer:'Helping keep the harness saddle from sliding forward',correct:'Correct. The crupper helps keep the harness saddle positioned.',incorrect:'The crupper loops under the tail and helps keep the harness saddle from sliding forward.'},
-{prompt:'What are terrets?',options:['Rings that guide the lines or reins','Padded shoulder collars','Cart wheels','Blindfolds'],answer:'Rings that guide the lines or reins',correct:'Correct. Terrets help guide the lines back toward the driver.',incorrect:'Terrets are rings on the harness saddle that guide the reins or lines.'},
-{prompt:'Which bridle part often limits rear and side vision in driving?',options:['Blinders / Winkers','Girth','Trace','Shaft'],answer:'Blinders / Winkers',correct:'Correct. Blinders help the horse stay focused forward.',incorrect:'Blinders or winkers limit side and rear vision on many driving bridles.'},
-{prompt:'What are lines in driving?',options:['Long reins held by the driver','Straps under the tail only','The vehicle shafts','A type of saddle pad'],answer:'Long reins held by the driver',correct:'Correct. Lines are the long reins used by the driver.',incorrect:'Lines are the long reins held by the driver to communicate from behind the horse.'},
-{prompt:'What is a turnout?',options:['The complete horse, harness, vehicle, and driver presentation','A horse coat color','A stall-cleaning tool','A type of hoof marking'],answer:'The complete horse, harness, vehicle, and driver presentation',correct:'Correct. A turnout includes the whole driving setup.',incorrect:'Turnout refers to the complete horse, harness, vehicle, and driver presentation.'},
-{prompt:'Which part of a single-horse vehicle runs along either side of the horse?',options:['Shafts','Browband','Terrets','Noseband'],answer:'Shafts',correct:'Correct. Shafts run along the sides and help guide the vehicle.',incorrect:'Shafts are the long vehicle arms on either side of a single horse.'},
-{prompt:'What does a singletree or whiffletree help do?',options:['Even out the pull from the traces','Hold the bridle on the head','Replace the vehicle wheels','Clean the harness'],answer:'Even out the pull from the traces',correct:'Correct. It helps even out pulling motion.',incorrect:'A singletree or whiffletree helps even out pull from the traces as the horse moves.'},
-{prompt:'What is combined driving?',options:['A sport with precision phases such as dressage-style work, obstacles, and marathon challenges','A type of hoof care','A breed registry','A saddle fitting method'],answer:'A sport with precision phases such as dressage-style work, obstacles, and marathon challenges',correct:'Correct. Combined driving includes multiple driving challenges.',incorrect:'Combined driving is a competitive sport with multiple phases and precision handling.'},
-{prompt:'What is pleasure driving?',options:['Recreational or presentation-focused driving','Riding bareback','Jumping with a carriage','Driving without reins'],answer:'Recreational or presentation-focused driving',correct:'Correct. Pleasure driving is often recreational, schooling, or presentation based.',incorrect:'Pleasure driving is recreational or presentation-focused driving with a safe, tidy turnout.'},
-{prompt:'Why are tack checks especially important in driving?',options:['The horse is connected to a vehicle, so equipment security affects horse, driver, and vehicle safety','They make the horse color brighter','They replace training','They remove the need for reins'],answer:'The horse is connected to a vehicle, so equipment security affects horse, driver, and vehicle safety',correct:'Correct. Driving equipment safety matters for the whole turnout.',incorrect:'Because the horse is connected to a vehicle, equipment checks are essential for horse, driver, passenger, and vehicle safety.'},
-{prompt:'Which part helps support or position shafts on the harness?',options:['Shaft loops / tugs','Bit','Browband','Blinders'],answer:'Shaft loops / tugs',correct:'Correct. Shaft loops or tugs help support and position the shafts.',incorrect:'Shaft loops or tugs are harness parts that help support or position the shafts.'},
-{prompt:'What does the driving bridle do?',options:['Helps guide the horse through the bit or bitless attachment and lines','Attaches the vehicle wheels','Replaces the harness','Holds the horse tail'],answer:'Helps guide the horse through the bit or bitless attachment and lines',correct:'Correct. The bridle is part of communication from driver to horse.',incorrect:'A driving bridle helps guide the horse through the bit or bitless attachment and lines.'},
-{prompt:'Which part of a bridle crosses the forehead?',options:['Browband','Trace','Breeching','Singletree'],answer:'Browband',correct:'Correct. The browband crosses the forehead.',incorrect:'The browband crosses the forehead and helps keep the crownpiece positioned.'},
-{prompt:'What should a driver check before moving off?',options:['Harness fit, buckles, traces, reins, vehicle attachments, and overall security','Only the horse color','Only the cart paint','Nothing if the horse is calm'],answer:'Harness fit, buckles, traces, reins, vehicle attachments, and overall security',correct:'Correct. A full equipment check is part of safe driving.',incorrect:'Drivers should check harness fit, buckles, traces, reins, vehicle attachments, and overall security before moving off.'},
-{prompt:'What is draft driving often associated with?',options:['Larger horses or teams pulling heavier vehicles or loads','Only small ponies jumping fences','Bareback riding','A bridle without reins'],answer:'Larger horses or teams pulling heavier vehicles or loads',correct:'Correct. Draft driving often uses larger horses or teams.',incorrect:'Draft driving is often associated with larger horses or teams pulling heavier vehicles or loads.'}
+window.CURRENT_MODULE = 5;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Driving Equipment',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.drivingEquipment.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is horse driving?",
+    "opts": [
+      "Guiding a horse from behind while the horse pulls a vehicle",
+      "Riding without a saddle",
+      "Leading a horse in hand only",
+      "Teaching a horse to jump"
+    ],
+    "a": "Guiding a horse from behind while the horse pulls a vehicle",
+    "ok": "Correct. Driving uses reins or lines from behind while the horse pulls a vehicle.",
+    "no": "Horse driving means guiding a horse from behind while the horse pulls a cart, carriage, wagon, or similar vehicle."
+  },
+  {
+    "q": "What is the main job of a driving harness?",
+    "opts": [
+      "Connect the horse to the vehicle and manage pulling and braking forces",
+      "Decorate the horse only",
+      "Replace all training",
+      "Hold a rider on the horse back"
+    ],
+    "a": "Connect the horse to the vehicle and manage pulling and braking forces",
+    "ok": "Correct. The harness connects the horse and vehicle as a working system.",
+    "no": "The harness connects the horse to the vehicle and helps manage pull, stopping, and stability."
+  },
+  {
+    "q": "Which part does the horse push into to pull many light vehicles?",
+    "opts": [
+      "Breastcollar",
+      "Browband",
+      "Cantle",
+      "Hoof pick"
+    ],
+    "a": "Breastcollar",
+    "ok": "Correct. The breastcollar spreads pulling pressure across the chest.",
+    "no": "The breastcollar is the chest strap used for pulling in many light harnesses."
+  },
+  {
+    "q": "What are traces?",
+    "opts": [
+      "Long straps that connect the harness to the vehicle",
+      "Small rings on the bridle crownpiece",
+      "The wheels of a cart",
+      "A grooming tool"
+    ],
+    "a": "Long straps that connect the harness to the vehicle",
+    "ok": "Correct. Traces carry the pull from the horse to the vehicle.",
+    "no": "Traces are the long straps or lines that connect the pulling part of the harness to the vehicle."
+  },
+  {
+    "q": "What does breeching help the horse do?",
+    "opts": [
+      "Slow or hold back the vehicle",
+      "Chew the bit",
+      "Lift the front feet higher",
+      "Replace the reins"
+    ],
+    "a": "Slow or hold back the vehicle",
+    "ok": "Correct. Breeching helps manage braking and holding back.",
+    "no": "Breeching sits around the hindquarters and helps the horse slow or hold back the vehicle."
+  },
+  {
+    "q": "What is the crupper used for?",
+    "opts": [
+      "Helping keep the harness saddle from sliding forward",
+      "Holding the bit in place",
+      "Pulling the cart by itself",
+      "Crossing the forehead"
+    ],
+    "a": "Helping keep the harness saddle from sliding forward",
+    "ok": "Correct. The crupper helps keep the harness saddle positioned.",
+    "no": "The crupper loops under the tail and helps keep the harness saddle from sliding forward."
+  },
+  {
+    "q": "What are terrets?",
+    "opts": [
+      "Rings that guide the lines or reins",
+      "Padded shoulder collars",
+      "Cart wheels",
+      "Blindfolds"
+    ],
+    "a": "Rings that guide the lines or reins",
+    "ok": "Correct. Terrets help guide the lines back toward the driver.",
+    "no": "Terrets are rings on the harness saddle that guide the reins or lines."
+  },
+  {
+    "q": "Which bridle part often limits rear and side vision in driving?",
+    "opts": [
+      "Blinders / Winkers",
+      "Girth",
+      "Trace",
+      "Shaft"
+    ],
+    "a": "Blinders / Winkers",
+    "ok": "Correct. Blinders help the horse stay focused forward.",
+    "no": "Blinders or winkers limit side and rear vision on many driving bridles."
+  },
+  {
+    "q": "What are lines in driving?",
+    "opts": [
+      "Long reins held by the driver",
+      "Straps under the tail only",
+      "The vehicle shafts",
+      "A type of saddle pad"
+    ],
+    "a": "Long reins held by the driver",
+    "ok": "Correct. Lines are the long reins used by the driver.",
+    "no": "Lines are the long reins held by the driver to communicate from behind the horse."
+  },
+  {
+    "q": "What is a turnout?",
+    "opts": [
+      "The complete horse, harness, vehicle, and driver presentation",
+      "A horse coat color",
+      "A stall-cleaning tool",
+      "A type of hoof marking"
+    ],
+    "a": "The complete horse, harness, vehicle, and driver presentation",
+    "ok": "Correct. A turnout includes the whole driving setup.",
+    "no": "Turnout refers to the complete horse, harness, vehicle, and driver presentation."
+  },
+  {
+    "q": "Which part of a single-horse vehicle runs along either side of the horse?",
+    "opts": [
+      "Shafts",
+      "Browband",
+      "Terrets",
+      "Noseband"
+    ],
+    "a": "Shafts",
+    "ok": "Correct. Shafts run along the sides and help guide the vehicle.",
+    "no": "Shafts are the long vehicle arms on either side of a single horse."
+  },
+  {
+    "q": "What does a singletree or whiffletree help do?",
+    "opts": [
+      "Even out the pull from the traces",
+      "Hold the bridle on the head",
+      "Replace the vehicle wheels",
+      "Clean the harness"
+    ],
+    "a": "Even out the pull from the traces",
+    "ok": "Correct. It helps even out pulling motion.",
+    "no": "A singletree or whiffletree helps even out pull from the traces as the horse moves."
+  },
+  {
+    "q": "What is combined driving?",
+    "opts": [
+      "A sport with precision phases such as dressage-style work, obstacles, and marathon challenges",
+      "A type of hoof care",
+      "A breed registry",
+      "A saddle fitting method"
+    ],
+    "a": "A sport with precision phases such as dressage-style work, obstacles, and marathon challenges",
+    "ok": "Correct. Combined driving includes multiple driving challenges.",
+    "no": "Combined driving is a competitive sport with multiple phases and precision handling."
+  },
+  {
+    "q": "What is pleasure driving?",
+    "opts": [
+      "Recreational or presentation-focused driving",
+      "Riding bareback",
+      "Jumping with a carriage",
+      "Driving without reins"
+    ],
+    "a": "Recreational or presentation-focused driving",
+    "ok": "Correct. Pleasure driving is often recreational, schooling, or presentation based.",
+    "no": "Pleasure driving is recreational or presentation-focused driving with a safe, tidy turnout."
+  },
+  {
+    "q": "Why are tack checks especially important in driving?",
+    "opts": [
+      "The horse is connected to a vehicle, so equipment security affects horse, driver, and vehicle safety",
+      "They make the horse color brighter",
+      "They replace training",
+      "They remove the need for reins"
+    ],
+    "a": "The horse is connected to a vehicle, so equipment security affects horse, driver, and vehicle safety",
+    "ok": "Correct. Driving equipment safety matters for the whole turnout.",
+    "no": "Because the horse is connected to a vehicle, equipment checks are essential for horse, driver, passenger, and vehicle safety."
+  },
+  {
+    "q": "Which part helps support or position shafts on the harness?",
+    "opts": [
+      "Shaft loops / tugs",
+      "Bit",
+      "Browband",
+      "Blinders"
+    ],
+    "a": "Shaft loops / tugs",
+    "ok": "Correct. Shaft loops or tugs help support and position the shafts.",
+    "no": "Shaft loops or tugs are harness parts that help support or position the shafts."
+  },
+  {
+    "q": "What does the driving bridle do?",
+    "opts": [
+      "Helps guide the horse through the bit or bitless attachment and lines",
+      "Attaches the vehicle wheels",
+      "Replaces the harness",
+      "Holds the horse tail"
+    ],
+    "a": "Helps guide the horse through the bit or bitless attachment and lines",
+    "ok": "Correct. The bridle is part of communication from driver to horse.",
+    "no": "A driving bridle helps guide the horse through the bit or bitless attachment and lines."
+  },
+  {
+    "q": "Which part of a bridle crosses the forehead?",
+    "opts": [
+      "Browband",
+      "Trace",
+      "Breeching",
+      "Singletree"
+    ],
+    "a": "Browband",
+    "ok": "Correct. The browband crosses the forehead.",
+    "no": "The browband crosses the forehead and helps keep the crownpiece positioned."
+  },
+  {
+    "q": "What should a driver check before moving off?",
+    "opts": [
+      "Harness fit, buckles, traces, reins, vehicle attachments, and overall security",
+      "Only the horse color",
+      "Only the cart paint",
+      "Nothing if the horse is calm"
+    ],
+    "a": "Harness fit, buckles, traces, reins, vehicle attachments, and overall security",
+    "ok": "Correct. A full equipment check is part of safe driving.",
+    "no": "Drivers should check harness fit, buckles, traces, reins, vehicle attachments, and overall security before moving off."
+  },
+  {
+    "q": "What is draft driving often associated with?",
+    "opts": [
+      "Larger horses or teams pulling heavier vehicles or loads",
+      "Only small ponies jumping fences",
+      "Bareback riding",
+      "A bridle without reins"
+    ],
+    "a": "Larger horses or teams pulling heavier vehicles or loads",
+    "ok": "Correct. Draft driving often uses larger horses or teams.",
+    "no": "Draft driving is often associated with larger horses or teams pulling heavier vehicles or loads."
+  },
+  {
+    "q": "What is horse driving?",
+    "opts": [
+      "Guiding a horse from behind while the horse pulls a vehicle",
+      "Riding without a saddle",
+      "Leading a horse in hand only",
+      "Teaching a horse to jump"
+    ],
+    "a": "Guiding a horse from behind while the horse pulls a vehicle",
+    "ok": "Correct. Driving uses reins or lines from behind while the horse pulls a vehicle.",
+    "no": "Horse driving means guiding a horse from behind while the horse pulls a cart, carriage, wagon, or similar vehicle."
+  },
+  {
+    "q": "What is the main job of a driving harness?",
+    "opts": [
+      "Connect the horse to the vehicle and manage pulling and braking forces",
+      "Decorate the horse only",
+      "Replace all training",
+      "Hold a rider on the horse back"
+    ],
+    "a": "Connect the horse to the vehicle and manage pulling and braking forces",
+    "ok": "Correct. The harness connects the horse and vehicle as a working system.",
+    "no": "The harness connects the horse to the vehicle and helps manage pull, stopping, and stability."
+  },
+  {
+    "q": "Which part does the horse push into to pull many light vehicles?",
+    "opts": [
+      "Breastcollar",
+      "Browband",
+      "Cantle",
+      "Hoof pick"
+    ],
+    "a": "Breastcollar",
+    "ok": "Correct. The breastcollar spreads pulling pressure across the chest.",
+    "no": "The breastcollar is the chest strap used for pulling in many light harnesses."
+  },
+  {
+    "q": "What are traces?",
+    "opts": [
+      "Long straps that connect the harness to the vehicle",
+      "Small rings on the bridle crownpiece",
+      "The wheels of a cart",
+      "A grooming tool"
+    ],
+    "a": "Long straps that connect the harness to the vehicle",
+    "ok": "Correct. Traces carry the pull from the horse to the vehicle.",
+    "no": "Traces are the long straps or lines that connect the pulling part of the harness to the vehicle."
+  },
+  {
+    "q": "What does breeching help the horse do?",
+    "opts": [
+      "Slow or hold back the vehicle",
+      "Chew the bit",
+      "Lift the front feet higher",
+      "Replace the reins"
+    ],
+    "a": "Slow or hold back the vehicle",
+    "ok": "Correct. Breeching helps manage braking and holding back.",
+    "no": "Breeching sits around the hindquarters and helps the horse slow or hold back the vehicle."
+  },
+  {
+    "q": "What is the crupper used for?",
+    "opts": [
+      "Helping keep the harness saddle from sliding forward",
+      "Holding the bit in place",
+      "Pulling the cart by itself",
+      "Crossing the forehead"
+    ],
+    "a": "Helping keep the harness saddle from sliding forward",
+    "ok": "Correct. The crupper helps keep the harness saddle positioned.",
+    "no": "The crupper loops under the tail and helps keep the harness saddle from sliding forward."
+  },
+  {
+    "q": "What are terrets?",
+    "opts": [
+      "Rings that guide the lines or reins",
+      "Padded shoulder collars",
+      "Cart wheels",
+      "Blindfolds"
+    ],
+    "a": "Rings that guide the lines or reins",
+    "ok": "Correct. Terrets help guide the lines back toward the driver.",
+    "no": "Terrets are rings on the harness saddle that guide the reins or lines."
+  },
+  {
+    "q": "Which bridle part often limits rear and side vision in driving?",
+    "opts": [
+      "Blinders / Winkers",
+      "Girth",
+      "Trace",
+      "Shaft"
+    ],
+    "a": "Blinders / Winkers",
+    "ok": "Correct. Blinders help the horse stay focused forward.",
+    "no": "Blinders or winkers limit side and rear vision on many driving bridles."
+  },
+  {
+    "q": "What are lines in driving?",
+    "opts": [
+      "Long reins held by the driver",
+      "Straps under the tail only",
+      "The vehicle shafts",
+      "A type of saddle pad"
+    ],
+    "a": "Long reins held by the driver",
+    "ok": "Correct. Lines are the long reins used by the driver.",
+    "no": "Lines are the long reins held by the driver to communicate from behind the horse."
+  },
+  {
+    "q": "What is a turnout?",
+    "opts": [
+      "The complete horse, harness, vehicle, and driver presentation",
+      "A horse coat color",
+      "A stall-cleaning tool",
+      "A type of hoof marking"
+    ],
+    "a": "The complete horse, harness, vehicle, and driver presentation",
+    "ok": "Correct. A turnout includes the whole driving setup.",
+    "no": "Turnout refers to the complete horse, harness, vehicle, and driver presentation."
+  },
+  {
+    "q": "Which part of a single-horse vehicle runs along either side of the horse?",
+    "opts": [
+      "Shafts",
+      "Browband",
+      "Terrets",
+      "Noseband"
+    ],
+    "a": "Shafts",
+    "ok": "Correct. Shafts run along the sides and help guide the vehicle.",
+    "no": "Shafts are the long vehicle arms on either side of a single horse."
+  },
+  {
+    "q": "What does a singletree or whiffletree help do?",
+    "opts": [
+      "Even out the pull from the traces",
+      "Hold the bridle on the head",
+      "Replace the vehicle wheels",
+      "Clean the harness"
+    ],
+    "a": "Even out the pull from the traces",
+    "ok": "Correct. It helps even out pulling motion.",
+    "no": "A singletree or whiffletree helps even out pull from the traces as the horse moves."
+  },
+  {
+    "q": "What is combined driving?",
+    "opts": [
+      "A sport with precision phases such as dressage-style work, obstacles, and marathon challenges",
+      "A type of hoof care",
+      "A breed registry",
+      "A saddle fitting method"
+    ],
+    "a": "A sport with precision phases such as dressage-style work, obstacles, and marathon challenges",
+    "ok": "Correct. Combined driving includes multiple driving challenges.",
+    "no": "Combined driving is a competitive sport with multiple phases and precision handling."
+  },
+  {
+    "q": "What is pleasure driving?",
+    "opts": [
+      "Recreational or presentation-focused driving",
+      "Riding bareback",
+      "Jumping with a carriage",
+      "Driving without reins"
+    ],
+    "a": "Recreational or presentation-focused driving",
+    "ok": "Correct. Pleasure driving is often recreational, schooling, or presentation based.",
+    "no": "Pleasure driving is recreational or presentation-focused driving with a safe, tidy turnout."
+  },
+  {
+    "q": "Why are tack checks especially important in driving?",
+    "opts": [
+      "The horse is connected to a vehicle, so equipment security affects horse, driver, and vehicle safety",
+      "They make the horse color brighter",
+      "They replace training",
+      "They remove the need for reins"
+    ],
+    "a": "The horse is connected to a vehicle, so equipment security affects horse, driver, and vehicle safety",
+    "ok": "Correct. Driving equipment safety matters for the whole turnout.",
+    "no": "Because the horse is connected to a vehicle, equipment checks are essential for horse, driver, passenger, and vehicle safety."
+  },
+  {
+    "q": "Which part helps support or position shafts on the harness?",
+    "opts": [
+      "Shaft loops / tugs",
+      "Bit",
+      "Browband",
+      "Blinders"
+    ],
+    "a": "Shaft loops / tugs",
+    "ok": "Correct. Shaft loops or tugs help support and position the shafts.",
+    "no": "Shaft loops or tugs are harness parts that help support or position the shafts."
+  },
+  {
+    "q": "What does the driving bridle do?",
+    "opts": [
+      "Helps guide the horse through the bit or bitless attachment and lines",
+      "Attaches the vehicle wheels",
+      "Replaces the harness",
+      "Holds the horse tail"
+    ],
+    "a": "Helps guide the horse through the bit or bitless attachment and lines",
+    "ok": "Correct. The bridle is part of communication from driver to horse.",
+    "no": "A driving bridle helps guide the horse through the bit or bitless attachment and lines."
+  },
+  {
+    "q": "Which part of a bridle crosses the forehead?",
+    "opts": [
+      "Browband",
+      "Trace",
+      "Breeching",
+      "Singletree"
+    ],
+    "a": "Browband",
+    "ok": "Correct. The browband crosses the forehead.",
+    "no": "The browband crosses the forehead and helps keep the crownpiece positioned."
+  },
+  {
+    "q": "What should a driver check before moving off?",
+    "opts": [
+      "Harness fit, buckles, traces, reins, vehicle attachments, and overall security",
+      "Only the horse color",
+      "Only the cart paint",
+      "Nothing if the horse is calm"
+    ],
+    "a": "Harness fit, buckles, traces, reins, vehicle attachments, and overall security",
+    "ok": "Correct. A full equipment check is part of safe driving.",
+    "no": "Drivers should check harness fit, buckles, traces, reins, vehicle attachments, and overall security before moving off."
+  },
+  {
+    "q": "What is draft driving often associated with?",
+    "opts": [
+      "Larger horses or teams pulling heavier vehicles or loads",
+      "Only small ponies jumping fences",
+      "Bareback riding",
+      "A bridle without reins"
+    ],
+    "a": "Larger horses or teams pulling heavier vehicles or loads",
+    "ok": "Correct. Draft driving often uses larger horses or teams.",
+    "no": "Draft driving is often associated with larger horses or teams pulling heavier vehicles or loads."
+  }
 ];
-const quizBody=document.getElementById('quiz-questions'),submit=document.getElementById('quiz-submit'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message');
-let submitted=false;
-function esc(t){return String(t).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
-function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(o=>o.v);}
-function renderQuiz(){submitted=false;const qs=shuffle(questionBank).slice(0,QUESTION_COUNT).map(q=>({...q,options:shuffle(q.options)}));quizBody.innerHTML=qs.map((q,i)=>`<div class="q-block" data-correct="${esc(q.answer)}"><div class="q-number">Question ${i+1} of ${QUESTION_COUNT}</div><div class="q-text">${esc(q.prompt)}</div><div class="q-options">${q.options.map(o=>`<button class="q-option" type="button" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div><div class="q-feedback correct">${esc(q.correct)}</div><div class="q-feedback incorrect">${esc(q.incorrect)}</div></div>`).join('');scorePanel.classList.remove('show');submit.disabled=false;quizBody.querySelectorAll('.q-option').forEach(btn=>btn.onclick=()=>{if(submitted)return;const block=btn.closest('.q-block');block.querySelectorAll('.q-option').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');});}
-submit.onclick=()=>{if(submitted)return;submitted=true;let score=0;quizBody.querySelectorAll('.q-block').forEach(block=>{const correct=block.dataset.correct,selected=block.querySelector('.q-option.selected');block.querySelectorAll('.q-option').forEach(btn=>{btn.disabled=true;if(btn.dataset.val===correct)btn.classList.add('correct-ans');});if(selected&&selected.dataset.val===correct){score++;selected.classList.add('correct-ans');block.querySelector('.q-feedback.correct').classList.add('show');}else{if(selected)selected.classList.add('wrong-ans');block.querySelector('.q-feedback.incorrect').classList.add('show');}});scoreDisplay.textContent=`${score} / ${QUESTION_COUNT}`;scoreMessage.textContent=score===QUESTION_COUNT?'Perfect score. You know your driving equipment parts.':score>=12?'Strong work. Review the missed items and try again when ready.':'Keep practicing the harness and bridle labels, then try again.';scorePanel.classList.add('show');scorePanel.scrollIntoView({behavior:'smooth'});try{localStorage.setItem('equineEduProgress.drivingEquipment.showYourKnowledge','true')}catch(e){}};
-document.getElementById('btn-retake').onclick=renderQuiz;renderQuiz();
 </script>
-<script>window.CURRENT_MODULE=5;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Driving Equipment',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};</script>
-<script src="course-config.js"></script><script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/supabase-client.js"></script>
-<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
-</body></html>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Measuring Horses &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-horse-care-measuring-horses-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Measuring Horses</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+      <a href="6-study-guide.html" class="btn-secondary">Back to Study Guide</a>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 7;
+window.LAYOUT = {
+  homeUrl: '../../../../index.html',
+  coursesUrl: '../../../index.html',
+  navCta: { label: 'All Courses', url: '../../../index.html' }
+};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.measuringHorses.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "How many inches are in one hand?",
+    "opts": [
+      "3 inches",
+      "4 inches",
+      "6 inches",
+      "12 inches"
+    ],
+    "a": "4 inches",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 4 inches."
+  },
+  {
+    "q": "A horse stands 15.2 hands tall. How many inches is that?",
+    "opts": [
+      "60 inches",
+      "61 inches",
+      "62 inches",
+      "63 inches"
+    ],
+    "a": "62 inches",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 62 inches."
+  },
+  {
+    "q": "A horse stands 64 inches tall. What is its height in hands?",
+    "opts": [
+      "15.2 hands",
+      "15.3 hands",
+      "16.0 hands",
+      "16.1 hands"
+    ],
+    "a": "16.0 hands",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 16.0 hands."
+  },
+  {
+    "q": "A horse is 67 inches tall. What is the correct notation in hands?",
+    "opts": [
+      "16.2 hands",
+      "16.3 hands",
+      "16.4 hands",
+      "17.0 hands"
+    ],
+    "a": "16.3 hands",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 16.3 hands."
+  },
+  {
+    "q": "How many inches tall is a horse that stands 14.2 hands?",
+    "opts": [
+      "56 inches",
+      "57 inches",
+      "58 inches",
+      "59 inches"
+    ],
+    "a": "58 inches",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 58 inches."
+  },
+  {
+    "q": "A horse measures 60 inches. What is its height in hands?",
+    "opts": [
+      "14.3 hands",
+      "15.0 hands",
+      "15.1 hands",
+      "15.2 hands"
+    ],
+    "a": "15.0 hands",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 15.0 hands."
+  },
+  {
+    "q": "A horse is 16.1 hands. What is the total height in inches?",
+    "opts": [
+      "63 inches",
+      "64 inches",
+      "65 inches",
+      "66 inches"
+    ],
+    "a": "65 inches",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 65 inches."
+  },
+  {
+    "q": "How many total inches does a horse at 13.2 hands stand?",
+    "opts": [
+      "52 inches",
+      "54 inches",
+      "55 inches",
+      "56 inches"
+    ],
+    "a": "54 inches",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 54 inches."
+  },
+  {
+    "q": "A horse stands 70 inches tall. What is the height in hands?",
+    "opts": [
+      "17.0 hands",
+      "17.1 hands",
+      "17.2 hands",
+      "17.3 hands"
+    ],
+    "a": "17.2 hands",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 17.2 hands."
+  },
+  {
+    "q": "Which of the following represents the same height as 16 hands?",
+    "opts": [
+      "60 inches",
+      "62 inches",
+      "64 inches",
+      "66 inches"
+    ],
+    "a": "64 inches",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 64 inches."
+  },
+  {
+    "q": "In the notation '15.2 hands,' what does the '.2' represent?",
+    "opts": [
+      "Two-tenths of a hand",
+      "Two additional inches",
+      "Two additional feet",
+      "Two additional centimeters"
+    ],
+    "a": "Two additional inches",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Two additional inches."
+  },
+  {
+    "q": "Which of the following is NOT a valid hand notation?",
+    "opts": [
+      "14.1",
+      "15.3",
+      "16.4",
+      "17.0"
+    ],
+    "a": "16.4",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 16.4."
+  },
+  {
+    "q": "A horse measures 15 hands and 4 inches. How should this be correctly written?",
+    "opts": [
+      "15.4 hands",
+      "16.0 hands",
+      "15.4 hh",
+      "16 hands 0 inches"
+    ],
+    "a": "16.0 hands",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 16.0 hands."
+  },
+  {
+    "q": "Why can the decimal digit in hand notation never be 4 or higher?",
+    "opts": [
+      "It would exceed the maximum height for a horse",
+      "4 inches equals one full hand, so the measurement rolls over to the next hand",
+      "The measuring stick does not have marks above 3",
+      "Decimal values above 3 indicate measurement error only in some breeds"
+    ],
+    "a": "4 inches equals one full hand, so the measurement rolls over to the next hand",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 4 inches equals one full hand, so the measurement rolls over to the next hand."
+  },
+  {
+    "q": "A handler records a horse's height as '14.6 hands.' What is wrong with this notation?",
+    "opts": [
+      "The horse is too small to be recorded in hands",
+      "The decimal value cannot exceed 3 in hand notation — this should be 15.2 hands",
+      "The number should be written in centimeters",
+      "Nothing is wrong; 14.6 is a valid notation"
+    ],
+    "a": "The decimal value cannot exceed 3 in hand notation — this should be 15.2 hands",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The decimal value cannot exceed 3 in hand notation — this should be 15.2 hands."
+  },
+  {
+    "q": "Which notation is equivalent to a horse standing 15 hands and 0 additional inches?",
+    "opts": [
+      "14.4 hands",
+      "15 hands",
+      "15.0 hands",
+      "Both 15 hands and 15.0 hands are correct"
+    ],
+    "a": "Both 15 hands and 15.0 hands are correct",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Both 15 hands and 15.0 hands are correct."
+  },
+  {
+    "q": "A horse at 15.3 hands grows one inch taller. How should the new height be recorded?",
+    "opts": [
+      "15.4 hands",
+      "15.5 hands",
+      "16.0 hands",
+      "16.1 hands"
+    ],
+    "a": "16.0 hands",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 16.0 hands."
+  },
+  {
+    "q": "The abbreviation 'hh' used after a hand measurement stands for:",
+    "opts": [
+      "hands high",
+      "horse height",
+      "height in hands",
+      "horizontal hands"
+    ],
+    "a": "hands high",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is hands high."
+  },
+  {
+    "q": "Where is horse height always measured?",
+    "opts": [
+      "At the top of the horse's head",
+      "At the highest point of the croup",
+      "At the withers",
+      "At the base of the tail"
+    ],
+    "a": "At the withers",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is At the withers."
+  },
+  {
+    "q": "Where are the withers located on a horse?",
+    "opts": [
+      "At the highest point of the hindquarters",
+      "At the base of the neck where the mane ends, between the shoulder blades",
+      "At the point of the shoulder",
+      "At the poll, between the ears"
+    ],
+    "a": "At the base of the neck where the mane ends, between the shoulder blades",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is At the base of the neck where the mane ends, between the shoulder blades."
+  },
+  {
+    "q": "Why are horse heights measured at the withers rather than the top of the head?",
+    "opts": [
+      "The head is harder to reach",
+      "The withers is a stable bony landmark that does not move with head position",
+      "Breed registries require measurement at the lowest point",
+      "The withers gives a shorter, more accurate reading"
+    ],
+    "a": "The withers is a stable bony landmark that does not move with head position",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The withers is a stable bony landmark that does not move with head position."
+  },
+  {
+    "q": "What anatomical structures form the withers?",
+    "opts": [
+      "The atlas and axis vertebrae",
+      "The dorsal spinous processes of the thoracic vertebrae",
+      "The scapula and point of the shoulder",
+      "The nuchal ligament attachment points"
+    ],
+    "a": "The dorsal spinous processes of the thoracic vertebrae",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The dorsal spinous processes of the thoracic vertebrae."
+  },
+  {
+    "q": "A horse raises its head during measurement. How does this affect the height reading taken at the withers?",
+    "opts": [
+      "It increases the withers measurement significantly",
+      "It has little or no effect because the withers is a bony landmark that does not move with head position",
+      "It decreases the withers measurement",
+      "It makes the measurement impossible to take"
+    ],
+    "a": "It has little or no effect because the withers is a bony landmark that does not move with head position",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It has little or no effect because the withers is a bony landmark that does not move with head position."
+  },
+  {
+    "q": "Which of the following would produce an inaccurate height measurement?",
+    "opts": [
+      "Measuring at the withers",
+      "Using a rigid measuring stick",
+      "Measuring at the crest of the neck instead of the withers",
+      "Having the horse stand on level ground"
+    ],
+    "a": "Measuring at the crest of the neck instead of the withers",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Measuring at the crest of the neck instead of the withers."
+  },
+  {
+    "q": "The withers is described as the highest point of the horse's:",
+    "opts": [
+      "Neck",
+      "Head",
+      "Back",
+      "Hindquarters"
+    ],
+    "a": "Back",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Back."
+  },
+  {
+    "q": "Why is the withers considered a reliable measuring landmark?",
+    "opts": [
+      "It is the tallest point on every horse",
+      "It is soft tissue that can be precisely positioned",
+      "It is a stable bony prominence that holds a consistent position",
+      "It is the easiest point to reach with a measuring stick"
+    ],
+    "a": "It is a stable bony prominence that holds a consistent position",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is It is a stable bony prominence that holds a consistent position."
+  },
+  {
+    "q": "What is the preferred tool for officially measuring a horse's height?",
+    "opts": [
+      "A fabric tape measure",
+      "A rigid measuring stick with a level arm",
+      "A standard ruler",
+      "A string and yardstick"
+    ],
+    "a": "A rigid measuring stick with a level arm",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A rigid measuring stick with a level arm."
+  },
+  {
+    "q": "What must be centered during a height measurement to ensure the reading is accurate?",
+    "opts": [
+      "The horse's head",
+      "The handler's position",
+      "The level bubble in the measuring stick arm",
+      "The measuring stick scale"
+    ],
+    "a": "The level bubble in the measuring stick arm",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The level bubble in the measuring stick arm."
+  },
+  {
+    "q": "Why is a rigid measuring stick preferred over a fabric tape for height measurement?",
+    "opts": [
+      "Fabric tapes cannot be read in inches",
+      "A rigid stick provides a level, consistent reading without conforming to the horse's contours",
+      "Rigid sticks are required by law",
+      "Fabric tapes only measure in centimeters"
+    ],
+    "a": "A rigid stick provides a level, consistent reading without conforming to the horse's contours",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A rigid stick provides a level, consistent reading without conforming to the horse's contours."
+  },
+  {
+    "q": "What type of surface should the horse stand on during measurement?",
+    "opts": [
+      "Grass or pasture",
+      "Soft sand or bedding",
+      "A flat, level, hard surface such as concrete",
+      "Any surface, as long as the horse stands still"
+    ],
+    "a": "A flat, level, hard surface such as concrete",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A flat, level, hard surface such as concrete."
+  },
+  {
+    "q": "What does it mean for a horse to 'stand square' during measurement?",
+    "opts": [
+      "The horse must stand facing a wall",
+      "All four legs are directly beneath the horse with weight evenly distributed",
+      "The horse stands in a four-square stall",
+      "The horse's legs are in a standardized show pose"
+    ],
+    "a": "All four legs are directly beneath the horse with weight evenly distributed",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is All four legs are directly beneath the horse with weight evenly distributed."
+  },
+  {
+    "q": "How does shoeing affect a horse's measured height?",
+    "opts": [
+      "Shoes reduce height by pressing the hoof into the ground",
+      "Shoes have no effect on height measurement",
+      "A shod horse measures slightly taller than the same horse barefoot",
+      "Shoes affect only the hoof angle, not height"
+    ],
+    "a": "A shod horse measures slightly taller than the same horse barefoot",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is A shod horse measures slightly taller than the same horse barefoot."
+  },
+  {
+    "q": "Why might a formal horse show or breed registry require a horse to be barefoot during official measurement?",
+    "opts": [
+      "Barefoot horses are calmer during measurement",
+      "Horseshoes add height, so removing them produces the horse's true height at the withers",
+      "Shoes interfere with placing the measuring stick",
+      "Barefoot measurement is easier to standardize"
+    ],
+    "a": "Horseshoes add height, so removing them produces the horse's true height at the withers",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Horseshoes add height, so removing them produces the horse's true height at the withers."
+  },
+  {
+    "q": "Why is accurate height measurement important for medication dosing?",
+    "opts": [
+      "Medications are dosed by age, and height indicates age",
+      "Many medications are dosed by body weight, which is estimated from height — an inaccurate height leads to an inaccurate weight estimate",
+      "Medications are applied topically and dosing depends on surface area",
+      "Height determines which medications a horse can receive"
+    ],
+    "a": "Many medications are dosed by body weight, which is estimated from height — an inaccurate height leads to an inaccurate weight estimate",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Many medications are dosed by body weight, which is estimated from height — an inaccurate height leads to an inaccurate weight estimate."
+  },
+  {
+    "q": "What is the pony classification threshold used in most competition settings?",
+    "opts": [
+      "14.0 hands",
+      "14.1 hands",
+      "14.2 hands",
+      "14.3 hands"
+    ],
+    "a": "14.2 hands",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is 14.2 hands."
+  },
+  {
+    "q": "A Thoroughbred measures 14.1 hands. How is this horse classified for competition purposes?",
+    "opts": [
+      "As a horse, because Thoroughbreds are always horses",
+      "As a pony, because 14.1 hands is under the 14.2 threshold",
+      "As a warmblood, because it is a large breed type",
+      "Neither — Thoroughbreds cannot be classified as ponies"
+    ],
+    "a": "As a pony, because 14.1 hands is under the 14.2 threshold",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is As a pony, because 14.1 hands is under the 14.2 threshold."
+  },
+  {
+    "q": "Which of the following is NOT a practical use of horse height measurement?",
+    "opts": [
+      "Estimating body weight for dewormer dosing",
+      "Determining competition class eligibility",
+      "Selecting appropriate saddle size",
+      "Determining a horse's age"
+    ],
+    "a": "Determining a horse's age",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Determining a horse's age."
+  },
+  {
+    "q": "Why does height measurement matter for saddle fitting?",
+    "opts": [
+      "Height determines the exact saddle size required",
+      "Height is one starting point for equipment selection — it helps narrow saddle options alongside back length and wither shape",
+      "Height determines whether a horse needs a special saddle",
+      "Saddle fit is entirely unrelated to height"
+    ],
+    "a": "Height is one starting point for equipment selection — it helps narrow saddle options alongside back length and wither shape",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Height is one starting point for equipment selection — it helps narrow saddle options alongside back length and wither shape."
+  },
+  {
+    "q": "An equine is being registered with a breed registry. Why might official height documentation be required?",
+    "opts": [
+      "Height is the most important breed characteristic",
+      "Height is part of official identification and, for some breeds, determines registration eligibility based on height standards",
+      "Registries use height to assign breeding rights",
+      "Height documentation is required for transport permits"
+    ],
+    "a": "Height is part of official identification and, for some breeds, determines registration eligibility based on height standards",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is Height is part of official identification and, for some breeds, determines registration eligibility based on height standards."
+  },
+  {
+    "q": "A horse measures 14.2 hands on level ground. At the next measurement six months later, the same horse measures 14.3 hands. What is the most likely explanation?",
+    "opts": [
+      "The measurement system changed",
+      "The horse was measured on a different surface or in a different stance, or the horse has grown slightly",
+      "The notation system was applied incorrectly both times",
+      "The measuring stick was calibrated differently"
+    ],
+    "a": "The horse was measured on a different surface or in a different stance, or the horse has grown slightly",
+    "ok": "Correct.",
+    "no": "Not quite. The correct answer is The horse was measured on a different surface or in a different stance, or the horse has grown slightly."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

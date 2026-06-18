@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; The Horse's Gaits &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+</head>
+<body class="ee-page-courses-schooling-ring-riding-foundations-the-horses-gaits-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">The Horse&#39;s Gaits</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to The Horse\'s Gaits',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.theHorsesGaits.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "How many beats does the walk have per stride?",
+    "opts": [
+      "Four",
+      "Two",
+      "Three",
+      "One"
+    ],
+    "a": "Four",
+    "ok": "Correct. The walk is a four-beat gait, with each hoof landing individually.",
+    "no": "The walk has four beats — one for each hoof landing separately."
+  },
+  {
+    "q": "Which natural gait has no moment of suspension?",
+    "opts": [
+      "Walk",
+      "Trot",
+      "Canter",
+      "Gallop"
+    ],
+    "a": "Walk",
+    "ok": "Correct. The walk is the only natural gait without suspension — at least two hooves remain on the ground throughout.",
+    "no": "The walk is the gait with no suspension phase."
+  },
+  {
+    "q": "What is the standard footfall sequence of the walk?",
+    "opts": [
+      "Left hind, left fore, right hind, right fore",
+      "Left fore, right fore, left hind, right hind",
+      "Right fore, left fore, right hind, left hind",
+      "Left hind, right hind, left fore, right fore"
+    ],
+    "a": "Left hind, left fore, right hind, right fore",
+    "ok": "Correct. LH, LF, RH, RF is the standard walk sequence.",
+    "no": "The standard walk sequence is left hind, left fore, right hind, right fore."
+  },
+  {
+    "q": "How many beats does the trot have per stride?",
+    "opts": [
+      "Two",
+      "Four",
+      "Three",
+      "One"
+    ],
+    "a": "Two",
+    "ok": "Correct. The trot is a two-beat gait driven by diagonal pairs.",
+    "no": "The trot has two beats — one for each diagonal pair."
+  },
+  {
+    "q": "Which legs move together at the trot?",
+    "opts": [
+      "Diagonal pairs",
+      "Same-side pairs",
+      "All four simultaneously",
+      "Each leg independently"
+    ],
+    "a": "Diagonal pairs",
+    "ok": "Correct. Diagonal pairs move together at the trot: left fore with right hind, and right fore with left hind.",
+    "no": "At the trot, diagonal pairs move together — left fore with right hind, and right fore with left hind."
+  },
+  {
+    "q": "What is the jog?",
+    "opts": [
+      "The Western term for a slow, relaxed trot",
+      "A four-beat gait used in English riding",
+      "A type of gallop",
+      "A faster version of the canter"
+    ],
+    "a": "The Western term for a slow, relaxed trot",
+    "ok": "Correct. The jog is the Western version of the trot, ridden at a slower, quieter pace.",
+    "no": "The jog is the Western term for the trot, ridden at a slower, more relaxed pace."
+  },
+  {
+    "q": "How many beats does the canter have per stride?",
+    "opts": [
+      "Three",
+      "Two",
+      "Four",
+      "One"
+    ],
+    "a": "Three",
+    "ok": "Correct. The canter has three beats followed by a moment of suspension.",
+    "no": "The canter has three beats per stride, followed by suspension."
+  },
+  {
+    "q": "What is the lope?",
+    "opts": [
+      "The Western term for the canter",
+      "A four-beat gait unique to Western horses",
+      "A type of extended trot",
+      "The English term for the gallop"
+    ],
+    "a": "The Western term for the canter",
+    "ok": "Correct. The lope is the Western version of the canter — same footfall pattern, slower pace.",
+    "no": "The lope is the Western term for the canter, with the same footfall pattern at a quieter pace."
+  },
+  {
+    "q": "How many beats does the gallop have per stride?",
+    "opts": [
+      "Four",
+      "Three",
+      "Two",
+      "Five"
+    ],
+    "a": "Four",
+    "ok": "Correct. The gallop is a four-beat gait — the diagonal pair that moves as one beat in the canter splits into two separate beats.",
+    "no": "The gallop has four beats. The diagonal pair splits apart compared to the canter."
+  },
+  {
+    "q": "How does the gallop differ from the canter in footfall?",
+    "opts": [
+      "The diagonal pair splits into two separate beats",
+      "The same-side pair moves together instead",
+      "All four feet land simultaneously",
+      "The canter has more beats than the gallop"
+    ],
+    "a": "The diagonal pair splits into two separate beats",
+    "ok": "Correct. At the gallop, the canter's diagonal beat separates, creating four individual beats.",
+    "no": "At the gallop, the diagonal pair that acts as one beat in the canter splits apart, creating four beats."
+  },
+  {
+    "q": "What is the suspension phase in a gait?",
+    "opts": [
+      "The brief moment when all four feet are off the ground",
+      "When the horse slows to a walk",
+      "When two feet are on the ground at the same time",
+      "The moment the front foot lands"
+    ],
+    "a": "The brief moment when all four feet are off the ground",
+    "ok": "Correct. Suspension is the moment between strides when all four hooves are off the ground.",
+    "no": "Suspension is the brief moment when all four feet are off the ground between stride beats."
+  },
+  {
+    "q": "Which two gaits have a moment of suspension?",
+    "opts": [
+      "Trot, canter, and gallop",
+      "Walk and trot",
+      "Walk only",
+      "Canter and gallop only"
+    ],
+    "a": "Trot, canter, and gallop",
+    "ok": "Correct. The trot, canter, and gallop all have moments of suspension. The walk does not.",
+    "no": "The trot, canter, and gallop all include a suspension phase. The walk does not."
+  },
+  {
+    "q": "What is the posting trot?",
+    "opts": [
+      "Alternately rising and sitting with each diagonal pair to reduce bounce",
+      "Sitting still in the saddle at the trot",
+      "A faster version of the trot used in racing",
+      "Posting refers to the number of strides per minute"
+    ],
+    "a": "Alternately rising and sitting with each diagonal pair to reduce bounce",
+    "ok": "Correct. Posting (rising) trot alternates rising and sitting with each diagonal pair, reducing fatigue and allowing the horse to move more freely.",
+    "no": "Posting trot means the rider rises and sits alternately with each diagonal to absorb the trot's bounce more easily."
+  },
+  {
+    "q": "What is the typical speed range of a working trot?",
+    "opts": [
+      "8 to 12 miles per hour",
+      "25 to 30 miles per hour",
+      "4 miles per hour",
+      "15 to 20 miles per hour"
+    ],
+    "a": "8 to 12 miles per hour",
+    "ok": "Correct. A working trot averages roughly 8 to 12 mph depending on breed and training.",
+    "no": "A working trot averages roughly 8 to 12 miles per hour."
+  },
+  {
+    "q": "What rider position is commonly used at the gallop?",
+    "opts": [
+      "Two-point or forward seat, rising out of the saddle",
+      "Deep sitting seat",
+      "Posting trot position",
+      "Balanced seat with long stirrups"
+    ],
+    "a": "Two-point or forward seat, rising out of the saddle",
+    "ok": "Correct. At the gallop, riders move into a two-point or forward seat to allow the horse's back to move freely.",
+    "no": "At the gallop, riders use a two-point or forward seat, rising out of the saddle with weight in the stirrups."
+  },
+  {
+    "q": "True or false: The canter and gallop have the same number of beats per stride.",
+    "opts": [
+      "False",
+      "True"
+    ],
+    "a": "False",
+    "ok": "Correct. The canter has three beats; the gallop has four. They are distinct gaits.",
+    "no": "False. The canter has three beats and the gallop has four — they are not the same gait."
+  },
+  {
+    "q": "True or false: The walk always has at least two feet on the ground.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. The walk has no suspension phase — at least two hooves remain on the ground throughout.",
+    "no": "True. The walk is the only gait with no suspension, so at least two feet remain on the ground at all times."
+  },
+  {
+    "q": "Which gait would most likely be used for a warm-up or cool-down?",
+    "opts": [
+      "Walk",
+      "Gallop",
+      "Canter",
+      "Trot"
+    ],
+    "a": "Walk",
+    "ok": "Correct. The walk is used to warm up and cool down horses because of its low-impact, steady rhythm.",
+    "no": "The walk is the standard warm-up and cool-down gait due to its steady, low-impact rhythm."
+  },
+  {
+    "q": "A horse moves with a two-beat rhythm and a visible spring between each stride. Which gait is this?",
+    "opts": [
+      "Trot",
+      "Walk",
+      "Canter",
+      "Gallop"
+    ],
+    "a": "Trot",
+    "ok": "Correct. A two-beat rhythm with a spring between beats is what makes the trot easy to spot.",
+    "no": "A two-beat gait with a spring between strides is the trot."
+  },
+  {
+    "q": "A horse moves with a rolling three-beat rhythm followed by a pause. Which gait is this?",
+    "opts": [
+      "Canter",
+      "Trot",
+      "Walk",
+      "Gallop"
+    ],
+    "a": "Canter",
+    "ok": "Correct. The three-beat rhythm followed by suspension describes the canter.",
+    "no": "A rolling three-beat rhythm with a pause describes the canter."
+  },
+  {
+    "q": "At the gallop, approximately how fast can a fit riding horse travel?",
+    "opts": [
+      "25 to 30 miles per hour",
+      "4 to 6 miles per hour",
+      "10 to 15 miles per hour",
+      "40 to 50 miles per hour"
+    ],
+    "a": "25 to 30 miles per hour",
+    "ok": "Correct. A fit riding horse typically gallops at 25 to 30 mph. Racehorses can exceed 40 mph but that is exceptional.",
+    "no": "A fit riding horse typically gallops at 25 to 30 miles per hour in sustained work."
+  },
+  {
+    "q": "A walking horse starts to move its same-side legs in pairs and looks stiff. What can this suggest?",
+    "opts": [
+      "Tension, a training issue, or discomfort",
+      "A naturally fast walk",
+      "A stronger, healthier walk",
+      "A relaxed, happy walk"
+    ],
+    "a": "Tension, a training issue, or discomfort",
+    "ok": "Correct. When the same-side legs move in pairs, the walk looks stiff. This can be a sign of tension or discomfort.",
+    "no": "When the same-side legs move in pairs, the walk looks stiff. This can be a sign of tension, a training issue, or discomfort."
+  },
+  {
+    "q": "Which gait is a main working gait for building balance and rhythm?",
+    "opts": [
+      "Trot",
+      "Gallop",
+      "Walk only",
+      "Pace"
+    ],
+    "a": "Trot",
+    "ok": "Correct. The trot is a main working gait. Its steady two-beat rhythm helps build balance and rhythm.",
+    "no": "The trot is a main working gait. Its steady two-beat rhythm helps build balance and rhythm."
+  },
+  {
+    "q": "Which term describes the Western canter ridden at a relaxed, unhurried pace?",
+    "opts": [
+      "Lope",
+      "Jog",
+      "Posting canter",
+      "Extended canter"
+    ],
+    "a": "Lope",
+    "ok": "Correct. The lope is the Western version of the canter, performed at a slower, more relaxed pace.",
+    "no": "The lope is the Western term for a calm, unhurried canter."
+  },
+  {
+    "q": "What separates the gallop from being simply a \"fast canter\"?",
+    "opts": [
+      "The diagonal pair splits into two beats, creating a four-beat gait",
+      "The gallop has fewer beats than the canter",
+      "The horse does not have suspension at the gallop",
+      "The gallop uses the same footfall as the walk"
+    ],
+    "a": "The diagonal pair splits into two beats, creating a four-beat gait",
+    "ok": "Correct. The split of the diagonal pair makes the gallop a structurally distinct gait from the canter.",
+    "no": "The gallop is a separate gait because the diagonal pair splits, creating four beats rather than three."
+  },
+  {
+    "q": "Why does a rider need to know about gaits when observing from the ground?",
+    "opts": [
+      "To spot irregularities that may indicate lameness or soreness",
+      "Only to determine which tack to use",
+      "To calculate how fast the horse is going",
+      "To decide which breed the horse is"
+    ],
+    "a": "To spot irregularities that may indicate lameness or soreness",
+    "ok": "Correct. An uneven rhythm or shortened stride at a known gait pattern may signal lameness or discomfort.",
+    "no": "Knowing gaits from the ground helps a handler spot irregular rhythm or shortened strides that may indicate soreness or lameness."
+  },
+  {
+    "q": "Which pairing is correct?",
+    "opts": [
+      "Walk — four beats, no suspension",
+      "Trot — three beats, suspension",
+      "Canter — two beats, suspension",
+      "Gallop — three beats, no suspension"
+    ],
+    "a": "Walk — four beats, no suspension",
+    "ok": "Correct. The walk has four beats and no suspension — the only gait without airborne time.",
+    "no": "Walk — four beats, no suspension is the correct pairing."
+  },
+  {
+    "q": "Which pairing is correct?",
+    "opts": [
+      "Trot — two beats, diagonal pairs",
+      "Walk — two beats, lateral pairs",
+      "Canter — four beats, no suspension",
+      "Gallop — two beats, diagonal pairs"
+    ],
+    "a": "Trot — two beats, diagonal pairs",
+    "ok": "Correct. The trot is a two-beat gait driven by diagonal pairs.",
+    "no": "Trot — two beats, diagonal pairs is the correct pairing."
+  },
+  {
+    "q": "Which pairing is correct?",
+    "opts": [
+      "Gallop — four beats, suspension",
+      "Canter — four beats, no suspension",
+      "Trot — three beats, suspension",
+      "Walk — two beats, suspension"
+    ],
+    "a": "Gallop — four beats, suspension",
+    "ok": "Correct. The gallop has four beats and a pronounced moment of suspension.",
+    "no": "Gallop — four beats, suspension is the correct pairing."
+  },
+  {
+    "q": "True or false: A horse can only be assessed for gait correctness while being ridden.",
+    "opts": [
+      "False",
+      "True"
+    ],
+    "a": "False",
+    "ok": "Correct. Gaits can be assessed from the ground during longe work, turnout, or hand-walking — and this is often how lameness evaluations are done.",
+    "no": "False. Gaits are frequently observed from the ground during longe work, hand-walking, or turnout."
+  },
+  {
+    "q": "Which gait is most associated with racing and cross-country riding at speed?",
+    "opts": [
+      "Gallop",
+      "Canter",
+      "Trot",
+      "Walk"
+    ],
+    "a": "Gallop",
+    "ok": "Correct. The gallop is the fastest natural gait and is used in racing and open-field or cross-country riding at speed.",
+    "no": "The gallop is the gait used for racing and fast cross-country work."
+  },
+  {
+    "q": "How many beats does the walk have per stride?",
+    "opts": [
+      "Four",
+      "Two",
+      "Three",
+      "One"
+    ],
+    "a": "Four",
+    "ok": "Correct. The walk is a four-beat gait, with each hoof landing individually.",
+    "no": "The walk has four beats — one for each hoof landing separately."
+  },
+  {
+    "q": "Which natural gait has no moment of suspension?",
+    "opts": [
+      "Walk",
+      "Trot",
+      "Canter",
+      "Gallop"
+    ],
+    "a": "Walk",
+    "ok": "Correct. The walk is the only natural gait without suspension — at least two hooves remain on the ground throughout.",
+    "no": "The walk is the gait with no suspension phase."
+  },
+  {
+    "q": "What is the standard footfall sequence of the walk?",
+    "opts": [
+      "Left hind, left fore, right hind, right fore",
+      "Left fore, right fore, left hind, right hind",
+      "Right fore, left fore, right hind, left hind",
+      "Left hind, right hind, left fore, right fore"
+    ],
+    "a": "Left hind, left fore, right hind, right fore",
+    "ok": "Correct. LH, LF, RH, RF is the standard walk sequence.",
+    "no": "The standard walk sequence is left hind, left fore, right hind, right fore."
+  },
+  {
+    "q": "How many beats does the trot have per stride?",
+    "opts": [
+      "Two",
+      "Four",
+      "Three",
+      "One"
+    ],
+    "a": "Two",
+    "ok": "Correct. The trot is a two-beat gait driven by diagonal pairs.",
+    "no": "The trot has two beats — one for each diagonal pair."
+  },
+  {
+    "q": "Which legs move together at the trot?",
+    "opts": [
+      "Diagonal pairs",
+      "Same-side pairs",
+      "All four simultaneously",
+      "Each leg independently"
+    ],
+    "a": "Diagonal pairs",
+    "ok": "Correct. Diagonal pairs move together at the trot: left fore with right hind, and right fore with left hind.",
+    "no": "At the trot, diagonal pairs move together — left fore with right hind, and right fore with left hind."
+  },
+  {
+    "q": "What is the jog?",
+    "opts": [
+      "The Western term for a slow, relaxed trot",
+      "A four-beat gait used in English riding",
+      "A type of gallop",
+      "A faster version of the canter"
+    ],
+    "a": "The Western term for a slow, relaxed trot",
+    "ok": "Correct. The jog is the Western version of the trot, ridden at a slower, quieter pace.",
+    "no": "The jog is the Western term for the trot, ridden at a slower, more relaxed pace."
+  },
+  {
+    "q": "How many beats does the canter have per stride?",
+    "opts": [
+      "Three",
+      "Two",
+      "Four",
+      "One"
+    ],
+    "a": "Three",
+    "ok": "Correct. The canter has three beats followed by a moment of suspension.",
+    "no": "The canter has three beats per stride, followed by suspension."
+  },
+  {
+    "q": "What is the lope?",
+    "opts": [
+      "The Western term for the canter",
+      "A four-beat gait unique to Western horses",
+      "A type of extended trot",
+      "The English term for the gallop"
+    ],
+    "a": "The Western term for the canter",
+    "ok": "Correct. The lope is the Western version of the canter — same footfall pattern, slower pace.",
+    "no": "The lope is the Western term for the canter, with the same footfall pattern at a quieter pace."
+  },
+  {
+    "q": "How many beats does the gallop have per stride?",
+    "opts": [
+      "Four",
+      "Three",
+      "Two",
+      "Five"
+    ],
+    "a": "Four",
+    "ok": "Correct. The gallop is a four-beat gait — the diagonal pair that moves as one beat in the canter splits into two separate beats.",
+    "no": "The gallop has four beats. The diagonal pair splits apart compared to the canter."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

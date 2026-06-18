@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horse Breed Field Guide — Equine Edu</title>
+<meta name="description" content="Explore 28 horse breeds in this interactive equine field guide. Learn about origins, temperament, traits, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../assets/css/course-standardization.css">
+</head>
+<body class="ee-page-courses-schooling-ring-horse-and-pony-breeds-index">
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Equine <span>Edu</span></div>
+    <a href="../../../courses/index.html" class="nav-back">← All Courses</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Interactive Field Guide</div>
+  <h1>Horse Breed<br><em>Field Guide</em></h1>
+  <p class="hero-desc">Explore 28 remarkable horse breeds — from thundering draft giants to nimble mountain ponies. Click any breed to discover its story.</p>
+  <div class="hero-actions">
+    <button class="btn-gold" onclick="openQuiz()">Which Breed Are You?</button>
+    <button class="btn-outline" onclick="openRandom()">Discover a Random Breed →</button>
+  </div>
+</section>
+
+<!-- DISCOVERY BAR -->
+<div class="discovery-bar">
+  <div class="discovery-inner">
+    <span class="discovery-label">Breeds Explored</span>
+    <div class="discovery-track"><div class="discovery-fill" id="disc-fill"></div></div>
+    <span class="discovery-count" id="disc-count">0 / 28</span>
+    <div class="discovery-badges">
+      <span class="badge" id="badge-pony" title="Explore all pony breeds">Pony Guide</span>
+      <span class="badge" id="badge-draft" title="Explore all draft breeds">Draft Master</span>
+      <span class="badge" id="badge-gaited" title="Explore all gaited breeds">Smooth Rider</span>
+      <span class="badge" id="badge-all" title="Explore all breeds">Field Guide Complete</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls-section">
+  <div class="controls-inner">
+    <div class="filter-row" id="filter-row">
+      <button class="filter-btn active" data-filter="all">All Breeds</button>
+      <button class="filter-btn" data-filter="light">Light Horses</button>
+      <button class="filter-btn" data-filter="draft">Draft Horses</button>
+      <button class="filter-btn" data-filter="pony">Ponies</button>
+      <button class="filter-btn" data-filter="gaited">Gaited</button>
+      <button class="filter-btn" data-filter="american">American</button>
+      <button class="filter-btn" data-filter="european">European</button>
+      <button class="filter-btn" data-filter="favorites" id="fav-filter-btn">Favorites</button>
+    </div>
+    <div class="search-sort-row">
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="#8C857D" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="#8C857D" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input class="search-input" id="breed-search" type="search" placeholder="Search breeds...">
+      </div>
+      <select class="sort-select" id="breed-sort">
+        <option value="az">A → Z</option>
+        <option value="za">Z → A</option>
+        <option value="size-asc">Smallest First</option>
+        <option value="size-desc">Largest First</option>
+        <option value="newRider">Calmest for New Riders</option>
+      </select>
+      <span class="results-count" id="results-count"></span>
+    </div>
+  </div>
+</div>
+
+<!-- BREED GRID -->
+<section class="breed-section">
+  <div class="section-heading fade-in">
+    <h2>All Breeds</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="breed-grid" id="breed-grid"></div>
+</section>
+
+<!-- BLOOD TYPE SECTION -->
+<section class="blood-section">
+  <div class="blood-inner">
+    <div class="blood-tag">Equine Education</div>
+    <h2 class="blood-title">Hot Blood, Cold Blood &<br>Everything In Between</h2>
+    <p class="blood-subtitle">Horses are often grouped by their temperament, build, and ancestry — not by actual body temperature. Here's what those labels really mean.</p>
+    <div class="blood-grid">
+      <div class="blood-card blood-hot fade-in">
+        <div class="blood-card-icon">H</div>
+        <h3>Hot-Blooded</h3>
+        <p>Refined, spirited, and built for speed. Hot-blooded horses trace their ancestry to arid regions and were bred for athleticism and endurance. They tend to be sensitive, intelligent, and energetic.</p>
+        <div class="blood-breeds">
+          <span class="blood-tag-pill">Arabian</span>
+          <span class="blood-tag-pill">Thoroughbred</span>
+          <span class="blood-tag-pill">Akhal-Teke</span>
+        </div>
+      </div>
+      <div class="blood-card blood-cold fade-in">
+        <div class="blood-card-icon">C</div>
+        <h3>Cold-Blooded</h3>
+        <p>Massive, calm, and powerfully built. Cold-blooded breeds were developed in northern Europe for heavy farm and draft work. They're known for their gentle, patient temperaments despite their enormous size.</p>
+        <div class="blood-breeds">
+          <span class="blood-tag-pill">Belgian</span>
+          <span class="blood-tag-pill">Clydesdale</span>
+          <span class="blood-tag-pill">Shire</span>
+          <span class="blood-tag-pill">Percheron</span>
+        </div>
+      </div>
+      <div class="blood-card blood-warm fade-in">
+        <div class="blood-card-icon">W</div>
+        <h3>Warmbloods</h3>
+        <p>A blend of hot and cold blood, creating versatile athletes. In the traditional sense, most American sport and stock horses are light horses — but true "Warmblood" as a label refers to specific European sport horse <em>registries</em> (like Hanoverian, Oldenburg, KWPN) rather than individual breeds.</p>
+        <div class="blood-breeds">
+          <span class="blood-tag-pill">Hanoverian</span>
+          <span class="blood-tag-pill">KWPN</span>
+          <span class="blood-tag-pill">Oldenburg</span>
+          <span class="blood-tag-pill">+ more</span>
+        </div>
+      </div>
+      <div class="blood-card blood-pony fade-in">
+        <div class="blood-card-icon">⭐</div>
+        <h3>Ponies</h3>
+        <p>Not just small horses! Ponies are defined by height (under 14.2 hands) but also have distinct physical traits: stockier builds, thicker manes and tails, and proportionally shorter legs. They're often hardier and longer-lived than horses.</p>
+        <div class="blood-breeds">
+          <span class="blood-tag-pill">Shetland</span>
+          <span class="blood-tag-pill">Welsh</span>
+          <span class="blood-tag-pill">Fell</span>
+          <span class="blood-tag-pill">Fjord</span>
+          <span class="blood-tag-pill">POA</span>
+        </div>
+      </div>
+      <div class="warmblood-note fade-in">
+
+        <p><strong>A note on Warmbloods:</strong> You may hear breeds like the Quarter Horse or Morgan called "warmbloods" informally — but in the equestrian world, <strong>Warmblood</strong> (capital W) specifically refers to European sport horse registries bred for Olympic disciplines like dressage and show jumping. These registries evaluate horses by performance, not bloodline alone. We'll explore true Warmbloods in depth in a future Beyond the Basics collection!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-backdrop" id="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-panel" id="modal-panel">
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- QUIZ MODAL -->
+<div class="quiz-overlay" id="quiz-overlay">
+  <div class="quiz-modal">
+    <button class="quiz-close" onclick="closeQuiz()">✕</button>
+    <div id="quiz-content"></div>
+  </div>
+</div>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar" id="compare-bar">
+  <span class="compare-label">Compare</span>
+  <div class="compare-slots" id="compare-slots"></div>
+  <span class="compare-hint">Select up to 2 breeds</span>
+  <div class="compare-actions">
+    <button class="compare-go" onclick="openCompareModal()" id="compare-go-btn" disabled>Compare →</button>
+    <button class="compare-clear" onclick="clearCompare()">Clear</button>
+  </div>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="compare-modal-overlay" id="compare-modal-overlay">
+  <div class="compare-modal">
+    <div class="compare-modal-header">
+      <h2 class="compare-modal-title">Breed Comparison</h2>
+      <button onclick="closeCompareModal()" class="ee-u-2766ef6f">✕</button>
+    </div>
+    <div id="compare-modal-body"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo">Equine <span>Edu</span></div>
+  <p class="footer-copy">Breed information compiled from official registries, breed associations, and established equine resources. &copy; 2025 Equine Edu.</p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// BREED DATA
+// Sources: American Quarter Horse Association (AQHA), Appaloosa Horse Club,
+// Arabian Horse Association, Jockey Club, Belgian Draft Horse Corp of America,
+// Clydesdale Horse Society, Welsh Pony & Cob Society,
+// Friesian Horse Association of North America, Gypsy Horse Registry,
+// Tennessee Walking Horse Breeders' & Exhibitors' Association,
+// Missouri Fox Trotting Horse Breed Association, Rocky Mountain Horse Association,
+// Bureau of Land Management (BLM), and established equine reference works.
+// ═══════════════════════════════════════════════════════════════════════════
+const BREEDS = [
+  {
+    id:'quarter-horse', name:'American Quarter Horse', img:'images/breeds/american-quarter-horse.png',
+    origin:'United States', originRegion:'american', height:'14.3–16 hh',
+    heightVal:15.3, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'warm',
+    colors:['Bay','Sorrel','Chestnut','Black','Dun','Palomino','Grey','Roan','Buckskin'],
+    colorHex:['#8B4513','#CD853F','#D2691E','#1a1a1a','#C8B96D','#F4D06F','#A8A8A8','#B5936A','#D4B483'],
+    temperament:'Calm, willing, and highly intelligent. Known for a steady, easy-going nature that makes them ideal for riders of all levels.',
+    uses:['Western Riding','Quarter Mile Racing','Ranch & Cattle Work','Trail Riding','Rodeo','Barrel Racing'],
+    traits:['Powerfully muscled hindquarters','Broad chest and short back','Explosive acceleration over short distances','Versatile across disciplines'],
+    superpower:'Explosive Sprint Speed',
+    funFact:'The American Quarter Horse is the most registered horse breed in the world, with over 6 million horses recorded by the AQHA.',
+    didYouKnow:'Quarter Horses get their name from their ability to outrun almost any other horse breed in a quarter-mile race — a popular test of speed in colonial America.',
+    similar:['American Paint Horse','Appaloosa','Morgan'],
+    newRider:5, rarity:10,
+    tags:['light','american']
+  },
+  {
+    id:'paint-horse', name:'American Paint Horse', img:'images/breeds/american-paint-horse.png',
+    origin:'United States', originRegion:'american', height:'14.2–16 hh',
+    heightVal:15.2, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'warm',
+    colors:['Tobiano','Overo','Tovero (any base color)'],
+    colorHex:['#ffffff','#8B4513','#D2691E'],
+    temperament:'Friendly, docile, and people-oriented. Paint Horses combine athletic ability with a calm, willing personality.',
+    uses:['Western Riding','Trail Riding','Ranch Work','Pleasure Riding','Showing'],
+    traits:['Distinctive two-tone coat patterns','Stock horse build identical to Quarter Horse','Tobiano, overo, or tovero patterning','Registered separately from Quarter Horses due to color genetics'],
+    superpower:'Head-Turning Color',
+    funFact:'A Paint Horse has the same physical characteristics as a Quarter Horse — the key difference is the colorful coat pattern created by white and any other color.',
+    didYouKnow:'The American Paint Horse Association (APHA) is the second-largest light horse registry in North America.',
+    similar:['American Quarter Horse','Appaloosa','Pinto'],
+    newRider:5, rarity:10,
+    tags:['light','american']
+  },
+  {
+    id:'saddlebred', name:'American Saddlebred', img:'images/breeds/american-saddlebred.png',
+    origin:'United States (Kentucky)', originRegion:'american', height:'15–17 hh',
+    heightVal:16, category:'light', gaited:true, draft:false, pony:false,
+    bloodType:'hot',
+    colors:['Bay','Black','Chestnut','Grey','Palomino','Roan'],
+    colorHex:['#8B4513','#1a1a1a','#D2691E','#A8A8A8','#F4D06F','#B5936A'],
+    temperament:'Spirited, intelligent, and animated. Known as the "peacock of the show ring" — elegant, expressive, and energetic.',
+    uses:['Show Ring (3-Gaited & 5-Gaited)','Pleasure Driving','Fine Harness Classes','Trail Riding'],
+    traits:['High-stepping animated action','Arched neck with proud carriage','Natural 5-gaited ability (walk, trot, canter + slow gait + rack)','Upright tail set'],
+    superpower:'Show Ring Showstopper',
+    funFact:'The American Saddlebred is nicknamed "the Horse America Made" — it was developed in Kentucky from Thoroughbred and Narragansett Pacer bloodlines to create the ultimate plantation riding horse.',
+    didYouKnow:'American Saddlebreds appear in 5-gaited classes performing the slow gait and rack — two additional smooth gaits beyond the standard walk, trot, and canter.',
+    similar:['National Show Horse','Tennessee Walking Horse','Morgan'],
+    newRider:2, rarity:6,
+    tags:['light','gaited','american']
+  },
+  {
+    id:'appaloosa', name:'Appaloosa', img:'images/breeds/appaloosa.png',
+    origin:'United States (Nez Perce)', originRegion:'american', height:'14.2–16 hh',
+    heightVal:15.2, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'warm',
+    colors:['Leopard','Blanket','Snowflake','Roan Blanket','Frost','Marble'],
+    colorHex:['#ffffff','#8B4513','#D2691E','#A8A8A8','#f5f5f5','#c9a88a'],
+    temperament:'Hardy, independent, and versatile. Appaloosas are known for their sure-footedness and willingness to work.',
+    uses:['Western Riding','Trail Riding','Ranch Work','Endurance','Pleasure Showing'],
+    traits:['Distinctive spotted coat pattern','Striped hooves (vertical black & white stripes)','Mottled skin around eyes, muzzle & genitalia','Visible white sclera around the eye'],
+    superpower:'One-of-a-Kind Spots',
+    funFact:"The Appaloosa is named after the Palouse River region in the Pacific Northwest, where the Nez Perce people developed this spotted breed over centuries of selective breeding.",
+    didYouKnow:'No two Appaloosas have exactly the same spot pattern — each one is as unique as a fingerprint.',
+    similar:['Pony of the Americas','Quarter Horse','Paint Horse'],
+    newRider:4, rarity:8,
+    tags:['light','american']
+  },
+  {
+    id:'arabian', name:'Arabian', img:'images/breeds/arabian.png',
+    origin:'Arabian Peninsula', originRegion:'european', height:'14.1–15.1 hh',
+    heightVal:14.3, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'hot',
+    colors:['Bay','Grey','Chestnut','Black','Roan'],
+    colorHex:['#8B4513','#A8A8A8','#D2691E','#1a1a1a','#B5936A'],
+    temperament:'Highly intelligent, spirited, and deeply loyal. Arabians bond closely with their humans and are sensitive, perceptive horses.',
+    uses:['Endurance Riding','Show Halter & Performance','Pleasure Riding','Breeding (improving other breeds)','Trail Riding'],
+    traits:['Distinctive dished face with large eyes','Arched neck and high tail carriage','Dense, hard bones (surprisingly sound for their size)','Unique skeletal structure: typically 17 pairs of ribs (vs. 18 in most horses)'],
+    superpower:'Endurance Champion',
+    funFact:'Nearly every modern light horse breed has Arabian blood. The breed has been selectively bred by the Bedouin people for over 4,500 years — making it one of the oldest, purest horse breeds on Earth.',
+    didYouKnow:"Arabians have been documented outrunning desert sandstorms. The Bedouin people bred them for centuries, believing Allah created the Arabian from 'a handful of the south wind.'",
+    similar:['Thoroughbred','National Show Horse','Akhal-Teke'],
+    newRider:2, rarity:7,
+    tags:['light']
+  },
+  {
+    id:'belgian', name:'Belgian', img:'images/breeds/belgian.png',
+    origin:'Belgium', originRegion:'european', height:'16.2–17+ hh',
+    heightVal:17, category:'draft', gaited:false, draft:true, pony:false,
+    bloodType:'cold',
+    colors:['Sorrel/Chestnut with Flaxen Mane','Bay','Roan'],
+    colorHex:['#CD853F','#8B4513','#B5936A'],
+    temperament:'Exceptionally gentle, willing, and easy to handle despite their enormous size. Belgian horses have a calm, tractable nature.',
+    uses:['Horse Pulling Competitions','Farm & Field Work','Logging','Pleasure Driving','Showing'],
+    traits:['One of the strongest horse breeds in the world','Compact, heavily muscled body','Short legs relative to body size','Chestnut/sorrel with flaxen mane is most iconic color'],
+    superpower:'Unmatched Pulling Power',
+    funFact:'Belgian horses hold world records in horse-pulling competitions. A team of two Belgians once pulled over 17,000 pounds — more than 8 tons.',
+    didYouKnow:"The Belgian is consistently the most popular draft horse in the United States by registration numbers, and its ancestry traces to the 'Great Horse' of medieval Europe that carried armored knights.",
+    similar:['Shire','Clydesdale','Percheron'],
+    newRider:4, rarity:5,
+    tags:['draft','european']
+  },
+  {
+    id:'clydesdale', name:'Clydesdale', img:'images/breeds/clydesdale.png',
+    origin:'Scotland', originRegion:'european', height:'16–18 hh',
+    heightVal:17, category:'draft', gaited:false, draft:true, pony:false,
+    bloodType:'cold',
+    colors:['Bay','Brown','Black','Roan','Grey'],
+    colorHex:['#8B4513','#5C3D2E','#1a1a1a','#B5936A','#A8A8A8'],
+    temperament:'Active, willing, and gentle. Often described as "active" for a draft breed — Clydesdales have more energy than many other draft horses while remaining manageable.',
+    uses:['Farm & Agricultural Work','Logging','Showing & Parades','Pleasure Driving'],
+    traits:['Abundant silky feathering on the lower legs','High-stepping action for a draft horse','Broad, flat feet designed for heavy ground','Often has extensive white markings on face and legs'],
+    superpower:'Grand Parade Presence',
+    funFact:"Clydesdales are perhaps the world's most recognized draft breed thanks to the famous Budweiser Clydesdale hitch. The breed nearly went extinct in the mid-20th century and remains on watchlists.",
+    didYouKnow:'A fully grown Clydesdale can weigh up to 2,200 lbs (1,000 kg) and their horseshoes are about 5 lbs each — nearly 3 times heavier than a Thoroughbred racehorse shoe.',
+    similar:['Shire','Belgian','Percheron'],
+    newRider:4, rarity:4,
+    tags:['draft','european']
+  },
+  {
+    id:'falabella', name:'Falabella', img:'images/breeds/fellabella-horse.png',
+    origin:'Argentina', originRegion:'american', height:'Under 8.2 hh (under 34 in)',
+    heightVal:8, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'warm',
+    colors:['Any Color','Including Appaloosa Patterns'],
+    colorHex:['#8B4513','#1a1a1a','#ffffff','#D2691E','#F4D06F'],
+    temperament:'Intelligent, friendly, and curious. Despite their tiny size, Falabellas have a confident, horse-like personality.',
+    uses:['Companion Animal','Showing','Miniature Driving','Therapy Work'],
+    traits:["World's smallest horse breed (not technically a pony — they have horse-like proportions)","Refined features unlike typical stocky ponies","Developed over generations by the Falabella family of Argentina","Can live 40–45 years — significantly longer than full-sized horses"],
+    superpower:"Tiniest Horse on Earth",
+    funFact:'The Falabella family of Argentina spent over 150 years selectively breeding horses for extreme small size, starting in the 1840s. The Falabella is NOT the same as a Miniature Horse — it is a distinct breed.',
+    didYouKnow:'Despite their size, Falabellas have the same bone structure and proportions as a full-sized horse, unlike ponies which have different proportional builds.',
+    similar:['Miniature Horse','Shetland Pony'],
+    newRider:3, rarity:3,
+    tags:['pony','american']
+  },
+  {
+    id:'fell-pony', name:'Fell Pony', img:'images/breeds/fell-pony.png',
+    origin:'England (Lake District)', originRegion:'european', height:'Up to 14 hh',
+    heightVal:13.5, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'cold',
+    colors:['Black','Brown','Bay','Grey'],
+    colorHex:['#1a1a1a','#5C3D2E','#8B4513','#A8A8A8'],
+    temperament:'Hardy, intelligent, and willing. Fell Ponies are sure-footed, sensible, and known for their excellent stamina over rough terrain.',
+    uses:['Trail & Trekking','Pleasure Driving','Endurance Riding','Pack Ponies','Pleasure Riding'],
+    traits:['Strong, sturdy build with good bone','Profuse mane, forelock, and tail','Silky feathering on legs (but less than Shire or Clydesdale)','Naturally sure-footed on steep, uneven terrain','No white markings preferred (small star acceptable)'],
+    superpower:'Mountain Trail Navigator',
+    funFact:"Fell Ponies have roamed the fells of northern England for over 2,000 years. They were used by both the Romans and Vikings, and drove trade routes across the Pennine hills carrying heavy loads.",
+    didYouKnow:"The Fell Pony Society maintains strict breed standards. The ponies are named for the high moorland 'fells' of Cumbria where they developed their hardy constitution.",
+    similar:['Dales Pony','Highland Pony','Friesian'],
+    newRider:4, rarity:3,
+    tags:['pony','european']
+  },
+  {
+    id:'fjord', name:'Fjord', img:'images/breeds/fjord.png',
+    origin:'Norway', originRegion:'european', height:'13.2–14.2 hh',
+    heightVal:14, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'cold',
+    colors:['Brown Dun (most common)','Red Dun','Grey Dun','White Dun','Yellow Dun'],
+    colorHex:['#C8A96D','#C87941','#B0A898','#D4D0C8','#D4C06D'],
+    temperament:'Exceptionally calm, friendly, and willing. The Fjord has one of the most consistently pleasant temperaments of any breed — ideal for nervous riders and new riders.',
+    uses:['Trail & Trekking','Therapeutic Riding','Pleasure Driving','Farm Work','Children Riding'],
+    traits:['Always dun in color with primitive markings (dorsal stripe, zebra-like leg stripes)','Distinctive bicolor mane — dark center stripe with lighter outer edges, traditionally cut in a crescent shape','One of the oldest and purest breeds in the world','Extremely sure-footed on steep mountain terrain'],
+    superpower:'Mountain Trail Guide',
+    funFact:'The Fjord is depicted in ancient Viking artwork and carvings dating back over 4,000 years. It is one of the few breeds that has remained virtually unchanged for millennia.',
+    didYouKnow:"Every Fjord is dun colored — it's the only breed where ALL horses carry primitive dun markings including a dorsal stripe down the back. Their mane is traditionally roached in a curved shape to show off the dark center stripe.",
+    similar:['Haflinger','Icelandic Horse','Norwegian Coldblood'],
+    newRider:5, rarity:4,
+    tags:['pony','european']
+  },
+  {
+    id:'friesian', name:'Friesian', img:'images/breeds/friesian.png',
+    origin:'Friesland, Netherlands', originRegion:'european', height:'15.2–17 hh',
+    heightVal:16.2, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'cold',
+    colors:['Black (always)'],
+    colorHex:['#1a1a1a'],
+    temperament:'Willing, gentle, and energetic with a proud bearing. Friesians are known for being both elegant in the show ring and kind in everyday handling.',
+    uses:['Dressage','Pleasure Driving & Carriage','Showing','Film & Television','Pleasure Riding'],
+    traits:['Always black — occasional chestnut is controversial in the breed','Long, luxuriant flowing mane and tail','Abundant silky feathering on the legs','Elevated, animated trot with natural suspension','Commands attention in any setting'],
+    superpower:'Elegant Presence',
+    funFact:"The Friesian breed nearly went extinct twice — once in the early 1900s and again in the 1960s when only a handful of approved stallions remained. Dedicated Dutch breeders saved the breed both times.",
+    didYouKnow:"Friesians are one of Europe's oldest breeds, originally bred as war horses in the Netherlands. They appear in medieval paintings and were ridden by Friesian soldiers in Roman times.",
+    similar:['Fell Pony','Dales Pony','Andalusian'],
+    newRider:3, rarity:5,
+    tags:['light','european']
+  },
+  {
+    id:'gypsy-vanner', name:'Gypsy Vanner', img:'images/breeds/gypsy-vanner.png',
+    origin:'British Isles (Romani People)', originRegion:'european', height:'13–15.2 hh',
+    heightVal:14.5, category:'draft', gaited:false, draft:false, pony:false,
+    bloodType:'cold',
+    colors:['Piebald (Black & White)','Skewbald (Brown/Bay & White)','Any Color'],
+    colorHex:['#1a1a1a','#8B4513','#ffffff','#D2691E'],
+    temperament:'Extraordinarily gentle, patient, and kind. Gypsy Vanners were bred specifically to be safe around children and manageable for all family members.',
+    uses:['Family Riding','Pleasure Driving','Trail Riding','Therapy Horses','Showing'],
+    traits:['Heavy feathering from the knee and hock down','Long, profuse flowing mane and tail','Broad, muscular build with a shorter back','Traditionally piebald or skewbald coloring','Bred to pull painted Romani wagons (vardos)'],
+    superpower:'Ultimate Family Horse',
+    funFact:'The Gypsy Vanner was bred by the Romani people of Britain and Ireland over generations as the perfect horse to pull their beautiful painted wagons — calm enough for children to lead, powerful enough to pull a loaded vardo.',
+    didYouKnow:"The breed has no single founding registry — Romani travelers kept no written records and selected horses by eye and instinct for generations. The first formal registries only appeared in the 1990s.",
+    similar:['Clydesdale','Shire','Fell Pony'],
+    newRider:5, rarity:5,
+    tags:['draft','european']
+  },
+  {
+    id:'hackney-pony', name:'Hackney Pony', img:'images/breeds/hackney-pony.png',
+    origin:'England', originRegion:'european', height:'Under 14.2 hh',
+    heightVal:13.5, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'hot',
+    colors:['Bay','Brown','Black','Chestnut'],
+    colorHex:['#8B4513','#5C3D2E','#1a1a1a','#D2691E'],
+    temperament:'Bold, spirited, and animated. Hackney Ponies are built for the spotlight — naturally showy, energetic, and expressive.',
+    uses:['Fine Harness Showing','Carriage Driving','Halter Classes','Exhibition'],
+    traits:['Extremely exaggerated high-stepping trot action','Elevated knee and hock action that is natural (not artificial)','Natural showiness and presence','Round, compact body with a fine, elegant head'],
+    superpower:'Highest Stepping Trot',
+    funFact:"The Hackney Pony's exaggerated trotting action was bred over centuries for Victorian-era carriage owners who prized flashy, eye-catching movement on city streets.",
+    didYouKnow:"At horse shows, Hackney Ponies compete in 'fine harness' classes while pulling extremely lightweight two-wheeled carts called 'bikes' — they seem to barely touch the ground at top speed.",
+    similar:['American Saddlebred','Welsh Pony','Standardbred'],
+    newRider:2, rarity:3,
+    tags:['pony','european']
+  },
+  {
+    id:'haflinger', name:'Haflinger', img:'images/breeds/haflinger.png',
+    origin:'Austria & Northern Italy', originRegion:'european', height:'13.2–15 hh',
+    heightVal:14.2, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'warm',
+    colors:['Chestnut/Sorrel with Flaxen Mane & Tail (always)'],
+    colorHex:['#CD853F','#E8C97D','#B8772A'],
+    temperament:'Calm, friendly, and willing. Haflingers are known for their excellent temperament — easy-going, versatile, and wonderful with new riders.',
+    uses:['Trail & Trekking','Therapeutic Riding','Pleasure Driving','Light Farm Work','Dressage','Children Riding'],
+    traits:['Always chestnut to liver chestnut with a flaxen (blonde) mane and tail','Compact, muscular build with a broad forehead and large, kind eyes','Extremely hardy with good hooves — thrives in mountain environments','Easy keeper — efficient with feed'],
+    superpower:'Golden Mountain Explorer',
+    funFact:'Every registered Haflinger alive today traces back to a single foundation stallion named Folie, born in 1874 in the South Tyrolean village of Hafling, Austria.',
+    didYouKnow:"The breed's motto is 'A noble friend, a reliable partner' — Haflingers are used worldwide for therapeutic riding programs due to their calm, forgiving nature.",
+    similar:['Fjord','Norwegian Fjord','Belgian (coloring similarity)'],
+    newRider:5, rarity:5,
+    tags:['pony','european']
+  },
+  {
+    id:'miniature-horse', name:'Miniature Horse', img:'images/breeds/miniature-horse.png',
+    origin:'United States (developed from multiple breeds)', originRegion:'american', height:'Under 8.2–9.2 hh',
+    heightVal:8, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'warm',
+    colors:['Any Color or Pattern'],
+    colorHex:['#8B4513','#1a1a1a','#ffffff','#D2691E','#F4D06F','#A8A8A8'],
+    temperament:'Friendly, curious, and intelligent. Miniature Horses are social animals that form strong bonds with people and other animals.',
+    uses:['Companion Animal','Showing','Miniature Driving','Therapy Animals','Guide Animals for the Visually Impaired'],
+    traits:['Horse-like proportions (distinct from stocky pony build)','Under 34 inches (AMHA) or 38 inches (AMHR) at the withers','Can be trained as guide animals — similar to guide dogs','Requires horse care, diet, and medical attention despite small size'],
+    superpower:'Pocket-Sized Companion',
+    funFact:'Miniature Horses can be trained and certified as guide animals for people with visual impairments — their small size allows them to enter stores, offices, and even aircraft.',
+    didYouKnow:"Despite their size, Miniature Horses require the same veterinary care as full-sized horses — including farrier visits, dental care, and vaccinations. They're not low-maintenance pets.",
+    similar:['Falabella','Shetland Pony'],
+    newRider:4, rarity:6,
+    tags:['pony','american']
+  },
+  {
+    id:'missouri-fox-trotter', name:'Missouri Fox Trotter', img:'images/breeds/missouri-fox-trotter.png',
+    origin:'United States (Missouri Ozarks)', originRegion:'american', height:'14–16 hh',
+    heightVal:15, category:'light', gaited:true, draft:false, pony:false,
+    bloodType:'warm',
+    colors:['Sorrel','Chestnut','Bay','Black','Grey','Roan','Pinto'],
+    colorHex:['#CD853F','#D2691E','#8B4513','#1a1a1a','#A8A8A8','#B5936A','#ffffff'],
+    temperament:'Calm, willing, and sensible. The Missouri Fox Trotter is renowned for its easy-going nature and sure-footedness over rough terrain.',
+    uses:['Trail Riding','Endurance','Ranch Work','Pleasure Riding','Competitive Trail'],
+    traits:['Distinctive fox trot gait — front foot lands, then the diagonal hind foot, creating a rhythmic broken diagonal pattern','Smooth, four-beat movement that is extremely comfortable to ride','Naturally sure-footed on rough Ozark terrain','Nodding head motion while gaiting'],
+    superpower:'Smooth Ozark Trail Cruiser',
+    funFact:"The fox trot gait developed naturally in the rugged Ozark hill country — horses needed a smooth, energy-efficient gait they could maintain for hours over rough ground, and the fox trot became perfect for that purpose.",
+    didYouKnow:'The Missouri Fox Trotter can maintain its smooth fox trot gait for hours at 5–8 mph, covering enormous distances without tiring — making it a favorite for U.S. Forest Service rangers.',
+    similar:['Tennessee Walking Horse','Rocky Mountain Horse','Kentucky Mountain Saddle Horse'],
+    newRider:5, rarity:4,
+    tags:['light','gaited','american']
+  },
+  {
+    id:'morgan', name:'Morgan', img:'images/breeds/morgan.png',
+    origin:'United States (Vermont)', originRegion:'american', height:'14.1–15.2 hh',
+    heightVal:14.3, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'warm',
+    colors:['Bay','Black','Chestnut','Grey','Dun','Palomino','Buckskin','Roan'],
+    colorHex:['#8B4513','#1a1a1a','#D2691E','#A8A8A8','#C8A96D','#F4D06F','#D4B483','#B5936A'],
+    temperament:"Willing, intelligent, and spirited but gentle. Morgans are known for their enthusiasm, loyalty, and versatility — they try hard for their riders.",
+    uses:['Pleasure Riding','Trail','Western','English','Driving','Endurance','Ranch'],
+    traits:['Compact, muscular build with an arched, crested neck','Expressive eyes and refined head','Known as easy keepers — efficient with feed and hardy','All modern Morgans trace to one foundation sire'],
+    superpower:"America's First True Breed",
+    funFact:"All Morgans trace to a single foundation stallion — a small bay horse named Figure (later called Justin Morgan) born around 1789 in Vermont. He was reportedly given to a schoolteacher, Justin Morgan, as payment for a debt.",
+    didYouKnow:"Justin Morgan, the foundation sire, was famous for outpulling draft horses and outrunning Thoroughbreds in the same day — all while being a small, plain-looking horse.",
+    similar:['Quarter Horse','Thoroughbred','American Saddlebred'],
+    newRider:4, rarity:5,
+    tags:['light','american']
+  },
+  {
+    id:'mustang', name:'Mustang', img:'images/breeds/mustang.png',
+    origin:'United States (feral, Spanish descent)', originRegion:'american', height:'13.2–15 hh',
+    heightVal:14.2, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'hot',
+    colors:['Any Color or Pattern'],
+    colorHex:['#8B4513','#D2691E','#1a1a1a','#A8A8A8','#C8A96D','#B5936A'],
+    temperament:'Independent, intelligent, and highly adaptable. Wild-caught Mustangs require patient, skilled training. Trained Mustangs can be extremely loyal and athletic.',
+    uses:['Trail Riding (trained)','Endurance (trained)','Ranch Work (trained)','Wild (untrained)'],
+    traits:['Tough, naturally hard hooves that rarely need shoes','Extraordinary stamina and survival instincts','Compact, efficient build shaped by natural selection','Highly variable appearance due to diverse ancestry'],
+    superpower:'Born Survivor',
+    funFact:'Mustangs are not truly "wild" horses — they are feral descendants of horses brought to North America by Spanish conquistadors in the 1500s. Anyone can adopt a Mustang through the Bureau of Land Management (BLM).',
+    didYouKnow:'The BLM manages over 80,000 wild horses on public lands in the American West. Mustang adoption and purchase programs help reduce herd sizes while giving these horses new homes.',
+    similar:['Spanish Mustang','Quarter Horse','Criollo'],
+    newRider:1, rarity:7,
+    tags:['light','american']
+  },
+  {
+    id:'national-show-horse', name:'National Show Horse', img:'images/breeds/national-show-horse.png',
+    origin:'United States', originRegion:'american', height:'15–16.3 hh',
+    heightVal:15.3, category:'light', gaited:true, draft:false, pony:false,
+    bloodType:'hot',
+    colors:['Bay','Black','Chestnut','Grey','Roan','Pinto'],
+    colorHex:['#8B4513','#1a1a1a','#D2691E','#A8A8A8','#B5936A','#ffffff'],
+    temperament:'Spirited, animated, and intelligent. The National Show Horse combines Arabian elegance with Saddlebred showmanship.',
+    uses:['Show Ring (Saddle Seat)','Fine Harness','Country Pleasure','Halter Classes'],
+    traits:['Refined Arabian features combined with Saddlebred animation','Elevated, showy movement','Elegant, arched neck and expressive eyes','High tail carriage and presence'],
+    superpower:'Arabian Elegance Meets Saddlebred Flair',
+    funFact:'The National Show Horse breed was officially recognized in 1981 as a cross between the Arabian and American Saddlebred — combining the refinement of the desert with the flashiness of the show ring.',
+    didYouKnow:'National Show Horses compete in the same show classes as American Saddlebreds but bring an added level of Arabian-influenced elegance and refinement.',
+    similar:['American Saddlebred','Arabian'],
+    newRider:2, rarity:3,
+    tags:['light','gaited','american']
+  },
+  {
+    id:'percheron', name:'Percheron', img:'images/breeds/percheron.png',
+    origin:'France (Perche region)', originRegion:'european', height:'16.2–17.3 hh',
+    heightVal:17, category:'draft', gaited:false, draft:true, pony:false,
+    bloodType:'cold',
+    colors:['Grey','Black','Bay','Roan'],
+    colorHex:['#A8A8A8','#1a1a1a','#8B4513','#B5936A'],
+    temperament:'Intelligent, willing, and energetic for a draft breed. Percherons have a livelier personality than many other draft horses, thanks to their Arabian influence.',
+    uses:['Farm & Agricultural Work','Logging','Horse Pulling Competitions','Pleasure Driving','Showing'],
+    traits:['Clean legs with minimal feathering (unlike Clydesdales and Shires)','Slightly dished face suggesting Arabian influence','More animated, energetic movement than typical draft breeds','Excellent stamina for heavy work'],
+    superpower:'Elegant Heavy Mover',
+    funFact:'More Percherons were exported to the United States in the late 1800s than any other draft breed. At the peak of their popularity, over 70,000 were registered in America.',
+    didYouKnow:"Percherons were historically used as war horses for French knights, and their Arabian blood (introduced centuries ago) gives them a more refined head and livelier disposition than other draft breeds.",
+    similar:['Belgian','Clydesdale','Shire'],
+    newRider:4, rarity:4,
+    tags:['draft','european']
+  },
+  {
+    id:'poa', name:'Pony of the Americas (POA)', img:'images/breeds/poa-pony.png',
+    origin:'United States (Iowa)', originRegion:'american', height:'11.2–14 hh',
+    heightVal:13, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'warm',
+    colors:['Appaloosa Patterns Required (Leopard, Blanket, Snowflake, etc.)'],
+    colorHex:['#ffffff','#8B4513','#D2691E','#A8A8A8'],
+    temperament:'Gentle, versatile, and wonderful with children. The POA was specifically developed as a youth performance pony.',
+    uses:['Youth Western Showing','Youth English Showing','Youth Horse Programs','Trail Riding','Pleasure'],
+    traits:["Appaloosa spotting pattern must be visible at 40 feet in daylight — it's a breed requirement",'Between Shetland and Arabian proportions — refined but sturdy','Blend of Shetland Pony, Arabian, and Appaloosa bloodlines','Perfect size for youth riders transitioning from small ponies to horses'],
+    superpower:'Youth Champion Spotter',
+    funFact:"The POA breed was founded in 1954 when a Shetland stallion was bred to an Appaloosa mare in Mason City, Iowa. The striking spotted foal became the foundation stallion 'Black Hand #1.'",
+    didYouKnow:"The POA is one of the most popular youth show ponies in America. Many young riders have learned horsemanship skills on these gentle, versatile spotted ponies.",
+    similar:['Appaloosa','Shetland Pony','Quarter Horse (for build)'],
+    newRider:5, rarity:5,
+    tags:['pony','american']
+  },
+  {
+    id:'rocky-mountain', name:'Rocky Mountain Horse', img:'images/breeds/rocky-mountain-horse.png',
+    origin:'United States (Eastern Kentucky)', originRegion:'american', height:'14.2–16 hh',
+    heightVal:15, category:'light', gaited:true, draft:false, pony:false,
+    bloodType:'warm',
+    colors:['Chocolate with Flaxen Mane & Tail (iconic)','All Solid Colors'],
+    colorHex:['#3D2010','#E8D08A','#8B4513','#1a1a1a','#A8A8A8'],
+    temperament:"Exceptionally calm, gentle, and willing. The Rocky Mountain Horse is known for one of the kindest, most relaxed temperaments of any gaited breed — often called 'bombproof.'",
+    uses:['Trail Riding','Mountain Trekking','Therapeutic Riding','Pleasure Riding','Endurance'],
+    traits:['Natural four-beat ambling gait called the "single-foot" — extremely smooth and comfortable','The iconic chocolate/flaxen coloring is highly prized but not required','Wide, sure hooves built for mountain terrain','Natural easy keeper — efficient with feed'],
+    superpower:'Silky Smooth Mountain Pacer',
+    funFact:"The Rocky Mountain Horse traces to a single foundation sire simply called 'the Rocky Mountain Horse' — a chocolate-colored stallion from the Appalachian foothills of Kentucky whose origins remain unknown.",
+    didYouKnow:"The Rocky Mountain Horse Association maintains strict breed standards — all registered horses must perform the natural ambling gait, and horses with anxiety or poor temperament can be refused registration.",
+    similar:['Missouri Fox Trotter','Tennessee Walking Horse','Kentucky Mountain Saddle Horse'],
+    newRider:5, rarity:4,
+    tags:['light','gaited','american']
+  },
+  {
+    id:'shetland', name:'Shetland Pony', img:'images/breeds/shetland-pony.png',
+    origin:'Shetland Islands, Scotland', originRegion:'european', height:'Up to 10.2 hh',
+    heightVal:10, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'cold',
+    colors:['Any Color Including Pinto Patterns'],
+    colorHex:['#1a1a1a','#8B4513','#D2691E','#ffffff','#A8A8A8','#B5936A'],
+    temperament:'Intelligent, independent, and sometimes strong-willed. Shetlands are clever ponies that can test their handlers — they respect consistent, confident leadership.',
+    uses:["Children's Riding","Driving","Showing","Companionship","Youth Horse Programs"],
+    traits:['Proportionally the strongest breed — can carry up to one-third of their body weight','Double coat for cold weather — dense undercoat with longer outer coat','Thick, abundant mane and forelock','Historically used as pit ponies in coal mines due to their strength and small size'],
+    superpower:'Pound-for-Pound Strongest Horse',
+    funFact:"Shetland Ponies are proportionally the strongest of all horse breeds. In the 1800s, thousands of Shetlands worked as pit ponies in English coal mines — some never saw sunlight their entire working lives.",
+    didYouKnow:"The harsh, treeless Shetland Islands where these ponies evolved receives only 6 hours of daylight in winter. Thousands of years of natural selection created a uniquely hardy, efficient, and tough little horse.",
+    similar:['Miniature Horse','Falabella','Welsh Pony'],
+    newRider:3, rarity:6,
+    tags:['pony','european']
+  },
+  {
+    id:'shire', name:'Shire', img:'images/breeds/shire.png',
+    origin:'England', originRegion:'european', height:'16.2–18+ hh',
+    heightVal:18, category:'draft', gaited:false, draft:true, pony:false,
+    bloodType:'cold',
+    colors:['Bay','Brown','Black','Grey'],
+    colorHex:['#8B4513','#5C3D2E','#1a1a1a','#A8A8A8'],
+    temperament:'Extremely gentle, calm, and patient. Often called "gentle giants" — despite being the world\'s tallest breed, Shires are remarkably easy to handle.',
+    uses:['Farm & Agricultural Work','Logging','Showing & Parades','Pleasure Driving','Brewery & Delivery Work (historical)'],
+    traits:['Tallest and one of the heaviest horse breeds in the world','Abundant silky feathering on legs','Broad, flat feet designed for pulling heavy loads','Large, kind eyes and a gentle expression'],
+    superpower:'Gentle Giant of the Horse World',
+    funFact:"A Shire named Sampson (later renamed Mammoth), born in 1846, holds the world record for tallest horse ever recorded at 21.2½ hands — that's 7 feet 2.5 inches at the shoulder.",
+    didYouKnow:"Shires were once so essential to British brewing that Whitbread, Courage, and other major breweries maintained large Shire horse teams to pull their delivery wagons through city streets.",
+    similar:['Clydesdale','Belgian','Percheron'],
+    newRider:4, rarity:3,
+    tags:['draft','european']
+  },
+  {
+    id:'standardbred', name:'Standardbred', img:'images/breeds/standardbred.png',
+    origin:'United States', originRegion:'american', height:'14.1–17 hh',
+    heightVal:15.5, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'warm',
+    colors:['Bay','Brown','Black','Grey','Chestnut','Roan'],
+    colorHex:['#8B4513','#5C3D2E','#1a1a1a','#A8A8A8','#D2691E','#B5936A'],
+    temperament:'Calm, sensible, and willing. Standardbreds are often described as the more laid-back cousin of the Thoroughbred — athletic but easy-going.',
+    uses:['Harness Racing (Trotting & Pacing)','Pleasure Riding','Trail Riding','Show Jumping (second career)'],
+    traits:['Naturally either a trotter or a pacer — the gait type is inherited','Longer, lower body than the Thoroughbred','Powerful hindquarters built for sustained trot speed','Many retired racehorses make excellent pleasure horses'],
+    superpower:'Harness Racing Specialist',
+    funFact:'Standardbreds are named because early breed standards required horses to cover a mile in a "standard" time (2 minutes 30 seconds) in order to be registered in the studbook.',
+    didYouKnow:"All Standardbreds trace to a Thoroughbred stallion named Hambletonian 10, born in 1849. Over 99% of all modern Standardbreds descend from this one horse.",
+    similar:['Thoroughbred','Morgan','American Saddlebred'],
+    newRider:4, rarity:5,
+    tags:['light','american']
+  },
+  {
+    id:'tenn-walking', name:'Tennessee Walking Horse', img:'images/breeds/tennessee-walking-horse.png',
+    origin:'United States (Tennessee)', originRegion:'american', height:'14.3–17 hh',
+    heightVal:15.5, category:'light', gaited:true, draft:false, pony:false,
+    bloodType:'warm',
+    colors:['Any Color','Black','Bay','Chestnut','Roan','Grey','Pinto'],
+    colorHex:['#1a1a1a','#8B4513','#D2691E','#B5936A','#A8A8A8','#ffffff'],
+    temperament:"Calm, gentle, and willing — often called the 'Cadillac of horses' for their smooth ride and easy temperament. Excellent for new riders and older riders.",
+    uses:['Trail Riding','Pleasure Riding','Show Ring (Plantation Classes)','Endurance','Therapy'],
+    traits:['Running walk — a natural four-beat gait that can reach 10–20 mph without bouncing the rider','Overstride — hind foot lands 6–18 inches ahead of where the front foot left the ground','Head nods in rhythm with the gait','Foals can perform the running walk within hours of birth'],
+    superpower:'Smooth Ride Specialist',
+    funFact:'The Tennessee Walking Horse running walk is an inherited gait — foals can perform it naturally within hours of birth without any training whatsoever.',
+    didYouKnow:'Plantation owners in the antebellum South prized Walking Horses for their smooth running walk — they could ride for hours overseeing fields without the jarring bounce of a trot.',
+    similar:['Missouri Fox Trotter','Rocky Mountain Horse','Paso Fino'],
+    newRider:5, rarity:6,
+    tags:['light','gaited','american']
+  },
+  {
+    id:'thoroughbred', name:'Thoroughbred', img:'images/breeds/thoroughbred.png',
+    origin:'England', originRegion:'european', height:'15.2–17 hh',
+    heightVal:16, category:'light', gaited:false, draft:false, pony:false,
+    bloodType:'hot',
+    colors:['Bay','Chestnut','Grey','Black','Roan'],
+    colorHex:['#8B4513','#D2691E','#A8A8A8','#1a1a1a','#B5936A'],
+    temperament:'Highly spirited, sensitive, and intelligent. Thoroughbreds are bred for maximum athletic performance — they are responsive and energetic horses that require experienced handling.',
+    uses:['Horse Racing','Eventing (Cross-Country, Dressage, Show Jumping)','Show Jumping','Polo','Fox Hunting'],
+    traits:['Lean, athletic build with deep chest and long legs','Thin skin — veins and muscles clearly visible','Built for pure speed over distance','Off-track Thoroughbreds (OTTBs) are increasingly popular for second careers'],
+    superpower:'Pure Speed Machine',
+    funFact:'All Thoroughbreds trace to three foundation sires imported to England: the Byerley Turk (1680s), the Darley Arabian (1704), and the Godolphin Arabian (1729).',
+    didYouKnow:"A Thoroughbred's heart can pump up to 75 gallons of blood per minute during a race — about 5× the resting rate. The legendary racehorse Secretariat had a heart estimated at 2.5× normal size.",
+    similar:['Arabian','Standardbred','Anglo-Arabian'],
+    newRider:1, rarity:7,
+    tags:['light','european','american']
+  },
+  {
+    id:'welsh-pony', name:'Welsh Pony', img:'images/breeds/welsh-pony.png',
+    origin:'Wales, United Kingdom', originRegion:'european', height:'Under 12–13.2+ hh',
+    heightVal:12.5, category:'pony', gaited:false, draft:false, pony:true,
+    bloodType:'warm',
+    colors:['Any Solid Color (not piebald or skewbald in pure Welsh)'],
+    colorHex:['#8B4513','#1a1a1a','#A8A8A8','#D2691E','#F4D06F','#B5936A'],
+    temperament:'Spirited, intelligent, and kind. Welsh Ponies have an appealing combination of pony hardiness, Arabian refinement, and willing temperament.',
+    uses:["Children's Show Ponies",'Driving','Jumping','Pleasure Riding','Trail','Youth Horse Programs'],
+    traits:['Comes in four sections: A (mountain pony), B (riding pony), C (Welsh Pony Cob type), D (Welsh Cob — can carry adults)','Beautiful, slightly dished face with large eyes suggesting Arabian influence','Elegant, animated movement','Hardy and easy to keep'],
+    superpower:'The Perfect All-Round Pony',
+    funFact:'The Welsh Pony has four distinct sections (A, B, C, and D) with different size ranges and uses. Section D Welsh Cobs are powerful enough to carry adult riders in competitive events.',
+    didYouKnow:"Welsh mountain ponies have roamed the hills of Wales for over 1,000 years. Julius Caesar is said to have been so impressed by Welsh horses that he took some back to Rome.",
+    similar:['Hackney Pony','Connemara','Shetland Pony'],
+    newRider:4, rarity:5,
+    tags:['pony','european']
+  }
+];
+
+// ═══════════════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════════════
+let currentFilter = 'all';
+let currentSort   = 'az';
+let newRiderOnly  = false;
+let searchQuery   = '';
+let favorites     = JSON.parse(localStorage.getItem('eq_favs') || '[]');
+let viewed        = JSON.parse(localStorage.getItem('eq_viewed') || '[]');
+let compareList   = [];
+let activeModal   = null;
+let quizStep      = 0;
+let quizAnswers   = {};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// RENDER GRID
+// ═══════════════════════════════════════════════════════════════════════════
+function getFiltered() {
+  let list = BREEDS.slice();
+  if (currentFilter === 'all') { /* no filter */ }
+  else if (currentFilter === 'favorites') { list = list.filter(b => favorites.includes(b.id)); }
+  else if (currentFilter === 'light')    { list = list.filter(b => b.category === 'light' && !b.pony && !b.draft); }
+  else if (currentFilter === 'draft')    { list = list.filter(b => b.draft); }
+  else if (currentFilter === 'pony')     { list = list.filter(b => b.pony); }
+  else if (currentFilter === 'gaited')   { list = list.filter(b => b.gaited); }
+  else if (currentFilter === 'american') { list = list.filter(b => b.tags.includes('american')); }
+  else if (currentFilter === 'european') { list = list.filter(b => b.tags.includes('european')); }
+  if (newRiderOnly) list = list.filter(b => b.newRider >= 4);
+  if (searchQuery)  list = list.filter(b =>
+    b.name.toLowerCase().includes(searchQuery) ||
+    b.origin.toLowerCase().includes(searchQuery) ||
+    b.temperament.toLowerCase().includes(searchQuery) ||
+    b.uses.some(u => u.toLowerCase().includes(searchQuery))
+  );
+  const sort = currentSort;
+  if (sort === 'az')         list.sort((a,b) => a.name.localeCompare(b.name));
+  else if (sort === 'za')    list.sort((a,b) => b.name.localeCompare(a.name));
+  else if (sort === 'size-asc')  list.sort((a,b) => a.heightVal - b.heightVal);
+  else if (sort === 'size-desc') list.sort((a,b) => b.heightVal - a.heightVal);
+  else if (sort === 'newRider')  list.sort((a,b) => b.newRider - a.newRider);
+  return list;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('breed-grid');
+  const list = getFiltered();
+  document.getElementById('results-count').textContent = list.length + ' breed' + (list.length!==1?'s':'');
+  if (!list.length) {
+    grid.innerHTML = '<div class="no-results">No breeds match your search. Try adjusting your filters!</div>';
+    return;
+  }
+  grid.innerHTML = list.map(b => {
+    const isFav  = favorites.includes(b.id);
+    const isView = viewed.includes(b.id);
+    const inComp = compareList.includes(b.id);
+    const stars  = [1,2,3,4,5].map(i => `<span class="star${i<=b.newRider?' filled':''}">${i<=b.newRider?'★':'☆'}</span>`).join('');
+    const tagHtml = b.draft ? '<span class="tag tag-draft">Draft</span>' :
+                   b.pony  ? '<span class="tag tag-pony">Pony</span>' :
+                   b.gaited? '<span class="tag tag-cat">Gaited</span>' :
+                              '<span class="tag tag-cat">Light Horse</span>';
+    return `
+<div class="breed-card fade-in${isView?' viewed':''}${isFav?' favorited':''}" data-id="${b.id}" onclick="openBreed('${b.id}')">
+  <div class="card-img-wrap">
+    <img src="${b.img}" alt="${b.name}" loading="lazy" onerror="this.style.display='none'">
+    <div class="card-superpower">${b.superpower}</div>
+  </div>
+  <div class="card-body">
+    <div class="card-top">
+      <div class="card-name">${b.name}</div>
+      <button class="fav-btn" onclick="event.stopPropagation();toggleFav('${b.id}')" title="${isFav?'Remove from favorites':'Save to favorites'}">${isFav?'Saved':'Save'}</button>
+    </div>
+    <div class="card-origin">${b.origin}</div>
+    <div class="card-tags">${tagHtml}${b.gaited&&!b.draft?'<span class="tag tag-gaited">Gaited</span>':''}</div>
+    <div class="card-stars" title="New rider suitability: ${b.newRider}/5">${stars}</div>
+  </div>
+  <div class="card-footer">
+    <span class="card-height">⬆ ${b.height}</span>
+    <span class="card-open">Explore →</span>
+  </div>
+</div>`;
+  }).join('');
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.breed-card.fade-in').forEach((el,i) => {
+      setTimeout(() => el.classList.add('visible'), i * 40);
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODAL
+// ═══════════════════════════════════════════════════════════════════════════
+function openBreed(id) {
+  const b = BREEDS.find(x => x.id === id);
+  if (!b) return;
+  if (!viewed.includes(id)) {
+    viewed.push(id);
+    localStorage.setItem('eq_viewed', JSON.stringify(viewed));
+    updateDiscovery();
+    const card = document.querySelector('[data-id="'+id+'"]');
+    if (card) { card.classList.add('viewed','card-new'); }
+  }
+  const isFav = favorites.includes(id);
+  const inComp = compareList.includes(id);
+  const stars = [1,2,3,4,5].map(i => `<span class="b-star${i<=b.newRider?' filled':''}">★</span>`).join('');
+  const colorDots = b.colorHex.map((hex,i) => `<span class="color-dot" data-color="${hex}" title="${b.colors[i]||''}"></span>`).join('');
+  const similar = b.similar.map(s => `<button class="similar-chip" onclick="findAndOpen('${s}')">${s}</button>`).join('');
+  document.getElementById('modal-content').innerHTML = `
+<img class="modal-img" src="${b.img}" alt="${b.name}" onerror="this.style.display='none'">
+<div class="modal-close-row">
+  <button class="modal-close-btn" onclick="closeModal()">✕</button>
+</div>
+<div class="modal-body">
+  <div class="modal-fav-row">
+    <button class="modal-fav-btn${isFav?' faved':''}" id="modal-fav-btn" onclick="toggleFav('${id}')">
+      ${isFav?'Saved':'Save Breed'}
+    </button>
+    <button class="modal-fav-btn${inComp?' faved':''}" onclick="toggleCompare('${id}')" id="modal-comp-btn">
+      ${inComp?'✓ In Compare':'⊕ Compare'}
+    </button>
+  </div>
+  <div class="modal-superpower">${b.superpower}</div>
+  <h2 class="modal-name">${b.name}</h2>
+  <div class="modal-origin">${b.origin}</div>
+
+  <div class="modal-section">
+    <div class="modal-section-title">At a Glance</div>
+    <div class="stat-grid">
+      <div class="stat-item"><div class="stat-label">Height</div><div class="stat-value">${b.height}</div></div>
+      <div class="stat-item"><div class="stat-label">Origin</div><div class="stat-value">${b.origin}</div></div>
+      <div class="stat-item"><div class="stat-label">Type</div><div class="stat-value">${b.draft?'Draft Horse':b.pony?'Pony':b.gaited?'Gaited Horse':'Light Horse'}</div></div>
+      <div class="stat-item"><div class="stat-label">New Rider Fit</div><div class="new-rider-stars">${stars}</div></div>
+    </div>
+  </div>
+
+  <div class="modal-section">
+    <div class="modal-section-title">Common Colors</div>
+    <div class="color-dots">${colorDots}</div>
+    <div class="modal-colors-text">${b.colors.join(' ?? ')}</div>
+  </div>
+
+  <div class="modal-section">
+    <div class="modal-section-title">Temperament</div>
+    <p class="modal-text">${b.temperament}</p>
+  </div>
+
+  <div class="modal-section">
+    <div class="modal-section-title">Primary Uses</div>
+    <div class="modal-tags">${b.uses.map(u=>`<span class="modal-tag">${u}</span>`).join('')}</div>
+  </div>
+
+  <div class="modal-section">
+    <div class="modal-section-title">Distinctive Traits</div>
+    <ul class="modal-traits-list">
+      ${b.traits.map(t=>`<li>${t}</li>`).join('')}
+    </ul>
+  </div>
+
+  <div class="modal-section">
+    <div class="funfact-box">
+      <div class="funfact-label">⭐ Fun Fact</div>
+      <p>${b.funFact}</p>
+    </div>
+    <div class="didyouknow-box">
+      <div class="dy-label">Did You Know?</div>
+      <p>${b.didYouKnow}</p>
+    </div>
+  </div>
+
+  <div class="modal-section">
+    <div class="modal-section-title">Similar Breeds</div>
+    <div class="similar-breeds">${similar}</div>
+  </div>
+
+  <div class="modal-section">
+    <div class="modal-section-title">Popularity</div>
+    <div class="rarity-bar-wrap">
+      <div class="rarity-bar"><div class="rarity-fill" data-rarity="${b.rarity}"></div></div>
+      <span class="rarity-label">${b.rarity>=9?'Very Common':b.rarity>=7?'Common':b.rarity>=5?'Moderately Common':b.rarity>=3?'Less Common':'Rare'}</span>
+    </div>
+  </div>
+</div>`;
+  document.querySelectorAll('#modal-content .color-dot[data-color]').forEach(dot => {
+    dot.style.setProperty('--dot-color', dot.dataset.color);
+  });
+  const rarityFill = document.querySelector('#modal-content .rarity-fill[data-rarity]');
+  if (rarityFill) {
+    rarityFill.style.setProperty('--rarity-width', (Number(rarityFill.dataset.rarity) * 10) + '%');
+  }
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  activeModal = id;
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  activeModal = null;
+}
+
+function findAndOpen(name) {
+  const b = BREEDS.find(x => x.name.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(x.name.toLowerCase()));
+  if (b) { closeModal(); setTimeout(()=>openBreed(b.id),300); }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FAVORITES & COMPARE
+// ═══════════════════════════════════════════════════════════════════════════
+function toggleFav(id) {
+  const idx = favorites.indexOf(id);
+  if (idx === -1) favorites.push(id); else favorites.splice(idx,1);
+  localStorage.setItem('eq_favs', JSON.stringify(favorites));
+  renderGrid();
+  if (activeModal === id) {
+    const btn = document.getElementById('modal-fav-btn');
+    if (btn) { const isFav = favorites.includes(id); btn.className='modal-fav-btn'+(isFav?' faved':''); btn.textContent=isFav?'Saved':'Save Breed'; }
+  }
+}
+
+function toggleCompare(id) {
+  if (compareList.includes(id)) {
+    compareList = compareList.filter(x=>x!==id);
+  } else if (compareList.length < 2) {
+    compareList.push(id);
+  } else {
+    alert('You can only compare 2 breeds at a time. Remove one first.');
+    return;
+  }
+  updateCompareBar();
+  if (activeModal === id) {
+    const btn = document.getElementById('modal-comp-btn');
+    if (btn) { const inC = compareList.includes(id); btn.textContent=inC?'✓ In Compare':'⊕ Compare'; }
+  }
+}
+
+function updateCompareBar() {
+  const bar = document.getElementById('compare-bar');
+  bar.classList.toggle('visible', compareList.length > 0);
+  const slots = document.getElementById('compare-slots');
+  slots.innerHTML = compareList.map(id => {
+    const b = BREEDS.find(x=>x.id===id);
+    return `<div class="compare-slot"><img src="${b.img}" alt="${b.name}"><span class="slot-remove" onclick="toggleCompare('${id}')">✕</span></div>`;
+  }).join('');
+  if (compareList.length < 2) {
+    const empty = 2 - compareList.length;
+    for (let i=0;i<empty;i++) slots.innerHTML += `<div class="compare-slot">+ Add</div>`;
+  }
+  document.getElementById('compare-go-btn').disabled = compareList.length < 2;
+}
+
+function clearCompare() { compareList=[]; updateCompareBar(); }
+
+function openCompareModal() {
+  if (compareList.length < 2) return;
+  const [a,b_] = compareList.map(id => BREEDS.find(x=>x.id===id));
+  const rows = [
+    {label:'Height',   va:a.height,        vb:b_.height},
+    {label:'Origin',   va:a.origin,        vb:b_.origin},
+    {label:'Type',     va:a.draft?'Draft':a.pony?'Pony':a.gaited?'Gaited':'Light', vb:b_.draft?'Draft':b_.pony?'Pony':b_.gaited?'Gaited':'Light'},
+    {label:'Superpower',va:a.superpower,   vb:b_.superpower},
+    {label:'Uses',     va:a.uses.slice(0,3).join(', '), vb:b_.uses.slice(0,3).join(', ')},
+    {label:'Temperament',va:a.temperament.split('.')[0]+'.', vb:b_.temperament.split('.')[0]+'.'},
+    {label:'New Rider Fit', va:'★'.repeat(a.newRider)+'☆'.repeat(5-a.newRider), vb:'★'.repeat(b_.newRider)+'☆'.repeat(5-b_.newRider)},
+  ];
+  document.getElementById('compare-modal-body').innerHTML = `
+<div class="compare-cols">
+  <div><img class="compare-col-img" src="${a.img}" alt="${a.name}"><div class="compare-col-name">${a.name}</div><div class="compare-col-origin">${a.origin}</div></div>
+  <div><img class="compare-col-img" src="${b_.img}" alt="${b_.name}"><div class="compare-col-name">${b_.name}</div><div class="compare-col-origin">${b_.origin}</div></div>
+</div>
+<div class="compare-table-wrap">
+  ${rows.map(r=>`<div class="compare-row"><span class="compare-row-label">${r.label}</span><span class="compare-row-val">${r.va}</span><span class="compare-row-val">${r.vb}</span></div>`).join('')}
+</div>`;
+  document.getElementById('compare-modal-overlay').classList.add('open');
+}
+function closeCompareModal() { document.getElementById('compare-modal-overlay').classList.remove('open'); }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DISCOVERY TRACKER
+// ═══════════════════════════════════════════════════════════════════════════
+function updateDiscovery() {
+  const pct = Math.round((viewed.length / BREEDS.length) * 100);
+  document.getElementById('disc-fill').style.width = pct + '%';
+  document.getElementById('disc-count').textContent = viewed.length + ' / ' + BREEDS.length;
+  const ponyIds  = BREEDS.filter(b=>b.pony).map(b=>b.id);
+  const draftIds = BREEDS.filter(b=>b.draft).map(b=>b.id);
+  const gaitIds  = BREEDS.filter(b=>b.gaited).map(b=>b.id);
+  if (ponyIds.every(id=>viewed.includes(id)))  document.getElementById('badge-pony').classList.add('earned');
+  if (draftIds.every(id=>viewed.includes(id))) document.getElementById('badge-draft').classList.add('earned');
+  if (gaitIds.every(id=>viewed.includes(id)))  document.getElementById('badge-gaited').classList.add('earned');
+  if (viewed.length === BREEDS.length)          document.getElementById('badge-all').classList.add('earned');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// QUIZ
+// ═══════════════════════════════════════════════════════════════════════════
+const QUIZ = [
+  {q:'What type of riding appeals to you most?',
+   opts:[{t:'Trail riding through nature',v:'trail'},{t:'Competitive showing',v:'show'},{t:'Speed — racing or fast riding',v:'speed'},{t:'Just hanging out and bonding with a horse',v:'calm'}]},
+  {q:'How do you handle exciting or unpredictable situations?',
+   opts:[{t:'I stay calm and handle it',v:'calm'},{t:'I get excited — bring it on!',v:'speed'},{t:'I prefer things to be predictable',v:'trail'},{t:'I like some energy but not chaos',v:'show'}]},
+  {q:"What's most important to you in a horse?",
+   opts:[{t:'Smooth, comfortable gait',v:'trail'},{t:'Beautiful appearance',v:'show'},{t:'Athletic performance',v:'speed'},{t:'Gentle, loving personality',v:'calm'}]},
+  {q:'Pick a landscape:',
+   opts:[{t:'Rolling mountain trails',v:'trail'},{t:'A gleaming show arena',v:'show'},{t:'A wide-open racetrack',v:'speed'},{t:'A quiet green pasture',v:'calm'}]},
+  {q:'How much horse experience do you have?',
+   opts:[{t:'Just starting out',v:'calm'},{t:'A little experience and learning fast',v:'trail'},{t:'Comfortable in lessons or shows',v:'show'},{t:'Ready for a bigger challenge',v:'speed'}]}
+];
+
+const QUIZ_RESULTS = {
+  trail: {id:'fjord',      desc:"Like you, the Fjord is calm, sure-footed, and built for adventure. This ancient Norwegian breed will happily carry you through any terrain with a smile on its face."},
+  show:  {id:'friesian',   desc:"You appreciate beauty, elegance, and the spotlight — just like the magnificent Friesian. This stunning black breed turns heads everywhere it goes."},
+  speed: {id:'thoroughbred',desc:"You're a thrill-seeker with natural athletic ability. The Thoroughbred is built for pure performance — the fastest horse breed on earth."},
+  calm:  {id:'gypsy-vanner',desc:"Warm, gentle, and relationship-focused — you're a perfect match for the Gypsy Vanner. This beautiful family horse was bred to be kind, safe, and deeply connected to its people."}
+};
+
+function openQuiz() {
+  quizStep = 0; quizAnswers = {};
+  document.getElementById('quiz-overlay').classList.add('open');
+  renderQuizStep();
+}
+function closeQuiz() { document.getElementById('quiz-overlay').classList.remove('open'); }
+
+function renderQuizStep() {
+  const total = QUIZ.length;
+  const q = QUIZ[quizStep];
+  document.getElementById('quiz-content').innerHTML = `
+<div class="quiz-tag">Which Breed Are You?</div>
+<div class="quiz-title">Question ${quizStep+1} of ${total}</div>
+<div class="quiz-subtitle">Answer honestly — there's no wrong answer!</div>
+<div class="quiz-progress"><div class="quiz-progress-fill" data-progress="${((quizStep)/total)*100}"></div></div>
+<div class="quiz-question">${q.q}</div>
+<div class="quiz-options">${q.opts.map(o=>`<button class="quiz-option" onclick="answerQuiz('${o.v}')">${o.t}</button>`).join('')}</div>`;
+  const quizFill = document.querySelector('#quiz-content .quiz-progress-fill[data-progress]');
+  if (quizFill) {
+    quizFill.style.setProperty('--quiz-progress-width', quizFill.dataset.progress + '%');
+  }
+}
+
+function answerQuiz(val) {
+  quizAnswers[val] = (quizAnswers[val]||0)+1;
+  quizStep++;
+  if (quizStep < QUIZ.length) { renderQuizStep(); return; }
+  const best = Object.entries(quizAnswers).sort((a,b)=>b[1]-a[1])[0][0];
+  const res = QUIZ_RESULTS[best];
+  const breed = BREEDS.find(b=>b.id===res.id);
+  document.getElementById('quiz-content').innerHTML = `
+<div class="quiz-tag">Your Result!</div>
+<div class="quiz-result">
+  <img class="quiz-result-img" src="${breed.img}" alt="${breed.name}">
+  <div class="quiz-result-name">${breed.name}</div>
+  <div class="quiz-result-desc">${res.desc}</div>
+  <div class="quiz-result-actions">
+    <button class="btn-gold" onclick="closeQuiz();openBreed('${breed.id}')">Explore This Breed →</button>
+    <button class="btn-outline quiz-retake-btn" onclick="openQuiz()">Retake Quiz</button>
+  </div>
+</div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FILTERS & CONTROLS
+// ═══════════════════════════════════════════════════════════════════════════
+function openRandom() {
+  const b = BREEDS[Math.floor(Math.random()*BREEDS.length)];
+  openBreed(b.id);
+}
+
+document.getElementById('filter-row').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.filter;
+  renderGrid();
+});
+
+document.getElementById('breed-search').addEventListener('input', e => {
+  searchQuery = e.target.value.trim().toLowerCase();
+  renderGrid();
+});
+
+document.getElementById('breed-sort').addEventListener('change', e => {
+  currentSort = e.target.value;
+  renderGrid();
+});
+
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal(); closeQuiz(); closeCompareModal();
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INTERSECTION OBSERVER
+// ═══════════════════════════════════════════════════════════════════════════
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); fadeObs.unobserve(entry.target); }
+  });
+}, {threshold:0.08});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  renderGrid();
+  updateDiscovery();
+  updateCompareBar();
+  document.querySelectorAll('.fade-in:not(.breed-card)').forEach(el => fadeObs.observe(el));
+});
+</script>
+<script src="../../../assets/js/page-state.js"></script>
+</body>
+</html>

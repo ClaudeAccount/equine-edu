@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Test Your Knowledge — Hoof Care &amp; Farriery — Equine Edu</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
@@ -7,118 +8,534 @@
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
 <link rel="stylesheet" href="../../../../assets/css/game.css">
-</head><body class="ee-page-courses-schooling-ring-horse-care-hoof-care-farriery-9-test-your-knowledge">
-<div id="site-nav"></div><div id="course-breadcrumb"></div>
-<section class="lesson-hero hero-centered hero-bg hero-bg-quiz">
-  <div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text">
-    <div class="lesson-module-tag">Hoof Care &amp; Farriery</div>
-    <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
-    <p class="lesson-hero-desc">Each attempt draws 15 questions from a larger bank — answers rotate so repeated attempts are never the same quiz.</p>
-  </div></div>
+</head>
+<body class="ee-page-courses-schooling-ring-horse-care-hoof-care-farriery-9-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Hoof Care &amp;amp; Farriery</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
 </section>
 <div class="lesson-wrap">
-<main class="lesson-left">
-<section class="quiz-card" id="quiz-card">
-  <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
-  <div class="quiz-question" id="quiz-question"></div>
-  <div class="quiz-options" id="quiz-options"></div>
-  <div class="quiz-feedback" id="quiz-feedback"></div>
-  <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
-</section>
-<div class="quiz-score-panel" id="score-panel">
-  <div class="score-number" id="score-display">0/15</div>
-  <div class="score-label">Your Score</div>
-  <div class="score-message" id="score-message"></div>
-  <button class="btn-retake" id="btn-retake">Try Again</button>
-</div>
-</main>
-<aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside>
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
 </div>
 <div id="site-footer"></div>
-<script>
-(function(){
-const QC=15;
-const bank=[
-// Hoof Anatomy (10 questions)
-{q:"What is the primary function of the hoof wall?",opts:["To bear the horse's weight and protect the internal structures from the ground","To pump blood back up the leg with each step","To attach the coffin bone to the pastern","To absorb concussion in the heel region"],a:"To bear the horse's weight and protect the internal structures from the ground",ok:"Correct. The hoof wall is the hard, keratinous outer structure that contacts the ground, bears weight, and protects the sensitive internal structures.",no:"The hoof wall is the hard outer casing — it bears weight and contacts the ground. Blood pumping is a function of the frog, and concussion absorption in the heel is handled by the digital cushion."},
-{q:"What is the frog, and what is its role in hoof function?",opts:["The V-shaped structure in the center of the sole that absorbs shock and pumps blood up the leg","The white junction between the hoof wall and sole","The bony structure connected to the coffin bone at the heel","The growth center at the top of the hoof wall"],a:"The V-shaped structure in the center of the sole that absorbs shock and pumps blood up the leg",ok:"Correct. The frog is the V-shaped, rubbery structure in the center of the sole. It absorbs concussion and compresses blood vessels on each footfall, pumping venous blood back up the leg.",no:"The frog is the V-shaped structure in the center of the sole. Its two functions are absorbing concussion and pumping blood — when it contacts the ground, it compresses veins and returns blood up the lower leg."},
-{q:"The white line on the bottom of the hoof marks:",opts:["The junction between the outer wall and the inner sensitive structures — where farriers place nails","The boundary of the frog's attachment to the sole","The visible edge of the coffin bone through the hoof","The outer edge of the sole's protective layer"],a:"The junction between the outer wall and the inner sensitive structures — where farriers place nails",ok:"Correct. The white line is the wall-sole junction — the landmark farriers use to place nails inside it and avoid the sensitive laminae.",no:"The white line marks the junction of the outer wall and the sole. Nails placed inside this line are in the insensitive wall; nails outside it risk entering the sensitive structures."},
-{q:"The sensitive laminae are:",opts:["Interlocking tissue sheets that bond the coffin bone to the inner hoof wall","The blood vessels that supply the frog","The germinal cells at the coronary band that produce new horn","The fibro-fatty tissue in the heel that absorbs impact"],a:"Interlocking tissue sheets that bond the coffin bone to the inner hoof wall",ok:"Correct. The sensitive laminae interlock with insensitive laminae on the inside of the hoof wall to create the structural bond between the coffin bone and the hoof capsule.",no:"The sensitive laminae bond the coffin bone (P3) to the inner hoof wall through interlocking tissue. Inflammation of this tissue is laminitis — when the bond fails, the coffin bone can rotate or sink."},
-{q:"The coffin bone (P3) is:",opts:["The primary weight-bearing bone inside the hoof capsule, which can rotate during severe laminitis","The sesamoid bone that acts as a pulley for the DDFT at the back of the foot","The growth plate at the top of the hoof wall","The fibro-fatty structure that absorbs concussion in the heel"],a:"The primary weight-bearing bone inside the hoof capsule, which can rotate during severe laminitis",ok:"Correct. The coffin bone (third phalanx / P3) is the main bone inside the hoof. When laminitis destroys the laminar bond, P3 can rotate or sink within the hoof capsule.",no:"The coffin bone (P3) is the weight-bearing bone inside the hoof. The navicular bone is the pulley for the DDFT. When laminitis compromises the laminae, P3 loses its support and can rotate or sink."},
-{q:"The coronary band is:",opts:["The band of tissue at the top of the hoof wall where all hoof wall growth originates","The junction between the hoof wall and the pastern skin","The ring of blood vessels that supplies the laminae","The white marking visible at the top of the hoof on grey horses"],a:"The band of tissue at the top of the hoof wall where all hoof wall growth originates",ok:"Correct. All hoof wall grows from the coronary band downward. Injury to the coronary band can cause permanent defects in the growing hoof wall below it.",no:"The coronary band is the growth center at the hoof's upper margin. New wall grows from the coronary band downward at about 3/8 inch per month. Damage here can cause permanent wall defects."},
-{q:"A horse carries approximately what percentage of its total body weight on its front feet?",opts:["60%","50%","40%","70%"],a:"60%",ok:"Correct. Horses carry approximately 60% of their body weight on the front limbs — which is why front-foot conditions like navicular syndrome are more common than hind-foot problems.",no:"Horses carry approximately 60% of body weight on the front feet. This front-loading explains why front-foot conditions — navicular syndrome, coffin joint arthritis, and laminitis — are disproportionately common compared to hind-foot problems."},
-{q:"The digital cushion is:",opts:["A fibro-fatty structure in the heel area that absorbs concussive forces with each footfall","The cartilaginous plate between the coffin bone and navicular bone","The soft tissue that fills the space between the frog sulci","The blood-vessel-rich tissue lining the inner sole"],a:"A fibro-fatty structure in the heel area that absorbs concussive forces with each footfall",ok:"Correct. The digital cushion is a dense fibro-fatty structure at the heel of the hoof. It develops mass and function through regular ground contact, particularly frog contact with the ground.",no:"The digital cushion is a fibro-fatty structure at the back of the hoof that absorbs concussion. Horses on very soft footing that prevents frog-ground contact can have underdeveloped digital cushions with reduced shock-absorption capacity."},
-{q:"The navicular bone's primary function is:",opts:["To act as a pulley for the deep digital flexor tendon as it passes around the back of the foot","To connect the coffin bone to the pastern above","To supply blood to the hoof wall and sole","To stabilize the coffin joint against lateral movement"],a:"To act as a pulley for the deep digital flexor tendon as it passes around the back of the foot",ok:"Correct. The navicular bone sits behind the coffin bone and acts as a pulley, redirecting the deep digital flexor tendon as it attaches to the underside of P3.",no:"The navicular bone is a small sesamoid bone that acts as a pulley for the deep digital flexor tendon. The navicular bursa cushions the contact between the tendon and bone. Degeneration of these structures is navicular syndrome."},
-{q:"Hoof horn is approximately what percentage water?",opts:["25%","10%","50%","5%"],a:"25%",ok:"Correct. Hoof horn is approximately 25% water. This moisture content affects its flexibility and resistance to cracking — too dry and it becomes brittle; too wet and it loses structural integrity.",no:"Hoof horn is approximately 25% water. This moisture content is why environmental conditions matter: chronically dry hooves become brittle and crack, while chronically wet hooves soften and lose structural integrity."},
-// Farriery Cycle (8 questions)
-{q:"Hoof horn grows approximately how much per month?",opts:["3/8 inch (approximately 1 cm) per month","1 inch per month","1/8 inch per month","1/2 cm per month"],a:"3/8 inch (approximately 1 cm) per month",ok:"Correct. Hoof growth averages approximately 3/8 inch or 1 cm per month. This rate means a full hoof replacement from coronary band to ground takes 9 to 12 months.",no:"Hoof horn grows approximately 3/8 inch (about 1 cm) per month. A full hoof replacement takes 9 to 12 months. Growth is faster in summer and slower in winter."},
-{q:"The most common recommended trimming interval for horses is:",opts:["Every 6 to 8 weeks","Every 3 to 4 months","Every 2 to 3 weeks","Once per year"],a:"Every 6 to 8 weeks",ok:"Correct. Most horses require farriery every 6 to 8 weeks, though the correct interval is individual — determined by growth rate, workload, and how quickly balance problems develop.",no:"The standard interval is 6 to 8 weeks, but the correct interval for any individual horse is the one that maintains correct hoof balance consistently — which may be shorter or longer depending on growth rate and conditions."},
-{q:"Why do horse hooves develop long-toe-low-heel without regular trimming?",opts:["The toe grows faster than the heel in most horses, so the toe extends progressively without correction","The heel is worn away faster by ground contact than the toe","The coffin bone's weight shifts toward the toe over time","The coronary band produces more horn at the toe than the heel"],a:"The toe grows faster than the heel in most horses, so the toe extends progressively without correction",ok:"Correct. Because the toe grows faster than the heel, untrimmed hooves gradually develop an extended toe that lowers the hoof angle and compromises mechanical function.",no:"The toe grows faster than the heel — so without trimming to correct this differential growth, the toe extends and the hoof angle drops. This creates the long-toe-low-heel pattern associated with DDFT strain and navicular syndrome."},
-{q:"Do shod horses still require regular farriery at the same interval as barefoot horses?",opts:["Yes — the hoof grows at the same rate whether shod or not, and the shoe must be pulled and the hoof trimmed on the same cycle","No — shoes prevent hoof growth and extend the interval significantly","No — shod horses need farriery only when a shoe shifts or is lost","Yes — but only to check the shoe, not to trim the hoof"],a:"Yes — the hoof grows at the same rate whether shod or not, and the shoe must be pulled and the hoof trimmed on the same cycle",ok:"Correct. Shoes do not reduce hoof growth. The shoe is pulled, the hoof trimmed, and the shoe reset or replaced on the same 6 to 8 week schedule required for barefoot horses.",no:"Shoes do not prevent or slow hoof growth. At each farriery visit, the shoe is pulled, the hoof is trimmed to correct balance, and the shoe is reset or replaced — on the same interval as barefoot trimming."},
-{q:"Long-toe-low-heel conformation is most associated with risk of:",opts:["Navicular syndrome and deep digital flexor tendon strain","Thrush and white line disease","Laminitis triggered by carbohydrate overload","Hoof wall cracks from excessive dryness"],a:"Navicular syndrome and deep digital flexor tendon strain",ok:"Correct. A long toe increases the moment arm the DDFT must work against during breakover, increasing strain on the navicular bone, navicular bursa, and tendon itself.",no:"Long-toe-low-heel is the primary mechanical risk factor for navicular syndrome and DDFT strain. By extending the toe, the hoof angle drops and the tendon must work against a longer mechanical lever with every step."},
-{q:"The transition from shod to barefoot typically requires:",opts:["3 to 6 months of reduced work on forgiving footing while the hoof rebuilds structural integrity","No transition — shoes can be removed and normal work resumed immediately","A single shoeing cycle (6 to 8 weeks) for the hoof to adapt","Only 2 weeks on soft footing before returning to full work"],a:"3 to 6 months of reduced work on forgiving footing while the hoof rebuilds structural integrity",ok:"Correct. The barefoot transition requires 3 to 6 months because the hoof must rebuild structural integrity that the shoe was providing. Returning immediately to previous work causes transitional soreness and lameness.",no:"Removing shoes and returning a horse to previous work immediately is a common cause of transitional lameness. The hoof needs 3 to 6 months on softer footing at reduced work intensity to build the wall thickness, sole depth, and frog development required for barefoot performance."},
-{q:"Therapeutic shoeing is most appropriately selected by:",opts:["The farrier in consultation with the veterinarian, based on diagnosis and radiographic assessment","The horse owner based on research into the condition","The farrier alone, without veterinary involvement","The barn manager based on observation of the horse's gait"],a:"The farrier in consultation with the veterinarian, based on diagnosis and radiographic assessment",ok:"Correct. Therapeutic shoeing modifies force distribution through a compromised structure — it requires veterinary diagnosis, often including radiographs, to determine what modification is needed and why.",no:"Therapeutic shoeing requires veterinary diagnosis — often radiographs — to establish what structural problem exists and what modification will address it. The farrier executes the therapeutic plan, but selection of shoe type requires veterinary input."},
-{q:"Which of the following is NOT a standard assessment the farrier makes when evaluating a hoof for trimming?",opts:["The horse's nutritional status and body condition score","Hoof angle and its alignment with the pastern","Medial-lateral balance viewed from the front","Sole depth and concavity"],a:"The horse's nutritional status and body condition score",ok:"Correct. Farriers assess hoof angle, medial-lateral balance, sole depth, frog health, and coronary band levelness — these are structural assessments of the hoof. Nutritional status is assessed by the veterinarian or owner, not the farrier during a trimming evaluation.",no:"Farriers assess hoof angle, balance, sole depth, frog health, and coronary band levelness. Nutritional status and body condition scoring are within the veterinarian's and owner's scope of assessment — not part of a standard farriery evaluation."},
-// Common Conditions & Daily Care (12 questions)
-{q:"Thrush is best described as:",opts:["A bacterial infection of the frog caused by anaerobic bacteria in wet, oxygen-free conditions","A fungal infection of the hoof wall that causes crumbling at the toe","A viral condition spread by contaminated grooming tools","An allergic reaction of the sole to wet footing"],a:"A bacterial infection of the frog caused by anaerobic bacteria in wet, oxygen-free conditions",ok:"Correct. Thrush is caused by anaerobic bacteria (primarily Fusobacterium necrophorum) that thrive where packed manure and debris exclude oxygen from the frog's sulci.",no:"Thrush is a bacterial infection — caused by anaerobic bacteria in the oxygen-free pockets of packed debris in the frog's sulci. It is a management condition: clean, dry environments with daily picking prevent it."},
-{q:"The primary sign of thrush is:",opts:["Black, foul-smelling discharge from the frog's sulci","White, powdery material in the white line area","Heat in the hoof wall with increased digital pulse","Horizontal cracks across the hoof wall"],a:"Black, foul-smelling discharge from the frog's sulci",ok:"Correct. The black, malodorous discharge from the grooves alongside and in the center of the frog is the hallmark of thrush — unmistakable once encountered.",no:"Thrush presents as a black, foul-smelling discharge from the frog's sulci. The powdery white material in the white line area is white line disease — a different, deeper infection."},
-{q:"White line disease differs from thrush in that it:",opts:["Destroys the horn material of the hoof wall at the wall-sole junction and can track upward to separate the wall","Affects the frog rather than the wall","Is caused by viral rather than bacterial agents","Resolves with the same antiseptic treatment used for thrush"],a:"Destroys the horn material of the hoof wall at the wall-sole junction and can track upward to separate the wall",ok:"Correct. White line disease destroys horn at the white line junction and tracks upward between the wall and inner structures — potentially separating a significant section of hoof wall. Treatment requires resecting infected horn, not just topical antiseptic.",no:"White line disease is not a frog infection (that's thrush) — it is a horn-destroying infection at the white line that tracks upward inside the wall. Treatment requires removing all infected horn by resection, which may involve cutting away sections of the hoof wall."},
-{q:"Laminitis requires immediate veterinary contact because:",opts:["The coffin bone can rotate or sink within 24 to 48 hours, causing permanent structural damage","It spreads rapidly to other horses in the same facility","The pain cannot be assessed without diagnostic equipment","Left untreated for more than two weeks, it becomes incurable"],a:"The coffin bone can rotate or sink within 24 to 48 hours, causing permanent structural damage",ok:"Correct. Laminitis can progress from early inflammation to irreversible coffin bone rotation or sinking within 24 to 48 hours — making the first day of treatment the most important.",no:"Laminitis is time-critical because the laminar bond between P3 and the hoof wall can fail quickly. Once the coffin bone rotates significantly or sinks, the structural damage is permanent. Early intervention is what separates recoverable cases from those with chronic founder."},
-{q:"The characteristic stance of a horse with acute laminitis is:",opts:["Weight shifted back onto the heels, front legs extended forward to unload the toes","Forelimbs crossed with weight on the outside walls","Reluctance to bear any weight on any foot, lying down continuously","Standing with back arched and hindquarters tucked under"],a:"Weight shifted back onto the heels, front legs extended forward to unload the toes",ok:"Correct. The rocked-back stance — with the horse leaning back to shift weight from the painful toe region to the heels — is the classic posture of acute laminitis affecting the front feet.",no:"The characteristic laminitis stance shifts weight off the toe (where the coffin bone's laminar attachment is failing) toward the heel. Front legs extend forward as the horse leans back. This posture reflects the horse trying to reduce pressure on the most painful part of the inflamed laminae."},
-{q:"Navicular syndrome most commonly affects:",opts:["The front feet of working horses, causing chronic palmar foot pain","The hind feet, associated with hindquarter muscle weakness","All four feet equally in horses with metabolic conditions","Only horses in performance careers on hard surfaces"],a:"The front feet of working horses, causing chronic palmar foot pain",ok:"Correct. Navicular syndrome affects the structures at the back (palmar aspect) of the foot — the navicular bone, navicular bursa, and DDFT — and is most common in the front feet because the front limbs carry more weight.",no:"Navicular syndrome is primarily a front-foot condition because the front limbs bear more of the horse's weight. It affects the navicular bone, navicular bursa, and deep digital flexor tendon — collectively the palmar foot structures."},
-{q:"The correct direction for using a hoof pick is:",opts:["Heel to toe — moving debris outward and away from the frog's grooves","Toe to heel — working debris toward the heel where it falls out","Side to side across the frog — clearing the central groove last","Any direction, as long as all visible debris is removed"],a:"Heel to toe — moving debris outward and away from the frog's grooves",ok:"Correct. Working heel to toe moves material out of the hoof rather than pushing it further into the sulci. This direction clears the grooves most effectively.",no:"Picking heel to toe removes debris by directing it outward. Working toe to heel risks pushing debris further into the deep sulci, packing it more tightly against the frog tissue."},
-{q:"During daily hoof picking, what combination of signs in one foot most strongly indicates the need for veterinary contact?",opts:["Heat in the hoof wall combined with a bounding digital pulse at the fetlock","A single small chip in the hoof wall with no lameness","Mild discoloration of the sole without odor or heat","A frog that appears slightly drier than the previous day"],a:"Heat in the hoof wall combined with a bounding digital pulse at the fetlock",ok:"Correct. Heat plus an elevated digital pulse in the same foot indicates inflammation inside the hoof — a combination consistent with laminitis or an active abscess. Both require veterinary assessment without delay.",no:"Heat and a bounding digital pulse together in the same foot indicate hoof inflammation — the combination is a veterinary call indicator. A chip alone with no lameness is a farrier call; minor sole discoloration without other signs can be monitored; frog dryness is noted and addressed with management."},
-{q:"A hoof abscess is best described as:",opts:["A pocket of bacterial infection inside the hoof that causes sudden, often non-weight-bearing lameness","A superficial infection of the white line that causes gradual wall separation","An inflammatory condition affecting all four feet simultaneously","A crack in the sole that allows infection to track up the white line"],a:"A pocket of bacterial infection inside the hoof that causes sudden, often non-weight-bearing lameness",ok:"Correct. Hoof abscesses are pockets of infection — most commonly under the sole or at the white line — that produce sudden, often severe lameness in a single foot. They are treated by locating and opening the abscess tract to drain.",no:"A hoof abscess is a contained pocket of infection inside the hoof. It classically presents as sudden, severe (often non-weight-bearing) lameness in a single foot, with heat and a bounding digital pulse. It is not a superficial white line infection or a crack."},
-{q:"Dark-hoofed horses compared to white-hoofed horses:",opts:["Have no consistently demonstrated structural difference in hoof wall strength","Always have stronger, more crack-resistant hoof walls","Require less frequent trimming because darker horn grows more slowly","Are less prone to thrush due to higher pigment content in the frog"],a:"Have no consistently demonstrated structural difference in hoof wall strength",ok:"Correct. Research has not found a consistent structural difference between pigmented and non-pigmented hoof walls. Hoof quality is determined by genetics, nutrition, and environment — not wall color.",no:"Wall color does not determine structural strength. The belief that white hooves are weaker is not supported by research. Hoof quality is primarily a function of genetics, nutrition, moisture balance, and environment."},
-{q:"Which sign during daily hoof inspection is a farrier (not veterinarian) call indicator?",opts:["A shoe that has shifted position or become loose","A bounding digital pulse with heat in the hoof","Any lameness greater than very mild","Swelling at or above the coronary band"],a:"A shoe that has shifted position or become loose",ok:"Correct. A shoe that has shifted or loosened is a farrier call — it needs to be pulled, the hoof trimmed, and the shoe reset. The remaining options (digital pulse, lameness, coronary band swelling) are veterinarian call indicators.",no:"A shifted or loose shoe is addressed by the farrier. Elevated digital pulse with heat, lameness greater than mild, and coronary band swelling are veterinary indicators — they suggest internal pathology that requires clinical assessment, not a farriery correction."},
-{q:"The primary prevention for both thrush and hoof abscesses is:",opts:["Daily hoof picking that removes debris and allows inspection of the hoof's condition","Monthly antiseptic treatment of the frog and white line","Feeding biotin and zinc supplements to strengthen the hoof wall","Keeping horses exclusively on dry footing with no pasture access"],a:"Daily hoof picking that removes debris and allows inspection of the hoof's condition",ok:"Correct. Daily picking removes the material that creates the anaerobic conditions for thrush and catches the early signs of abscess formation before significant infection develops.",no:"Daily hoof picking is the most effective prevention for both conditions: it removes the debris that enables thrush, and it provides the daily baseline inspection that catches early abscess signs — heat, subtle lameness, frog changes — before the infection becomes established."},
-// Additional Hoof Anatomy (3 questions)
-{q:"The sole of the hoof is:",opts:["The underside surface that provides secondary protection below the coffin bone","The growth center from which the hoof wall originates","The V-shaped central structure that contacts the ground","The junction between the wall and the inner sensitive laminae"],a:"The underside surface that provides secondary protection below the coffin bone",ok:"Correct. The sole is the underside of the hoof, between the wall and the frog. It provides secondary protection for the internal structures but should not normally bear significant weight.",no:"The sole is the underside of the hoof. The coronary band is the growth center, the frog is the V-shaped central structure, and the white line is the wall-sole junction."},
-{q:"Which hoof structure acts both as a shock absorber and as a blood pump, returning venous blood up the leg?",opts:["The frog","The digital cushion","The navicular bone","The coffin bone"],a:"The frog",ok:"Correct. The frog serves both functions: it absorbs concussion on contact with the ground and compresses blood vessels to pump venous blood back up the leg with each step.",no:"The frog serves dual roles — shock absorption and venous blood return. The digital cushion absorbs concussion at the heel but does not pump blood. The navicular bone is a pulley for the DDFT."},
-{q:"Moisture management for hooves is important because:",opts:["Horn is approximately 25% water — chronically dry horn becomes brittle, and chronically wet horn loses structural integrity","Horn is fully impermeable to moisture and is not affected by environmental conditions","Moist hooves are always weaker and more prone to infection","Dry hooves grow faster than appropriately moistened hooves"],a:"Horn is approximately 25% water — chronically dry horn becomes brittle, and chronically wet horn loses structural integrity",ok:"Correct. Hoof horn's water content is approximately 25%. Both extremes — chronic drought that removes moisture and chronic saturation that exceeds it — compromise the horn's structural properties.",no:"Hoof horn is approximately 25% water and is sensitive to moisture extremes. Horses in consistently wet conditions develop soft, easily damaged horn; horses in very dry conditions develop brittle horn prone to cracking."},
-// Additional Farriery (3 questions)
-{q:"A horse's farriery interval should be determined by:",opts:["The individual horse's growth rate and how quickly hoof balance degrades — not a fixed universal schedule","Strictly every 6 weeks for all horses regardless of conditions","Season only — shorten in summer, extend in winter","The cost of farriery services, adjusted for the owner's budget"],a:"The individual horse's growth rate and how quickly hoof balance degrades — not a fixed universal schedule",ok:"Correct. The correct interval is the one that keeps a specific horse in correct balance consistently. Some horses need 4–6 weeks; others maintain balance at 8–10 weeks. The individual's growth rate and workload determine the correct schedule.",no:"The standard of 6–8 weeks is a guideline, not a universal requirement. The correct interval for any horse is the one that maintains its specific hoof balance — which varies by growth rate, workload, and footing. Season and cost should not determine farriery timing."},
-{q:"What does the farrier evaluate when assessing medial-lateral balance?",opts:["Whether the hoof is symmetrical side-to-side when viewed from the front — both walls should be even","Whether the hoof angle from front to back matches the pastern","Whether the frog has adequate contact with the ground","Whether the sole has sufficient concavity to protect the coffin bone"],a:"Whether the hoof is symmetrical side-to-side when viewed from the front — both walls should be even",ok:"Correct. Medial-lateral balance refers to side-to-side symmetry. An imbalanced hoof (one wall higher than the other) distributes load unevenly through the coffin joint and associated structures.",no:"Medial-lateral balance is the side-to-side symmetry of the hoof viewed from the front. Front-to-back angle matching the pastern is hoof angle evaluation — a different assessment. Both are performed at each farriery visit."},
-{q:"What is the purpose of hoof testers in a veterinary or farriery examination?",opts:["To apply controlled pressure to specific areas of the hoof to identify painful regions that may indicate an abscess or other internal problem","To measure the exact thickness of the sole at multiple locations","To determine whether the hoof wall has sufficient strength to hold a shoe nail","To assess the angle of the coffin bone without radiographs"],a:"To apply controlled pressure to specific areas of the hoof to identify painful regions that may indicate an abscess or other internal problem",ok:"Correct. Hoof testers apply localized pressure across different regions of the hoof. A painful response — the horse flinching or pulling the foot away — localizes the area of internal pathology, guiding further diagnostic steps.",no:"Hoof testers locate pain by applying calibrated pressure to specific hoof regions. A positive response (flinch or pull-away) points toward the likely location of an abscess, bruise, or other internal problem. They do not measure wall thickness or coffin bone angle."},
-// Additional Conditions & Daily Care (4 questions)
-{q:"A hoof abscess typically presents as:",opts:["Sudden onset of severe lameness — often non-weight-bearing — in a single foot, with heat and increased digital pulse","Gradual worsening lameness across all four feet over several weeks","A visible black discharge from the coronary band","Mild soreness that resolves with rest within 24 hours"],a:"Sudden onset of severe lameness — often non-weight-bearing — in a single foot, with heat and increased digital pulse",ok:"Correct. A hoof abscess classically causes sudden, often severe (non-weight-bearing) lameness in a single foot. Heat and a bounding digital pulse in that foot are consistent findings.",no:"Hoof abscesses cause sudden, often severe single-limb lameness — not gradual multi-limb deterioration. The combination of sudden single-foot lameness, heat, and bounding digital pulse strongly suggests an abscess and warrants farrier or veterinary contact."},
-{q:"When a horse with a history of laminitis is introduced to spring pasture, the primary risk is:",opts:["High non-structural carbohydrate content in rapidly growing grass triggering another laminitic episode","Protein toxicity from the high amino acid content of spring grass","Dehydration from eating wet grass rather than hay","Colic from the rapid change in gut motility caused by lush pasture"],a:"High non-structural carbohydrate content in rapidly growing grass triggering another laminitic episode",ok:"Correct. Rapidly growing spring grass is extremely high in NSC. For horses with prior laminitis, EMS, or PPID, this NSC load can trigger recurrence even with limited-duration access.",no:"Spring pasture is a high-NSC forage. For horses with metabolic risk or prior laminitis, the NSC content can trigger recurrence just as grain founder does. Managing access — restricting hours, using a grazing muzzle, or testing pasture — is required for these horses."},
-{q:"Which condition is identified primarily from the exterior wall rather than from the sole?",opts:["A significant hoof wall crack extending toward the coronary band","White line disease","Thrush","A hoof abscess draining through the sole"],a:"A significant hoof wall crack extending toward the coronary band",ok:"Correct. Hoof wall cracks are visible on the exterior wall surface. White line disease is identified from the sole (crumbly white line material), thrush from the frog's sulci, and abscesses typically from sole or white line inspection.",no:"Wall cracks are assessed from the exterior. White line disease presents from the sole (crumbly, discolored material at the white line). Thrush presents from the sulci. These distinctions matter because they direct inspection to different locations during daily care."},
-{q:"The primary complication of untreated choke (esophageal obstruction) in horses is:",opts:["Aspiration pneumonia from feed material and saliva entering the airway during repeated swallowing attempts","Gastric rupture from pressure backup","Esophageal tearing that allows infection to enter the chest cavity","Complete airway obstruction and suffocation"],a:"Aspiration pneumonia from feed material and saliva entering the airway during repeated swallowing attempts",ok:"Correct. Because a horse in choke can still breathe, feed material and saliva that enter the trachea during repeated swallowing attempts cause aspiration pneumonia — an infection of the respiratory tract that can be serious.",no:"Equine choke does not block the airway — the horse can still breathe. The danger is aspiration: feed material and saliva entering the trachea during repeated swallowing attempts cause aspiration pneumonia. Prompt veterinary treatment prevents this complication."},
-];
-function sh(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-let qs=[],cur=0,sc=0,ans=false;
-function init(){qs=sh([...bank]).slice(0,QC);cur=0;sc=0;ans=false;
-  document.getElementById('score-panel').style.display='none';document.getElementById('quiz-card').style.display='';show();}
-function show(){const q=qs[cur];
-  document.getElementById('quiz-count').textContent='Question '+(cur+1)+' of '+QC;
-  document.getElementById('quiz-score').textContent='Score: '+sc;
-  document.getElementById('quiz-question').textContent=q.q;
-  document.getElementById('quiz-feedback').textContent='';
-  document.getElementById('quiz-next').disabled=true;ans=false;
-  const opts=sh([...q.opts]);
-  document.getElementById('quiz-options').innerHTML=opts.map(o=>'<button class="quiz-option" data-v="'+encodeURIComponent(o)+'">'+o+'</button>').join('');
-  document.querySelectorAll('.quiz-option').forEach(b=>b.addEventListener('click',function(){
-    if(ans)return;ans=true;const ch=decodeURIComponent(this.dataset.v);const ok=ch===q.a;
-    if(ok)sc++;
-    document.querySelectorAll('.quiz-option').forEach(x=>{x.classList.remove('correct','incorrect');
-      if(decodeURIComponent(x.dataset.v)===q.a)x.classList.add('correct');
-      else if(x===this&&!ok)x.classList.add('incorrect');
-    });
-    document.getElementById('quiz-feedback').innerHTML='<span class="'+(ok?'feedback-ok':'feedback-no')+'">'+(ok?q.ok:q.no)+'</span>';
-    document.getElementById('quiz-next').disabled=false;
-  }));}
-document.getElementById('quiz-next').addEventListener('click',function(){cur++;
-  if(cur>=QC){document.getElementById('quiz-card').style.display='none';
-    document.getElementById('score-panel').style.display='';
-    document.getElementById('score-display').textContent=sc+'/'+QC;
-    const p=sc/QC;document.getElementById('score-message').textContent=p>=.9?'Excellent work.':p>=.7?'Good understanding — review any missed questions.':'Use the Study Guide to revisit the concepts, then try again.';
-  }else show();});
-document.getElementById('btn-retake').addEventListener('click',init);init();
-})();
-</script>
 <script src="course-config.js"></script>
-<script>window.CURRENT_MODULE=8;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};</script>
-<script src="../../../../assets/js/layout.js"></script><script src="../../../../assets/js/supabase-client.js"></script>
-<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
-</body></html>
+<script>
+window.CURRENT_MODULE = 8;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};
+window.EE_QUIZ_CONFIG = { questionCount: 15 };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is the primary function of the hoof wall?",
+    "opts": [
+      "To bear the horse's weight and protect the internal structures from the ground",
+      "To pump blood back up the leg with each step",
+      "To attach the coffin bone to the pastern",
+      "To absorb concussion in the heel region"
+    ],
+    "a": "To bear the horse's weight and protect the internal structures from the ground",
+    "ok": "Correct. The hoof wall is the hard, keratinous outer structure that contacts the ground, bears weight, and protects the sensitive internal structures.",
+    "no": "The hoof wall is the hard outer casing — it bears weight and contacts the ground. Blood pumping is a function of the frog, and concussion absorption in the heel is handled by the digital cushion."
+  },
+  {
+    "q": "What is the frog, and what is its role in hoof function?",
+    "opts": [
+      "The V-shaped structure in the center of the sole that absorbs shock and pumps blood up the leg",
+      "The white junction between the hoof wall and sole",
+      "The bony structure connected to the coffin bone at the heel",
+      "The growth center at the top of the hoof wall"
+    ],
+    "a": "The V-shaped structure in the center of the sole that absorbs shock and pumps blood up the leg",
+    "ok": "Correct. The frog is the V-shaped, rubbery structure in the center of the sole. It absorbs concussion and compresses blood vessels on each footfall, pumping venous blood back up the leg.",
+    "no": "The frog is the V-shaped structure in the center of the sole. Its two functions are absorbing concussion and pumping blood — when it contacts the ground, it compresses veins and returns blood up the lower leg."
+  },
+  {
+    "q": "The white line on the bottom of the hoof marks:",
+    "opts": [
+      "The junction between the outer wall and the inner sensitive structures — where farriers place nails",
+      "The boundary of the frog's attachment to the sole",
+      "The visible edge of the coffin bone through the hoof",
+      "The outer edge of the sole's protective layer"
+    ],
+    "a": "The junction between the outer wall and the inner sensitive structures — where farriers place nails",
+    "ok": "Correct. The white line is the wall-sole junction — the landmark farriers use to place nails inside it and avoid the sensitive laminae.",
+    "no": "The white line marks the junction of the outer wall and the sole. Nails placed inside this line are in the insensitive wall; nails outside it risk entering the sensitive structures."
+  },
+  {
+    "q": "The sensitive laminae are:",
+    "opts": [
+      "Interlocking tissue sheets that bond the coffin bone to the inner hoof wall",
+      "The blood vessels that supply the frog",
+      "The germinal cells at the coronary band that produce new horn",
+      "The fibro-fatty tissue in the heel that absorbs impact"
+    ],
+    "a": "Interlocking tissue sheets that bond the coffin bone to the inner hoof wall",
+    "ok": "Correct. The sensitive laminae interlock with insensitive laminae on the inside of the hoof wall to create the structural bond between the coffin bone and the hoof capsule.",
+    "no": "The sensitive laminae bond the coffin bone (P3) to the inner hoof wall through interlocking tissue. Inflammation of this tissue is laminitis — when the bond fails, the coffin bone can rotate or sink."
+  },
+  {
+    "q": "The coffin bone (P3) is:",
+    "opts": [
+      "The primary weight-bearing bone inside the hoof capsule, which can rotate during severe laminitis",
+      "The sesamoid bone that acts as a pulley for the DDFT at the back of the foot",
+      "The growth plate at the top of the hoof wall",
+      "The fibro-fatty structure that absorbs concussion in the heel"
+    ],
+    "a": "The primary weight-bearing bone inside the hoof capsule, which can rotate during severe laminitis",
+    "ok": "Correct. The coffin bone (third phalanx / P3) is the main bone inside the hoof. When laminitis destroys the laminar bond, P3 can rotate or sink within the hoof capsule.",
+    "no": "The coffin bone (P3) is the weight-bearing bone inside the hoof. The navicular bone is the pulley for the DDFT. When laminitis compromises the laminae, P3 loses its support and can rotate or sink."
+  },
+  {
+    "q": "The coronary band is:",
+    "opts": [
+      "The band of tissue at the top of the hoof wall where all hoof wall growth originates",
+      "The junction between the hoof wall and the pastern skin",
+      "The ring of blood vessels that supplies the laminae",
+      "The white marking visible at the top of the hoof on grey horses"
+    ],
+    "a": "The band of tissue at the top of the hoof wall where all hoof wall growth originates",
+    "ok": "Correct. All hoof wall grows from the coronary band downward. Injury to the coronary band can cause permanent defects in the growing hoof wall below it.",
+    "no": "The coronary band is the growth center at the hoof's upper margin. New wall grows from the coronary band downward at about 3/8 inch per month. Damage here can cause permanent wall defects."
+  },
+  {
+    "q": "A horse carries approximately what percentage of its total body weight on its front feet?",
+    "opts": [
+      "60%",
+      "50%",
+      "40%",
+      "70%"
+    ],
+    "a": "60%",
+    "ok": "Correct. Horses carry approximately 60% of their body weight on the front limbs — which is why front-foot conditions like navicular syndrome are more common than hind-foot problems.",
+    "no": "Horses carry approximately 60% of body weight on the front feet. This front-loading explains why front-foot conditions — navicular syndrome, coffin joint arthritis, and laminitis — are disproportionately common compared to hind-foot problems."
+  },
+  {
+    "q": "The digital cushion is:",
+    "opts": [
+      "A fibro-fatty structure in the heel area that absorbs concussive forces with each footfall",
+      "The cartilaginous plate between the coffin bone and navicular bone",
+      "The soft tissue that fills the space between the frog sulci",
+      "The blood-vessel-rich tissue lining the inner sole"
+    ],
+    "a": "A fibro-fatty structure in the heel area that absorbs concussive forces with each footfall",
+    "ok": "Correct. The digital cushion is a dense fibro-fatty structure at the heel of the hoof. It develops mass and function through regular ground contact, particularly frog contact with the ground.",
+    "no": "The digital cushion is a fibro-fatty structure at the back of the hoof that absorbs concussion. Horses on very soft footing that prevents frog-ground contact can have underdeveloped digital cushions with reduced shock-absorption capacity."
+  },
+  {
+    "q": "The navicular bone's primary function is:",
+    "opts": [
+      "To act as a pulley for the deep digital flexor tendon as it passes around the back of the foot",
+      "To connect the coffin bone to the pastern above",
+      "To supply blood to the hoof wall and sole",
+      "To stabilize the coffin joint against lateral movement"
+    ],
+    "a": "To act as a pulley for the deep digital flexor tendon as it passes around the back of the foot",
+    "ok": "Correct. The navicular bone sits behind the coffin bone and acts as a pulley, redirecting the deep digital flexor tendon as it attaches to the underside of P3.",
+    "no": "The navicular bone is a small sesamoid bone that acts as a pulley for the deep digital flexor tendon. The navicular bursa cushions the contact between the tendon and bone. Degeneration of these structures is navicular syndrome."
+  },
+  {
+    "q": "Hoof horn is approximately what percentage water?",
+    "opts": [
+      "25%",
+      "10%",
+      "50%",
+      "5%"
+    ],
+    "a": "25%",
+    "ok": "Correct. Hoof horn is approximately 25% water. This moisture content affects its flexibility and resistance to cracking — too dry and it becomes brittle; too wet and it loses structural integrity.",
+    "no": "Hoof horn is approximately 25% water. This moisture content is why environmental conditions matter: chronically dry hooves become brittle and crack, while chronically wet hooves soften and lose structural integrity."
+  },
+  {
+    "q": "Hoof horn grows approximately how much per month?",
+    "opts": [
+      "3/8 inch (approximately 1 cm) per month",
+      "1 inch per month",
+      "1/8 inch per month",
+      "1/2 cm per month"
+    ],
+    "a": "3/8 inch (approximately 1 cm) per month",
+    "ok": "Correct. Hoof growth averages approximately 3/8 inch or 1 cm per month. This rate means a full hoof replacement from coronary band to ground takes 9 to 12 months.",
+    "no": "Hoof horn grows approximately 3/8 inch (about 1 cm) per month. A full hoof replacement takes 9 to 12 months. Growth is faster in summer and slower in winter."
+  },
+  {
+    "q": "The most common recommended trimming interval for horses is:",
+    "opts": [
+      "Every 6 to 8 weeks",
+      "Every 3 to 4 months",
+      "Every 2 to 3 weeks",
+      "Once per year"
+    ],
+    "a": "Every 6 to 8 weeks",
+    "ok": "Correct. Most horses require farriery every 6 to 8 weeks, though the correct interval is individual — determined by growth rate, workload, and how quickly balance problems develop.",
+    "no": "The standard interval is 6 to 8 weeks, but the correct interval for any individual horse is the one that maintains correct hoof balance consistently — which may be shorter or longer depending on growth rate and conditions."
+  },
+  {
+    "q": "Why do horse hooves develop long-toe-low-heel without regular trimming?",
+    "opts": [
+      "The toe grows faster than the heel in most horses, so the toe extends progressively without correction",
+      "The heel is worn away faster by ground contact than the toe",
+      "The coffin bone's weight shifts toward the toe over time",
+      "The coronary band produces more horn at the toe than the heel"
+    ],
+    "a": "The toe grows faster than the heel in most horses, so the toe extends progressively without correction",
+    "ok": "Correct. Because the toe grows faster than the heel, untrimmed hooves gradually develop an extended toe that lowers the hoof angle and compromises mechanical function.",
+    "no": "The toe grows faster than the heel — so without trimming to correct this differential growth, the toe extends and the hoof angle drops. This creates the long-toe-low-heel pattern associated with DDFT strain and navicular syndrome."
+  },
+  {
+    "q": "Do shod horses still require regular farriery at the same interval as barefoot horses?",
+    "opts": [
+      "Yes — the hoof grows at the same rate whether shod or not, and the shoe must be pulled and the hoof trimmed on the same cycle",
+      "No — shoes prevent hoof growth and extend the interval significantly",
+      "No — shod horses need farriery only when a shoe shifts or is lost",
+      "Yes — but only to check the shoe, not to trim the hoof"
+    ],
+    "a": "Yes — the hoof grows at the same rate whether shod or not, and the shoe must be pulled and the hoof trimmed on the same cycle",
+    "ok": "Correct. Shoes do not reduce hoof growth. The shoe is pulled, the hoof trimmed, and the shoe reset or replaced on the same 6 to 8 week schedule required for barefoot horses.",
+    "no": "Shoes do not prevent or slow hoof growth. At each farriery visit, the shoe is pulled, the hoof is trimmed to correct balance, and the shoe is reset or replaced — on the same interval as barefoot trimming."
+  },
+  {
+    "q": "Long-toe-low-heel conformation is most associated with risk of:",
+    "opts": [
+      "Navicular syndrome and deep digital flexor tendon strain",
+      "Thrush and white line disease",
+      "Laminitis triggered by carbohydrate overload",
+      "Hoof wall cracks from excessive dryness"
+    ],
+    "a": "Navicular syndrome and deep digital flexor tendon strain",
+    "ok": "Correct. A long toe increases the moment arm the DDFT must work against during breakover, increasing strain on the navicular bone, navicular bursa, and tendon itself.",
+    "no": "Long-toe-low-heel is the primary mechanical risk factor for navicular syndrome and DDFT strain. By extending the toe, the hoof angle drops and the tendon must work against a longer mechanical lever with every step."
+  },
+  {
+    "q": "The transition from shod to barefoot typically requires:",
+    "opts": [
+      "3 to 6 months of reduced work on forgiving footing while the hoof rebuilds structural integrity",
+      "No transition — shoes can be removed and normal work resumed immediately",
+      "A single shoeing cycle (6 to 8 weeks) for the hoof to adapt",
+      "Only 2 weeks on soft footing before returning to full work"
+    ],
+    "a": "3 to 6 months of reduced work on forgiving footing while the hoof rebuilds structural integrity",
+    "ok": "Correct. The barefoot transition requires 3 to 6 months because the hoof must rebuild structural integrity that the shoe was providing. Returning immediately to previous work causes transitional soreness and lameness.",
+    "no": "Removing shoes and returning a horse to previous work immediately is a common cause of transitional lameness. The hoof needs 3 to 6 months on softer footing at reduced work intensity to build the wall thickness, sole depth, and frog development required for barefoot performance."
+  },
+  {
+    "q": "Therapeutic shoeing is most appropriately selected by:",
+    "opts": [
+      "The farrier in consultation with the veterinarian, based on diagnosis and radiographic assessment",
+      "The horse owner based on research into the condition",
+      "The farrier alone, without veterinary involvement",
+      "The barn manager based on observation of the horse's gait"
+    ],
+    "a": "The farrier in consultation with the veterinarian, based on diagnosis and radiographic assessment",
+    "ok": "Correct. Therapeutic shoeing modifies force distribution through a compromised structure — it requires veterinary diagnosis, often including radiographs, to determine what modification is needed and why.",
+    "no": "Therapeutic shoeing requires veterinary diagnosis — often radiographs — to establish what structural problem exists and what modification will address it. The farrier executes the therapeutic plan, but selection of shoe type requires veterinary input."
+  },
+  {
+    "q": "Which of the following is NOT a standard assessment the farrier makes when evaluating a hoof for trimming?",
+    "opts": [
+      "The horse's nutritional status and body condition score",
+      "Hoof angle and its alignment with the pastern",
+      "Medial-lateral balance viewed from the front",
+      "Sole depth and concavity"
+    ],
+    "a": "The horse's nutritional status and body condition score",
+    "ok": "Correct. Farriers assess hoof angle, medial-lateral balance, sole depth, frog health, and coronary band levelness — these are structural assessments of the hoof. Nutritional status is assessed by the veterinarian or owner, not the farrier during a trimming evaluation.",
+    "no": "Farriers assess hoof angle, balance, sole depth, frog health, and coronary band levelness. Nutritional status and body condition scoring are within the veterinarian's and owner's scope of assessment — not part of a standard farriery evaluation."
+  },
+  {
+    "q": "Thrush is best described as:",
+    "opts": [
+      "A bacterial infection of the frog caused by anaerobic bacteria in wet, oxygen-free conditions",
+      "A fungal infection of the hoof wall that causes crumbling at the toe",
+      "A viral condition spread by contaminated grooming tools",
+      "An allergic reaction of the sole to wet footing"
+    ],
+    "a": "A bacterial infection of the frog caused by anaerobic bacteria in wet, oxygen-free conditions",
+    "ok": "Correct. Thrush is caused by anaerobic bacteria (primarily Fusobacterium necrophorum) that thrive where packed manure and debris exclude oxygen from the frog's sulci.",
+    "no": "Thrush is a bacterial infection — caused by anaerobic bacteria in the oxygen-free pockets of packed debris in the frog's sulci. It is a management condition: clean, dry environments with daily picking prevent it."
+  },
+  {
+    "q": "The primary sign of thrush is:",
+    "opts": [
+      "Black, foul-smelling discharge from the frog's sulci",
+      "White, powdery material in the white line area",
+      "Heat in the hoof wall with increased digital pulse",
+      "Horizontal cracks across the hoof wall"
+    ],
+    "a": "Black, foul-smelling discharge from the frog's sulci",
+    "ok": "Correct. The black, malodorous discharge from the grooves alongside and in the center of the frog is the hallmark of thrush — unmistakable once encountered.",
+    "no": "Thrush presents as a black, foul-smelling discharge from the frog's sulci. The powdery white material in the white line area is white line disease — a different, deeper infection."
+  },
+  {
+    "q": "White line disease differs from thrush in that it:",
+    "opts": [
+      "Destroys the horn material of the hoof wall at the wall-sole junction and can track upward to separate the wall",
+      "Affects the frog rather than the wall",
+      "Is caused by viral rather than bacterial agents",
+      "Resolves with the same antiseptic treatment used for thrush"
+    ],
+    "a": "Destroys the horn material of the hoof wall at the wall-sole junction and can track upward to separate the wall",
+    "ok": "Correct. White line disease destroys horn at the white line junction and tracks upward between the wall and inner structures — potentially separating a significant section of hoof wall. Treatment requires resecting infected horn, not just topical antiseptic.",
+    "no": "White line disease is not a frog infection (that's thrush) — it is a horn-destroying infection at the white line that tracks upward inside the wall. Treatment requires removing all infected horn by resection, which may involve cutting away sections of the hoof wall."
+  },
+  {
+    "q": "Laminitis requires immediate veterinary contact because:",
+    "opts": [
+      "The coffin bone can rotate or sink within 24 to 48 hours, causing permanent structural damage",
+      "It spreads rapidly to other horses in the same facility",
+      "The pain cannot be assessed without diagnostic equipment",
+      "Left untreated for more than two weeks, it becomes incurable"
+    ],
+    "a": "The coffin bone can rotate or sink within 24 to 48 hours, causing permanent structural damage",
+    "ok": "Correct. Laminitis can progress from early inflammation to irreversible coffin bone rotation or sinking within 24 to 48 hours — making the first day of treatment the most important.",
+    "no": "Laminitis is time-critical because the laminar bond between P3 and the hoof wall can fail quickly. Once the coffin bone rotates significantly or sinks, the structural damage is permanent. Early intervention is what separates recoverable cases from those with chronic founder."
+  },
+  {
+    "q": "The characteristic stance of a horse with acute laminitis is:",
+    "opts": [
+      "Weight shifted back onto the heels, front legs extended forward to unload the toes",
+      "Forelimbs crossed with weight on the outside walls",
+      "Reluctance to bear any weight on any foot, lying down continuously",
+      "Standing with back arched and hindquarters tucked under"
+    ],
+    "a": "Weight shifted back onto the heels, front legs extended forward to unload the toes",
+    "ok": "Correct. The rocked-back stance — with the horse leaning back to shift weight from the painful toe region to the heels — is the classic posture of acute laminitis affecting the front feet.",
+    "no": "The characteristic laminitis stance shifts weight off the toe (where the coffin bone's laminar attachment is failing) toward the heel. Front legs extend forward as the horse leans back. This posture reflects the horse trying to reduce pressure on the most painful part of the inflamed laminae."
+  },
+  {
+    "q": "Navicular syndrome most commonly affects:",
+    "opts": [
+      "The front feet of working horses, causing chronic palmar foot pain",
+      "The hind feet, associated with hindquarter muscle weakness",
+      "All four feet equally in horses with metabolic conditions",
+      "Only horses in performance careers on hard surfaces"
+    ],
+    "a": "The front feet of working horses, causing chronic palmar foot pain",
+    "ok": "Correct. Navicular syndrome affects the structures at the back (palmar aspect) of the foot — the navicular bone, navicular bursa, and DDFT — and is most common in the front feet because the front limbs carry more weight.",
+    "no": "Navicular syndrome is primarily a front-foot condition because the front limbs bear more of the horse's weight. It affects the navicular bone, navicular bursa, and deep digital flexor tendon — collectively the palmar foot structures."
+  },
+  {
+    "q": "The correct direction for using a hoof pick is:",
+    "opts": [
+      "Heel to toe — moving debris outward and away from the frog's grooves",
+      "Toe to heel — working debris toward the heel where it falls out",
+      "Side to side across the frog — clearing the central groove last",
+      "Any direction, as long as all visible debris is removed"
+    ],
+    "a": "Heel to toe — moving debris outward and away from the frog's grooves",
+    "ok": "Correct. Working heel to toe moves material out of the hoof rather than pushing it further into the sulci. This direction clears the grooves most effectively.",
+    "no": "Picking heel to toe removes debris by directing it outward. Working toe to heel risks pushing debris further into the deep sulci, packing it more tightly against the frog tissue."
+  },
+  {
+    "q": "During daily hoof picking, what combination of signs in one foot most strongly indicates the need for veterinary contact?",
+    "opts": [
+      "Heat in the hoof wall combined with a bounding digital pulse at the fetlock",
+      "A single small chip in the hoof wall with no lameness",
+      "Mild discoloration of the sole without odor or heat",
+      "A frog that appears slightly drier than the previous day"
+    ],
+    "a": "Heat in the hoof wall combined with a bounding digital pulse at the fetlock",
+    "ok": "Correct. Heat plus an elevated digital pulse in the same foot indicates inflammation inside the hoof — a combination consistent with laminitis or an active abscess. Both require veterinary assessment without delay.",
+    "no": "Heat and a bounding digital pulse together in the same foot indicate hoof inflammation — the combination is a veterinary call indicator. A chip alone with no lameness is a farrier call; minor sole discoloration without other signs can be monitored; frog dryness is noted and addressed with management."
+  },
+  {
+    "q": "A hoof abscess is best described as:",
+    "opts": [
+      "A pocket of bacterial infection inside the hoof that causes sudden, often non-weight-bearing lameness",
+      "A superficial infection of the white line that causes gradual wall separation",
+      "An inflammatory condition affecting all four feet simultaneously",
+      "A crack in the sole that allows infection to track up the white line"
+    ],
+    "a": "A pocket of bacterial infection inside the hoof that causes sudden, often non-weight-bearing lameness",
+    "ok": "Correct. Hoof abscesses are pockets of infection — most commonly under the sole or at the white line — that produce sudden, often severe lameness in a single foot. They are treated by locating and opening the abscess tract to drain.",
+    "no": "A hoof abscess is a contained pocket of infection inside the hoof. It classically presents as sudden, severe (often non-weight-bearing) lameness in a single foot, with heat and a bounding digital pulse. It is not a superficial white line infection or a crack."
+  },
+  {
+    "q": "Dark-hoofed horses compared to white-hoofed horses:",
+    "opts": [
+      "Have no consistently demonstrated structural difference in hoof wall strength",
+      "Always have stronger, more crack-resistant hoof walls",
+      "Require less frequent trimming because darker horn grows more slowly",
+      "Are less prone to thrush due to higher pigment content in the frog"
+    ],
+    "a": "Have no consistently demonstrated structural difference in hoof wall strength",
+    "ok": "Correct. Research has not found a consistent structural difference between pigmented and non-pigmented hoof walls. Hoof quality is determined by genetics, nutrition, and environment — not wall color.",
+    "no": "Wall color does not determine structural strength. The belief that white hooves are weaker is not supported by research. Hoof quality is primarily a function of genetics, nutrition, moisture balance, and environment."
+  },
+  {
+    "q": "Which sign during daily hoof inspection is a farrier (not veterinarian) call indicator?",
+    "opts": [
+      "A shoe that has shifted position or become loose",
+      "A bounding digital pulse with heat in the hoof",
+      "Any lameness greater than very mild",
+      "Swelling at or above the coronary band"
+    ],
+    "a": "A shoe that has shifted position or become loose",
+    "ok": "Correct. A shoe that has shifted or loosened is a farrier call — it needs to be pulled, the hoof trimmed, and the shoe reset. The remaining options (digital pulse, lameness, coronary band swelling) are veterinarian call indicators.",
+    "no": "A shifted or loose shoe is addressed by the farrier. Elevated digital pulse with heat, lameness greater than mild, and coronary band swelling are veterinary indicators — they suggest internal pathology that requires clinical assessment, not a farriery correction."
+  },
+  {
+    "q": "The primary prevention for both thrush and hoof abscesses is:",
+    "opts": [
+      "Daily hoof picking that removes debris and allows inspection of the hoof's condition",
+      "Monthly antiseptic treatment of the frog and white line",
+      "Feeding biotin and zinc supplements to strengthen the hoof wall",
+      "Keeping horses exclusively on dry footing with no pasture access"
+    ],
+    "a": "Daily hoof picking that removes debris and allows inspection of the hoof's condition",
+    "ok": "Correct. Daily picking removes the material that creates the anaerobic conditions for thrush and catches the early signs of abscess formation before significant infection develops.",
+    "no": "Daily hoof picking is the most effective prevention for both conditions: it removes the debris that enables thrush, and it provides the daily baseline inspection that catches early abscess signs — heat, subtle lameness, frog changes — before the infection becomes established."
+  },
+  {
+    "q": "The sole of the hoof is:",
+    "opts": [
+      "The underside surface that provides secondary protection below the coffin bone",
+      "The growth center from which the hoof wall originates",
+      "The V-shaped central structure that contacts the ground",
+      "The junction between the wall and the inner sensitive laminae"
+    ],
+    "a": "The underside surface that provides secondary protection below the coffin bone",
+    "ok": "Correct. The sole is the underside of the hoof, between the wall and the frog. It provides secondary protection for the internal structures but should not normally bear significant weight.",
+    "no": "The sole is the underside of the hoof. The coronary band is the growth center, the frog is the V-shaped central structure, and the white line is the wall-sole junction."
+  },
+  {
+    "q": "Which hoof structure acts both as a shock absorber and as a blood pump, returning venous blood up the leg?",
+    "opts": [
+      "The frog",
+      "The digital cushion",
+      "The navicular bone",
+      "The coffin bone"
+    ],
+    "a": "The frog",
+    "ok": "Correct. The frog serves both functions: it absorbs concussion on contact with the ground and compresses blood vessels to pump venous blood back up the leg with each step.",
+    "no": "The frog serves dual roles — shock absorption and venous blood return. The digital cushion absorbs concussion at the heel but does not pump blood. The navicular bone is a pulley for the DDFT."
+  },
+  {
+    "q": "Moisture management for hooves is important because:",
+    "opts": [
+      "Horn is approximately 25% water — chronically dry horn becomes brittle, and chronically wet horn loses structural integrity",
+      "Horn is fully impermeable to moisture and is not affected by environmental conditions",
+      "Moist hooves are always weaker and more prone to infection",
+      "Dry hooves grow faster than appropriately moistened hooves"
+    ],
+    "a": "Horn is approximately 25% water — chronically dry horn becomes brittle, and chronically wet horn loses structural integrity",
+    "ok": "Correct. Hoof horn's water content is approximately 25%. Both extremes — chronic drought that removes moisture and chronic saturation that exceeds it — compromise the horn's structural properties.",
+    "no": "Hoof horn is approximately 25% water and is sensitive to moisture extremes. Horses in consistently wet conditions develop soft, easily damaged horn; horses in very dry conditions develop brittle horn prone to cracking."
+  },
+  {
+    "q": "A horse's farriery interval should be determined by:",
+    "opts": [
+      "The individual horse's growth rate and how quickly hoof balance degrades — not a fixed universal schedule",
+      "Strictly every 6 weeks for all horses regardless of conditions",
+      "Season only — shorten in summer, extend in winter",
+      "The cost of farriery services, adjusted for the owner's budget"
+    ],
+    "a": "The individual horse's growth rate and how quickly hoof balance degrades — not a fixed universal schedule",
+    "ok": "Correct. The correct interval is the one that keeps a specific horse in correct balance consistently. Some horses need 4–6 weeks; others maintain balance at 8–10 weeks. The individual's growth rate and workload determine the correct schedule.",
+    "no": "The standard of 6–8 weeks is a guideline, not a universal requirement. The correct interval for any horse is the one that maintains its specific hoof balance — which varies by growth rate, workload, and footing. Season and cost should not determine farriery timing."
+  },
+  {
+    "q": "What does the farrier evaluate when assessing medial-lateral balance?",
+    "opts": [
+      "Whether the hoof is symmetrical side-to-side when viewed from the front — both walls should be even",
+      "Whether the hoof angle from front to back matches the pastern",
+      "Whether the frog has adequate contact with the ground",
+      "Whether the sole has sufficient concavity to protect the coffin bone"
+    ],
+    "a": "Whether the hoof is symmetrical side-to-side when viewed from the front — both walls should be even",
+    "ok": "Correct. Medial-lateral balance refers to side-to-side symmetry. An imbalanced hoof (one wall higher than the other) distributes load unevenly through the coffin joint and associated structures.",
+    "no": "Medial-lateral balance is the side-to-side symmetry of the hoof viewed from the front. Front-to-back angle matching the pastern is hoof angle evaluation — a different assessment. Both are performed at each farriery visit."
+  },
+  {
+    "q": "What is the purpose of hoof testers in a veterinary or farriery examination?",
+    "opts": [
+      "To apply controlled pressure to specific areas of the hoof to identify painful regions that may indicate an abscess or other internal problem",
+      "To measure the exact thickness of the sole at multiple locations",
+      "To determine whether the hoof wall has sufficient strength to hold a shoe nail",
+      "To assess the angle of the coffin bone without radiographs"
+    ],
+    "a": "To apply controlled pressure to specific areas of the hoof to identify painful regions that may indicate an abscess or other internal problem",
+    "ok": "Correct. Hoof testers apply localized pressure across different regions of the hoof. A painful response — the horse flinching or pulling the foot away — localizes the area of internal pathology, guiding further diagnostic steps.",
+    "no": "Hoof testers locate pain by applying calibrated pressure to specific hoof regions. A positive response (flinch or pull-away) points toward the likely location of an abscess, bruise, or other internal problem. They do not measure wall thickness or coffin bone angle."
+  },
+  {
+    "q": "A hoof abscess typically presents as:",
+    "opts": [
+      "Sudden onset of severe lameness — often non-weight-bearing — in a single foot, with heat and increased digital pulse",
+      "Gradual worsening lameness across all four feet over several weeks",
+      "A visible black discharge from the coronary band",
+      "Mild soreness that resolves with rest within 24 hours"
+    ],
+    "a": "Sudden onset of severe lameness — often non-weight-bearing — in a single foot, with heat and increased digital pulse",
+    "ok": "Correct. A hoof abscess classically causes sudden, often severe (non-weight-bearing) lameness in a single foot. Heat and a bounding digital pulse in that foot are consistent findings.",
+    "no": "Hoof abscesses cause sudden, often severe single-limb lameness — not gradual multi-limb deterioration. The combination of sudden single-foot lameness, heat, and bounding digital pulse strongly suggests an abscess and warrants farrier or veterinary contact."
+  },
+  {
+    "q": "When a horse with a history of laminitis is introduced to spring pasture, the primary risk is:",
+    "opts": [
+      "High non-structural carbohydrate content in rapidly growing grass triggering another laminitic episode",
+      "Protein toxicity from the high amino acid content of spring grass",
+      "Dehydration from eating wet grass rather than hay",
+      "Colic from the rapid change in gut motility caused by lush pasture"
+    ],
+    "a": "High non-structural carbohydrate content in rapidly growing grass triggering another laminitic episode",
+    "ok": "Correct. Rapidly growing spring grass is extremely high in NSC. For horses with prior laminitis, EMS, or PPID, this NSC load can trigger recurrence even with limited-duration access.",
+    "no": "Spring pasture is a high-NSC forage. For horses with metabolic risk or prior laminitis, the NSC content can trigger recurrence just as grain founder does. Managing access — restricting hours, using a grazing muzzle, or testing pasture — is required for these horses."
+  },
+  {
+    "q": "Which condition is identified primarily from the exterior wall rather than from the sole?",
+    "opts": [
+      "A significant hoof wall crack extending toward the coronary band",
+      "White line disease",
+      "Thrush",
+      "A hoof abscess draining through the sole"
+    ],
+    "a": "A significant hoof wall crack extending toward the coronary band",
+    "ok": "Correct. Hoof wall cracks are visible on the exterior wall surface. White line disease is identified from the sole (crumbly white line material), thrush from the frog's sulci, and abscesses typically from sole or white line inspection.",
+    "no": "Wall cracks are assessed from the exterior. White line disease presents from the sole (crumbly, discolored material at the white line). Thrush presents from the sulci. These distinctions matter because they direct inspection to different locations during daily care."
+  },
+  {
+    "q": "The primary complication of untreated choke (esophageal obstruction) in horses is:",
+    "opts": [
+      "Aspiration pneumonia from feed material and saliva entering the airway during repeated swallowing attempts",
+      "Gastric rupture from pressure backup",
+      "Esophageal tearing that allows infection to enter the chest cavity",
+      "Complete airway obstruction and suffocation"
+    ],
+    "a": "Aspiration pneumonia from feed material and saliva entering the airway during repeated swallowing attempts",
+    "ok": "Correct. Because a horse in choke can still breathe, feed material and saliva that enter the trachea during repeated swallowing attempts cause aspiration pneumonia — an infection of the respiratory tract that can be serious.",
+    "no": "Equine choke does not block the airway — the horse can still breathe. The danger is aspiration: feed material and saliva entering the trachea during repeated swallowing attempts cause aspiration pneumonia. Prompt veterinary treatment prevents this complication."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

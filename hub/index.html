@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Campus — Equine Edu</title>
+<meta name="description" content="Welcome to the Equine Edu campus. Explore the Academy, the Horse Bowl Arena, the Learning Loft, and the upcoming Virtual Horse Stable.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/css/core.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/course.css">
+<style>
+  /* Campus hub — composition only. All color / type / motion from tokens. */
+  /* Fixed, darkened photo background — page content scrolls over it */
+  body { background: var(--heading); }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(rgba(20, 29, 41, 0.58), rgba(20, 29, 41, 0.72)),
+      url('background-hub.png') center center / cover no-repeat;
+  }
+  .campus-hero { min-height: 74vh; display: flex; align-items: center;
+    padding: calc(var(--nav-height) + 44px) var(--page-pad) 64px; position: relative; overflow: hidden; }
+  .campus-hero-inner { max-width: var(--content-w); margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
+    gap: var(--space-8); align-items: center; position: relative; z-index: 1; }
+  .campus-hero h1 { font-family: var(--font-display); font-size: var(--text-display);
+    color: var(--heading); line-height: 1.05; margin-bottom: var(--space-5); letter-spacing: -0.5px; }
+  .campus-hero h1 em { font-style: normal; color: var(--blue-primary); }
+  .campus-hero .standfirst { margin-bottom: var(--space-6); max-width: 500px; }
+  .hero-actions { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+  .hero-art { display: flex; align-items: center; justify-content: center; }
+  .hero-art svg { width: 100%; max-width: 440px; height: auto; opacity: 0.92; }
+
+  .campus-section { padding: 84px var(--page-pad); }
+  .campus-inner { max-width: var(--content-w); margin: 0 auto; }
+  .campus-head { max-width: var(--measure); margin-bottom: var(--space-7); }
+
+  .map-wash { background: linear-gradient(180deg, transparent 0%,
+    rgba(217,227,236,0.35) 12%, rgba(217,227,236,0.35) 88%, transparent 100%); }
+  .campus-map { position: relative; margin-top: var(--space-7);
+    display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-6); }
+  .campus-map::before { content: ''; position: absolute; top: 46px; left: 11%; right: 11%;
+    height: 3px; background: repeating-linear-gradient(90deg, var(--tan) 0 10px, transparent 10px 18px); opacity: 0.5; }
+  .map-stop { position: relative; text-align: center; text-decoration: none;
+    display: flex; flex-direction: column; align-items: center; transition: transform var(--motion-quick) var(--ease); }
+  .map-stop:hover { transform: translateY(-3px); }
+  .map-marker { width: 92px; height: 92px; display: flex; align-items: center; justify-content: center;
+    background: var(--soft-white); border: 2px solid var(--border-mid); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-rest); position: relative; z-index: 1; margin-bottom: var(--space-4); }
+  .map-marker svg { width: 52px; height: 52px; }
+  .map-stop:hover .map-marker { border-color: var(--tan); box-shadow: var(--shadow-raised); }
+  .map-stop h3 { font-family: var(--font-display); font-size: 1.12rem; color: var(--heading); margin-bottom: 0.3rem; }
+  .map-stop p { font-size: 0.85rem; color: var(--body-text); line-height: 1.5; max-width: 22ch; }
+  .map-tag { display: inline-block; margin-top: 0.5rem; font-size: var(--text-xs); font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase; color: var(--leather-dark); background: var(--blue-light);
+    border: 1px solid var(--border-mid); border-radius: 999px; padding: 3px 10px; }
+
+  .dest-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--space-6); margin-top: var(--space-6); }
+  .dest-card { position: relative; display: grid; grid-template-columns: 84px 1fr; gap: var(--space-5);
+    align-items: start; background: var(--soft-white); border: 1px solid var(--border); border-left: 4px solid var(--tan);
+    border-radius: var(--radius-lg); padding: 2rem 2rem 1.85rem; box-shadow: var(--shadow-rest);
+    scroll-margin-top: calc(var(--nav-height) + 20px);
+    transition: transform var(--motion-quick) var(--ease), box-shadow var(--motion-quick) var(--ease); }
+  .dest-card:not(.is-soon):hover { transform: translateY(-3px); box-shadow: var(--shadow-raised); }
+  .dest-card.dest-academy { border-left-color: var(--blue-primary); }
+  .dest-card.dest-arena { border-left-color: var(--leather); }
+  .dest-card.dest-loft { border-left-color: var(--success); }
+  .dest-card.dest-stable { border-left-color: var(--blue-secondary); }
+  .dest-icon { width: 84px; height: 84px; display: flex; align-items: center; justify-content: center;
+    background: var(--cream-bg); border-radius: var(--radius); }
+  .dest-icon svg { width: 52px; height: 52px; }
+  .dest-kicker { font-size: var(--text-xs); font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--room-accent); margin-bottom: var(--space-2); }
+  .dest-body h3 { font-family: var(--font-display); font-size: var(--text-xl); color: var(--heading); margin-bottom: var(--space-3); }
+  .dest-body p { font-size: 0.94rem; line-height: 1.7; color: var(--body-text); margin-bottom: var(--space-3); }
+  .dest-purpose { font-size: 0.86rem; color: var(--muted-text); margin-bottom: var(--space-4); }
+  .dest-purpose strong { color: var(--leather-dark); font-weight: 700; }
+  .dest-card.is-soon { background: var(--cream-secondary); }
+  .dest-card.is-soon .dest-icon svg { opacity: 0.6; }
+  .dest-badge { position: absolute; top: 1.25rem; right: 1.25rem; font-size: var(--text-xs); font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase; color: var(--leather-dark); background: var(--blue-light);
+    border: 1px solid var(--border-mid); border-radius: 999px; padding: 5px 12px; }
+  .btn-disabled { display: inline-block; background: transparent; color: var(--muted-text);
+    border: 1px dashed var(--border-mid); border-radius: var(--radius-sm); padding: 10px 22px; font-weight: 600;
+    cursor: not-allowed; pointer-events: none; }
+
+  .panel { position: relative; background: rgba(252,250,247,0.8);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-rest); margin-top: var(--space-6); }
+  .panel-badge { display: inline-block; font-size: var(--text-xs); font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--leather-dark); background: var(--blue-light); border: 1px solid var(--border-mid);
+    border-radius: 999px; padding: 5px 12px; margin-bottom: var(--space-5); }
+  .continue-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-5); }
+  .continue-tile { border: 1px dashed var(--border-mid); border-radius: var(--radius); background: var(--soft-white); padding: 1.5rem 1.4rem; }
+  .continue-tile h4 { font-size: 0.95rem; font-weight: 700; color: var(--heading); margin-bottom: 0.5rem; }
+  .continue-tile p { font-size: 0.84rem; color: var(--muted-text); line-height: 1.55; margin-bottom: 1rem; }
+  .continue-bar { height: 8px; border-radius: 999px; background: var(--cream-bg); overflow: hidden; margin-bottom: 1rem; }
+  .continue-bar span { display: block; height: 100%; width: 0; background: var(--tan); border-radius: 999px; }
+
+  .ach-wash { background: linear-gradient(180deg, transparent 0%, rgba(231,220,203,0.5) 14%, rgba(231,220,203,0.5) 86%, transparent 100%); }
+  .ach-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-5); }
+  .ach-tile { text-align: center; padding: 1.6rem 1rem; border: 1px dashed var(--border-mid); border-radius: var(--radius); background: var(--soft-white); }
+  .ach-tile .ach-icon { width: 44px; height: 44px; margin: 0 auto 0.9rem; opacity: 0.7; }
+  .ach-tile h4 { font-size: 0.95rem; font-weight: 700; color: var(--heading); margin-bottom: 0.35rem; }
+  .ach-tile p { font-size: 0.82rem; color: var(--muted-text); line-height: 1.5; }
+
+  .grow-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-6); margin-top: var(--space-6); }
+  .grow-item { background: var(--soft-white); border-left: 4px solid var(--tan); border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 1.5rem 1.6rem; box-shadow: var(--shadow-rest); }
+  .grow-item h4 { font-family: var(--font-display); font-size: 1.18rem; color: var(--heading); margin-bottom: 0.55rem; }
+  .grow-item p { font-size: 0.92rem; line-height: 1.65; color: var(--body-text); }
+
+  @media (max-width: 900px) {
+    .campus-hero { min-height: auto; padding-bottom: 44px; }
+    .campus-hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
+    .hero-art { order: -1; } .hero-art svg { max-width: 280px; }
+    .campus-map { grid-template-columns: 1fr 1fr; row-gap: var(--space-7); }
+    .campus-map::before { display: none; }
+    .dest-grid { grid-template-columns: 1fr; }
+    .continue-grid { grid-template-columns: 1fr; }
+    .ach-grid { grid-template-columns: 1fr 1fr; }
+    .grow-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .campus-section { padding: 60px var(--page-pad); }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .campus-map { grid-template-columns: 1fr; }
+    .dest-card { grid-template-columns: 1fr; }
+    .dest-icon { width: 64px; height: 64px; }
+    .ach-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---- Over the fixed photo background ---- */
+  .map-wash, .ach-wash { background: transparent; }
+  .flow-divider { background: transparent; }
+  .campus-hero h1 { color: var(--soft-white); }
+  .campus-hero h1 em { color: var(--blue-light); }
+  .campus-hero .standfirst { color: var(--blue-light); }
+  .campus-head .section-title { color: var(--soft-white); }
+  .campus-head .section-sub { color: var(--blue-light); }
+  .map-stop h3 { color: var(--soft-white); }
+  .map-stop p { color: var(--blue-light); }
+  body::after { mix-blend-mode: normal; }
+</style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<!-- HERO -->
+<section class="campus-hero">
+  <div class="campus-hero-inner">
+    <div class="campus-hero-text">
+      <span class="eyebrow">Welcome to the Campus</span>
+      <h1>The Equine Edu<br><em>Learning Campus</em>.</h1>
+      <p class="standfirst">Step onto the grounds. From here you can head into the Academy to learn, the Horse Bowl Arena to test yourself, or the Learning Loft to explore — with the Virtual Horse Stable opening soon. Pick a building and start your day.</p>
+      <div class="hero-actions">
+        <a href="#map" class="btn-primary">Explore the Campus</a>
+        <a href="../courses/index.html" class="btn-secondary">Enter the Academy</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M70 200 L 220 96 L 370 200" stroke="var(--heading)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+        <path d="M96 184 L 96 320 L 344 320 L 344 184" stroke="var(--heading)" stroke-width="3" stroke-linejoin="round" opacity="0.7"/>
+        <path d="M188 320 L 188 226 L 252 226 L 252 320" stroke="var(--tan)" stroke-width="3" stroke-linejoin="round" opacity="0.8"/>
+        <path d="M220 226 L 220 320" stroke="var(--tan)" stroke-width="2.5" opacity="0.6"/>
+        <path d="M188 226 L 252 226 L 220 200 Z" stroke="var(--tan)" stroke-width="2.5" stroke-linejoin="round" opacity="0.6"/>
+        <circle cx="220" cy="158" r="14" stroke="var(--blue-primary)" stroke-width="2.5" opacity="0.6"/>
+        <path d="M220 144 L 220 172 M206 158 L 234 158" stroke="var(--blue-primary)" stroke-width="2" opacity="0.45"/>
+        <rect x="124" y="240" width="34" height="34" rx="3" stroke="var(--blue-primary)" stroke-width="2.5" opacity="0.5"/>
+        <rect x="282" y="240" width="34" height="34" rx="3" stroke="var(--blue-primary)" stroke-width="2.5" opacity="0.5"/>
+        <path d="M150 384 L 200 322 M290 384 L 240 322" stroke="var(--blue-secondary)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <path d="M176 360 L 264 360 M166 376 L 274 376" stroke="var(--blue-secondary)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+        <path d="M220 96 L 220 72 M210 78 C 214 74, 226 74, 230 78" stroke="var(--heading)" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="flow-divider" aria-hidden="true"></div>
+
+<!-- CAMPUS MAP -->
+<section class="campus-section map-wash" id="map">
+  <div class="campus-inner">
+    <div class="campus-head">
+      <p class="section-label">The Grounds</p>
+      <h2 class="section-title">Your Campus Map</h2>
+      <p class="section-sub">Four destinations, one connected campus. Each building has its own purpose — learn in one, test yourself in another, explore in a third. Tap a stop to head there.</p>
+    </div>
+    <nav class="campus-map" aria-label="Campus destinations">
+      <a class="map-stop" href="#dest-academy">
+        <span class="map-marker" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 24 L 32 12 L 54 24" stroke="var(--blue-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 26 L 16 48 L 48 48 L 48 26" stroke="var(--heading)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/>
+            <path d="M24 48 L 24 34 L 40 34 L 40 48" stroke="var(--heading)" stroke-width="2.5" opacity="0.7"/>
+            <path d="M8 48 L 56 48" stroke="var(--heading)" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </span>
+        <h3>The Academy</h3>
+        <p>Structured courses to learn the fundamentals.</p>
+      </a>
+      <a class="map-stop" href="#dest-arena">
+        <span class="map-marker" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="38" rx="24" ry="13" stroke="var(--leather)" stroke-width="2.5" opacity="0.8"/>
+            <ellipse cx="32" cy="38" rx="14" ry="7" stroke="var(--leather)" stroke-width="2" opacity="0.5"/>
+            <path d="M22 14 L 42 14 L 42 20 C 42 27, 37 31, 32 31 C 27 31, 22 27, 22 20 Z" stroke="var(--heading)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/>
+            <path d="M22 16 C 16 16, 16 24, 22 25 M42 16 C 48 16, 48 24, 42 25" stroke="var(--heading)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        </span>
+        <h3>Horse Bowl Arena</h3>
+        <p>Practice rounds and timed challenges.</p>
+      </a>
+      <a class="map-stop" href="#dest-loft">
+        <span class="map-marker" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 26 L 32 12 L 54 26 L 54 52 L 10 52 Z" stroke="var(--heading)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/>
+            <path d="M10 34 L 54 34" stroke="var(--heading)" stroke-width="2" opacity="0.5"/>
+            <path d="M18 42 C 24 39, 28 39, 32 42 C 36 39, 40 39, 46 42 L 46 49 C 40 46, 36 46, 32 49 C 28 46, 24 46, 18 49 Z" stroke="var(--success)" stroke-width="2" stroke-linejoin="round" opacity="0.75"/>
+          </svg>
+        </span>
+        <h3>Learning Loft</h3>
+        <p>Guides, the Viewing Room, and resources.</p>
+      </a>
+      <a class="map-stop" href="#dest-stable">
+        <span class="map-marker" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 28 L 32 14 L 54 28 L 54 52 L 10 52 Z" stroke="var(--heading)" stroke-width="2.5" stroke-linejoin="round" opacity="0.6"/>
+            <path d="M22 52 L 22 36 L 42 36 L 42 52" stroke="var(--blue-secondary)" stroke-width="2.5" stroke-linejoin="round" opacity="0.7"/>
+            <path d="M22 44 L 42 44" stroke="var(--blue-secondary)" stroke-width="2" opacity="0.55"/>
+            <ellipse cx="32" cy="40" rx="2" ry="2.5" fill="var(--heading)" opacity="0.5"/>
+          </svg>
+        </span>
+        <h3>Virtual Horse Stable</h3>
+        <p>Apply your knowledge with a virtual horse.</p>
+        <span class="map-tag">Coming Soon</span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<!-- FEATURED DESTINATIONS -->
+<section class="campus-section" id="destinations">
+  <div class="campus-inner">
+    <div class="campus-head">
+      <p class="section-label">Where to Go Today</p>
+      <h2 class="section-title">Featured Destinations</h2>
+      <p class="section-sub">Not sure where to start? Here's what each building is for — pick the one that fits what you feel like doing right now.</p>
+    </div>
+    <div class="dest-grid">
+      <article class="dest-card dest-academy" id="dest-academy">
+        <div class="dest-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 24 L 32 12 L 56 24" stroke="var(--blue-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 27 L 14 50 L 50 50 L 50 27" stroke="var(--heading)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/>
+            <path d="M24 50 L 24 34 L 40 34 L 40 50" stroke="var(--heading)" stroke-width="2.5" opacity="0.7"/>
+            <path d="M6 50 L 58 50" stroke="var(--heading)" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="dest-body">
+          <p class="dest-kicker">Structured Learning</p>
+          <h3>The Academy</h3>
+          <p>Work through Foundations, Core Studies, and Expanding Knowledge — clear, guided courses that build real horse knowledge one lesson at a time, at whatever pace suits you.</p>
+          <p class="dest-purpose"><strong>Best for:</strong> learning something new, step by step.</p>
+          <a href="../courses/index.html" class="btn-primary">Enter the Academy</a>
+        </div>
+      </article>
+      <article class="dest-card dest-arena" id="dest-arena">
+        <div class="dest-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="32" cy="40" rx="26" ry="14" stroke="var(--leather)" stroke-width="2.5" opacity="0.8"/>
+            <ellipse cx="32" cy="40" rx="15" ry="7.5" stroke="var(--leather)" stroke-width="2" opacity="0.5"/>
+            <path d="M21 12 L 43 12 L 43 19 C 43 27, 38 31, 32 31 C 26 31, 21 27, 21 19 Z" stroke="var(--heading)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/>
+            <path d="M21 14 C 14 14, 14 23, 21 24 M43 14 C 50 14, 50 23, 43 24" stroke="var(--heading)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="dest-body">
+          <p class="dest-kicker">Test Your Knowledge</p>
+          <h3>Horse Bowl Arena</h3>
+          <p>Step into the ring with practice rounds, timed challenges, and study activities. It's friendly competition that makes recall stick — with tournaments and leaderboards on the way.</p>
+          <p class="dest-purpose"><strong>Best for:</strong> checking what you know and making it stick.</p>
+          <a href="../horse-bowl/index.html" class="btn-primary">Enter the Arena</a>
+        </div>
+      </article>
+      <article class="dest-card dest-loft" id="dest-loft">
+        <div class="dest-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 26 L 32 12 L 56 26 L 56 52 L 8 52 Z" stroke="var(--heading)" stroke-width="2.5" stroke-linejoin="round" opacity="0.8"/>
+            <path d="M8 34 L 56 34" stroke="var(--heading)" stroke-width="2" opacity="0.5"/>
+            <path d="M18 42 C 24 39, 28 39, 32 42 C 36 39, 40 39, 46 42 L 46 49 C 40 46, 36 46, 32 49 C 28 46, 24 46, 18 49 Z" stroke="var(--success)" stroke-width="2" stroke-linejoin="round" opacity="0.75"/>
+          </svg>
+        </div>
+        <div class="dest-body">
+          <p class="dest-kicker">Explore &amp; Discover</p>
+          <h3>Learning Loft</h3>
+          <p>Your reference shelf and workshop in one. Browse guides, step into the Viewing Room, download worksheets, and dig into activities — follow your curiosity wherever it leads.</p>
+          <p class="dest-purpose"><strong>Best for:</strong> self-directed exploring and extra practice.</p>
+          <a href="../courses/index.html#learning-loft" class="btn-primary">Visit the Loft</a>
+        </div>
+      </article>
+      <article class="dest-card dest-stable is-soon" id="dest-stable">
+        <span class="dest-badge">Coming Soon</span>
+        <div class="dest-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 28 L 32 14 L 56 28 L 56 52 L 8 52 Z" stroke="var(--heading)" stroke-width="2.5" stroke-linejoin="round" opacity="0.6"/>
+            <path d="M22 52 L 22 36 L 42 36 L 42 52" stroke="var(--blue-secondary)" stroke-width="2.5" stroke-linejoin="round" opacity="0.7"/>
+            <path d="M22 44 L 42 44" stroke="var(--blue-secondary)" stroke-width="2" opacity="0.55"/>
+            <ellipse cx="32" cy="40" rx="2.2" ry="2.8" fill="var(--heading)" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="dest-body">
+          <p class="dest-kicker">Apply What You Learn</p>
+          <h3>Virtual Horse Stable</h3>
+          <p>Soon you'll care for and manage your own virtual horse — making real care and management decisions, working through scenarios, and unlocking new content as you progress. We're building the stable now.</p>
+          <p class="dest-purpose"><strong>Best for:</strong> putting your knowledge to work. <em>Opening soon.</em></p>
+          <span class="btn-disabled" aria-disabled="true">Coming Soon</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="flow-divider" aria-hidden="true"></div>
+
+<!-- CONTINUE LEARNING (reserved) -->
+<section class="campus-section" id="continue">
+  <div class="campus-inner">
+    <div class="campus-head">
+      <p class="section-label">Pick Up Where You Left Off</p>
+      <h2 class="section-title">Continue Learning</h2>
+      <p class="section-sub">Once you're signed in and learning, your day starts right here — your current course, where you've been, and a one-tap way back in.</p>
+    </div>
+    <div class="panel" id="continue-panel" data-state="preview">
+      <span class="panel-badge">Coming Soon</span>
+      <div class="continue-grid">
+        <div class="continue-tile" id="continue-current">
+          <h4>Current Course</h4>
+          <p>Your active lesson will appear here.</p>
+          <div class="continue-bar" aria-hidden="true"><span style="width:0%"></span></div>
+          <span class="btn-disabled" aria-disabled="true">Resume</span>
+        </div>
+        <div class="continue-tile" id="continue-recent">
+          <h4>Recently Visited</h4>
+          <p>The buildings and topics you've explored lately will be listed here for quick return.</p>
+          <span class="btn-disabled" aria-disabled="true">Revisit</span>
+        </div>
+        <div class="continue-tile" id="continue-next">
+          <h4>Suggested Next</h4>
+          <p>A recommended next lesson or challenge, based on where you are.</p>
+          <span class="btn-disabled" aria-disabled="true">Start</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS (reserved) -->
+<section class="campus-section ach-wash" id="achievements">
+  <div class="campus-inner">
+    <div class="campus-head">
+      <p class="section-label">Your Trophy Wall</p>
+      <h2 class="section-title">Achievements</h2>
+      <p class="section-sub">As you learn, this wall fills up — badges for mastery, certificates for finished courses, and streaks that reward showing up.</p>
+    </div>
+    <div class="panel" id="achievements-panel" data-state="preview">
+      <span class="panel-badge">Coming Soon</span>
+      <div class="ach-grid">
+        <div class="ach-tile" id="ach-mastery">
+          <div class="ach-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="18" r="11" stroke="var(--tan)" stroke-width="2.5"/>
+              <path d="M15 27 L 12 38 L 22 33 L 32 38 L 29 27" stroke="var(--tan)" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4>Mastery Badges</h4>
+          <p>Earn them as you master each topic.</p>
+        </div>
+        <div class="ach-tile" id="ach-certificates">
+          <div class="ach-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="10" width="28" height="20" rx="2" stroke="var(--success)" stroke-width="2.5"/>
+              <path d="M17 36 L 22 31 L 27 36" stroke="var(--success)" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M14 18 L 30 18 M14 23 L 25 23" stroke="var(--success)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+            </svg>
+          </div>
+          <h4>Certificates</h4>
+          <p>Mark every course you complete.</p>
+        </div>
+        <div class="ach-tile" id="ach-streaks">
+          <div class="ach-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 7 C 26 16, 33 18, 33 27 C 33 33, 28 38 22 38 C 16 38, 11 33, 11 27 C 11 20, 18 18, 22 7 Z" stroke="var(--leather)" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4>Learning Streaks</h4>
+          <p>Keep your momentum day to day.</p>
+        </div>
+        <div class="ach-tile" id="ach-milestones">
+          <div class="ach-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 36 L 12 8 L 30 8 L 26 15 L 32 22 L 12 22" stroke="var(--blue-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4>Completion Milestones</h4>
+          <p>Celebrate how far you've come.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flow-divider" aria-hidden="true"></div>
+
+<!-- GROWING CAMPUS -->
+<section class="campus-section" id="growing">
+  <div class="campus-inner">
+    <div class="campus-head">
+      <p class="section-label">Always Building</p>
+      <h2 class="section-title">A Campus That Keeps Growing</h2>
+      <p class="section-sub">Equine Edu is always expanding. Every month brings something new — and the biggest addition yet is on its way.</p>
+    </div>
+    <div class="grow-grid">
+      <div class="grow-item">
+        <h4>New Courses, Often</h4>
+        <p>Fresh lessons keep arriving across Foundations, Core Studies, and Expanding Knowledge, so the Academy always has a next step for you.</p>
+      </div>
+      <div class="grow-item">
+        <h4>A Fuller Loft</h4>
+        <p>The Learning Loft keeps filling with new guides, worksheets, Viewing Room visuals, and activities to discover.</p>
+      </div>
+      <div class="grow-item">
+        <h4>More in the Arena</h4>
+        <p>The Horse Bowl Arena is growing toward live tournaments and leaderboards — new ways to compete and celebrate what you know.</p>
+      </div>
+      <div class="grow-item">
+        <h4>The Stable Is Coming</h4>
+        <p>Our biggest build yet: the Virtual Horse Stable, where you'll care for a horse of your own and put everything you've learned into practice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+<script src="../assets/js/layout.js"></script>
+</body>
+</html>

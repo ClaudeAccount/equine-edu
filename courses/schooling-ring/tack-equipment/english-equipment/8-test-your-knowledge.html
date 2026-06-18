@@ -5,60 +5,535 @@
 <title>Test Your Knowledge - English Tack &amp; Equipment - Equine Edu</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
-<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css"><link rel="stylesheet" href="../../../../assets/css/course.css"></head>
-<body class="ee-page-courses-schooling-ring-tack-equipment-english-equipment-8-test-your-knowledge"><div id="site-nav"></div><div id="course-breadcrumb"></div>
-<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top"><div class="lesson-hero-inner hero-centered"><div class="lesson-hero-text"><div class="lesson-module-tag">English Tack & Equipment</div><h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1></div></div></section>
-<div class="quiz-layout"><div class="quiz-main"><div class="quiz-header"><h2>English Equipment Quiz</h2><p>This quiz covers English tack and equipment, including saddle parts, bridle parts, girths, breast collars, saddle pads, English riding purpose, and safe equipment use. Each attempt draws 15 questions from a larger bank, so every attempt is a little different.</p></div><form id="quiz-form"><div id="quiz-questions"></div><div class="quiz-submit-row"><button class="btn-submit" id="quiz-submit" type="button">Submit Quiz</button></div></form><div class="quiz-score-panel" id="score-panel"><div class="score-number" id="score-display">0 / 15</div><div class="score-label">Your Score</div><div class="score-message" id="score-message"></div><button class="btn-retake" id="btn-retake" type="button">Try Again</button></div></div><aside class="lesson-right"><div id="course-sidebar"></div><div id="course-sidebar-nav"></div></aside></div>
+<link rel="stylesheet" href="../../../../assets/css/core.css"><link rel="stylesheet" href="../../../../assets/css/components.css"><link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body class="ee-page-courses-schooling-ring-tack-equipment-english-equipment-8-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">English Tack &amp; Equipment</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
 <div id="site-footer"></div>
+<script src="course-config.js"></script>
 <script>
-const QUESTION_COUNT=15;
-const questionBank=[
-{prompt:'What is tack?',options:['Equipment used for riding, handling, or working with a horse','A horse coat color','A type of feed','A stable cleaning tool only'],answer:'Equipment used for riding, handling, or working with a horse',correct:'Correct. Tack includes equipment such as saddles, bridles, reins, girths, and stirrups.',incorrect:'Tack is the equipment used with horses for riding, handling, or work.'},
-{prompt:'Which part forms the raised front of an English saddle?',options:['Pommel','Cavesson','Browband','Girth'],answer:'Pommel',correct:'Correct. The pommel is the raised front area of the saddle.',incorrect:'The pommel is the raised front area of an English saddle.'},
-{prompt:'Where does the rider sit on an English saddle?',options:['Seat','Girth','Stirrup leather','Bit'],answer:'Seat',correct:'Correct. The rider sits in the seat.',incorrect:'The seat is the part designed for the rider.'},
-{prompt:'What is the cantle?',options:['The raised back of the saddle','The strap under the horse belly','The rider foot support','The mouthpiece of the bridle'],answer:'The raised back of the saddle',correct:'Correct. The cantle forms the back of the saddle seat.',incorrect:'The cantle is the raised back of the saddle.'},
-{prompt:'What does the girth help do?',options:['Hold the saddle in place','Steer the horse by itself','Decorate the browband','Replace the reins'],answer:'Hold the saddle in place',correct:'Correct. The girth passes under the belly and helps secure the saddle.',incorrect:'The girth helps hold the saddle in place.'},
-{prompt:'What is the main job of an English saddle pad or numnah?',options:['Protect the horse back, reduce friction, and keep the saddle cleaner','Replace a correctly fitted saddle','Hold the bit at the correct height','Keep the bridle from slipping off'],answer:'Protect the horse back, reduce friction, and keep the saddle cleaner',correct:'Correct. A pad or numnah sits between horse and saddle to help protect the back, absorb sweat, reduce friction, and keep the saddle cleaner.',incorrect:'A saddle pad or numnah helps protect the back, reduce friction, and keep the saddle cleaner.'},
-{prompt:'What does an English breast collar or breastplate help prevent?',options:['The saddle sliding backward','The bit becoming too short','The reins changing color','The stirrup irons becoming leather'],answer:'The saddle sliding backward',correct:'Correct. A breast collar or breastplate helps limit backward saddle movement while still allowing normal movement when fitted correctly.',incorrect:'A breast collar or breastplate helps keep the saddle from sliding backward.'},
-{prompt:'What should riders check about a saddle pad before tightening the girth?',options:['That it lies smooth and is lifted into the gullet or pommel area','That it replaces the girth','That it is completely hidden under the saddle','That it attaches to the bit'],answer:'That it lies smooth and is lifted into the gullet or pommel area',correct:'Correct. A smooth pad with room at the withers helps prevent pressure when the girth is tightened.',incorrect:'The pad should lie smoothly and have room lifted into the gullet or pommel area.'},
-{prompt:'How should a breast collar or breastplate fit?',options:['Stable without restricting the shoulder or pressing into the windpipe','As tight as possible across the throat','Loose enough to hang below the knees','Attached only to the reins'],answer:'Stable without restricting the shoulder or pressing into the windpipe',correct:'Correct. It should help stabilize the saddle without restricting the horse shoulder, neck, or breathing.',incorrect:'A breast collar or breastplate should stabilize the saddle without restricting movement or breathing.'},
-{prompt:'Which sign means the English saddle setup deserves a closer look?',options:['Soreness, swelling, dry pressure spots, white hairs, or sudden resistance','A clean saddle pad','A correctly buckled girth','A rider who knows the part names'],answer:'Soreness, swelling, dry pressure spots, white hairs, or sudden resistance',correct:'Correct. These can be signs that the tack setup is causing discomfort or uneven pressure.',incorrect:'Soreness, swelling, dry pressure spots, white hairs, or sudden resistance should prompt a tack check.'},
-{prompt:'Which English saddle part supports the rider foot?',options:['Stirrup iron','Pommel','Saddle flap','Throatlatch'],answer:'Stirrup iron',correct:'Correct. The stirrup iron supports the rider foot.',incorrect:'The stirrup iron is where the rider places the foot.'},
-{prompt:'What are billet straps used for?',options:['Buckling the girth to the saddle','Holding the bit in the mouth','Crossing the forehead','Forming the back of the seat'],answer:'Buckling the girth to the saddle',correct:'Correct. Billet straps connect the saddle to the girth.',incorrect:'Billet straps buckle to the girth and help secure the saddle.'},
-{prompt:'What is the saddle flap?',options:['The leather flap under the rider leg','The metal mouthpiece','The forehead strap','The reins'],answer:'The leather flap under the rider leg',correct:'Correct. The saddle flap lies under the rider leg.',incorrect:'The saddle flap is the leather section under the rider leg.'},
-{prompt:'What is the panel of an English saddle?',options:['The padded underside that contacts the saddle pad','The metal stirrup','The forehead strap','The bit'],answer:'The padded underside that contacts the saddle pad',correct:'Correct. Panels help distribute pressure along the horse back.',incorrect:'Panels are the padded underside sections that contact the saddle pad.'},
-{prompt:'Which bridle part passes over the horse poll?',options:['Crownpiece','Bit','Reins','Stirrup'],answer:'Crownpiece',correct:'Correct. The crownpiece goes over the poll.',incorrect:'The crownpiece is the top strap over the poll.'},
-{prompt:'What does a browband do?',options:['Crosses the forehead on browband-style bridles','Holds the rider foot','Secures the saddle under the belly','Forms the back of the saddle'],answer:'Crosses the forehead on browband-style bridles',correct:'Correct. A browband crosses the forehead.',incorrect:'A browband is the forehead strap on browband-style bridles.'},
-{prompt:'What is the function of cheekpieces?',options:['Help hold the bit or attachment at the correct height','Support the rider seat','Tighten the girth','Protect the saddle flap'],answer:'Help hold the bit or attachment at the correct height',correct:'Correct. Cheekpieces help position the bit or bitless attachment.',incorrect:'Cheekpieces are side straps that help position the bit or attachment.'},
-{prompt:'What does the throatlatch help prevent?',options:['The bridle slipping off','The saddle pad sliding backward','The stirrup leather twisting','The pommel moving'],answer:'The bridle slipping off',correct:'Correct. The throatlatch helps keep the bridle in place.',incorrect:'The throatlatch helps prevent the bridle from slipping off.'},
-{prompt:'What do reins connect to?',options:['The bit or bitless attachment','Only the saddle pommel','The cantle','The saddle flap'],answer:'The bit or bitless attachment',correct:'Correct. Reins connect to the bit or bitless attachment.',incorrect:'Reins connect to the bit or bitless attachment and are held by the rider.'},
-{prompt:'Why is knowing equipment parts useful?',options:['It supports clear instruction, safer tack checks, and better communication','It replaces lessons with a trainer','It means tack always fits','It changes the horse color'],answer:'It supports clear instruction, safer tack checks, and better communication',correct:'Correct. Equipment vocabulary helps with instruction, safety checks, and care.',incorrect:'Knowing part names improves communication and tack checks.'},
-{prompt:'Which item is part of an English bridle?',options:['Bit','Saddle flap','Cantle','Panel'],answer:'Bit',correct:'Correct. The bit may be part of an English bridle setup.',incorrect:'The bit belongs with bridle equipment, though some setups are bitless.'},
-{prompt:'Which item is part of an English saddle?',options:['Stirrup leather','Browband','Crownpiece','Cheekpiece'],answer:'Stirrup leather',correct:'Correct. The stirrup leather attaches the stirrup iron to the saddle.',incorrect:'The stirrup leather is an English saddle part.'},
-{prompt:'Which English saddle type is often used across multiple basic riding activities?',options:['All-purpose saddle','Dressage saddle','Racing saddle','Side saddle'],answer:'All-purpose saddle',correct:'Correct. All-purpose saddles balance a moderately deep seat with a flap shape that can work for flatwork and small jumping.',incorrect:'An all-purpose saddle is designed for general English riding — flatwork and small jumping.'},
-{prompt:'Which English saddle type is designed for a long, balanced dressage position?',options:['Dressage saddle','Close contact saddle','Endurance saddle','Polo saddle'],answer:'Dressage saddle',correct:'Correct. Dressage saddles have a deeper seat, longer straighter flap, and support for a longer leg position.',incorrect:'Dressage saddles are shaped to support a longer rider leg and balanced seat for flatwork.'},
-{prompt:'Which English saddle has a very flat seat, minimal knee rolls, and a low profile to allow the rider to move freely and swing a mallet?',options:['Polo saddle','Eventing saddle','Saddle seat saddle','Endurance saddle'],answer:'Polo saddle',correct:'Correct. The polo saddle is flat and lightweight to allow the rider to move freely and swing a mallet.',incorrect:'The polo saddle has a very flat seat and minimal knee rolls designed for polo play.'},
-{prompt:'Which English saddle is often built to support a secure jumping position while still allowing the rider to work on the flat?',options:['Eventing saddle','Dressage saddle','Polo saddle','Side saddle'],answer:'Eventing saddle',correct:'Correct. Eventing saddles are built to support jumping while still allowing flatwork.',incorrect:'The eventing saddle supports a secure jumping position and flatwork — both phases of eventing.'},
-{prompt:'Which English saddle has a forward-cut flap and angled design to support a shorter stirrup and secure jumping position?',options:['Close contact saddle','Dressage saddle','Saddle seat saddle','Racing saddle'],answer:'Close contact saddle',correct:'Correct. The close contact saddle has a flatter seat and angled flaps to position the rider closer to the horse for jumping.',incorrect:'The close contact saddle is a forward-flap jumping saddle designed for a shorter stirrup and secure position.'},
-{prompt:'Which English saddle is a cutback style designed to place the rider farther back and leave room around higher withers?',options:['Saddle seat saddle','Endurance saddle','Monoflap saddle','All-purpose saddle'],answer:'Saddle seat saddle',correct:'Correct. The saddle seat saddle is a cutback-style saddle used in saddle seat disciplines.',incorrect:'The saddle seat saddle places the rider farther back and has a cutback design for higher withers.'},
-{prompt:'Which English saddle is built with design choices that prioritize rider comfort, horse comfort, and steady balance over many miles?',options:['Endurance saddle','Close contact saddle','Polo saddle','Dressage saddle'],answer:'Endurance saddle',correct:'Correct. Endurance saddles are built for long-distance riding comfort and steady balance.',incorrect:'The endurance saddle prioritizes comfort and balance for long-distance riding.'},
-{prompt:'Which English saddle has a single flap instead of the traditional two-flap design, allowing the rider leg to sit closer to the horse?',options:['Monoflap saddle','Saddle seat saddle','Racing saddle','All-purpose saddle'],answer:'Monoflap saddle',correct:'Correct. The monoflap saddle uses a single flap for a cleaner feel and closer contact, often used in jumping and eventing.',incorrect:'The monoflap saddle has one flap instead of two, putting the rider leg closer to the horse.'},
-{prompt:'Which English saddle is extremely lightweight with a minimal seat and very short flaps, designed to reduce weight for a jockey?',options:['Racing saddle','Polo saddle','Eventing saddle','Close contact saddle'],answer:'Racing saddle',correct:'Correct. Racing saddles are stripped down to reduce weight and support the short-stirrup jockey position.',incorrect:'The racing saddle is built for flat racing — minimal and lightweight to support a short-stirrup jockey position.'},
-{prompt:'Which English saddle is designed so the rider sits with both legs on the same side of the horse, and features a horn and leaping head?',options:['Side saddle','Saddle seat saddle','Endurance saddle','Monoflap saddle'],answer:'Side saddle',correct:'Correct. The side saddle has both legs on the same side, with a horn and leaping head to help the rider maintain a secure position.',incorrect:'The side saddle positions the rider with both legs on the same side and uses a horn and leaping head for security.'},
-{prompt:'Which bridle part circles the horse nose on many English bridles?',options:['Cavesson','Stirrup iron','Panel','Cantle'],answer:'Cavesson',correct:'Correct. The cavesson circles the horse nose.',incorrect:'The cavesson is the bridle strap around the nose.'},
-{prompt:'Why should riders check the girth before mounting?',options:['A loose or incorrect girth can affect saddle security','It changes the bridle size','It sharpens the bit','It replaces reins'],answer:'A loose or incorrect girth can affect saddle security',correct:'Correct. The girth is part of saddle security.',incorrect:'The girth is important because it helps secure the saddle.'},
-{prompt:'What is the gullet?',options:['The channel between the saddle panels over the spine','The front of the bridle','The rider foot support','The forehead strap'],answer:'The channel between the saddle panels over the spine',correct:'Correct. The gullet helps provide space over the horse spine.',incorrect:'The gullet is the channel between the panels over the spine area.'}
+window.CURRENT_MODULE = 7;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to English Tack',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.englishEquipment.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What is tack?",
+    "opts": [
+      "Equipment used for riding, handling, or working with a horse",
+      "A horse coat color",
+      "A type of feed",
+      "A stable cleaning tool only"
+    ],
+    "a": "Equipment used for riding, handling, or working with a horse",
+    "ok": "Correct. Tack includes equipment such as saddles, bridles, reins, girths, and stirrups.",
+    "no": "Tack is the equipment used with horses for riding, handling, or work."
+  },
+  {
+    "q": "Which part forms the raised front of an English saddle?",
+    "opts": [
+      "Pommel",
+      "Cavesson",
+      "Browband",
+      "Girth"
+    ],
+    "a": "Pommel",
+    "ok": "Correct. The pommel is the raised front area of the saddle.",
+    "no": "The pommel is the raised front area of an English saddle."
+  },
+  {
+    "q": "Where does the rider sit on an English saddle?",
+    "opts": [
+      "Seat",
+      "Girth",
+      "Stirrup leather",
+      "Bit"
+    ],
+    "a": "Seat",
+    "ok": "Correct. The rider sits in the seat.",
+    "no": "The seat is the part designed for the rider."
+  },
+  {
+    "q": "What is the cantle?",
+    "opts": [
+      "The raised back of the saddle",
+      "The strap under the horse belly",
+      "The rider foot support",
+      "The mouthpiece of the bridle"
+    ],
+    "a": "The raised back of the saddle",
+    "ok": "Correct. The cantle forms the back of the saddle seat.",
+    "no": "The cantle is the raised back of the saddle."
+  },
+  {
+    "q": "What does the girth help do?",
+    "opts": [
+      "Hold the saddle in place",
+      "Steer the horse by itself",
+      "Decorate the browband",
+      "Replace the reins"
+    ],
+    "a": "Hold the saddle in place",
+    "ok": "Correct. The girth passes under the belly and helps secure the saddle.",
+    "no": "The girth helps hold the saddle in place."
+  },
+  {
+    "q": "What is the main job of an English saddle pad or numnah?",
+    "opts": [
+      "Protect the horse back, reduce friction, and keep the saddle cleaner",
+      "Replace a correctly fitted saddle",
+      "Hold the bit at the correct height",
+      "Keep the bridle from slipping off"
+    ],
+    "a": "Protect the horse back, reduce friction, and keep the saddle cleaner",
+    "ok": "Correct. A pad or numnah sits between horse and saddle to help protect the back, absorb sweat, reduce friction, and keep the saddle cleaner.",
+    "no": "A saddle pad or numnah helps protect the back, reduce friction, and keep the saddle cleaner."
+  },
+  {
+    "q": "What does an English breast collar or breastplate help prevent?",
+    "opts": [
+      "The saddle sliding backward",
+      "The bit becoming too short",
+      "The reins changing color",
+      "The stirrup irons becoming leather"
+    ],
+    "a": "The saddle sliding backward",
+    "ok": "Correct. A breast collar or breastplate helps limit backward saddle movement while still allowing normal movement when fitted correctly.",
+    "no": "A breast collar or breastplate helps keep the saddle from sliding backward."
+  },
+  {
+    "q": "What should riders check about a saddle pad before tightening the girth?",
+    "opts": [
+      "That it lies smooth and is lifted into the gullet or pommel area",
+      "That it replaces the girth",
+      "That it is completely hidden under the saddle",
+      "That it attaches to the bit"
+    ],
+    "a": "That it lies smooth and is lifted into the gullet or pommel area",
+    "ok": "Correct. A smooth pad with room at the withers helps prevent pressure when the girth is tightened.",
+    "no": "The pad should lie smoothly and have room lifted into the gullet or pommel area."
+  },
+  {
+    "q": "How should a breast collar or breastplate fit?",
+    "opts": [
+      "Stable without restricting the shoulder or pressing into the windpipe",
+      "As tight as possible across the throat",
+      "Loose enough to hang below the knees",
+      "Attached only to the reins"
+    ],
+    "a": "Stable without restricting the shoulder or pressing into the windpipe",
+    "ok": "Correct. It should help stabilize the saddle without restricting the horse shoulder, neck, or breathing.",
+    "no": "A breast collar or breastplate should stabilize the saddle without restricting movement or breathing."
+  },
+  {
+    "q": "Which sign means the English saddle setup deserves a closer look?",
+    "opts": [
+      "Soreness, swelling, dry pressure spots, white hairs, or sudden resistance",
+      "A clean saddle pad",
+      "A correctly buckled girth",
+      "A rider who knows the part names"
+    ],
+    "a": "Soreness, swelling, dry pressure spots, white hairs, or sudden resistance",
+    "ok": "Correct. These can be signs that the tack setup is causing discomfort or uneven pressure.",
+    "no": "Soreness, swelling, dry pressure spots, white hairs, or sudden resistance should prompt a tack check."
+  },
+  {
+    "q": "Which English saddle part supports the rider foot?",
+    "opts": [
+      "Stirrup iron",
+      "Pommel",
+      "Saddle flap",
+      "Throatlatch"
+    ],
+    "a": "Stirrup iron",
+    "ok": "Correct. The stirrup iron supports the rider foot.",
+    "no": "The stirrup iron is where the rider places the foot."
+  },
+  {
+    "q": "What are billet straps used for?",
+    "opts": [
+      "Buckling the girth to the saddle",
+      "Holding the bit in the mouth",
+      "Crossing the forehead",
+      "Forming the back of the seat"
+    ],
+    "a": "Buckling the girth to the saddle",
+    "ok": "Correct. Billet straps connect the saddle to the girth.",
+    "no": "Billet straps buckle to the girth and help secure the saddle."
+  },
+  {
+    "q": "What is the saddle flap?",
+    "opts": [
+      "The leather flap under the rider leg",
+      "The metal mouthpiece",
+      "The forehead strap",
+      "The reins"
+    ],
+    "a": "The leather flap under the rider leg",
+    "ok": "Correct. The saddle flap lies under the rider leg.",
+    "no": "The saddle flap is the leather section under the rider leg."
+  },
+  {
+    "q": "What is the panel of an English saddle?",
+    "opts": [
+      "The padded underside that contacts the saddle pad",
+      "The metal stirrup",
+      "The forehead strap",
+      "The bit"
+    ],
+    "a": "The padded underside that contacts the saddle pad",
+    "ok": "Correct. Panels help distribute pressure along the horse back.",
+    "no": "Panels are the padded underside sections that contact the saddle pad."
+  },
+  {
+    "q": "Which bridle part passes over the horse poll?",
+    "opts": [
+      "Crownpiece",
+      "Bit",
+      "Reins",
+      "Stirrup"
+    ],
+    "a": "Crownpiece",
+    "ok": "Correct. The crownpiece goes over the poll.",
+    "no": "The crownpiece is the top strap over the poll."
+  },
+  {
+    "q": "What does a browband do?",
+    "opts": [
+      "Crosses the forehead on browband-style bridles",
+      "Holds the rider foot",
+      "Secures the saddle under the belly",
+      "Forms the back of the saddle"
+    ],
+    "a": "Crosses the forehead on browband-style bridles",
+    "ok": "Correct. A browband crosses the forehead.",
+    "no": "A browband is the forehead strap on browband-style bridles."
+  },
+  {
+    "q": "What is the function of cheekpieces?",
+    "opts": [
+      "Help hold the bit or attachment at the correct height",
+      "Support the rider seat",
+      "Tighten the girth",
+      "Protect the saddle flap"
+    ],
+    "a": "Help hold the bit or attachment at the correct height",
+    "ok": "Correct. Cheekpieces help position the bit or bitless attachment.",
+    "no": "Cheekpieces are side straps that help position the bit or attachment."
+  },
+  {
+    "q": "What does the throatlatch help prevent?",
+    "opts": [
+      "The bridle slipping off",
+      "The saddle pad sliding backward",
+      "The stirrup leather twisting",
+      "The pommel moving"
+    ],
+    "a": "The bridle slipping off",
+    "ok": "Correct. The throatlatch helps keep the bridle in place.",
+    "no": "The throatlatch helps prevent the bridle from slipping off."
+  },
+  {
+    "q": "What do reins connect to?",
+    "opts": [
+      "The bit or bitless attachment",
+      "Only the saddle pommel",
+      "The cantle",
+      "The saddle flap"
+    ],
+    "a": "The bit or bitless attachment",
+    "ok": "Correct. Reins connect to the bit or bitless attachment.",
+    "no": "Reins connect to the bit or bitless attachment and are held by the rider."
+  },
+  {
+    "q": "Why is knowing equipment parts useful?",
+    "opts": [
+      "It supports clear instruction, safer tack checks, and better communication",
+      "It replaces lessons with a trainer",
+      "It means tack always fits",
+      "It changes the horse color"
+    ],
+    "a": "It supports clear instruction, safer tack checks, and better communication",
+    "ok": "Correct. Equipment vocabulary helps with instruction, safety checks, and care.",
+    "no": "Knowing part names improves communication and tack checks."
+  },
+  {
+    "q": "Which item is part of an English bridle?",
+    "opts": [
+      "Bit",
+      "Saddle flap",
+      "Cantle",
+      "Panel"
+    ],
+    "a": "Bit",
+    "ok": "Correct. The bit may be part of an English bridle setup.",
+    "no": "The bit belongs with bridle equipment, though some setups are bitless."
+  },
+  {
+    "q": "Which item is part of an English saddle?",
+    "opts": [
+      "Stirrup leather",
+      "Browband",
+      "Crownpiece",
+      "Cheekpiece"
+    ],
+    "a": "Stirrup leather",
+    "ok": "Correct. The stirrup leather attaches the stirrup iron to the saddle.",
+    "no": "The stirrup leather is an English saddle part."
+  },
+  {
+    "q": "Which English saddle type is often used across multiple basic riding activities?",
+    "opts": [
+      "All-purpose saddle",
+      "Dressage saddle",
+      "Racing saddle",
+      "Side saddle"
+    ],
+    "a": "All-purpose saddle",
+    "ok": "Correct. All-purpose saddles balance a moderately deep seat with a flap shape that can work for flatwork and small jumping.",
+    "no": "An all-purpose saddle is designed for general English riding — flatwork and small jumping."
+  },
+  {
+    "q": "Which English saddle type is designed for a long, balanced dressage position?",
+    "opts": [
+      "Dressage saddle",
+      "Close contact saddle",
+      "Endurance saddle",
+      "Polo saddle"
+    ],
+    "a": "Dressage saddle",
+    "ok": "Correct. Dressage saddles have a deeper seat, longer straighter flap, and support for a longer leg position.",
+    "no": "Dressage saddles are shaped to support a longer rider leg and balanced seat for flatwork."
+  },
+  {
+    "q": "Which English saddle has a very flat seat, minimal knee rolls, and a low profile to allow the rider to move freely and swing a mallet?",
+    "opts": [
+      "Polo saddle",
+      "Eventing saddle",
+      "Saddle seat saddle",
+      "Endurance saddle"
+    ],
+    "a": "Polo saddle",
+    "ok": "Correct. The polo saddle is flat and lightweight to allow the rider to move freely and swing a mallet.",
+    "no": "The polo saddle has a very flat seat and minimal knee rolls designed for polo play."
+  },
+  {
+    "q": "Which English saddle is often built to support a secure jumping position while still allowing the rider to work on the flat?",
+    "opts": [
+      "Eventing saddle",
+      "Dressage saddle",
+      "Polo saddle",
+      "Side saddle"
+    ],
+    "a": "Eventing saddle",
+    "ok": "Correct. Eventing saddles are built to support jumping while still allowing flatwork.",
+    "no": "The eventing saddle supports a secure jumping position and flatwork — both phases of eventing."
+  },
+  {
+    "q": "Which English saddle has a forward-cut flap and angled design to support a shorter stirrup and secure jumping position?",
+    "opts": [
+      "Close contact saddle",
+      "Dressage saddle",
+      "Saddle seat saddle",
+      "Racing saddle"
+    ],
+    "a": "Close contact saddle",
+    "ok": "Correct. The close contact saddle has a flatter seat and angled flaps to position the rider closer to the horse for jumping.",
+    "no": "The close contact saddle is a forward-flap jumping saddle designed for a shorter stirrup and secure position."
+  },
+  {
+    "q": "Which English saddle is a cutback style designed to place the rider farther back and leave room around higher withers?",
+    "opts": [
+      "Saddle seat saddle",
+      "Endurance saddle",
+      "Monoflap saddle",
+      "All-purpose saddle"
+    ],
+    "a": "Saddle seat saddle",
+    "ok": "Correct. The saddle seat saddle is a cutback-style saddle used in saddle seat disciplines.",
+    "no": "The saddle seat saddle places the rider farther back and has a cutback design for higher withers."
+  },
+  {
+    "q": "Which English saddle is built with design choices that prioritize rider comfort, horse comfort, and steady balance over many miles?",
+    "opts": [
+      "Endurance saddle",
+      "Close contact saddle",
+      "Polo saddle",
+      "Dressage saddle"
+    ],
+    "a": "Endurance saddle",
+    "ok": "Correct. Endurance saddles are built for long-distance riding comfort and steady balance.",
+    "no": "The endurance saddle prioritizes comfort and balance for long-distance riding."
+  },
+  {
+    "q": "Which English saddle has a single flap instead of the traditional two-flap design, allowing the rider leg to sit closer to the horse?",
+    "opts": [
+      "Monoflap saddle",
+      "Saddle seat saddle",
+      "Racing saddle",
+      "All-purpose saddle"
+    ],
+    "a": "Monoflap saddle",
+    "ok": "Correct. The monoflap saddle uses a single flap for a cleaner feel and closer contact, often used in jumping and eventing.",
+    "no": "The monoflap saddle has one flap instead of two, putting the rider leg closer to the horse."
+  },
+  {
+    "q": "Which English saddle is extremely lightweight with a minimal seat and very short flaps, designed to reduce weight for a jockey?",
+    "opts": [
+      "Racing saddle",
+      "Polo saddle",
+      "Eventing saddle",
+      "Close contact saddle"
+    ],
+    "a": "Racing saddle",
+    "ok": "Correct. Racing saddles are stripped down to reduce weight and support the short-stirrup jockey position.",
+    "no": "The racing saddle is built for flat racing — minimal and lightweight to support a short-stirrup jockey position."
+  },
+  {
+    "q": "Which English saddle is designed so the rider sits with both legs on the same side of the horse, and features a horn and leaping head?",
+    "opts": [
+      "Side saddle",
+      "Saddle seat saddle",
+      "Endurance saddle",
+      "Monoflap saddle"
+    ],
+    "a": "Side saddle",
+    "ok": "Correct. The side saddle has both legs on the same side, with a horn and leaping head to help the rider maintain a secure position.",
+    "no": "The side saddle positions the rider with both legs on the same side and uses a horn and leaping head for security."
+  },
+  {
+    "q": "Which bridle part circles the horse nose on many English bridles?",
+    "opts": [
+      "Cavesson",
+      "Stirrup iron",
+      "Panel",
+      "Cantle"
+    ],
+    "a": "Cavesson",
+    "ok": "Correct. The cavesson circles the horse nose.",
+    "no": "The cavesson is the bridle strap around the nose."
+  },
+  {
+    "q": "Why should riders check the girth before mounting?",
+    "opts": [
+      "A loose or incorrect girth can affect saddle security",
+      "It changes the bridle size",
+      "It sharpens the bit",
+      "It replaces reins"
+    ],
+    "a": "A loose or incorrect girth can affect saddle security",
+    "ok": "Correct. The girth is part of saddle security.",
+    "no": "The girth is important because it helps secure the saddle."
+  },
+  {
+    "q": "What is the gullet?",
+    "opts": [
+      "The channel between the saddle panels over the spine",
+      "The front of the bridle",
+      "The rider foot support",
+      "The forehead strap"
+    ],
+    "a": "The channel between the saddle panels over the spine",
+    "ok": "Correct. The gullet helps provide space over the horse spine.",
+    "no": "The gullet is the channel between the panels over the spine area."
+  },
+  {
+    "q": "What is tack?",
+    "opts": [
+      "Equipment used for riding, handling, or working with a horse",
+      "A horse coat color",
+      "A type of feed",
+      "A stable cleaning tool only"
+    ],
+    "a": "Equipment used for riding, handling, or working with a horse",
+    "ok": "Correct. Tack includes equipment such as saddles, bridles, reins, girths, and stirrups.",
+    "no": "Tack is the equipment used with horses for riding, handling, or work."
+  },
+  {
+    "q": "Which part forms the raised front of an English saddle?",
+    "opts": [
+      "Pommel",
+      "Cavesson",
+      "Browband",
+      "Girth"
+    ],
+    "a": "Pommel",
+    "ok": "Correct. The pommel is the raised front area of the saddle.",
+    "no": "The pommel is the raised front area of an English saddle."
+  },
+  {
+    "q": "Where does the rider sit on an English saddle?",
+    "opts": [
+      "Seat",
+      "Girth",
+      "Stirrup leather",
+      "Bit"
+    ],
+    "a": "Seat",
+    "ok": "Correct. The rider sits in the seat.",
+    "no": "The seat is the part designed for the rider."
+  },
+  {
+    "q": "What is the cantle?",
+    "opts": [
+      "The raised back of the saddle",
+      "The strap under the horse belly",
+      "The rider foot support",
+      "The mouthpiece of the bridle"
+    ],
+    "a": "The raised back of the saddle",
+    "ok": "Correct. The cantle forms the back of the saddle seat.",
+    "no": "The cantle is the raised back of the saddle."
+  },
+  {
+    "q": "What does the girth help do?",
+    "opts": [
+      "Hold the saddle in place",
+      "Steer the horse by itself",
+      "Decorate the browband",
+      "Replace the reins"
+    ],
+    "a": "Hold the saddle in place",
+    "ok": "Correct. The girth passes under the belly and helps secure the saddle.",
+    "no": "The girth helps hold the saddle in place."
+  }
 ];
-const quizBody=document.getElementById('quiz-questions'),submit=document.getElementById('quiz-submit'),scorePanel=document.getElementById('score-panel'),scoreDisplay=document.getElementById('score-display'),scoreMessage=document.getElementById('score-message');
-let submitted=false;
-function esc(t){return String(t).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
-function shuffle(a){return a.map(v=>({v,s:Math.random()})).sort((x,y)=>x.s-y.s).map(o=>o.v);}
-function renderQuiz(){submitted=false;const qs=shuffle(questionBank).slice(0,QUESTION_COUNT).map(q=>({...q,options:shuffle(q.options)}));quizBody.innerHTML=qs.map((q,i)=>`<div class="q-block" data-correct="${esc(q.answer)}"><div class="q-number">Question ${i+1} of ${QUESTION_COUNT}</div><div class="q-text">${esc(q.prompt)}</div><div class="q-options">${q.options.map(o=>`<button class="q-option" type="button" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div><div class="q-feedback correct">${esc(q.correct)}</div><div class="q-feedback incorrect">${esc(q.incorrect)}</div></div>`).join('');scorePanel.classList.remove('show');submit.disabled=false;quizBody.querySelectorAll('.q-option').forEach(btn=>btn.onclick=()=>{if(submitted)return;const block=btn.closest('.q-block');block.querySelectorAll('.q-option').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');});}
-submit.onclick=()=>{if(submitted)return;submitted=true;let score=0;quizBody.querySelectorAll('.q-block').forEach(block=>{const correct=block.dataset.correct,selected=block.querySelector('.q-option.selected');block.querySelectorAll('.q-option').forEach(btn=>{btn.disabled=true;if(btn.dataset.val===correct)btn.classList.add('correct-ans');});if(selected&&selected.dataset.val===correct){score++;selected.classList.add('correct-ans');block.querySelector('.q-feedback.correct').classList.add('show');}else{if(selected)selected.classList.add('wrong-ans');block.querySelector('.q-feedback.incorrect').classList.add('show');}});scoreDisplay.textContent=`${score} / ${QUESTION_COUNT}`;scoreMessage.textContent=score===QUESTION_COUNT?'Perfect score. You know your English equipment parts.':score>=12?'Strong work. Review the missed items and try again when ready.':'Keep practicing the saddle and bridle labels, then try again.';scorePanel.classList.add('show');scorePanel.scrollIntoView({behavior:'smooth'});try{localStorage.setItem('equineEduProgress.englishEquipment.showYourKnowledge','true')}catch(e){}};
-document.getElementById('btn-retake').onclick=renderQuiz;renderQuiz();
 </script>
-<script>window.CURRENT_MODULE=7;window.LAYOUT={homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to English Tack',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};</script>
-<script src="course-config.js"></script><script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/supabase-client.js"></script>
-<script src="../../../../assets/js/paywall.js"></script><script src="../../../../assets/js/course-nav.js"></script>
-</body></html>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

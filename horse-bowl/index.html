@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horse Bowl Arena — Equine Edu</title>
+<meta name="description" content="Build a custom practice round from the Equine Edu question bank. Pick your topics, choose your length, and learn from full explanations after every question.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/core.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/course.css">
+<link rel="stylesheet" href="../assets/css/horse-bowl.css">
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<!-- HERO -->
+<section class="hb-hero">
+  <div class="hb-hero-inner">
+    <span class="eyebrow">The Horse Bowl Arena</span>
+    <h1>Practice in the <em>Arena</em>.</h1>
+    <p>Build a custom round from the whole Equine Edu question bank. Pick your topics, choose how many questions, and learn from a full explanation after every answer — not just a score.</p>
+  </div>
+</section>
+
+<div class="hb-wrap">
+
+  <div class="hb-loading" id="hb-loading">Loading the question bank…</div>
+
+  <!-- ================= STAGE 1 — SETUP WIZARD ================= -->
+  <section class="hb-stage" id="hb-setup">
+    <div class="hb-panel hb-wizard">
+      <div class="hb-wizard-main">
+      <ol class="hb-steps" id="hb-steps" aria-label="Setup steps">
+        <li data-step="1" class="is-current">Questions</li>
+        <li data-step="2">Topics</li>
+        <li data-step="3">Mode</li>
+      </ol>
+
+      <!-- STEP 1: number of questions -->
+      <div class="hb-step is-active" data-step="1">
+        <p class="hb-section-label">Step 1 of 3</p>
+        <h2 class="hb-h2">Choose your number of questions</h2>
+        <p class="hb-help">How long do you want this round to be?</p>
+        <div class="hb-choices hb-choices-lg" id="hb-count-group">
+          <button type="button" class="hb-choice is-on" data-val="10">10</button>
+          <button type="button" class="hb-choice" data-val="20">20</button>
+          <button type="button" class="hb-choice" data-val="30">30</button>
+        </div>
+        <div class="hb-step-nav">
+          <span></span>
+          <button type="button" class="btn-primary" data-next>Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: categories -->
+      <div class="hb-step" data-step="2" hidden>
+        <p class="hb-section-label">Step 2 of 3</p>
+        <h2 class="hb-h2">What would you like to practice?</h2>
+        <p class="hb-help">Choose one or more topics, or keep all of them.</p>
+
+        <label class="hb-toggle" for="hb-completed-input">
+          <input type="checkbox" id="hb-completed-input">
+          <span class="hb-toggle-text">
+            <strong>Only courses I&rsquo;ve completed</strong>
+            <span class="hb-toggle-sub" id="hb-completed-sub"></span>
+          </span>
+        </label>
+
+        <label class="hb-allcats"><input type="checkbox" id="hb-allcats-input" checked> All categories</label>
+        <div class="hb-cat-grid" id="hb-cat-grid"></div>
+
+        <div class="hb-step-nav">
+          <button type="button" class="btn-secondary" data-back>&larr; Go back</button>
+          <button type="button" class="btn-primary" data-next>Continue &rarr;</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: timer + start -->
+      <div class="hb-step" data-step="3" hidden>
+        <p class="hb-section-label">Step 3 of 3</p>
+        <h2 class="hb-h2">Timed or untimed?</h2>
+        <p class="hb-help">Race the clock for a challenge, or take your time.</p>
+        <div class="hb-choices hb-choices-lg" id="hb-timer-group">
+          <button type="button" class="hb-choice is-on" data-val="untimed">Untimed</button>
+          <button type="button" class="hb-choice" data-val="timed">Timed</button>
+        </div>
+        <div id="hb-timer-detail" class="hb-timer-detail" hidden>
+          <p class="hb-section-label">Seconds per question</p>
+          <div class="hb-choices" id="hb-secs-group">
+            <button type="button" class="hb-choice" data-val="15">15s</button>
+            <button type="button" class="hb-choice is-on" data-val="30">30s</button>
+            <button type="button" class="hb-choice" data-val="45">45s</button>
+          </div>
+        </div>
+        <p class="hb-warn" id="hb-warn" hidden></p>
+        <span class="hb-pool-note" id="hb-pool-note" hidden></span>
+        <div class="hb-step-nav">
+          <button type="button" class="btn-secondary" data-back>&larr; Go back</button>
+          <button type="button" class="btn-primary hb-start-btn" id="hb-start">Start Quiz &#9654;</button>
+        </div>
+      </div>
+      </div><!-- /hb-wizard-main -->
+      <aside class="hb-deco-col" aria-hidden="true"><img class="hb-deco" id="hb-deco" alt=""></aside>
+    </div>
+  </section>
+
+  <!-- ================= STAGE 2 — ACTIVE ================= -->
+  <section class="hb-stage" id="hb-active">
+    <div class="hb-panel">
+      <div class="hb-active-top">
+        <span class="hb-progress-text" id="hb-progress-text">Question 1 of 10</span>
+        <span class="hb-tag" id="hb-qtag"></span>
+        <span class="hb-timer" id="hb-timer" style="display:none;">30s</span>
+      </div>
+      <div class="hb-progress-bar"><span id="hb-progress-fill"></span></div>
+
+      <div class="hb-qa-row" id="hb-qa-row">
+        <div class="hb-qa">
+          <div class="hb-question" id="hb-question"></div>
+          <div class="hb-options" id="hb-options"></div>
+        </div>
+        <figure class="hb-media" id="hb-media" hidden><img id="hb-media-img" alt=""></figure>
+      </div>
+      <div class="hb-feedback" id="hb-feedback"></div>
+
+      <div class="hb-active-actions">
+        <button type="button" class="hb-end-link" id="hb-end-early">End quiz early</button>
+        <button type="button" class="btn-primary" id="hb-next" disabled>Next Question</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STAGE 3 — RESULTS ================= -->
+  <section class="hb-stage" id="hb-results">
+    <div class="hb-panel">
+      <div class="hb-score-head">
+        <p class="hb-section-label">Round Complete</p>
+        <div class="hb-score-ring" id="hb-score-ring"></div>
+        <p class="hb-score-sub" id="hb-score-sub"></p>
+      </div>
+
+      <div class="hb-cards">
+        <div class="hb-card is-strength">
+          <h3>Strengths</h3>
+          <div class="hb-pill-row" id="hb-strengths"></div>
+        </div>
+        <div class="hb-card is-weak">
+          <h3>Focus Next</h3>
+          <div class="hb-pill-row" id="hb-weaknesses"></div>
+        </div>
+      </div>
+
+      <p class="hb-section-label">Accuracy by Category</p>
+      <div class="hb-breakdown" id="hb-breakdown"></div>
+
+      <div class="hb-review">
+        <h2 class="hb-h2">Question Review</h2>
+        <p class="hb-help">Every question, with the key idea behind the right answer. Read the misses closely — that is where the learning happens.</p>
+        <div id="hb-review"></div>
+      </div>
+
+      <div class="hb-results-actions">
+        <button type="button" class="btn-primary" id="hb-retake">Practice Again (Same Setup)</button>
+        <button type="button" class="btn-secondary" id="hb-again">Change Setup</button>
+        <a class="btn-secondary" href="../hub/index.html">Back to the Campus</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="site-footer"></div>
+
+<script>
+  window.LAYOUT = {
+    homeUrl: '../index.html',
+    coursesUrl: '../courses/index.html',
+    navCta: { label: 'Back to the Campus', url: '../hub/index.html' }
+  };
+</script>
+<script src="../assets/js/supabase-client.js"></script>
+<script src="../assets/data/question-bank.js"></script>
+<script src="../assets/js/horse-bowl.js"></script>
+<script src="../assets/js/horse-bowl-ui.js"></script>
+<script src="../assets/js/layout.js"></script>
+</body>
+</html>

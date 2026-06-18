@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Equine Edu course image coming soon">
+  <rect width="400" height="400" fill="#F1E9DC"/>
+  <rect x="0" y="0" width="400" height="400" fill="url(#g)" opacity="0.5"/>
+  <defs><radialGradient id="g" cx="32%" cy="26%" r="80%">
+    <stop offset="0%" stop-color="#FCFAF7"/><stop offset="100%" stop-color="#E7DCCB"/>
+  </radialGradient></defs>
+  <g fill="none" stroke="#7A5D45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.55">
+    <path d="M150 300 C 142 256 152 214 178 184 C 196 162 218 148 232 124 C 242 108 246 90 258 76 C 264 68 274 64 280 58 C 285 53 287 45 293 42 C 298 40 303 44 306 49 C 311 43 317 38 323 41 C 328 44 329 51 333 56 C 345 70 353 86 356 104 C 359 122 356 140 346 155 C 336 170 320 178 305 188 C 287 200 276 219 271 240 C 266 261 268 287 263 309"/>
+    <path d="M280 58 C 266 47 248 44 234 50 C 220 56 211 70 207 86"/>
+  </g>
+  <ellipse cx="318" cy="128" rx="4.5" ry="6" fill="#7A5D45" opacity="0.55"/>
+  <path d="M96 330 L 304 330" stroke="#C8A27A" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+  <text x="200" y="366" text-anchor="middle" font-family="Georgia, 'Playfair Display', serif" font-size="26" fill="#24364A" opacity="0.72">Equine Edu</text>
+</svg>

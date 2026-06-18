@@ -7,7 +7,7 @@ One template, three levels of the same pattern:
 
 | Variant | Lists | Example |
 |---|---|---|
-| **Arena hub** | Subjects within a tier | Round Pen → Colors & Markings, Anatomy, Riding Styles… |
+| **Arena hub** | Subjects within a tier | Round Pen → Colors & Markings, Anatomy, Riding Disciplines… |
 | **Subject hub** | Courses within a subject, in order | Colors & Markings → Common Colors → Face Markings → Leg Markings |
 | **Collection hub** | Cross-course items | Lesson Board (all courses), Quiz Corral (T23 fun quizzes), Learning Loft tools (T17 bank home) |
 

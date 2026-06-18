@@ -1,0 +1,790 @@
+{
+  "generated": "2026-06-18T03:42:31.182Z",
+  "count": 49,
+  "questions": [
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Bay",
+        "Black",
+        "Buckskin",
+        "Chestnut"
+      ],
+      "correctAnswer": "Bay",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/bay.png",
+      "explanationCorrect": "Correct — the coat color shown is Bay.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Bay."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Buckskin",
+        "Black",
+        "Chestnut",
+        "Flaxen Chestnut"
+      ],
+      "correctAnswer": "Black",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/black.png",
+      "explanationCorrect": "Correct — the coat color shown is Black.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Black."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Chestnut",
+        "Flaxen Chestnut",
+        "Buckskin",
+        "Gray"
+      ],
+      "correctAnswer": "Buckskin",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/buckskin.png",
+      "explanationCorrect": "Correct — the coat color shown is Buckskin.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Buckskin."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Flaxen Chestnut",
+        "Gray",
+        "Leopard Appaloosa",
+        "Chestnut"
+      ],
+      "correctAnswer": "Chestnut",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/chestnut.png",
+      "explanationCorrect": "Correct — the coat color shown is Chestnut.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Chestnut."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Flaxen Chestnut",
+        "Gray",
+        "Leopard Appaloosa",
+        "Palomino"
+      ],
+      "correctAnswer": "Flaxen Chestnut",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/flaxen-chestnut.png",
+      "explanationCorrect": "Correct — the coat color shown is Flaxen Chestnut.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Flaxen Chestnut."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Leopard Appaloosa",
+        "Gray",
+        "Palomino",
+        "Strawberry Roan"
+      ],
+      "correctAnswer": "Gray",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/gray.png",
+      "explanationCorrect": "Correct — the coat color shown is Gray.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Gray."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Palomino",
+        "Strawberry Roan",
+        "Leopard Appaloosa",
+        "Tobiano"
+      ],
+      "correctAnswer": "Leopard Appaloosa",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/leopard-appaloosa.png",
+      "explanationCorrect": "Correct — the coat color shown is Leopard Appaloosa.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Leopard Appaloosa."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Strawberry Roan",
+        "Tobiano",
+        "Bay",
+        "Palomino"
+      ],
+      "correctAnswer": "Palomino",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/palomino.png",
+      "explanationCorrect": "Correct — the coat color shown is Palomino.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Palomino."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Strawberry Roan",
+        "Tobiano",
+        "Bay",
+        "Black"
+      ],
+      "correctAnswer": "Strawberry Roan",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/strawberry-roan.png",
+      "explanationCorrect": "Correct — the coat color shown is Strawberry Roan.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Strawberry Roan."
+    },
+    {
+      "question": "Which coat color is shown in the photo?",
+      "options": [
+        "Bay",
+        "Tobiano",
+        "Black",
+        "Buckskin"
+      ],
+      "correctAnswer": "Tobiano",
+      "category": "colors",
+      "courseId": "common-horse-colors",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/common-horse-colors/images/the-viewing-room/tobiano.png",
+      "explanationCorrect": "Correct — the coat color shown is Tobiano.",
+      "explanationIncorrect": "Look again at the photo — the coat color shown is Tobiano."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Bald Face",
+        "Blaze and Snip",
+        "Blaze",
+        "Chin Spot"
+      ],
+      "correctAnswer": "Bald Face",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/bald-face.png",
+      "explanationCorrect": "Correct — the face marking shown is Bald Face.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Bald Face."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Blaze",
+        "Blaze and Snip",
+        "Chin Spot",
+        "Snip"
+      ],
+      "correctAnswer": "Blaze and Snip",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/blaze-snip.png",
+      "explanationCorrect": "Correct — the face marking shown is Blaze and Snip.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Blaze and Snip."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Chin Spot",
+        "Snip",
+        "Blaze",
+        "Star and Snip"
+      ],
+      "correctAnswer": "Blaze",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/blaze.png",
+      "explanationCorrect": "Correct — the face marking shown is Blaze.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Blaze."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Snip",
+        "Star and Snip",
+        "Star, Strip, and Snip",
+        "Chin Spot"
+      ],
+      "correctAnswer": "Chin Spot",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/chin-spot.png",
+      "explanationCorrect": "Correct — the face marking shown is Chin Spot.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Chin Spot."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Snip",
+        "Star and Snip",
+        "Star, Strip, and Snip",
+        "Star and Strip"
+      ],
+      "correctAnswer": "Snip",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/snip.png",
+      "explanationCorrect": "Correct — the face marking shown is Snip.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Snip."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Star, Strip, and Snip",
+        "Star and Snip",
+        "Star and Strip",
+        "Star"
+      ],
+      "correctAnswer": "Star and Snip",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/star-snip.png",
+      "explanationCorrect": "Correct — the face marking shown is Star and Snip.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Star and Snip."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Star and Strip",
+        "Star",
+        "Star, Strip, and Snip",
+        "Strip and Snip"
+      ],
+      "correctAnswer": "Star, Strip, and Snip",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/star-strip-snip.png",
+      "explanationCorrect": "Correct — the face marking shown is Star, Strip, and Snip.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Star, Strip, and Snip."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Star",
+        "Strip and Snip",
+        "Strip",
+        "Star and Strip"
+      ],
+      "correctAnswer": "Star and Strip",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/star-strip.png",
+      "explanationCorrect": "Correct — the face marking shown is Star and Strip.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Star and Strip."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Star",
+        "Strip and Snip",
+        "Strip",
+        "Bald Face"
+      ],
+      "correctAnswer": "Star",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/star.png",
+      "explanationCorrect": "Correct — the face marking shown is Star.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Star."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Strip",
+        "Strip and Snip",
+        "Bald Face",
+        "Blaze and Snip"
+      ],
+      "correctAnswer": "Strip and Snip",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/strip-snip.png",
+      "explanationCorrect": "Correct — the face marking shown is Strip and Snip.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Strip and Snip."
+    },
+    {
+      "question": "Which face marking is shown in the photo?",
+      "options": [
+        "Bald Face",
+        "Blaze and Snip",
+        "Strip",
+        "Blaze"
+      ],
+      "correctAnswer": "Strip",
+      "category": "markings",
+      "courseId": "face-markings",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/colors-markings/face-markings/images/viewing-room/strip.png",
+      "explanationCorrect": "Correct — the face marking shown is Strip.",
+      "explanationIncorrect": "Look again at the photo — the face marking shown is Strip."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "American Paint Horse",
+        "American Quarter Horse",
+        "American Saddlebred",
+        "Appaloosa"
+      ],
+      "correctAnswer": "American Paint Horse",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/american-paint-horse.png",
+      "explanationCorrect": "Correct — the breed shown is American Paint Horse.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is American Paint Horse."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "American Saddlebred",
+        "American Quarter Horse",
+        "Appaloosa",
+        "Arabian"
+      ],
+      "correctAnswer": "American Quarter Horse",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/american-quarter-horse.png",
+      "explanationCorrect": "Correct — the breed shown is American Quarter Horse.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is American Quarter Horse."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Appaloosa",
+        "Arabian",
+        "American Saddlebred",
+        "Belgian"
+      ],
+      "correctAnswer": "American Saddlebred",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/american-saddlebred.png",
+      "explanationCorrect": "Correct — the breed shown is American Saddlebred.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is American Saddlebred."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Arabian",
+        "Belgian",
+        "Clydesdale",
+        "Appaloosa"
+      ],
+      "correctAnswer": "Appaloosa",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/appaloosa.png",
+      "explanationCorrect": "Correct — the breed shown is Appaloosa.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Appaloosa."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Arabian",
+        "Belgian",
+        "Clydesdale",
+        "Fell Pony"
+      ],
+      "correctAnswer": "Arabian",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/arabian.png",
+      "explanationCorrect": "Correct — the breed shown is Arabian.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Arabian."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Clydesdale",
+        "Belgian",
+        "Fell Pony",
+        "Falabella"
+      ],
+      "correctAnswer": "Belgian",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/belgian.png",
+      "explanationCorrect": "Correct — the breed shown is Belgian.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Belgian."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Fell Pony",
+        "Falabella",
+        "Clydesdale",
+        "Fjord"
+      ],
+      "correctAnswer": "Clydesdale",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/clydesdale.png",
+      "explanationCorrect": "Correct — the breed shown is Clydesdale.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Clydesdale."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Falabella",
+        "Fjord",
+        "Friesian",
+        "Fell Pony"
+      ],
+      "correctAnswer": "Fell Pony",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/fell-pony.png",
+      "explanationCorrect": "Correct — the breed shown is Fell Pony.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Fell Pony."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Falabella",
+        "Fjord",
+        "Friesian",
+        "Gypsy Vanner"
+      ],
+      "correctAnswer": "Falabella",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/fellabella-horse.png",
+      "explanationCorrect": "Correct — the breed shown is Falabella.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Falabella."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Friesian",
+        "Fjord",
+        "Gypsy Vanner",
+        "Hackney Pony"
+      ],
+      "correctAnswer": "Fjord",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/fjord.png",
+      "explanationCorrect": "Correct — the breed shown is Fjord.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Fjord."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Gypsy Vanner",
+        "Hackney Pony",
+        "Friesian",
+        "Haflinger"
+      ],
+      "correctAnswer": "Friesian",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/friesian.png",
+      "explanationCorrect": "Correct — the breed shown is Friesian.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Friesian."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Hackney Pony",
+        "Haflinger",
+        "Miniature Horse",
+        "Gypsy Vanner"
+      ],
+      "correctAnswer": "Gypsy Vanner",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/gypsy-vanner.png",
+      "explanationCorrect": "Correct — the breed shown is Gypsy Vanner.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Gypsy Vanner."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Hackney Pony",
+        "Haflinger",
+        "Miniature Horse",
+        "Missouri Fox Trotter"
+      ],
+      "correctAnswer": "Hackney Pony",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/hackney-pony.png",
+      "explanationCorrect": "Correct — the breed shown is Hackney Pony.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Hackney Pony."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Miniature Horse",
+        "Haflinger",
+        "Missouri Fox Trotter",
+        "Morgan"
+      ],
+      "correctAnswer": "Haflinger",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/haflinger.png",
+      "explanationCorrect": "Correct — the breed shown is Haflinger.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Haflinger."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Missouri Fox Trotter",
+        "Morgan",
+        "Miniature Horse",
+        "Mustang"
+      ],
+      "correctAnswer": "Miniature Horse",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/miniature-horse.png",
+      "explanationCorrect": "Correct — the breed shown is Miniature Horse.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Miniature Horse."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Morgan",
+        "Mustang",
+        "National Show Horse",
+        "Missouri Fox Trotter"
+      ],
+      "correctAnswer": "Missouri Fox Trotter",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/missouri-fox-trotter.png",
+      "explanationCorrect": "Correct — the breed shown is Missouri Fox Trotter.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Missouri Fox Trotter."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Morgan",
+        "Mustang",
+        "National Show Horse",
+        "Percheron"
+      ],
+      "correctAnswer": "Morgan",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/morgan.png",
+      "explanationCorrect": "Correct — the breed shown is Morgan.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Morgan."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "National Show Horse",
+        "Mustang",
+        "Percheron",
+        "POA Pony"
+      ],
+      "correctAnswer": "Mustang",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/mustang.png",
+      "explanationCorrect": "Correct — the breed shown is Mustang.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Mustang."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Percheron",
+        "POA Pony",
+        "National Show Horse",
+        "Rocky Mountain Horse"
+      ],
+      "correctAnswer": "National Show Horse",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/national-show-horse.png",
+      "explanationCorrect": "Correct — the breed shown is National Show Horse.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is National Show Horse."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "POA Pony",
+        "Rocky Mountain Horse",
+        "Shetland Pony",
+        "Percheron"
+      ],
+      "correctAnswer": "Percheron",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/percheron.png",
+      "explanationCorrect": "Correct — the breed shown is Percheron.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Percheron."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "POA Pony",
+        "Rocky Mountain Horse",
+        "Shetland Pony",
+        "Shire"
+      ],
+      "correctAnswer": "POA Pony",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/poa-pony.png",
+      "explanationCorrect": "Correct — the breed shown is POA Pony.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is POA Pony."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Shetland Pony",
+        "Rocky Mountain Horse",
+        "Shire",
+        "Standardbred"
+      ],
+      "correctAnswer": "Rocky Mountain Horse",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/rocky-mountain-horse.png",
+      "explanationCorrect": "Correct — the breed shown is Rocky Mountain Horse.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Rocky Mountain Horse."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Shire",
+        "Standardbred",
+        "Shetland Pony",
+        "Tennessee Walking Horse"
+      ],
+      "correctAnswer": "Shetland Pony",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/shetland-pony.png",
+      "explanationCorrect": "Correct — the breed shown is Shetland Pony.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Shetland Pony."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Standardbred",
+        "Tennessee Walking Horse",
+        "Thoroughbred",
+        "Shire"
+      ],
+      "correctAnswer": "Shire",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/shire.png",
+      "explanationCorrect": "Correct — the breed shown is Shire.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Shire."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Standardbred",
+        "Tennessee Walking Horse",
+        "Thoroughbred",
+        "Welsh Pony"
+      ],
+      "correctAnswer": "Standardbred",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/standardbred.png",
+      "explanationCorrect": "Correct — the breed shown is Standardbred.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Standardbred."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Thoroughbred",
+        "Tennessee Walking Horse",
+        "Welsh Pony",
+        "American Paint Horse"
+      ],
+      "correctAnswer": "Tennessee Walking Horse",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/tennessee-walking-horse.png",
+      "explanationCorrect": "Correct — the breed shown is Tennessee Walking Horse.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Tennessee Walking Horse."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "Welsh Pony",
+        "American Paint Horse",
+        "Thoroughbred",
+        "American Quarter Horse"
+      ],
+      "correctAnswer": "Thoroughbred",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/thoroughbred.png",
+      "explanationCorrect": "Correct — the breed shown is Thoroughbred.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Thoroughbred."
+    },
+    {
+      "question": "Which breed is shown in the photo?",
+      "options": [
+        "American Paint Horse",
+        "American Quarter Horse",
+        "American Saddlebred",
+        "Welsh Pony"
+      ],
+      "correctAnswer": "Welsh Pony",
+      "category": "breeds",
+      "courseId": "horse-and-pony-breeds",
+      "difficulty": "medium",
+      "image": "/courses/schooling-ring/breeds/horse-and-pony-breeds/images/breeds/welsh-pony.png",
+      "explanationCorrect": "Correct — the breed shown is Welsh Pony.",
+      "explanationIncorrect": "Look again at the photo — the breed shown is Welsh Pony."
+    }
+  ]
+}

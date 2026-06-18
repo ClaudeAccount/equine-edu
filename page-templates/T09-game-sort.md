@@ -1,6 +1,6 @@
 # T09 — Sort & Classify Game
 
-**Covers existing games:** color-sort, style-sort, region-sort
+**Covers existing games:** color-sort, discipline-sort, region-sort
 **Skill level:** Application/Analysis (Bloom: Apply) — second rung of the Training Barn ladder
 **Institutional model:** Hippology station classes ("place each item in its group") and judging class organization; mechanism is category discrimination — deciding *which group* forces attention to distinguishing features (Kornell & Bjork, discriminative contrast).
 

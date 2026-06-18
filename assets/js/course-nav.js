@@ -23,7 +23,15 @@
   function init() {
     const config = window.COURSE_CONFIG;
     const modNum = window.CURRENT_MODULE;
-    if (!config || !modNum) return;
+    if (!config) return;
+
+    // Landing pages have a module list but no CURRENT_MODULE — show course progress there.
+    if (!modNum) {
+      if (document.getElementById('course-module-list')) {
+        buildLandingProgress(config, getCourseBasePath());
+      }
+      return;
+    }
 
     const modules  = config.modules;
     const current  = modules.find(m => m.num === modNum);
@@ -113,6 +121,43 @@
     } catch (e) {
       return false;
     }
+  }
+
+  /* ---------- LANDING PAGE PROGRESS ---------- */
+  function buildLandingProgress(config, courseBase) {
+    const modules = (config.modules || []);
+    if (!modules.length) return;
+    const list = document.getElementById('course-module-list');
+    if (!list) return;
+
+    let complete = 0;
+    modules.forEach(function (m) { if (isModuleComplete(config, m)) complete++; });
+    const total = modules.length;
+    const pct = total ? Math.round((complete / total) * 100) : 0;
+    const done = complete >= total && total > 0;
+
+    // mark completed module items already rendered by the page's own script
+    const items = list.querySelectorAll('.module-item');
+    modules.forEach(function (m, i) {
+      if (isModuleComplete(config, m) && items[i]) {
+        items[i].classList.add('is-complete');
+        const num = items[i].querySelector('.module-num');
+        if (num) num.innerHTML = '&#10003;';
+      }
+    });
+
+    // build the bar once, just above the module list
+    if (document.getElementById('course-progress')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'course-progress' + (done ? ' is-done' : '');
+    wrap.id = 'course-progress';
+    wrap.innerHTML =
+      '<div class="course-progress-top">' +
+        '<span class="course-progress-label">' + (done ? 'Course complete' : 'Your progress') + '</span>' +
+        '<span class="course-progress-count">' + complete + ' of ' + total + ' complete</span>' +
+      '</div>' +
+      '<div class="course-progress-track"><div class="course-progress-fill" style="width:' + pct + '%;"></div></div>';
+    list.parentNode.insertBefore(wrap, list);
   }
 
   /* ---------- BREADCRUMB ---------- */

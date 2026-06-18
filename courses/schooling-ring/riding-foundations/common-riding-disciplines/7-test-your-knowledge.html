@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Your Knowledge &mdash; Common Riding Disciplines &mdash; Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css"></head>
+<body class="ee-page-courses-schooling-ring-riding-disciplines-common-riding-disciplines-7-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Common Riding Disciplines</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 6;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Common Riding Disciplines',url:'1-index.html'},navExtras:[{label:'The Training Barn',url:'5-training-barn.html'}]};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.commonRidingDisciplines.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "Which statement best explains why riding disciplines developed?",
+    "opts": [
+      "Different jobs and traditions required horses to work in different ways",
+      "All riders wanted identical equipment",
+      "Horse breeds stopped changing",
+      "Show rules came before practical work"
+    ],
+    "a": "Different jobs and traditions required horses to work in different ways",
+    "ok": "Correct. Disciplines grew from practical needs, terrain, traditions, and later sport rules.",
+    "no": "Not quite. The biggest reason is that different jobs and places required different ways of riding."
+  },
+  {
+    "q": "Which discipline is part of the Western category?",
+    "opts": [
+      "Reining",
+      "Dressage",
+      "Hunters",
+      "Eventing"
+    ],
+    "a": "Reining",
+    "ok": "Correct. Reining is a Western discipline.",
+    "no": "Reining is the Western discipline in this list."
+  },
+  {
+    "q": "Which discipline is part of the English category?",
+    "opts": [
+      "Dressage",
+      "Barrel racing",
+      "Ranch riding",
+      "Cutting"
+    ],
+    "a": "Dressage",
+    "ok": "Correct. Dressage is an English discipline focused on precise, balanced movement.",
+    "no": "Dressage is the English discipline listed here."
+  },
+  {
+    "q": "What is barrel racing designed around?",
+    "opts": [
+      "A timed cloverleaf pattern around three barrels",
+      "A judged dressage test",
+      "A smooth hunter round",
+      "Sorting cattle slowly"
+    ],
+    "a": "A timed cloverleaf pattern around three barrels",
+    "ok": "Correct. Barrel racing is a timed Western event.",
+    "no": "Barrel racing uses a timed cloverleaf pattern around three barrels."
+  },
+  {
+    "q": "What is pole bending designed around?",
+    "opts": [
+      "Weaving through a straight line of poles as quickly and cleanly as possible",
+      "A judged dressage test",
+      "A hunter round over fences",
+      "A team ball game with mallets"
+    ],
+    "a": "Weaving through a straight line of poles as quickly and cleanly as possible",
+    "ok": "Correct. Pole bending is a timed Western speed event.",
+    "no": "Pole bending asks the horse and rider to weave through poles in a timed pattern."
+  },
+  {
+    "q": "What is Western horsemanship designed to show?",
+    "opts": [
+      "Rider position, control, and pattern accuracy in Western tack",
+      "A formal dressage test",
+      "A smooth jumping course",
+      "A gallop over a racetrack"
+    ],
+    "a": "Rider position, control, and pattern accuracy in Western tack",
+    "ok": "Correct. Western horsemanship is the Western counterpart to rider-focused equitation.",
+    "no": "Western horsemanship focuses on rider position, control, and pattern accuracy in Western tack."
+  },
+  {
+    "q": "What is dressage designed to show?",
+    "opts": [
+      "Precise, balanced movement and clear communication",
+      "Fastest time around barrels",
+      "A relaxed jog on the rail only",
+      "Cattle handling"
+    ],
+    "a": "Precise, balanced movement and clear communication",
+    "ok": "Correct. Dressage is built around accuracy, balance, and communication.",
+    "no": "Dressage focuses on precise, balanced movement and communication."
+  },
+  {
+    "q": "In hunter classes, what is usually emphasized?",
+    "opts": [
+      "Smooth rhythm, good form, and a polished jumping round",
+      "The fastest possible time only",
+      "Sliding stops and spins",
+      "A roping run"
+    ],
+    "a": "Smooth rhythm, good form, and a polished jumping round",
+    "ok": "Correct. Hunters are judged on the quality and smoothness of the round.",
+    "no": "Hunters reward smooth rhythm, form, and an attractive round."
+  },
+  {
+    "q": "In jumper classes, what usually matters most?",
+    "opts": [
+      "Faults and time",
+      "Mane braiding only",
+      "The quietest jog",
+      "A cattle pattern"
+    ],
+    "a": "Faults and time",
+    "ok": "Correct. Jumpers are scored by faults and time.",
+    "no": "Jumpers are about clearing the course with few faults and efficient time."
+  },
+  {
+    "q": "Which discipline combines dressage, cross-country, and stadium jumping?",
+    "opts": [
+      "Eventing",
+      "Western pleasure",
+      "Ranch riding",
+      "Saddle seat"
+    ],
+    "a": "Eventing",
+    "ok": "Correct. Eventing has three phases.",
+    "no": "Eventing is the three-phase sport."
+  },
+  {
+    "q": "Which English sport uses mallets, a ball, and team play?",
+    "opts": [
+      "Polo",
+      "Reining",
+      "Western pleasure",
+      "Pole bending"
+    ],
+    "a": "Polo",
+    "ok": "Correct. Polo is a fast team sport played from horseback.",
+    "no": "Polo is the team sport that uses mallets and a ball."
+  },
+  {
+    "q": "Which English sport is centered on galloping over a set distance for speed?",
+    "opts": [
+      "Horse racing",
+      "Ranch riding",
+      "Cutting",
+      "Western horsemanship"
+    ],
+    "a": "Horse racing",
+    "ok": "Correct. Horse racing is centered on speed over a set distance.",
+    "no": "Horse racing is the speed-focused sport over a set distance."
+  },
+  {
+    "q": "Which Western discipline rewards a horse that looks useful for ranch-type work?",
+    "opts": [
+      "Ranch riding",
+      "Equitation",
+      "Hunters",
+      "Dressage"
+    ],
+    "a": "Ranch riding",
+    "ok": "Correct. Ranch riding connects closely to practical ranch movement and usefulness.",
+    "no": "Ranch riding is the discipline focused on ranch-type usefulness."
+  },
+  {
+    "q": "Which Western class focuses on a quiet, willing horse moving steadily at walk, jog, and lope?",
+    "opts": [
+      "Western pleasure",
+      "Barrel racing",
+      "Jumpers",
+      "Eventing"
+    ],
+    "a": "Western pleasure",
+    "ok": "Correct. Western pleasure rewards a calm, consistent way of going.",
+    "no": "Western pleasure is the quiet rail class described here."
+  },
+  {
+    "q": "Which activity is most connected to cattle work?",
+    "opts": [
+      "Cutting or roping",
+      "Dressage",
+      "Hunter under saddle",
+      "Saddle seat"
+    ],
+    "a": "Cutting or roping",
+    "ok": "Correct. Cutting and roping are Western cattle-work events.",
+    "no": "Cutting and roping are cattle-work events."
+  },
+  {
+    "q": "What does the term discipline mean in this course?",
+    "opts": [
+      "A specific riding activity or event within a riding category",
+      "Only the saddle a rider uses",
+      "A horse color category",
+      "A barn rule"
+    ],
+    "a": "A specific riding activity or event within a riding category",
+    "ok": "Correct. Western and English are main riding categories; disciplines are the specific activities.",
+    "no": "A discipline is the specific riding activity inside a larger riding category."
+  },
+  {
+    "q": "Which pairing is correct?",
+    "opts": [
+      "English - dressage",
+      "Western - hunters",
+      "English - barrel racing",
+      "Western - eventing"
+    ],
+    "a": "English - dressage",
+    "ok": "Correct. Dressage belongs to the English category.",
+    "no": "The correct pairing is English - dressage."
+  },
+  {
+    "q": "Which pairing is correct?",
+    "opts": [
+      "Western - reining",
+      "English - roping",
+      "Western - dressage",
+      "English - barrel racing"
+    ],
+    "a": "Western - reining",
+    "ok": "Correct. Reining is a Western discipline.",
+    "no": "Western - reining is the correct pair."
+  },
+  {
+    "q": "Why does tack often look different between riding categories?",
+    "opts": [
+      "Tack changes to support the task, rider position, and communication needed",
+      "Tack differences are only decorative",
+      "All disciplines require the same saddle",
+      "Tack has no connection to the style"
+    ],
+    "a": "Tack changes to support the task, rider position, and communication needed",
+    "ok": "Correct. Tack is shaped by purpose.",
+    "no": "Tack often supports the job, balance, and communication style."
+  },
+  {
+    "q": "Which clue points most strongly toward Western riding?",
+    "opts": [
+      "Working cattle or ranch-type tasks",
+      "A dressage test",
+      "A hunter course",
+      "Stadium jumping faults"
+    ],
+    "a": "Working cattle or ranch-type tasks",
+    "ok": "Correct. Ranch and stock work are major Western roots.",
+    "no": "Cattle and ranch work point strongly toward Western riding."
+  },
+  {
+    "q": "Which clue points most strongly toward English riding?",
+    "opts": [
+      "A formal dressage test or jumping course",
+      "A roping run",
+      "A cloverleaf barrel pattern",
+      "A cutting pen"
+    ],
+    "a": "A formal dressage test or jumping course",
+    "ok": "Correct. Dressage and jumping are common English discipline clues.",
+    "no": "Dressage tests and jumping courses point toward English riding."
+  },
+  {
+    "q": "True or false: Western and English are main riding categories, not just one single event each.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "True",
+    "ok": "Correct. Each main style includes many disciplines.",
+    "no": "Western and English are main riding categories with many disciplines inside them."
+  },
+  {
+    "q": "True or false: A horse can only ever learn one riding discipline.",
+    "opts": [
+      "True",
+      "False"
+    ],
+    "a": "False",
+    "ok": "Correct. Many horses can learn more than one discipline with appropriate training.",
+    "no": "Horses can learn multiple disciplines, though each one has different expectations."
+  },
+  {
+    "q": "What is equitation most focused on?",
+    "opts": [
+      "The rider position and effectiveness",
+      "Fastest time around barrels",
+      "A sliding stop",
+      "Sorting cattle"
+    ],
+    "a": "The rider position and effectiveness",
+    "ok": "Correct. Equitation centers on the rider.",
+    "no": "Equitation is focused on rider position and effectiveness."
+  },
+  {
+    "q": "Which statement best explains why riding disciplines developed?",
+    "opts": [
+      "Different jobs and traditions required horses to work in different ways",
+      "All riders wanted identical equipment",
+      "Horse breeds stopped changing",
+      "Show rules came before practical work"
+    ],
+    "a": "Different jobs and traditions required horses to work in different ways",
+    "ok": "Correct. Disciplines grew from practical needs, terrain, traditions, and later sport rules.",
+    "no": "Not quite. The biggest reason is that different jobs and places required different ways of riding."
+  },
+  {
+    "q": "Which discipline is part of the Western category?",
+    "opts": [
+      "Reining",
+      "Dressage",
+      "Hunters",
+      "Eventing"
+    ],
+    "a": "Reining",
+    "ok": "Correct. Reining is a Western discipline.",
+    "no": "Reining is the Western discipline in this list."
+  },
+  {
+    "q": "Which discipline is part of the English category?",
+    "opts": [
+      "Dressage",
+      "Barrel racing",
+      "Ranch riding",
+      "Cutting"
+    ],
+    "a": "Dressage",
+    "ok": "Correct. Dressage is an English discipline focused on precise, balanced movement.",
+    "no": "Dressage is the English discipline listed here."
+  },
+  {
+    "q": "What is barrel racing designed around?",
+    "opts": [
+      "A timed cloverleaf pattern around three barrels",
+      "A judged dressage test",
+      "A smooth hunter round",
+      "Sorting cattle slowly"
+    ],
+    "a": "A timed cloverleaf pattern around three barrels",
+    "ok": "Correct. Barrel racing is a timed Western event.",
+    "no": "Barrel racing uses a timed cloverleaf pattern around three barrels."
+  },
+  {
+    "q": "What is pole bending designed around?",
+    "opts": [
+      "Weaving through a straight line of poles as quickly and cleanly as possible",
+      "A judged dressage test",
+      "A hunter round over fences",
+      "A team ball game with mallets"
+    ],
+    "a": "Weaving through a straight line of poles as quickly and cleanly as possible",
+    "ok": "Correct. Pole bending is a timed Western speed event.",
+    "no": "Pole bending asks the horse and rider to weave through poles in a timed pattern."
+  },
+  {
+    "q": "What is Western horsemanship designed to show?",
+    "opts": [
+      "Rider position, control, and pattern accuracy in Western tack",
+      "A formal dressage test",
+      "A smooth jumping course",
+      "A gallop over a racetrack"
+    ],
+    "a": "Rider position, control, and pattern accuracy in Western tack",
+    "ok": "Correct. Western horsemanship is the Western counterpart to rider-focused equitation.",
+    "no": "Western horsemanship focuses on rider position, control, and pattern accuracy in Western tack."
+  },
+  {
+    "q": "What is dressage designed to show?",
+    "opts": [
+      "Precise, balanced movement and clear communication",
+      "Fastest time around barrels",
+      "A relaxed jog on the rail only",
+      "Cattle handling"
+    ],
+    "a": "Precise, balanced movement and clear communication",
+    "ok": "Correct. Dressage is built around accuracy, balance, and communication.",
+    "no": "Dressage focuses on precise, balanced movement and communication."
+  },
+  {
+    "q": "In hunter classes, what is usually emphasized?",
+    "opts": [
+      "Smooth rhythm, good form, and a polished jumping round",
+      "The fastest possible time only",
+      "Sliding stops and spins",
+      "A roping run"
+    ],
+    "a": "Smooth rhythm, good form, and a polished jumping round",
+    "ok": "Correct. Hunters are judged on the quality and smoothness of the round.",
+    "no": "Hunters reward smooth rhythm, form, and an attractive round."
+  },
+  {
+    "q": "In jumper classes, what usually matters most?",
+    "opts": [
+      "Faults and time",
+      "Mane braiding only",
+      "The quietest jog",
+      "A cattle pattern"
+    ],
+    "a": "Faults and time",
+    "ok": "Correct. Jumpers are scored by faults and time.",
+    "no": "Jumpers are about clearing the course with few faults and efficient time."
+  },
+  {
+    "q": "Which discipline combines dressage, cross-country, and stadium jumping?",
+    "opts": [
+      "Eventing",
+      "Western pleasure",
+      "Ranch riding",
+      "Saddle seat"
+    ],
+    "a": "Eventing",
+    "ok": "Correct. Eventing has three phases.",
+    "no": "Eventing is the three-phase sport."
+  },
+  {
+    "q": "Which English sport uses mallets, a ball, and team play?",
+    "opts": [
+      "Polo",
+      "Reining",
+      "Western pleasure",
+      "Pole bending"
+    ],
+    "a": "Polo",
+    "ok": "Correct. Polo is a fast team sport played from horseback.",
+    "no": "Polo is the team sport that uses mallets and a ball."
+  },
+  {
+    "q": "Which English sport is centered on galloping over a set distance for speed?",
+    "opts": [
+      "Horse racing",
+      "Ranch riding",
+      "Cutting",
+      "Western horsemanship"
+    ],
+    "a": "Horse racing",
+    "ok": "Correct. Horse racing is centered on speed over a set distance.",
+    "no": "Horse racing is the speed-focused sport over a set distance."
+  },
+  {
+    "q": "Which Western discipline rewards a horse that looks useful for ranch-type work?",
+    "opts": [
+      "Ranch riding",
+      "Equitation",
+      "Hunters",
+      "Dressage"
+    ],
+    "a": "Ranch riding",
+    "ok": "Correct. Ranch riding connects closely to practical ranch movement and usefulness.",
+    "no": "Ranch riding is the discipline focused on ranch-type usefulness."
+  },
+  {
+    "q": "Which Western class focuses on a quiet, willing horse moving steadily at walk, jog, and lope?",
+    "opts": [
+      "Western pleasure",
+      "Barrel racing",
+      "Jumpers",
+      "Eventing"
+    ],
+    "a": "Western pleasure",
+    "ok": "Correct. Western pleasure rewards a calm, consistent way of going.",
+    "no": "Western pleasure is the quiet rail class described here."
+  },
+  {
+    "q": "Which activity is most connected to cattle work?",
+    "opts": [
+      "Cutting or roping",
+      "Dressage",
+      "Hunter under saddle",
+      "Saddle seat"
+    ],
+    "a": "Cutting or roping",
+    "ok": "Correct. Cutting and roping are Western cattle-work events.",
+    "no": "Cutting and roping are cattle-work events."
+  },
+  {
+    "q": "What does the term discipline mean in this course?",
+    "opts": [
+      "A specific riding activity or event within a riding category",
+      "Only the saddle a rider uses",
+      "A horse color category",
+      "A barn rule"
+    ],
+    "a": "A specific riding activity or event within a riding category",
+    "ok": "Correct. Western and English are main riding categories; disciplines are the specific activities.",
+    "no": "A discipline is the specific riding activity inside a larger riding category."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>
