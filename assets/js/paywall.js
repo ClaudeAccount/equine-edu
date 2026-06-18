@@ -18,6 +18,14 @@
 (function () {
   'use strict';
 
+  /* ──────────────────────────────────────────────────────────────────────
+     PAYWALL TEMPORARILY DISABLED while the site is being built, so every
+     page is fully accessible. To re-enable the Barn Pass paywall later,
+     set PAYWALL_ENABLED back to true (or delete these two lines).
+     ────────────────────────────────────────────────────────────────────── */
+  var PAYWALL_ENABLED = false;
+  if (!PAYWALL_ENABLED) return;
+
   var cfg        = window.PAYWALL || {};
   var pricingUrl = cfg.pricingUrl || findRootPath() + 'pricing.html';
   var loginUrl   = cfg.loginUrl   || findRootPath() + 'auth/login.html';
