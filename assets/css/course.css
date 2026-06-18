@@ -29,6 +29,12 @@
   align-items: start;
 }
 
+/* Single-column variant — used by Learning Loft practice hubs (no sidebar) */
+.lesson-wrap.is-single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: var(--content-w, 1100px);
+}
+
 .lesson-left {
   display: flex;
   flex-direction: column;

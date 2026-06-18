@@ -763,7 +763,7 @@
   background: var(--room-accent); border-color: var(--room-accent); color: var(--white);
 }
 .sidebar-module.is-complete .sidebar-num {
-  background: var(--success); border-color: var(--success); color: var(--white);
+  background: var(--heading); border-color: var(--heading); color: var(--white);
 }
 .sidebar-module-info { flex: 1; min-width: 0; }
 .sidebar-module-title {
@@ -1611,3 +1611,143 @@ body[class*="ee-page-courses-"] .barn-note p + p {
   background: var(--tan, #C8A27A); color: #fff; border: 1px solid var(--tan, #C8A27A);
 }
 .ee-lock-card .ee-lock-btn:hover { background: var(--leather, #A9825A); }
+
+/* =============================================================================
+   Learning Loft — context-aware practice navigation (loft-nav.js)
+   Shared back control used by Training Barn hub pages and game pages so the
+   learner is always returned to where they came from (course or Loft).
+   ============================================================================= */
+.loft-backbar {
+  max-width: var(--content-w, 1200px);
+  margin: 0 auto;
+  padding: calc(var(--nav-height, 70px) + 14px) var(--page-pad, 24px) 0;
+}
+.loft-back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: var(--text-sm, 0.9rem); font-weight: 700;
+  color: var(--blue-primary, #2f5d7c); text-decoration: none;
+  padding: 8px 16px; border-radius: 999px;
+  border: 1px solid var(--border-mid, #cdd7e0);
+  background: var(--soft-white, #fcfaf7);
+  box-shadow: var(--shadow-rest, 0 1px 2px rgba(20,29,41,.08));
+  transition: color var(--motion-quick, .15s) var(--ease, ease),
+              border-color var(--motion-quick, .15s) var(--ease, ease),
+              transform var(--motion-quick, .15s) var(--ease, ease);
+}
+.loft-back-link:hover {
+  color: var(--leather, #a9825a);
+  border-color: var(--tan, #c8a27a);
+  transform: translateX(-2px);
+}
+
+/* Course Training Barn → Loft doorway card (replaces in-course game grids) */
+.barn-doorway {
+  text-align: center;
+  padding: var(--space-6, 2rem) var(--space-5, 1.5rem);
+  border: 1px solid var(--border, #e6ded5);
+  border-radius: var(--radius-lg, 16px);
+  background: var(--soft-white, #fcfaf7);
+  box-shadow: var(--shadow-nested, inset 0 1px 2px rgba(20,29,41,.05));
+}
+.barn-doorway h2 { margin-bottom: var(--space-3, 0.75rem); }
+.barn-doorway p {
+  color: var(--muted-text, #6b6256);
+  max-width: 52ch; margin: 0 auto var(--space-5, 1.5rem);
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------------
+   Learning Loft hub cards — mirror the All-Courses lesson-card style, scoped
+   to .loft-grid so the All-Courses page (own <style> block) is untouched.
+--------------------------------------------------------------------------- */
+.loft-group { margin-bottom: 2.25rem; }
+.loft-group > h2 {
+  font-family: var(--font-display); color: var(--heading, #24364a);
+  font-size: clamp(1.2rem, 2vw, 1.6rem); margin-bottom: 1rem;
+}
+.loft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.loft-grid .lesson-card {
+  position: relative; background: var(--white, #fff);
+  border: 1px solid rgba(36,54,74,.09); border-radius: 8px;
+  min-height: 290px; padding: 0.65rem; text-decoration: none;
+  display: flex; flex-direction: column; align-items: stretch; text-align: left;
+  transition: transform .2s, box-shadow .2s, border-color .2s; overflow: hidden;
+}
+.loft-grid .lesson-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(36,54,74,.12);
+  border-color: rgba(200,162,122,.45);
+}
+.loft-grid .lesson-card-thumb {
+  width: 100%; aspect-ratio: 1 / 1; border-radius: 4px;
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255,255,255,.14), rgba(255,255,255,0) 34%),
+    linear-gradient(145deg, var(--blue-primary, #3a5a78) 0%, var(--heading, #24364a) 100%);
+  border: 1px solid rgba(169,186,203,.4);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 0.9rem; flex-shrink: 0; overflow: hidden;
+}
+.loft-grid .lesson-card-thumb img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+}
+.loft-grid .lesson-card-thumb svg { width: 54px; height: 54px; color: var(--white, #fff); }
+.loft-grid .lesson-card-thumb:has(img) {
+  background: transparent; border-color: rgba(36,54,74,.08);
+  box-shadow: var(--shadow-rest, 0 1px 3px rgba(20,29,41,.1));
+}
+.loft-grid .lesson-title {
+  font-family: var(--font-display); font-size: 1rem; color: var(--heading, #24364a);
+  line-height: 1.25; margin-bottom: 0.35rem; padding: 0 0.15rem;
+}
+.loft-grid .lesson-footer {
+  display: flex; align-items: center; justify-content: center;
+  margin-top: auto; padding-top: 0.75rem; width: 100%;
+}
+.loft-grid .lesson-status {
+  display: flex; align-items: center; width: 100%;
+  padding: 0.6rem 0.75rem; border-radius: 0 5px 5px 0; border: none;
+  border-left: 3px solid rgba(36,54,74,.15); background: rgba(36,54,74,.04);
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.7px; text-transform: uppercase;
+  color: rgba(36,54,74,.35);
+}
+.loft-grid .lesson-status.open {
+  border-left: 3px solid var(--tan, #c8a27a);
+  background: rgba(200,162,122,.28); color: var(--heading, #24364a);
+}
+.loft-grid .level-badge {
+  position: absolute; top: 0.5rem; right: 0.5rem; z-index: 7;
+  font-size: 0.56rem; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase;
+  padding: 0.18rem 0.55rem; border-radius: 999px; line-height: 1.4; pointer-events: none;
+}
+.level-badge--practice { background: #fef3e0; color: #7a5010; }
+.level-badge--downloads { background: #e7eef4; color: #284f78; }
+
+/* Course "Training Barn" module — two portals (games + downloads) side by side */
+.loft-portal-grid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  max-width: 620px;
+}
+
+/* Hub group floated to the top because the learner came from that course */
+.loft-from-course {
+  border: 1px solid var(--tan, #c8a27a);
+  border-radius: 12px;
+  background: var(--soft-white, #fcfaf7);
+  box-shadow: var(--shadow-raised, 0 6px 20px rgba(20,29,41,.12));
+  padding: 1.1rem 1.1rem 0.35rem;
+}
+.loft-here-badge {
+  display: inline-block; vertical-align: middle;
+  margin-left: 10px;
+  font-family: var(--font-body, inherit);
+  font-size: var(--text-xs, 0.72rem); font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--leather-dark, #7a5c3e);
+  background: var(--blue-light, #e7eef4);
+  border: 1px solid var(--border-mid, #cdd7e0);
+  border-radius: 999px; padding: 3px 10px;
+}
