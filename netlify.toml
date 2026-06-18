@@ -1,7 +1,21 @@
 [build]
-  command = "npm run build"
+  # Static site — no build step. (The old `npm run build` called tools/ scripts
+  # that have been removed, which broke deploys and kept the old gated build live.)
+  command = "echo 'Static site — no build step needed'"
   functions = "netlify/functions"
   publish = "."
 
 [functions]
   node_bundler = "esbuild"
+
+# The old /dashboard page was a sign-in gate and has been removed.
+# Send anyone hitting that URL to the working, gate-free dashboard.
+[[redirects]]
+  from = "/dashboard"
+  to = "/hub/"
+  status = 301
+
+[[redirects]]
+  from = "/dashboard/*"
+  to = "/hub/"
+  status = 301

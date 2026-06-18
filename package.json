@@ -6,8 +6,6 @@
     "stripe": "^14.0.0"
   },
   "scripts": {
-    "build:bank": "node tools/build-question-bank.js .",
-    "sync:db": "node tools/sync-supabase.js",
-    "build": "node tools/build-question-bank.js . && node tools/sync-supabase.js"
+    "build": "echo 'Static site — no build step needed'"
   }
 }
