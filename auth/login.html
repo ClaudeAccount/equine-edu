@@ -192,7 +192,7 @@
   // If already logged in, redirect to account
   EEAuth.init(function (session) {
     if (session) {
-      window.location.replace('../hub/index.html');
+      window.location.replace(safeNext('../hub/index.html'));
     }
   });
 
@@ -206,6 +206,17 @@
   }
   function clearError() {
     errorBox.classList.remove('visible');
+  }
+  function safeNext(defaultTarget) {
+    var raw = new URLSearchParams(window.location.search).get('next');
+    if (!raw) return defaultTarget;
+    try {
+      var target = new URL(raw, window.location.origin);
+      if (target.origin !== window.location.origin) return defaultTarget;
+      return target.pathname + target.search + target.hash;
+    } catch (e) {
+      return defaultTarget;
+    }
   }
 
   form.addEventListener('submit', async function (e) {
@@ -232,9 +243,8 @@
       return;
     }
 
-    // Redirect — go to account or the page they came from
-    var next = new URLSearchParams(window.location.search).get('next');
-    window.location.replace(next || '../hub/index.html');
+    // Redirect to the requested in-site page or the dashboard.
+    window.location.replace(safeNext('../hub/index.html'));
   });
 })();
 </script>

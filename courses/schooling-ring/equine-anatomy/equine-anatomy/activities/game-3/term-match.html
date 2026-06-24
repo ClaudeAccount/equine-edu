@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Term Match &mdash; Parts of the Horse &mdash; Equine Edu</title>
+<meta name="description" content="Match each anatomy term to its description.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../../../assets/css/components.css">
@@ -17,11 +18,11 @@
 <div id="course-breadcrumb"></div>
 
 <section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
-  <div class="lesson-hero-inner">
+  <div class="lesson-hero-inner hero-centered">
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Parts of the Horse</div>
       <h1 class="lesson-hero-title">Term <span>Match</span></h1>
-      <p class="lesson-hero-desc">Match each anatomy term to its description. Click a term, then click the description that fits it.</p>
+      <p class="lesson-hero-desc">Match each anatomy term to its description.</p>
     </div>
   </div>
 </section>
@@ -31,44 +32,10 @@
 
     <div class="game-intro-card">
       <h2>Term Match</h2>
-      <p>Click a term on the left, then click the description on the right that matches it. Work through all five pairs to complete the round.</p>
+      <p>Each row shows a description. Choose the part it describes from the menu beside it, then check the answers. Correct rows turn green; fix any that are highlighted and check again.</p>
     </div>
 
-    <div class="game-shell">
-
-      <div class="game-progress-bar-wrap ee-u-63eb9f0e">
-        <div class="match-status ee-u-cad980f4">
-          <div class="ee-u-f989999c">Matched: <span id="matched-count" class="ee-u-b372a2da">0</span> / <span id="total-count" class="ee-u-b372a2da">0</span></div>
-          <div class="round-badge">Round <span id="round-num">1</span></div>
-        </div>
-      </div>
-
-      <div class="game-play-area">
-
-        <div id="game-area">
-          <div class="round-feedback" id="round-feedback"></div>
-
-          <div class="match-columns">
-            <div>
-              <div class="match-col-header">Terms</div>
-              <div id="terms-col"></div>
-            </div>
-            <div>
-              <div class="match-col-header">Descriptions</div>
-              <div id="descs-col"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="result-card" id="result-card">
-          <div class="ee-u-79e3ecc3">Complete!</div>
-          <div class="result-big" id="result-big"></div>
-          <div class="result-msg" id="result-msg"></div>
-          <button class="restart-btn" onclick="startGame()">Play Again</button>
-        </div>
-
-      </div>
-    </div>
+    <div id="game"></div>
 
   </main>
   <aside class="lesson-right">
@@ -80,204 +47,6 @@
 <div id="site-footer"></div>
 
 <script>
-const ALL_PAIRS = [
-  { term:"Poll",           desc:"The highest point of the skull, between the ears" },
-  { term:"Forelock",       desc:"The mane hair that falls forward between the ears" },
-  { term:"Crest",          desc:"The topline ridge running along the top of the neck" },
-  { term:"Mane",           desc:"The long hair that grows along the crest of the neck" },
-  { term:"Withers",        desc:"The highest point of the back, where horse height is measured" },
-  { term:"Back",           desc:"The topline between the withers and the loin" },
-  { term:"Loin",           desc:"The topline between the last rib and the croup" },
-  { term:"Croup",          desc:"The rounded top of the hindquarters, from hip to tail" },
-  { term:"Dock",           desc:"The bony, muscular upper part of the tail" },
-  { term:"Point of Hip",   desc:"The bony prominence on the side of the pelvis" },
-  { term:"Barrel",         desc:"The rounded rib cage between the forelegs and the flank" },
-  { term:"Flank",          desc:"The soft area just behind the last rib and in front of the hind leg" },
-  { term:"Heart Girth",    desc:"The circumference of the body just behind the elbow and withers" },
-  { term:"Throatlatch",    desc:"Where the underside of the jaw meets the top of the neck" },
-  { term:"Jugular Groove", desc:"The channel along the lower side of the neck where the jugular vein runs" },
-  { term:"Point of Shoulder", desc:"The forward bony prominence at the top of the front leg" },
-  { term:"Muzzle",         desc:"The lower face including the lips, nostrils, and chin" },
-  { term:"Jaw",            desc:"The lower bony structure of the head that frames the cheek and chin" },
-  { term:"Chin Groove",    desc:"The groove on the underside of the lower jaw between the two jaw bones" },
-  { term:"Stifle",         desc:"The large upper hind leg joint, equivalent to the human knee" },
-  { term:"Gaskin",         desc:"The muscular region between the stifle and the hock" },
-  { term:"Hock",           desc:"The large angled joint of the hind leg, equivalent to the human ankle" },
-  { term:"Cannon Bone",    desc:"The large bone of the lower leg between the knee (or hock) and the fetlock" },
-  { term:"Fetlock",        desc:"The prominent joint between the cannon bone and the pastern" },
-  { term:"Pastern",        desc:"The sloping section between the fetlock and the hoof" },
-  { term:"Coronet Band",   desc:"The band of tissue at the top of the hoof where the hoof wall grows from" },
-  { term:"Chestnut",       desc:"A small oval horn-like vestigial growth on the inside of each leg" },
-  { term:"Ergot",          desc:"A small vestigial horn growth at the back of the fetlock" },
-  { term:"Elbow",          desc:"The upper joint of the front leg, where the forearm meets the body" },
-  { term:"Forearm",        desc:"The region of the front leg between the elbow and the knee" },
-  { term:"Knee",           desc:"The joint of the front leg between the forearm and the cannon bone" },
-  { term:"Thigh",          desc:"The muscular upper section of the hind leg, above the stifle" },
-  { term:"Buttock",        desc:"The rounded muscular area at the back of the hindquarters" },
-  { term:"Hoof",           desc:"The hard outer covering that protects the foot" }
-];
-
-const ROUND_SIZE = 5;
-const POOL_SIZE  = 10;
-let rounds = [], roundIdx = 0, correct = 0, attempts = 0, poolSize = POOL_SIZE;
-let selectedTerm = null, selectedDesc = null;
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-function startGame() {
-  const pool = shuffle([...ALL_PAIRS]).slice(0, POOL_SIZE);
-  poolSize = pool.length;
-  rounds = [];
-  for (let i = 0; i < pool.length; i += ROUND_SIZE) {
-    rounds.push(pool.slice(i, i + ROUND_SIZE));
-  }
-  roundIdx = 0; correct = 0; attempts = 0;
-  selectedTerm = null; selectedDesc = null;
-  document.getElementById('result-card').classList.remove('show');
-  document.getElementById('game-area').style.display = '';
-  document.getElementById('total-count').textContent = poolSize;
-  loadRound();
-}
-
-function loadRound() {
-  if (roundIdx >= rounds.length) { endGame(); return; }
-  selectedTerm = null; selectedDesc = null;
-  const pairs = rounds[roundIdx];
-  const descShuffled = shuffle([...pairs]);
-
-  const fb = document.getElementById('round-feedback');
-  fb.className = 'round-feedback'; fb.textContent = '';
-
-  document.getElementById('round-num').textContent = roundIdx + 1;
-  document.getElementById('matched-count').textContent = correct;
-
-  const termsCol = document.getElementById('terms-col');
-  const descsCol = document.getElementById('descs-col');
-  termsCol.innerHTML = ''; descsCol.innerHTML = '';
-
-  pairs.forEach(function(pair) {
-    const tc = document.createElement('div');
-    tc.className = 'match-card term';
-    tc.dataset.id = pair.term;
-    tc.dataset.type = 'term';
-    tc.textContent = pair.term;
-    tc.addEventListener('click', function() { onCardClick(tc); });
-    termsCol.appendChild(tc);
-  });
-
-  descShuffled.forEach(function(pair) {
-    const dc = document.createElement('div');
-    dc.className = 'match-card';
-    dc.dataset.id = pair.term;
-    dc.dataset.type = 'desc';
-    dc.textContent = pair.desc;
-    dc.addEventListener('click', function() { onCardClick(dc); });
-    descsCol.appendChild(dc);
-  });
-
-  // Match row heights so each term/desc pair aligns
-  requestAnimationFrame(function() {
-    var termCards = Array.from(termsCol.querySelectorAll('.match-card'));
-    var descCards = Array.from(descsCol.querySelectorAll('.match-card'));
-    termCards.forEach(function(c){ c.style.height = ''; });
-    descCards.forEach(function(c){ c.style.height = ''; });
-    for (var i = 0; i < termCards.length; i++) {
-      var h = Math.max(termCards[i].offsetHeight, descCards[i].offsetHeight);
-      termCards[i].style.height = h + 'px';
-      descCards[i].style.height = h + 'px';
-    }
-  });
-}
-
-function onCardClick(card) {
-  if (card.classList.contains('matched')) return;
-
-  const type = card.dataset.type;
-
-  if (type === 'term') {
-    // Deselect old term selection
-    document.querySelectorAll('.match-card.term.selected').forEach(function(c){ c.classList.remove('selected'); });
-    selectedTerm = card;
-    card.classList.add('selected');
-  } else {
-    // Deselect old desc selection
-    document.querySelectorAll('.match-card[data-type="desc"].selected').forEach(function(c){ c.classList.remove('selected'); });
-    selectedDesc = card;
-    card.classList.add('selected');
-  }
-
-  if (selectedTerm && selectedDesc) {
-    checkMatch();
-  }
-}
-
-function checkMatch() {
-  const termId = selectedTerm.dataset.id;
-  const descId = selectedDesc.dataset.id;
-  attempts++;
-
-  const fb = document.getElementById('round-feedback');
-
-  if (termId === descId) {
-    correct++;
-    selectedTerm.classList.remove('selected'); selectedTerm.classList.add('matched');
-    selectedDesc.classList.remove('selected'); selectedDesc.classList.add('matched');
-    fb.className = 'round-feedback correct show';
-    fb.textContent = '✓ Correct!';
-    document.getElementById('matched-count').textContent = correct;
-    selectedTerm = null; selectedDesc = null;
-
-    // Check if whole round is complete
-    const allMatched = Array.from(document.querySelectorAll('.match-card.term')).every(function(c){ return c.classList.contains('matched'); });
-    if (allMatched) {
-      setTimeout(function() {
-        roundIdx++;
-        loadRound();
-      }, 500);
-    }
-  } else {
-    fb.className = 'round-feedback wrong show';
-    fb.textContent = '✗ Not a match — try again.';
-    const t = selectedTerm, d = selectedDesc;
-    t.classList.remove('selected'); d.classList.remove('selected');
-    t.classList.add('wrong-shake'); d.classList.add('wrong-shake');
-    setTimeout(function() {
-      t.classList.remove('wrong-shake'); d.classList.remove('wrong-shake');
-    }, 400);
-    selectedTerm = null; selectedDesc = null;
-  }
-}
-
-function endGame() {
-  document.getElementById('game-area').style.display = 'none';
-  const rc = document.getElementById('result-card');
-  rc.classList.add('show');
-  const accuracy = Math.round((correct / Math.max(attempts, 1)) * 100);
-  document.getElementById('result-big').textContent = accuracy + '%';
-  const msgs = [
-    'Keep at it — every attempt helps you remember more.',
-    'Good start! Another round will help lock in the terms.',
-    'Solid matching — you are building a solid vocabulary.',
-    'Great accuracy! You clearly know the structure descriptions.',
-    'Excellent — you matched every term correctly on the first try!'
-  ];
-  const msgIdx = accuracy >= 95 ? 4 : accuracy >= 80 ? 3 : accuracy >= 65 ? 2 : accuracy >= 50 ? 1 : 0;
-  document.getElementById('result-msg').textContent = msgs[msgIdx];
-}
-
-window.startGame = startGame;
-window.restartGame = startGame;
-
-/* Boot */
-startGame();
-</script>
-<script>
   window.CURRENT_MODULE = 3;
   window.LAYOUT = {
     homeUrl:    '../../../../../index.html',
@@ -287,16 +56,56 @@ startGame();
 </script>
 <script src="../../course-config.js"></script>
 <script>
-(function(){
-  if(!window.COURSE_CONFIG) return;
-  window.COURSE_CONFIG.homeUrl       = '../' + window.COURSE_CONFIG.homeUrl;
-  window.COURSE_CONFIG.allCoursesUrl = '../' + window.COURSE_CONFIG.allCoursesUrl;
-})();
+  (function(){
+    if(!window.COURSE_CONFIG) return;
+    window.COURSE_CONFIG.homeUrl       = '../' + window.COURSE_CONFIG.homeUrl;
+    window.COURSE_CONFIG.allCoursesUrl = '../' + window.COURSE_CONFIG.allCoursesUrl;
+  })();
 </script>
 <script src="../../../../../../assets/js/layout.js"></script>
 <script src="../../../../../../assets/js/supabase-client.js"></script>
 <script src="../../../../../../assets/js/paywall.js"></script>
 <script src="../../../../../../assets/js/course-nav.js"></script>
+<script src="../../../../../../assets/js/ee-games.js"></script>
+<script>
+EEGames.mount({
+  el: '#game',
+  type: 'match',
+  rounds: 6,
+  progressKey: 'equineEduProgress.equineAnatomy.trainingBarn',
+  data: {
+    pairs: [
+      ['Poll', 'The highest point of the skull, between the ears.'],
+      ['Forelock', 'The mane hair that falls forward between the ears.'],
+      ['Crest', 'The topline ridge running along the top of the neck.'],
+      ['Mane', 'The long hair that grows along the crest of the neck.'],
+      ['Withers', 'The highest point of the back, where horse height is measured.'],
+      ['Back', 'The topline between the withers and the loin.'],
+      ['Loin', 'The topline between the last rib and the croup.'],
+      ['Croup', 'The rounded top of the hindquarters, from hip to tail.'],
+      ['Dock', 'The bony, muscular upper part of the tail.'],
+      ['Point of Hip', 'The bony prominence on the side of the pelvis.'],
+      ['Barrel', 'The rounded rib cage between the forelegs and the flank.'],
+      ['Flank', 'The soft area just behind the last rib, in front of the hind leg.'],
+      ['Heart Girth', 'The body circumference just behind the elbow and withers.'],
+      ['Throatlatch', 'Where the underside of the jaw meets the top of the neck.'],
+      ['Jugular Groove', 'The channel along the lower neck where the jugular vein runs.'],
+      ['Point of Shoulder', 'The forward bony prominence at the top of the front leg.'],
+      ['Muzzle', 'The lower face including the lips, nostrils, and chin.'],
+      ['Stifle', 'The large upper hind leg joint, like the human knee.'],
+      ['Gaskin', 'The muscular region between the stifle and the hock.'],
+      ['Hock', 'The large angled hind leg joint, like the human ankle.'],
+      ['Cannon Bone', 'The lower leg bone between the knee or hock and the fetlock.'],
+      ['Fetlock', 'The prominent joint between the cannon bone and the pastern.'],
+      ['Pastern', 'The sloping section between the fetlock and the hoof.'],
+      ['Coronet Band', 'The band at the top of the hoof where the hoof wall grows from.'],
+      ['Chestnut', 'A small horn-like growth on the inside of each leg.'],
+      ['Knee', 'The front leg joint between the forearm and the cannon bone.'],
+      ['Hoof', 'The hard outer covering that protects the foot.']
+    ]
+  }
+});
+</script>
 <script src="../../../../../../assets/js/loft-nav.js"></script>
 </body>
 </html>

@@ -4,6 +4,17 @@
    Reads from window.COURSE_CONFIG (defined in each course's course-config.js)
    and window.CURRENT_MODULE (1-indexed, set inline on each lesson page).
 
+   PROGRESS — SINGLE SOURCE OF TRUTH:
+     Course progress lives ONLY in Supabase, in the `enrollments` table
+     (columns: completed_modules jsonb, progress_percent). There is no
+     localStorage progress anymore. On each lesson visit this script:
+       1. loads the user's completed_modules for the course (best-effort), then
+       2. renders the sidebar / landing progress from that data, then
+       3. upserts the current module into enrollments (best-effort).
+     If the user is signed out or Supabase is unreachable, the nav still renders
+     fully (just with no completion marks) — progress is simply not tracked for
+     anonymous users. Nothing here ever throws or blocks the page.
+
    Each lesson page must have:
      <div id="course-breadcrumb"></div>   ← in the breadcrumb position
      <div id="course-sidebar"></div>      ← inside .lesson-right
@@ -20,10 +31,21 @@
 (function () {
   'use strict';
 
+  /* Completion keys for the current course, loaded from Supabase enrollments.
+     Starts empty so isModuleComplete() is always safe to call, even before
+     (or without) a successful load. */
+  var _completed = new Set();
+
   function init() {
-    const config = window.COURSE_CONFIG;
-    const modNum = window.CURRENT_MODULE;
+    var config = window.COURSE_CONFIG;
     if (!config) return;
+    // Load progress from Supabase first (best-effort), then render once.
+    loadProgress(config.id).then(function () { render(config); },
+                                 function () { render(config); });
+  }
+
+  function render(config) {
+    var modNum = window.CURRENT_MODULE;
 
     // Landing pages have a module list but no CURRENT_MODULE — show course progress there.
     if (!modNum) {
@@ -33,24 +55,37 @@
       return;
     }
 
-    const modules  = config.modules;
-    const current  = modules.find(m => m.num === modNum);
+    var modules  = config.modules;
+    var current  = modules.find(function (m) { return m.num === modNum; });
     if (!current) return;
 
-    const prevMod  = modules.find(m => m.num === modNum - 1) || null;
-    const nextMod  = modules.find(m => m.num === modNum + 1) || null;
+    // Course completion is defined as PASSING Test Your Knowledge (>=80%),
+    // recorded by quiz-standard.js. Visiting the quiz page must NOT mark it
+    // complete, so the quiz module is excluded from visit-based completion.
+    var fileKey = fileKeyCamel(current.file);
+    var isQuizModule = (current.type && /quiz/i.test(current.type)) || fileKey === 'testYourKnowledge';
+    if (!isQuizModule) _completed.add(fileKey);
 
-    const courseBase = getCourseBasePath();
+    var prevMod  = modules.find(function (m) { return m.num === modNum - 1; }) || null;
+    var nextMod  = modules.find(function (m) { return m.num === modNum + 1; }) || null;
+
+    var courseBase = getCourseBasePath();
     buildBreadcrumb(config, current, courseBase);
     buildSidebar(config, modules, modNum, courseBase);
     buildSidebarNav(prevMod, nextMod, config, courseBase);
     buildNotes();
     patchLessonNav(prevMod, nextMod, config, courseBase);
+
+    // Persist this visit to enrollments (best-effort, never blocks). The quiz
+    // module is never auto-completed on visit (pass null).
+    recordVisit(config, isQuizModule ? null : fileKey);
   }
 
   function getCourseBasePath() {
-    const scripts = Array.from(document.scripts || []);
-    const configScript = scripts.find(script => /(?:^|\/)course-config\.js(?:\?.*)?$/.test(script.getAttribute('src') || ''));
+    var scripts = Array.from(document.scripts || []);
+    var configScript = scripts.find(function (script) {
+      return /(?:^|\/)course-config\.js(?:\?.*)?$/.test(script.getAttribute('src') || '');
+    });
     if (!configScript) return '';
     return (configScript.getAttribute('src') || '').replace(/course-config\.js(?:\?.*)?$/, '');
   }
@@ -60,17 +95,95 @@
     return (courseBase || '') + file;
   }
 
+  /* ---------- SUPABASE PROGRESS (single source of truth) ----------
+     enrollments.completed_modules holds a JSON array of module keys derived
+     from each module's file name ('4-viewing-room.html' → 'viewingRoom').
+     progress_percent is derived from how many of the course's modules are
+     complete. All calls are best-effort and resolve even on failure. */
+
+  function sbClient() {
+    return (window.EEAuth && typeof window.EEAuth.client === 'function')
+      ? window.EEAuth.client()
+      : null;
+  }
+
+  function loadProgress(courseId) {
+    return new Promise(function (resolve) {
+      try {
+        if (!courseId || !window.EEAuth || typeof window.EEAuth.getUser !== 'function') {
+          resolve(); return;
+        }
+        window.EEAuth.getUser().then(function (user) {
+          var client = sbClient();
+          if (!user || !client) { resolve(); return; }
+          client.from('enrollments')
+            .select('completed_modules')
+            .eq('user_id', user.id)
+            .eq('course_id', courseId)
+            .maybeSingle()
+            .then(function (res) {
+              var arr = res && res.data && res.data.completed_modules;
+              if (Array.isArray(arr)) arr.forEach(function (k) { _completed.add(k); });
+              resolve();
+            }, function () { resolve(); });
+        }, function () { resolve(); });
+      } catch (e) { resolve(); }
+    });
+  }
+
+  function persist(config) {
+    return new Promise(function (resolve) {
+      try {
+        if (!config || !window.EEAuth || typeof window.EEAuth.getUser !== 'function') { resolve(); return; }
+        window.EEAuth.getUser().then(function (user) {
+          var client = sbClient();
+          if (!user || !client) { resolve(); return; }
+          var modules = config.modules || [];
+          var total = modules.length || 1;
+          var done = modules.filter(function (m) { return isModuleComplete(config, m); }).length;
+          var percent = Math.round((done / total) * 100);
+          client.from('enrollments')
+            .upsert({
+              user_id:           user.id,
+              course_id:         config.id,
+              completed_modules: Array.from(_completed),
+              progress_percent:  percent,
+              last_accessed:     new Date().toISOString()
+            }, { onConflict: 'user_id,course_id' })
+            .then(function () { resolve(); }, function () { resolve(); });
+        }, function () { resolve(); });
+      } catch (e) { resolve(); }
+    });
+  }
+
+  // Records a lesson visit. moduleKey may be null (the quiz page must not be
+  // auto-completed). Best-effort; never blocks the page.
+  function recordVisit(config, moduleKey) {
+    if (moduleKey) _completed.add(moduleKey);
+    persist(config);
+  }
+
+  /* Shared progress API for other scripts (e.g. quiz-standard.js).
+     EEProgress.markComplete('testYourKnowledge') records course completion
+     (a passed test) to Supabase enrollments — the single source of truth. */
+  window.EEProgress = {
+    markComplete: function (moduleKey) {
+      var config = window.COURSE_CONFIG;
+      if (!config || !moduleKey) return Promise.resolve();
+      _completed.add(moduleKey);
+      return persist(config);
+    },
+    isComplete: function (moduleKey) { return _completed.has(moduleKey); }
+  };
+
   /* ---------- PROGRESS HELPERS ----------
-     Progress is tracked in localStorage as:
-       equineEduProgress.<camelCaseCourseId>.<moduleKey> = 'true'
      The CANONICAL module key is derived from the module's file name
-     ('4-viewing-room.html' → 'viewingRoom') — this is what lesson pages
-     write on visit. For backward compatibility with older stored progress,
-     completion also checks the title-derived key and its leading-'The'
+     ('4-viewing-room.html' → 'viewingRoom'). For backward compatibility,
+     completion also matches the title-derived key and its leading-'The'
      stripped variant ('The Viewing Room' → 'theViewingRoom' / 'viewingRoom'). */
   function toCamel(str) {
-    const words = String(str || '').replace(/[^a-zA-Z0-9 ]/g, '').trim().split(/\s+/);
-    return words.map((w, i) => {
+    var words = String(str || '').replace(/[^a-zA-Z0-9 ]/g, '').trim().split(/\s+/);
+    return words.map(function (w, i) {
       if (!w) return '';
       return i === 0
         ? w.charAt(0).toLowerCase() + w.slice(1)
@@ -78,16 +191,9 @@
     }).join('');
   }
 
-  function courseIdCamel(id) {
-    return String(id || '').split('-').map((w, i) => {
-      if (!w) return '';
-      return i === 0 ? w : w.charAt(0).toUpperCase() + w.slice(1);
-    }).join('');
-  }
-
   function fileKeyCamel(file) {
     // '4-viewing-room.html' → 'viewingRoom'
-    const base = String(file || '')
+    var base = String(file || '')
       .split('/').pop()
       .replace(/\.html?(\?.*)?$/i, '')
       .replace(/^\d+[-_]?/, '');
@@ -100,55 +206,48 @@
   }
 
   function moduleKeyCandidates(m) {
-    const cands = [];
-    const fk = fileKeyCamel(m.file);
+    var cands = [];
+    var fk = fileKeyCamel(m.file);
     if (fk) cands.push(fk);
-    const tk = toCamel(m.title);
+    var tk = toCamel(m.title);
     if (tk && cands.indexOf(tk) === -1) cands.push(tk);
     if (/^the[A-Z]/.test(tk)) {
-      const stripped = tk.charAt(3).toLowerCase() + tk.slice(4);
+      var stripped = tk.charAt(3).toLowerCase() + tk.slice(4);
       if (cands.indexOf(stripped) === -1) cands.push(stripped);
     }
     return cands;
   }
 
   function isModuleComplete(config, m) {
-    try {
-      const prefix = 'equineEduProgress.' + courseIdCamel(config.id) + '.';
-      return moduleKeyCandidates(m).some(function (k) {
-        return localStorage.getItem(prefix + k) === 'true';
-      });
-    } catch (e) {
-      return false;
-    }
+    return moduleKeyCandidates(m).some(function (k) { return _completed.has(k); });
   }
 
   /* ---------- LANDING PAGE PROGRESS ---------- */
   function buildLandingProgress(config, courseBase) {
-    const modules = (config.modules || []);
+    var modules = (config.modules || []);
     if (!modules.length) return;
-    const list = document.getElementById('course-module-list');
+    var list = document.getElementById('course-module-list');
     if (!list) return;
 
-    let complete = 0;
+    var complete = 0;
     modules.forEach(function (m) { if (isModuleComplete(config, m)) complete++; });
-    const total = modules.length;
-    const pct = total ? Math.round((complete / total) * 100) : 0;
-    const done = complete >= total && total > 0;
+    var total = modules.length;
+    var pct = total ? Math.round((complete / total) * 100) : 0;
+    var done = complete >= total && total > 0;
 
     // mark completed module items already rendered by the page's own script
-    const items = list.querySelectorAll('.module-item');
+    var items = list.querySelectorAll('.module-item');
     modules.forEach(function (m, i) {
       if (isModuleComplete(config, m) && items[i]) {
         items[i].classList.add('is-complete');
-        const num = items[i].querySelector('.module-num');
+        var num = items[i].querySelector('.module-num');
         if (num) num.innerHTML = '&#10003;';
       }
     });
 
     // build the bar once, just above the module list
     if (document.getElementById('course-progress')) return;
-    const wrap = document.createElement('div');
+    var wrap = document.createElement('div');
     wrap.className = 'course-progress' + (done ? ' is-done' : '');
     wrap.id = 'course-progress';
     wrap.innerHTML =
@@ -162,7 +261,7 @@
 
   /* ---------- BREADCRUMB ---------- */
   function buildBreadcrumb(config, current, courseBase) {
-    const el = document.getElementById('course-breadcrumb');
+    var el = document.getElementById('course-breadcrumb');
     if (!el) return;
     el.outerHTML = `
 <div class="breadcrumb">
@@ -178,16 +277,16 @@
 
   /* ---------- SIDEBAR ---------- */
   function buildSidebar(config, modules, currentNum, courseBase) {
-    const el = document.getElementById('course-sidebar');
+    var el = document.getElementById('course-sidebar');
     if (!el) return;
 
-    let completeCount = 0;
-    const items = modules.map(m => {
-      const isActive = m.num === currentNum ? ' active' : '';
-      const complete = isModuleComplete(config, m);
+    var completeCount = 0;
+    var items = modules.map(function (m) {
+      var isActive = m.num === currentNum ? ' active' : '';
+      var complete = isModuleComplete(config, m);
       if (complete) completeCount++;
-      const completeClass = complete ? ' is-complete' : '';
-      const numContent = complete ? '&#10003;' : m.num;
+      var completeClass = complete ? ' is-complete' : '';
+      var numContent = complete ? '&#10003;' : m.num;
       return `
     <li>
       <a href="${courseUrl(m.file, courseBase)}" class="sidebar-module${isActive}${completeClass}">
@@ -200,8 +299,8 @@
     </li>`.trim();
     }).join('\n');
 
-    const total = modules.length;
-    const pct = total ? Math.round((completeCount / total) * 100) : 0;
+    var total = modules.length;
+    var pct = total ? Math.round((completeCount / total) * 100) : 0;
 
     el.outerHTML = `
 <div class="module-sidebar">
@@ -223,12 +322,12 @@
 
   /* ---------- LESSON NOTES ---------- */
   function buildNotes() {
-    const el = document.getElementById('course-notes');
-    const notes = window.PAGE_NOTES;
+    var el = document.getElementById('course-notes');
+    var notes = window.PAGE_NOTES;
     if (!el || !notes) return;
 
-    const items = (notes.items || []).map(n => `<li>${n}</li>`).join('\n        ');
-    const highlight = notes.highlight
+    var items = (notes.items || []).map(function (n) { return `<li>${n}</li>`; }).join('\n        ');
+    var highlight = notes.highlight
       ? `<div class="notes-highlight">${notes.highlight}</div>`
       : '';
 
@@ -246,17 +345,17 @@
 
   /* ---------- SIDEBAR NAV ---------- */
   function buildSidebarNav(prevMod, nextMod, config, courseBase) {
-    const el = document.getElementById('course-sidebar-nav');
+    var el = document.getElementById('course-sidebar-nav');
     if (!el) return;
 
-    const layout = window.LAYOUT || {};
-    const cta = layout.navCta || null;
-    const path = window.location.pathname.toLowerCase();
-    const isTrainingBarnActivity =
+    var layout = window.LAYOUT || {};
+    var cta = layout.navCta || null;
+    var path = window.location.pathname.toLowerCase();
+    var isTrainingBarnActivity =
       cta &&
       /back to training barn/i.test(cta.label || '') &&
       /(games?|downloads?)/.test(path);
-    const isLearningLoftActivity =
+    var isLearningLoftActivity =
       cta &&
       /back to learning loft/i.test(cta.label || '') &&
       /\/learning-loft\//.test(path);
@@ -269,10 +368,10 @@
       return;
     }
 
-    const prevHref  = prevMod ? courseUrl(prevMod.file, courseBase) : courseUrl(config.indexUrl, courseBase);
-    const prevLabel = prevMod ? '<- ' + prevMod.title : '<- Back to Course';
-    const nextHref  = nextMod ? courseUrl(nextMod.file, courseBase) : courseUrl(config.indexUrl, courseBase);
-    const nextLabel = nextMod ? nextMod.title + ' ->' : 'Back to Course ->';
+    var prevHref  = prevMod ? courseUrl(prevMod.file, courseBase) : courseUrl(config.indexUrl, courseBase);
+    var prevLabel = prevMod ? '<- ' + prevMod.title : '<- Back to Course';
+    var nextHref  = nextMod ? courseUrl(nextMod.file, courseBase) : courseUrl(config.indexUrl, courseBase);
+    var nextLabel = nextMod ? nextMod.title + ' ->' : 'Back to Course ->';
 
     el.outerHTML = `
 <div class="sidebar-module-nav">
@@ -285,9 +384,9 @@
   // Lesson pages still define .lesson-nav in HTML but leave hrefs as '#'
   // This patches them with the real prev/next URLs
   function patchLessonNav(prevMod, nextMod, config, courseBase) {
-    const prevBtn = document.querySelector('.lesson-nav .nav-btn.previous');
-    const nextBtn = document.querySelector('.lesson-nav .nav-btn.next');
-    const backBtn = document.querySelector('.lesson-nav .back-to-course');
+    var prevBtn = document.querySelector('.lesson-nav .nav-btn.previous');
+    var nextBtn = document.querySelector('.lesson-nav .nav-btn.next');
+    var backBtn = document.querySelector('.lesson-nav .back-to-course');
 
     if (prevBtn) {
       if (prevMod) {

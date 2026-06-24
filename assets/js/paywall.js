@@ -1,8 +1,9 @@
 /* =============================================================================
    Equine Edu — paywall.js
-   Drop this script onto any page that requires an active Barn Pass subscription.
-   It checks the user's session and subscription status, then either lets them
-   through or shows a full-page paywall overlay with a CTA to subscribe.
+   Client-side UX layer for pages that require an active Barn Pass subscription.
+   Security is enforced server-side by the Netlify edge access guard; this file
+   only gives users a friendly redirect/subscribe experience when JavaScript is
+   available.
 
    Usage: add BEFORE </body> on protected pages, after supabase-client.js:
      <script src="[root]/assets/js/supabase-client.js"></script>
@@ -19,13 +20,9 @@
   'use strict';
 
   /* ──────────────────────────────────────────────────────────────────────
-     PAYWALL TEMPORARILY DISABLED while the site is being built, so every
-     page is fully accessible. To re-enable the Barn Pass paywall later,
-     set PAYWALL_ENABLED back to true (or delete these two lines).
+     Client-side only. Production access is enforced before static files
+     are served by the Netlify edge access guard.
      ────────────────────────────────────────────────────────────────────── */
-  var PAYWALL_ENABLED = false;
-  if (!PAYWALL_ENABLED) return;
-
   var cfg        = window.PAYWALL || {};
   var pricingUrl = cfg.pricingUrl || findRootPath() + 'pricing.html';
   var loginUrl   = cfg.loginUrl   || findRootPath() + 'auth/login.html';
@@ -103,9 +100,9 @@
       '}',
       '.pw-features li::before{',
         'content:\'\\2713\';',
-        'color:var(--success,#5C8A6E);font-weight:900;font-size:0.7rem;',
-        'background:var(--success-bg,rgba(92,138,110,0.12));',
-        'border:1px solid var(--success-bd,rgba(92,138,110,0.28));',
+        'color:var(--success,#24364A);font-weight:900;font-size:0.7rem;',
+        'background:var(--success-bg,rgba(36,54,74,0.12));',
+        'border:1px solid var(--success-bd,rgba(36,54,74,0.28));',
         'border-radius:50%;width:18px;height:18px;',
         'display:flex;align-items:center;justify-content:center;',
         'flex-shrink:0;',
@@ -146,6 +143,11 @@
     // Dev bypass: skip paywall on localhost / 127.0.0.1
     var h = window.location.hostname;
     if (h === 'localhost' || h === '127.0.0.1' || h === '') return;
+
+    // Course landing pages are public previews. Individual lessons, activities,
+    // study guides, quizzes, and downloads remain protected.
+    var path = window.location.pathname.toLowerCase();
+    if (cfg.publicPreview === true || /\/1-index\.html$/.test(path)) return;
 
     if (typeof window.EEAuth === 'undefined') {
       // supabase-client.js not loaded — fail closed (show paywall)

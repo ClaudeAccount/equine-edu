@@ -14,10 +14,10 @@ window.COURSE_CONFIG = {
   modules: [
     {
       num:   1,
-      title: 'Expanding on Anatomy',
+      title: 'Why Anatomy Matters',
       type:  'Lesson',
       file:  '2-why-anatomy-matters.html',
-      desc:  'Learn how this course expands the foundations course with more detailed physical anatomy vocabulary.'
+      desc:  'Why knowing the parts of the horse is a foundation skill, how the body is organized into four regions, and where these terms come up every day.'
     },
     {
       num:   2,

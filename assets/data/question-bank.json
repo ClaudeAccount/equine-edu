@@ -13513,17 +13513,17 @@
       "question": "A handler records a horse's height as '14.6 hands.' What is wrong with this notation?",
       "options": [
         "The horse is too small to be recorded in hands",
-        "The decimal value cannot exceed 3 in hand notation — this should be 15.2 hands",
+        "The decimal value cannot exceed 3 in hand notation; this should be 15.2 hands",
         "The number should be written in centimeters",
         "Nothing is wrong; 14.6 is a valid notation"
       ],
-      "correctAnswer": "The decimal value cannot exceed 3 in hand notation — this should be 15.2 hands",
+      "correctAnswer": "The decimal value cannot exceed 3 in hand notation; this should be 15.2 hands",
       "category": "barn management",
       "courseId": "measuring-horses",
       "difficulty": "medium",
       "image": null,
       "explanationCorrect": "Correct.",
-      "explanationIncorrect": "Not quite. The correct answer is The decimal value cannot exceed 3 in hand notation — this should be 15.2 hands.",
+      "explanationIncorrect": "Not quite. The correct answer is: The decimal value cannot exceed 3 in hand notation; this should be 15.2 hands.",
       "version": 1,
       "lastUpdated": "2026-06-18T04:17:56.210Z"
     },
@@ -13871,20 +13871,20 @@
     },
     {
       "id": "q_2c4eb6d3c80b",
-      "question": "Why is accurate height measurement important for medication dosing?",
+      "question": "Why is accurate weight estimation important for medication dosing?",
       "options": [
         "Medications are dosed by age, and height indicates age",
-        "Many medications are dosed by body weight, which is estimated from height — an inaccurate height leads to an inaccurate weight estimate",
+        "Many medications are dosed by body weight, so an inaccurate weight estimate can lead to an incorrect dose",
         "Medications are applied topically and dosing depends on surface area",
         "Height determines which medications a horse can receive"
       ],
-      "correctAnswer": "Many medications are dosed by body weight, which is estimated from height — an inaccurate height leads to an inaccurate weight estimate",
+      "correctAnswer": "Many medications are dosed by body weight, so an inaccurate weight estimate can lead to an incorrect dose",
       "category": "barn management",
       "courseId": "measuring-horses",
       "difficulty": "medium",
       "image": null,
       "explanationCorrect": "Correct.",
-      "explanationIncorrect": "Not quite. The correct answer is Many medications are dosed by body weight, which is estimated from height — an inaccurate height leads to an inaccurate weight estimate.",
+      "explanationIncorrect": "Not quite. The correct answer is: Many medications are dosed by body weight, so an inaccurate weight estimate can lead to an incorrect dose.",
       "version": 1,
       "lastUpdated": "2026-06-18T04:17:56.210Z"
     },

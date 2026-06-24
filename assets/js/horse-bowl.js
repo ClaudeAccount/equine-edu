@@ -30,6 +30,7 @@
     var _all = null;          // cached array of question objects
     var _byCat = null;        // { category: [questions] }
     var _courses = [];        // [{ courseId, title, category, progressKey }]
+    var _completedIds = [];   // courseIds the learner has completed (from enrollments)
 
     // normalize a Supabase row OR a JSON entry into one shape
     function normalize(r) {
@@ -85,6 +86,28 @@
       });
     }
 
+    // Completed courses come from Supabase enrollments (single source of truth):
+    // a course is "completed" once its test was passed, i.e. completed_modules
+    // contains 'testYourKnowledge'. Loaded during load() so the sync API below
+    // (used by the setup screen) has data ready.
+    function loadCompletedCourses() {
+      if (!window.EEAuth || typeof window.EEAuth.getUser !== 'function') return Promise.resolve();
+      return window.EEAuth.getUser().then(function (user) {
+        var client = (window.EEAuth.client && window.EEAuth.client());
+        if (!user || !client) { _completedIds = []; return; }
+        return client.from('enrollments')
+          .select('course_id, completed_modules')
+          .eq('user_id', user.id)
+          .then(function (res) {
+            var rows = (res && res.data) || [];
+            _completedIds = rows.filter(function (r) {
+              return Array.isArray(r.completed_modules) &&
+                     r.completed_modules.indexOf('testYourKnowledge') !== -1;
+            }).map(function (r) { return r.course_id; });
+          }, function () { _completedIds = []; });
+      }, function () { _completedIds = []; });
+    }
+
     return {
       // load() resolves once the bank is cached. Supabase first, JSON fallback.
       load: function () {
@@ -106,7 +129,7 @@
               }
             });
           }
-          return _all;
+          return loadCompletedCourses().then(function () { return _all; });
         });
       },
       all: function () { return _all || []; },
@@ -131,14 +154,9 @@
       },
       // course metadata (incl. progressKey)
       courses: function () { return _courses; },
-      // courseIds the learner has completed (passed the course test), from localStorage
-      completedCourseIds: function () {
-        return _courses.filter(function (c) {
-          if (!c.progressKey) return false;
-          try { return localStorage.getItem(c.progressKey) === 'true'; }
-          catch (e) { return false; }
-        }).map(function (c) { return c.courseId; });
-      },
+      // courseIds the learner has completed (passed the course test), from
+      // Supabase enrollments (loaded during load()). Single source of truth.
+      completedCourseIds: function () { return _completedIds.slice(); },
       completedCourseCount: function () { return this.completedCourseIds().length; }
     };
   })();
@@ -302,28 +320,29 @@
     };
   };
 
-  // optional analytics write (no-op if not signed in)
+  // MVP canonical score write for the dashboard (no-op if not signed in).
   Session.prototype.save = function (durationSecs) {
     if (!window.EEAuth || typeof window.EEAuth.client !== 'function') return Promise.resolve();
     var client = window.EEAuth.client();
     if (!client) return Promise.resolve();
-    var res = this.results();
     var self = this;
     return window.EEAuth.getUser().then(function (user) {
       if (!user) return;
+      var res = self.results();
       var breakdown = {};
       res.categoryBreakdown.forEach(function (c) {
-        breakdown[c.category] = { correct: c.correct, total: c.total };
+        breakdown[c.category] = {
+          correct: c.correct,
+          total: c.total
+        };
       });
-      return client.from('session_results').insert({
+      var topic = (self.config.categories || []).concat(self.config.courseIds || [])
+        .filter(Boolean).join(', ') || 'Mixed Practice';
+      return client.from('horsebowl_activity').insert({
         user_id: user.id,
-        categories: self.config.categories || [],
-        question_count: self.count,
-        timed: !!self.config.timed,
-        score: res.score, total: res.total, percentage: res.percentage,
+        score: res.score,
+        topic: topic.slice(0, 60),
         category_breakdown: breakdown,
-        question_ids: self.questions.map(function (q) { return q.id; }),
-        responses: self.responses,
         duration_secs: durationSecs || null
       });
     }).catch(function () { /* analytics is best-effort */ });

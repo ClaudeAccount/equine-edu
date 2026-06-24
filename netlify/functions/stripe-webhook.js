@@ -10,7 +10,7 @@
      SUPABASE_SERVICE_KEY     — sb_secret_... (service role key)
 
    In Stripe dashboard, point the webhook to:
-     https://equineedu.netlify.app/.netlify/functions/stripe-webhook
+     https://equine-edu.netlify.app/.netlify/functions/stripe-webhook
 
    Events to enable:
      checkout.session.completed
@@ -54,7 +54,7 @@ exports.handler = async function (event) {
         const userId  = session.metadata?.supabase_user_id;
         if (!userId) break;
 
-        await supabase
+        const { error } = await supabase
           .from('profiles')
           .update({
             subscription_status:   'active',
@@ -64,6 +64,7 @@ exports.handler = async function (event) {
             updated_at:            new Date().toISOString()
           })
           .eq('id', userId);
+        if (error) throw error;
 
         console.log(`Activated Pro for user ${userId}`);
         break;
@@ -75,7 +76,7 @@ exports.handler = async function (event) {
         const customerId = sub.customer;
         const status     = sub.status; // 'active', 'past_due', 'canceled', etc.
 
-        await supabase
+        const { error } = await supabase
           .from('profiles')
           .update({
             subscription_status: status === 'active' ? 'active' : status,
@@ -83,6 +84,7 @@ exports.handler = async function (event) {
             updated_at:          new Date().toISOString()
           })
           .eq('stripe_customer_id', customerId);
+        if (error) throw error;
 
         console.log(`Subscription updated for customer ${customerId}: ${status}`);
         break;
@@ -93,7 +95,7 @@ exports.handler = async function (event) {
         const sub        = stripeEvent.data.object;
         const customerId = sub.customer;
 
-        await supabase
+        const { error } = await supabase
           .from('profiles')
           .update({
             subscription_status: 'canceled',
@@ -101,6 +103,7 @@ exports.handler = async function (event) {
             updated_at:          new Date().toISOString()
           })
           .eq('stripe_customer_id', customerId);
+        if (error) throw error;
 
         console.log(`Subscription canceled for customer ${customerId}`);
         break;

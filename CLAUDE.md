@@ -14,7 +14,7 @@ This file is the single source of truth for how every page in the Equine EDU cod
 4. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Voice-and-Content-Standards.md` — voice, tone, and content rules
 5. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Reading-Level-Standard.md` — learner-facing reading level, plain-language, and vocabulary rules
 6. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\Equine Edu\equine-edu-main\equine-edu-main\page-templates\TEMPLATE-SYSTEM-V2.md` — page template system overview
-7. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU â€” GOVERNED BUILD SYSTEM\governance\Visual-Standards-Manual.md` â€” visual identity, image generation, and educational asset standards
+7. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Visual-Standards-Manual.md` — visual identity, image generation, and educational asset standards
 8. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\architecture\EDUCATIONAL-ACCURACY-KNOWLEDGE-VALIDATION-ENGINE-v1.0.md` — EAKVE accuracy, safety, evidence, hallucination, age-level, and assessment validation gate
 9. `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\architecture\CURRICULUM-ARCHITECTURE-INTEGRITY-SYSTEM-v1.0.md` — CAIS curriculum architecture, Concept Registry, curriculum consistency, prerequisites, pathways, and assessment-bank governance gate
 10. The relevant T-spec file(s) from `page-templates/` for the page type(s) being built:

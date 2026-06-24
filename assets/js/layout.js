@@ -20,6 +20,11 @@
 (function () {
   'use strict';
 
+  /* ---------- this script's own src (captured during sync execution) ----------
+     Used to resolve the site root reliably whether the site is served from a
+     web root, a subpath, or opened directly as local files (file://). */
+  var SELF_SRC = (document.currentScript && document.currentScript.getAttribute('src')) || '';
+
   /* ---------- back-button position restore ---------- */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
@@ -95,9 +100,16 @@
 
   /* ---------- resolve root-relative paths from any depth ---------- */
   function depthPrefix() {
-    // Count how many folders deep we are from the root
+    // Preferred: derive the root from this script's own src. Each page includes
+    // layout.js with a relative prefix that already points at the site root
+    // (e.g. "../../assets/js/layout.js"), so stripping the known tail yields the
+    // correct prefix on a web server, a subpath, or local files (file://).
+    if (SELF_SRC) {
+      const pfx = SELF_SRC.replace(/assets\/js\/layout\.js(?:[?#].*)?$/, '');
+      return pfx || './';
+    }
+    // Fallback: infer from URL depth (works when served from a web root only).
     const parts = window.location.pathname.replace(/\/[^/]*$/, '').split('/').filter(Boolean);
-    // We just want enough "../" to reach root
     return parts.map(() => '../').join('') || './';
   }
 
@@ -165,7 +177,7 @@
     return `
 <nav>
   <span style="display:flex;align-items:center;min-width:0;">
-    <a href="${homeUrl}" class="nav-logo">Equine <span>Edu</span></a>
+    <a href="${homeUrl}" class="nav-logo"><img class="nav-logo-mark" src="${root}courses/images-index/horseshoe.png" alt="" aria-hidden="true">Equine <span>Edu</span></a>
     ${roomLabel}
   </span>
   <ul class="nav-links">
@@ -199,7 +211,9 @@
     <ul class="footer-links">
       <li><a href="${coursesUrl}">Courses</a></li>
       <li><a href="${homeUrl}#how">How It Works</a></li>
-      <li><a href="${homeUrl}#about">About</a></li>
+      <li><a href="${homeUrl}#areas">About</a></li>
+      <li><a href="${root}privacy.html">Privacy Policy</a></li>
+      <li><a href="${root}terms.html">Terms of Service</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
     <p class="footer-copy">&copy; ${new Date().getFullYear()} Equine Edu. All rights reserved.</p>

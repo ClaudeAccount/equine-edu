@@ -100,6 +100,42 @@
   }
 
   var AUTH_UNREACHABLE = 'Could not reach the authentication service. Check your connection and try again.';
+  var ACCESS_COOKIE = 'ee_access_token';
+  var REFRESH_COOKIE = 'ee_refresh_token';
+
+  function setCookie(name, value, maxAge) {
+    var secure = window.location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = name + '=' + encodeURIComponent(value || '') +
+      '; Path=/; SameSite=Lax; Max-Age=' + String(maxAge || 0) + secure;
+  }
+
+  function clearAuthCookies() {
+    setCookie(ACCESS_COOKIE, '', 0);
+    setCookie(REFRESH_COOKIE, '', 0);
+  }
+
+  function syncAuthCookies(session) {
+    if (!session || !session.access_token) {
+      clearAuthCookies();
+      return;
+    }
+    var now = Math.floor(Date.now() / 1000);
+    var accessMaxAge = session.expires_at
+      ? Math.max(60, session.expires_at - now)
+      : Math.max(60, Number(session.expires_in || 3600));
+    setCookie(ACCESS_COOKIE, session.access_token, accessMaxAge);
+    if (session.refresh_token) {
+      setCookie(REFRESH_COOKIE, session.refresh_token, 60 * 60 * 24 * 30);
+    }
+  }
+
+  function publicProfileFields(fields) {
+    var clean = {};
+    if (fields && Object.prototype.hasOwnProperty.call(fields, 'display_name')) {
+      clean.display_name = String(fields.display_name || '').trim();
+    }
+    return clean;
+  }
 
   /* ---------- Client singleton ---------- */
   var _client = null;
@@ -128,6 +164,7 @@
         var client = getClient();
         if (typeof callback === 'function') {
           client.auth.getSession().then(function (result) {
+            syncAuthCookies(result.data.session);
             callback(result.data.session);
           }).catch(function () { callback(null); });
         }
@@ -147,7 +184,10 @@
               data: { display_name: displayName || '' },
               emailRedirectTo: window.location.origin + '/auth/callback.html'
             }
-          }).then(resolve).catch(function (e) { resolve({ error: e }); });
+          }).then(function (result) {
+            if (result && result.data) syncAuthCookies(result.data.session);
+            resolve(result);
+          }).catch(function (e) { resolve({ error: e }); });
         }, function () { resolve({ error: { message: AUTH_UNREACHABLE } }); });
       });
     },
@@ -159,7 +199,10 @@
           getClient().auth.signInWithPassword({
             email: email,
             password: password
-          }).then(resolve).catch(function (e) { resolve({ error: e }); });
+          }).then(function (result) {
+            if (result && result.data) syncAuthCookies(result.data.session);
+            resolve(result);
+          }).catch(function (e) { resolve({ error: e }); });
         }, function () { resolve({ error: { message: AUTH_UNREACHABLE } }); });
       });
     },
@@ -167,8 +210,12 @@
     /* Sign out */
     signOut: function () {
       return new Promise(function (resolve) {
+        clearAuthCookies();
         loadSDK(function () {
-          getClient().auth.signOut().then(resolve).catch(function () { resolve(); });
+          getClient().auth.signOut().then(function (result) {
+            clearAuthCookies();
+            resolve(result);
+          }).catch(function () { clearAuthCookies(); resolve(); });
         }, function () { resolve(); });
       });
     },
@@ -178,6 +225,7 @@
       return new Promise(function (resolve) {
         loadSDK(function () {
           getClient().auth.getSession().then(function (result) {
+            syncAuthCookies(result.data.session);
             resolve(result.data.session);
           }).catch(function () { resolve(null); });
         }, function () { resolve(null); });
@@ -222,9 +270,14 @@
           getClient().auth.getUser().then(function (userResult) {
             var user = userResult.data.user;
             if (!user) { resolve({ error: 'Not logged in' }); return; }
+            var clean = publicProfileFields(fields);
+            if (!Object.keys(clean).length) {
+              resolve({ error: 'No editable profile fields were provided' });
+              return;
+            }
             getClient()
               .from('profiles')
-              .update(Object.assign({}, fields, { updated_at: new Date().toISOString() }))
+              .update(Object.assign({}, clean, { updated_at: new Date().toISOString() }))
               .eq('id', user.id)
               .then(resolve).catch(function (e) { resolve({ error: e }); });
           }).catch(function (e) { resolve({ error: e }); });
@@ -258,6 +311,7 @@
       var unsub = null;
       loadSDK(function () {
         var result = getClient().auth.onAuthStateChange(function (event, session) {
+          syncAuthCookies(session);
           callback(event, session);
         });
         unsub = result.data.subscription.unsubscribe;

@@ -287,13 +287,9 @@
 <script>
 (function () {
 
-  var currentUserId = null;
-
   function showPage(user, profile) {
     document.getElementById('page-loading').style.display = 'none';
     document.getElementById('page-content').style.display = '';
-
-    currentUserId = user.id;
 
     var displayName = (profile && profile.display_name) || user.email.split('@')[0];
     document.getElementById('hero-greeting').textContent  = 'Welcome back, ' + displayName + '!';
@@ -331,10 +327,19 @@
     btn.textContent = 'Loading…';
 
     try {
+      var session = await EEAuth.getSession();
+      if (!session) {
+        window.location.replace('../auth/login.html?next=/account/index.html');
+        return;
+      }
+
       var res  = await fetch('/.netlify/functions/create-portal', {
         method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ userId: currentUserId })
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + session.access_token
+        },
+        body: JSON.stringify({})
       });
       var data = await res.json();
       if (data.url) {

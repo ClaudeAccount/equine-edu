@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge - Horse Behavior &amp; Communication - Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+</head>
+<body class="ee-page-courses-schooling-ring-horse-behavior-horse-behavior-communication-9-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Horse Behavior &amp; Communication</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each attempt draws 15 questions from a 40-question bank. Retakes are allowed, and the question set may vary.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 9;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'Back to Course',url:'1-index.html'}};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.horseBehaviorCommunication.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "What does it mean that horses are prey animals?",
+    "opts": [
+      "They are naturally wired to notice danger quickly and move away from it.",
+      "They naturally hunt other animals for food.",
+      "They do not need other horses for safety.",
+      "They lose their instincts after training."
+    ],
+    "a": "They are naturally wired to notice danger quickly and move away from it.",
+    "ok": "Correct. Horses are prey animals, so they are built to notice danger and move away from it quickly.",
+    "no": "Horses are prey animals. They are naturally wired to notice danger quickly and move away from it."
+  },
+  {
+    "q": "Why can a horse spook before it seems to understand what happened?",
+    "opts": [
+      "The flight response can happen very fast.",
+      "The horse is choosing to misbehave.",
+      "The horse has stopped using instinct.",
+      "The horse is trying to lead the herd."
+    ],
+    "a": "The flight response can happen very fast.",
+    "ok": "Correct. The flight response can happen before the horse fully understands what caused it.",
+    "no": "A horse can spook quickly because the flight response is very fast."
+  },
+  {
+    "q": "Where are a horse's two small blind spots?",
+    "opts": [
+      "Directly in front of the nose and directly behind the tail.",
+      "On both sides of the neck.",
+      "Above the withers and below the belly.",
+      "Only under the horse's chin."
+    ],
+    "a": "Directly in front of the nose and directly behind the tail.",
+    "ok": "Correct. Horses cannot see clearly directly in front of the nose or directly behind the tail.",
+    "no": "The course explains that a horse has blind spots directly in front of the nose and directly behind the tail."
+  },
+  {
+    "q": "Why do horses often feel safer with other horses?",
+    "opts": [
+      "The herd provides safety and social connection.",
+      "Horses cannot eat unless other horses are nearby.",
+      "A horse's instincts disappear in a group.",
+      "Horses only learn from people, not other horses."
+    ],
+    "a": "The herd provides safety and social connection.",
+    "ok": "Correct. Horses are social animals, and the herd helps them feel safer.",
+    "no": "Horses are herd animals. Being with other horses helps them feel safer and more secure."
+  },
+  {
+    "q": "What is a safe way to approach a horse?",
+    "opts": [
+      "Approach from the side near the shoulder and speak before touching.",
+      "Walk straight toward the horse's nose without speaking.",
+      "Come up directly behind the horse.",
+      "Run toward the horse so it notices quickly."
+    ],
+    "a": "Approach from the side near the shoulder and speak before touching.",
+    "ok": "Correct. Approaching near the shoulder and speaking first helps the horse see and hear the handler.",
+    "no": "A safe approach is from the side near the shoulder, with a calm voice before touching."
+  },
+  {
+    "q": "What should be done before putting a halter on a horse?",
+    "opts": [
+      "Place the lead rope around the horse's neck.",
+      "Stand directly behind the horse.",
+      "Tie the horse to a loose gate.",
+      "Ask another horse to block the doorway."
+    ],
+    "a": "Place the lead rope around the horse's neck.",
+    "ok": "Correct. The course teaches placing the lead rope around the horse's neck before putting on the halter.",
+    "no": "Before putting on the halter, place the lead rope around the horse's neck."
+  },
+  {
+    "q": "Which tying practice is safest?",
+    "opts": [
+      "Tie to a strong, secure object at about wither height with a quick-release knot.",
+      "Tie to a loose gate so the horse can move it.",
+      "Tie very low near the ground.",
+      "Tie with a knot that cannot be released quickly."
+    ],
+    "a": "Tie to a strong, secure object at about wither height with a quick-release knot.",
+    "ok": "Correct. Safe tying uses a strong object, about wither height, and a quick-release knot.",
+    "no": "The safe rule is to tie only to a strong, secure object at about wither height using a quick-release knot."
+  },
+  {
+    "q": "What is a safe turnout step from the course?",
+    "opts": [
+      "Turn the horse to face the gate, step back, then remove the halter.",
+      "Remove the halter while standing behind the horse.",
+      "Let the horse run through the gate loose.",
+      "Stand in front of the horse and pull the halter off quickly."
+    ],
+    "a": "Turn the horse to face the gate, step back, then remove the halter.",
+    "ok": "Correct. Turning the horse toward the gate and stepping back helps prevent rushing away or kicking.",
+    "no": "When turning out, walk in, turn the horse to face the gate, step back, then remove the halter."
+  },
+  {
+    "q": "What is equine ethology?",
+    "opts": [
+      "The scientific study of horse behavior.",
+      "A type of horse feed plan.",
+      "A riding competition pattern.",
+      "A grooming tool for the coat."
+    ],
+    "a": "The scientific study of horse behavior.",
+    "ok": "Correct. Equine ethology is the scientific study of horse behavior.",
+    "no": "Equine ethology means the scientific study of horse behavior."
+  },
+  {
+    "q": "How do instinct and learning work together in horses?",
+    "opts": [
+      "Horses are born with instincts and also learn from experience.",
+      "Training removes all natural instincts.",
+      "Foals are born with no natural behaviors.",
+      "Horses only learn from people."
+    ],
+    "a": "Horses are born with instincts and also learn from experience.",
+    "ok": "Correct. The course teaches that horses have instincts and also learn from people, other horses, and their surroundings.",
+    "no": "Horses have natural instincts and also learn through experience."
+  },
+  {
+    "q": "What is a better question than, 'How do I stop this behavior?'",
+    "opts": [
+      "Why is the horse behaving this way?",
+      "How can the horse be punished faster?",
+      "How can the behavior be ignored forever?",
+      "Which horse in the barn caused it?"
+    ],
+    "a": "Why is the horse behaving this way?",
+    "ok": "Correct. Looking for the cause often leads to a better solution.",
+    "no": "The course says a better question is, 'Why is the horse behaving this way?'"
+  },
+  {
+    "q": "Why can long periods alone affect a horse's behavior?",
+    "opts": [
+      "The horse's environment may not meet its social needs.",
+      "The horse no longer needs turnout.",
+      "The horse forgets how to eat forage.",
+      "The horse becomes less aware of danger."
+    ],
+    "a": "The horse's environment may not meet its social needs.",
+    "ok": "Correct. Horses are social animals, and long periods alone can cause stress or unwanted behaviors.",
+    "no": "A horse kept alone for long periods may become stressed because its social needs are not being met."
+  },
+  {
+    "q": "What is a herd?",
+    "opts": [
+      "A group of horses living together.",
+      "A single horse in a stall.",
+      "A type of saddle fit.",
+      "A grooming pattern."
+    ],
+    "a": "A group of horses living together.",
+    "ok": "Correct. Horses naturally live in groups called herds.",
+    "no": "A herd is a group of horses living together."
+  },
+  {
+    "q": "In many natural herds, which horse often helps guide the group?",
+    "opts": [
+      "An experienced mare.",
+      "The youngest foal.",
+      "The newest horse.",
+      "The horse with the brightest coat."
+    ],
+    "a": "An experienced mare.",
+    "ok": "Correct. The course explains that an experienced mare often helps guide the group.",
+    "no": "In many natural herds, an experienced mare often helps guide the group."
+  },
+  {
+    "q": "What does a herd social order help reduce?",
+    "opts": [
+      "Fighting and repeated conflict.",
+      "Grazing time.",
+      "The need for water.",
+      "All communication between horses."
+    ],
+    "a": "Fighting and repeated conflict.",
+    "ok": "Correct. A social order helps horses understand their place and reduces fighting.",
+    "no": "A herd social order helps reduce fighting because each horse learns its place."
+  },
+  {
+    "q": "What is mutual grooming, also called allogrooming?",
+    "opts": [
+      "Two horses gently scratching hard-to-reach places on each other.",
+      "One horse chasing another away from hay.",
+      "A horse rubbing its face on a fence.",
+      "A person brushing a horse before riding."
+    ],
+    "a": "Two horses gently scratching hard-to-reach places on each other.",
+    "ok": "Correct. Mutual grooming strengthens bonds and helps horses relax.",
+    "no": "Mutual grooming is when two horses gently scratch places that are hard to reach, such as the withers, neck, and back."
+  },
+  {
+    "q": "What can mutual grooming do for horses?",
+    "opts": [
+      "Help them relax and strengthen friendships.",
+      "Make horses forget their herd.",
+      "Replace the need for forage.",
+      "Stop all herd disagreements."
+    ],
+    "a": "Help them relax and strengthen friendships.",
+    "ok": "Correct. The course explains that mutual grooming helps horses relax and strengthens bonds.",
+    "no": "Mutual grooming helps horses relax and strengthens friendships within the herd."
+  },
+  {
+    "q": "What is buddy sour behavior?",
+    "opts": [
+      "Anxiety when a horse is separated from a favorite companion.",
+      "A horse refusing to drink water.",
+      "A horse learning a new gait.",
+      "A grooming style used before shows."
+    ],
+    "a": "Anxiety when a horse is separated from a favorite companion.",
+    "ok": "Correct. Buddy sour behavior is tied to strong herd bonds and separation anxiety.",
+    "no": "Buddy sour behavior happens when a horse becomes anxious after being separated from a favorite companion."
+  },
+  {
+    "q": "What is a safer first step when bringing a new horse into a herd?",
+    "opts": [
+      "Let the horses meet across a fence first.",
+      "Turn the new horse loose in a small pen with the group right away.",
+      "Feed all horses from one small pile.",
+      "Keep the new horse hidden from the herd."
+    ],
+    "a": "Let the horses meet across a fence first.",
+    "ok": "Correct. Fence introductions let horses see, smell, and interact more safely before sharing space.",
+    "no": "A safer first step is introducing horses across a fence before they share the same space."
+  },
+  {
+    "q": "Why should new herd introductions use a large space when horses are ready to meet?",
+    "opts": [
+      "Horses need room to move away if needed.",
+      "Large spaces stop horses from communicating.",
+      "Large spaces remove the need for supervision.",
+      "Horses cannot form social order in a pasture."
+    ],
+    "a": "Horses need room to move away if needed.",
+    "ok": "Correct. Room to move away helps reduce the chance of injury.",
+    "no": "A large space gives horses room to move away if needed during introductions."
+  },
+  {
+    "q": "Why should body language be read by looking at the whole horse?",
+    "opts": [
+      "One signal may not tell the whole story.",
+      "Only the ears matter when reading behavior.",
+      "Tail movement always has one meaning.",
+      "Horses do not use facial expression."
+    ],
+    "a": "One signal may not tell the whole story.",
+    "ok": "Correct. A single ear movement, tail swish, or facial expression rarely tells the whole story.",
+    "no": "The course teaches reading the whole horse because one body signal may not tell the full story."
+  },
+  {
+    "q": "What can a tight muzzle or stiff jaw suggest?",
+    "opts": [
+      "Stress, discomfort, or tension.",
+      "The horse is always relaxed.",
+      "The horse is asking for more grain.",
+      "The horse is ready to sleep."
+    ],
+    "a": "Stress, discomfort, or tension.",
+    "ok": "Correct. Muzzle and jaw tension can be early signs that a horse is stressed or uncomfortable.",
+    "no": "A tight muzzle or stiff jaw can suggest stress, discomfort, or tension."
+  },
+  {
+    "q": "What is bruxism?",
+    "opts": [
+      "Teeth grinding.",
+      "Mutual grooming.",
+      "A quick-release knot.",
+      "A type of pasture grass."
+    ],
+    "a": "Teeth grinding.",
+    "ok": "Correct. Bruxism means teeth grinding.",
+    "no": "Bruxism is teeth grinding."
+  },
+  {
+    "q": "If bruxism suddenly begins during work, what should be considered?",
+    "opts": [
+      "Pain, bit comfort, dental problems, or training stress.",
+      "Only the horse's coat color.",
+      "A need to feed more treats.",
+      "The horse's place in the herd."
+    ],
+    "a": "Pain, bit comfort, dental problems, or training stress.",
+    "ok": "Correct. Sudden teeth grinding can point to pain, equipment discomfort, dental issues, or training stress.",
+    "no": "The course says sudden bruxism may be linked to pain, bit comfort, dental problems, or training stress."
+  },
+  {
+    "q": "What does a raised head with a hollow or stiff back often show?",
+    "opts": [
+      "A protective response to pain, fear, or discomfort.",
+      "A horse that is always relaxed.",
+      "A sign that no tack should be checked.",
+      "A horse that has no need for training."
+    ],
+    "a": "A protective response to pain, fear, or discomfort.",
+    "ok": "Correct. A horse that braces through the topline may be protecting itself.",
+    "no": "A raised head with a hollow or stiff back often shows a protective response to pain, fear, or discomfort."
+  },
+  {
+    "q": "What should be checked if a horse repeatedly swishes its tail under leg pressure?",
+    "opts": [
+      "Leg aids, saddle fit, or equipment.",
+      "Only the horse's favorite companion.",
+      "The color of the arena footing.",
+      "Whether the horse has enough white markings."
+    ],
+    "a": "Leg aids, saddle fit, or equipment.",
+    "ok": "Correct. Repeated sharp tail swishing during work can be a sign of irritation or discomfort.",
+    "no": "The course says repeated tail swishing under leg pressure may mean leg aids, saddle fit, or equipment should be checked."
+  },
+  {
+    "q": "Why is a tucked tail with a hunched body while standing important?",
+    "opts": [
+      "It may be a sign of abdominal pain and needs veterinary attention.",
+      "It always means the horse is playing.",
+      "It means the horse is ready to jump.",
+      "It shows the horse has finished learning."
+    ],
+    "a": "It may be a sign of abdominal pain and needs veterinary attention.",
+    "ok": "Correct. A tucked tail with a hunched body while standing can be a serious pain signal.",
+    "no": "A tucked tail with a hunched body while standing may be a sign of abdominal pain and needs veterinary attention."
+  },
+  {
+    "q": "What are displacement behaviors?",
+    "opts": [
+      "Behaviors that may appear when a horse feels unsure, worried, or conflicted.",
+      "Only behaviors horses do while sleeping.",
+      "A type of saddle movement.",
+      "A required show-ring pattern."
+    ],
+    "a": "Behaviors that may appear when a horse feels unsure, worried, or conflicted.",
+    "ok": "Correct. Displacement behaviors can include yawning, pawing, licking and chewing, scratching, or head shaking.",
+    "no": "Displacement behaviors may appear when a horse feels unsure, worried, or conflicted."
+  },
+  {
+    "q": "Why should a handler observe a horse before haltering, grooming, saddling, or riding?",
+    "opts": [
+      "The horse may feel different from one day to the next.",
+      "The horse cannot show body language before work starts.",
+      "Observation replaces all training.",
+      "It tells the handler the horse's exact age."
+    ],
+    "a": "The horse may feel different from one day to the next.",
+    "ok": "Correct. Observing first helps the handler adjust based on what the horse is showing that day.",
+    "no": "Handlers should observe first because horses can feel different from one day to the next."
+  },
+  {
+    "q": "How do horses learn?",
+    "opts": [
+      "By connecting actions with outcomes.",
+      "Only by watching people talk.",
+      "Only when a formal lesson begins.",
+      "By forgetting past experiences."
+    ],
+    "a": "By connecting actions with outcomes.",
+    "ok": "Correct. Horses learn by connecting what they do with what happens next.",
+    "no": "Horses learn by connecting actions with outcomes."
+  },
+  {
+    "q": "In pressure and release, what is the reward?",
+    "opts": [
+      "The release of pressure.",
+      "The start of stronger pressure.",
+      "The sound of a feed cart.",
+      "The horse standing in a stall."
+    ],
+    "a": "The release of pressure.",
+    "ok": "Correct. The release tells the horse it gave the right answer.",
+    "no": "In pressure and release, the release of pressure is the reward."
+  },
+  {
+    "q": "Why is the timing of the release important?",
+    "opts": [
+      "It helps the horse understand which behavior earned relief.",
+      "It makes the cue louder.",
+      "It replaces the need for clear cues.",
+      "It teaches the horse to ignore the handler."
+    ],
+    "a": "It helps the horse understand which behavior earned relief.",
+    "ok": "Correct. A quick release helps the horse understand the correct response.",
+    "no": "Release timing matters because it helps the horse understand which behavior earned relief."
+  },
+  {
+    "q": "What is positive reinforcement?",
+    "opts": [
+      "Adding something the horse enjoys after the correct behavior.",
+      "Taking away all handling.",
+      "Ignoring every correct answer.",
+      "Changing feed without warning."
+    ],
+    "a": "Adding something the horse enjoys after the correct behavior.",
+    "ok": "Correct. Positive reinforcement adds something the horse enjoys after the correct behavior.",
+    "no": "Positive reinforcement means adding something the horse enjoys after the correct behavior."
+  },
+  {
+    "q": "Which example shows classical conditioning?",
+    "opts": [
+      "A horse expects food when it hears the feed cart.",
+      "A horse is tied to a secure object.",
+      "A horse is turned toward the gate before turnout.",
+      "A horse is brushed after mud dries."
+    ],
+    "a": "A horse expects food when it hears the feed cart.",
+    "ok": "Correct. The horse learns to connect the sound of the feed cart with food.",
+    "no": "Classical conditioning happens when a horse learns to connect one event with another, such as the feed cart sound with food."
+  },
+  {
+    "q": "How is systematic desensitization different from flooding?",
+    "opts": [
+      "It introduces new things in small, manageable steps.",
+      "It forces the horse to face something frightening with no way to escape.",
+      "It prevents the horse from learning.",
+      "It only happens during feeding."
+    ],
+    "a": "It introduces new things in small, manageable steps.",
+    "ok": "Correct. Systematic desensitization uses gradual steps as the horse becomes comfortable.",
+    "no": "Systematic desensitization introduces new things in small, manageable steps instead of overwhelming the horse."
+  },
+  {
+    "q": "Why is behavior useful in welfare assessment?",
+    "opts": [
+      "Behavior often changes before physical signs become obvious.",
+      "Behavior always shows the exact diagnosis.",
+      "Behavior is not connected to welfare.",
+      "Behavior only matters during riding."
+    ],
+    "a": "Behavior often changes before physical signs become obvious.",
+    "ok": "Correct. Behavior can be an early sign that welfare, pain, or stress should be checked.",
+    "no": "Behavior is useful because it often changes before physical signs become obvious."
+  },
+  {
+    "q": "Which list matches the Five Domains model from the course?",
+    "opts": [
+      "Nutrition, physical environment, health, behavioral interactions, and mental state.",
+      "Speed, color, breed, height, and markings.",
+      "Walk, trot, canter, gallop, and halt.",
+      "Saddle, bridle, bit, reins, and stirrups."
+    ],
+    "a": "Nutrition, physical environment, health, behavioral interactions, and mental state.",
+    "ok": "Correct. The Five Domains include nutrition, physical environment, health, behavioral interactions, and mental state.",
+    "no": "The Five Domains are nutrition, physical environment, health, behavioral interactions, and mental state."
+  },
+  {
+    "q": "What are stereotypies?",
+    "opts": [
+      "Repetitive behaviors that appear to serve no clear purpose.",
+      "A normal type of mutual grooming.",
+      "A safe tying method.",
+      "A type of riding discipline."
+    ],
+    "a": "Repetitive behaviors that appear to serve no clear purpose.",
+    "ok": "Correct. Examples from the course include weaving, cribbing, stall walking, and wood chewing.",
+    "no": "Stereotypies are repetitive behaviors that appear to serve no clear purpose."
+  },
+  {
+    "q": "Which is a positive welfare indicator from the course?",
+    "opts": [
+      "Curiosity and interest in the environment.",
+      "Repeated weaving with no management review.",
+      "Standing alone with no social contact.",
+      "Refusing to move forward because of pain."
+    ],
+    "a": "Curiosity and interest in the environment.",
+    "ok": "Correct. Curiosity and environmental interest are positive welfare indicators.",
+    "no": "Positive welfare indicators include curiosity, relaxed rest, play, mutual grooming, calm eating, and willingness to interact with familiar people."
+  },
+  {
+    "q": "What should happen when a horse shows dullness, tension, or repetitive behaviors?",
+    "opts": [
+      "Review the horse's care, environment, routine, turnout, feeding, or training approach.",
+      "Punish the behavior without looking for a cause.",
+      "Assume the horse is being stubborn.",
+      "Ignore the behavior because it cannot mean anything."
+    ],
+    "a": "Review the horse's care, environment, routine, turnout, feeding, or training approach.",
+    "ok": "Correct. Welfare assessment focuses on finding and addressing the cause.",
+    "no": "When a horse shows dullness, tension, or repetitive behaviors, the course says to review care, environment, routine, turnout, feeding, or training approach."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

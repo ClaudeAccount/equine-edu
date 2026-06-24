@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Region Sort &mdash; Parts of the Horse &mdash; Equine Edu</title>
+<meta name="description" content="A structure is shown — tap the body region it belongs to.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../../../assets/css/components.css">
@@ -17,11 +18,11 @@
 <div id="course-breadcrumb"></div>
 
 <section class="lesson-hero hero-centered hero-bg hero-bg-training-barn" id="top">
-  <div class="lesson-hero-inner">
+  <div class="lesson-hero-inner hero-centered">
     <div class="lesson-hero-text">
       <div class="lesson-module-tag">Parts of the Horse</div>
       <h1 class="lesson-hero-title">Region <span>Sort</span></h1>
-      <p class="lesson-hero-desc">A structure is shown &mdash; tap the region it belongs to. Ten questions per round, drawn from the full course term bank.</p>
+      <p class="lesson-hero-desc">Read each part and tap the body region it belongs to.</p>
     </div>
   </div>
 </section>
@@ -31,47 +32,10 @@
 
     <div class="game-intro-card">
       <h2>Sort by Region</h2>
-      <p>Each term belongs to one of four body regions. Read the term and tap the correct region as quickly as you can. You get feedback after every answer.</p>
+      <p>Each part belongs to one of four body regions. Read the part name and tap the correct region. Feedback appears after every answer, and a streak builds as the correct answers add up.</p>
     </div>
 
-    <div class="game-shell">
-
-      <div class="game-progress-bar-wrap">
-        <span class="game-progress-label">Correct: <span id="correct-count">0</span></span>
-        <div class="game-progress-track">
-          <div class="game-progress-fill ee-u-b05fd1db" id="progress-fill"></div>
-        </div>
-        <span class="game-score-label">Remaining: <span id="remaining-count">0</span></span>
-      </div>
-
-      <div class="game-play-area">
-
-        <div id="game-area">
-          <div class="term-display">
-            <div class="term-prompt">Which region does this belong to?</div>
-            <div class="term-name" id="current-term"></div>
-            <div class="terms-remaining" id="terms-remaining-text"></div>
-          </div>
-
-          <div class="sort-feedback" id="sort-feedback"></div>
-
-          <div class="buckets">
-            <button class="bucket-btn" id="btn-head"   onclick="guess('Head')">Head</button>
-            <button class="bucket-btn" id="btn-neck"   onclick="guess('Neck &amp; Shoulder')">Neck &amp; Shoulder</button>
-            <button class="bucket-btn" id="btn-body"   onclick="guess('Body')">Body</button>
-            <button class="bucket-btn" id="btn-legs"   onclick="guess('Legs')">Legs</button>
-          </div>
-        </div>
-
-        <div class="result-card" id="result-card">
-          <div class="ee-u-9d653e2f">Final Score</div>
-          <div class="result-big" id="result-big"></div>
-          <div class="result-msg" id="result-msg"></div>
-          <button class="restart-btn" onclick="startGame()">Play Again</button>
-        </div>
-
-      </div>
-    </div>
+    <div id="game"></div>
 
   </main>
   <aside class="lesson-right">
@@ -81,152 +45,6 @@
 </div>
 
 <div id="site-footer"></div>
-
-<script>
-const TERMS = [
-  // Head
-  { term:"Ear",           region:"Head" },
-  { term:"Poll",          region:"Head" },
-  { term:"Forelock",      region:"Head" },
-  { term:"Forehead",      region:"Head" },
-  { term:"Eye",           region:"Head" },
-  { term:"Cheek",         region:"Head" },
-  { term:"Nostril",       region:"Head" },
-  { term:"Muzzle",        region:"Head" },
-  { term:"Upper Lip",     region:"Head" },
-  { term:"Lower Lip",     region:"Head" },
-  { term:"Chin Groove",   region:"Head" },
-  { term:"Jaw",           region:"Head" },
-  // Neck & Shoulder
-  { term:"Throatlatch",   region:"Neck & Shoulder" },
-  { term:"Crest",         region:"Neck & Shoulder" },
-  { term:"Mane",          region:"Neck & Shoulder" },
-  { term:"Neck",          region:"Neck & Shoulder" },
-  { term:"Jugular Groove",region:"Neck & Shoulder" },
-  { term:"Shoulder",      region:"Neck & Shoulder" },
-  { term:"Point of Shoulder", region:"Neck & Shoulder" },
-  { term:"Chest",         region:"Neck & Shoulder" },
-  { term:"Upper Arm",     region:"Neck & Shoulder" },
-  // Body
-  { term:"Withers",       region:"Body" },
-  { term:"Back",          region:"Body" },
-  { term:"Loin",          region:"Body" },
-  { term:"Croup",         region:"Body" },
-  { term:"Point of Hip",  region:"Body" },
-  { term:"Dock",          region:"Body" },
-  { term:"Thigh",         region:"Body" },
-  { term:"Buttock",       region:"Body" },
-  { term:"Tail",          region:"Body" },
-  { term:"Flank",         region:"Body" },
-  { term:"Barrel",        region:"Body" },
-  { term:"Heart Girth",   region:"Body" },
-  // Legs
-  { term:"Elbow",         region:"Legs" },
-  { term:"Forearm",       region:"Legs" },
-  { term:"Chestnut",      region:"Legs" },
-  { term:"Knee",          region:"Legs" },
-  { term:"Stifle",        region:"Legs" },
-  { term:"Gaskin",        region:"Legs" },
-  { term:"Hock",          region:"Legs" },
-  { term:"Cannon Bone",   region:"Legs" },
-  { term:"Fetlock",       region:"Legs" },
-  { term:"Pastern",       region:"Legs" },
-  { term:"Coronet Band",  region:"Legs" },
-  { term:"Hoof",          region:"Legs" },
-  { term:"Ergot",         region:"Legs" }
-];
-
-let queue = [], idx = 0, correct = 0, locked = false;
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-const ROUND_SIZE = 10;
-
-function startGame() {
-  queue = shuffle([...TERMS]).slice(0, ROUND_SIZE);
-  idx = 0; correct = 0; locked = false;
-  document.getElementById('result-card').classList.remove('show');
-  document.getElementById('game-area').style.display = '';
-  var fill = document.getElementById('progress-fill');
-  if (fill) fill.style.width = '0%';
-  updateDisplay();
-}
-
-function updateDisplay() {
-  if (idx >= queue.length) { endGame(); return; }
-  const t = queue[idx];
-  document.getElementById('current-term').textContent = t.term;
-  document.getElementById('correct-count').textContent = correct;
-  document.getElementById('remaining-count').textContent = queue.length - idx;
-  document.getElementById('terms-remaining-text').textContent = (queue.length - idx) + ' terms remaining';
-  var fill = document.getElementById('progress-fill');
-  if (fill) fill.style.width = Math.round((idx / queue.length) * 100) + '%';
-  const fb = document.getElementById('sort-feedback');
-  fb.className = 'sort-feedback';
-  fb.textContent = '';
-  locked = false;
-}
-
-function guess(region) {
-  if (locked) return;
-  locked = true;
-  const t = queue[idx];
-  const isCorrect = region === t.region;
-  if (isCorrect) correct++;
-
-  const fb = document.getElementById('sort-feedback');
-  if (isCorrect) {
-    fb.className = 'sort-feedback correct show';
-    fb.textContent = '✓ Correct — ' + t.term + ' is in the ' + t.region + ' region.';
-  } else {
-    fb.className = 'sort-feedback wrong show';
-    fb.textContent = '✗ Not quite — ' + t.term + ' belongs to ' + t.region + '.';
-  }
-
-  // Flash the button
-  const btnMap = { 'Head':'btn-head', 'Neck & Shoulder':'btn-neck', 'Body':'btn-body', 'Legs':'btn-legs' };
-  const clickedId = btnMap[region];
-  const clickedBtn = document.getElementById(clickedId);
-  clickedBtn.classList.add(isCorrect ? 'correct-flash' : 'wrong-flash');
-  if (!isCorrect) {
-    const correctBtn = document.getElementById(btnMap[t.region]);
-    correctBtn.classList.add('correct-flash');
-  }
-
-  setTimeout(function() {
-    document.querySelectorAll('.bucket-btn').forEach(function(b) {
-      b.classList.remove('correct-flash','wrong-flash');
-    });
-    idx++;
-    updateDisplay();
-  }, 900);
-}
-
-function endGame() {
-  document.getElementById('game-area').style.display = 'none';
-  const rc = document.getElementById('result-card');
-  rc.classList.add('show');
-  const total = queue.length;
-  document.getElementById('result-big').textContent = correct + '/' + total;
-  const pct = correct / total;
-  const msgs = [
-    'Keep reviewing — the regions will click with practice.',
-    'Good effort! Try again to build a faster recall.',
-    'Solid! Review the regions for any terms you mixed up.',
-    'Great work! You know the regions well.',
-    'Perfect! You sorted every term correctly.'
-  ];
-  document.getElementById('result-msg').textContent = msgs[Math.min(Math.floor(pct * 4), 4)];
-}
-
-startGame();
-</script>
 
 <script>
   window.CURRENT_MODULE = 3;
@@ -248,6 +66,34 @@ startGame();
 <script src="../../../../../../assets/js/supabase-client.js"></script>
 <script src="../../../../../../assets/js/paywall.js"></script>
 <script src="../../../../../../assets/js/course-nav.js"></script>
+<script src="../../../../../../assets/js/ee-games.js"></script>
+<script>
+EEGames.mount({
+  el: '#game',
+  type: 'sort',
+  rounds: 10,
+  progressKey: 'equineEduProgress.equineAnatomy.trainingBarn',
+  backUrl: '../../4-training-barn.html',
+  backLabel: 'Back to Training Barn',
+  data: {
+    buckets: ['Head', 'Neck & Shoulder', 'Body', 'Legs'],
+    items: [
+      ['Ear', 'Head'], ['Poll', 'Head'], ['Forelock', 'Head'], ['Forehead', 'Head'],
+      ['Eye', 'Head'], ['Cheek', 'Head'], ['Nostril', 'Head'], ['Muzzle', 'Head'],
+      ['Upper Lip', 'Head'], ['Lower Lip', 'Head'], ['Chin Groove', 'Head'], ['Jaw', 'Head'],
+      ['Throatlatch', 'Neck & Shoulder'], ['Crest', 'Neck & Shoulder'], ['Mane', 'Neck & Shoulder'],
+      ['Neck', 'Neck & Shoulder'], ['Jugular Groove', 'Neck & Shoulder'], ['Shoulder', 'Neck & Shoulder'],
+      ['Point of Shoulder', 'Neck & Shoulder'], ['Chest', 'Neck & Shoulder'], ['Upper Arm', 'Neck & Shoulder'],
+      ['Withers', 'Body'], ['Back', 'Body'], ['Loin', 'Body'], ['Croup', 'Body'],
+      ['Point of Hip', 'Body'], ['Dock', 'Body'], ['Thigh', 'Body'], ['Buttock', 'Body'],
+      ['Tail', 'Body'], ['Flank', 'Body'], ['Barrel', 'Body'], ['Heart Girth', 'Body'],
+      ['Elbow', 'Legs'], ['Forearm', 'Legs'], ['Chestnut', 'Legs'], ['Knee', 'Legs'],
+      ['Stifle', 'Legs'], ['Gaskin', 'Legs'], ['Hock', 'Legs'], ['Cannon Bone', 'Legs'],
+      ['Fetlock', 'Legs'], ['Pastern', 'Legs'], ['Coronet Band', 'Legs'], ['Hoof', 'Legs'], ['Ergot', 'Legs']
+    ]
+  }
+});
+</script>
 <script src="../../../../../../assets/js/loft-nav.js"></script>
 </body>
 </html>

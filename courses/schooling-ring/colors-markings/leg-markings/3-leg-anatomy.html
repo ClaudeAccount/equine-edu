@@ -43,23 +43,7 @@
           <h3>Front Leg</h3>
           <div class="leg-diagram-stage" data-diagram="front">
             <img src="images/leg-anatomy/front-leg.png" alt="Front horse leg anatomy">
-            <svg class="leg-marker-svg" aria-hidden="true">
-              <line class="leg-marker-line" x1="52.2%" y1="48.9%" x2="74.5%" y2="45.1%"></line>
-              <line class="leg-marker-line" x1="51%" y1="58.9%" x2="28%" y2="50.5%"></line>
-              <line class="leg-marker-line" x1="54.5%" y1="65.1%" x2="75.7%" y2="60.7%"></line>
-              <line class="leg-marker-line" x1="51.3%" y1="68.3%" x2="29.5%" y2="66%"></line>
-              <line class="leg-marker-line" x1="51.6%" y1="70.5%" x2="74.8%" y2="69.4%"></line>
-            </svg>
-            <div class="leg-anchor ee-u-2314ee2e"></div>
-            <div class="leg-anchor ee-u-0a8a3f73"></div>
-            <div class="leg-anchor ee-u-4da41f20"></div>
-            <div class="leg-anchor ee-u-5674a7d2"></div>
-            <div class="leg-anchor ee-u-83559c37"></div>
-            <div class="leg-label ee-u-ff300ad5">Knee</div>
-            <div class="leg-label ee-u-7dc6109d">Cannon</div>
-            <div class="leg-label ee-u-a29213ff">Fetlock</div>
-            <div class="leg-label ee-u-4e49567c">Pastern</div>
-            <div class="leg-label ee-u-70bcb960">Coronet</div>
+            <svg class="leg-marker-svg" aria-hidden="true"></svg>
           </div>
         </article>
 
@@ -67,23 +51,7 @@
           <h3>Hind Leg</h3>
           <div class="leg-diagram-stage" data-diagram="hind">
             <img src="images/leg-anatomy/hind-leg.png" alt="Hind horse leg anatomy">
-            <svg class="leg-marker-svg" aria-hidden="true">
-              <line class="leg-marker-line" x1="54.9%" y1="45%" x2="76.7%" y2="45.5%"></line>
-              <line class="leg-marker-line" x1="54.9%" y1="56.4%" x2="35.2%" y2="55.1%"></line>
-              <line class="leg-marker-line" x1="58.4%" y1="63.9%" x2="79%" y2="60.5%"></line>
-              <line class="leg-marker-line" x1="55.2%" y1="68.5%" x2="36.1%" y2="66.2%"></line>
-              <line class="leg-marker-line" x1="56.1%" y1="70.5%" x2="77.3%" y2="69.6%"></line>
-            </svg>
-            <div class="leg-anchor ee-u-06eec4b6"></div>
-            <div class="leg-anchor ee-u-f84b4b38"></div>
-            <div class="leg-anchor ee-u-31d50621"></div>
-            <div class="leg-anchor ee-u-189dae63"></div>
-            <div class="leg-anchor ee-u-53a43e56"></div>
-            <div class="leg-label ee-u-bd806f45">Hock</div>
-            <div class="leg-label ee-u-c69d039a">Cannon</div>
-            <div class="leg-label ee-u-066503ec">Fetlock</div>
-            <div class="leg-label ee-u-1d47ab59">Pastern</div>
-            <div class="leg-label ee-u-4ccb07c3">Coronet</div>
+            <svg class="leg-marker-svg" aria-hidden="true"></svg>
           </div>
         </article>
       </div>
@@ -137,6 +105,205 @@
     ],
     highlight: 'Parts of the horse help you describe where the white begins and how high it reaches.'
   };
+</script>
+<script>
+  var LEG_DIAGRAMS = {
+    lsKey: 'equineEduDiagram.legMarkings.partsOfLeg',
+    defaults: {
+      front: [
+        { id: 'knee', text: 'Knee', ax: 54.1, ay: 51.0, lx: 74.5, ly: 45.1 },
+        { id: 'cannon', text: 'Cannon', ax: 51.5, ay: 67.9, lx: 19.7, ly: 48.8 },
+        { id: 'fetlock', text: 'Fetlock', ax: 56.7, ay: 78.8, lx: 88.4, ly: 66.2 },
+        { id: 'pastern', text: 'Pastern', ax: 51.0, ay: 86.6, lx: 21.5, ly: 72.7 },
+        { id: 'coronet', text: 'Coronet', ax: 47.6, ay: 90.6, lx: 84.1, ly: 88.8 }
+      ],
+      hind: [
+        { id: 'hock', text: 'Hock', ax: 57.7, ay: 36.6, lx: 86.4, ly: 31.0 },
+        { id: 'cannon', text: 'Cannon', ax: 54.9, ay: 56.4, lx: 18.1, ly: 53.2 },
+        { id: 'fetlock', text: 'Fetlock', ax: 61.6, ay: 77.9, lx: 95.1, ly: 63.2 },
+        { id: 'pastern', text: 'Pastern', ax: 55.5, ay: 85.8, lx: 14.2, ly: 71.4 },
+        { id: 'coronet', text: 'Coronet', ax: 55.9, ay: 91.0, lx: 94.2, ly: 90.1 }
+      ]
+    }
+  };
+
+  var LEG_EDIT_MODE = false; /* labels locked for learners. Set to true to drag/reposition. */
+  var legState = {};
+
+  function cloneLegDefaults() {
+    return {
+      front: LEG_DIAGRAMS.defaults.front.map(function(d) { return Object.assign({}, d); }),
+      hind: LEG_DIAGRAMS.defaults.hind.map(function(d) { return Object.assign({}, d); })
+    };
+  }
+
+  function loadLegState() {
+    legState = cloneLegDefaults();
+    if (!LEG_EDIT_MODE) return;
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(LEG_DIAGRAMS.lsKey) || '{}');
+      ['front', 'hind'].forEach(function(diagram) {
+        if (!Array.isArray(saved[diagram])) return;
+        legState[diagram] = LEG_DIAGRAMS.defaults[diagram].map(function(d) {
+          var match = saved[diagram].find(function(item) { return item.id === d.id; });
+          return match ? Object.assign({}, d, match) : Object.assign({}, d);
+        });
+      });
+    } catch (e) {}
+  }
+
+  function saveLegState() {
+    if (!LEG_EDIT_MODE) return;
+    try { localStorage.setItem(LEG_DIAGRAMS.lsKey, JSON.stringify(legState)); } catch (e) {}
+  }
+
+  function renderLegDiagrams() {
+    document.querySelectorAll('.leg-diagram-stage[data-diagram]').forEach(function(stage) {
+      var diagram = stage.getAttribute('data-diagram');
+      var svg = stage.querySelector('.leg-marker-svg');
+      var parts = legState[diagram] || [];
+      if (!svg || !parts.length) return;
+
+      stage.querySelectorAll('.leg-anchor, .leg-label').forEach(function(el) { el.remove(); });
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+      parts.forEach(function(part) {
+        var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', part.ax + '%');
+        line.setAttribute('y1', part.ay + '%');
+        line.setAttribute('x2', part.lx + '%');
+        line.setAttribute('y2', part.ly + '%');
+        line.setAttribute('stroke', '#C8A27A');
+        line.setAttribute('stroke-width', '1.4');
+        line.setAttribute('stroke-dasharray', '5 4');
+        line.setAttribute('stroke-linecap', 'round');
+        line.setAttribute('opacity', '0.95');
+        line.dataset.part = part.id;
+        svg.appendChild(line);
+
+        var anchor = document.createElement('div');
+        anchor.className = 'leg-anchor';
+        anchor.dataset.diagram = diagram;
+        anchor.dataset.part = part.id;
+        anchor.style.left = part.ax + '%';
+        anchor.style.top = part.ay + '%';
+        stage.appendChild(anchor);
+
+        var label = document.createElement('div');
+        label.className = 'leg-label';
+        label.dataset.diagram = diagram;
+        label.dataset.part = part.id;
+        label.textContent = part.text;
+        label.style.left = part.lx + '%';
+        label.style.top = part.ly + '%';
+        stage.appendChild(label);
+      });
+    });
+  }
+
+  function redrawLegLine(stage, diagram, partId) {
+    var part = (legState[diagram] || []).find(function(item) { return item.id === partId; });
+    var line = stage.querySelector('.leg-marker-svg line[data-part="' + partId + '"]');
+    if (!part || !line) return;
+    line.setAttribute('x1', part.ax + '%');
+    line.setAttribute('y1', part.ay + '%');
+    line.setAttribute('x2', part.lx + '%');
+    line.setAttribute('y2', part.ly + '%');
+  }
+
+  /* Drag mechanism — same document-level setup as the saddle courses.
+     One set of listeners handles every dot and label across both diagrams. */
+  var legDrag = null;
+
+  document.addEventListener('pointerdown', function(ev) {
+    if (!LEG_EDIT_MODE) return;
+    var el = ev.target.closest('.leg-anchor, .leg-label');
+    if (!el) return;
+    var stage = el.closest('.leg-diagram-stage');
+    if (!stage) return;
+    legDrag = {
+      el: el,
+      stage: stage,
+      diagram: el.dataset.diagram,
+      partId: el.dataset.part,
+      isAnchor: el.classList.contains('leg-anchor')
+    };
+    el.classList.add('dragging');
+    if (el.setPointerCapture) el.setPointerCapture(ev.pointerId);
+    ev.preventDefault();
+  });
+
+  document.addEventListener('pointermove', function(ev) {
+    if (!LEG_EDIT_MODE || !legDrag) return;
+    var rect = legDrag.stage.getBoundingClientRect();
+    var x = Math.max(0, Math.min(100, ((ev.clientX - rect.left) / rect.width) * 100));
+    var y = Math.max(0, Math.min(100, ((ev.clientY - rect.top) / rect.height) * 100));
+    var part = (legState[legDrag.diagram] || []).find(function(item) { return item.id === legDrag.partId; });
+    if (!part) return;
+    if (legDrag.isAnchor) {
+      part.ax = Number(x.toFixed(1));
+      part.ay = Number(y.toFixed(1));
+    } else {
+      part.lx = Number(x.toFixed(1));
+      part.ly = Number(y.toFixed(1));
+    }
+    legDrag.el.style.left = x + '%';
+    legDrag.el.style.top = y + '%';
+    redrawLegLine(legDrag.stage, legDrag.diagram, legDrag.partId);
+    if (window.__legUpdateMonitor) window.__legUpdateMonitor();
+  });
+
+  function endLegDrag() {
+    if (!legDrag) return;
+    legDrag.el.classList.remove('dragging');
+    legDrag = null;
+    saveLegState();
+  }
+  document.addEventListener('pointerup', endLegDrag);
+  document.addEventListener('pointercancel', endLegDrag);
+
+  loadLegState();
+  renderLegDiagrams();
+
+  if (LEG_EDIT_MODE) buildLegEditUI();
+
+  function buildLegEditUI() {
+    var host = document.querySelector('.leg-anatomy-grid');
+    if (!host) return;
+    var bar = document.createElement('div');
+    bar.className = 'coord-edit-bar';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = 'Copy label coordinates';
+    var hint = document.createElement('span');
+    hint.textContent = 'Edit mode: drag the dots and labels, then copy the coordinates.';
+    bar.appendChild(btn);
+    bar.appendChild(hint);
+    host.parentNode.insertBefore(bar, host.nextSibling);
+
+    var monitor = document.createElement('div');
+    monitor.className = 'coord-monitor';
+    bar.parentNode.insertBefore(monitor, bar.nextSibling);
+
+    function fmt() {
+      return JSON.stringify({ front: legState.front, hind: legState.hind }, null, 2);
+    }
+    window.__legUpdateMonitor = function () { monitor.textContent = fmt(); };
+    window.__legUpdateMonitor();
+
+    btn.addEventListener('click', function () {
+      var text = fmt();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied!';
+          setTimeout(function () { btn.textContent = 'Copy label coordinates'; }, 1500);
+        }, function () { window.prompt('Copy these coordinates:', text); });
+      } else {
+        window.prompt('Copy these coordinates:', text);
+      }
+    });
+  }
 </script>
 <script src="../../../../assets/js/layout.js"></script>
 <script src="../../../../assets/js/supabase-client.js"></script>

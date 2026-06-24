@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Test Your Knowledge — Equine Nutrition &amp; Feed Management — Equine Edu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/core.css">
+<link rel="stylesheet" href="../../../../assets/css/components.css">
+<link rel="stylesheet" href="../../../../assets/css/course.css">
+<link rel="stylesheet" href="../../../../assets/css/game.css">
+</head>
+<body class="ee-page-courses-schooling-ring-horse-care-equine-nutrition-9-test-your-knowledge">
+<div id="site-nav"></div>
+<div id="course-breadcrumb"></div>
+<section class="lesson-hero hero-centered hero-bg hero-bg-quiz" id="top">
+  <div class="lesson-hero-inner hero-centered">
+    <div class="lesson-hero-text">
+      <div class="lesson-module-tag">Equine Nutrition</div>
+      <h1 class="lesson-hero-title">Test Your <span>Knowledge</span></h1>
+      <p class="lesson-hero-desc">Each try gives you 15 questions out of 40. You can retake it, and the questions may change.</p>
+    </div>
+  </div>
+</section>
+<div class="lesson-wrap">
+  <main class="lesson-left">
+    <section class="quiz-card" id="quiz-card">
+      <div class="quiz-top"><span id="quiz-count">Question 1 of 15</span><span id="quiz-score">Score: 0</span></div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <div class="actions"><button class="primary" id="quiz-next" type="button" disabled>Next Question</button></div>
+    </section>
+    <div class="quiz-score-panel" id="score-panel">
+      <div class="score-number" id="score-display">0/15</div>
+      <div class="score-label">Your Score</div>
+      <div class="score-message" id="score-message"></div>
+      <button class="btn-retake" id="btn-retake" type="button">Try Again</button>
+
+    </div>
+  </main>
+  <aside class="lesson-right">
+    <div id="course-sidebar"></div>
+    <div id="course-sidebar-nav"></div>
+  </aside>
+</div>
+<div id="site-footer"></div>
+<script src="course-config.js"></script>
+<script>
+window.CURRENT_MODULE = 9;
+window.LAYOUT = {homeUrl:'../../../../index.html',coursesUrl:'../../../index.html',navCta:{label:'All Courses',url:'../../../index.html'}};
+window.EE_QUIZ_CONFIG = { questionCount: 15, progressKey: "equineEduProgress.equineNutrition.testYourKnowledge" };
+window.EE_QUIZ_BANK = [
+  {
+    "q": "Where is most fiber broken down in a horse?",
+    "opts": [
+      "The hindgut (the cecum and large colon)",
+      "The stomach",
+      "The small intestine",
+      "The liver"
+    ],
+    "a": "The hindgut (the cecum and large colon)",
+    "ok": "Correct. Horses are hindgut fermenters. Most fiber is broken down by microbes in the back of the gut.",
+    "no": "Horses break down most fiber in the hindgut, the back of the gut. Tiny microbes there turn fiber into energy."
+  },
+  {
+    "q": "The horse's stomach is best described as:",
+    "opts": [
+      "Small and quick to empty, made for small meals all day",
+      "Large and slow, made for two big meals a day",
+      "About the same size as a cow's stomach",
+      "Built to handle large amounts of starch"
+    ],
+    "a": "Small and quick to empty, made for small meals all day",
+    "ok": "Correct. The stomach is small and empties fast. Horses do best with small amounts of food often, not big meals.",
+    "no": "The horse's stomach is small and empties fast. Feed small amounts often, not big meals far apart."
+  },
+  {
+    "q": "What is the cecum's main job?",
+    "opts": [
+      "It is where gut microbes start breaking down fiber",
+      "It makes enzymes to absorb protein",
+      "It pulls vitamins out of grain",
+      "It stores bile to break down fat"
+    ],
+    "a": "It is where gut microbes start breaking down fiber",
+    "ok": "Correct. The cecum is the first part of the hindgut. It is where microbes begin turning fiber into energy.",
+    "no": "The cecum is the first part of the hindgut. It is where microbes start breaking down fiber for energy."
+  },
+  {
+    "q": "What happens when too much starch from a big grain meal reaches the hindgut?",
+    "opts": [
+      "Microbes ferment it fast and make acid, which can upset the gut",
+      "Microbes turn it into extra energy with no problems",
+      "It is saved in the cecum for later",
+      "It passes out of the body and causes no trouble"
+    ],
+    "a": "Microbes ferment it fast and make acid, which can upset the gut",
+    "ok": "Correct. Extra starch in the hindgut is fermented fast. This makes acid, kills helpful microbes, and can lead to colic and laminitis.",
+    "no": "Too much starch in the hindgut gets fermented fast and makes acid. This can cause colic and laminitis."
+  },
+  {
+    "q": "How much hay does a horse need each day, as a share of its body weight?",
+    "opts": [
+      "At least 1.5% of body weight",
+      "0.5% of body weight",
+      "3% of body weight",
+      "10% of body weight"
+    ],
+    "a": "At least 1.5% of body weight",
+    "ok": "Correct. A horse needs at least 1.5% of its body weight in hay a day. For an 1,100-pound horse, that is about 16 pounds.",
+    "no": "A horse needs at least 1.5% of its body weight in hay each day. For an 1,100-pound horse, that is about 16 pounds."
+  },
+  {
+    "q": "Why should horses have hay all day, not just at meal times?",
+    "opts": [
+      "The stomach makes acid all the time, and hay soaks it up",
+      "Horses digest fiber faster in small meals",
+      "Set meal times make horses nervous",
+      "The hindgut only works when hay keeps coming in"
+    ],
+    "a": "The stomach makes acid all the time, and hay soaks it up",
+    "ok": "Correct. The stomach makes acid all the time, even when empty. Long gaps with no hay let the acid burn the lining and cause ulcers.",
+    "no": "The stomach makes acid all the time. Without hay to soak it up, the acid burns the lining. That is why hay should be available most of the day."
+  },
+  {
+    "q": "About how much water does a horse drink in a day?",
+    "opts": [
+      "About 5 to 15 gallons, and more in heat or hard work",
+      "About 1 cup, like a small dog",
+      "Less than a gallon a week",
+      "None, horses get all their water from hay"
+    ],
+    "a": "About 5 to 15 gallons, and more in heat or hard work",
+    "ok": "Correct. Clean, fresh water matters most. A horse drinking less than usual can be an early sign of illness.",
+    "no": "A horse usually drinks about 5 to 15 gallons a day, and more in hot weather or hard work."
+  },
+  {
+    "q": "What causes hindgut acid problems (hindgut acidosis) in horses?",
+    "opts": [
+      "Too much starch reaching the hindgut, where microbes make too much acid",
+      "Too much hay overloading the gut",
+      "Too much protein upsetting the cecum",
+      "Not drinking enough water"
+    ],
+    "a": "Too much starch reaching the hindgut, where microbes make too much acid",
+    "ok": "Correct. When too much starch reaches the hindgut, microbes make too much acid. This kills helpful microbes and can cause colic and laminitis.",
+    "no": "Too much starch in the hindgut makes the microbes there produce too much acid. This throws the gut off balance and is linked to colic and laminitis."
+  },
+  {
+    "q": "Which hay is best for most grown horses at rest?",
+    "opts": [
+      "Grass hay (timothy, orchardgrass, bermudagrass)",
+      "Legume hay (alfalfa, clover)",
+      "Mixed hay that is 60% alfalfa",
+      "Any hay, as long as the horse eats it"
+    ],
+    "a": "Grass hay (timothy, orchardgrass, bermudagrass)",
+    "ok": "Correct. Grass hays have less protein and fewer calories than legume hays. That fits most grown horses at rest.",
+    "no": "Grass hays are best for most grown horses at rest. They have less sugar and protein than legume hays."
+  },
+  {
+    "q": "Legume hay (alfalfa, clover) is best for which horses?",
+    "opts": [
+      "Horses in hard work, growing horses, or nursing mares",
+      "Grown horses at rest or in light work",
+      "Horses that have had laminitis",
+      "Older horses that need fewer calories"
+    ],
+    "a": "Horses in hard work, growing horses, or nursing mares",
+    "ok": "Correct. Legume hays have more protein, calcium, and energy. They fit horses that need more from their food.",
+    "no": "Legume hays are rich in protein and energy. They fit horses in hard work, growing horses, and pregnant or nursing mares. They are too rich for most resting horses."
+  },
+  {
+    "q": "The best way to know a hay's true quality is:",
+    "opts": [
+      "A lab test of the hay's protein, energy, sugar, and minerals",
+      "Color alone, since bright green hay is always best",
+      "The weight of the bale",
+      "Looking at the leaf-to-stem amount only"
+    ],
+    "a": "A lab test of the hay's protein, energy, sugar, and minerals",
+    "ok": "Correct. A lab test gives the real numbers. Looking at hay is a good start, but it cannot tell you the sugar, protein, or mineral levels.",
+    "no": "A lab test is the only sure way to know what a hay holds. Looking at it helps, but it cannot measure sugar, protein, or minerals."
+  },
+  {
+    "q": "Why does the sugar and starch level (NSC) in hay matter for some horses?",
+    "opts": [
+      "NSC over 10 to 12% can trigger laminitis in horses prone to it",
+      "NSC over 10% helps every horse's energy",
+      "NSC under 5% means the hay is spoiled",
+      "NSC does not affect health if the amount is right"
+    ],
+    "a": "NSC over 10 to 12% can trigger laminitis in horses prone to it",
+    "ok": "Correct. For horses that gain weight easily or have had laminitis, hay with NSC over 10 to 12% raises the risk. Aim for hay under 10%.",
+    "no": "Sugar and starch (NSC) over 10 to 12% in hay raises laminitis risk for horses prone to it. These horses need tested, low-NSC hay."
+  },
+  {
+    "q": "Why feed hay by weight, not by flake?",
+    "opts": [
+      "Flakes are not all the same weight, so counting them does not give a steady amount",
+      "Horses digest weighed hay better",
+      "Flake counts only work with round bales",
+      "Weighing keeps hay from drying out"
+    ],
+    "a": "Flakes are not all the same weight, so counting them does not give a steady amount",
+    "ok": "Correct. A flake of alfalfa can weigh twice as much as a flake of timothy. Counting flakes does not tell you the real amount the horse gets.",
+    "no": "Flakes vary in weight by hay type and bale. If you count flakes, you do not know the true amount. A scale gives a steady amount."
+  },
+  {
+    "q": "Spring grass can be risky for horses prone to laminitis because:",
+    "opts": [
+      "It is very high in sugar and starch, which can trigger laminitis",
+      "It has too little protein in spring",
+      "It grows too fast for horses to eat enough",
+      "It causes dehydration from too much water"
+    ],
+    "a": "It is very high in sugar and starch, which can trigger laminitis",
+    "ok": "Correct. Rich spring grass is high in sugar and starch. For horses prone to it, that can trigger laminitis.",
+    "no": "Spring and fast-growing grass is very high in sugar and starch. For horses prone to laminitis, this can trigger it, even with limited grazing."
+  },
+  {
+    "q": "Which sign shows hay may have been baled too wet?",
+    "opts": [
+      "A musty smell and visible mold",
+      "Bright green color and fine, leafy texture",
+      "A slightly dusty look when shaken",
+      "Yellow or faded color from the sun"
+    ],
+    "a": "A musty smell and visible mold",
+    "ok": "Correct. Hay baled too wet heats up and grows mold. A musty smell or visible mold means do not feed it.",
+    "no": "Hay baled too wet heats up and grows mold. A musty smell or mold is the sign. Do not feed moldy hay."
+  },
+  {
+    "q": "If a horse needs grain, why is it safer to feed small amounts more often?",
+    "opts": [
+      "The stomach is small, so big grain meals are hard to digest safely",
+      "Small meals make the grain cost less",
+      "Horses cannot taste large meals",
+      "Big meals make a horse drink too much water"
+    ],
+    "a": "The stomach is small, so big grain meals are hard to digest safely",
+    "ok": "Correct. The stomach is small. A big grain meal is hard to digest, and the extra starch can reach the hindgut and cause problems.",
+    "no": "The horse's stomach is small. Big grain meals are hard to digest safely, so split grain into small meals."
+  },
+  {
+    "q": "The most starch a horse should get in one meal is:",
+    "opts": [
+      "0.5 kg per 100 kg of body weight",
+      "2 kg per 100 kg of body weight",
+      "1 kg per 100 kg of body weight",
+      "No limit, if there is enough hay"
+    ],
+    "a": "0.5 kg per 100 kg of body weight",
+    "ok": "Correct. More than 0.5 kg of starch per 100 kg of body weight per meal sends extra starch to the hindgut and can upset it.",
+    "no": "Keep starch under 0.5 kg per 100 kg of body weight per meal. For a 500 kg horse, that is no more than 2.5 kg per meal."
+  },
+  {
+    "q": "A ration balancer is best described as:",
+    "opts": [
+      "A small, low-calorie feed that adds missing vitamins, minerals, and protein",
+      "A full replacement for hay in horses with bad teeth",
+      "A high-energy grain for hard-working horses",
+      "A weight-gain feed for thin horses"
+    ],
+    "a": "A small, low-calorie feed that adds missing vitamins, minerals, and protein",
+    "ok": "Correct. A ration balancer adds vitamins, minerals, and protein without much weight. It is good for horses that need those but not extra calories.",
+    "no": "A ration balancer adds vitamins, minerals, and protein without many calories. It fills gaps for horses that do not need extra energy."
+  },
+  {
+    "q": "Adding supplements to a horse already fed a balanced bagged feed is most likely to:",
+    "opts": [
+      "Throw nutrients off balance, especially vitamins and minerals like selenium",
+      "Make the horse healthier overall",
+      "Make up for poor hay",
+      "Do nothing, since extra nutrients always help"
+    ],
+    "a": "Throw nutrients off balance, especially vitamins and minerals like selenium",
+    "ok": "Correct. Bagged feeds already meet a horse's needs at the right amount. Adding more can cause too much, especially of vitamins A, D, E, K and selenium.",
+    "no": "Bagged feeds already give the right vitamins and minerals. Adding more can build up too much, especially vitamins A, D, E, K and selenium, which is unsafe in large amounts."
+  },
+  {
+    "q": "Which horse is LEAST likely to need grain?",
+    "opts": [
+      "A healthy grown horse at rest or in light work",
+      "A mare in the last months of pregnancy",
+      "A horse in daily training",
+      "A young horse getting ready for its first shows"
+    ],
+    "a": "A healthy grown horse at rest or in light work",
+    "ok": "Correct. A horse at rest or in light work on good hay usually keeps its weight on hay alone. Adding grain it does not need wastes money and adds risk.",
+    "no": "Horses at rest or in light work usually do fine on hay alone. Grain is added to fill an energy or protein gap, which these horses rarely have."
+  },
+  {
+    "q": "How is a horse's body built to eat?",
+    "opts": [
+      "By eating small amounts of hay or grass for most of the day",
+      "By eating two big meals and resting all day",
+      "By eating once every few days",
+      "By eating mostly grain and very little hay"
+    ],
+    "a": "By eating small amounts of hay or grass for most of the day",
+    "ok": "Correct. Horses are built to eat small amounts of forage for most of the day, not big meals far apart.",
+    "no": "A horse is built to graze, eating small amounts of hay or grass for most of the day."
+  },
+  {
+    "q": "Why should you be careful about supplement claims for horses?",
+    "opts": [
+      "The supplement business has few rules, and few products have real research behind them",
+      "Most supplements are harmful and should never be used",
+      "Supplement makers must prove their products work before selling",
+      "All supplement nutrients are cheaper to get from grain"
+    ],
+    "a": "The supplement business has few rules, and few products have real research behind them",
+    "ok": "Correct. Supplements do not have to prove they work before they are sold. Check for real research, not just ads.",
+    "no": "The supplement business has few rules. Products do not have to prove they work first. Look for real research in horses, not ads or stories."
+  },
+  {
+    "q": "What is the FIRST step in building a feeding plan?",
+    "opts": [
+      "Look at the horse: weight, body condition, teeth, workload, and stage of life",
+      "Pick the grain",
+      "Figure out how much hay to feed",
+      "Buy a hay test kit"
+    ],
+    "a": "Look at the horse: weight, body condition, teeth, workload, and stage of life",
+    "ok": "Correct. A feeding plan starts with the horse, not the feed room. What the horse needs comes before picking any feed.",
+    "no": "Start with the horse: body condition, weight, teeth, workload, and stage of life. These tell you what the horse needs before you choose feed."
+  },
+  {
+    "q": "The Henneke Body Condition Score checks fat at:",
+    "opts": [
+      "Six spots: neck, withers, shoulder, ribs, loin, and tailhead",
+      "Four spots: ribs, back, hips, and neck",
+      "Eight spots across the whole body",
+      "Only one spot, the ribs"
+    ],
+    "a": "Six spots: neck, withers, shoulder, ribs, loin, and tailhead",
+    "ok": "Correct. The Henneke score checks six spots, each one where horses gain or lose fat in a steady pattern.",
+    "no": "The Henneke score checks fat at six spots: neck, withers, shoulder, ribs, loin, and tailhead."
+  },
+  {
+    "q": "What does a Henneke score of 3 mean?",
+    "opts": [
+      "Thin: you can see bone and there is little fat, so the horse needs more feed",
+      "Ideal weight, right for all horses",
+      "A bit heavy, good for horses in work",
+      "Too fat, needs less feed"
+    ],
+    "a": "Thin: you can see bone and there is little fat, so the horse needs more feed",
+    "ok": "Correct. A 3 means thin, with bones easy to see and little fat. The target is 5 to 6, so a 3 needs more feed.",
+    "no": "A score of 3 means thin, with little fat and bones easy to see. Most horses should be a 5 to 6, so a 3 needs more feed."
+  },
+  {
+    "q": "What does a hay test give you that looking cannot?",
+    "opts": [
+      "Real numbers for protein, energy, sugar and starch, and minerals",
+      "How the hay smells and feels",
+      "The leaf-to-stem amount",
+      "The name of the grass in the hay"
+    ],
+    "a": "Real numbers for protein, energy, sugar and starch, and minerals",
+    "ok": "Correct. A hay test gives the real numbers for the nutrients. You cannot guess these by looking, smelling, or touching.",
+    "no": "A hay test gives the real numbers for protein, energy, sugar and starch, and minerals. You cannot tell these just by looking."
+  },
+  {
+    "q": "How long should it take to change a horse's feed?",
+    "opts": [
+      "At least 10 to 14 days",
+      "24 to 48 hours",
+      "3 to 4 days",
+      "One week, only for a totally new feed"
+    ],
+    "a": "At least 10 to 14 days",
+    "ok": "Correct. The gut microbes need at least 10 to 14 days to adjust. Faster changes can cause gas, colic, or gut acid problems.",
+    "no": "Make feed changes over at least 10 to 14 days. This gives the gut microbes time to adjust and lowers the risk of colic."
+  },
+  {
+    "q": "How often should you check a horse's body condition?",
+    "opts": [
+      "Every 2 to 4 weeks, since feeding plans need regular checks",
+      "Once a year at the vet visit",
+      "Only when a problem shows up",
+      "Right after each meal"
+    ],
+    "a": "Every 2 to 4 weeks, since feeding plans need regular checks",
+    "ok": "Correct. Check body condition every 2 to 4 weeks and weight each month. The seasons and the horse's work change its needs.",
+    "no": "Check body condition every 2 to 4 weeks and weight each month. This lets you adjust the feed before problems start."
+  },
+  {
+    "q": "Why does stage of life change a horse's needs so much?",
+    "opts": [
+      "Energy needs change a lot. A nursing mare may need nearly twice the energy of a resting one.",
+      "Older horses always need less than younger ones",
+      "Stage of life sets whether a horse likes hay or grain",
+      "It only changes how much water a horse needs"
+    ],
+    "a": "Energy needs change a lot. A nursing mare may need nearly twice the energy of a resting one.",
+    "ok": "Correct. Stage of life changes needs the most. A nursing mare may need nearly twice the energy of the same mare at rest.",
+    "no": "Stage of life changes needs more than anything else. A nursing mare may need nearly twice the energy of the same mare at rest."
+  },
+  {
+    "q": "A horse losing weight on a feed that used to keep it steady should first be checked for:",
+    "opts": [
+      "Changes in hay quality, teeth, workload, or health",
+      "Adding a supplement for more calories",
+      "More grain to make up the loss",
+      "Less exercise to save energy"
+    ],
+    "a": "Changes in hay quality, teeth, workload, or health",
+    "ok": "Correct. Weight loss on the same feed usually means something changed: the hay quality, the teeth, the workload, or the horse's health.",
+    "no": "A horse losing weight on the same feed is not always underfed. Check the hay quality, teeth, workload, and health first."
+  },
+  {
+    "q": "Colic is best described as:",
+    "opts": [
+      "Belly pain, a sign with many possible causes",
+      "One gut disease caused by germs",
+      "Pain only from too much grain",
+      "A lasting problem that needs daily medicine"
+    ],
+    "a": "Belly pain, a sign with many possible causes",
+    "ok": "Correct. Colic is belly pain, not one disease. It covers many problems, from mild gas to a serious twisted gut.",
+    "no": "Colic is belly pain, a sign with many causes. It can be mild gas or a life-threatening twisted gut."
+  },
+  {
+    "q": "Which sign means a colicky horse needs the vet right away?",
+    "opts": [
+      "Rolling that will not stop, a heartbeat over 60, or pale gums",
+      "Mild pawing that stops when you walk the horse",
+      "Not wanting hay but drinking water fine",
+      "Looking at its side once or twice in an hour"
+    ],
+    "a": "Rolling that will not stop, a heartbeat over 60, or pale gums",
+    "ok": "Correct. These are signs of serious trouble, not mild pain. They may mean the horse needs surgery and cannot wait.",
+    "no": "Rolling that will not stop, a heartbeat over 60 beats a minute, and pale gums are serious signs. Call the vet right away."
+  },
+  {
+    "q": "What is laminitis, and why is it a race against time?",
+    "opts": [
+      "Sore, swollen tissue in the hoof. The coffin bone can tip or drop within 24 to 48 hours without help.",
+      "A hoof infection that needs antibiotics",
+      "Sore hoof walls from hard ground",
+      "Hoof cracks from dry weather"
+    ],
+    "a": "Sore, swollen tissue in the hoof. The coffin bone can tip or drop within 24 to 48 hours without help.",
+    "ok": "Correct. Laminitis hurts the tissue that holds the coffin bone to the hoof wall. Without quick help, the bone can tip or drop and cause lasting damage.",
+    "no": "Laminitis is sore, swollen tissue inside the hoof. The coffin bone can tip or drop in 24 to 48 hours, so quick vet help is key."
+  },
+  {
+    "q": "The main feeding cause of laminitis is:",
+    "opts": [
+      "Too much sugar and starch from grain or rich grass",
+      "Too much protein from legume hay",
+      "Too little vitamin A from poor hay",
+      "Feeding grain more than twice a day"
+    ],
+    "a": "Too much sugar and starch from grain or rich grass",
+    "ok": "Correct. Too much sugar and starch, from grain or rich grass, is the main feeding cause of laminitis.",
+    "no": "The main feeding cause is too much sugar and starch, from grain or rich grass. It floods the gut and hurts the hoof tissue."
+  },
+  {
+    "q": "Early signs of laminitis include:",
+    "opts": [
+      "A strong pulse at the ankle, heat in the hooves, and a rocked-back stance",
+      "Coughing and a runny nose",
+      "Fever and swollen glands",
+      "Not eating and sudden weight loss"
+    ],
+    "a": "A strong pulse at the ankle, heat in the hooves, and a rocked-back stance",
+    "ok": "Correct. A strong hoof pulse, heat in the hooves, and a rocked-back stance are the classic early signs.",
+    "no": "Early laminitis shows as a strong pulse at the back of the ankle, heat in the hooves, and a rocked-back stance off the toes."
+  },
+  {
+    "q": "Choke in a horse is different from choking in a person because:",
+    "opts": [
+      "Horse choke is food stuck in the food pipe, so the horse can still breathe",
+      "Horse choke needs the Heimlich move to fix",
+      "Horse choke blocks the food pipe and windpipe at once",
+      "Horse choke is rarely serious and needs no vet"
+    ],
+    "a": "Horse choke is food stuck in the food pipe, so the horse can still breathe",
+    "ok": "Correct. Horse choke is a blockage in the food pipe, not the windpipe. The horse can still breathe but cannot swallow. The danger is a lung infection.",
+    "no": "Horse choke is food stuck in the food pipe, not the airway. The horse can still breathe. The danger is a lung infection from food getting into the airway."
+  },
+  {
+    "q": "What is the main cause of stomach ulcers (EGUS)?",
+    "opts": [
+      "Long gaps with no hay, which let acid burn the stomach lining",
+      "A germ that infects the stomach lining",
+      "Too much grain making more acid",
+      "Fast feed changes that change stomach acid for a while"
+    ],
+    "a": "Long gaps with no hay, which let acid burn the stomach lining",
+    "ok": "Correct. The stomach makes acid all the time. Without hay to soak it up, the acid burns the lining. Long gaps with no hay are the main cause.",
+    "no": "The stomach makes acid all the time. Long gaps with no hay let the acid burn the lining. That is the main cause of ulcers."
+  },
+  {
+    "q": "The single best way to prevent stomach ulcers is:",
+    "opts": [
+      "Keeping hay in front of the horse nearly all the time",
+      "Feeding grain three times a day instead of two",
+      "Putting out salt blocks for more drinking",
+      "Giving antacids every day in hard training"
+    ],
+    "a": "Keeping hay in front of the horse nearly all the time",
+    "ok": "Correct. Keeping hay available removes the empty-stomach times that let acid burn the lining. It works better than any supplement.",
+    "no": "Keeping hay available nearly all the time is the best prevention. It removes the empty-stomach gaps that cause ulcers. Slow feeders and small-hole hay nets help."
+  },
+  {
+    "q": "Why limit empty-stomach time during travel for ulcer-prone horses?",
+    "opts": [
+      "The stomach makes acid all the time, so long gaps with no hay let it burn the lining",
+      "Travel slows the hindgut, so it needs more hay to keep moving",
+      "Going without hay during travel causes dehydration",
+      "The bumps of travel make fasting safer"
+    ],
+    "a": "The stomach makes acid all the time, so long gaps with no hay let it burn the lining",
+    "ok": "Correct. The stomach keeps making acid during travel. A long haul with no hay means hours of acid on the lining, which raises ulcer risk.",
+    "no": "The stomach makes acid even during travel. A long haul with no hay leaves the lining open to acid for hours, raising ulcer risk."
+  },
+  {
+    "q": "The most common feeding mistakes that lead to colic or laminitis are:",
+    "opts": [
+      "Big grain meals, too little hay, and feed changes made too fast",
+      "Feeding good legume hay at the right amount",
+      "Keeping hay available instead of set meals",
+      "Feeding grain in small, frequent meals"
+    ],
+    "a": "Big grain meals, too little hay, and feed changes made too fast",
+    "ok": "Correct. These three mistakes cause many colic and laminitis cases. They often happen in the day or two before the problem starts.",
+    "no": "Big grain meals, too little hay, and fast feed changes are the most common causes. All three can be prevented with steady feeding."
+  }
+];
+</script>
+<script src="../../../../assets/js/quiz-standard.js"></script>
+<script src="../../../../assets/js/layout.js"></script>
+<script src="../../../../assets/js/supabase-client.js"></script>
+<script src="../../../../assets/js/paywall.js"></script>
+<script src="../../../../assets/js/course-nav.js"></script>
+</body>
+</html>

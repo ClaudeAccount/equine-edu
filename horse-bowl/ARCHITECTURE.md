@@ -37,12 +37,11 @@ unique questions across 33 courses**.
 `course_questions` is the join table (`course_id`, `question_id`, `position`) —
 this is how a course "owns" questions without copying them.
 
-`session_results` is optional analytics: the selected filters, counts, score,
-percentage, per-category breakdown, the served question IDs, and the user's
-responses, scoped to `auth.users`.
+`horsebowl_activity` is the MVP dashboard score stream: one row per signed-in
+round with `user_id`, `score`, `topic`, and `created_at`.
 
 Row Level Security makes questions, courses, and the join table world-readable
-(writes go through the service role / admin tools) while `session_results` is
+(writes go through the service role / admin tools) while Horse Bowl activity is
 private to each user. A `horse_bowl_questions(...)` RPC does balanced randomized
 selection in the database for when the bank grows large.
 
@@ -122,8 +121,8 @@ step. `setup` holds the chosen categories, count, and timer settings. A
 `Session` instance owns the selected questions, the per-question responses
 (recorded the moment an answer is chosen), the current index, the pool size, and
 the repeated flag. The DOM is the single rendered view of that state; switching
-stages just toggles an `.is-active` class. Optionally, a completed session is
-written to `session_results` for signed-in users (best-effort; it never blocks
+stages just toggles an `.is-active` class. Optionally, a completed session writes
+a `horsebowl_activity` summary for signed-in users (best-effort; it never blocks
 the UI).
 
 ## 7. Code map

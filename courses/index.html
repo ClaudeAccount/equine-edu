@@ -164,19 +164,10 @@
         transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         overflow: hidden;
   }
-  .lesson-card:not(.coming-soon):hover {
+  .lesson-card:hover {
     transform: translateY(-4px);
         box-shadow: 0 12px 32px rgba(36, 54, 74,0.12);
         border-color: rgba(200, 162, 122,0.45);
-  }
-  .lesson-card.coming-soon {
-    opacity: 0.88;
-    cursor: default;
-  }
-  .lesson-card.coming-soon:hover {
-    transform: none;
-    box-shadow: none;
-    border-color: rgba(36, 54, 74,0.09);
   }
   .lesson-card.has-progress {
     min-height: 380px;
@@ -546,7 +537,7 @@
     font-size:0.56rem; font-weight:700; letter-spacing:1.1px;
     text-transform:uppercase; padding:0.18rem 0.55rem; border-radius:999px;
     line-height:1.4; pointer-events:none; }
-  .level-badge--foundations { background:#dff0df; color:#2e6b2e; }
+  .level-badge--foundations { background:#e3e9f1; color:#24364A; }
   .level-badge--core        { background:#fef3e0; color:#7a5010; }
   .level-badge--expanding   { background:#dde6f5; color:#284f78; }
   .lesson-grid { display:flex; flex-direction:row; overflow-x:auto; gap:1rem;
@@ -573,7 +564,7 @@
     navExtras: [
       { label: 'Courses', url: 'index.html' },
       { label: 'How It Works', url: '../index.html#how' },
-      { label: 'About', url: '../index.html#about' }
+      { label: 'About', url: '../index.html#areas' }
     ]
   };
 </script>
@@ -611,7 +602,6 @@
 <!-- ═══════════════════ BEGINNER TAB ═══════════════════ -->
 <!-- THE SCHOOLING RING -->
 <div class="level-tab-pane active" id="tab-schooling-ring" role="tabpanel">
-<!-- ── Horse Safety ── -->
 <!-- ── Breed of the Week ── -->
 <div class="topic-row fade-in">
 <div class="topic-header"><div><h2 class="topic-title">Breed of the Week</h2></div></div>
@@ -630,64 +620,6 @@
 <button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
 </div>
 </div>
-<div class="topic-row fade-in">
-<div class="topic-header"><div><h2 class="topic-title">Horse Safety</h2></div></div>
-<div class="lesson-rail-wrap">
-<button aria-label="Scroll left" class="rail-arrow rail-arrow--prev" hidden="">‹</button>
-<div class="lesson-grid">
-
-
-
-
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Rider Safety Basics course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/rider-safety-basics/1-index.html">Open Rider Safety Basics course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Rider Safety Basics" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Rider Safety Basics</h3><p class="lesson-desc">Learn the safety habits every horseperson needs first — reading the horse, blind spots, certified helmets and proper boots, and safe leading and tying.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Riding Arena Etiquette</h3><p class="lesson-desc">Understand passing rules, direction calls, right of way, and respectful behavior in a shared riding space.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Safety in the Barn</h3><p class="lesson-desc">Learn to move, approach, and behave safely around horses in barn environments, aisles, and stalls.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Barn Etiquette</h3><p class="lesson-desc">A guide to respectful habits around shared barn spaces, equipment, other people's horses, and fellow riders.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a></div>
-<button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
-</div>
-</div>
-<!-- ── Horse Behavior ── -->
-<div class="topic-row fade-in">
-<div class="topic-header"><div><h2 class="topic-title">Horse Behavior</h2></div></div>
-<div class="lesson-rail-wrap">
-<button aria-label="Scroll left" class="rail-arrow rail-arrow--prev" hidden="">‹</button>
-<div class="lesson-grid">
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Introduction to Horse Behavior course" class="lesson-card-overlay" href="schooling-ring/horse-behavior/intro-to-horse-behavior/1-index.html">Open Introduction to Horse Behavior course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Intro To Horse Behavior" loading="lazy" src="schooling-ring/horse-behavior/intro-to-horse-behavior/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Introduction to Horse Behavior</h3><p class="lesson-desc">Learn how horses think and communicate as prey animals — reading body language, understanding instincts, and approaching horses safely.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article>
-<article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
-<a aria-label="Open Horse Behavior &amp; Communication course" class="lesson-card-overlay" href="schooling-ring/horse-behavior/horse-behavior-communication/1-index.html">Open Horse Behavior &amp; Communication course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Horse Behavior Communication" loading="lazy" src="schooling-ring/horse-behavior/horse-behavior-communication/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Horse Behavior &amp; Communication</h3><p class="lesson-desc">Study equine ethology, herd social structure, advanced body language, stress indicators, and the principles behind how horses learn — FFA/4-H aligned.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article>
-</div>
-<button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
-</div>
-</div>
 <!-- ── Riding Foundations ── -->
 <div class="topic-row fade-in">
 <div class="topic-header"><div><h2 class="topic-title">Riding Foundations</h2></div></div>
@@ -695,11 +627,11 @@
 <button aria-label="Scroll left" class="rail-arrow rail-arrow--prev" hidden="">‹</button>
 <div class="lesson-grid">
 <article class="lesson-card" id="common-riding-styles-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Common Riding Styles course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/common-riding-disciplines/1-index.html">Open Common Riding Styles course</a>
+<a aria-label="Open Common Riding Disciplines course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/common-riding-disciplines/1-index.html">Open Common Riding Disciplines course</a>
 <div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="Common Riding Disciplines" loading="lazy" src="schooling-ring/riding-foundations/common-riding-disciplines/images/course-card.png"/></div>
 <div>
-<h3 class="lesson-title">Common Riding Styles</h3>
+<h3 class="lesson-title">Common Riding Disciplines</h3>
 <p class="lesson-desc">Compare common Western and English riding styles, why they developed, and what each discipline is designed to do.</p>
 </div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
@@ -707,35 +639,25 @@
 </article>
 <article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
 <a aria-label="Open The Horse's Gaits course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/the-horses-gaits/1-index.html">Open The Horse's Gaits course</a>
+<div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="The Horses Gaits" loading="lazy" src="schooling-ring/riding-foundations/the-horses-gaits/images/course-card.png"/></div>
 <div><h3 class="lesson-title">The Horse's Gaits</h3><p class="lesson-desc">Learn the walk, trot, canter, and gallop — the beats, footfall patterns, and speed of each natural gait.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</article>
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Natural &amp; Artificial Aids course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/natural-artificial-aids/1-index.html">Open Natural &amp; Artificial Aids course</a>
-<div class="lesson-card-thumb"><img alt="Natural Artificial Aids" loading="lazy" src="schooling-ring/riding-foundations/natural-artificial-aids/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Natural &amp; Artificial Aids</h3><p class="lesson-desc">Understand how riders communicate through the seat, legs, hands, and voice, plus common artificial aids.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</article>
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Arena Figures &amp; School Movements course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/arena-figures-school-movements/1-index.html">Open Arena Figures &amp; School Movements course</a>
-<div class="lesson-card-thumb"><img alt="Arena Figures School Movements" loading="lazy" src="schooling-ring/riding-foundations/arena-figures-school-movements/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Arena Figures &amp; School Movements</h3><p class="lesson-desc">Learn circles, serpentines, diagonals, and other arena figures that build balanced, purposeful riding.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</article>
-<article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
-<a aria-label="Open Understanding Horse Movement course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/gaits-movement/1-index.html">Open Understanding Horse Movement course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Understanding Horse Movement" loading="lazy" src="schooling-ring/riding-foundations/gaits-movement/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Understanding Horse Movement</h3><p class="lesson-desc">Go deeper on gait mechanics, leads, transitions, and movement quality — learn what judges and trainers look for and how soundness connects to how a horse travels.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
 </article>
 <article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Common Horse Terms Reference Guide" class="lesson-card-overlay" href="schooling-ring/riding-foundations/common-terms/index.html">Open Common Horse Terms Reference Guide</a>
+<a aria-label="Open Natural &amp; Artificial Aids course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/natural-artificial-aids/1-index.html">Open Natural &amp; Artificial Aids course</a>
 <div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Common Horse Terms" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Common Horse Terms</h3><p class="lesson-desc">A quick, organized reference for horse words as you learn. Use topic filters or search for any term you encounter in the barn or arena.</p></div>
+<div class="lesson-card-thumb"><img alt="Natural Artificial Aids" loading="lazy" src="schooling-ring/riding-foundations/natural-artificial-aids/images/course-card.png"/></div>
+<div><h3 class="lesson-title">Natural &amp; Artificial Aids</h3><p class="lesson-desc">Understand how riders communicate through the seat, legs, hands, and voice, plus common artificial aids.</p></div>
+<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
+</div>
+</article>
+<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
+<a aria-label="Open Arena Figures &amp; School Movements course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/arena-figures-school-movements/1-index.html">Open Arena Figures &amp; School Movements course</a>
+<div class="lesson-card-content">
+<div class="lesson-card-thumb"><img alt="Arena Figures School Movements" loading="lazy" src="schooling-ring/riding-foundations/arena-figures-school-movements/images/course-card.png"/></div>
+<div><h3 class="lesson-title">Arena Figures &amp; School Movements</h3><p class="lesson-desc">Learn circles, serpentines, diagonals, and other arena figures that build balanced, purposeful riding.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
 </article>
@@ -749,21 +671,19 @@
 <div class="lesson-rail-wrap">
 <button aria-label="Scroll left" class="rail-arrow rail-arrow--prev" hidden="">‹</button>
 <div class="lesson-grid">
-<a class="lesson-card" href="schooling-ring/horse-care/measuring-horses/1-index.html"><span class="level-badge level-badge--foundations">Foundations</span>
+<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
+<a aria-label="Open Measuring Horses course" class="lesson-card-overlay" href="schooling-ring/horse-care/measuring-horses/1-index.html">Open Measuring Horses course</a>
+<div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="Measuring Horses" loading="lazy" src="schooling-ring/horse-care/measuring-horses/images/course-card.png"/></div>
 <div><h3 class="lesson-title">Measuring Horses</h3><p class="lesson-desc">Learn how to use a measuring stick or tape to determine a horse's height in hands, and why accurate measurement matters.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Available</span></div>
-</a>
-<a class="lesson-card" href="schooling-ring/horse-care/grooming-horses/1-index.html"><span class="level-badge level-badge--foundations">Foundations</span>
-<div class="lesson-card-thumb"><img alt="Grooming Horses" loading="lazy" src="schooling-ring/horse-care/grooming-horses/images/course-cards.png"/></div>
-<div><h3 class="lesson-title">Grooming Horses</h3><p class="lesson-desc">Discover the essential grooming tools, proper technique, and why routine grooming supports horse health and bonding.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Available</span></div>
-</a>
+<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
+</div>
+</article>
 <article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Intro to Feeding &amp; Nutrition course" class="lesson-card-overlay" href="schooling-ring/horse-care/intro-to-feeding-nutrition/1-index.html">Open Intro to Feeding &amp; Nutrition course</a>
+<a aria-label="Open Grooming Horses course" class="lesson-card-overlay" href="schooling-ring/horse-care/grooming-horses/1-index.html">Open Grooming Horses course</a>
 <div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Intro to Feeding &amp; Nutrition" loading="lazy" src="schooling-ring/horse-care/intro-to-feeding-nutrition/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Intro to Feeding &amp; Nutrition</h3><p class="lesson-desc">Covers the basics of horse feeding — forage, feeding schedules, and the fundamentals of keeping a horse properly nourished.</p></div>
+<div class="lesson-card-thumb"><img alt="Grooming Horses" loading="lazy" src="schooling-ring/horse-care/grooming-horses/images/course-card.png"/></div>
+<div><h3 class="lesson-title">Grooming Horses</h3><p class="lesson-desc">Discover the essential grooming tools, proper technique, and why routine grooming supports horse health and bonding.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
 </article>
@@ -810,7 +730,7 @@
 <article class="lesson-card has-progress" id="common-colors-card"><span class="level-badge level-badge--foundations">Foundations</span>
 <a aria-label="Open Common Horse Colors course" class="lesson-card-overlay" href="schooling-ring/colors-markings/common-horse-colors/1-index.html" id="common-colors-card-link">Open Common Horse Colors course</a>
 <div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Common Horse Colors" loading="lazy" src="schooling-ring/colors-markings/common-horse-colors/images/common-colors-course-card.png"/></div>
+<div class="lesson-card-thumb"><img alt="Common Horse Colors" loading="lazy" src="schooling-ring/colors-markings/common-horse-colors/images/course-card.png"/></div>
 <div>
 <h3 class="lesson-title">Common Colors</h3>
 <p class="lesson-desc">Identify common horse coat colors and patterns including chestnut, bay, black, gray, palomino, buckskin, roans, pinto, and Appaloosa.</p>
@@ -867,65 +787,27 @@
 </div>
 <div class="lesson-footer"><span class="lesson-status open" id="base-coat-colors-progress-status">Start</span></div>
 </div>
-</article><a class="lesson-card" href="schooling-ring/colors-markings/appaloosa-patterns/1-index.html"><span class="level-badge level-badge--core">Core Studies</span>
+</article><article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
+<a aria-label="Open Appaloosa Patterns course" class="lesson-card-overlay" href="schooling-ring/colors-markings/appaloosa-patterns/1-index.html">Open Appaloosa Patterns course</a>
+<div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="Appaloosa Patterns" loading="lazy" src="schooling-ring/colors-markings/appaloosa-patterns/images/course-card.png"/></div>
 <div>
 <h3 class="lesson-title">Appaloosa Patterns</h3>
 <p class="lesson-desc">Study blanket, leopard, snowflake, varnish roan, and other Appaloosa pattern expressions.</p>
 </div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</a><a class="lesson-card" href="schooling-ring/colors-markings/pinto-patterns/1-index.html"><span class="level-badge level-badge--core">Core Studies</span>
+</div>
+</article><article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
+<a aria-label="Open Pinto Patterns course" class="lesson-card-overlay" href="schooling-ring/colors-markings/pinto-patterns/1-index.html">Open Pinto Patterns course</a>
+<div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="Pinto Patterns" loading="lazy" src="schooling-ring/colors-markings/pinto-patterns/images/course-card.png"/></div>
 <div>
 <h3 class="lesson-title">Pinto Patterns</h3>
 <p class="lesson-desc">Compare tobiano, overo, tovero, splash white, sabino, frame overo, and named pinto looks.</p>
 </div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">How Coat Color Genes Work</h3><p class="lesson-desc">Understand dominant vs. recessive genes, alleles, and how two genes produce every coat color.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Dilute Genetics</h3><p class="lesson-desc">Learn how cream, dun, silver, and champagne genes alter base coat colors.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Pattern Genes</h3><p class="lesson-desc">Explore roan, tobiano, overo, sabino, and other white-pattern genes and how they express.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Genetics Practice</h3><p class="lesson-desc">Apply what you've learned: predict color outcomes from parent crosses and real-world examples.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Lethal &amp; Linked Genes</h3>
-<p class="lesson-desc">Understand OLWS, WFFS, HYPP, and other gene interactions with serious breeding implications.</p>
 </div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Reading Genetic Test Results</h3>
-<p class="lesson-desc">Learn to interpret panel test reports, understand notation, and apply results to breeding decisions.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Epigenetics &amp; Environment</h3>
-<p class="lesson-desc">Explore how environment influences gene expression and what that means for health and performance.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Breeding Program Design</h3>
-<p class="lesson-desc">Apply genetic knowledge to thoughtful, goal-oriented breeding decisions and bloodline evaluation.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a></div>
+</article></div>
 <button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
 </div>
 </div>
@@ -947,32 +829,20 @@
 
 
 
-<article class="lesson-card has-progress" id="parts-of-horse-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Intro to Equine Anatomy course" class="lesson-card-overlay" href="schooling-ring/equine-anatomy/parts-of-the-horse/1-index.html" id="parts-of-horse-card-link">Open Intro to Equine Anatomy course</a>
+<article class="lesson-card" id="equine-anatomy-card"><span class="level-badge level-badge--core">Core Studies</span>
+<a aria-label="Open Parts of the Horse course" class="lesson-card-overlay" href="schooling-ring/equine-anatomy/equine-anatomy/1-index.html">Open Parts of the Horse course</a>
 <div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Parts Of The Horse" loading="lazy" src="schooling-ring/equine-anatomy/parts-of-the-horse/images/course-card.png"/></div>
-<div>
-<h3 class="lesson-title">Intro to Parts of the Horse</h3>
-<p class="lesson-desc">Learn the horse body map: head, neck and shoulders, body, front legs, and hind legs.</p>
-<div class="lesson-progress-wrap">
-<div class="lesson-progress-top"><span class="lesson-progress-label">Progress</span><span class="lesson-progress-percent" id="parts-of-horse-progress-percent">0%</span></div>
-<div aria-hidden="true" class="lesson-progress-track"><div class="lesson-progress-fill" id="parts-of-horse-progress-fill"></div></div>
-<div class="lesson-progress-copy" id="parts-of-horse-progress-copy">0 / 5 lessons complete</div>
-</div>
-</div>
-<div class="lesson-footer"><span class="lesson-status open" id="parts-of-horse-progress-status">Start</span></div>
-</div>
-</article><a class="lesson-card" href="schooling-ring/equine-anatomy/equine-anatomy/1-index.html" id="equine-anatomy-card"><span class="level-badge level-badge--core">Core Studies</span>
 <div class="lesson-card-thumb"><img alt="Equine Anatomy" loading="lazy" src="schooling-ring/equine-anatomy/equine-anatomy/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Parts of the Horse</h3><p class="lesson-desc">Go beyond the foundation course with deeper anatomy study organized by region, structure, function, and real-world care context.</p></div>
+<div><h3 class="lesson-title">Parts of the Horse</h3><p class="lesson-desc">Study the parts of the horse in depth, organized by region, structure, function, and real-world care context.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</a><article class="lesson-card" id="intro-hoof-anatomy-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Intro to Hoof Anatomy course" class="lesson-card-overlay" href="schooling-ring/equine-anatomy/intro-to-hoof-anatomy/1-index.html">Open Intro to Hoof Anatomy course</a>
+</div>
+</article><article class="lesson-card" id="intro-hoof-anatomy-card"><span class="level-badge level-badge--foundations">Foundations</span>
+<a aria-label="Open Hoof Anatomy course" class="lesson-card-overlay" href="schooling-ring/equine-anatomy/intro-to-hoof-anatomy/1-index.html">Open Hoof Anatomy course</a>
 <div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Intro To Hoof Anatomy" loading="lazy" src="schooling-ring/equine-anatomy/intro-to-hoof-anatomy/images/course-card.png"/></div>
+<div class="lesson-card-thumb"><img alt="Hoof Anatomy" loading="lazy" src="schooling-ring/equine-anatomy/intro-to-hoof-anatomy/images/course-card.png"/></div>
 <div>
-<h3 class="lesson-title">Intro to Hoof Anatomy</h3>
-<p class="lesson-desc">Learn the hoof map: outside structures, including the periople, and the underneath landmarks.</p>
+<h3 class="lesson-title">Hoof Anatomy</h3>
+<p class="lesson-desc">Learn the hoof map: outside structures, the underneath landmarks, and the bones and soft tissues inside the hoof.</p>
 </div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
@@ -990,47 +860,7 @@
 <div><h3 class="lesson-title">Intro to the Equine Skeleton</h3><p class="lesson-desc">The horse's skeleton is the internal framework that supports the body, protects vital organs, and makes movement possible.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
-</article><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Internal Hoof Anatomy</h3><p class="lesson-desc">Explore the coffin bone, navicular bone, laminae, and digital cushion protected inside the hoof capsule.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">The Equine Digestive System</h3><p class="lesson-desc">Follow the path of food through the foregut and hindgut and learn why equine digestion is so sensitive.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Lower Leg &amp; Joint Anatomy</h3><p class="lesson-desc">Study the tendons, ligaments, and joints of the lower leg and how they support soundness and movement.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Musculoskeletal System</h3>
-<p class="lesson-desc">Understand how muscle, bone, tendon, and ligament work together during movement and absorb force.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Cardiovascular &amp; Respiratory</h3>
-<p class="lesson-desc">Learn how the heart, lungs, and circulation respond to exercise and what fitness adaptation looks like.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Neurological &amp; Endocrine Systems</h3>
-<p class="lesson-desc">Explore how nerves, hormones, and stress pathways shape behavior, metabolism, and disease risk.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Reproduction Physiology</h3>
-<p class="lesson-desc">Understand the mare's cycle, stallion reproductive function, gestation, and foaling essentials.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a></div>
+</article></div>
 <button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
 </div>
 </div>
@@ -1050,26 +880,28 @@
 
 
 
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Introduction to Tack &amp; Equipment course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/intro-to-tack-equipment/1-index.html">Open Introduction to Tack &amp; Equipment course</a>
+<article class="lesson-card" id="western-equipment-card"><span class="level-badge level-badge--core">Core Studies</span>
+<a aria-label="Open Western Tack &amp; Equipment course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/western-equipment/1-index.html">Open Western Tack &amp; Equipment course</a>
 <div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Intro To Tack Equipment" loading="lazy" src="schooling-ring/tack-equipment/western-equipment/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Introduction to Tack &amp; Equipment</h3><p class="lesson-desc">Discover what tack is, why it’s used, and the basic components of a saddle and bridle before exploring discipline-specific gear.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article><a class="lesson-card" href="schooling-ring/tack-equipment/western-equipment/1-index.html" id="western-equipment-card"><span class="level-badge level-badge--core">Core Studies</span>
 <div class="lesson-card-thumb"><img alt="Western Equipment" loading="lazy" src="schooling-ring/tack-equipment/western-equipment/images/course-card.png"/></div>
 <div><h3 class="lesson-title">Western Tack &amp; Equipment</h3><p class="lesson-desc">Learn the names and function of western saddles, bridles, bits, cinches, and common western discipline equipment.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</a><a class="lesson-card" href="schooling-ring/tack-equipment/english-equipment/1-index.html" id="english-equipment-card"><span class="level-badge level-badge--core">Core Studies</span>
+</div>
+</article><article class="lesson-card" id="english-equipment-card"><span class="level-badge level-badge--core">Core Studies</span>
+<a aria-label="Open English Tack &amp; Equipment course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/english-equipment/1-index.html">Open English Tack &amp; Equipment course</a>
+<div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="English Equipment" loading="lazy" src="schooling-ring/tack-equipment/english-equipment/images/course-card.png"/></div>
 <div><h3 class="lesson-title">English Tack &amp; Equipment</h3><p class="lesson-desc">Learn the names and function of English saddles, bridles, bits, stirrups, girths, and common English discipline equipment.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</a><a class="lesson-card" href="schooling-ring/tack-equipment/driving-equipment/1-index.html" id="driving-equipment-card"><span class="level-badge level-badge--core">Core Studies</span>
+</div>
+</article><article class="lesson-card" id="driving-equipment-card"><span class="level-badge level-badge--core">Core Studies</span>
+<a aria-label="Open Driving Harness &amp; Equipment course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/driving-equipment/1-index.html">Open Driving Harness &amp; Equipment course</a>
+<div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="Driving Equipment" loading="lazy" src="schooling-ring/tack-equipment/driving-equipment/images/course-card.png"/></div>
 <div><h3 class="lesson-title">Driving Harness &amp; Equipment</h3><p class="lesson-desc">Learn the names and function of driving harnesses, bridles, lines, breeching, traces, and common driving styles.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</a><article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
+</div>
+</article><article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
 <a aria-label="Open Intro to Bits &amp; Bridles course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/intro-to-bits-bridles/1-index.html">Open Intro to Bits &amp; Bridles course</a>
 <div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="Intro to Bits &amp; Bridles" loading="lazy" src="schooling-ring/tack-equipment/intro-to-bits-bridles/images/course-card.png"/></div>
@@ -1077,29 +909,13 @@
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
 </article><article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
-<a aria-label="Open Tack Fundamentals &amp; Fit course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/tack-fundamentals-fit/1-index.html">Open Tack Fundamentals &amp; Fit course</a>
+<a aria-label="Open Introduction to Tack &amp; Equipment course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/intro-to-tack-equipment/1-index.html">Open Introduction to Tack &amp; Equipment course</a>
 <div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Tack Fundamentals &amp; Fit" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Tack Fundamentals &amp; Fit</h3><p class="lesson-desc">Tack is the equipment used to ride, drive, and handle horses. This course explains how tack works as a system and how proper fit affects horse comfort.</p></div>
+<div class="lesson-card-thumb" aria-hidden="true"></div>
+<div><h3 class="lesson-title">Introduction to Tack &amp; Equipment</h3><p class="lesson-desc">Learn what tack is, how saddles and bridles work, and why correct fit matters for safety and horse comfort.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
-</article><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Tack Cleaning Basics</h3><p class="lesson-desc">Learn how to properly clean, condition, and store leather tack to extend its life and keep it safe to use.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Halters &amp; Handling Equipment</h3><p class="lesson-desc">Learn common halter types, lead ropes, and the everyday handling equipment used around the barn.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Blankets, Boots &amp; Protective Gear</h3><p class="lesson-desc">Recognize turnout blankets, sheets, coolers, leg boots, and other protective gear and when each is used.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Types of Saddles &amp; Their Uses</h3><p class="lesson-desc">Compare western, English, and specialty saddle types, how they differ, and what each is designed to do.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a></div>
+</article></div>
 <button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
 </div>
 </div>
@@ -1144,19 +960,7 @@
 <div><h3 class="lesson-title">Equine First Aid Basics</h3><p class="lesson-desc">Learn how to recognize common injuries and emergencies, take basic vital signs, and use a horse first aid kit effectively.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
-</article><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Colic Awareness &amp; Response</h3><p class="lesson-desc">Recognize the signs of colic, learn what to check, and understand how to respond while waiting for the veterinarian.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Wound Care &amp; Bandaging</h3><p class="lesson-desc">Learn to assess common wounds, apply basic bandages, and recognize injuries that require veterinary care.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--core">Core Studies</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Preventive Care &amp; Parasite Control</h3><p class="lesson-desc">Understand core vaccinations, deworming strategy, and parasite control as part of a year-round health plan.</p></div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a></div>
+</article></div>
 <button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
 </div>
 </div>
@@ -1170,35 +974,7 @@
 
 
 
-<a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Lameness Evaluation Basics</h3>
-<p class="lesson-desc">Learn how to observe gait abnormalities, grade lameness, and communicate findings clearly to a vet.</p>
 </div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Common Hoof Conditions</h3>
-<p class="lesson-desc">Explore laminitis, navicular syndrome, thrush, white line disease, and hoof abscess in depth.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Soft Tissue Injuries</h3>
-<p class="lesson-desc">Understand tendon and ligament injuries, healing timelines, and the role of rehabilitation in recovery.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--expanding">Expanding Knowledge</span>
-<div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
-<div>
-<h3 class="lesson-title">Joint Disease &amp; Arthritis</h3>
-<p class="lesson-desc">Learn how joint disease develops, the role of synovial fluid, and current management options.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a></div>
 <button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
 </div>
 </div>
@@ -1353,27 +1129,6 @@
 <p class="lesson-desc">Explore 28 horse and pony breeds with interactive profiles, size comparisons, fun facts, and a breed discovery tracker.</p>
 </div>
 <div class="lesson-footer"><span class="lesson-status open">View Guide</span></div>
-</a><a class="lesson-card" href="schooling-ring/riding-foundations/common-terms/index.html" id="common-terms-reference-card">
-<div class="lesson-card-thumb"><img alt="Common horse terms reference guide" src="../images/course-headers/common-horse-terms.png"/></div>
-<div>
-<h3 class="lesson-title">Common Horse Terms Reference Guide</h3>
-<p class="lesson-desc">Look up barn vocabulary, anatomy words, movement terms, tack, care language, safety notes, and vital-sign basics in one searchable guide.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status open">View Guide</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="16" opacity=".7" rx="2" stroke="white" stroke-width="2" width="24" x="4" y="8"></rect><circle cx="16" cy="16" fill="white" opacity=".85" r="4"></circle><circle cx="16" cy="16" fill="none" r="1.5" stroke="var(--heading)" stroke-width="1.5"></circle></svg></div>
-<div>
-<h3 class="lesson-title">Real Horses, Real Markings</h3>
-<p class="lesson-desc">Study authentic horse photos — identify coat colors, face markings, and leg markings on real horses from a curated photo library.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" fill="none" opacity=".6" r="10" stroke="white" stroke-width="2"></circle><path d="M10 16c2-4 10-4 12 0" fill="none" opacity=".8" stroke="white" stroke-linecap="round" stroke-width="2"></path><circle cx="13" cy="13" fill="white" opacity=".8" r="1.5"></circle><circle cx="19" cy="13" fill="white" opacity=".8" r="1.5"></circle></svg></div>
-<div>
-<h3 class="lesson-title">Conformation Gallery</h3>
-<p class="lesson-desc">Visual comparisons of ideal and common conformation types — explore balance, proportion, and structural traits across breeds.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
 </a></div>
 </div>
 <div class="topic-row fade-in">
@@ -1387,35 +1142,7 @@
 
 
 
-<a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M8 6h12l4 4v16H8V6z" fill="none" opacity=".7" stroke="white" stroke-width="2"></path><path d="M20 6v4h4" fill="none" opacity=".5" stroke="white" stroke-width="1.5"></path><line opacity=".7" stroke="white" stroke-linecap="round" stroke-width="1.5" x1="12" x2="22" y1="14" y2="14"></line><line opacity=".7" stroke="white" stroke-linecap="round" stroke-width="1.5" x1="12" x2="22" y1="18" y2="18"></line><line opacity=".7" stroke="white" stroke-linecap="round" stroke-width="1.5" x1="12" x2="17" y1="22" y2="22"></line></svg></div>
-<div>
-<h3 class="lesson-title">Reading a Coggins &amp; Health Papers</h3>
-<p class="lesson-desc">A practical guide to the documents every horse owner encounters — what each form means and why they matter.</p>
 </div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 5L4 27h24L16 5z" fill="none" opacity=".7" stroke="white" stroke-linejoin="round" stroke-width="2"></path><line stroke="white" stroke-linecap="round" stroke-width="2" x1="16" x2="16" y1="13" y2="19"></line><circle cx="16" cy="22.5" fill="white" r="1.5"></circle></svg></div>
-<div>
-<h3 class="lesson-title">Things New Horse Owners Get Wrong</h3>
-<p class="lesson-desc">Common misconceptions and mistakes — a straight-talking guide to the things that catch beginners off guard.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="14" fill="none" opacity=".7" r="8" stroke="white" stroke-width="2"></circle><path d="M10 22l6 5 6-5" fill="none" opacity=".6" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div>
-<div>
-<h3 class="lesson-title">At the Show: What You’ll See</h3>
-<p class="lesson-desc">A first-timer’s guide to a horse show — classes, attire, judging basics, and what happens in the warm-up ring.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="14" opacity=".6" rx="2" stroke="white" stroke-width="2" width="20" x="6" y="10"></rect><path d="M11 10V8a5 5 0 0110 0v2" fill="none" opacity=".7" stroke="white" stroke-width="2"></path><circle cx="16" cy="17" fill="white" opacity=".85" r="2.5"></circle></svg></div>
-<div>
-<h3 class="lesson-title">Stable Safety Essentials</h3>
-<p class="lesson-desc">The non-negotiables for staying safe around horses — handling habits, barn rules, and reading equine body language.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a></div>
 </div>
 </div><!-- /tab-lab -->
 <!-- -------------------- QUIZ CORRAL TAB -------------------- -->
@@ -1433,49 +1160,7 @@
 
 
 
-<a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" fill="none" opacity=".65" r="10" stroke="white" stroke-width="2"></circle><path d="M12 13c.5-2 4-3 5 0s-1 4-2 5" fill="none" stroke="white" stroke-linecap="round" stroke-width="2"></path><circle cx="16" cy="22" fill="white" r="1.5"></circle></svg></div>
-<div>
-<h3 class="lesson-title">Horse Color Quick Quiz</h3>
-<p class="lesson-desc">A free, kid-friendly quiz for practicing everyday coat color recognition in a fast, simple format.</p>
 </div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M8 8h16v16H8z" fill="none" opacity=".65" stroke="white" stroke-width="2"></path><path d="M12 13h8M12 17h6M12 21h4" opacity=".85" stroke="white" stroke-linecap="round" stroke-width="1.7"></path></svg></div>
-<div>
-<h3 class="lesson-title">Marking Match-Up Quiz</h3>
-<p class="lesson-desc">Quick visual questions for face and leg markings, built for learners who like short practice rounds.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M6 25V13l10-7 10 7v12H6z" fill="none" opacity=".7" stroke="white" stroke-linejoin="round" stroke-width="2"></path><rect fill="white" height="6" opacity=".75" rx="1" width="6" x="13" y="19"></rect></svg></div>
-<div>
-<h3 class="lesson-title">Barn Basics Quiz</h3>
-<p class="lesson-desc">A light review quiz covering horse care, safety, tack vocabulary, and beginner barn knowledge.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M7 17h18M10 12h12M12 22h8" opacity=".75" stroke="white" stroke-linecap="round" stroke-width="2"></path><circle cx="10" cy="17" fill="white" r="2"></circle><circle cx="22" cy="17" fill="white" opacity=".8" r="2"></circle></svg></div>
-<div>
-<h3 class="lesson-title">Tack Trivia</h3>
-<p class="lesson-desc">Short, evergreen questions that help students review common tack pieces and what they are used for.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M8 22c2-7 14-7 16 0" fill="none" opacity=".7" stroke="white" stroke-linecap="round" stroke-width="2"></path><path d="M11 19l5-11 5 11" fill="none" opacity=".85" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div>
-<div>
-<h3 class="lesson-title">Riding Styles Quiz</h3>
-<p class="lesson-desc">A simple quiz for matching common Western and English disciplines to the jobs and goals behind them.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a><a class="lesson-card coming-soon" style="display:none">
-<div class="lesson-card-thumb"><svg fill="none" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" fill="none" opacity=".65" r="9" stroke="white" stroke-width="2"></circle><path d="M16 9v7l5 3" fill="none" opacity=".9" stroke="white" stroke-linecap="round" stroke-width="2"></path></svg></div>
-<div>
-<h3 class="lesson-title">Five-Minute Horse Quiz</h3>
-<p class="lesson-desc">A rotating mini quiz designed as quick free practice for young learners and new horse people.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a></div>
 </div>
 </div><!-- /tab-lounge -->
 </div><!-- /course-hub-inner -->
@@ -1493,13 +1178,6 @@
 </section>
 <div id="site-footer"></div>
 <script>
-  document.querySelectorAll('.lesson-card.coming-soon').forEach(card => {
-    card.setAttribute('aria-disabled', 'true');
-    card.setAttribute('tabindex', '-1');
-    card.removeAttribute('href');
-    card.addEventListener('click', event => event.preventDefault());
-  });
-
   /* -- Level Tab Switching --------------------------------------------------- */
   (function () {
     const btns  = document.querySelectorAll('.level-tab-btn[data-tab]');
@@ -1541,13 +1219,35 @@
 
   updateVisibleTopicRows();
 
-  function readJsonStorage(key, fallback) {
-    try {
-      const value = localStorage.getItem(key);
-      return value ? JSON.parse(value) : fallback;
-    } catch (error) {
-      return fallback;
-    }
+  /* Course progress is read from Supabase enrollments (single source of truth).
+     PROGRESS_MAP: courseSlug -> Set(completed module keys). Populated async
+     once supabase-client.js has loaded; anonymous visitors see 0% (Start). */
+  let PROGRESS_MAP = {};
+  function whenEEAuth(cb) {
+    if (window.EEAuth) { cb(); return; }
+    let tries = 0;
+    const t = setInterval(function () {
+      if (window.EEAuth || tries++ > 100) { clearInterval(t); cb(); }
+    }, 50);
+  }
+  function loadEnrollmentsMap() {
+    return new Promise(function (resolve) {
+      try {
+        if (!window.EEAuth || typeof window.EEAuth.getUser !== 'function') { resolve({}); return; }
+        window.EEAuth.getUser().then(function (user) {
+          const client = window.EEAuth.client && window.EEAuth.client();
+          if (!user || !client) { resolve({}); return; }
+          client.from('enrollments').select('course_id, completed_modules').eq('user_id', user.id)
+            .then(function (res) {
+              const map = {};
+              ((res && res.data) || []).forEach(function (r) {
+                map[r.course_id] = new Set(Array.isArray(r.completed_modules) ? r.completed_modules : []);
+              });
+              resolve(map);
+            }, function () { resolve({}); });
+        }, function () { resolve({}); });
+      } catch (e) { resolve({}); }
+    });
   }
 
 
@@ -1562,16 +1262,7 @@
   ];
 
   function getBaseCoatColorsCompletedModules() {
-    const completed = new Set();
-    const arrayProgress = readJsonStorage('equineEdu.baseCoatColors.completedModules', []);
-    if (Array.isArray(arrayProgress)) arrayProgress.forEach(id => completed.add(id));
-    const objectProgress = readJsonStorage('equineEduProgress', {});
-    const courseProgress = objectProgress.baseCoatColors || {};
-    Object.keys(courseProgress).forEach(id => { if (courseProgress[id]) completed.add(id); });
-    BASE_COAT_COLORS_MODULES.forEach(m => {
-      if (localStorage.getItem('equineEduProgress.baseCoatColors.' + m.id) === 'true') completed.add(m.id);
-    });
-    return completed;
+    return PROGRESS_MAP['base-coat-colors'] || new Set();
   }
 
   function updateBaseCoatColorsProgressCard() {
@@ -1604,16 +1295,7 @@
   ];
 
   function getVitalSignsCompletedModules() {
-    const completed = new Set();
-    const arrayProgress = readJsonStorage('equineEdu.vitalSigns.completedModules', []);
-    if (Array.isArray(arrayProgress)) arrayProgress.forEach(id => completed.add(id));
-    const objectProgress = readJsonStorage('equineEduProgress', {});
-    const courseProgress = objectProgress.vitalSigns || {};
-    Object.keys(courseProgress).forEach(id => { if (courseProgress[id]) completed.add(id); });
-    VITAL_SIGNS_MODULES.forEach(m => {
-      if (localStorage.getItem('equineEduProgress.vitalSigns.' + m.id) === 'true') completed.add(m.id);
-    });
-    return completed;
+    return PROGRESS_MAP['vital-signs'] || new Set();
   }
 
   function updateVitalSignsProgressCard() {
@@ -1648,16 +1330,7 @@
   ];
 
   function getFaceMarkingsCompletedModules() {
-    const completed = new Set();
-    const arrayProgress = readJsonStorage('equineEdu.faceMarkings.completedModules', []);
-    if (Array.isArray(arrayProgress)) arrayProgress.forEach(id => completed.add(id));
-    const objectProgress = readJsonStorage('equineEduProgress', {});
-    const courseProgress = objectProgress.faceMarkings || {};
-    Object.keys(courseProgress).forEach(id => { if (courseProgress[id]) completed.add(id); });
-    FACE_MARKINGS_MODULES.forEach(m => {
-      if (localStorage.getItem('equineEduProgress.faceMarkings.' + m.id) === 'true') completed.add(m.id);
-    });
-    return completed;
+    return PROGRESS_MAP['face-markings'] || new Set();
   }
 
   function updateFaceMarkingsProgressCard() {
@@ -1690,17 +1363,19 @@
   ];
 
   function getCommonColorsCompletedModules() {
-    const completed = new Set();
-    const arrayProgress = readJsonStorage('equineEdu.commonHorseColors.completedModules', []);
-    if (Array.isArray(arrayProgress)) arrayProgress.forEach(id => completed.add(id));
-    const objectProgress = readJsonStorage('equineEduProgress', {});
-    const courseProgress = objectProgress.commonHorseColors || {};
-    Object.keys(courseProgress).forEach(id => { if (courseProgress[id]) completed.add(id); });
-    COMMON_COLORS_MODULES.forEach(m => {
-      if (localStorage.getItem('equineEduProgress.commonHorseColors.' + m.id) === 'true') completed.add(m.id);
-    });
-    return completed;
+    return PROGRESS_MAP['common-horse-colors'] || new Set();
   }
+
+  /* Once Supabase is available, load real progress and re-render the cards.
+     The synchronous calls above render 0% defaults for anonymous visitors. */
+  whenEEAuth(function () {
+    loadEnrollmentsMap().then(function (map) {
+      PROGRESS_MAP = map;
+      updateBaseCoatColorsProgressCard();
+      updateVitalSignsProgressCard();
+      updateFaceMarkingsProgressCard();
+    });
+  });
 
   (function(){
     document.querySelectorAll('.lesson-rail-wrap').forEach(function(wrap){

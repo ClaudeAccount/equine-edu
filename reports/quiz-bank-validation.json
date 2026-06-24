@@ -1,0 +1,245 @@
+{
+  "generatedAt": "2026-06-18T22:10:55.995Z",
+  "standard": {
+    "bankQuestionsPerCourse": 40,
+    "deliveredQuestionsPerAttempt": 15
+  },
+  "summary": {
+    "courseCount": 33,
+    "compliant": 18,
+    "deficient": 15
+  },
+  "courses": [
+    {
+      "course": "Appaloosa Patterns",
+      "courseId": "appaloosa-patterns",
+      "currentCount": 12,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Base Coat Colors",
+      "courseId": "base-coat-colors",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Common Horse Colors",
+      "courseId": "common-horse-colors",
+      "currentCount": 46,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Common Riding Disciplines",
+      "courseId": "common-riding-disciplines",
+      "currentCount": 24,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Driving Harness & Equipment",
+      "courseId": "driving-equipment",
+      "currentCount": 20,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "English Tack & Equipment",
+      "courseId": "english-equipment",
+      "currentCount": 35,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Equine First Aid Basics",
+      "courseId": "equine-first-aid-basics",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Equine Health &amp; Disease Prevention",
+      "courseId": "equine-health-disease-prevention",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Equine Nutrition",
+      "courseId": "equine-nutrition",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Equine Vital Signs",
+      "courseId": "vital-signs",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Grooming Horses",
+      "courseId": "grooming-horses",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Hoof Care &amp; Farriery",
+      "courseId": "hoof-care-farriery",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Horse Behavior &amp; Communication",
+      "courseId": "horse-behavior-communication",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Horse Face Markings",
+      "courseId": "face-markings",
+      "currentCount": 45,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Horse Leg Markings",
+      "courseId": "leg-markings",
+      "currentCount": 36,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Horse Teeth Basics",
+      "courseId": "horse-teeth-basics",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Intro to Bits &amp; Bridles",
+      "courseId": "intro-to-bits-bridles",
+      "currentCount": 24,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Intro to Feeding & Nutrition",
+      "courseId": "intro-to-feeding-nutrition",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Intro to Hoof Anatomy",
+      "courseId": "intro-to-hoof-anatomy",
+      "currentCount": 19,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Intro to Parts of the Horse",
+      "courseId": "parts-of-the-horse",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Intro to the Equine Skeleton",
+      "courseId": "intro-to-equine-skeleton",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Introduction to Arena Figures",
+      "courseId": "arena-figures-school-movements",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Introduction to Horse Behavior",
+      "courseId": "intro-to-horse-behavior",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Introduction to Tack &amp; Equipment",
+      "courseId": "intro-to-tack-equipment",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Measuring Horses",
+      "courseId": "measuring-horses",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Natural & Artificial Aids",
+      "courseId": "natural-artificial-aids",
+      "currentCount": 33,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Parts of the Horse",
+      "courseId": "equine-anatomy",
+      "currentCount": 30,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Pinto Patterns",
+      "courseId": "pinto-patterns",
+      "currentCount": 12,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Rider Safety Basics",
+      "courseId": "rider-safety-basics",
+      "currentCount": 16,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Tack Fundamentals & Fit",
+      "courseId": "tack-fundamentals-fit",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "The Horse's Gaits",
+      "courseId": "the-horses-gaits",
+      "currentCount": 31,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    },
+    {
+      "course": "Understanding Horse Movement",
+      "courseId": "gaits-movement",
+      "currentCount": 40,
+      "expectedCount": 40,
+      "status": "PASS"
+    },
+    {
+      "course": "Western Tack & Equipment",
+      "courseId": "western-equipment",
+      "currentCount": 22,
+      "expectedCount": 40,
+      "status": "DEFICIENT"
+    }
+  ]
+}

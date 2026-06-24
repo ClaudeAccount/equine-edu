@@ -8,8 +8,8 @@
 [functions]
   node_bundler = "esbuild"
 
-# The old /dashboard page was a sign-in gate and has been removed.
-# Send anyone hitting that URL to the working, gate-free dashboard.
+# The old /dashboard page has been removed.
+# Send anyone hitting that URL to /hub/; the edge access guard enforces auth.
 [[redirects]]
   from = "/dashboard"
   to = "/hub/"

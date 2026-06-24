@@ -1,15 +1,43 @@
-# equine-edu
-Equestrian Science Learning Platform
+# Equine EDU
+
+Equestrian science learning platform.
 
 ## Mandatory Guardrails
 
-Before creating or revising any course, lesson, quiz, worksheet, activity, game, educational resource, or visual asset, read and apply the governed build system:
+Before creating or revising any course, lesson, quiz, worksheet, activity, game,
+educational resource, or visual asset, read `CLAUDE.md` and the authoritative
+documents in:
 
-- `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\README.md`
-- `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Research-Governance-Master.md`
-- `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Visual-Standards-Manual.md`
-- `C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM\governance\Reading-Level-Standard.md`
+`C:\Users\Corie Jean\OneDrive\Documents\Claude\Projects\EQUINE EDU — GOVERNED BUILD SYSTEM`
 
-The visual standards manual is authoritative for image generation, image validation, image auditing, hero images, diagrams, viewing-room images, quiz images, worksheet images, and all future media assets.
+The governed build system controls research, course creation, educational
+accuracy, reading accessibility, visual standards, assessment requirements, and
+publication approval.
 
-The reading level standard is authoritative for learner-facing lesson text, quiz feedback, study guide copy, activity instructions, worksheet wording, captions, and explanations. Learner-facing content must be written at approximately Grade 5-6 regardless of course tier. Advanced courses become more rigorous through deeper concepts and stronger thinking tasks, not harder language.
+## Repository Structure
+
+- `courses/schooling-ring/` — course pages
+- `courses/learning-loft/` — game and practice entry points
+- `courses/lesson-board/` — downloads and printable resources
+- `assets/css/` — shared styling
+- `assets/js/` — shared browser behavior
+- `assets/data/` — course and question-bank data
+- `netlify/functions/` — authenticated Stripe and subscription endpoints
+- `db/` — Horse Bowl database schema and synchronization files
+- `scripts/` — deterministic repository validation
+- `reports/` — generated audit reports
+
+## Validation
+
+Run these checks before publication:
+
+```text
+npm run audit:links
+npm run audit:courses
+npm run audit:security
+npm run audit:quizzes
+```
+
+`npm test` runs the blocking link, course-structure, and Stripe ownership checks.
+The quiz audit produces a report but does not create or modify educational
+questions.

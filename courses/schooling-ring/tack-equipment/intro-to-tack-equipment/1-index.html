@@ -1,116 +1,25 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to Tack &amp; Equipment &mdash; Equine Edu</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Introduction to Tack &amp; Equipment - Equine Edu</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="2-what-is-tack.html">
+<meta http-equiv="refresh" content="0; url=2-what-is-tack.html">
 <link rel="stylesheet" href="../../../../assets/css/core.css">
 <link rel="stylesheet" href="../../../../assets/css/components.css">
 <link rel="stylesheet" href="../../../../assets/css/course.css">
-
-
-  <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
 </head>
-<body class="ee-page-courses-schooling-ring-tack-equipment-intro-to-tack-equipment-1-index">
-<div id="site-nav"></div>
-
-<section class="course-hero">
-  <div class="course-hero-inner">
-    <div class="course-hero-text">
-      <div class="course-tag"><span>Tack &amp; Equipment</span></div>
-      <h1>Introduction to Tack <span>&amp; Equipment</span></h1>
-      <p class="course-hero-desc">Tack is the equipment used on or around a horse for riding, driving, and safe handling. From saddles and bridles to halters and lead ropes, each piece has a specific job and helps the horse and handler work together safely. This course introduces the most common types of tack and equipment — what each item is called, how it is used, and where it belongs on the horse — and explores why proper fit is important for both comfort and safety.</p>
-      <div class="course-meta-row">
-        <div class="meta-item">Round Pen</div>
-        <div class="meta-item">Barn &amp; Arena Ready</div>
-        <div class="meta-item">Self-Paced</div>
-        <div class="meta-item">Printable Activities</div>
-      </div>
-      <div class="hero-actions">
-        <a href="2-what-is-tack.html#top" class="btn-primary">Start Course</a>
-        <a href="#curriculum" class="btn-outline">View Curriculum</a>
-      </div>
-    </div>
-    <div class="course-hero-art">
-      <img src="images/index-hero.png" alt="Course artwork" onerror="this.onerror=null;this.src='../../../../assets/images/course-placeholder.svg'">
-    </div>
+<body>
+<div class="lesson-wrap"><main class="lesson-left">
+  <div class="lesson-intro-card">
+    <h2>Start Introduction to Tack &amp; Equipment</h2>
+    <p>This course begins with the basics of tack, then moves into saddles, bridles, fit, safety, and practice activities.</p>
+    <p><a href="2-what-is-tack.html">Start with What Is Tack?</a></p>
   </div>
-</section>
-
-
-<section class="curriculum-section" id="curriculum">
-  <div class="curriculum-inner">
-    <p class="section-label">Course Curriculum</p>
-    <h2 class="section-title">Tack Fundamentals, Step by Step</h2>
-    <p class="section-sub">Each course is organized into focused lessons designed to build knowledge step by step through structured instruction, visual learning, and applied practice.</p>
-    <div class="module-list" id="course-module-list"></div>
-  </div>
-</section>
-
-<section class="track-section">
-  <div class="track-inner">
-    <div class="fade-in">
-      <h2 class="section-title">Structured, Practical, and Standards-Aligned</h2>
-      <p class="section-sub">Every lesson is built for self-paced learning with Standards alignment, Horse Bowl question integration, and real barn application throughout.</p>
-      <ul class="track-features">
-        <li><span class="track-dot"></span>No prior horse knowledge required</li>
-        <li><span class="track-dot"></span>Visual learning with labeled diagrams and real examples</li>
-        <li><span class="track-dot"></span>Horse Bowl aligned content and real-world application</li>
-        <li><span class="track-dot"></span>Accessible across most devices</li>
-      </ul>
-    </div>
-    <div class="fade-in">
-      <h4 class="ee-u-c8f08d0c">Perfect For</h4>
-      <ul class="alignment-list">
-        <li><span class="track-dot"></span>New learners seeing tack for the first time</li>
-        <li><span class="track-dot"></span>Riders and horse enthusiasts starting their equine education</li>
-        <li><span class="track-dot"></span>Anyone preparing for Horse Bowl or equestrian competitions</li>
-        <li><span class="track-dot"></span>Anyone who wants to understand tack before discipline-specific courses</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <div class="cta-inner fade-in">
-    <p class="section-label ee-u-8d3aefa0">Start Here</p>
-    <h2 class="section-title">Start with What Tack Is</h2>
-    <p class="section-sub">Foundational knowledge covering what tack is, the parts of a saddle, the parts of a bridle, and tack fit basics.</p>
-    <a href="2-what-is-tack.html#top" class="btn-primary">Start the Course</a>
-  </div>
-</section>
-
-<div id="site-footer"></div>
-
-<script>
-  window.LAYOUT = {
-    homeUrl: '../../../../index.html',
-    coursesUrl: '../../../index.html',
-    navCta: { label: 'All Courses', url: '../../../index.html' }
-  };
-</script>
-<script src="course-config.js"></script>
-<script>
-  (function () {
-    const list = document.getElementById('course-module-list');
-    if (!list || !window.COURSE_CONFIG) return;
-    list.innerHTML = window.COURSE_CONFIG.modules.map(m => `
-      <a href="${m.file}" class="module-item fade-in">
-        <div class="module-num">${m.num}</div>
-        <div class="module-info">
-          <div class="module-title">${m.title}</div>
-          <div class="module-desc">${m.desc}</div>
-        </div>
-        <div class="module-type">${m.type}</div>
-      </a>`).join('');
-    document.querySelectorAll('.fade-in').forEach(el => {
-      setTimeout(() => el.classList.add('visible'), 80);
-    });
-  })();
-</script>
-<script src="../../../../assets/js/layout.js"></script>
-<script src="../../../../assets/js/supabase-client.js"></script>
-<script src="../../../../assets/js/paywall.js"></script>
-<script src="../../../../assets/js/course-nav.js"></script>
+</main></div>
+<script>window.location.replace('2-what-is-tack.html');</script>
 </body>
 </html>

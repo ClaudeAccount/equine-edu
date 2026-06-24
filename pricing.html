@@ -264,7 +264,7 @@
   </div>
 
   <p class="pricing-note">
-    Questions? <a href="mailto:hello@equineedu.com">Contact us</a> &nbsp;&middot;&nbsp;
+    Questions? <a href="mailto:admin@equineedu.com">Contact us</a> &nbsp;&middot;&nbsp;
     Secure checkout via <strong>Stripe</strong> &nbsp;&middot;&nbsp;
     Cancel any time from your <a href="account/index.html">account page</a>
   </p>
@@ -320,8 +320,11 @@ async function handleProClick() {
   try {
     var res = await fetch('/.netlify/functions/create-checkout', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: session.user.id, email: session.user.email })
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + session.access_token
+      },
+      body: JSON.stringify({})
     });
     var data = await res.json();
     if (data.url) {

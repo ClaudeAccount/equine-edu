@@ -11,6 +11,81 @@
 <link rel="stylesheet" href="../../../../assets/css/course.css">
 
   <link rel="stylesheet" href="../../../../assets/css/course-standardization.css">
+<style>
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .flip-card {
+    display: block;
+    width: 100%;
+    height: 250px;
+    min-height: 250px;
+    padding: 0;
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .flip-inner {
+    height: 100%;
+    min-height: 250px;
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .flip-front,
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .flip-back {
+    height: 100%;
+    box-sizing: border-box;
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .flip-front {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--soft-white, #faf7f2);
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .flip-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .photo-cue {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    background: rgba(36, 54, 74, .86);
+    color: var(--tan);
+    border-radius: 999px;
+    padding: .42rem .85rem;
+    font-size: .68rem;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .flip-back {
+    padding: 1rem;
+    text-align: center;
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .term-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--heading);
+    margin-bottom: 0.6rem;
+  }
+  body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid .term-def {
+    color: var(--body-text);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    text-align: left;
+  }
+  @media (max-width: 560px) {
+    body.ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room .style-flip-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body class="ee-page-courses-schooling-ring-colors-markings-face-markings-5-viewing-room">
 <div id="site-nav"></div>
@@ -35,11 +110,11 @@
     </div>
 
     <div class="visual-card">
-      <div class="real-horse-flip-grid">
+      <div class="style-flip-grid real-horse-flip-grid">
 
         <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
           <div class="flip-inner">
-            <div class="flip-front">
+            <div class="flip-front photo-front">
               <img src="images/viewing-room/star.png" alt="Horse face with a star marking" class="real-horse-photo">
               <span class="photo-cue">Tap to Reveal</span>
             </div>
@@ -52,7 +127,7 @@
 
         <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
           <div class="flip-inner">
-            <div class="flip-front">
+            <div class="flip-front photo-front">
               <img src="images/viewing-room/strip.png" alt="Horse face with a strip marking" class="real-horse-photo">
               <span class="photo-cue">Tap to Reveal</span>
             </div>
@@ -65,7 +140,7 @@
 
         <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
           <div class="flip-inner">
-            <div class="flip-front">
+            <div class="flip-front photo-front">
               <img src="images/viewing-room/snip.png" alt="Horse muzzle with a snip marking" class="real-horse-photo">
               <span class="photo-cue">Tap to Reveal</span>
             </div>
@@ -78,7 +153,7 @@
 
         <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
           <div class="flip-inner">
-            <div class="flip-front">
+            <div class="flip-front photo-front">
               <img src="images/viewing-room/blaze.png" alt="Horse face with a blaze marking" class="real-horse-photo">
               <span class="photo-cue">Tap to Reveal</span>
             </div>
@@ -91,7 +166,7 @@
 
         <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
           <div class="flip-inner">
-            <div class="flip-front">
+            <div class="flip-front photo-front">
               <img src="images/viewing-room/bald-face.png" alt="Horse face with a bald face marking" class="real-horse-photo">
               <span class="photo-cue">Tap to Reveal</span>
             </div>
@@ -104,7 +179,7 @@
 
         <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
           <div class="flip-inner">
-            <div class="flip-front">
+            <div class="flip-front photo-front">
               <img src="images/viewing-room/star-strip-snip.png" alt="Horse face with a star, strip, and snip" class="real-horse-photo">
               <span class="photo-cue">Tap to Reveal</span>
             </div>
@@ -117,7 +192,7 @@
 
         <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
           <div class="flip-inner">
-            <div class="flip-front">
+            <div class="flip-front photo-front">
               <img src="images/viewing-room/star-snip.png" alt="Horse face with a star and snip" class="real-horse-photo">
               <span class="photo-cue">Tap to Reveal</span>
             </div>
@@ -130,7 +205,7 @@
 
         <button class="flip-card" type="button" onclick="this.classList.toggle('flipped')">
           <div class="flip-inner">
-            <div class="flip-front">
+            <div class="flip-front photo-front">
               <img src="images/viewing-room/chin-spot.png" alt="Horse face with a chin spot" class="real-horse-photo">
               <span class="photo-cue">Tap to Reveal</span>
             </div>

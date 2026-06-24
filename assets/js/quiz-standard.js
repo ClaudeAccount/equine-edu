@@ -142,8 +142,11 @@
           ? 'You are getting there. Revisit the lesson and study guide, then try again.'
           : 'Keep practicing. These concepts will get easier with review.';
     scorePanel.classList.add('show');
-    if (ratio >= 0.8 && cfg.progressKey) {
-      try { localStorage.setItem(cfg.progressKey, 'true'); } catch (e) {}
+    // Course completion = passing Test Your Knowledge with a score of 80%+.
+    // Persist to Supabase enrollments (single source of truth) via course-nav.js.
+    // No localStorage.
+    if (ratio >= 0.8 && window.EEProgress && typeof window.EEProgress.markComplete === 'function') {
+      window.EEProgress.markComplete('testYourKnowledge');
     }
   }
 

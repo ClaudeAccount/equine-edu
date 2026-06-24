@@ -46,6 +46,15 @@
   box-shadow: var(--shadow-raised);
 }
 
+.btn-spaced {
+  display: inline-block;
+  margin-top: 0.75rem;
+}
+
+.formula-line {
+  text-align: center;
+}
+
 /* Secondary — soft white, dusty blue border + text */
 .btn-secondary {
   background: var(--soft-white); color: var(--blue-primary);
@@ -135,7 +144,7 @@
 }
 .hero-bg-quiz {
   background:
-    radial-gradient(ellipse 900px 460px at 80% -20%, rgba(92, 138, 110, 0.14), transparent 64%),
+    radial-gradient(ellipse 900px 460px at 80% -20%, rgba(36, 54, 74, 0.14), transparent 64%),
     radial-gradient(ellipse 700px 400px at -10% 110%, rgba(217, 227, 236, 0.4), transparent 65%),
     transparent;
 }
@@ -417,6 +426,17 @@
 .correct-order-reveal,
 .check-item {
   box-shadow: var(--shadow-nested);
+}
+
+/* Check-list: vertical spacing between stacked check-item cards */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.check-list + .note-box,
+.check-list + .barn-note {
+  margin-top: var(--space-4);
 }
 
 
@@ -1368,6 +1388,87 @@
 @media (max-width: 560px) {
   .lesson-mini-strip { gap: 0.4rem; }
   .strip-placeholder { width: 56px; height: 66px; }
+}
+
+/* First-lesson example image strips (leg + face markings) — small thumbnails in a
+   centered horizontal row, matching the lesson-mini-strip placeholder sizing. */
+.leg-marking-strip,
+.marking-mini-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: -0.5rem 0 0.75rem;
+}
+.leg-marking-strip img,
+.marking-mini-row img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+@media (max-width: 560px) {
+  .leg-marking-strip, .marking-mini-row { gap: 0.4rem; }
+  .leg-marking-strip img, .marking-mini-row img { width: 64px; height: 64px; }
+}
+
+/* Authoring helpers: label edit bar + live coordinate monitor (shown only in #edit mode). */
+.coord-edit-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 520px;
+  margin: 0 auto 1rem;
+}
+.coord-edit-bar button {
+  background: var(--heading);
+  color: var(--white);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.coord-edit-bar span { font-size: 0.78rem; color: var(--body-text); }
+.coord-monitor {
+  max-width: 520px;
+  margin: 0 auto 1rem;
+  padding: 0.75rem 0.9rem;
+  background: var(--soft-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--heading);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* Hoof shape strip — small thumbnail row of real hoof images (Why It Matters) */
+.hoof-shape-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: -0.5rem 0 0.75rem;
+}
+.hoof-shape-strip img {
+  width: 100px;
+  height: 118px;
+  object-fit: contain;
+  background: rgba(127,152,178,0.10);
+  border: 1px solid rgba(127,152,178,0.22);
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+@media (max-width: 560px) {
+  .hoof-shape-strip { gap: 0.4rem; }
+  .hoof-shape-strip img { width: 64px; height: 76px; }
 }
 
 /* ee-u-e6b583bc — Did You Know body text (paired with ee-u-36082faa box) */

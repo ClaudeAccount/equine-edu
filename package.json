@@ -6,6 +6,11 @@
     "stripe": "^14.0.0"
   },
   "scripts": {
-    "build": "echo 'Static site — no build step needed'"
+    "build": "echo 'Static site — no build step needed'",
+    "audit:links": "node scripts/validate-repo.js",
+    "audit:courses": "node scripts/validate-courses.js",
+    "audit:quizzes": "node scripts/generate-quiz-bank-report.js",
+    "audit:security": "node scripts/test-stripe-auth.js",
+    "test": "npm run audit:links && npm run audit:courses && npm run audit:security"
   }
 }

@@ -41,9 +41,9 @@
   --white:           #FFFFFF;
 
   /* Soft feedback colors (quiz/lesson) — calm, no bright green/red */
-  --success:     #5C8A6E;
-  --success-bg:  rgba(92, 138, 110, 0.10);
-  --success-bd:  rgba(92, 138, 110, 0.28);
+  --success:     #24364A;
+  --success-bg:  rgba(36, 54, 74, 0.10);
+  --success-bd:  rgba(36, 54, 74, 0.28);
   --error:       #B5705A;
   --error-bg:    rgba(181, 112, 90, 0.10);
   --error-bd:    rgba(181, 112, 90, 0.28);
@@ -129,7 +129,7 @@ body[data-room="schooling-ring"] {
 }
 body[data-room="quiz-corral"] {
   --room-accent: var(--success);
-  --room-wash:   rgba(92, 138, 110, 0.09);
+  --room-wash:   rgba(36, 54, 74, 0.09);
 }
 body[data-room="lesson-board"] {
   --room-accent: var(--leather);
@@ -338,11 +338,23 @@ nav {
 }
 
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28em;
   font-family: var(--font-display);
   font-size: 1.5rem;
   color: var(--heading);
   letter-spacing: -0.5px;
   text-decoration: none;
+  line-height: 1;
+}
+
+.nav-logo-mark {
+  display: block;
+  width: auto;
+  height: 1.05em;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .nav-logo span {

@@ -1,38 +1,34 @@
-/* =============================================================================
-   Equine Edu — create-checkout.js
-   Netlify serverless function: creates a Stripe Checkout session and returns
-   the redirect URL. Called from pricing.html when user clicks "Get Pro".
-
-   Required environment variables in Netlify dashboard:
-     STRIPE_SECRET_KEY      — sk_live_... (or sk_test_... for testing)
-     STRIPE_PRICE_ID        — price_... (your monthly Pro subscription price ID)
-     SUPABASE_URL           — https://yrnvowujqsniletkhqba.supabase.co
-     SUPABASE_SERVICE_KEY   — sb_secret_... (service role key — NOT the publishable key)
-   ============================================================================= */
-
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { requireUser } = require('./_auth');
+
+const SITE_URL = (process.env.URL || process.env.SITE_URL || 'https://equine-edu.netlify.app')
+  .replace(/\/+$/, '');
 
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  let userId, email;
   try {
-    ({ userId, email } = JSON.parse(event.body));
-  } catch {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request body' }) };
-  }
+    const auth = await requireUser(event);
+    if (!auth.user) {
+      return {
+        statusCode: auth.statusCode,
+        body: JSON.stringify({ error: auth.error })
+      };
+    }
 
-  if (!userId || !email) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Missing userId or email' }) };
-  }
+    if (!auth.user.email) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'The authenticated account has no email address.' })
+      };
+    }
 
-  try {
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       payment_method_types: ['card'],
-      customer_email: email,
+      customer_email: auth.user.email,
       line_items: [
         {
           price: process.env.STRIPE_PRICE_ID,
@@ -40,10 +36,15 @@ exports.handler = async function (event) {
         }
       ],
       metadata: {
-        supabase_user_id: userId
+        supabase_user_id: auth.user.id
       },
-      success_url: 'https://equine-edu.netlify.app/account/index.html?subscribed=1',
-      cancel_url:  'https://equine-edu.netlify.app/pricing.html'
+      subscription_data: {
+        metadata: {
+          supabase_user_id: auth.user.id
+        }
+      },
+      success_url: `${SITE_URL}/account/index.html?subscribed=1`,
+      cancel_url: `${SITE_URL}/pricing.html`
     });
 
     return {
@@ -51,10 +52,10 @@ exports.handler = async function (event) {
       body: JSON.stringify({ url: session.url })
     };
   } catch (err) {
-    console.error('Stripe error:', err.message);
+    console.error('Stripe checkout error:', err.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: err.message })
+      body: JSON.stringify({ error: 'Could not start checkout.' })
     };
   }
 };
