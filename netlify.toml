@@ -8,14 +8,72 @@
 [functions]
   node_bundler = "esbuild"
 
-# The old /dashboard page was a sign-in gate and has been removed.
-# Send anyone hitting that URL to the working, gate-free dashboard.
+# ============================================================================
+# CLOSED BETA REDIRECTS (temporary — content-only public beta, no accounts)
+# ----------------------------------------------------------------------------
+# To RESTORE the full membership experience after beta, delete this whole
+# block (and restore the original /dashboard -> /hub/ rules below). Nothing is
+# deleted from the repo — these rules only hide the account/payment surfaces
+# and make the All Courses page the homepage. Pair with EE_BETA=false in
+# assets/js/layout.js to fully revert the in-page nav.
+#
+# status = 302 (temporary) + force = true so they take precedence over the
+# real files (which stay in place for restoration). 302 avoids browsers
+# permanently caching the redirect, keeping rollback clean.
+# ============================================================================
+
+# All Courses page becomes the homepage
+[[redirects]]
+  from = "/"
+  to = "/courses/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/courses/"
+  status = 302
+  force = true
+
+# Hide auth screens (login / signup / forgot / callback)
+[[redirects]]
+  from = "/auth/*"
+  to = "/courses/"
+  status = 302
+  force = true
+
+# Hide pricing / subscription page
+[[redirects]]
+  from = "/pricing.html"
+  to = "/courses/"
+  status = 302
+  force = true
+
+# Hide account / profile (would otherwise redirect to login)
+[[redirects]]
+  from = "/account/*"
+  to = "/courses/"
+  status = 302
+  force = true
+
+# Hide the campus dashboard / hub (contains "sign in to see progress" messaging)
+[[redirects]]
+  from = "/hub/*"
+  to = "/courses/"
+  status = 302
+  force = true
+
+# Legacy /dashboard URL → courses during beta.
+# POST-BETA: restore these two to  to = "/hub/"  status = 301  (no force).
 [[redirects]]
   from = "/dashboard"
-  to = "/hub/"
-  status = 301
+  to = "/courses/"
+  status = 302
+  force = true
 
 [[redirects]]
   from = "/dashboard/*"
-  to = "/hub/"
-  status = 301
+  to = "/courses/"
+  status = 302
+  force = true
+# ===================== END CLOSED BETA REDIRECTS ============================

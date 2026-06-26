@@ -126,9 +126,25 @@
     }
   })();
 
+  /* ──────────────────────────────────────────────────────────────────────
+     CLOSED BETA MODE (temporary).
+     While true, the site runs as a public, no-account content beta:
+       • Logo + nav point at the All Courses page (the beta homepage)
+       • Login / Sign Up / Pricing / Dashboard / My Account links are hidden
+       • Per-page navExtras (which mostly point at the hidden marketing home)
+         are ignored
+       • Footer drops its links to the hidden marketing homepage
+       • updateAuthNav() is skipped (no session lookup, no "My Account" swap)
+     To RESTORE the full membership experience, set EE_BETA to false (or flip
+     the default below). Nothing here is deleted — it is all gated on this flag.
+     ────────────────────────────────────────────────────────────────────── */
+  const BETA = (typeof window.EE_BETA === 'boolean') ? window.EE_BETA : true;
+
   const homeUrl    = cfg.homeUrl    || root + 'index.html';
   const coursesUrl = cfg.coursesUrl || root + 'courses/index.html';
-  const navExtras  = cfg.navExtras  || [];
+  const horseBowlUrl = root + 'horse-bowl/index.html';
+  // In beta, ignore per-page extra links (they point at the hidden home page).
+  const navExtras  = BETA ? [] : (cfg.navExtras || []);
 
   /* ---------- NAV ----------
      Note: the large "Back to Course" / "Back to All Courses" CTA buttons
@@ -139,6 +155,34 @@
      navExtras text links are rendered here — space for future
      top-level nav links. */
   function buildNav() {
+    const roomLabel = roomName ? `<span class="nav-room">${roomName}</span>` : '';
+
+    /* ---- CLOSED BETA NAV: All Courses + Horse Bowl only, no auth/pricing ---- */
+    if (BETA) {
+      const logoUrl = coursesUrl; // courses page is the beta homepage
+      return `
+<nav>
+  <span style="display:flex;align-items:center;min-width:0;">
+    <a href="${logoUrl}" class="nav-logo">Equine <span>Edu</span></a>
+    ${roomLabel}
+  </span>
+  <ul class="nav-links">
+    <li><a href="${coursesUrl}">All Courses</a></li>
+    <li><a href="${horseBowlUrl}">Horse Bowl</a></li>
+  </ul>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-drawer">
+    <ul class="nav-drawer-links">
+      <li><a href="${coursesUrl}">All Courses</a></li>
+      <li><a href="${horseBowlUrl}">Horse Bowl</a></li>
+    </ul>
+  </div>
+</nav>`.trim();
+    }
+
+    /* ---- FULL (post-beta) NAV ---- */
     const extraLinks = navExtras.map(e =>
       `<li><a href="${e.url}">${e.label}</a></li>`
     ).join('');
@@ -159,8 +203,6 @@
     // Dashboard (learning hub) link — hidden by default, revealed for signed-in users (see updateAuthNav)
     const dashLink   = `<li id="nav-dash-li" style="display:none"><a href="${root}hub/index.html" class="nav-dash-link">Dashboard</a></li>`;
     const drawerDash = `<li id="nav-drawer-dash-li" style="display:none"><a href="${root}hub/index.html">Dashboard</a></li>`;
-
-    const roomLabel = roomName ? `<span class="nav-room">${roomName}</span>` : '';
 
     return `
 <nav>
@@ -192,15 +234,23 @@
 
   /* ---------- FOOTER ---------- */
   function buildFooter() {
+    // In beta, drop the "How It Works"/"About" links — they point at the
+    // hidden marketing homepage. Keep Courses, Horse Bowl, and Contact.
+    const footerLinks = BETA
+      ? `
+      <li><a href="${coursesUrl}">All Courses</a></li>
+      <li><a href="${horseBowlUrl}">Horse Bowl</a></li>
+      <li><a href="#">Contact</a></li>`
+      : `
+      <li><a href="${coursesUrl}">Courses</a></li>
+      <li><a href="${homeUrl}#how">How It Works</a></li>
+      <li><a href="${homeUrl}#about">About</a></li>
+      <li><a href="#">Contact</a></li>`;
     return `
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Equine <span>Edu</span></div>
-    <ul class="footer-links">
-      <li><a href="${coursesUrl}">Courses</a></li>
-      <li><a href="${homeUrl}#how">How It Works</a></li>
-      <li><a href="${homeUrl}#about">About</a></li>
-      <li><a href="#">Contact</a></li>
+    <ul class="footer-links">${footerLinks}
     </ul>
     <p class="footer-copy">&copy; ${new Date().getFullYear()} Equine Edu. All rights reserved.</p>
   </div>
@@ -385,6 +435,7 @@
   /* ---------- AUTH NAV UPDATE ---------- */
   // After nav is injected, check session and update Log In → Account if signed in
   function updateAuthNav() {
+    if (BETA) return; // closed beta: no accounts, no session lookup, no "My Account" swap
     if (!window.EEAuth) return;
     EEAuth.getSession().then(function (session) {
       var btn    = document.getElementById('nav-auth-btn');

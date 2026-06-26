@@ -362,10 +362,13 @@
   height: 100%; background: var(--room-accent, var(--tan));
   border-radius: 999px; transition: width var(--motion-soft, .4s) var(--ease, ease);
 }
-.course-progress.is-done .course-progress-fill { background: var(--success); }
-.course-progress.is-done .course-progress-label { color: var(--success); }
+/* Completed states use navy (--heading) to match the sidebar journey-trail's
+   completed circles (.sidebar-module.is-complete .sidebar-num). The landing
+   list + progress bar were previously left on green (--success). */
+.course-progress.is-done .course-progress-fill { background: var(--heading); }
+.course-progress.is-done .course-progress-label { color: var(--heading); }
 
 /* completed module rows on the landing list */
 .module-item.is-complete .module-num {
-  background: var(--success); color: var(--white); border-color: var(--success);
+  background: var(--heading); color: var(--white); border-color: var(--heading);
 }

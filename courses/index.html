@@ -243,9 +243,6 @@
     object-fit: contain;
     padding: 0.35rem;
   }
-  #common-terms-reference-card .lesson-card-thumb img {
-    object-fit: cover;
-  }
   #face-markings-loft-card .lesson-card-thumb img {
     object-fit: contain;
     transform: scale(1.08);
@@ -578,9 +575,10 @@
   };
 </script>
 <div id="site-nav"></div>
-<div class="breadcrumb">
-<a href="../index.html">Home</a>
-<span>·</span>
+<!-- CLOSED BETA: this page is the homepage, so the "Home" breadcrumb link is
+     hidden. POST-BETA restore:
+     <div class="breadcrumb"><a href="../index.html">Home</a><span>·</span><span class="breadcrumb-current">All Courses</span></div> -->
+<div class="breadcrumb" hidden>
 <span class="breadcrumb-current">All Courses</span>
 </div>
 <section class="page-hero">
@@ -639,14 +637,7 @@
 
 
 
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Rider Safety Basics course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/rider-safety-basics/1-index.html">Open Rider Safety Basics course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Rider Safety Basics" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Rider Safety Basics</h3><p class="lesson-desc">Learn the safety habits every horseperson needs first — reading the horse, blind spots, certified helmets and proper boots, and safe leading and tying.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
+<a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
 <div class="lesson-card-thumb"><img alt="" loading="lazy" src="images-index/index-hero.png"/></div>
 <div><h3 class="lesson-title">Riding Arena Etiquette</h3><p class="lesson-desc">Understand passing rules, direction calls, right of way, and respectful behavior in a shared riding space.</p></div>
 <div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
@@ -659,32 +650,6 @@
 <div><h3 class="lesson-title">Barn Etiquette</h3><p class="lesson-desc">A guide to respectful habits around shared barn spaces, equipment, other people's horses, and fellow riders.</p></div>
 <div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
 </a></div>
-<button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
-</div>
-</div>
-<!-- ── Horse Behavior ── -->
-<div class="topic-row fade-in">
-<div class="topic-header"><div><h2 class="topic-title">Horse Behavior</h2></div></div>
-<div class="lesson-rail-wrap">
-<button aria-label="Scroll left" class="rail-arrow rail-arrow--prev" hidden="">‹</button>
-<div class="lesson-grid">
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Introduction to Horse Behavior course" class="lesson-card-overlay" href="schooling-ring/horse-behavior/intro-to-horse-behavior/1-index.html">Open Introduction to Horse Behavior course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Intro To Horse Behavior" loading="lazy" src="schooling-ring/horse-behavior/intro-to-horse-behavior/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Introduction to Horse Behavior</h3><p class="lesson-desc">Learn how horses think and communicate as prey animals — reading body language, understanding instincts, and approaching horses safely.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article>
-<article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
-<a aria-label="Open Horse Behavior &amp; Communication course" class="lesson-card-overlay" href="schooling-ring/horse-behavior/horse-behavior-communication/1-index.html">Open Horse Behavior &amp; Communication course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Horse Behavior Communication" loading="lazy" src="schooling-ring/horse-behavior/horse-behavior-communication/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Horse Behavior &amp; Communication</h3><p class="lesson-desc">Study equine ethology, herd social structure, advanced body language, stress indicators, and the principles behind how horses learn — FFA/4-H aligned.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article>
-</div>
 <button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
 </div>
 </div>
@@ -723,22 +688,6 @@
 <div><h3 class="lesson-title">Arena Figures &amp; School Movements</h3><p class="lesson-desc">Learn circles, serpentines, diagonals, and other arena figures that build balanced, purposeful riding.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </article>
-<article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
-<a aria-label="Open Understanding Horse Movement course" class="lesson-card-overlay" href="schooling-ring/riding-foundations/gaits-movement/1-index.html">Open Understanding Horse Movement course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Understanding Horse Movement" loading="lazy" src="schooling-ring/riding-foundations/gaits-movement/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Understanding Horse Movement</h3><p class="lesson-desc">Go deeper on gait mechanics, leads, transitions, and movement quality — learn what judges and trainers look for and how soundness connects to how a horse travels.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article>
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Common Horse Terms Reference Guide" class="lesson-card-overlay" href="schooling-ring/riding-foundations/common-terms/index.html">Open Common Horse Terms Reference Guide</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Common Horse Terms" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Common Horse Terms</h3><p class="lesson-desc">A quick, organized reference for horse words as you learn. Use topic filters or search for any term you encounter in the barn or arena.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article>
 </div>
 <button aria-label="Scroll right" class="rail-arrow rail-arrow--next">›</button>
 </div>
@@ -759,14 +708,6 @@
 <div><h3 class="lesson-title">Grooming Horses</h3><p class="lesson-desc">Discover the essential grooming tools, proper technique, and why routine grooming supports horse health and bonding.</p></div>
 <div class="lesson-footer"><span class="lesson-status">Available</span></div>
 </a>
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Intro to Feeding &amp; Nutrition course" class="lesson-card-overlay" href="schooling-ring/horse-care/intro-to-feeding-nutrition/1-index.html">Open Intro to Feeding &amp; Nutrition course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Intro to Feeding &amp; Nutrition" loading="lazy" src="schooling-ring/horse-care/intro-to-feeding-nutrition/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Intro to Feeding &amp; Nutrition</h3><p class="lesson-desc">Covers the basics of horse feeding — forage, feeding schedules, and the fundamentals of keeping a horse properly nourished.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article>
 <article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
 <a aria-label="Open Equine Nutrition &amp; Feed Management course" class="lesson-card-overlay" href="schooling-ring/horse-care/equine-nutrition/1-index.html">Open Equine Nutrition &amp; Feed Management course</a>
 <div class="lesson-card-content">
@@ -947,36 +888,11 @@
 
 
 
-<article class="lesson-card has-progress" id="parts-of-horse-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Intro to Equine Anatomy course" class="lesson-card-overlay" href="schooling-ring/equine-anatomy/parts-of-the-horse/1-index.html" id="parts-of-horse-card-link">Open Intro to Equine Anatomy course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Parts Of The Horse" loading="lazy" src="schooling-ring/equine-anatomy/parts-of-the-horse/images/course-card.png"/></div>
-<div>
-<h3 class="lesson-title">Intro to Parts of the Horse</h3>
-<p class="lesson-desc">Learn the horse body map: head, neck and shoulders, body, front legs, and hind legs.</p>
-<div class="lesson-progress-wrap">
-<div class="lesson-progress-top"><span class="lesson-progress-label">Progress</span><span class="lesson-progress-percent" id="parts-of-horse-progress-percent">0%</span></div>
-<div aria-hidden="true" class="lesson-progress-track"><div class="lesson-progress-fill" id="parts-of-horse-progress-fill"></div></div>
-<div class="lesson-progress-copy" id="parts-of-horse-progress-copy">0 / 5 lessons complete</div>
-</div>
-</div>
-<div class="lesson-footer"><span class="lesson-status open" id="parts-of-horse-progress-status">Start</span></div>
-</div>
-</article><a class="lesson-card" href="schooling-ring/equine-anatomy/equine-anatomy/1-index.html" id="equine-anatomy-card"><span class="level-badge level-badge--core">Core Studies</span>
+<a class="lesson-card" href="schooling-ring/equine-anatomy/equine-anatomy/1-index.html" id="equine-anatomy-card"><span class="level-badge level-badge--core">Core Studies</span>
 <div class="lesson-card-thumb"><img alt="Equine Anatomy" loading="lazy" src="schooling-ring/equine-anatomy/equine-anatomy/images/course-card.png"/></div>
 <div><h3 class="lesson-title">Parts of the Horse</h3><p class="lesson-desc">Go beyond the foundation course with deeper anatomy study organized by region, structure, function, and real-world care context.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</a><article class="lesson-card" id="intro-hoof-anatomy-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Intro to Hoof Anatomy course" class="lesson-card-overlay" href="schooling-ring/equine-anatomy/intro-to-hoof-anatomy/1-index.html">Open Intro to Hoof Anatomy course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Intro To Hoof Anatomy" loading="lazy" src="schooling-ring/equine-anatomy/intro-to-hoof-anatomy/images/course-card.png"/></div>
-<div>
-<h3 class="lesson-title">Intro to Hoof Anatomy</h3>
-<p class="lesson-desc">Learn the hoof map: outside structures, including the periople, and the underneath landmarks.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article><article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
+</a><article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
 <a aria-label="Open Horse Teeth Basics course" class="lesson-card-overlay" href="schooling-ring/equine-anatomy/horse-teeth-basics/1-index.html">Open Horse Teeth Basics course</a>
 <div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="Horse Teeth Basics" loading="lazy" src="schooling-ring/equine-anatomy/horse-teeth-basics/images/course-card.png"/></div>
@@ -1050,14 +966,7 @@
 
 
 
-<article class="lesson-card"><span class="level-badge level-badge--foundations">Foundations</span>
-<a aria-label="Open Introduction to Tack &amp; Equipment course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/intro-to-tack-equipment/1-index.html">Open Introduction to Tack &amp; Equipment course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Intro To Tack Equipment" loading="lazy" src="schooling-ring/tack-equipment/western-equipment/images/course-card.png"/></div>
-<div><h3 class="lesson-title">Introduction to Tack &amp; Equipment</h3><p class="lesson-desc">Discover what tack is, why it’s used, and the basic components of a saddle and bridle before exploring discipline-specific gear.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article><a class="lesson-card" href="schooling-ring/tack-equipment/western-equipment/1-index.html" id="western-equipment-card"><span class="level-badge level-badge--core">Core Studies</span>
+<a class="lesson-card" href="schooling-ring/tack-equipment/western-equipment/1-index.html" id="western-equipment-card"><span class="level-badge level-badge--core">Core Studies</span>
 <div class="lesson-card-thumb"><img alt="Western Equipment" loading="lazy" src="schooling-ring/tack-equipment/western-equipment/images/course-card.png"/></div>
 <div><h3 class="lesson-title">Western Tack &amp; Equipment</h3><p class="lesson-desc">Learn the names and function of western saddles, bridles, bits, cinches, and common western discipline equipment.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
@@ -1074,13 +983,6 @@
 <div class="lesson-card-content">
 <div class="lesson-card-thumb"><img alt="Intro to Bits &amp; Bridles" loading="lazy" src="schooling-ring/tack-equipment/intro-to-bits-bridles/images/course-card.png"/></div>
 <div><h3 class="lesson-title">Intro to Bits &amp; Bridles</h3><p class="lesson-desc">A bit is the primary tool of rein communication, and the bridle holds it in place. This course covers bit families, bridle types, and proper fit.</p></div>
-<div class="lesson-footer"><span class="lesson-status open">Start</span></div>
-</div>
-</article><article class="lesson-card"><span class="level-badge level-badge--core">Core Studies</span>
-<a aria-label="Open Tack Fundamentals &amp; Fit course" class="lesson-card-overlay" href="schooling-ring/tack-equipment/tack-fundamentals-fit/1-index.html">Open Tack Fundamentals &amp; Fit course</a>
-<div class="lesson-card-content">
-<div class="lesson-card-thumb"><img alt="Tack Fundamentals &amp; Fit" loading="lazy" src="images-index/index-hero.png"/></div>
-<div><h3 class="lesson-title">Tack Fundamentals &amp; Fit</h3><p class="lesson-desc">Tack is the equipment used to ride, drive, and handle horses. This course explains how tack works as a system and how proper fit affects horse comfort.</p></div>
 <div class="lesson-footer"><span class="lesson-status open">Start</span></div>
 </div>
 </article><a class="lesson-card coming-soon" style="display:none"><span class="level-badge level-badge--foundations">Foundations</span>
@@ -1260,14 +1162,6 @@
 </div>
 <div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
 </a>
-<a class="lesson-card" href="learning-loft/horse-behavior/index.html?from=loft" id="horse-behavior-hub-card">
-<div class="lesson-card-thumb"><img alt="Horse Behavior practice activities preview" src="schooling-ring/horse-behavior/horse-behavior-communication/images/course-card.png"/></div>
-<div>
-<h3 class="lesson-title">Horse Behavior &mdash; Practice</h3>
-<p class="lesson-desc">Practice reading equine body language and behavior.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a>
 </div>
 </div>
 <div class="topic-row fade-in">
@@ -1325,14 +1219,6 @@
 </div>
 <div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
 </a>
-<a class="lesson-card" href="lesson-board/horse-behavior/index.html?from=lessonboard" id="horse-behavior-downloads-hub-card">
-<div class="lesson-card-thumb"><img alt="Horse Behavior downloads preview" src="schooling-ring/horse-behavior/horse-behavior-communication/images/course-card.png"/></div>
-<div>
-<h3 class="lesson-title">Horse Behavior &mdash; Downloads</h3>
-<p class="lesson-desc">Printable equine behavior and body-language reference sheets.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status">Coming Soon</span></div>
-</a>
 </div>
 </div>
 <div class="topic-row fade-in">
@@ -1351,13 +1237,6 @@
 <div>
 <h3 class="lesson-title">Common Horse Breeds Reference Guide</h3>
 <p class="lesson-desc">Explore 28 horse and pony breeds with interactive profiles, size comparisons, fun facts, and a breed discovery tracker.</p>
-</div>
-<div class="lesson-footer"><span class="lesson-status open">View Guide</span></div>
-</a><a class="lesson-card" href="schooling-ring/riding-foundations/common-terms/index.html" id="common-terms-reference-card">
-<div class="lesson-card-thumb"><img alt="Common horse terms reference guide" src="../images/course-headers/common-horse-terms.png"/></div>
-<div>
-<h3 class="lesson-title">Common Horse Terms Reference Guide</h3>
-<p class="lesson-desc">Look up barn vocabulary, anatomy words, movement terms, tack, care language, safety notes, and vital-sign basics in one searchable guide.</p>
 </div>
 <div class="lesson-footer"><span class="lesson-status open">View Guide</span></div>
 </a><a class="lesson-card coming-soon" style="display:none">
