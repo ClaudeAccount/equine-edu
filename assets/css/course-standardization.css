@@ -6698,6 +6698,703 @@ font-size:.72rem;padding:.3rem .7rem
 
 }
 
+/* Extracted from courses/schooling-ring/breeds/horse-and-pony-breeds/index.html */
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index {
+--cream:       #FAF7F2;
+  --cream-dark:  #F0EAE0;
+  --tan:         #E8DDD0;
+  --tan-mid:     #D4C5B0;
+  --brown:       #7A5C3E;
+  --navy:        var(--heading);
+  --navy-light:  var(--blue-primary);
+  --gold:        var(--tan);
+  --gold-bright: #E0C06A;
+  --gold-muted:  rgba(200, 162, 122,0.18);
+  --text:        #2A2620;
+  --text-mid:    #5C5248;
+  --text-light:  #8C857D;
+  --white:       #FFFFFF;
+  --heading:        #24364A;
+  --blue-primary:   #7F98B2;
+  --blue-secondary: #A9BACB;
+  --body-text:      #4F5B66;
+  --muted-text:     #7D858D;
+  --leather:        #A9825A;
+  --font-display:'Playfair Display', Georgia, serif;
+  --font-body:   'DM Sans', system-ui, sans-serif;
+  --radius:      14px;
+  --radius-sm:   8px;
+  --shadow:      0 4px 20px rgba(36, 54, 74,0.10);
+  --shadow-lg:   0 16px 60px rgba(36, 54, 74,0.20);
+  --transition:  0.25s ease;
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index *, body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index *::before, body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index *::after {
+box-sizing:border-box;margin:0;padding:0
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index {
+scroll-behavior:smooth
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index {
+font-family:var(--font-body);background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index a {
+color:inherit;text-decoration:none
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index img {
+display:block;max-width:100%
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index button {
+cursor:pointer;font-family:var(--font-body);border:none;background:none
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .site-nav {
+position:sticky;top:0;z-index:200;background:var(--heading);border-bottom:2px solid var(--tan);padding:0 5%
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .nav-inner {
+max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .nav-logo {
+font-family:var(--font-display);font-size:1.2rem;color:var(--white);font-weight:700;letter-spacing:0.5px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .nav-logo span {
+color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .nav-back {
+font-size:0.78rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.6);transition:color var(--transition)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .nav-back:hover {
+color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .hero {
+background:linear-gradient(135deg,var(--heading) 0%,var(--blue-primary) 60%,#162d70 100%);padding:64px 5% 56px;text-align:center;position:relative;overflow:hidden
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .hero::before {
+content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;pointer-events:none
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .hero-tag {
+display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan);background:rgba(200, 162, 122,0.12);border:1px solid rgba(200, 162, 122,0.3);padding:6px 16px;border-radius:20px;margin-bottom:1.25rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .hero h1 {
+font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);color:var(--white);line-height:1.15;margin-bottom:1rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .hero h1 em {
+color:var(--tan);font-style:italic
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .hero-desc {
+font-size:clamp(0.95rem,1.5vw,1.1rem);color:rgba(255,255,255,0.7);max-width:560px;margin:0 auto 2rem;line-height:1.75
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .hero-actions {
+display:flex;gap:1rem;justify-content:center;flex-wrap:wrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .btn-gold {
+background:var(--tan);color:var(--heading);padding:12px 28px;border-radius:6px;font-weight:700;font-size:0.9rem;transition:background var(--transition),transform 0.1s;letter-spacing:0.3px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .btn-gold:hover {
+background:var(--leather);transform:translateY(-1px)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .btn-outline {
+background:transparent;color:var(--white);padding:12px 28px;border-radius:6px;font-weight:600;font-size:0.9rem;border:1.5px solid rgba(255,255,255,0.35);transition:border-color var(--transition),background var(--transition)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .btn-outline:hover {
+border-color:var(--tan);background:rgba(200, 162, 122,0.08)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .discovery-bar {
+background:var(--heading);border-top:1px solid rgba(255,255,255,0.06);padding:14px 5%
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .discovery-inner {
+max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .discovery-label {
+font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.5)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .discovery-track {
+flex:1;min-width:160px;height:6px;background:rgba(255,255,255,0.1);border-radius:99px;overflow:hidden
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .discovery-fill {
+height:100%;background:linear-gradient(90deg,var(--tan),var(--leather));border-radius:inherit;transition:width 0.6s ease;width:0%
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .discovery-count {
+font-size:0.78rem;font-weight:700;color:var(--tan);white-space:nowrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .discovery-badges {
+display:flex;gap:0.5rem;flex-wrap:wrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .badge {
+font-size:0.65rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;padding:4px 10px;border-radius:12px;background:rgba(200, 162, 122,0.12);color:rgba(200, 162, 122,0.5);border:1px solid rgba(200, 162, 122,0.15);transition:all 0.4s
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .badge.earned {
+background:rgba(200, 162, 122,0.2);color:var(--tan);border-color:rgba(200, 162, 122,0.45)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .controls-section {
+background:linear-gradient(180deg, transparent 0%, rgba(252,250,247,0.6) 30%, rgba(252,250,247,0.6) 75%, transparent 100%);padding:0 5%;position:sticky;top:60px;z-index:100
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .controls-inner {
+max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:0
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-row {
+display:flex;gap:0;align-items:stretch;overflow-x:auto;scrollbar-width:none;justify-content:center
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-row::-webkit-scrollbar {
+display:none
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-btn {
+position:relative;background:none;border:none;border-radius:0;cursor:pointer;padding:1rem 1.3rem 0.95rem;font-family:var(--font-body);font-size:0.78rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted-text);transition:color 0.2s;white-space:nowrap;flex-shrink:0
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-btn::after {
+content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:var(--tan);opacity:0;transition:opacity 0.2s
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-btn:hover {
+color:var(--text)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-btn.active {
+color:var(--heading)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-btn.active::after {
+opacity:1
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-btn.active-gold {
+color:var(--heading)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-btn.active-gold::after {
+opacity:1
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .search-sort-row {
+display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 0;justify-content:center
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .search-wrap {
+position:relative;flex:1;min-width:220px;max-width:380px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .search-icon {
+position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:0.4;pointer-events:none
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .search-input {
+width:100%;padding:9px 12px 9px 38px;border:1.5px solid var(--tan-mid);border-radius:8px;font-family:var(--font-body);font-size:0.85rem;background:var(--white);color:var(--text);outline:none;transition:border-color var(--transition)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .search-input:focus {
+border-color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .sort-select {
+padding:8px 12px;border:1.5px solid var(--tan-mid);border-radius:8px;font-family:var(--font-body);font-size:0.82rem;background:var(--white);color:var(--body-text);outline:none;cursor:pointer
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .results-count {
+font-size:0.78rem;color:var(--muted-text)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-section {
+max-width:1280px;margin:0 auto;padding:40px 5% 60px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .section-heading {
+display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .section-heading h2 {
+font-family:var(--font-display);font-size:1.5rem;color:var(--heading)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .section-line {
+flex:1;height:1px;background:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-grid {
+display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-card {
+background:var(--white);border-radius:var(--radius);overflow:hidden;border:1.5px solid var(--tan);box-shadow:var(--shadow);cursor:pointer;transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);position:relative
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-card:hover {
+transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(200, 162, 122,0.5)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-card.viewed .card-img-wrap::after {
+content:'✓';position:absolute;top:10px;right:10px;width:26px;height:26px;background:var(--tan);color:var(--heading);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;z-index:2;line-height:26px;text-align:center
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-card.favorited .fav-btn {
+color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-img-wrap {
+position:relative;height:190px;overflow:hidden;background:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-img-wrap img {
+width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-card:hover .card-img-wrap img {
+transform:scale(1.06)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-superpower {
+position:absolute;bottom:0;left:0;right:0;padding:6px 10px;background:linear-gradient(0deg,rgba(36, 54, 74,0.85) 0%,transparent 100%);font-size:0.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-body {
+padding:14px 16px 12px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-top {
+display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-name {
+font-family:var(--font-display);font-size:1rem;color:var(--heading);line-height:1.2;font-weight:600
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .fav-btn {
+width:28px;height:28px;border-radius:50%;border:1.5px solid var(--tan-mid);display:flex;align-items:center;justify-content:center;color:var(--muted-text);font-size:0.9rem;transition:all var(--transition);flex-shrink:0;margin-top:-2px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .fav-btn:hover {
+border-color:var(--tan);color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-origin {
+font-size:0.72rem;color:var(--muted-text);margin-bottom:10px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-tags {
+display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .tag {
+font-size:0.62rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 8px;border-radius:10px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .tag-cat {
+background:rgba(36, 54, 74,0.07);color:var(--heading)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .tag-gaited {
+background:rgba(200, 162, 122,0.15);color:var(--brown)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .tag-draft {
+background:rgba(122,92,62,0.12);color:var(--brown)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .tag-pony {
+background:rgba(30,53,128,0.1);color:var(--blue-secondary)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-stars {
+display:flex;align-items:center;gap:3px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .star {
+font-size:0.7rem;color:var(--tan-mid)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .star.filled {
+color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-footer {
+display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid var(--tan);background:var(--cream)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-height {
+font-size:0.72rem;color:var(--muted-text)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-open {
+font-size:0.68rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--tan);opacity:0.8;transition:opacity var(--transition)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-card:hover .card-open {
+opacity:1
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .no-results {
+text-align:center;padding:60px 20px;color:var(--muted-text);font-size:0.95rem;grid-column:1/-1
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .no-results span {
+display:block;font-size:2rem;margin-bottom:0.75rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-section {
+background:var(--heading);padding:64px 5%
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-inner {
+max-width:1280px;margin:0 auto
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-tag {
+display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--tan);margin-bottom:1rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-title {
+font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);margin-bottom:0.75rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-subtitle {
+font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:600px;margin-bottom:2.5rem;line-height:1.75
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-grid {
+display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-card {
+background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:28px 24px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-card-icon {
+width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-hot .blood-card-icon {
+background:rgba(220,80,60,0.2)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-cold .blood-card-icon {
+background:rgba(60,130,200,0.2)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-warm .blood-card-icon {
+background:rgba(130,180,100,0.2)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-pony .blood-card-icon {
+background:rgba(200, 162, 122,0.2)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-card h3 {
+font-family:var(--font-display);font-size:1.1rem;color:var(--white);margin-bottom:0.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-card p {
+font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:1rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-breeds {
+display:flex;gap:6px;flex-wrap:wrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .blood-tag-pill {
+font-size:0.62rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:3px 9px;border-radius:10px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.55)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .warmblood-note {
+grid-column:1/-1;background:rgba(200, 162, 122,0.08);border:1px solid rgba(200, 162, 122,0.2);border-radius:var(--radius);padding:20px 24px;display:flex;gap:16px;align-items:flex-start
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .warmblood-note-icon {
+font-size:1.4rem;flex-shrink:0;margin-top:2px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .warmblood-note p {
+font-size:0.83rem;color:rgba(255,255,255,0.7);line-height:1.7
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .warmblood-note strong {
+color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-overlay {
+position:fixed;inset:0;top:60px;z-index:500;pointer-events:none;display:flex;justify-content:flex-end
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-overlay.open {
+pointer-events:auto
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-backdrop {
+position:absolute;inset:0;background:rgba(36, 54, 74,0.55);opacity:0;transition:opacity 0.3s ease;backdrop-filter:blur(3px)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-overlay.open .modal-backdrop {
+opacity:1
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-panel {
+position:relative;width:min(500px,100%);height:100%;background:var(--white);box-shadow:var(--shadow-lg);transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;display:flex;flex-direction:column
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-overlay.open .modal-panel {
+transform:translateX(0)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-img {
+width:100%;height:340px;object-fit:contain;object-position:center top;background:var(--cream);flex-shrink:0
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-img-placeholder {
+width:100%;height:260px;background:linear-gradient(135deg,var(--tan) 0%,var(--tan-mid) 100%);display:flex;align-items:center;justify-content:center;font-size:3rem;flex-shrink:0
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-close {
+position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;padding:14px 16px;background:transparent;pointer-events:none
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-close-btn {
+width:36px;height:36px;border-radius:50%;background:rgba(36, 54, 74,0.75);color:var(--white);font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background var(--transition);pointer-events:auto;flex-shrink:0;margin-top:-260px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-close-btn:hover {
+background:var(--heading)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-body {
+padding:0 24px 32px;flex:1
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-superpower {
+font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tan);margin-bottom:0.5rem;display:flex;align-items:center;gap:6px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-superpower::before {
+content:'';font-size:0.8rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-name {
+font-family:var(--font-display);font-size:1.9rem;color:var(--heading);line-height:1.15;margin-bottom:0.35rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-origin {
+font-size:0.82rem;color:var(--muted-text);margin-bottom:1.25rem;display:flex;align-items:center;gap:6px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-section {
+margin-bottom:1.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-section-title {
+font-size:0.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted-text);margin-bottom:0.6rem;display:flex;align-items:center;gap:8px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-section-title::after {
+content:'';flex:1;height:1px;background:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .stat-grid {
+display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .stat-item {
+background:var(--cream);border-radius:var(--radius-sm);padding:12px 14px;border:1px solid var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .stat-label {
+font-size:0.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted-text);margin-bottom:4px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .stat-value {
+font-size:0.88rem;font-weight:600;color:var(--heading)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-tags {
+display:flex;gap:6px;flex-wrap:wrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-tag {
+font-size:0.72rem;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--cream-dark);color:var(--body-text);border:1px solid var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .beginner-stars {
+display:flex;gap:4px;align-items:center
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .b-star {
+font-size:1rem;color:var(--tan-mid)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .b-star.filled {
+color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-text {
+font-size:0.85rem;color:var(--body-text);line-height:1.75
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .funfact-box {
+background:linear-gradient(135deg,rgba(200, 162, 122,0.08),rgba(200, 162, 122,0.14));border:1px solid rgba(200, 162, 122,0.3);border-radius:var(--radius-sm);padding:16px 18px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .funfact-box .funfact-label {
+font-size:0.65rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--tan);margin-bottom:6px;display:flex;align-items:center;gap:5px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .funfact-box p {
+font-size:0.83rem;color:var(--body-text);line-height:1.7
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .didyouknow-box {
+background:linear-gradient(135deg,rgba(36, 54, 74,0.04),rgba(36, 54, 74,0.08));border:1px solid rgba(36, 54, 74,0.1);border-radius:var(--radius-sm);padding:16px 18px;margin-top:10px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .didyouknow-box .dy-label {
+font-size:0.65rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--heading);margin-bottom:6px;display:flex;align-items:center;gap:5px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .didyouknow-box p {
+font-size:0.83rem;color:var(--body-text);line-height:1.7
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .color-dots {
+display:flex;gap:8px;flex-wrap:wrap;align-items:center
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .color-dot {
+width:18px;height:18px;border-radius:50%;border:2px solid rgba(0,0,0,0.12);position:relative;background:var(--dot-color, transparent)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .color-dot-label {
+font-size:0.72rem;color:var(--body-text)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .similar-breeds {
+display:flex;gap:8px;flex-wrap:wrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .similar-chip {
+font-size:0.75rem;font-weight:600;padding:5px 14px;border-radius:20px;border:1.5px solid var(--tan-mid);color:var(--heading);background:var(--white);cursor:pointer;transition:all var(--transition)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .similar-chip:hover {
+border-color:var(--tan);background:var(--gold-muted)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-fav-row {
+display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-close-row {
+position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;padding:12px 14px;margin-top:-52px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-fav-btn {
+display:flex;align-items:center;gap:8px;font-size:0.78rem;font-weight:700;letter-spacing:0.5px;color:var(--muted-text);padding:8px 16px;border-radius:20px;border:1.5px solid var(--tan-mid);transition:all var(--transition)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-fav-btn:hover {
+border-color:var(--tan);color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-fav-btn.faved {
+border-color:var(--tan);color:var(--tan);background:var(--gold-muted)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .rarity-bar-wrap {
+display:flex;align-items:center;gap:10px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .rarity-bar {
+flex:1;height:6px;background:var(--tan);border-radius:99px;overflow:hidden
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .rarity-fill {
+height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--tan),var(--leather));width:var(--rarity-width, 0)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .rarity-label {
+font-size:0.72rem;color:var(--muted-text);white-space:nowrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-colors-text {
+margin-top:8px;font-size:0.78rem;color:var(--muted-text)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-traits-list {
+font-size:0.83rem;color:var(--body-text);line-height:1.85;padding-left:1.1rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-table-wrap {
+margin-top:1.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-overlay {
+position:fixed;inset:0;z-index:600;background:rgba(36, 54, 74,0.7);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-overlay.open {
+opacity:1;pointer-events:auto
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-modal {
+background:var(--white);border-radius:var(--radius);max-width:520px;width:100%;padding:36px;position:relative;max-height:90vh;overflow-y:auto
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-close {
+position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--tan);color:var(--body-text);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background var(--transition)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-close:hover {
+background:var(--tan-mid)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-tag {
+font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tan);margin-bottom:0.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-title {
+font-family:var(--font-display);font-size:1.5rem;color:var(--heading);margin-bottom:0.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-subtitle {
+font-size:0.85rem;color:var(--muted-text);margin-bottom:1.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-progress {
+height:4px;background:var(--tan);border-radius:99px;margin-bottom:1.5rem;overflow:hidden
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-progress-fill {
+height:100%;background:var(--tan);border-radius:inherit;transition:width 0.4s;width:var(--quiz-progress-width, 0)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-question {
+font-size:1rem;font-weight:600;color:var(--heading);margin-bottom:1rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-options {
+display:flex;flex-direction:column;gap:8px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-option {
+padding:12px 16px;border:1.5px solid var(--tan-mid);border-radius:var(--radius-sm);font-size:0.88rem;color:var(--body-text);text-align:left;transition:all var(--transition);background:var(--white)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-option:hover {
+border-color:var(--tan);background:var(--gold-muted);color:var(--heading)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-result {
+text-align:center;padding:10px 0
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-result-img {
+width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 1rem;border:4px solid var(--tan);box-shadow:0 8px 32px rgba(200, 162, 122,0.3)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-result-name {
+font-family:var(--font-display);font-size:1.6rem;color:var(--heading);margin-bottom:0.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-result-desc {
+font-size:0.85rem;color:var(--body-text);line-height:1.7;margin-bottom:1.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-result-actions {
+display:flex;gap:10px;justify-content:center;flex-wrap:wrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .quiz-retake-btn {
+background:transparent;border:1.5px solid var(--tan-mid);color:var(--body-text);padding:11px 20px;border-radius:6px;font-size:0.88rem;font-weight:600
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-bar {
+position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--heading);border-top:2px solid var(--tan);padding:12px 5%;transform:translateY(100%);transition:transform 0.3s;display:flex;align-items:center;gap:16px;flex-wrap:wrap
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-bar.visible {
+transform:translateY(0)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-label {
+font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.6)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-slots {
+display:flex;gap:10px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-slot {
+width:100px;height:52px;border-radius:8px;border:1.5px dashed rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:0.68rem;color:rgba(255,255,255,0.3);overflow:hidden;position:relative
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-slot img {
+width:100%;height:100%;object-fit:cover
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-slot .slot-remove {
+position:absolute;top:2px;right:2px;width:16px;height:16px;border-radius:50%;background:rgba(0,0,0,0.5);color:white;font-size:0.6rem;display:flex;align-items:center;justify-content:center;cursor:pointer
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-actions {
+display:flex;gap:8px;margin-left:auto
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-go {
+background:var(--tan);color:var(--heading);padding:9px 20px;border-radius:6px;font-size:0.78rem;font-weight:700
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-clear {
+color:rgba(255,255,255,0.5);font-size:0.75rem;padding:9px 14px;border:1px solid rgba(255,255,255,0.15);border-radius:6px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-go:hover {
+background:var(--leather)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-hint {
+font-size:0.65rem;color:rgba(255,255,255,0.3)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-modal-overlay {
+position:fixed;inset:0;z-index:700;background:rgba(36, 54, 74,0.8);display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;opacity:0;pointer-events:none;transition:opacity 0.3s;overflow-y:auto;backdrop-filter:blur(4px)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-modal-overlay.open {
+opacity:1;pointer-events:auto
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-modal {
+background:var(--white);border-radius:var(--radius);max-width:860px;width:100%;padding:32px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-modal-header {
+display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-modal-title {
+font-family:var(--font-display);font-size:1.5rem;color:var(--heading)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-cols {
+display:grid;grid-template-columns:1fr 1fr;gap:24px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-col-img {
+width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:12px;border:2px solid var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-col-name {
+font-family:var(--font-display);font-size:1.15rem;color:var(--heading);margin-bottom:4px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-col-origin {
+font-size:0.75rem;color:var(--muted-text);margin-bottom:1rem
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-row {
+display:grid;grid-template-columns:120px 1fr 1fr;gap:8px;padding:10px 0;border-bottom:1px solid var(--tan);align-items:center
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-row-label {
+font-size:0.7rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--muted-text)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-row-val {
+font-size:0.83rem;color:var(--body-text)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .site-footer {
+background:var(--heading);border-top:1px solid rgba(255,255,255,0.06);padding:32px 5%;text-align:center
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .footer-logo {
+font-family:var(--font-display);font-size:1.1rem;color:var(--white);margin-bottom:6px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .footer-logo span {
+color:var(--tan)
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .footer-copy {
+font-size:0.75rem;color:rgba(255,255,255,0.35)
+}
+@media(max-width:768px) {
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .hero {
+padding:48px 5% 40px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-panel {
+width:100%;height:100%
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .modal-close-btn {
+margin-top:-260px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .compare-cols {
+grid-template-columns:1fr
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .stat-grid {
+grid-template-columns:1fr
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-row {
+gap:6px
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .filter-btn {
+font-size:0.68rem;padding:6px 12px
+}
+
+}
+@media(max-width:520px) {
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-grid {
+grid-template-columns:1fr 1fr
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .search-sort-row {
+flex-wrap:wrap
+}
+
+}
+@media(max-width:380px) {
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .breed-grid {
+grid-template-columns:1fr
+}
+
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .fade-in {
+opacity:0;transform:translateY(16px);transition:opacity 0.5s,transform 0.5s
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .fade-in.visible {
+opacity:1;transform:none
+}
+@keyframes pulse-gold {
+0%,100%{box-shadow:0 0 0 0 rgba(200, 162, 122,0.4)}50%{box-shadow:0 0 0 8px rgba(200, 162, 122,0)}
+}
+body.ee-page-courses-schooling-ring-horse-and-pony-breeds-index .card-new {
+animation:pulse-gold 1.2s ease-out
+}
+
 /* Unified landing-page hero art layout.
    Keeps course-title copy and the course image together instead of stretching
    them to the far edges on wide screens. */
